@@ -46,7 +46,7 @@ namespace xtraForm.Modulos.Ventas
             gridView1.Columns["[Nombre Proveedor]"].GroupIndex = 0;
             gridView1.Columns["[Descripcion Promocional]"].GroupIndex = 1;
             gridView1.Columns["[Nombre Proveedor]"].Caption = "Prov";
-            gridView1.Columns["[Descripcion Promocional]"].Caption = ">";
+            gridView1.Columns["[Descripcion Promocional]"].Caption = "|";
         }
     }
 }

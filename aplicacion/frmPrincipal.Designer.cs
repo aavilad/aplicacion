@@ -291,6 +291,7 @@
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Descuento";
+            this.barButtonItem1.Enabled = false;
             this.barButtonItem1.Id = 25;
             this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barButtonItem1.Name = "barButtonItem1";
@@ -347,7 +348,7 @@
             // 
             this.btnBuscar.Caption = "Bucar";
             this.btnBuscar.Id = 40;
-            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem18.ImageOptions.SvgImage")));
+            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBuscar.ImageOptions.SvgImage")));
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscar_ItemClick);
             // 
