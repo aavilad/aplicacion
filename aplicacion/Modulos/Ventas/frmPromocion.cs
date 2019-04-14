@@ -29,20 +29,18 @@ namespace xtraForm.Modulos.Ventas
             proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
             List<string> lista_ = new List<string>();
             foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
-            {
                 lista_.Add("[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
-            }
             string cadena = string.Join(" ", lista_.ToArray());
             condicion(cadena);
         }
-        void GrabarBonificacion(string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente,
+        void GrabarBonificacion(int pkid,string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente,
             decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, DataGridView dgv)
         {
             var x = proceso.ID("Bonificacion");
             switch (Existe)
             {
                 case true:
-                    ejecutar_.saveBonificacion(bonificacion.Id, Mecanica, TipoMecanica, CodigoObsequio, CantidadMinima, CantidadMaxima, CantidadObsequio, MaximoPorCliente, Stock, Exclusion,
+                    ejecutar_.saveBonificacion(pkid, Mecanica, TipoMecanica, CodigoObsequio, CantidadMinima, CantidadMaxima, CantidadObsequio, MaximoPorCliente, Stock, Exclusion,
                         PkidExclusion, CodigoVenta, Proveedor, Desde, Hasta, Activo, dgv, proceso.ID("ItemBonificacion"), IDAsociado == 0 ? bonificacion.IdAsociado : IDAsociado);
                     Refrescar();
                     break;
@@ -52,24 +50,13 @@ namespace xtraForm.Modulos.Ventas
                     Refrescar();
                     break;
             }
+            Existe = false;
         }
         void condicion(string cadena)
         {
-            var sql =
-                    @"SELECT DISTINCT
-                    dbo.Bonificacion.PKID, dbo.Bonificacion.Mecanica, dbo.Bonificacion.TipoMecanica, dbo.Bonificacion.cdProductoRegalo, dbo.Bonificacion.CantidadMinima, 
-                    dbo.Bonificacion.CantidadMaxima, dbo.Bonificacion.CantidadRegalo, dbo.Bonificacion.CantidadMaximaPorCliente, dbo.Bonificacion.Stock, 
-                    dbo.Bonificacion.StockEntregado, dbo.Bonificacion.TieneExclusion, dbo.Bonificacion.IDBonifcacionExcluida, dbo.Bonificacion.cdProductoVenta, 
-                    dbo.Bonificacion.IDProveedor, dbo.Bonificacion.Desde, dbo.Bonificacion.Hasta, dbo.Bonificacion.Activo, dbo.PROVEEDOR.RazonSocial AS Proveedor, 
-                    dbo.TipoAsociado.Codigo AS Asociado
-                    FROM
-                    dbo.Bonificacion INNER JOIN
-                    dbo.PROVEEDOR ON dbo.Bonificacion.IDProveedor = dbo.PROVEEDOR.Proveedor INNER JOIN
-                    dbo.ItemBonificacion ON dbo.Bonificacion.PKID = dbo.ItemBonificacion.IDBonificacion INNER JOIN
-                    dbo.TipoAsociado ON dbo.ItemBonificacion.IDAsociado = dbo.TipoAsociado.PKID";
             if (cadena.Length == 0)
             {
-                proceso.consultar(sql, tabla);
+                proceso.consultar(Libreria.Constante.Bonificacion, tabla);
                 gridcontrolBonificacion.DataSource = proceso.ds.Tables[tabla];
                 gridView1.Columns[0].Visible = false;
                 gridView1.Columns["Proveedor"].GroupIndex = 1;
@@ -85,10 +72,9 @@ namespace xtraForm.Modulos.Ventas
                 gridView1.BestFitColumns();
             }
             else
-            {
                 try
                 {
-                    proceso.consultar(sql + " where " + cadena, tabla);
+                    proceso.consultar(Libreria.Constante.Bonificacion + " where " + cadena, tabla);
                     gridcontrolBonificacion.DataSource = proceso.ds.Tables[tabla];
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns["Proveedor"].GroupIndex = 1;
@@ -108,7 +94,6 @@ namespace xtraForm.Modulos.Ventas
                     gridcontrolBonificacion.DataSource = null;
                     gridcontrolBonificacion.Refresh();
                 }
-            }
         }
 
         private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -261,7 +246,7 @@ namespace xtraForm.Modulos.Ventas
                 bonificacion.IdAsociado = proceso.ConsultarEntero("IDAsociado", "ItemBonificacion", "IDBonificacion = " + bonificacion.Id);
                 bonificacion.CodigoAsociado = proceso.ConsultarCadena("Codigo", "TipoAsociado", "PKID = " + bonificacion.IdAsociado);
                 var Coleccion = proceso.ConsultarTabla_("itembonificacion", "IDBonificacion = " + bonificacion.Id);
-
+                frmreglabonificacion.IDControl.Text = Convert.ToString(bonificacion.Id);
                 frmreglabonificacion.IDBonificacion.Text = bonificacion.CodigoTipoMecanica;
                 frmreglabonificacion.nmBonificacion.Text = bonificacion.DescripcionTipoMecanica;
                 frmreglabonificacion.DetalleMecanica.Text = bonificacion.Mecanica;

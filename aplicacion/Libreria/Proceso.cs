@@ -16,7 +16,6 @@ namespace xtraForm.Libreria
 
         public bool actualizar(string tabla, string campos, string condicion)
         {
-
             string query = @"update " + tabla + " set  " + campos + "  where " + condicion;
             using (SqlConnection con = new SqlConnection(conexion))
             using (cmd = new SqlCommand(query, con))
@@ -24,13 +23,9 @@ namespace xtraForm.Libreria
                 con.Open();
                 entidad.i = cmd.ExecuteNonQuery();
                 if (entidad.i > 0)
-                {
                     return true;
-                }
                 else
-                {
                     return false;
-                }
             }
         }
 
@@ -262,7 +257,7 @@ namespace xtraForm.Libreria
         }
         public int ID(string tabla)
         {
-            string QUERY = @"SELECT isnull(max(PKID),0) FROM " + tabla;
+            string QUERY = @"SELECT isnull(max(PKID),0)+1 FROM " + tabla;
             using (SqlConnection con = new SqlConnection(conexion))
             using (SqlCommand cmd = new SqlCommand(QUERY, con))
             {
@@ -276,7 +271,7 @@ namespace xtraForm.Libreria
                     }
                 }
             }
-            return entidad.pkid + 1;
+            return entidad.pkid;
         }
 
         public bool insertar(string query)

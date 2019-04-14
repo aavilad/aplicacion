@@ -51,6 +51,16 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnNotasCredito = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBonificar = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.FechaProceso = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.btnBuscar = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockingMenuItem1 = new DevExpress.XtraBars.BarDockingMenuItem();
+            this.barMdiChildrenListItem1 = new DevExpress.XtraBars.BarMdiChildrenListItem();
+            this.barToggleSwitchItem1 = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -72,8 +82,9 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
-            this.btnBonificar = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -105,9 +116,17 @@
             this.barButtonItem6,
             this.barButtonItem1,
             this.btnNotasCredito,
-            this.btnBonificar});
+            this.btnBonificar,
+            this.barButtonItem3,
+            this.barSubItem1,
+            this.FechaProceso,
+            this.barButtonItem7,
+            this.barDockingMenuItem1,
+            this.barMdiChildrenListItem1,
+            this.barToggleSwitchItem1,
+            this.btnBuscar});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 28;
+            this.ribbonControl1.MaxItemId = 41;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -118,7 +137,8 @@
             this.ribbonPage7,
             this.ribbonPage8});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemDateEdit1});
+            this.repositoryItemDateEdit1,
+            this.repositoryItemDateEdit2});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
             this.ribbonControl1.Size = new System.Drawing.Size(977, 143);
             // 
@@ -283,6 +303,78 @@
             this.btnNotasCredito.Name = "btnNotasCredito";
             this.btnNotasCredito.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNotasCredito_ItemClick);
             // 
+            // btnBonificar
+            // 
+            this.btnBonificar.Caption = "Bonificar";
+            this.btnBonificar.Id = 27;
+            this.btnBonificar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBonificar.ImageOptions.SvgImage")));
+            this.btnBonificar.Name = "btnBonificar";
+            this.btnBonificar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBonificar_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "barButtonItem3";
+            this.barButtonItem3.Id = 29;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Constraste";
+            this.barSubItem1.Id = 32;
+            this.barSubItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.PaintStyle | DevExpress.XtraBars.BarLinkUserDefines.Width))), this.FechaProceso, "", false, true, true, 108, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBuscar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // FechaProceso
+            // 
+            this.FechaProceso.Edit = this.repositoryItemDateEdit2;
+            this.FechaProceso.Id = 33;
+            this.FechaProceso.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FechaProceso.ImageOptions.SvgImage")));
+            this.FechaProceso.Name = "FechaProceso";
+            // 
+            // repositoryItemDateEdit2
+            // 
+            this.repositoryItemDateEdit2.AutoHeight = false;
+            this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Caption = "Bucar";
+            this.btnBuscar.Id = 40;
+            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem18.ImageOptions.SvgImage")));
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscar_ItemClick);
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Aceptar";
+            this.barButtonItem7.Id = 34;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barDockingMenuItem1
+            // 
+            this.barDockingMenuItem1.Caption = "barDockingMenuItem1";
+            this.barDockingMenuItem1.Id = 35;
+            this.barDockingMenuItem1.Name = "barDockingMenuItem1";
+            // 
+            // barMdiChildrenListItem1
+            // 
+            this.barMdiChildrenListItem1.Caption = "barMdiChildrenListItem1";
+            this.barMdiChildrenListItem1.Id = 37;
+            this.barMdiChildrenListItem1.Name = "barMdiChildrenListItem1";
+            // 
+            // barToggleSwitchItem1
+            // 
+            this.barToggleSwitchItem1.Caption = "barToggleSwitchItem1";
+            this.barToggleSwitchItem1.Id = 39;
+            this.barToggleSwitchItem1.Name = "barToggleSwitchItem1";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -306,6 +398,7 @@
             this.ribbonPageGroup9.ItemLinks.Add(this.btnReglasBonificacion);
             this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup9.ItemLinks.Add(this.btnBonificar);
+            this.ribbonPageGroup9.ItemLinks.Add(this.barSubItem1);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             this.ribbonPageGroup9.Text = "Reglas";
             // 
@@ -440,14 +533,6 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // btnBonificar
-            // 
-            this.btnBonificar.Caption = "Bonificar";
-            this.btnBonificar.Id = 27;
-            this.btnBonificar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.btnBonificar.Name = "btnBonificar";
-            this.btnBonificar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBonificar_ItemClick);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,6 +544,8 @@
             this.Name = "frmPrincipal";
             this.Ribbon = this.ribbonControl1;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
@@ -513,5 +600,14 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private DevExpress.XtraBars.BarButtonItem btnBonificar;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarDockingMenuItem barDockingMenuItem1;
+        private DevExpress.XtraBars.BarButtonItem btnBuscar;
+        private DevExpress.XtraBars.BarMdiChildrenListItem barMdiChildrenListItem1;
+        private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItem1;
+        public DevExpress.XtraBars.BarEditItem FechaProceso;
     }
 }

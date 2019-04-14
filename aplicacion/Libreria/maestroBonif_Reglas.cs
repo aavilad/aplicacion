@@ -346,12 +346,12 @@ namespace xtraForm.Libreria
                             cmd1.Parameters.AddWithValue("@IDBonificacion", PKID);
                             cmd1.Parameters.AddWithValue("@cdProductoColeccion", Fila.Cells["Codigo"].Value.ToString());
                             cmd1.Parameters.AddWithValue("@IDAsociado", IDAsociado);
-                        cmd1.Transaction = transaccion;
-                        cmd1.ExecuteNonQuery();
+                            cmd1.Transaction = transaccion;
+                            cmd1.ExecuteNonQuery();
                         }
                         PKIDItemBonificacion++;
                     }
-                transaccion.Commit();
+                    transaccion.Commit();
             }
                 catch (Exception f)
             {

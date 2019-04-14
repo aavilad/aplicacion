@@ -33,10 +33,10 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>D:\Desarrollo\aplicacion\</OutputPath>
+    <OutputPath>..\..\..\..\Compilacion\Aplicacion\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <DocumentationFile>
     </DocumentationFile>
   </PropertyGroup>
@@ -122,6 +122,12 @@
     <Compile Include="Filtros\frmProcesar.Designer.cs">
       <DependentUpon>frmProcesar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Filtros\DetallePromocional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filtros\DetallePromocional.Designer.cs">
+      <DependentUpon>DetallePromocional.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,7 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Libreria\Bonificacion.cs" />
+    <Compile Include="Libreria\Constante.cs" />
     <Compile Include="Libreria\Clean.cs" />
     <Compile Include="Libreria\Entidad.cs" />
     <Compile Include="Libreria\Formato.cs" />
@@ -278,6 +285,12 @@
     <Compile Include="Modulos\Progreso.Designer.cs">
       <DependentUpon>Progreso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Ventas\frmMaestroDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Ventas\frmMaestroDetalle.Designer.cs">
+      <DependentUpon>frmMaestroDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Ventas\frmNotasCredito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Filtros\frmProcesar.resx">
       <DependentUpon>frmProcesar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filtros\DetallePromocional.resx">
+      <DependentUpon>DetallePromocional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
@@ -387,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Progreso.resx">
       <DependentUpon>Progreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Ventas\frmMaestroDetalle.resx">
+      <DependentUpon>frmMaestroDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmNotasCredito.resx">
       <DependentUpon>frmNotasCredito.cs</DependentUpon>
