@@ -69,6 +69,17 @@
           <Property Name="descrip" Type="char" MaxLength="30" />
           <Property Name="idprovincia" Type="char" MaxLength="4" Nullable="false" />
         </EntityType>
+        <EntityType Name="FORMAPAGO">
+          <Key>
+            <PropertyRef Name="FormaPago" />
+          </Key>
+          <Property Name="FormaPago" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="PlazoMax" Type="tinyint" Nullable="false" />
+          <Property Name="Nrodia" Type="tinyint" Nullable="false" />
+          <Property Name="contado" Type="bit" Nullable="false" />
+          <Property Name="DiasFinta" Type="tinyint" Nullable="false" />
+        </EntityType>
         <EntityType Name="PERSONAL">
           <Key>
             <PropertyRef Name="Personal" />
@@ -133,6 +144,7 @@
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FORMAPAGO" EntityType="Self.FORMAPAGO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Distrito_provincia" Association="Self.FK_Distrito_provincia">
@@ -236,6 +248,7 @@
             <End Role="provincia" EntitySet="provincia" />
             <End Role="Distrito" EntitySet="Distrito" />
           </AssociationSet>
+          <EntitySet Name="FORMAPAGO" EntityType="LiderAppModel.FORMAPAGO" />
         </EntityContainer>
         <EntityType Name="Departamento">
           <Key>
@@ -291,6 +304,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="FORMAPAGO">
+          <Key>
+            <PropertyRef Name="FormaPago1" />
+          </Key>
+          <Property Name="FormaPago1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="PlazoMax" Type="Byte" Nullable="false" />
+          <Property Name="Nrodia" Type="Byte" Nullable="false" />
+          <Property Name="contado" Type="Boolean" Nullable="false" />
+          <Property Name="DiasFinta" Type="Byte" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -399,6 +423,18 @@
                 <ScalarProperty Name="iddpto" ColumnName="iddpto" />
                 <ScalarProperty Name="descrip" ColumnName="descrip" />
                 <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FORMAPAGO">
+            <EntityTypeMapping TypeName="LiderAppModel.FORMAPAGO">
+              <MappingFragment StoreEntitySet="FORMAPAGO">
+                <ScalarProperty Name="DiasFinta" ColumnName="DiasFinta" />
+                <ScalarProperty Name="contado" ColumnName="contado" />
+                <ScalarProperty Name="Nrodia" ColumnName="Nrodia" />
+                <ScalarProperty Name="PlazoMax" ColumnName="PlazoMax" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FormaPago1" ColumnName="FormaPago" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

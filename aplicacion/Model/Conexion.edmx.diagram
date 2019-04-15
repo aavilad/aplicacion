@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="LiderAppModel.provincia" Width="1.5" PointX="7.625" PointY="1" />
         <AssociationConnector Association="LiderAppModel.FK_provincia_Departamento" />
         <AssociationConnector Association="LiderAppModel.FK_Distrito_provincia" />
+        <EntityTypeShape EntityType="LiderAppModel.FORMAPAGO" Width="1.5" PointX="6" PointY="4.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

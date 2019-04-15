@@ -30,5 +30,6 @@ namespace xtraForm.Model
         public virtual DbSet<Departamento> Departamento { get; set; }
         public virtual DbSet<Distrito> Distrito { get; set; }
         public virtual DbSet<provincia> provincia { get; set; }
+        public virtual DbSet<FORMAPAGO> FORMAPAGO { get; set; }
     }
 }

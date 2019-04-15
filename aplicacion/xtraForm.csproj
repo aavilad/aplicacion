@@ -270,6 +270,9 @@
     <Compile Include="Model\Distrito.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FORMAPAGO.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\PERSONAL.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
@@ -503,6 +506,7 @@
       <DependentUpon>Conexion.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\xtraForm.Model.FORMAPAGO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -341,6 +341,7 @@
             this.FormaPago.Properties.Items.AddRange(new object[] {
             "Credito",
             "Contado"});
+            this.FormaPago.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.FormaPago.Size = new System.Drawing.Size(130, 20);
             this.FormaPago.TabIndex = 0;
             // 
@@ -352,7 +353,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TipoCredito.Properties.NullText = "";
             this.TipoCredito.Properties.PopupSizeable = false;
-            this.TipoCredito.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.TipoCredito.Size = new System.Drawing.Size(130, 20);
             this.TipoCredito.TabIndex = 27;
             // 
@@ -364,7 +364,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TipoContado.Properties.NullText = "";
             this.TipoContado.Properties.PopupSizeable = false;
-            this.TipoContado.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.TipoContado.Size = new System.Drawing.Size(130, 20);
             this.TipoContado.TabIndex = 29;
             // 
@@ -586,6 +585,7 @@
             this.TipoPersona.Properties.Items.AddRange(new object[] {
             "Persona Natural",
             "Persona Juridica"});
+            this.TipoPersona.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.TipoPersona.Size = new System.Drawing.Size(130, 20);
             this.TipoPersona.TabIndex = 2;
             // 
