@@ -28,68 +28,99 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.Codigo = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.ButtonEdit();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.Nombre = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
+            this.ApellidoPaterno = new DevExpress.XtraEditors.TextEdit();
+            this.ApellidoMaterno = new DevExpress.XtraEditors.TextEdit();
+            this.SegundoNombre = new DevExpress.XtraEditors.TextEdit();
+            this.PrimeroNombre = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit9 = new DevExpress.XtraEditors.TextEdit();
+            this.NumeroDocumentoIdentidad = new DevExpress.XtraEditors.TextEdit();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit11 = new DevExpress.XtraEditors.TextEdit();
+            this.CantidadLineaCredito = new DevExpress.XtraEditors.TextEdit();
+            this.Credito = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit8 = new DevExpress.XtraEditors.ButtonEdit();
-            this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit9.Properties)).BeginInit();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.CoordenadaY = new DevExpress.XtraEditors.TextEdit();
+            this.CoordernadaX = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.TipoNegocio = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.TipoCliente = new DevExpress.XtraEditors.LookUpEdit();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.Obsercacion = new DevExpress.XtraEditors.MemoEdit();
+            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAceptar = new DevExpress.XtraEditors.SimpleButton();
+            this.Direccion = new DevExpress.XtraEditors.ButtonEdit();
+            this.AgenteRetencion = new DevExpress.XtraEditors.CheckEdit();
+            this.AgentePercepcion = new DevExpress.XtraEditors.CheckEdit();
+            this.Activo = new DevExpress.XtraEditors.CheckEdit();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.InhabilitarBonificacion = new DevExpress.XtraEditors.CheckEdit();
+            this.CodigoProveedor = new DevExpress.XtraEditors.LookUpEdit();
+            this.Email = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.TipoPersona = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.FormaPago = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.DocumentoIdentidad = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.TipoCredito = new DevExpress.XtraEditors.LookUpEdit();
+            this.TipoContado = new DevExpress.XtraEditors.LookUpEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.Codigo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nombre.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ApellidoPaterno.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ApellidoMaterno.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SegundoNombre.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PrimeroNombre.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumeroDocumentoIdentidad.Properties)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CantidadLineaCredito.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Credito.Properties)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CoordenadaY.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CoordernadaX.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoNegocio.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoCliente.Properties)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Obsercacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Direccion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgenteRetencion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentePercepcion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Activo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InhabilitarBonificacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CodigoProveedor.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Email.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoPersona.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormaPago.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocumentoIdentidad.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoCredito.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoContado.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // textEdit1
+            // Codigo
             // 
-            this.textEdit1.Location = new System.Drawing.Point(98, 5);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(100, 20);
-            this.textEdit1.TabIndex = 0;
+            this.Codigo.Location = new System.Drawing.Point(98, 5);
+            this.Codigo.Name = "Codigo";
+            this.Codigo.Size = new System.Drawing.Size(100, 20);
+            this.Codigo.TabIndex = 0;
             // 
             // labelControl1
             // 
@@ -107,21 +138,13 @@
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "Tipo Persona";
             // 
-            // textEdit2
+            // Nombre
             // 
-            this.textEdit2.Location = new System.Drawing.Point(354, 5);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.textEdit2.Size = new System.Drawing.Size(130, 20);
-            this.textEdit2.TabIndex = 2;
-            // 
-            // textEdit3
-            // 
-            this.textEdit3.Location = new System.Drawing.Point(98, 33);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(383, 20);
-            this.textEdit3.TabIndex = 4;
+            this.Nombre.Enabled = false;
+            this.Nombre.Location = new System.Drawing.Point(98, 33);
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Size = new System.Drawing.Size(383, 20);
+            this.Nombre.TabIndex = 4;
             // 
             // labelControl3
             // 
@@ -131,33 +154,33 @@
             this.labelControl3.TabIndex = 5;
             this.labelControl3.Text = "Nombres";
             // 
-            // textEdit4
+            // ApellidoPaterno
             // 
-            this.textEdit4.Location = new System.Drawing.Point(98, 67);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Size = new System.Drawing.Size(127, 20);
-            this.textEdit4.TabIndex = 6;
+            this.ApellidoPaterno.Location = new System.Drawing.Point(98, 67);
+            this.ApellidoPaterno.Name = "ApellidoPaterno";
+            this.ApellidoPaterno.Size = new System.Drawing.Size(130, 20);
+            this.ApellidoPaterno.TabIndex = 6;
             // 
-            // textEdit5
+            // ApellidoMaterno
             // 
-            this.textEdit5.Location = new System.Drawing.Point(354, 67);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(127, 20);
-            this.textEdit5.TabIndex = 7;
+            this.ApellidoMaterno.Location = new System.Drawing.Point(354, 67);
+            this.ApellidoMaterno.Name = "ApellidoMaterno";
+            this.ApellidoMaterno.Size = new System.Drawing.Size(127, 20);
+            this.ApellidoMaterno.TabIndex = 7;
             // 
-            // textEdit6
+            // SegundoNombre
             // 
-            this.textEdit6.Location = new System.Drawing.Point(354, 96);
-            this.textEdit6.Name = "textEdit6";
-            this.textEdit6.Size = new System.Drawing.Size(127, 20);
-            this.textEdit6.TabIndex = 8;
+            this.SegundoNombre.Location = new System.Drawing.Point(354, 96);
+            this.SegundoNombre.Name = "SegundoNombre";
+            this.SegundoNombre.Size = new System.Drawing.Size(127, 20);
+            this.SegundoNombre.TabIndex = 8;
             // 
-            // textEdit7
+            // PrimeroNombre
             // 
-            this.textEdit7.Location = new System.Drawing.Point(98, 96);
-            this.textEdit7.Name = "textEdit7";
-            this.textEdit7.Size = new System.Drawing.Size(127, 20);
-            this.textEdit7.TabIndex = 9;
+            this.PrimeroNombre.Location = new System.Drawing.Point(98, 96);
+            this.PrimeroNombre.Name = "PrimeroNombre";
+            this.PrimeroNombre.Size = new System.Drawing.Size(130, 20);
+            this.PrimeroNombre.TabIndex = 9;
             // 
             // labelControl4
             // 
@@ -207,15 +230,6 @@
             this.labelControl9.TabIndex = 17;
             this.labelControl9.Text = "Docum. Identidad";
             // 
-            // buttonEdit1
-            // 
-            this.buttonEdit1.Location = new System.Drawing.Point(98, 155);
-            this.buttonEdit1.Name = "buttonEdit1";
-            this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit1.Size = new System.Drawing.Size(130, 20);
-            this.buttonEdit1.TabIndex = 16;
-            // 
             // labelControl10
             // 
             this.labelControl10.Location = new System.Drawing.Point(258, 158);
@@ -224,18 +238,19 @@
             this.labelControl10.TabIndex = 19;
             this.labelControl10.Text = "# Docum. Identidad";
             // 
-            // textEdit9
+            // NumeroDocumentoIdentidad
             // 
-            this.textEdit9.Location = new System.Drawing.Point(354, 155);
-            this.textEdit9.Name = "textEdit9";
-            this.textEdit9.Size = new System.Drawing.Size(127, 20);
-            this.textEdit9.TabIndex = 18;
+            this.NumeroDocumentoIdentidad.Location = new System.Drawing.Point(354, 155);
+            this.NumeroDocumentoIdentidad.Name = "NumeroDocumentoIdentidad";
+            this.NumeroDocumentoIdentidad.Size = new System.Drawing.Size(127, 20);
+            this.NumeroDocumentoIdentidad.TabIndex = 18;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 203);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(12, 181);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(469, 232);
@@ -243,99 +258,39 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.labelControl21);
+            this.tabPage1.Controls.Add(this.textEdit1);
+            this.tabPage1.Controls.Add(this.CantidadLineaCredito);
+            this.tabPage1.Controls.Add(this.Credito);
             this.tabPage1.Controls.Add(this.labelControl13);
-            this.tabPage1.Controls.Add(this.textEdit12);
             this.tabPage1.Controls.Add(this.labelControl12);
-            this.tabPage1.Controls.Add(this.textEdit11);
             this.tabPage1.Controls.Add(this.labelControl11);
-            this.tabPage1.Controls.Add(this.textEdit10);
+            this.tabPage1.Controls.Add(this.FormaPago);
+            this.tabPage1.Controls.Add(this.TipoCredito);
+            this.tabPage1.Controls.Add(this.TipoContado);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(461, 206);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Comercial";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // CantidadLineaCredito
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(461, 206);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.CantidadLineaCredito.Enabled = false;
+            this.CantidadLineaCredito.Location = new System.Drawing.Point(328, 15);
+            this.CantidadLineaCredito.Name = "CantidadLineaCredito";
+            this.CantidadLineaCredito.Size = new System.Drawing.Size(130, 20);
+            this.CantidadLineaCredito.TabIndex = 31;
             // 
-            // checkEdit1
+            // Credito
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(98, 183);
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "Activo";
-            this.checkEdit1.Size = new System.Drawing.Size(75, 20);
-            this.checkEdit1.TabIndex = 21;
-            // 
-            // checkEdit2
-            // 
-            this.checkEdit2.Location = new System.Drawing.Point(204, 181);
-            this.checkEdit2.Name = "checkEdit2";
-            this.checkEdit2.Properties.Caption = "Agente Percepcion";
-            this.checkEdit2.Size = new System.Drawing.Size(110, 20);
-            this.checkEdit2.TabIndex = 22;
-            // 
-            // checkEdit3
-            // 
-            this.checkEdit3.Location = new System.Drawing.Point(354, 181);
-            this.checkEdit3.Name = "checkEdit3";
-            this.checkEdit3.Properties.Caption = "Agente Retencion";
-            this.checkEdit3.Size = new System.Drawing.Size(110, 20);
-            this.checkEdit3.TabIndex = 23;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(406, 441);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 24;
-            this.simpleButton1.Text = "Cancelar";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(325, 441);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 25;
-            this.simpleButton2.Text = "Aceptar";
-            // 
-            // textEdit10
-            // 
-            this.textEdit10.Location = new System.Drawing.Point(82, 15);
-            this.textEdit10.Name = "textEdit10";
-            this.textEdit10.Size = new System.Drawing.Size(130, 20);
-            this.textEdit10.TabIndex = 0;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(7, 18);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(70, 13);
-            this.labelControl11.TabIndex = 26;
-            this.labelControl11.Text = "Forma De Pago";
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Location = new System.Drawing.Point(7, 44);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(35, 13);
-            this.labelControl12.TabIndex = 28;
-            this.labelControl12.Text = "Credito";
-            // 
-            // textEdit11
-            // 
-            this.textEdit11.Location = new System.Drawing.Point(82, 41);
-            this.textEdit11.Name = "textEdit11";
-            this.textEdit11.Size = new System.Drawing.Size(130, 20);
-            this.textEdit11.TabIndex = 27;
+            this.Credito.Location = new System.Drawing.Point(221, 15);
+            this.Credito.Name = "Credito";
+            this.Credito.Properties.Caption = "Linea De Credito";
+            this.Credito.Size = new System.Drawing.Size(104, 20);
+            this.Credito.TabIndex = 26;
             // 
             // labelControl13
             // 
@@ -345,84 +300,375 @@
             this.labelControl13.TabIndex = 30;
             this.labelControl13.Text = "Contado";
             // 
-            // textEdit12
+            // labelControl12
             // 
-            this.textEdit12.Location = new System.Drawing.Point(82, 67);
-            this.textEdit12.Name = "textEdit12";
-            this.textEdit12.Size = new System.Drawing.Size(130, 20);
-            this.textEdit12.TabIndex = 29;
+            this.labelControl12.Location = new System.Drawing.Point(7, 44);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(35, 13);
+            this.labelControl12.TabIndex = 28;
+            this.labelControl12.Text = "Credito";
             // 
-            // textEdit8
+            // labelControl11
             // 
-            this.textEdit8.Location = new System.Drawing.Point(98, 126);
-            this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.labelControl11.Location = new System.Drawing.Point(7, 18);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(70, 13);
+            this.labelControl11.TabIndex = 26;
+            this.labelControl11.Text = "Forma De Pago";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.labelControl20);
+            this.tabPage2.Controls.Add(this.InhabilitarBonificacion);
+            this.tabPage2.Controls.Add(this.CodigoProveedor);
+            this.tabPage2.Controls.Add(this.labelControl19);
+            this.tabPage2.Controls.Add(this.labelControl18);
+            this.tabPage2.Controls.Add(this.labelControl17);
+            this.tabPage2.Controls.Add(this.CoordenadaY);
+            this.tabPage2.Controls.Add(this.CoordernadaX);
+            this.tabPage2.Controls.Add(this.labelControl15);
+            this.tabPage2.Controls.Add(this.TipoNegocio);
+            this.tabPage2.Controls.Add(this.labelControl14);
+            this.tabPage2.Controls.Add(this.TipoCliente);
+            this.tabPage2.Controls.Add(this.Email);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(461, 206);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Extras";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Location = new System.Drawing.Point(14, 165);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(26, 13);
+            this.labelControl19.TabIndex = 34;
+            this.labelControl19.Text = "Email";
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(14, 132);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(65, 13);
+            this.labelControl18.TabIndex = 32;
+            this.labelControl18.Text = "Coordenada Y";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(14, 96);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(66, 13);
+            this.labelControl17.TabIndex = 31;
+            this.labelControl17.Text = "Coordenada X";
+            // 
+            // CoordenadaY
+            // 
+            this.CoordenadaY.Location = new System.Drawing.Point(94, 128);
+            this.CoordenadaY.Name = "CoordenadaY";
+            this.CoordenadaY.Size = new System.Drawing.Size(100, 20);
+            this.CoordenadaY.TabIndex = 30;
+            // 
+            // CoordernadaX
+            // 
+            this.CoordernadaX.Location = new System.Drawing.Point(94, 92);
+            this.CoordernadaX.Name = "CoordernadaX";
+            this.CoordernadaX.Size = new System.Drawing.Size(100, 20);
+            this.CoordernadaX.TabIndex = 29;
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(14, 60);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(62, 13);
+            this.labelControl15.TabIndex = 28;
+            this.labelControl15.Text = "Tipo Negocio ";
+            // 
+            // TipoNegocio
+            // 
+            this.TipoNegocio.Location = new System.Drawing.Point(93, 57);
+            this.TipoNegocio.Name = "TipoNegocio";
+            this.TipoNegocio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TipoNegocio.Properties.NullText = "";
+            this.TipoNegocio.Size = new System.Drawing.Size(360, 20);
+            this.TipoNegocio.TabIndex = 27;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(15, 24);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(56, 13);
+            this.labelControl14.TabIndex = 26;
+            this.labelControl14.Text = "Tipo Cliente";
+            // 
+            // TipoCliente
+            // 
+            this.TipoCliente.Location = new System.Drawing.Point(94, 21);
+            this.TipoCliente.Name = "TipoCliente";
+            this.TipoCliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TipoCliente.Properties.NullText = "";
+            this.TipoCliente.Size = new System.Drawing.Size(360, 20);
+            this.TipoCliente.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.labelControl16);
+            this.tabPage3.Controls.Add(this.Obsercacion);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(461, 206);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Observaciones";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(18, 20);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(65, 13);
+            this.labelControl16.TabIndex = 1;
+            this.labelControl16.Text = "Observacion_";
+            // 
+            // Obsercacion
+            // 
+            this.Obsercacion.Location = new System.Drawing.Point(18, 39);
+            this.Obsercacion.Name = "Obsercacion";
+            this.Obsercacion.Size = new System.Drawing.Size(421, 133);
+            this.Obsercacion.TabIndex = 0;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(406, 430);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 24;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Location = new System.Drawing.Point(311, 430);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 25;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // Direccion
+            // 
+            this.Direccion.Location = new System.Drawing.Point(98, 126);
+            this.Direccion.Name = "Direccion";
+            this.Direccion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.textEdit8.Size = new System.Drawing.Size(383, 20);
-            this.textEdit8.TabIndex = 14;
+            this.Direccion.Size = new System.Drawing.Size(383, 20);
+            this.Direccion.TabIndex = 14;
             // 
-            // checkEdit4
+            // AgenteRetencion
             // 
-            this.checkEdit4.Location = new System.Drawing.Point(206, 228);
-            this.checkEdit4.Name = "checkEdit4";
-            this.checkEdit4.Properties.Caption = "Activo";
-            this.checkEdit4.Size = new System.Drawing.Size(75, 20);
-            this.checkEdit4.TabIndex = 26;
+            this.AgenteRetencion.Location = new System.Drawing.Point(134, 415);
+            this.AgenteRetencion.Name = "AgenteRetencion";
+            this.AgenteRetencion.Properties.Caption = "Agente Retencion";
+            this.AgenteRetencion.Size = new System.Drawing.Size(110, 20);
+            this.AgenteRetencion.TabIndex = 28;
+            // 
+            // AgentePercepcion
+            // 
+            this.AgentePercepcion.Location = new System.Drawing.Point(18, 443);
+            this.AgentePercepcion.Name = "AgentePercepcion";
+            this.AgentePercepcion.Properties.Caption = "Agente Percepcion";
+            this.AgentePercepcion.Size = new System.Drawing.Size(110, 20);
+            this.AgentePercepcion.TabIndex = 27;
+            // 
+            // Activo
+            // 
+            this.Activo.Location = new System.Drawing.Point(18, 415);
+            this.Activo.Name = "Activo";
+            this.Activo.Properties.Caption = "Activo";
+            this.Activo.Size = new System.Drawing.Size(75, 20);
+            this.Activo.TabIndex = 26;
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(279, 114);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(49, 13);
+            this.labelControl20.TabIndex = 39;
+            this.labelControl20.Text = "Proveedor";
+            // 
+            // InhabilitarBonificacion
+            // 
+            this.InhabilitarBonificacion.Location = new System.Drawing.Point(279, 89);
+            this.InhabilitarBonificacion.Name = "InhabilitarBonificacion";
+            this.InhabilitarBonificacion.Properties.Caption = "Inhabilitar Para Bonificaciones";
+            this.InhabilitarBonificacion.Size = new System.Drawing.Size(175, 20);
+            this.InhabilitarBonificacion.TabIndex = 37;
+            // 
+            // CodigoProveedor
+            // 
+            this.CodigoProveedor.Enabled = false;
+            this.CodigoProveedor.Location = new System.Drawing.Point(279, 129);
+            this.CodigoProveedor.Name = "CodigoProveedor";
+            this.CodigoProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CodigoProveedor.Properties.NullText = "";
+            this.CodigoProveedor.Size = new System.Drawing.Size(175, 20);
+            this.CodigoProveedor.TabIndex = 38;
+            // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(93, 162);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(360, 20);
+            this.Email.TabIndex = 33;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Enabled = false;
+            this.textEdit1.Location = new System.Drawing.Point(328, 41);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(130, 20);
+            this.textEdit1.TabIndex = 32;
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Location = new System.Drawing.Point(281, 44);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(26, 13);
+            this.labelControl21.TabIndex = 33;
+            this.labelControl21.Text = "Saldo";
+            // 
+            // TipoPersona
+            // 
+            this.TipoPersona.Location = new System.Drawing.Point(350, 5);
+            this.TipoPersona.Name = "TipoPersona";
+            this.TipoPersona.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TipoPersona.Properties.Items.AddRange(new object[] {
+            "Persona Natural",
+            "Persona Juridica"});
+            this.TipoPersona.Size = new System.Drawing.Size(130, 20);
+            this.TipoPersona.TabIndex = 2;
+            // 
+            // FormaPago
+            // 
+            this.FormaPago.Location = new System.Drawing.Point(82, 15);
+            this.FormaPago.Name = "FormaPago";
+            this.FormaPago.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.FormaPago.Properties.Items.AddRange(new object[] {
+            "Credito",
+            "Contado"});
+            this.FormaPago.Size = new System.Drawing.Size(130, 20);
+            this.FormaPago.TabIndex = 0;
+            // 
+            // DocumentoIdentidad
+            // 
+            this.DocumentoIdentidad.Location = new System.Drawing.Point(98, 155);
+            this.DocumentoIdentidad.Name = "DocumentoIdentidad";
+            this.DocumentoIdentidad.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DocumentoIdentidad.Properties.Items.AddRange(new object[] {
+            "DNI",
+            "RUC"});
+            this.DocumentoIdentidad.Size = new System.Drawing.Size(130, 20);
+            this.DocumentoIdentidad.TabIndex = 16;
+            // 
+            // TipoCredito
+            // 
+            this.TipoCredito.Location = new System.Drawing.Point(82, 41);
+            this.TipoCredito.Name = "TipoCredito";
+            this.TipoCredito.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TipoCredito.Properties.NullText = "";
+            this.TipoCredito.Properties.PopupSizeable = false;
+            this.TipoCredito.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TipoCredito.Size = new System.Drawing.Size(130, 20);
+            this.TipoCredito.TabIndex = 27;
+            // 
+            // TipoContado
+            // 
+            this.TipoContado.Location = new System.Drawing.Point(82, 67);
+            this.TipoContado.Name = "TipoContado";
+            this.TipoContado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TipoContado.Properties.NullText = "";
+            this.TipoContado.Properties.PopupSizeable = false;
+            this.TipoContado.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TipoContado.Size = new System.Drawing.Size(130, 20);
+            this.TipoContado.TabIndex = 29;
             // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 476);
-            this.Controls.Add(this.checkEdit4);
-            this.Controls.Add(this.simpleButton2);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.checkEdit3);
-            this.Controls.Add(this.checkEdit2);
-            this.Controls.Add(this.checkEdit1);
+            this.Controls.Add(this.AgenteRetencion);
+            this.Controls.Add(this.AgentePercepcion);
+            this.Controls.Add(this.Activo);
+            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelControl10);
-            this.Controls.Add(this.textEdit9);
+            this.Controls.Add(this.NumeroDocumentoIdentidad);
             this.Controls.Add(this.labelControl9);
-            this.Controls.Add(this.buttonEdit1);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.textEdit7);
-            this.Controls.Add(this.textEdit6);
-            this.Controls.Add(this.textEdit5);
-            this.Controls.Add(this.textEdit4);
+            this.Controls.Add(this.PrimeroNombre);
+            this.Controls.Add(this.SegundoNombre);
+            this.Controls.Add(this.ApellidoMaterno);
+            this.Controls.Add(this.ApellidoPaterno);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.textEdit3);
+            this.Controls.Add(this.Nombre);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.textEdit1);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit8);
+            this.Controls.Add(this.Codigo);
+            this.Controls.Add(this.Direccion);
+            this.Controls.Add(this.TipoPersona);
+            this.Controls.Add(this.DocumentoIdentidad);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmCliente";
-            this.Text = "frmCliente";
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit9.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Codigo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nombre.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ApellidoPaterno.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ApellidoMaterno.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SegundoNombre.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PrimeroNombre.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumeroDocumentoIdentidad.Properties)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CantidadLineaCredito.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Credito.Properties)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CoordenadaY.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CoordernadaX.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoNegocio.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoCliente.Properties)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Obsercacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Direccion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgenteRetencion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentePercepcion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Activo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InhabilitarBonificacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CodigoProveedor.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Email.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoPersona.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormaPago.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocumentoIdentidad.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoCredito.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoContado.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,40 +676,59 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit Codigo;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ButtonEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit Nombre;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
-        private DevExpress.XtraEditors.TextEdit textEdit6;
-        private DevExpress.XtraEditors.TextEdit textEdit7;
+        private DevExpress.XtraEditors.TextEdit ApellidoPaterno;
+        private DevExpress.XtraEditors.TextEdit ApellidoMaterno;
+        private DevExpress.XtraEditors.TextEdit SegundoNombre;
+        private DevExpress.XtraEditors.TextEdit PrimeroNombre;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.ButtonEdit buttonEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.TextEdit textEdit9;
+        private DevExpress.XtraEditors.TextEdit NumeroDocumentoIdentidad;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
-        private DevExpress.XtraEditors.CheckEdit checkEdit2;
-        private DevExpress.XtraEditors.CheckEdit checkEdit3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton btnCancelar;
+        private DevExpress.XtraEditors.SimpleButton btnAceptar;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.TextEdit textEdit10;
         private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraEditors.TextEdit textEdit12;
         private DevExpress.XtraEditors.LabelControl labelControl12;
-        private DevExpress.XtraEditors.TextEdit textEdit11;
-        private DevExpress.XtraEditors.ButtonEdit textEdit8;
-        private DevExpress.XtraEditors.CheckEdit checkEdit4;
+        private DevExpress.XtraEditors.ButtonEdit Direccion;
+        private DevExpress.XtraEditors.CheckEdit Credito;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LookUpEdit TipoCliente;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LookUpEdit TipoNegocio;
+        private System.Windows.Forms.TabPage tabPage3;
+        private DevExpress.XtraEditors.MemoEdit Obsercacion;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.TextEdit CoordenadaY;
+        private DevExpress.XtraEditors.TextEdit CoordernadaX;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.TextEdit CantidadLineaCredito;
+        private DevExpress.XtraEditors.CheckEdit AgenteRetencion;
+        private DevExpress.XtraEditors.CheckEdit AgentePercepcion;
+        private DevExpress.XtraEditors.CheckEdit Activo;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.CheckEdit InhabilitarBonificacion;
+        private DevExpress.XtraEditors.LookUpEdit CodigoProveedor;
+        private DevExpress.XtraEditors.TextEdit Email;
+        private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit TipoPersona;
+        private DevExpress.XtraEditors.ComboBoxEdit FormaPago;
+        private DevExpress.XtraEditors.LookUpEdit TipoCredito;
+        private DevExpress.XtraEditors.LookUpEdit TipoContado;
+        private DevExpress.XtraEditors.ComboBoxEdit DocumentoIdentidad;
     }
 }

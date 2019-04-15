@@ -17,5 +17,11 @@ namespace xtraForm.Modulos.Ventas
         {
             InitializeComponent();
         }
+
+        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Elementos.frmCliente frmcliente = new Elementos.frmCliente();
+            frmcliente.Show();
+        }
     }
 }

@@ -25,14 +25,12 @@ namespace xtraForm
         {
             bool existe = false;
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-            {
                 if (xtraTabControl1.TabPages[i].Text == "Reglas Bonificacion")
                 {
 
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
-            }
             if (!existe)
             {
                 XtraTabPage promocion = new XtraTabPage();
@@ -55,9 +53,7 @@ namespace xtraForm
         private void xtraTabControl1_HeaderButtonClick(object sender, DevExpress.XtraTab.ViewInfo.HeaderButtonEventArgs e)
         {
             if (e.Button == TabButtons.Close)
-            {
                 xtraTabControl1.TabPages.Remove(e.ActivePage as XtraTabPage);
-            }
             if (e.Button == TabButtons.Next)
             {
 
@@ -72,14 +68,12 @@ namespace xtraForm
         {
             bool existe = false;
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-            {
                 if (xtraTabControl1.TabPages[i].Text == "pedidos")
                 {
 
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
-            }
             if (!existe)
             {
                 XtraTabPage pedidos = new XtraTabPage();
@@ -162,14 +156,12 @@ namespace xtraForm
         {
             bool existe = false;
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-            {
                 if (xtraTabControl1.TabPages[i].Text == "Pesos SF")
                 {
 
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
-            }
             if (!existe)
             {
                 XtraTabPage pedidos = new XtraTabPage();
@@ -193,14 +185,12 @@ namespace xtraForm
         {
             bool existe = false;
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-            {
                 if (xtraTabControl1.TabPages[i].Text == "Comprobantes")
                 {
 
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
-            }
             if (!existe)
             {
                 XtraTabPage pedidos = new XtraTabPage();
@@ -224,14 +214,12 @@ namespace xtraForm
         {
             bool existe = false;
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-            {
                 if (xtraTabControl1.TabPages[i].Text == "Notas De Credito")
                 {
 
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
-            }
             if (!existe)
             {
                 XtraTabPage pedidos = new XtraTabPage();
@@ -272,6 +260,8 @@ namespace xtraForm
         {
             if (FechaProceso.EditValue != null)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 Modulos.Ventas.frmMaestroDetalle mdpromocioal = new Modulos.Ventas.frmMaestroDetalle
@@ -311,6 +301,36 @@ namespace xtraForm
                         mdpromocioal.Show();
                         break;
                 }
+                splashScreenManager1.CloseWaitForm();
+            }
+        }
+
+        private void ClienteBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bool existe = false;
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == "Clientes")
+                {
+
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    existe = true;
+                }
+            if (!existe)
+            {
+                XtraTabPage pedidos = new XtraTabPage();
+                entidad.index = 0;
+                objeto = new Modulos.Ventas.frmCliente
+                {
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill
+                };
+                xtraTabControl1.TabPages.Add(pedidos);
+                xtraTabControl1.SelectedTabPage = pedidos;
+                pedidos.Text = "Clientes";
+                entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                pedidos.Controls.Add(objeto);
+                objeto.Show();
             }
         }
     }

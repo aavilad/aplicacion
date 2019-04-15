@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LiderAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="Cliente" />
+          </Key>
+          <Property Name="Cliente" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Zona" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="TipoCli" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Ruc" Type="char" MaxLength="11" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="FechIng" Type="datetime" Nullable="false" />
+          <Property Name="TopeCredito" Type="int" />
+          <Property Name="DNI" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Telefono" Type="char" MaxLength="7" />
+          <Property Name="Saldo" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Credito" Type="bit" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="70" />
+          <Property Name="Direccion" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="iddistrito" Type="char" MaxLength="6" />
+          <Property Name="IdNegocio" Type="char" MaxLength="2" />
+          <Property Name="nuevo" Type="char" MaxLength="1" />
+          <Property Name="ultmod" Type="datetime" />
+          <Property Name="usuario" Type="char" MaxLength="20" />
+          <Property Name="observacion" Type="char" MaxLength="70" Nullable="false" />
+          <Property Name="ap_paterno" Type="varchar" MaxLength="30" />
+          <Property Name="ap_materno" Type="varchar" MaxLength="30" />
+          <Property Name="nombre1" Type="char" MaxLength="25" />
+          <Property Name="nombre2" Type="char" MaxLength="25" />
+          <Property Name="codbase" Type="char" MaxLength="6" />
+          <Property Name="codant" Type="char" MaxLength="6" />
+          <Property Name="clasecli" Type="tinyint" />
+          <Property Name="ptollegada" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="distllegada" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="porcentaje" Type="numeric" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="RAZ" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="control" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="agente_ret" Type="bit" Nullable="false" />
+          <Property Name="agente_per" Type="bit" Nullable="false" />
+          <Property Name="agente_userf" Type="bit" Nullable="false" />
+          <Property Name="X" Type="decimal" Precision="12" Scale="7" />
+          <Property Name="Y" Type="decimal" Precision="12" Scale="7" />
+          <Property Name="CodVen1" Type="char" MaxLength="3" />
+          <Property Name="dia1" Type="smallint" />
+          <Property Name="sec" Type="int" />
+          <Property Name="CodVen2" Type="char" MaxLength="3" />
+          <Property Name="dia2" Type="smallint" />
+          <Property Name="EstadoCli" Type="tinyint" />
+          <Property Name="Correo" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="iddpto" />
+          </Key>
+          <Property Name="iddpto" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" />
+          <Property Name="codunilever" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" />
+          <Property Name="idprovincia" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONAL">
+          <Key>
+            <PropertyRef Name="Personal" />
+          </Key>
+          <Property Name="Personal" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="TipoPersona" Type="char" MaxLength="1" />
+          <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="LibElec" Type="char" MaxLength="8" />
+          <Property Name="FechIng" Type="datetime" />
+          <Property Name="FechNac" Type="datetime" />
+          <Property Name="Telefono" Type="char" MaxLength="7" />
+          <Property Name="Comision" Type="bit" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Sueldo" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="vendedor" Type="tinyint" Nullable="false" />
+          <Property Name="clase" Type="int" Nullable="false" />
+          <Property Name="grupo" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="grupok" Type="char" MaxLength="2" />
+          <Property Name="distrito" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="fzavtas" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="novedad" Type="bit" Nullable="false" />
+          <Property Name="dms" Type="bit" Nullable="false" />
+          <Property Name="pparticipa" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="pcuota" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="supercodigo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" />
+          <Property Name="iddpto" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="codunilever" Type="int" Nullable="false" />
+          <Property Name="region" Type="char" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Distrito_provincia">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="idprovincia" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provincia_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="provincia" Type="Self.provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="iddpto" />
+            </Principal>
+            <Dependent Role="provincia">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LiderAppModelStoreContainer">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Distrito_provincia" Association="Self.FK_Distrito_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provincia_Departamento" Association="Self.FK_provincia_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="provincia" EntitySet="provincia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LiderAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="Cliente1" />
+          </Key>
+          <Property Name="Cliente1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Zona" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TipoCli" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TopeCredito" Type="Int32" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Saldo" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Credito" Type="Boolean" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="iddistrito" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="IdNegocio" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="nuevo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ultmod" Type="DateTime" Precision="3" />
+          <Property Name="usuario" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="observacion" Type="String" MaxLength="70" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ap_paterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ap_materno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nombre1" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="nombre2" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="codbase" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="codant" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="clasecli" Type="Byte" />
+          <Property Name="ptollegada" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distllegada" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="porcentaje" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="RAZ" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="control" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="agente_ret" Type="Boolean" Nullable="false" />
+          <Property Name="agente_per" Type="Boolean" Nullable="false" />
+          <Property Name="agente_userf" Type="Boolean" Nullable="false" />
+          <Property Name="X" Type="Decimal" Precision="12" Scale="7" />
+          <Property Name="Y" Type="Decimal" Precision="12" Scale="7" />
+          <Property Name="CodVen1" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="dia1" Type="Int16" />
+          <Property Name="sec" Type="Int32" />
+          <Property Name="CodVen2" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="dia2" Type="Int16" />
+          <Property Name="EstadoCli" Type="Byte" />
+          <Property Name="Correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PERSONAL">
+          <Key>
+            <PropertyRef Name="Personal1" />
+          </Key>
+          <Property Name="Personal1" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TipoPersona" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LibElec" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FechIng" Type="DateTime" Precision="3" />
+          <Property Name="FechNac" Type="DateTime" Precision="3" />
+          <Property Name="Telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Comision" Type="Boolean" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Sueldo" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="vendedor" Type="Byte" Nullable="false" />
+          <Property Name="clase" Type="Int32" Nullable="false" />
+          <Property Name="grupo" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="grupok" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="distrito" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fzavtas" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="novedad" Type="Boolean" Nullable="false" />
+          <Property Name="dms" Type="Boolean" Nullable="false" />
+          <Property Name="pparticipa" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="pcuota" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="supercodigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="LiderAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" />
+          <EntitySet Name="Departamento" EntityType="LiderAppModel.Departamento" />
+          <EntitySet Name="Distrito" EntityType="LiderAppModel.Distrito" />
+          <EntitySet Name="provincia" EntityType="LiderAppModel.provincia" />
+          <AssociationSet Name="FK_provincia_Departamento" Association="LiderAppModel.FK_provincia_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="provincia" EntitySet="provincia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_provincia" Association="LiderAppModel.FK_Distrito_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="iddpto" />
+          </Key>
+          <Property Name="iddpto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="codunilever" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="provincia" Relationship="LiderAppModel.FK_provincia_Departamento" FromRole="Departamento" ToRole="provincia" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="provincia" Relationship="LiderAppModel.FK_Distrito_provincia" FromRole="Distrito" ToRole="provincia" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="iddpto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="codunilever" Type="Int32" Nullable="false" />
+          <Property Name="region" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Departamento" Relationship="LiderAppModel.FK_provincia_Departamento" FromRole="provincia" ToRole="Departamento" />
+          <NavigationProperty Name="Distrito" Relationship="LiderAppModel.FK_Distrito_provincia" FromRole="provincia" ToRole="Distrito" />
+        </EntityType>
+        <Association Name="FK_provincia_Departamento">
+          <End Type="LiderAppModel.Departamento" Role="Departamento" Multiplicity="1" />
+          <End Type="LiderAppModel.provincia" Role="provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="iddpto" />
+            </Principal>
+            <Dependent Role="provincia">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_provincia">
+          <End Type="LiderAppModel.provincia" Role="provincia" Multiplicity="1" />
+          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="idprovincia" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LiderAppModelStoreContainer" CdmEntityContainer="LiderAppEntities">
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="LiderAppModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="Cliente1" ColumnName="Cliente" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="TipoCli" ColumnName="TipoCli" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechIng" ColumnName="FechIng" />
+                <ScalarProperty Name="TopeCredito" ColumnName="TopeCredito" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="IdNegocio" ColumnName="IdNegocio" />
+                <ScalarProperty Name="nuevo" ColumnName="nuevo" />
+                <ScalarProperty Name="ultmod" ColumnName="ultmod" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="ap_paterno" ColumnName="ap_paterno" />
+                <ScalarProperty Name="ap_materno" ColumnName="ap_materno" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+                <ScalarProperty Name="codbase" ColumnName="codbase" />
+                <ScalarProperty Name="codant" ColumnName="codant" />
+                <ScalarProperty Name="clasecli" ColumnName="clasecli" />
+                <ScalarProperty Name="ptollegada" ColumnName="ptollegada" />
+                <ScalarProperty Name="distllegada" ColumnName="distllegada" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+                <ScalarProperty Name="RAZ" ColumnName="RAZ" />
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="agente_ret" ColumnName="agente_ret" />
+                <ScalarProperty Name="agente_per" ColumnName="agente_per" />
+                <ScalarProperty Name="agente_userf" ColumnName="agente_userf" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="CodVen1" ColumnName="CodVen1" />
+                <ScalarProperty Name="dia1" ColumnName="dia1" />
+                <ScalarProperty Name="sec" ColumnName="sec" />
+                <ScalarProperty Name="CodVen2" ColumnName="CodVen2" />
+                <ScalarProperty Name="dia2" ColumnName="dia2" />
+                <ScalarProperty Name="EstadoCli" ColumnName="EstadoCli" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONAL">
+            <EntityTypeMapping TypeName="LiderAppModel.PERSONAL">
+              <MappingFragment StoreEntitySet="PERSONAL">
+                <ScalarProperty Name="Personal1" ColumnName="Personal" />
+                <ScalarProperty Name="TipoPersona" ColumnName="TipoPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="LibElec" ColumnName="LibElec" />
+                <ScalarProperty Name="FechIng" ColumnName="FechIng" />
+                <ScalarProperty Name="FechNac" ColumnName="FechNac" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Comision" ColumnName="Comision" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+                <ScalarProperty Name="vendedor" ColumnName="vendedor" />
+                <ScalarProperty Name="clase" ColumnName="clase" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="grupok" ColumnName="grupok" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="fzavtas" ColumnName="fzavtas" />
+                <ScalarProperty Name="novedad" ColumnName="novedad" />
+                <ScalarProperty Name="dms" ColumnName="dms" />
+                <ScalarProperty Name="pparticipa" ColumnName="pparticipa" />
+                <ScalarProperty Name="pcuota" ColumnName="pcuota" />
+                <ScalarProperty Name="supercodigo" ColumnName="supercodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="LiderAppModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distrito">
+            <EntityTypeMapping TypeName="LiderAppModel.Distrito">
+              <MappingFragment StoreEntitySet="Distrito">
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincia">
+            <EntityTypeMapping TypeName="LiderAppModel.provincia">
+              <MappingFragment StoreEntitySet="provincia">
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aplicacion", "aplicacion\xtraForm.csproj", "{0953DF8B-F531-4E87-8AA0-001D2A8E3EA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xtraForm", "aplicacion\xtraForm.csproj", "{98B8BFDF-E074-4E7A-A7F8-CB1839A5BC1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0953DF8B-F531-4E87-8AA0-001D2A8E3EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0953DF8B-F531-4E87-8AA0-001D2A8E3EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0953DF8B-F531-4E87-8AA0-001D2A8E3EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0953DF8B-F531-4E87-8AA0-001D2A8E3EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B8BFDF-E074-4E7A-A7F8-CB1839A5BC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B8BFDF-E074-4E7A-A7F8-CB1839A5BC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B8BFDF-E074-4E7A-A7F8-CB1839A5BC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B8BFDF-E074-4E7A-A7F8-CB1839A5BC1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

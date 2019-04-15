@@ -33,7 +33,7 @@
             this.btnPedido = new DevExpress.XtraBars.BarButtonItem();
             this.btnComprobantes = new DevExpress.XtraBars.BarButtonItem();
             this.btnReglasBonificacion = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.ClienteBtn = new DevExpress.XtraBars.BarButtonItem();
             this.btnVendedor = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
@@ -98,7 +98,7 @@
             this.btnPedido,
             this.btnComprobantes,
             this.btnReglasBonificacion,
-            this.barButtonItem5,
+            this.ClienteBtn,
             this.btnVendedor,
             this.barButtonItem8,
             this.barButtonItem9,
@@ -166,12 +166,13 @@
             this.btnReglasBonificacion.Name = "btnReglasBonificacion";
             this.btnReglasBonificacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReglasBonificacion_ItemClick);
             // 
-            // barButtonItem5
+            // ClienteBtn
             // 
-            this.barButtonItem5.Caption = "Clientes";
-            this.barButtonItem5.Id = 5;
-            this.barButtonItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.ClienteBtn.Caption = "Clientes";
+            this.ClienteBtn.Id = 5;
+            this.ClienteBtn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
+            this.ClienteBtn.Name = "ClienteBtn";
+            this.ClienteBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ClienteBtn_ItemClick);
             // 
             // btnVendedor
             // 
@@ -389,7 +390,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnPedido);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnComprobantes);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnNotasCredito);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem5);
+            this.ribbonPageGroup1.ItemLinks.Add(this.ClienteBtn);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnVendedor);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Ventas";
@@ -566,7 +567,7 @@
         private DevExpress.XtraBars.BarButtonItem btnComprobantes;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btnReglasBonificacion;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem ClienteBtn;
         private DevExpress.XtraBars.BarButtonItem btnVendedor;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;

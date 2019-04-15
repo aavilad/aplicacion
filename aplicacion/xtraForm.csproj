@@ -84,16 +84,25 @@
     <Reference Include="DevExpress.XtraSpreadsheet.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="ProgressBar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ProgressBar.1.0.10\lib\ProgressBar.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -237,11 +246,47 @@
     <Compile Include="Maestro\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\CLIENTE.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Conexion.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Conexion.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Conexion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Conexion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Conexion.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Departamento.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Distrito.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PERSONAL.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\provincia.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Elementos\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\Elementos\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmClienteDireccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmClienteDireccion.Designer.cs">
+      <DependentUpon>frmClienteDireccion.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Elementos\frmComprobante.cs">
       <SubType>Form</SubType>
@@ -254,6 +299,12 @@
     </Compile>
     <Compile Include="Modulos\Elementos\frmReglaBonificacion.Designer.cs">
       <DependentUpon>frmReglaBonificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmVendedor.Designer.cs">
+      <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
@@ -389,11 +440,17 @@
     <EmbeddedResource Include="Modulos\Elementos\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmClienteDireccion.resx">
+      <DependentUpon>frmClienteDireccion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmComprobante.resx">
       <DependentUpon>frmComprobante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmReglaBonificacion.resx">
       <DependentUpon>frmReglaBonificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmVendedor.resx">
+      <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
@@ -438,6 +495,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="Model\Conexion.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Conexion.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\Conexion.edmx.diagram">
+      <DependentUpon>Conexion.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -468,6 +532,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Conexion.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Conexion.edmx</DependentUpon>
+      <LastGenOutput>Conexion.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Conexion.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Conexion.edmx</DependentUpon>
+      <LastGenOutput>Conexion.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

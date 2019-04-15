@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fa91626330374897a1caa3cf6a2256bd" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="LiderAppModel.CLIENTE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LiderAppModel.PERSONAL" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LiderAppModel.Departamento" Width="1.5" PointX="5.375" PointY="1.25" />
+        <EntityTypeShape EntityType="LiderAppModel.Distrito" Width="1.5" PointX="9.875" PointY="1.25" />
+        <EntityTypeShape EntityType="LiderAppModel.provincia" Width="1.5" PointX="7.625" PointY="1" />
+        <AssociationConnector Association="LiderAppModel.FK_provincia_Departamento" />
+        <AssociationConnector Association="LiderAppModel.FK_Distrito_provincia" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
