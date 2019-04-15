@@ -23,5 +23,10 @@ namespace xtraForm.Modulos.Elementos
         {
             
         }
+
+        private void frmCliente_Load(object sender, EventArgs e)
+        {
+            var conexion = new Model.LiderAppEntities();
+        }
     }
 }

@@ -47,12 +47,20 @@
             this.NumeroDocumentoIdentidad = new DevExpress.XtraEditors.TextEdit();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.CantidadLineaCredito = new DevExpress.XtraEditors.TextEdit();
             this.Credito = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.FormaPago = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.TipoCredito = new DevExpress.XtraEditors.LookUpEdit();
+            this.TipoContado = new DevExpress.XtraEditors.LookUpEdit();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.InhabilitarBonificacion = new DevExpress.XtraEditors.CheckEdit();
+            this.CodigoProveedor = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
@@ -62,6 +70,7 @@
             this.TipoNegocio = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.TipoCliente = new DevExpress.XtraEditors.LookUpEdit();
+            this.Email = new DevExpress.XtraEditors.TextEdit();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.Obsercacion = new DevExpress.XtraEditors.MemoEdit();
@@ -71,17 +80,8 @@
             this.AgenteRetencion = new DevExpress.XtraEditors.CheckEdit();
             this.AgentePercepcion = new DevExpress.XtraEditors.CheckEdit();
             this.Activo = new DevExpress.XtraEditors.CheckEdit();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.InhabilitarBonificacion = new DevExpress.XtraEditors.CheckEdit();
-            this.CodigoProveedor = new DevExpress.XtraEditors.LookUpEdit();
-            this.Email = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.TipoPersona = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.FormaPago = new DevExpress.XtraEditors.ComboBoxEdit();
             this.DocumentoIdentidad = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.TipoCredito = new DevExpress.XtraEditors.LookUpEdit();
-            this.TipoContado = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.Codigo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nombre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApellidoPaterno.Properties)).BeginInit();
@@ -91,28 +91,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumeroDocumentoIdentidad.Properties)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CantidadLineaCredito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Credito.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormaPago.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoCredito.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoContado.Properties)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InhabilitarBonificacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CodigoProveedor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoordenadaY.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoordernadaX.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipoNegocio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipoCliente.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Email.Properties)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Obsercacion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Direccion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgenteRetencion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentePercepcion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Activo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InhabilitarBonificacion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CodigoProveedor.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Email.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipoPersona.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FormaPago.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentoIdentidad.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TipoCredito.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TipoContado.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // Codigo
@@ -276,6 +276,22 @@
             this.tabPage1.Text = "Comercial";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // labelControl21
+            // 
+            this.labelControl21.Location = new System.Drawing.Point(281, 44);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(26, 13);
+            this.labelControl21.TabIndex = 33;
+            this.labelControl21.Text = "Saldo";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Enabled = false;
+            this.textEdit1.Location = new System.Drawing.Point(328, 41);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(130, 20);
+            this.textEdit1.TabIndex = 32;
+            // 
             // CantidadLineaCredito
             // 
             this.CantidadLineaCredito.Enabled = false;
@@ -316,6 +332,42 @@
             this.labelControl11.TabIndex = 26;
             this.labelControl11.Text = "Forma De Pago";
             // 
+            // FormaPago
+            // 
+            this.FormaPago.Location = new System.Drawing.Point(82, 15);
+            this.FormaPago.Name = "FormaPago";
+            this.FormaPago.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.FormaPago.Properties.Items.AddRange(new object[] {
+            "Credito",
+            "Contado"});
+            this.FormaPago.Size = new System.Drawing.Size(130, 20);
+            this.FormaPago.TabIndex = 0;
+            // 
+            // TipoCredito
+            // 
+            this.TipoCredito.Location = new System.Drawing.Point(82, 41);
+            this.TipoCredito.Name = "TipoCredito";
+            this.TipoCredito.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TipoCredito.Properties.NullText = "";
+            this.TipoCredito.Properties.PopupSizeable = false;
+            this.TipoCredito.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TipoCredito.Size = new System.Drawing.Size(130, 20);
+            this.TipoCredito.TabIndex = 27;
+            // 
+            // TipoContado
+            // 
+            this.TipoContado.Location = new System.Drawing.Point(82, 67);
+            this.TipoContado.Name = "TipoContado";
+            this.TipoContado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TipoContado.Properties.NullText = "";
+            this.TipoContado.Properties.PopupSizeable = false;
+            this.TipoContado.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TipoContado.Size = new System.Drawing.Size(130, 20);
+            this.TipoContado.TabIndex = 29;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.labelControl20);
@@ -338,6 +390,33 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Extras";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(279, 114);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(49, 13);
+            this.labelControl20.TabIndex = 39;
+            this.labelControl20.Text = "Proveedor";
+            // 
+            // InhabilitarBonificacion
+            // 
+            this.InhabilitarBonificacion.Location = new System.Drawing.Point(279, 89);
+            this.InhabilitarBonificacion.Name = "InhabilitarBonificacion";
+            this.InhabilitarBonificacion.Properties.Caption = "Inhabilitar Para Bonificaciones";
+            this.InhabilitarBonificacion.Size = new System.Drawing.Size(175, 20);
+            this.InhabilitarBonificacion.TabIndex = 37;
+            // 
+            // CodigoProveedor
+            // 
+            this.CodigoProveedor.Enabled = false;
+            this.CodigoProveedor.Location = new System.Drawing.Point(279, 129);
+            this.CodigoProveedor.Name = "CodigoProveedor";
+            this.CodigoProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CodigoProveedor.Properties.NullText = "";
+            this.CodigoProveedor.Size = new System.Drawing.Size(175, 20);
+            this.CodigoProveedor.TabIndex = 38;
             // 
             // labelControl19
             // 
@@ -412,6 +491,13 @@
             this.TipoCliente.Properties.NullText = "";
             this.TipoCliente.Size = new System.Drawing.Size(360, 20);
             this.TipoCliente.TabIndex = 0;
+            // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(93, 162);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(360, 20);
+            this.Email.TabIndex = 33;
             // 
             // tabPage3
             // 
@@ -491,56 +577,6 @@
             this.Activo.Size = new System.Drawing.Size(75, 20);
             this.Activo.TabIndex = 26;
             // 
-            // labelControl20
-            // 
-            this.labelControl20.Location = new System.Drawing.Point(279, 114);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(49, 13);
-            this.labelControl20.TabIndex = 39;
-            this.labelControl20.Text = "Proveedor";
-            // 
-            // InhabilitarBonificacion
-            // 
-            this.InhabilitarBonificacion.Location = new System.Drawing.Point(279, 89);
-            this.InhabilitarBonificacion.Name = "InhabilitarBonificacion";
-            this.InhabilitarBonificacion.Properties.Caption = "Inhabilitar Para Bonificaciones";
-            this.InhabilitarBonificacion.Size = new System.Drawing.Size(175, 20);
-            this.InhabilitarBonificacion.TabIndex = 37;
-            // 
-            // CodigoProveedor
-            // 
-            this.CodigoProveedor.Enabled = false;
-            this.CodigoProveedor.Location = new System.Drawing.Point(279, 129);
-            this.CodigoProveedor.Name = "CodigoProveedor";
-            this.CodigoProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CodigoProveedor.Properties.NullText = "";
-            this.CodigoProveedor.Size = new System.Drawing.Size(175, 20);
-            this.CodigoProveedor.TabIndex = 38;
-            // 
-            // Email
-            // 
-            this.Email.Location = new System.Drawing.Point(93, 162);
-            this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(360, 20);
-            this.Email.TabIndex = 33;
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Enabled = false;
-            this.textEdit1.Location = new System.Drawing.Point(328, 41);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(130, 20);
-            this.textEdit1.TabIndex = 32;
-            // 
-            // labelControl21
-            // 
-            this.labelControl21.Location = new System.Drawing.Point(281, 44);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(26, 13);
-            this.labelControl21.TabIndex = 33;
-            this.labelControl21.Text = "Saldo";
-            // 
             // TipoPersona
             // 
             this.TipoPersona.Location = new System.Drawing.Point(350, 5);
@@ -553,18 +589,6 @@
             this.TipoPersona.Size = new System.Drawing.Size(130, 20);
             this.TipoPersona.TabIndex = 2;
             // 
-            // FormaPago
-            // 
-            this.FormaPago.Location = new System.Drawing.Point(82, 15);
-            this.FormaPago.Name = "FormaPago";
-            this.FormaPago.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.FormaPago.Properties.Items.AddRange(new object[] {
-            "Credito",
-            "Contado"});
-            this.FormaPago.Size = new System.Drawing.Size(130, 20);
-            this.FormaPago.TabIndex = 0;
-            // 
             // DocumentoIdentidad
             // 
             this.DocumentoIdentidad.Location = new System.Drawing.Point(98, 155);
@@ -576,30 +600,6 @@
             "RUC"});
             this.DocumentoIdentidad.Size = new System.Drawing.Size(130, 20);
             this.DocumentoIdentidad.TabIndex = 16;
-            // 
-            // TipoCredito
-            // 
-            this.TipoCredito.Location = new System.Drawing.Point(82, 41);
-            this.TipoCredito.Name = "TipoCredito";
-            this.TipoCredito.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TipoCredito.Properties.NullText = "";
-            this.TipoCredito.Properties.PopupSizeable = false;
-            this.TipoCredito.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.TipoCredito.Size = new System.Drawing.Size(130, 20);
-            this.TipoCredito.TabIndex = 27;
-            // 
-            // TipoContado
-            // 
-            this.TipoContado.Location = new System.Drawing.Point(82, 67);
-            this.TipoContado.Name = "TipoContado";
-            this.TipoContado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TipoContado.Properties.NullText = "";
-            this.TipoContado.Properties.PopupSizeable = false;
-            this.TipoContado.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.TipoContado.Size = new System.Drawing.Size(130, 20);
-            this.TipoContado.TabIndex = 29;
             // 
             // frmCliente
             // 
@@ -635,6 +635,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Codigo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nombre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApellidoPaterno.Properties)).EndInit();
@@ -645,14 +647,21 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CantidadLineaCredito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Credito.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormaPago.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoCredito.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TipoContado.Properties)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InhabilitarBonificacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CodigoProveedor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoordenadaY.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoordernadaX.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipoNegocio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipoCliente.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Email.Properties)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Obsercacion.Properties)).EndInit();
@@ -660,15 +669,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.AgenteRetencion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentePercepcion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Activo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InhabilitarBonificacion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CodigoProveedor.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Email.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipoPersona.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FormaPago.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentoIdentidad.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TipoCredito.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TipoContado.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
