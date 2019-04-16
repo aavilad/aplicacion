@@ -210,8 +210,8 @@ namespace xtraForm.Modulos.Ventas
         {
             if (gridView1.SelectedRowsCount > 0)
             {
-
                 Elementos.frmpedido frmpedido = new Elementos.frmpedido();
+                frmpedido.Existe = true;
                 //frmpedido.pasar += new Elementos.frmpedido.varaible(CamposPedido);
                 pedido.NumeroPedido = gridView1.GetFocusedRowCellValue("num Pedido").ToString();
                 pedido.CodigoVendedor = proceso.ConsultarCadena("Personal", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
@@ -258,14 +258,15 @@ namespace xtraForm.Modulos.Ventas
                     var IdBonif = DR_0["IDBonificacion"] is DBNull ? 0 : DR_0["IDBonificacion"];
                     producto.TipoPrecio = Convert.ToInt32(DR_0["TipoPrecio"]);
 
-                    frmpedido.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion, producto.Cantidad, producto.Cantidad, producto.Unidad, producto.PrecioUnitario, producto.PrecioNeto,
-                        (producto.Cantidad * producto.PrecioNeto), producto.Descuento, producto.Recargo, producto.Bonificacion, pedido.Credito, producto.Afecto, IdBonif, producto.TipoPrecio);
+                    frmpedido.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion, producto.Cantidad, producto.Cantidad, producto.Unidad, producto.TipoPrecio, producto.PrecioUnitario, producto.PrecioNeto,
+                        (producto.Cantidad * producto.PrecioNeto), producto.Descuento, producto.Recargo, producto.Bonificacion, pedido.Credito, producto.Afecto, IdBonif);
                     frmpedido.dataGridView1.CurrentRow.ReadOnly = producto.Bonificacion == true ? true : false;
                     frmpedido.dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                     frmpedido.dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
                 }
                 frmpedido.calculartotal();
                 frmpedido.StartPosition = FormStartPosition.CenterScreen;
+                frmpedido.Existe = false;
                 frmpedido.Show();
             }
         }
@@ -322,34 +323,38 @@ namespace xtraForm.Modulos.Ventas
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (gridView1.SelectedRowsCount > 0)
+            if (proceso.MensageError("¿Continuar?") == DialogResult.Yes)
             {
-                Point loc = new Point(510, 450);
-                Elementos.frmMsg frmmensage = new Elementos.frmMsg();
-                frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Manual;
-                frmmensage.splashScreenManager1.SplashFormLocation = loc;
-                frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
-                frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
-                frmmensage.dataGridView1.Columns[2].HeaderText = "";
-                frmmensage.dataGridView1.Columns[3].HeaderText = "";
-                frmmensage.Show();
-                frmmensage.splashScreenManager1.ShowWaitForm();
-                foreach (var pedido in gridView1.GetSelectedRows())
+                if (gridView1.SelectedRowsCount > 0)
                 {
-                    if (!proceso.ExistenciaCampo("pedido", "pedido", "procesado = 1 and pedido = '" + gridView1.GetDataRow(pedido)["num Pedido"].ToString() + "'"))
+                    Point loc = new Point(510, 450);
+                    Elementos.frmMsg frmmensage = new Elementos.frmMsg();
+                    frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Manual;
+                    frmmensage.splashScreenManager1.SplashFormLocation = loc;
+                    frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
+                    frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
+                    frmmensage.dataGridView1.Columns[2].HeaderText = "";
+                    frmmensage.dataGridView1.Columns[3].HeaderText = "";
+                    frmmensage.Show();
+                    frmmensage.splashScreenManager1.ShowWaitForm();
+                    foreach (var pedido in gridView1.GetSelectedRows())
                     {
-                        frmmensage.dataGridView1.Rows.Add(gridView1.GetDataRow(pedido)["num Pedido"].ToString(), ejecutar.deletepedido(gridView1.GetDataRow(pedido)["num Pedido"].ToString()),
-                        string.Empty, string.Empty);
+                        if (!proceso.ExistenciaCampo("pedido", "pedido", "procesado = 1 and pedido = '" + gridView1.GetDataRow(pedido)["num Pedido"].ToString() + "'"))
+                        {
+                            frmmensage.dataGridView1.Rows.Add(gridView1.GetDataRow(pedido)["num Pedido"].ToString(), ejecutar.deletepedido(gridView1.GetDataRow(pedido)["num Pedido"].ToString()),
+                            string.Empty, string.Empty);
+                        }
+                        else
+                        {
+                            frmmensage.dataGridView1.Rows.Add(gridView1.GetDataRow(pedido)["num Pedido"].ToString(), "pedido se encuentra procesado y no puede ser eliminado!",
+                            string.Empty, string.Empty);
+                        }
                     }
-                    else
-                    {
-                        frmmensage.dataGridView1.Rows.Add(gridView1.GetDataRow(pedido)["num Pedido"].ToString(), "pedido se encuentra procesado y no puede ser eliminado!",
-                        string.Empty, string.Empty);
-                    }
+                    frmmensage.splashScreenManager1.CloseWaitForm();
+                    gridControl1.DataSource = null;
                 }
-                frmmensage.splashScreenManager1.CloseWaitForm();
-                gridControl1.DataSource = null;
             }
+
 
         }
     }
