@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtcdDocumento = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -106,7 +106,7 @@
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantpedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TpPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -198,20 +198,20 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Descripcion,
             this.Cantidad,
-            this.cantidadPedido,
+            this.cantpedido,
             this.Unidad,
             this.TpPrecio,
             this.PrecioUnitario,
@@ -223,23 +223,23 @@
             this.Credito,
             this.Afecto,
             this.IDBonificacion});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Calibri", 8.25F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.LightCyan;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(817, 246);
             this.dataGridView1.TabIndex = 4;
@@ -840,20 +840,20 @@
             // 
             // Cantidad
             // 
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0.00";
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0.00";
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle2;
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
             this.Cantidad.Width = 55;
             // 
-            // cantidadPedido
+            // cantpedido
             // 
-            this.cantidadPedido.HeaderText = "cantidadPedido";
-            this.cantidadPedido.Name = "cantidadPedido";
-            this.cantidadPedido.ReadOnly = true;
-            this.cantidadPedido.Visible = false;
+            this.cantpedido.HeaderText = "cantidadPedido";
+            this.cantpedido.Name = "cantpedido";
+            this.cantpedido.ReadOnly = true;
+            this.cantpedido.Visible = false;
             // 
             // Unidad
             // 
@@ -871,9 +871,9 @@
             // 
             // PrecioUnitario
             // 
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0.00";
-            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0.00";
+            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle3;
             this.PrecioUnitario.HeaderText = "PrecioUnit";
             this.PrecioUnitario.Name = "PrecioUnitario";
             this.PrecioUnitario.ReadOnly = true;
@@ -888,9 +888,9 @@
             // 
             // Total
             // 
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = "0.00";
-            this.Total.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0.00";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle4;
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
@@ -898,9 +898,9 @@
             // 
             // Descuento
             // 
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.NullValue = "0.00";
-            this.Descuento.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0.00";
+            this.Descuento.DefaultCellStyle = dataGridViewCellStyle5;
             this.Descuento.HeaderText = "Descuento";
             this.Descuento.Name = "Descuento";
             this.Descuento.ReadOnly = true;
@@ -908,9 +908,9 @@
             // 
             // Recargo
             // 
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = "0.00";
-            this.Recargo.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0.00";
+            this.Recargo.DefaultCellStyle = dataGridViewCellStyle6;
             this.Recargo.HeaderText = "Recargo";
             this.Recargo.Name = "Recargo";
             this.Recargo.ReadOnly = true;
@@ -1124,7 +1124,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadPedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantpedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn TpPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;

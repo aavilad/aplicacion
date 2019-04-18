@@ -56,76 +56,14 @@ namespace xtraForm.Modulos.Ventas
 
         void CamposPedido(string codigo)
         {
+            Model.LiderAppEntities Context = new Model.LiderAppEntities();
+
 
         }
 
         void condicion(string cadena)
         {
-            entidad.sql =
-            @"select * from(
-            SELECT
-                dbo.Vva_Pedido.Gestion,
-                dbo.Vva_Pedido.FechaEmision,
-                dbo.Vva_Pedido.Hora,
-                dbo.Vva_Pedido.IDVend AS [cod Vendedor],
-                dbo.PERSONAL.Nombre AS [nom Vendedor],
-                dbo.Vva_Cliente.Codigo AS [cod Cliente],
-                dbo.Vva_Cliente.Nombre AS [nom Cliente],
-                dbo.Vva_Cliente.Documento AS [doc Identidad],
-                dbo.Vva_ItemPedido.NrPedido AS [num Pedido],
-                ISNULL (dbo.DOCUMENTO.TipoDoc,
-                        '') AS [Tipo Documento],
-                ISNULL (dbo.DOCUMENTO.Generado,
-                        '') AS [num Comprobante],
-                dbo.Vva_Pedido.TpPago AS [Tipo Condicion],
-                dbo.Vva_Pedido.Credito,
-                SUM (dbo.Vva_ItemPedido.Precio * dbo.Vva_ItemPedido.Cantidad) AS [Valor Total],
-                SUM (dbo.Vva_ItemPedido.Precio * dbo.Vva_ItemPedido.Cantidad - dbo.Vva_ItemPedido.Precio * dbo.Vva_ItemPedido.Cantidad * 0.18) AS 
-                    [Valor Venta],
-                SUM (dbo.Vva_ItemPedido.Precio * dbo.Vva_ItemPedido.Cantidad * 0.18) AS Igv,
-                SUM (dbo.Vva_ItemPedido.Descuento) AS Descuento,
-                SUM (dbo.Vva_ItemPedido.Recargo) AS Recargo,
-                dbo.Vva_Pedido.Procesado,
-                dbo.Vva_Pedido.Bajado,
-                dbo.ZONA.Descripcion AS [Zona Venta],
-                dbo.Vva_Pedido.Aprobado
-            FROM
-                dbo.Vva_ItemPedido
-                INNER JOIN
-                dbo.Vva_Pedido
-                ON dbo.Vva_ItemPedido.NrPedido = dbo.Vva_Pedido.NrPedido
-                INNER JOIN
-                dbo.PERSONAL
-                ON dbo.Vva_Pedido.IDVend = dbo.PERSONAL.Personal
-                INNER JOIN
-                dbo.Vva_Cliente
-                ON dbo.Vva_Pedido.IDClient = dbo.Vva_Cliente.Codigo
-                INNER JOIN
-                dbo.ZONA
-                ON dbo.Vva_Cliente.Zona = dbo.ZONA.Zona
-                LEFT OUTER JOIN
-                dbo.DOCUMENTO
-                ON dbo.Vva_Pedido.NrPedido = dbo.DOCUMENTO.Pedido
-            GROUP BY
-                dbo.Vva_Pedido.Gestion,
-                dbo.Vva_Pedido.FechaEmision,
-                dbo.Vva_Pedido.Hora,
-                dbo.Vva_Pedido.IDVend,
-                dbo.PERSONAL.Nombre,
-                dbo.Vva_Cliente.Codigo,
-                dbo.Vva_Cliente.Nombre,
-                dbo.Vva_Cliente.Documento,
-                dbo.Vva_ItemPedido.NrPedido,
-                ISNULL (dbo.DOCUMENTO.TipoDoc,
-                        ''),
-                ISNULL (dbo.DOCUMENTO.Generado,
-                        ''),
-                dbo.Vva_Pedido.TpPago,
-                dbo.Vva_Pedido.Credito,
-                dbo.ZONA.Descripcion,
-                dbo.Vva_Pedido.Bajado,
-                dbo.Vva_Pedido.Procesado,
-                dbo.Vva_Pedido.Aprobado) tabla";
+            entidad.sql = Libreria.Constante.Pedidos;
             if (cadena.Length == 0)
             {
                 proceso.consultar(entidad.sql, entidad.tabla);
@@ -212,7 +150,7 @@ namespace xtraForm.Modulos.Ventas
             {
                 Elementos.frmpedido frmpedido = new Elementos.frmpedido();
                 frmpedido.Existe = true;
-                //frmpedido.pasar += new Elementos.frmpedido.varaible(CamposPedido);
+                frmpedido.pasar += new Elementos.frmpedido.varaible(CamposPedido);
                 pedido.NumeroPedido = gridView1.GetFocusedRowCellValue("num Pedido").ToString();
                 pedido.CodigoVendedor = proceso.ConsultarCadena("Personal", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
                 pedido.NombreVendedor = proceso.ConsultarCadena("[Nombre Vendedor]", "Vva_Vendedor", "[Codigo vendedor] = '" + pedido.CodigoVendedor + "'");
@@ -220,8 +158,8 @@ namespace xtraForm.Modulos.Ventas
                 pedido.NombreCliente = proceso.ConsultarCadena("Nombre", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
                 pedido.DocumentoCliente = proceso.ConsultarCadena("Documento", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
                 pedido.DireccionCliente = proceso.ConsultarCadena("Direccion", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
-                pedido.ZonaCliente = proceso.ConsultarCadena("descripcion", "Zona", "Zona = (select zona from pedido where pedido = '" + pedido.NumeroPedido + "')");
-                pedido.DistritoCliente = proceso.ConsultarCadena("descrip", "Distrito", "iddistrito = (select iddistrito from pedido where pedido = '" + pedido.NumeroPedido + "')");
+                pedido.ZonaCliente = proceso.ConsultarCadena("descripcion", "Zona", "Zona = (select zona from Vva_Cliente where Codigo = '" + pedido.CodigoCliente + "')");
+                pedido.DistritoCliente = proceso.ConsultarCadena("descrip", "Distrito", "iddistrito = (select distllegada from pedido where pedido = '" + pedido.NumeroPedido + "')");
                 pedido.ProvinciaCliente = proceso.ConsultarCadena("descrip", "provincia", " idprovincia = (select idprovincia from Distrito where iddistrito = (select idprovincia from pedido where pedido = '" + pedido.NumeroPedido + "'))");
                 pedido.Gestion = proceso.ConsultarCadena("Gestion", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
                 pedido.Credito = proceso.ConsultarVerdad("Credito", "Vva_Pedido", "NrPedido = '" + pedido.NumeroPedido + "'");
@@ -247,7 +185,7 @@ namespace xtraForm.Modulos.Ventas
                 {
                     producto.Codigo = DR_0["Producto"].ToString();
                     producto.Descripcion = proceso.ConsultarCadena("Descripcion", "Vva_Producto", "Codigo = '" + producto.Codigo + "'");
-                    producto.Cantidad = Convert.ToDecimal(DR_0["Cantidad"]);
+                    producto.Cantidad = (decimal)DR_0["Cantidad"];
                     producto.Unidad = proceso.ConsultarCadena("Unidad", "Vva_producto", "Codigo = '" + producto.Codigo + "'");
                     producto.PrecioUnitario = Convert.ToDecimal(DR_0["PrecioUnitario"]);
                     producto.PrecioNeto = Convert.ToDecimal(DR_0["PrecioNeto"]);
@@ -263,6 +201,8 @@ namespace xtraForm.Modulos.Ventas
                     frmpedido.dataGridView1.CurrentRow.ReadOnly = producto.Bonificacion == true ? true : false;
                     frmpedido.dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                     frmpedido.dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
+                    frmpedido.dataGridView1.CurrentRow.Cells["Cantidad"].ReadOnly = false;
+                    frmpedido.dataGridView1.CurrentRow.Cells["PrecioNeto"].ReadOnly = false;
                 }
                 frmpedido.calculartotal();
                 frmpedido.StartPosition = FormStartPosition.CenterScreen;
@@ -323,9 +263,10 @@ namespace xtraForm.Modulos.Ventas
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (proceso.MensageError("¿Continuar?") == DialogResult.Yes)
+
+            if (gridView1.SelectedRowsCount > 0)
             {
-                if (gridView1.SelectedRowsCount > 0)
+                if (proceso.MensageError("¿Continuar?") == DialogResult.Yes)
                 {
                     Point loc = new Point(510, 450);
                     Elementos.frmMsg frmmensage = new Elementos.frmMsg();

@@ -61,6 +61,29 @@
           <Property Name="descrip" Type="char" MaxLength="30" />
           <Property Name="codunilever" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DETPEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido" />
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="Pedido" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="Producto" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="PrecUnit" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="TipoPrecio" Type="char" MaxLength="1" />
+          <Property Name="TranGratuita" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="lote" Type="varchar" MaxLength="20" />
+          <Property Name="fvctolote" Type="datetime" />
+          <Property Name="flgSurtido" Type="char" MaxLength="1" />
+          <Property Name="IDBonificacion" Type="int" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioNeto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Descuento" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="Recargo" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Afecto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Bonif" Type="bit" />
+        </EntityType>
         <EntityType Name="Distrito">
           <Key>
             <PropertyRef Name="iddistrito" />
@@ -79,6 +102,37 @@
           <Property Name="Nrodia" Type="tinyint" Nullable="false" />
           <Property Name="contado" Type="bit" Nullable="false" />
           <Property Name="DiasFinta" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido" />
+          </Key>
+          <Property Name="Pedido" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="Personal" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Cliente" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="FormaPago" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Estado" Type="char" MaxLength="18" />
+          <Property Name="Reparto" Type="bit" Nullable="false" />
+          <Property Name="TipoPersona" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Procesado" Type="bit" Nullable="false" />
+          <Property Name="rsocial" Type="varchar" MaxLength="70" />
+          <Property Name="ruc" Type="char" MaxLength="11" />
+          <Property Name="direccion" Type="varchar" MaxLength="70" />
+          <Property Name="dni" Type="char" MaxLength="12" />
+          <Property Name="encargado" Type="char" MaxLength="2" />
+          <Property Name="npersonal" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nencargado" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="gestion" Type="char" MaxLength="2" />
+          <Property Name="ptollegada" Type="varchar" MaxLength="70" />
+          <Property Name="distllegada" Type="char" MaxLength="6" />
+          <Property Name="pdscto" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="dscto" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="tipodoc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="flagCobertura" Type="char" MaxLength="1" />
+          <Property Name="Fecha_web" Type="datetime" />
+          <Property Name="statusWeb" Type="bit" />
+          <Property Name="Aprobado" Type="bit" />
         </EntityType>
         <EntityType Name="PERSONAL">
           <Key>
@@ -116,6 +170,116 @@
           <Property Name="codunilever" Type="int" Nullable="false" />
           <Property Name="region" Type="char" MaxLength="25" Nullable="false" />
         </EntityType>
+        <EntityType Name="REPARTO">
+          <Key>
+            <PropertyRef Name="Ruta" />
+            <PropertyRef Name="Dia" />
+            <PropertyRef Name="Personal" />
+          </Key>
+          <Property Name="Ruta" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Dia" Type="tinyint" Nullable="false" />
+          <Property Name="Personal" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RUTAS">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="descripcion" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZONA">
+          <Key>
+            <PropertyRef Name="Zona" />
+          </Key>
+          <Property Name="Zona" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="60" Nullable="false" />
+          <Property Name="Distancia" Type="int" Nullable="false" />
+          <Property Name="Riesgo" Type="bit" Nullable="false" />
+          <Property Name="proveedor" Type="char" MaxLength="5" />
+          <Property Name="DesCorta" Type="char" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZONA_PERSONAL">
+          <Key>
+            <PropertyRef Name="Personal" />
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="Zona" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Personal" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Dia" Type="datetime" />
+          <Property Name="Numero" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CLIENTE__Zona__4959E263">
+          <End Role="ZONA" Type="Self.ZONA" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETPEDIDO__Pedid__55BFB948">
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
+          <End Role="DETPEDIDO" Type="Self.DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="Pedido" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEDIDO__Personal__68D28DBC">
+          <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ZONA_PERS__Perso__6501FCD8">
+          <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="1" />
+          <End Role="ZONA_PERSONAL" Type="Self.ZONA_PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal" />
+            </Principal>
+            <Dependent Role="ZONA_PERSONAL">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ZONA_PERSO__Zona__65F62111">
+          <End Role="ZONA" Type="Self.ZONA" Multiplicity="1" />
+          <End Role="ZONA_PERSONAL" Type="Self.ZONA_PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona" />
+            </Principal>
+            <Dependent Role="ZONA_PERSONAL">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="0..1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Distrito_provincia">
           <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
           <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
@@ -125,6 +289,18 @@
             </Principal>
             <Dependent Role="Distrito">
               <PropertyRef Name="idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_FORMAPAGO">
+          <End Role="FORMAPAGO" Type="Self.FORMAPAGO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMAPAGO">
+              <PropertyRef Name="FormaPago" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="FormaPago" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -143,13 +319,47 @@
         <EntityContainer Name="LiderAppModelStoreContainer">
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETPEDIDO" EntityType="Self.DETPEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FORMAPAGO" EntityType="Self.FORMAPAGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPARTO" EntityType="Self.REPARTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RUTAS" EntityType="Self.RUTAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZONA" EntityType="Self.ZONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZONA_PERSONAL" EntityType="Self.ZONA_PERSONAL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="Self.FK__CLIENTE__Zona__4959E263">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETPEDIDO__Pedid__55BFB948" Association="Self.FK__DETPEDIDO__Pedid__55BFB948">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__Personal__68D28DBC" Association="Self.FK__PEDIDO__Personal__68D28DBC">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ZONA_PERS__Perso__6501FCD8" Association="Self.FK__ZONA_PERS__Perso__6501FCD8">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ZONA_PERSO__Zona__65F62111" Association="Self.FK__ZONA_PERSO__Zona__65F62111">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_Distrito" Association="Self.FK_CLIENTE_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
           <AssociationSet Name="FK_Distrito_provincia" Association="Self.FK_Distrito_provincia">
             <End Role="provincia" EntitySet="provincia" />
             <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_FORMAPAGO" Association="Self.FK_PEDIDO_FORMAPAGO">
+            <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
           <AssociationSet Name="FK_provincia_Departamento" Association="Self.FK_provincia_Departamento">
             <End Role="Departamento" EntitySet="Departamento" />
@@ -207,6 +417,9 @@
           <Property Name="dia2" Type="Int16" />
           <Property Name="EstadoCli" Type="Byte" />
           <Property Name="Correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Distrito" Relationship="LiderAppModel.CLIENTEDistrito" FromRole="CLIENTE" ToRole="Distrito" />
+          <NavigationProperty Name="ZONA1" Relationship="LiderAppModel.FK__CLIENTE__Zona__4959E263" FromRole="CLIENTE" ToRole="ZONA" />
+          <NavigationProperty Name="Distrito1" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="CLIENTE" ToRole="Distrito" />
         </EntityType>
         <EntityType Name="PERSONAL">
           <Key>
@@ -233,6 +446,8 @@
           <Property Name="pparticipa" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="pcuota" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="supercodigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PERSONAL" ToRole="PEDIDO" />
+          <NavigationProperty Name="ZONA_PERSONAL" Relationship="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8" FromRole="PERSONAL" ToRole="ZONA_PERSONAL" />
         </EntityType>
         <EntityContainer Name="LiderAppEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
@@ -249,6 +464,48 @@
             <End Role="Distrito" EntitySet="Distrito" />
           </AssociationSet>
           <EntitySet Name="FORMAPAGO" EntityType="LiderAppModel.FORMAPAGO" />
+          <EntitySet Name="DETPEDIDO" EntityType="LiderAppModel.DETPEDIDO" />
+          <EntitySet Name="PEDIDO" EntityType="LiderAppModel.PEDIDO" />
+          <AssociationSet Name="FK__DETPEDIDO__Pedid__55BFB948" Association="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_FORMAPAGO" Association="LiderAppModel.FK_PEDIDO_FORMAPAGO">
+            <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__Personal__68D28DBC" Association="LiderAppModel.FK__PEDIDO__Personal__68D28DBC">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTEDistrito" Association="LiderAppModel.CLIENTEDistrito">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <EntitySet Name="REPARTO" EntityType="LiderAppModel.REPARTO" />
+          <EntitySet Name="ZONA" EntityType="LiderAppModel.ZONA" />
+          <EntitySet Name="ZONA_PERSONAL" EntityType="LiderAppModel.ZONA_PERSONAL" />
+          <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="LiderAppModel.FK__CLIENTE__Zona__4959E263">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_Distrito" Association="LiderAppModel.FK_CLIENTE_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ZONA_PERS__Perso__6501FCD8" Association="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ZONA_PERSO__Zona__65F62111" Association="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <EntitySet Name="RUTAS" EntityType="LiderAppModel.RUTAS" />
+          <AssociationSet Name="REPARTORUTAS" Association="LiderAppModel.REPARTORUTAS">
+            <End Role="REPARTO" EntitySet="REPARTO" />
+            <End Role="RUTAS" EntitySet="RUTAS" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Departamento">
           <Key>
@@ -267,6 +524,8 @@
           <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
           <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="provincia" Relationship="LiderAppModel.FK_Distrito_provincia" FromRole="Distrito" ToRole="provincia" />
+          <NavigationProperty Name="CLIENTE" Relationship="LiderAppModel.CLIENTEDistrito" FromRole="Distrito" ToRole="CLIENTE" />
+          <NavigationProperty Name="CLIENTE1" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="Distrito" ToRole="CLIENTE" />
         </EntityType>
         <EntityType Name="provincia">
           <Key>
@@ -314,7 +573,218 @@
           <Property Name="Nrodia" Type="Byte" Nullable="false" />
           <Property Name="contado" Type="Boolean" Nullable="false" />
           <Property Name="DiasFinta" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="LiderAppModel.FK_PEDIDO_FORMAPAGO" FromRole="FORMAPAGO" ToRole="PEDIDO" />
         </EntityType>
+        <EntityType Name="DETPEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido" />
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="Pedido" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="PrecUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="Cantidad" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TipoPrecio" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TranGratuita" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="lote" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fvctolote" Type="DateTime" Precision="3" />
+          <Property Name="flgSurtido" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IDBonificacion" Type="Int32" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioNeto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Descuento" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Recargo" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Afecto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Bonif" Type="Boolean" />
+          <NavigationProperty Name="PEDIDO1" Relationship="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="DETPEDIDO" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido1" />
+          </Key>
+          <Property Name="Pedido1" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Cliente" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="FormaPago" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="Reparto" Type="Boolean" Nullable="false" />
+          <Property Name="TipoPersona" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Procesado" Type="Boolean" Nullable="false" />
+          <Property Name="rsocial" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="dni" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="encargado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="npersonal" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="nencargado" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="gestion" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ptollegada" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="distllegada" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="pdscto" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="dscto" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="tipodoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="flagCobertura" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha_web" Type="DateTime" Precision="3" />
+          <Property Name="statusWeb" Type="Boolean" />
+          <Property Name="Aprobado" Type="Boolean" />
+          <NavigationProperty Name="DETPEDIDO" Relationship="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="PEDIDO" ToRole="DETPEDIDO" />
+          <NavigationProperty Name="FORMAPAGO1" Relationship="LiderAppModel.FK_PEDIDO_FORMAPAGO" FromRole="PEDIDO" ToRole="FORMAPAGO" />
+          <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PEDIDO" ToRole="PERSONAL" />
+        </EntityType>
+        <Association Name="FK__DETPEDIDO__Pedid__55BFB948">
+          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="1" />
+          <End Type="LiderAppModel.DETPEDIDO" Role="DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="Pedido1" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_FORMAPAGO">
+          <End Type="LiderAppModel.FORMAPAGO" Role="FORMAPAGO" Multiplicity="1" />
+          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMAPAGO">
+              <PropertyRef Name="FormaPago1" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="FormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEDIDO__Personal__68D28DBC">
+          <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
+          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal1" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTEDistrito">
+          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="Cliente1" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="REPARTO">
+          <Key>
+            <PropertyRef Name="Ruta" />
+            <PropertyRef Name="Dia" />
+            <PropertyRef Name="Personal" />
+          </Key>
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Dia" Type="Byte" Nullable="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="RUTAS" Relationship="LiderAppModel.REPARTORUTAS" FromRole="REPARTO" ToRole="RUTAS" />
+        </EntityType>
+        <EntityType Name="ZONA">
+          <Key>
+            <PropertyRef Name="Zona1" />
+          </Key>
+          <Property Name="Zona1" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="Distancia" Type="Int32" Nullable="false" />
+          <Property Name="Riesgo" Type="Boolean" Nullable="false" />
+          <Property Name="proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="DesCorta" Type="String" Nullable="false" MaxLength="70" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="LiderAppModel.FK__CLIENTE__Zona__4959E263" FromRole="ZONA" ToRole="CLIENTE" />
+          <NavigationProperty Name="ZONA_PERSONAL" Relationship="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" FromRole="ZONA" ToRole="ZONA_PERSONAL" />
+        </EntityType>
+        <EntityType Name="ZONA_PERSONAL">
+          <Key>
+            <PropertyRef Name="Personal" />
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Dia" Type="DateTime" Precision="3" />
+          <Property Name="Numero" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8" FromRole="ZONA_PERSONAL" ToRole="PERSONAL" />
+          <NavigationProperty Name="ZONA1" Relationship="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" FromRole="ZONA_PERSONAL" ToRole="ZONA" />
+        </EntityType>
+        <Association Name="FK__CLIENTE__Zona__4959E263">
+          <End Type="LiderAppModel.ZONA" Role="ZONA" Multiplicity="1" />
+          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona1" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_Distrito">
+          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="0..1" />
+          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ZONA_PERS__Perso__6501FCD8">
+          <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
+          <End Type="LiderAppModel.ZONA_PERSONAL" Role="ZONA_PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal1" />
+            </Principal>
+            <Dependent Role="ZONA_PERSONAL">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ZONA_PERSO__Zona__65F62111">
+          <End Type="LiderAppModel.ZONA" Role="ZONA" Multiplicity="1" />
+          <End Type="LiderAppModel.ZONA_PERSONAL" Role="ZONA_PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona1" />
+            </Principal>
+            <Dependent Role="ZONA_PERSONAL">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RUTAS">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.REPARTORUTAS" FromRole="RUTAS" ToRole="REPARTO" />
+        </EntityType>
+        <Association Name="REPARTORUTAS">
+          <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="1" />
+          <End Type="LiderAppModel.RUTAS" Role="RUTAS" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="RUTAS">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="REPARTO">
+              <PropertyRef Name="Ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -435,6 +905,100 @@
                 <ScalarProperty Name="PlazoMax" ColumnName="PlazoMax" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="FormaPago1" ColumnName="FormaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETPEDIDO">
+            <EntityTypeMapping TypeName="LiderAppModel.DETPEDIDO">
+              <MappingFragment StoreEntitySet="DETPEDIDO">
+                <ScalarProperty Name="Bonif" ColumnName="Bonif" />
+                <ScalarProperty Name="Afecto" ColumnName="Afecto" />
+                <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="PrecioNeto" ColumnName="PrecioNeto" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="IDBonificacion" ColumnName="IDBonificacion" />
+                <ScalarProperty Name="flgSurtido" ColumnName="flgSurtido" />
+                <ScalarProperty Name="fvctolote" ColumnName="fvctolote" />
+                <ScalarProperty Name="lote" ColumnName="lote" />
+                <ScalarProperty Name="TranGratuita" ColumnName="TranGratuita" />
+                <ScalarProperty Name="TipoPrecio" ColumnName="TipoPrecio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecUnit" ColumnName="PrecUnit" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Pedido" ColumnName="Pedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDO">
+            <EntityTypeMapping TypeName="LiderAppModel.PEDIDO">
+              <MappingFragment StoreEntitySet="PEDIDO">
+                <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+                <ScalarProperty Name="statusWeb" ColumnName="statusWeb" />
+                <ScalarProperty Name="Fecha_web" ColumnName="Fecha_web" />
+                <ScalarProperty Name="flagCobertura" ColumnName="flagCobertura" />
+                <ScalarProperty Name="tipodoc" ColumnName="tipodoc" />
+                <ScalarProperty Name="dscto" ColumnName="dscto" />
+                <ScalarProperty Name="pdscto" ColumnName="pdscto" />
+                <ScalarProperty Name="distllegada" ColumnName="distllegada" />
+                <ScalarProperty Name="ptollegada" ColumnName="ptollegada" />
+                <ScalarProperty Name="gestion" ColumnName="gestion" />
+                <ScalarProperty Name="nencargado" ColumnName="nencargado" />
+                <ScalarProperty Name="npersonal" ColumnName="npersonal" />
+                <ScalarProperty Name="encargado" ColumnName="encargado" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="rsocial" ColumnName="rsocial" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+                <ScalarProperty Name="TipoPersona" ColumnName="TipoPersona" />
+                <ScalarProperty Name="Reparto" ColumnName="Reparto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Pedido1" ColumnName="Pedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPARTO">
+            <EntityTypeMapping TypeName="LiderAppModel.REPARTO">
+              <MappingFragment StoreEntitySet="REPARTO">
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZONA">
+            <EntityTypeMapping TypeName="LiderAppModel.ZONA">
+              <MappingFragment StoreEntitySet="ZONA">
+                <ScalarProperty Name="DesCorta" ColumnName="DesCorta" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="Riesgo" ColumnName="Riesgo" />
+                <ScalarProperty Name="Distancia" ColumnName="Distancia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Zona1" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZONA_PERSONAL">
+            <EntityTypeMapping TypeName="LiderAppModel.ZONA_PERSONAL">
+              <MappingFragment StoreEntitySet="ZONA_PERSONAL">
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RUTAS">
+            <EntityTypeMapping TypeName="LiderAppModel.RUTAS">
+              <MappingFragment StoreEntitySet="RUTAS">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

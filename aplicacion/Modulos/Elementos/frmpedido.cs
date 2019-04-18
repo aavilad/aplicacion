@@ -105,7 +105,7 @@ namespace xtraForm.Modulos.Elementos
                     entidad.idasociado = proceso.ConsultarEntero("IDAsociado", "ItemBonificacion", "IDBonificacion = " + entidad.idbonificacion);
                     foreach (DataGridViewRow F01 in dataGridView1.Rows)
                     {
-                        if (Convert.ToInt32(F01.Cells["IDBonificacion"].Value) > 0)
+                        if (Convert.ToInt32(F01.Cells["IDBonificacion"].Value == string.Empty ? 0 : F01.Cells["IDBonificacion"].Value) > 0)
                         {
                             if (entidad.codigoexclusion == Convert.ToInt32(F01.Cells["IDBonificacion"].Value))
                             {
@@ -133,7 +133,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -151,7 +151,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -169,7 +169,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -192,7 +192,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -210,7 +210,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -228,7 +228,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -256,7 +256,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -274,7 +274,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -292,7 +292,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -315,7 +315,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -333,7 +333,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -351,7 +351,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.i, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -379,7 +379,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -397,7 +397,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -415,7 +415,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -438,7 +438,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -456,7 +456,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -474,7 +474,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -502,7 +502,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -520,7 +520,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.cantidadmaximacliente, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -538,7 +538,7 @@ namespace xtraForm.Modulos.Elementos
                                             {
                                                 dataGridView1.Rows.Add(
                                                     entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                    entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                    entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                     0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                 dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                 dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -561,7 +561,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -579,7 +579,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.cantidadmaximacliente, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.cantidadmaximacliente, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -597,7 +597,7 @@ namespace xtraForm.Modulos.Elementos
                                                 {
                                                     dataGridView1.Rows.Add(
                                                         entidad.codigoregalo, proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + entidad.codigoregalo + "'"),
-                                                        entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"),1,
+                                                        entidad.x, 0, proceso.ConsultarCadena("UniMed", "producto", "producto = '" + entidad.codigoregalo + "'"), 1,
                                                         0.00, 0.00, 0.00, 0.00, 0.00, true, false, true, entidad.idbonificacion);
                                                     dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                                                     dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
@@ -620,20 +620,16 @@ namespace xtraForm.Modulos.Elementos
             Existe = false;
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            if (proceso.MensageError("Cancelar Proceso") == DialogResult.Yes)
-                this.Close();
-        }
+        private void btnCancelar_Click(object sender, EventArgs e) { if (proceso.MensageError("Cancelar Proceso") == DialogResult.Yes) this.Close(); }
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             Filtros.frmConsultar frmconsultar = new Filtros.frmConsultar();
             proceso.consultar(@"
-            SELECT        
+            SELECT
             dbo.Vva_Cp.Fecha, dbo.Vva_Cp.NrDoc AS Codigo, dbo.Vva_Cp.TpDoc AS Tipo, dbo.Vva_Cp.Comprobante, SUM(dbo.Vva_ItemCp.Cantidad * dbo.Vva_ItemCp.Precio) 
             AS Importe, dbo.PROVEEDOR.RazonSocial AS Proveedor
-            FROM            
+            FROM
             dbo.Vva_Cp INNER JOIN
             dbo.Vva_ItemCp ON dbo.Vva_Cp.TpDoc = dbo.Vva_ItemCp.TpDoc AND dbo.Vva_Cp.NrDoc = dbo.Vva_ItemCp.NrDoc INNER JOIN
             dbo.PROVEEDOR ON dbo.Vva_ItemCp.IDProveedor = dbo.PROVEEDOR.Proveedor
@@ -648,77 +644,71 @@ namespace xtraForm.Modulos.Elementos
         private void btnCredito_CheckedChanged(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
-            {
-                if (
-                    proceso.ConsultarVerdad("credito", "Vva_Cliente", "Codigo = '" + txtcdCLiente.Text.Trim() + "'"))
-                {
+                if (proceso.ConsultarVerdad("credito", "Vva_Cliente", "Codigo = '" + txtcdCLiente.Text.Trim() + "'"))
                     switch (btnCredito.Checked)
                     {
                         case true:
                             Maestro.frmCondicion frmcondicion = new Maestro.frmCondicion();
-                            frmcondicion.dataGridView1.DataSource = proceso.ConsultarTabla_("FormaPago", "FormaPago not in ('C','K')");
+                            frmcondicion.dataGridView1.DataSource = proceso.ConsultarTabla_("FormaPago", "Contado != 1");
                             frmcondicion.pasar += new Maestro.frmCondicion.variable(formapago);
                             frmcondicion.StartPosition = FormStartPosition.CenterScreen;
                             frmcondicion.ShowDialog();
                             foreach (DataGridViewRow dr in dataGridView1.Rows)
-                            {
                                 if (dr.Cells["Codigo"].Value != null && dr.Cells["Descripcion"] != null)
                                 {
-                                    entidad.codigo = dr.Cells["Codigo"].Value.ToString();
+                                    switch (dr.Cells["TpPrecio"].Value)
+                                    {
+                                        case 1:
+                                            producto.CodigoPrecio = "CR_MENOR";
+                                            dr.Cells["TpPrecio"].Value = 3;
+                                            break;
+                                        case 2:
+                                            producto.CodigoPrecio = "CR_MAYOR";
+                                            dr.Cells["TpPrecio"].Value = 4;
+                                            break;
+                                        case 6:
+                                            producto.CodigoPrecio = "ESPECIAL05";
+                                            dr.Cells["TpPrecio"].Value = 5;
+                                            break;
+                                    }
+                                    producto.Codigo = Convert.ToString(dr.Cells["Codigo"].Value);
                                     dr.Cells["Credito"].Value = true;
-                                    entidad.tipoprecio = proceso.ConsultarEntero("clase", "personal", "personal = '" + txtcdVendedor.Text.Trim() + "'");
-                                    if (entidad.tipoprecio == 1)
-                                    {
-
-                                    }
-                                    if (entidad.tipoprecio == 2)
-                                    {
-
-                                    }
-                                    if (entidad.tipoprecio == 3)
-                                    {
-                                        dr.Cells["PrecioUnitario"].Value = proceso.ConsultarCadena("PrecMenCredito", "producto", "producto = '" + entidad.codigo + "'");
-                                        dr.Cells["PrecioNeto"].Value = proceso.ConsultarCadena("PrecMenCredito", "producto", "producto = '" + entidad.codigo + "'");
-                                        dr.Cells["Total"].Value = Convert.ToDecimal(dr.Cells["Cantidad"].Value) * Convert.ToDecimal(dr.Cells["PrecioNeto"].Value);
-                                    }
+                                    dr.Cells["PrecioUnitario"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + entidad.codigo + "'");
+                                    dr.Cells["PrecioNeto"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + entidad.codigo + "'");
+                                    dr.Cells["Total"].Value = Convert.ToDecimal(dr.Cells["Cantidad"].Value) * Convert.ToDecimal(dr.Cells["PrecioNeto"].Value);
                                 }
-                            }
                             break;
                         case false:
                             foreach (DataGridViewRow dr in dataGridView1.Rows)
-                            {
                                 if (dr.Cells["Codigo"].Value != null && dr.Cells["Descripcion"] != null)
                                 {
+                                    switch (dr.Cells["TpPrecio"].Value)
+                                    {
+                                        case 3:
+                                            producto.CodigoPrecio = "C_MENOR";
+                                            dr.Cells["TpPrecio"].Value = 1;
+                                            break;
+                                        case 4:
+                                            producto.CodigoPrecio = "C_MAYOR";
+                                            dr.Cells["TpPrecio"].Value = 2;
+                                            break;
+                                        case 5:
+                                            producto.CodigoPrecio = "ESPECIAL06";
+                                            dr.Cells["TpPrecio"].Value = 6;
+                                            break;
+                                    }
                                     txtformaPago.Text = "CONTADO";
                                     entidad.codigo = dr.Cells["Codigo"].Value.ToString();
                                     dr.Cells["Credito"].Value = false;
-                                    entidad.tipoprecio = proceso.ConsultarEntero("clase", "personal", "personal = '" + txtcdVendedor.Text.Trim() + "'");
-                                    if (entidad.tipoprecio == 1)
-                                    {
-
-                                    }
-                                    if (entidad.tipoprecio == 2)
-                                    {
-
-                                    }
-                                    if (entidad.tipoprecio == 3)
-                                    {
-                                        dr.Cells["PrecioUnitario"].Value = proceso.ConsultarCadena("PrecMenContado", "producto", "producto = '" + entidad.codigo + "'");
-                                        dr.Cells["PrecioNeto"].Value = proceso.ConsultarCadena("PrecMenContado", "producto", "producto = '" + entidad.codigo + "'");
-                                        dr.Cells["Total"].Value = Convert.ToDecimal(dr.Cells["Cantidad"].Value) * Convert.ToDecimal(dr.Cells["PrecioNeto"].Value);
-                                    }
-
+                                    dr.Cells["PrecioUnitario"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + entidad.codigo + "'");
+                                    dr.Cells["PrecioNeto"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + entidad.codigo + "'");
+                                    dr.Cells["Total"].Value = Convert.ToDecimal(dr.Cells["Cantidad"].Value) * Convert.ToDecimal(dr.Cells["PrecioNeto"].Value);
                                 }
-
-                            }
                             break;
                     }
-                }
                 else
-                {
                     MessageBox.Show("Cliente no tiene habilitado condicion de credito");
-                }
-            }
+
         }
 
         private void btnImportar_Click(object sender, EventArgs e)
@@ -831,7 +821,7 @@ namespace xtraForm.Modulos.Elementos
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             index = e.RowIndex;
-            cantidadpedido = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidadPedido"].Value);
+            cantidadpedido = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantpedido"].Value);
             if (!Existe)
             {
                 switch (pedido.TipoLista)
@@ -893,15 +883,39 @@ namespace xtraForm.Modulos.Elementos
                         break;
                     case "Descripcion":
                         if (dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value == null)
-                            Productos(@"select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1");
+                            Productos(@"select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where   = 1");
                         else if (proceso.ConsultarTabla_("Vva_producto", "descripcion like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) + "%'").Rows.Count > 0)
-                            Productos(@"select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and Codigo like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) + "%'");
+                            Productos(@"select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and Descripcion like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) + "%'");
                         else
                         {
                             MessageBox.Show("Codigo no existe o esta desactivo");
                             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Descripcion"];
                             dataGridView1.BeginEdit(true);
                         }
+                        break;
+                    case "Cantidad":
+                        if (proceso.ExistenciaStock(Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value), cantidadpedido, Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value)))
+                        {
+                            var i = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value) - Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
+                            dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
+                            dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = i > 0 ? i * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                            dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = i < 0 ? Math.Abs(i) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                            calculartotal();
+                        }
+                        else
+                        {
+                            MessageBox.Show("stock insuficiente");
+                            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"];
+                            dataGridView1.BeginEdit(true);
+                        }
+
+                        break;
+                    case "PrecioNeto":
+                        var j = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value) - Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
+                        dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
+                        dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = j > 0 ? j * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                        dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = j < 0 ? Math.Abs(j) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                        calculartotal();
                         break;
                 }
             }
@@ -974,25 +988,18 @@ namespace xtraForm.Modulos.Elementos
             else
                 dxErrorProvider1.ClearErrors();
         }
-        void formapago(string condicion)
-        {
-            txtformaPago.Text = condicion;
-        }
+        void formapago(string condicion) => txtformaPago.Text = condicion;
 
         private void frmpedido_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Escape)
-            {
                 btnCancelar_Click(sender, e);
-            }
         }
 
         private void frmpedido_Load(object sender, EventArgs e)
         {
             dataGridView1.RowTemplate.Height = 18;
             dxErrorProvider1.ClearErrors();
-            dataGridView1.Columns["Cantidad"].DefaultCellStyle.Format = "##,##";
-
         }
 
         private void txtcdAlmacen_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -1226,10 +1233,7 @@ namespace xtraForm.Modulos.Elementos
                 dxErrorProvider1.ClearErrors();
         }
 
-        private void txtnmCliente_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            txtcdCLiente_ButtonClick(sender, e);
-        }
+        private void txtnmCliente_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e) => txtcdCLiente_ButtonClick(sender, e);
 
         private void txtnmCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
