@@ -6,7 +6,7 @@ namespace xtraForm.Maestro
 {
     public partial class frmCondicion : DevExpress.XtraEditors.XtraForm
     {
-        public delegate void variable(string descripcion);
+        public delegate void variable(string Codigo,string Descripcion);
         public event variable pasar;
         public frmCondicion()
         {
@@ -17,7 +17,7 @@ namespace xtraForm.Maestro
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                pasar(dataGridView1.CurrentRow.Cells["Descripcion"].Value.ToString());
+                pasar(dataGridView1.CurrentRow.Cells["FormaPago"].Value.ToString(),dataGridView1.CurrentRow.Cells["Descripcion"].Value.ToString());
                 this.Close();
             }
 
@@ -29,7 +29,7 @@ namespace xtraForm.Maestro
             {
                 if (dataGridView1.SelectedRows.Count == 1)
                 {
-                    pasar(dataGridView1.CurrentRow.Cells["Descripcion"].Value.ToString());
+                    pasar(dataGridView1.CurrentRow.Cells["FormaPago"].Value.ToString(), dataGridView1.CurrentRow.Cells["Descripcion"].Value.ToString());
                     this.Close();
                 }
             }
@@ -39,7 +39,7 @@ namespace xtraForm.Maestro
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                pasar(dataGridView1.CurrentRow.Cells["Descripcion"].Value.ToString());
+                pasar(dataGridView1.CurrentRow.Cells["FormaPago"].Value.ToString(), dataGridView1.CurrentRow.Cells["Descripcion"].Value.ToString());
                 this.Close();
             }
         }

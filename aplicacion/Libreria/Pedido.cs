@@ -31,5 +31,6 @@ namespace xtraForm.Libreria
         public decimal ValorImpuesto { get; set; }
         public decimal ValorTotal { get; set; }
         public int TipoLista { get; set; }
+        public string TipoPedido { get; set; }
     }
 }

@@ -268,18 +268,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CLIENTE_Distrito">
-          <End Role="Distrito" Type="Self.Distrito" Multiplicity="0..1" />
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Distrito">
-              <PropertyRef Name="iddistrito" />
-            </Principal>
-            <Dependent Role="CLIENTE">
-              <PropertyRef Name="iddistrito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Distrito_provincia">
           <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
           <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
@@ -349,10 +337,6 @@
             <End Role="ZONA" EntitySet="ZONA" />
             <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
           </AssociationSet>
-          <AssociationSet Name="FK_CLIENTE_Distrito" Association="Self.FK_CLIENTE_Distrito">
-            <End Role="Distrito" EntitySet="Distrito" />
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-          </AssociationSet>
           <AssociationSet Name="FK_Distrito_provincia" Association="Self.FK_Distrito_provincia">
             <End Role="provincia" EntitySet="provincia" />
             <End Role="Distrito" EntitySet="Distrito" />
@@ -417,9 +401,9 @@
           <Property Name="dia2" Type="Int16" />
           <Property Name="EstadoCli" Type="Byte" />
           <Property Name="Correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Distrito" Relationship="LiderAppModel.CLIENTEDistrito" FromRole="CLIENTE" ToRole="Distrito" />
           <NavigationProperty Name="ZONA1" Relationship="LiderAppModel.FK__CLIENTE__Zona__4959E263" FromRole="CLIENTE" ToRole="ZONA" />
-          <NavigationProperty Name="Distrito1" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="CLIENTE" ToRole="Distrito" />
+          <NavigationProperty Name="Distrito" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="CLIENTE" ToRole="Distrito" />
+          <NavigationProperty Name="PEDIDO" Relationship="LiderAppModel.FK_PEDIDO_CLIENTE" FromRole="CLIENTE" ToRole="PEDIDO" />
         </EntityType>
         <EntityType Name="PERSONAL">
           <Key>
@@ -448,21 +432,11 @@
           <Property Name="supercodigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PEDIDO" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PERSONAL" ToRole="PEDIDO" />
           <NavigationProperty Name="ZONA_PERSONAL" Relationship="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8" FromRole="PERSONAL" ToRole="ZONA_PERSONAL" />
+          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.FK_REPARTO_RUTAS1" FromRole="PERSONAL" ToRole="REPARTO" />
         </EntityType>
         <EntityContainer Name="LiderAppEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
           <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" />
-          <EntitySet Name="Departamento" EntityType="LiderAppModel.Departamento" />
-          <EntitySet Name="Distrito" EntityType="LiderAppModel.Distrito" />
-          <EntitySet Name="provincia" EntityType="LiderAppModel.provincia" />
-          <AssociationSet Name="FK_provincia_Departamento" Association="LiderAppModel.FK_provincia_Departamento">
-            <End Role="Departamento" EntitySet="Departamento" />
-            <End Role="provincia" EntitySet="provincia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Distrito_provincia" Association="LiderAppModel.FK_Distrito_provincia">
-            <End Role="provincia" EntitySet="provincia" />
-            <End Role="Distrito" EntitySet="Distrito" />
-          </AssociationSet>
           <EntitySet Name="FORMAPAGO" EntityType="LiderAppModel.FORMAPAGO" />
           <EntitySet Name="DETPEDIDO" EntityType="LiderAppModel.DETPEDIDO" />
           <EntitySet Name="PEDIDO" EntityType="LiderAppModel.PEDIDO" />
@@ -478,19 +452,10 @@
             <End Role="PERSONAL" EntitySet="PERSONAL" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
-          <AssociationSet Name="CLIENTEDistrito" Association="LiderAppModel.CLIENTEDistrito">
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-            <End Role="Distrito" EntitySet="Distrito" />
-          </AssociationSet>
-          <EntitySet Name="REPARTO" EntityType="LiderAppModel.REPARTO" />
           <EntitySet Name="ZONA" EntityType="LiderAppModel.ZONA" />
           <EntitySet Name="ZONA_PERSONAL" EntityType="LiderAppModel.ZONA_PERSONAL" />
           <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="LiderAppModel.FK__CLIENTE__Zona__4959E263">
             <End Role="ZONA" EntitySet="ZONA" />
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CLIENTE_Distrito" Association="LiderAppModel.FK_CLIENTE_Distrito">
-            <End Role="Distrito" EntitySet="Distrito" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <AssociationSet Name="FK__ZONA_PERS__Perso__6501FCD8" Association="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8">
@@ -501,68 +466,36 @@
             <End Role="ZONA" EntitySet="ZONA" />
             <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
           </AssociationSet>
+          <EntitySet Name="REPARTO" EntityType="LiderAppModel.REPARTO" />
           <EntitySet Name="RUTAS" EntityType="LiderAppModel.RUTAS" />
-          <AssociationSet Name="REPARTORUTAS" Association="LiderAppModel.REPARTORUTAS">
-            <End Role="REPARTO" EntitySet="REPARTO" />
+          <AssociationSet Name="FK_REPARTO_RUTAS" Association="LiderAppModel.FK_REPARTO_RUTAS">
             <End Role="RUTAS" EntitySet="RUTAS" />
+            <End Role="REPARTO" EntitySet="REPARTO" />
           </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Departamento">
-          <Key>
-            <PropertyRef Name="iddpto" />
-          </Key>
-          <Property Name="iddpto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
-          <Property Name="codunilever" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="provincia" Relationship="LiderAppModel.FK_provincia_Departamento" FromRole="Departamento" ToRole="provincia" />
-        </EntityType>
-        <EntityType Name="Distrito">
-          <Key>
-            <PropertyRef Name="iddistrito" />
-          </Key>
-          <Property Name="iddistrito" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
-          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
-          <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="provincia" Relationship="LiderAppModel.FK_Distrito_provincia" FromRole="Distrito" ToRole="provincia" />
-          <NavigationProperty Name="CLIENTE" Relationship="LiderAppModel.CLIENTEDistrito" FromRole="Distrito" ToRole="CLIENTE" />
-          <NavigationProperty Name="CLIENTE1" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="Distrito" ToRole="CLIENTE" />
-        </EntityType>
-        <EntityType Name="provincia">
-          <Key>
-            <PropertyRef Name="idprovincia" />
-          </Key>
-          <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
-          <Property Name="iddpto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="codunilever" Type="Int32" Nullable="false" />
-          <Property Name="region" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Departamento" Relationship="LiderAppModel.FK_provincia_Departamento" FromRole="provincia" ToRole="Departamento" />
-          <NavigationProperty Name="Distrito" Relationship="LiderAppModel.FK_Distrito_provincia" FromRole="provincia" ToRole="Distrito" />
-        </EntityType>
-        <Association Name="FK_provincia_Departamento">
-          <End Type="LiderAppModel.Departamento" Role="Departamento" Multiplicity="1" />
-          <End Type="LiderAppModel.provincia" Role="provincia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Departamento">
-              <PropertyRef Name="iddpto" />
-            </Principal>
-            <Dependent Role="provincia">
-              <PropertyRef Name="iddpto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Distrito_provincia">
-          <End Type="LiderAppModel.provincia" Role="provincia" Multiplicity="1" />
-          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="provincia">
-              <PropertyRef Name="idprovincia" />
-            </Principal>
-            <Dependent Role="Distrito">
-              <PropertyRef Name="idprovincia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+          <EntitySet Name="Departamento" EntityType="LiderAppModel.Departamento" />
+          <EntitySet Name="provincia" EntityType="LiderAppModel.provincia" />
+          <AssociationSet Name="FK_provincia_Departamento" Association="LiderAppModel.FK_provincia_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="provincia" EntitySet="provincia" />
+          </AssociationSet>
+          <EntitySet Name="Distrito" EntityType="LiderAppModel.Distrito" />
+          <AssociationSet Name="FK_CLIENTE_Distrito" Association="LiderAppModel.FK_CLIENTE_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_provincia" Association="LiderAppModel.FK_Distrito_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPARTO_RUTAS1" Association="LiderAppModel.FK_REPARTO_RUTAS1">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="REPARTO" EntitySet="REPARTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_CLIENTE" Association="LiderAppModel.FK_PEDIDO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="FORMAPAGO">
           <Key>
             <PropertyRef Name="FormaPago1" />
@@ -632,6 +565,7 @@
           <NavigationProperty Name="DETPEDIDO" Relationship="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="PEDIDO" ToRole="DETPEDIDO" />
           <NavigationProperty Name="FORMAPAGO1" Relationship="LiderAppModel.FK_PEDIDO_FORMAPAGO" FromRole="PEDIDO" ToRole="FORMAPAGO" />
           <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PEDIDO" ToRole="PERSONAL" />
+          <NavigationProperty Name="CLIENTE1" Relationship="LiderAppModel.FK_PEDIDO_CLIENTE" FromRole="PEDIDO" ToRole="CLIENTE" />
         </EntityType>
         <Association Name="FK__DETPEDIDO__Pedid__55BFB948">
           <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="1" />
@@ -669,29 +603,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CLIENTEDistrito">
-          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
-          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="CLIENTE">
-              <PropertyRef Name="Cliente1" />
-            </Principal>
-            <Dependent Role="Distrito">
-              <PropertyRef Name="iddistrito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="REPARTO">
-          <Key>
-            <PropertyRef Name="Ruta" />
-            <PropertyRef Name="Dia" />
-            <PropertyRef Name="Personal" />
-          </Key>
-          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="Dia" Type="Byte" Nullable="false" />
-          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="RUTAS" Relationship="LiderAppModel.REPARTORUTAS" FromRole="REPARTO" ToRole="RUTAS" />
-        </EntityType>
         <EntityType Name="ZONA">
           <Key>
             <PropertyRef Name="Zona1" />
@@ -729,18 +640,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CLIENTE_Distrito">
-          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="0..1" />
-          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Distrito">
-              <PropertyRef Name="iddistrito" />
-            </Principal>
-            <Dependent Role="CLIENTE">
-              <PropertyRef Name="iddistrito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ZONA_PERS__Perso__6501FCD8">
           <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
           <End Type="LiderAppModel.ZONA_PERSONAL" Role="ZONA_PERSONAL" Multiplicity="*" />
@@ -765,17 +664,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="REPARTO">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Dia" Type="Byte" Nullable="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="RUTAS" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="REPARTO" ToRole="RUTAS" />
+          <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK_REPARTO_RUTAS1" FromRole="REPARTO" ToRole="PERSONAL" />
+        </EntityType>
         <EntityType Name="RUTAS">
           <Key>
             <PropertyRef Name="codigo" />
           </Key>
           <Property Name="codigo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.REPARTORUTAS" FromRole="RUTAS" ToRole="REPARTO" />
+          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="RUTAS" ToRole="REPARTO" />
         </EntityType>
-        <Association Name="REPARTORUTAS">
-          <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="1" />
+        <Association Name="FK_REPARTO_RUTAS">
           <End Type="LiderAppModel.RUTAS" Role="RUTAS" Multiplicity="1" />
+          <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RUTAS">
               <PropertyRef Name="codigo" />
@@ -785,7 +695,98 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="iddpto" />
+          </Key>
+          <Property Name="iddpto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="codunilever" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="provincia" Relationship="LiderAppModel.FK_provincia_Departamento" FromRole="Departamento" ToRole="provincia" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="iddpto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="codunilever" Type="Int32" Nullable="false" />
+          <Property Name="region" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Departamento" Relationship="LiderAppModel.FK_provincia_Departamento" FromRole="provincia" ToRole="Departamento" />
+          <NavigationProperty Name="Distrito" Relationship="LiderAppModel.FK_Distrito_provincia" FromRole="provincia" ToRole="Distrito" />
+        </EntityType>
+        <Association Name="FK_provincia_Departamento">
+          <End Type="LiderAppModel.Departamento" Role="Departamento" Multiplicity="1" />
+          <End Type="LiderAppModel.provincia" Role="provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="iddpto" />
+            </Principal>
+            <Dependent Role="provincia">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="Distrito" ToRole="CLIENTE" />
+          <NavigationProperty Name="provincia" Relationship="LiderAppModel.FK_Distrito_provincia" FromRole="Distrito" ToRole="provincia" />
+        </EntityType>
+        <Association Name="FK_CLIENTE_Distrito">
+          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="0..1" />
+          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_provincia">
+          <End Type="LiderAppModel.provincia" Role="provincia" Multiplicity="1" />
+          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="idprovincia" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPARTO_RUTAS1">
+          <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
+          <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal1" />
+            </Principal>
+            <Dependent Role="REPARTO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_CLIENTE">
+          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="Cliente1" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -867,35 +868,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Departamento">
-            <EntityTypeMapping TypeName="LiderAppModel.Departamento">
-              <MappingFragment StoreEntitySet="Departamento">
-                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
-                <ScalarProperty Name="descrip" ColumnName="descrip" />
-                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Distrito">
-            <EntityTypeMapping TypeName="LiderAppModel.Distrito">
-              <MappingFragment StoreEntitySet="Distrito">
-                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
-                <ScalarProperty Name="descrip" ColumnName="descrip" />
-                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="provincia">
-            <EntityTypeMapping TypeName="LiderAppModel.provincia">
-              <MappingFragment StoreEntitySet="provincia">
-                <ScalarProperty Name="region" ColumnName="region" />
-                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
-                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
-                <ScalarProperty Name="descrip" ColumnName="descrip" />
-                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FORMAPAGO">
             <EntityTypeMapping TypeName="LiderAppModel.FORMAPAGO">
               <MappingFragment StoreEntitySet="FORMAPAGO">
@@ -963,15 +935,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="REPARTO">
-            <EntityTypeMapping TypeName="LiderAppModel.REPARTO">
-              <MappingFragment StoreEntitySet="REPARTO">
-                <ScalarProperty Name="Personal" ColumnName="Personal" />
-                <ScalarProperty Name="Dia" ColumnName="Dia" />
-                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ZONA">
             <EntityTypeMapping TypeName="LiderAppModel.ZONA">
               <MappingFragment StoreEntitySet="ZONA">
@@ -994,6 +957,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="REPARTO">
+            <EntityTypeMapping TypeName="LiderAppModel.REPARTO">
+              <MappingFragment StoreEntitySet="REPARTO">
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RUTAS">
             <EntityTypeMapping TypeName="LiderAppModel.RUTAS">
               <MappingFragment StoreEntitySet="RUTAS">
@@ -1002,7 +974,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="LiderAppModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincia">
+            <EntityTypeMapping TypeName="LiderAppModel.provincia">
+              <MappingFragment StoreEntitySet="provincia">
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distrito">
+            <EntityTypeMapping TypeName="LiderAppModel.Distrito">
+              <MappingFragment StoreEntitySet="Distrito">
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

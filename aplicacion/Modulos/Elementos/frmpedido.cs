@@ -27,15 +27,29 @@ namespace xtraForm.Modulos.Elementos
             txtcdVendedor.Select();
         }
 
-        public delegate void varaible(string CodigoVendedor, string Nombrevendedor, string CodigoCliente, string NombreCliente, string DocumentoCliente, string gestion, string FormaPago,
-            bool Credito, string Emision, string Entrega, string Observacion, DataGridView dgv);
+        public delegate void varaible(string CdPedido,string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
+            string Gestion,string IdDistrito,DataGridView dgv);
 
         public event varaible pasar;
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //pasar(string CodigoVendedor, string Nombrevendedor, string CodigoCliente, string NombreCliente, string DocumentoCliente, string gestion, string FormaPago,
-            //bool Credito, string Emision, string Entrega, string Observacion, DataGridView dgv);
+            Libreria.Pedido CpPedido = new Libreria.Pedido();
+            CpPedido.NumeroPedido = txtcdDocumento.Text.Trim();
+            CpPedido.CodigoVendedor = txtcdVendedor.Text.Trim();
+            CpPedido.CodigoCliente = txtcdCLiente.Text.Trim();
+            CpPedido.FormaPago = CodigoFP.Text;
+            CpPedido.NombreCliente = txtnmCliente.Text;
+            CpPedido.DocumentoCliente = txtdocCliente.Text.Trim();
+            CpPedido.DireccionCliente = txtnmDireccion.Text;
+            CpPedido.NombreVendedor = txtnmVendedor.Text;
+            CpPedido.Gestion = txtcdGestion.Text.Trim();
+            CpPedido.DistritoCliente = txtcdDistrito.Text.Trim();
+            CpPedido.TipoPedido = txtdocCliente.Text.Trim().Length == 8 ? "B" : "F";
+            pasar(CpPedido.NumeroPedido, CpPedido.TipoPedido, CpPedido.CodigoVendedor, CpPedido.CodigoCliente, CpPedido.FormaPago, Convert.ToDateTime(dateEmision.EditValue), CpPedido.NombreCliente,
+                CpPedido.DocumentoCliente.Length == 8 ? string.Empty: CpPedido.DocumentoCliente,CpPedido.DireccionCliente, CpPedido.DocumentoCliente.Length == 8 ? CpPedido.DocumentoCliente : string.Empty ,
+                CpPedido.NombreVendedor,CpPedido.Gestion,CpPedido.DistritoCliente,dataGridView1);
+            this.Close();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -988,7 +1002,11 @@ namespace xtraForm.Modulos.Elementos
             else
                 dxErrorProvider1.ClearErrors();
         }
-        void formapago(string condicion) => txtformaPago.Text = condicion;
+        void formapago(string Codigo, string condicion)
+        {
+            txtformaPago.Text = condicion;
+            CodigoFP.Text = Codigo;
+        }
 
         private void frmpedido_KeyPress(object sender, KeyPressEventArgs e)
         {
