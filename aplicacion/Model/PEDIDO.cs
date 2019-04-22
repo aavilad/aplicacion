@@ -51,6 +51,5 @@ namespace xtraForm.Model
         public virtual ICollection<DETPEDIDO> DETPEDIDO { get; set; }
         public virtual FORMAPAGO FORMAPAGO1 { get; set; }
         public virtual PERSONAL PERSONAL1 { get; set; }
-        public virtual CLIENTE CLIENTE1 { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace xtraForm.Modulos.Ventas
             string cadena = string.Join(" ", lista_.ToArray());
             condicion(cadena);
         }
-        void GrabarBonificacion(int pkid,string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente,
+        void GrabarBonificacion(int pkid, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente,
             decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, DataGridView dgv)
         {
             var x = proceso.ID("Bonificacion");
@@ -58,7 +58,7 @@ namespace xtraForm.Modulos.Ventas
             {
                 proceso.consultar(Libreria.Constante.Bonificacion, tabla);
                 gridcontrolBonificacion.DataSource = proceso.ds.Tables[tabla];
-                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[0].Visible = true;
                 gridView1.Columns["Proveedor"].GroupIndex = 1;
                 gridView1.Columns["TipoMecanica"].GroupIndex = 2;
                 gridView1.OptionsView.ColumnAutoWidth = false;
@@ -70,13 +70,14 @@ namespace xtraForm.Modulos.Ventas
                 gridView1.RowHeight = 1;
                 gridView1.Appearance.Row.FontSizeDelta = 0;
                 gridView1.BestFitColumns();
+                gridView1.OptionsView.ShowFooter = true;
             }
             else
                 try
                 {
                     proceso.consultar(Libreria.Constante.Bonificacion + " where " + cadena, tabla);
                     gridcontrolBonificacion.DataSource = proceso.ds.Tables[tabla];
-                    gridView1.Columns[0].Visible = false;
+                    gridView1.Columns[0].Visible = true;
                     gridView1.Columns["Proveedor"].GroupIndex = 1;
                     gridView1.Columns["TipoMecanica"].GroupIndex = 2;
                     gridView1.OptionsView.ColumnAutoWidth = false;
@@ -88,9 +89,11 @@ namespace xtraForm.Modulos.Ventas
                     gridView1.RowHeight = 1;
                     gridView1.Appearance.Row.FontSizeDelta = 0;
                     gridView1.BestFitColumns();
+                    gridView1.OptionsView.ShowFooter = true;
                 }
-                catch
+                catch (Exception t)
                 {
+                    MessageBox.Show(t.Message);
                     gridcontrolBonificacion.DataSource = null;
                     gridcontrolBonificacion.Refresh();
                 }
@@ -177,25 +180,28 @@ namespace xtraForm.Modulos.Ventas
 
         private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataTable mapa = new DataTable();
-            mapa.Columns.Add("campos", typeof(System.String));
-            Filtros.frmFiltros filtro = new Filtros.frmFiltros();
-            proceso.consultar("select campo,condicion,valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
-            foreach (string dr in (from t in maestro.bonificacion().Columns.Cast<DataColumn>() select t.ColumnName).ToList())
+            using (var Context = new Model.LiderAppEntities())
             {
-                mapa.Rows.Add(dr);
+                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
+                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
+                i.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DisplayMember = "Descripcion";
+                i.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
+                j.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DisplayMember = "Descripcion";
+                j.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
+                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'" + tabla + "'").ToList();
+                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
+                filtro.StartPosition = FormStartPosition.CenterScreen;
+                foreach (var fila in Context.Filtro.Where(w => w.tabla.Equals(tabla)).ToList())
+                {
+                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
+                }
+                filtro.entidad = tabla;
+                filtro.ShowDialog();
             }
-            foreach (DataRow dr in proceso.ds.Tables[tabla].Rows)
-            {
-                filtro.dataGridView1.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
-            }
-            filtro.tabla = tabla;
-            filtro.cboxCampo.DataSource = mapa;
-            filtro.cboxCampo.DisplayMember = "campos";
-            filtro.cboxCampo.ValueMember = "campos";
-            filtro.pasar += new Filtros.frmFiltros.variables(condicion);
-            filtro.StartPosition = FormStartPosition.CenterScreen;
-            filtro.Show();
         }
 
         private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
@@ -332,6 +338,12 @@ namespace xtraForm.Modulos.Ventas
                     Refrescar();
                 }
             }
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+            try { modificarToolStripMenuItem_Click(sender, e); }
+            catch { }
         }
     }
 }

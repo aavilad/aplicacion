@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace xtraForm.Libreria
 {
@@ -22,5 +23,7 @@ namespace xtraForm.Libreria
             dgc.Appearance.Row.FontSizeDelta = 0;
             dgc.BestFitColumns();
         }
+
     }
+
 }

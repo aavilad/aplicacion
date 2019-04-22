@@ -18,22 +18,16 @@ namespace xtraForm.Modulos.Elementos
 
         private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataTable mapa = new DataTable();
-            mapa.Columns.Add("campos", typeof(System.String));
             Filtros.frmFiltros filtro = new Filtros.frmFiltros();
             proceso.consultar("select campo,condicion,valor,[union] from filtro where tabla = '" + entidad.tabla + "'", entidad.tabla);
-            foreach (string dr in (from t in maestro.Comprobantes().Columns.Cast<DataColumn>() select t.ColumnName).ToList())
-            {
-                mapa.Rows.Add(dr);
-            }
-            foreach (DataRow dr in proceso.ds.Tables[entidad.tabla].Rows)
-            {
-                filtro.dataGridView1.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
-            }
-            filtro.tabla = entidad.tabla;
-            filtro.cboxCampo.DataSource = mapa;
-            filtro.cboxCampo.DisplayMember = "campos";
-            filtro.cboxCampo.ValueMember = "campos";
+            //foreach (DataRow dr in proceso.ds.Tables[entidad.tabla].Rows)
+            //{
+            //    filtro.dataGridView1.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
+            //}
+            //filtro.tabla = entidad.tabla;
+            //filtro.Index0.DataSource = mapa;
+            //filtro.cboxCampo.DisplayMember = "campos";
+            //filtro.cboxCampo.ValueMember = "campos";
             filtro.pasar += new Filtros.frmFiltros.variables(condicion);
             filtro.StartPosition = FormStartPosition.CenterScreen;
 

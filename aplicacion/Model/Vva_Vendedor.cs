@@ -12,14 +12,15 @@ namespace xtraForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class REPARTO
+    public partial class Vva_Vendedor
     {
-        public Nullable<int> PKID { get; set; }
-        public string Ruta { get; set; }
-        public byte Dia { get; set; }
-        public string Personal { get; set; }
-    
-        public virtual PERSONAL PERSONAL1 { get; set; }
-        public virtual RUTAS RUTAS { get; set; }
+        public string Fuerza_Ventas { get; set; }
+        public string Codigo_vendedor { get; set; }
+        public string Nombre_Vendedor { get; set; }
+        public string TipoPersona { get; set; }
+        public string Doc_Identidad { get; set; }
+        public bool Activo { get; set; }
+        public int TpLista { get; set; }
+        public string IDGrupo { get; set; }
     }
 }

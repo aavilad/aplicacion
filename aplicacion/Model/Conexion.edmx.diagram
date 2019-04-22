@@ -5,30 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fa91626330374897a1caa3cf6a2256bd" Name="Diagram1" ZoomLevel="62">
-        <EntityTypeShape EntityType="LiderAppModel.CLIENTE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LiderAppModel.PERSONAL" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LiderAppModel.FORMAPAGO" Width="1.5" PointX="12.25" PointY="4.75" />
-        <EntityTypeShape EntityType="LiderAppModel.DETPEDIDO" Width="1.5" PointX="12.375" PointY="7.875" />
-        <EntityTypeShape EntityType="LiderAppModel.PEDIDO" Width="1.5" PointX="9.75" PointY="5.75" />
+        <EntityTypeShape EntityType="LiderAppModel.PERSONAL" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LiderAppModel.FORMAPAGO" Width="1.5" PointX="3.75" PointY="17.375" />
+        <EntityTypeShape EntityType="LiderAppModel.DETPEDIDO" Width="1.5" PointX="8.25" PointY="12.375" />
+        <EntityTypeShape EntityType="LiderAppModel.ZONA" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="LiderAppModel.ZONA_PERSONAL" Width="1.5" PointX="3" PointY="10.5" />
+        <AssociationConnector Association="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8" />
+        <AssociationConnector Association="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" />
+        <EntityTypeShape EntityType="LiderAppModel.Departamento" Width="1.5" PointX="1.5" PointY="24.75" />
+        <EntityTypeShape EntityType="LiderAppModel.provincia" Width="1.5" PointX="1.5" PointY="21.5" />
+        <AssociationConnector Association="LiderAppModel.FK_provincia_Departamento" />
+        <EntityTypeShape EntityType="LiderAppModel.Distrito" Width="1.5" PointX="3.75" PointY="21.625" />
+        <AssociationConnector Association="LiderAppModel.FK_Distrito_provincia" />
+        <EntityTypeShape EntityType="LiderAppModel.CLIENTE" Width="1.5" PointX="6" PointY="0.75" />
+        <AssociationConnector Association="LiderAppModel.FK__CLIENTE__Zona__4959E263" />
+        <AssociationConnector Association="LiderAppModel.FK_CLIENTE_Distrito" />
+        <EntityTypeShape EntityType="LiderAppModel.PEDIDO" Width="1.5" PointX="6" PointY="11.25" />
+        <EntityTypeShape EntityType="LiderAppModel.RUTAS" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="LiderAppModel.REPARTO" Width="1.5" PointX="3" PointY="13.5" />
         <AssociationConnector Association="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948" />
         <AssociationConnector Association="LiderAppModel.FK_PEDIDO_FORMAPAGO" />
         <AssociationConnector Association="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" />
-        <EntityTypeShape EntityType="LiderAppModel.ZONA" Width="1.5" PointX="2.875" PointY="3.375" />
-        <EntityTypeShape EntityType="LiderAppModel.ZONA_PERSONAL" Width="1.5" PointX="2.75" PointY="6.625" />
-        <AssociationConnector Association="LiderAppModel.FK__CLIENTE__Zona__4959E263" />
-        <AssociationConnector Association="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8" />
-        <AssociationConnector Association="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" />
-        <EntityTypeShape EntityType="LiderAppModel.REPARTO" Width="1.5" PointX="7" PointY="3" />
-        <EntityTypeShape EntityType="LiderAppModel.RUTAS" Width="1.5" PointX="8.75" PointY="1.625" />
+        <AssociationConnector Association="LiderAppModel.FK_REPARTO_PERSONAL" />
         <AssociationConnector Association="LiderAppModel.FK_REPARTO_RUTAS" />
-        <EntityTypeShape EntityType="LiderAppModel.Departamento" Width="1.5" PointX="6.125" PointY="0.5" />
-        <EntityTypeShape EntityType="LiderAppModel.provincia" Width="1.5" PointX="4.375" PointY="0.5" />
-        <AssociationConnector Association="LiderAppModel.FK_provincia_Departamento" />
-        <EntityTypeShape EntityType="LiderAppModel.Distrito" Width="1.5" PointX="2.5" PointY="0.625" />
-        <AssociationConnector Association="LiderAppModel.FK_CLIENTE_Distrito" />
-        <AssociationConnector Association="LiderAppModel.FK_Distrito_provincia" />
-        <AssociationConnector Association="LiderAppModel.FK_REPARTO_RUTAS1" />
-        <AssociationConnector Association="LiderAppModel.FK_PEDIDO_CLIENTE" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_Vendedor" Width="1.5" PointX="11" PointY="1.125" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_Producto" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Filtro" Width="1.5" PointX="8.375" PointY="4.75" />
+        <EntityTypeShape EntityType="LiderAppModel.FiltroConfiguracion" Width="1.5" PointX="10.25" PointY="4.875" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

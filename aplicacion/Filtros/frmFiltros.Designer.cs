@@ -30,20 +30,15 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Campo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Union = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Index0 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Index1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Index2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Index3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnAceptar = new DevExpress.XtraEditors.SimpleButton();
-            this.cboxCampo = new System.Windows.Forms.ComboBox();
-            this.cboxCondicion = new System.Windows.Forms.ComboBox();
-            this.txtValor = new DevExpress.XtraEditors.TextEdit();
-            this.cboxUnion = new System.Windows.Forms.ComboBox();
             this.btnQuitar = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtValor.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -52,12 +47,13 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Ivory;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 8.25F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -65,44 +61,52 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Campo,
-            this.Condicion,
-            this.Valor,
-            this.Union});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 24);
+            this.Index0,
+            this.Index1,
+            this.Index2,
+            this.Index3});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(505, 169);
+            this.dataGridView1.Size = new System.Drawing.Size(505, 193);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
-            // Campo
+            // Index0
             // 
-            this.Campo.HeaderText = "Campo";
-            this.Campo.Name = "Campo";
-            this.Campo.ReadOnly = true;
-            this.Campo.Width = 121;
+            this.Index0.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Index0.HeaderText = "CAMPO";
+            this.Index0.Name = "Index0";
+            this.Index0.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Index0.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Index0.Width = 121;
             // 
-            // Condicion
+            // Index1
             // 
-            this.Condicion.HeaderText = "Condicion";
-            this.Condicion.Name = "Condicion";
-            this.Condicion.ReadOnly = true;
-            this.Condicion.Width = 121;
+            this.Index1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Index1.HeaderText = "CONDICION";
+            this.Index1.Name = "Index1";
+            this.Index1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Index1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Index1.Width = 121;
             // 
-            // Valor
+            // Index2
             // 
-            this.Valor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
+            this.Index2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Index2.HeaderText = "VALOR";
+            this.Index2.Name = "Index2";
             // 
-            // Union
+            // Index3
             // 
-            this.Union.HeaderText = "Y/O";
-            this.Union.Name = "Union";
-            this.Union.Width = 121;
+            this.Index3.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Index3.HeaderText = "Y/O";
+            this.Index3.Name = "Index3";
+            this.Index3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Index3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Index3.Width = 121;
             // 
             // btnAgregar
             // 
@@ -131,40 +135,6 @@
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // cboxCampo
-            // 
-            this.cboxCampo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cboxCampo.FormattingEnabled = true;
-            this.cboxCampo.Location = new System.Drawing.Point(42, 3);
-            this.cboxCampo.Name = "cboxCampo";
-            this.cboxCampo.Size = new System.Drawing.Size(121, 21);
-            this.cboxCampo.TabIndex = 4;
-            // 
-            // cboxCondicion
-            // 
-            this.cboxCondicion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cboxCondicion.FormattingEnabled = true;
-            this.cboxCondicion.Location = new System.Drawing.Point(163, 3);
-            this.cboxCondicion.Name = "cboxCondicion";
-            this.cboxCondicion.Size = new System.Drawing.Size(121, 21);
-            this.cboxCondicion.TabIndex = 5;
-            // 
-            // txtValor
-            // 
-            this.txtValor.Location = new System.Drawing.Point(284, 3);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(100, 20);
-            this.txtValor.TabIndex = 6;
-            // 
-            // cboxUnion
-            // 
-            this.cboxUnion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cboxUnion.FormattingEnabled = true;
-            this.cboxUnion.Location = new System.Drawing.Point(384, 3);
-            this.cboxUnion.Name = "cboxUnion";
-            this.cboxUnion.Size = new System.Drawing.Size(121, 21);
-            this.cboxUnion.TabIndex = 7;
-            // 
             // btnQuitar
             // 
             this.btnQuitar.Location = new System.Drawing.Point(430, 195);
@@ -181,17 +151,12 @@
             this.ClientSize = new System.Drawing.Size(508, 249);
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.cboxUnion);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.cboxCondicion);
-            this.Controls.Add(this.cboxCampo);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmFiltros";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtValor.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -200,15 +165,11 @@
         private DevExpress.XtraEditors.SimpleButton btnAgregar;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
         private DevExpress.XtraEditors.SimpleButton btnAceptar;
-        private System.Windows.Forms.ComboBox cboxCondicion;
-        private DevExpress.XtraEditors.TextEdit txtValor;
-        private System.Windows.Forms.ComboBox cboxUnion;
-        public System.Windows.Forms.ComboBox cboxCampo;
         private DevExpress.XtraEditors.SimpleButton btnQuitar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Campo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Union;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Index0;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Index1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Index2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Index3;
     }
 }

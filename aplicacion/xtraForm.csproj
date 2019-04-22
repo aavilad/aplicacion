@@ -273,6 +273,12 @@
     <Compile Include="Model\Distrito.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Filtro.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FiltroConfiguracion.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\FORMAPAGO.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
@@ -291,11 +297,23 @@
     <Compile Include="Model\RUTAS.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Vva_Producto.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vva_Vendedor.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ZONA.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ZONA_PERSONAL.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Compras\frmCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Compras\frmCompra.Designer.cs">
+      <DependentUpon>frmCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Elementos\frmCliente.cs">
       <SubType>Form</SubType>
@@ -326,6 +344,12 @@
     </Compile>
     <Compile Include="Modulos\Elementos\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Inventario\frmExistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Inventario\frmExistencia.Designer.cs">
+      <DependentUpon>frmExistencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
@@ -458,6 +482,9 @@
     <EmbeddedResource Include="Maestro\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Compras\frmCompra.resx">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -472,6 +499,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Inventario\frmExistencia.resx">
+      <DependentUpon>frmExistencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>

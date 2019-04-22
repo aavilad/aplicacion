@@ -12,14 +12,11 @@ namespace xtraForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class REPARTO
+    public partial class FiltroConfiguracion
     {
-        public Nullable<int> PKID { get; set; }
-        public string Ruta { get; set; }
-        public byte Dia { get; set; }
-        public string Personal { get; set; }
-    
-        public virtual PERSONAL PERSONAL1 { get; set; }
-        public virtual RUTAS RUTAS { get; set; }
+        public System.Guid PKID { get; set; }
+        public string codigo { get; set; }
+        public string Descripcion { get; set; }
+        public string Tipo { get; set; }
     }
 }

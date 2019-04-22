@@ -14,12 +14,6 @@ namespace xtraForm.Model
     
     public partial class CLIENTE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CLIENTE()
-        {
-            this.PEDIDO = new HashSet<PEDIDO>();
-        }
-    
         public string Cliente1 { get; set; }
         public string Zona { get; set; }
         public string TipoCli { get; set; }
@@ -66,7 +60,5 @@ namespace xtraForm.Model
     
         public virtual ZONA ZONA1 { get; set; }
         public virtual Distrito Distrito { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }
 }

@@ -31,10 +31,10 @@ namespace xtraForm.Modulos.Ventas
             {
                 filtro.dataGridView1.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
             }
-            filtro.tabla = entidad.tabla;
-            filtro.cboxCampo.DataSource = mapa;
-            filtro.cboxCampo.DisplayMember = "campos";
-            filtro.cboxCampo.ValueMember = "campos";
+            filtro.entidad = entidad.tabla;
+            //filtro.cboxCampo.DataSource = mapa;
+            //filtro.cboxCampo.DisplayMember = "campos";
+            //filtro.cboxCampo.ValueMember = "campos";
             filtro.pasar += new Filtros.frmFiltros.variables(condicion);
             filtro.StartPosition = FormStartPosition.CenterScreen;
 

@@ -37,11 +37,31 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule6 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.txtcdDocumento = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txttipoDocumento = new DevExpress.XtraEditors.ButtonEdit();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantpedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TpPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioNeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bonif = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Credito = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Afecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IDBonificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtnmVendedor = new DevExpress.XtraEditors.ButtonEdit();
             this.txtcdVendedor = new DevExpress.XtraEditors.ButtonEdit();
             this.txtnmCliente = new DevExpress.XtraEditors.ButtonEdit();
@@ -92,8 +112,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabDetalle = new System.Windows.Forms.TabPage();
             this.tabReparto = new System.Windows.Forms.TabPage();
+            this.txtcdProvincia = new DevExpress.XtraEditors.TextEdit();
+            this.txtcdDistrito = new DevExpress.XtraEditors.TextEdit();
+            this.txtcdZona = new DevExpress.XtraEditors.TextEdit();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.txtnmDireccion = new DevExpress.XtraEditors.TextEdit();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.txtnmZona = new DevExpress.XtraEditors.TextEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
@@ -102,26 +124,11 @@
             this.txtnmProvincia = new DevExpress.XtraEditors.TextEdit();
             this.txtcdGestion = new DevExpress.XtraEditors.TextEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantpedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioNeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Recargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bonif = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Credito = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Afecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IDBonificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtformaPago = new DevExpress.XtraEditors.LabelControl();
             this.CodigoFP = new DevExpress.XtraEditors.LabelControl();
-            this.txtcdZona = new DevExpress.XtraEditors.TextEdit();
-            this.txtcdDistrito = new DevExpress.XtraEditors.TextEdit();
-            this.txtcdProvincia = new DevExpress.XtraEditors.TextEdit();
+            this.txtnmDireccion = new DevExpress.XtraEditors.ButtonEdit();
+            this.btnFueraRuta = new DevExpress.XtraEditors.CheckButton();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtcdDocumento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txttipoDocumento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -151,14 +158,15 @@
             this.tabControl1.SuspendLayout();
             this.tabDetalle.SuspendLayout();
             this.tabReparto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtnmDireccion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcdProvincia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcdDistrito.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcdZona.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmZona.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmDistrito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmProvincia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcdGestion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcdZona.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcdDistrito.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcdProvincia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtnmDireccion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtcdDocumento
@@ -256,6 +264,129 @@
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.Width = 60;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // Cantidad
+            // 
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0.00";
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 55;
+            // 
+            // cantpedido
+            // 
+            this.cantpedido.HeaderText = "cantidadPedido";
+            this.cantpedido.Name = "cantpedido";
+            this.cantpedido.ReadOnly = true;
+            this.cantpedido.Visible = false;
+            // 
+            // Unidad
+            // 
+            this.Unidad.HeaderText = "Unidad";
+            this.Unidad.Name = "Unidad";
+            this.Unidad.ReadOnly = true;
+            this.Unidad.Width = 50;
+            // 
+            // TpPrecio
+            // 
+            this.TpPrecio.HeaderText = "TPr";
+            this.TpPrecio.Name = "TpPrecio";
+            this.TpPrecio.ReadOnly = true;
+            this.TpPrecio.Width = 30;
+            // 
+            // PrecioUnitario
+            // 
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0.00";
+            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle11;
+            this.PrecioUnitario.HeaderText = "PrecioUnit";
+            this.PrecioUnitario.Name = "PrecioUnitario";
+            this.PrecioUnitario.ReadOnly = true;
+            this.PrecioUnitario.Width = 60;
+            // 
+            // PrecioNeto
+            // 
+            this.PrecioNeto.HeaderText = "PrecioNeto";
+            this.PrecioNeto.Name = "PrecioNeto";
+            this.PrecioNeto.ReadOnly = true;
+            this.PrecioNeto.Width = 55;
+            // 
+            // Total
+            // 
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = "0.00";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 60;
+            // 
+            // Descuento
+            // 
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = "0.00";
+            this.Descuento.DefaultCellStyle = dataGridViewCellStyle13;
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            this.Descuento.Width = 60;
+            // 
+            // Recargo
+            // 
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = "0.00";
+            this.Recargo.DefaultCellStyle = dataGridViewCellStyle14;
+            this.Recargo.HeaderText = "Recargo";
+            this.Recargo.Name = "Recargo";
+            this.Recargo.ReadOnly = true;
+            this.Recargo.Width = 60;
+            // 
+            // Bonif
+            // 
+            this.Bonif.HeaderText = "Bonif";
+            this.Bonif.Name = "Bonif";
+            this.Bonif.ReadOnly = true;
+            this.Bonif.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bonif.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Bonif.Width = 30;
+            // 
+            // Credito
+            // 
+            this.Credito.HeaderText = "Credito";
+            this.Credito.Name = "Credito";
+            this.Credito.ReadOnly = true;
+            this.Credito.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Credito.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Credito.Width = 30;
+            // 
+            // Afecto
+            // 
+            this.Afecto.HeaderText = "Afecto";
+            this.Afecto.Name = "Afecto";
+            this.Afecto.ReadOnly = true;
+            this.Afecto.Width = 30;
+            // 
+            // IDBonificacion
+            // 
+            this.IDBonificacion.HeaderText = "IDBonificacion";
+            this.IDBonificacion.Name = "IDBonificacion";
+            this.IDBonificacion.ReadOnly = true;
+            this.IDBonificacion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IDBonificacion.Visible = false;
+            // 
             // txtnmVendedor
             // 
             this.txtnmVendedor.Location = new System.Drawing.Point(137, 69);
@@ -264,9 +395,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtnmVendedor.Size = new System.Drawing.Size(198, 20);
             this.txtnmVendedor.TabIndex = 2;
+            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule6.ErrorText = "Nombre de vendedor no puede estar vacio";
+            conditionValidationRule6.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtnmVendedor, conditionValidationRule6);
             this.txtnmVendedor.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtnmVendedor_ButtonClick);
             this.txtnmVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnmVendedor_KeyPress);
-            this.txtnmVendedor.Validated += new System.EventHandler(this.txtnmVendedor_Validated);
             // 
             // txtcdVendedor
             // 
@@ -276,9 +410,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtcdVendedor.Size = new System.Drawing.Size(65, 20);
             this.txtcdVendedor.TabIndex = 0;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Codigo de vendedor no puede estar vacio";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtcdVendedor, conditionValidationRule1);
             this.txtcdVendedor.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtcdVendedor_ButtonClick);
             this.txtcdVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcdVendedor_KeyPress);
-            this.txtcdVendedor.Validated += new System.EventHandler(this.txtcdVendedor_Validated);
             // 
             // txtnmCliente
             // 
@@ -288,9 +425,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtnmCliente.Size = new System.Drawing.Size(198, 20);
             this.txtnmCliente.TabIndex = 4;
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "Nombre de cliente no puede estar vacio";
+            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtnmCliente, conditionValidationRule2);
             this.txtnmCliente.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtnmCliente_ButtonClick);
             this.txtnmCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnmCliente_KeyPress);
-            this.txtnmCliente.Validated += new System.EventHandler(this.txtnmCliente_Validated);
             // 
             // txtcdCLiente
             // 
@@ -300,9 +440,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtcdCLiente.Size = new System.Drawing.Size(65, 20);
             this.txtcdCLiente.TabIndex = 3;
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "Codigo de cliente no puede estar en blanco";
+            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtcdCLiente, conditionValidationRule3);
             this.txtcdCLiente.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtcdCLiente_ButtonClick);
             this.txtcdCLiente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcdCLiente_KeyPress);
-            this.txtcdCLiente.Validated += new System.EventHandler(this.txtcdCLiente_Validated);
             // 
             // txtdocCliente
             // 
@@ -311,7 +454,6 @@
             this.txtdocCliente.Size = new System.Drawing.Size(96, 20);
             this.txtdocCliente.TabIndex = 5;
             this.txtdocCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtdocCliente_KeyPress);
-            this.txtdocCliente.Validated += new System.EventHandler(this.txtdocCliente_Validated);
             // 
             // labelControl3
             // 
@@ -340,7 +482,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEmision.Size = new System.Drawing.Size(96, 20);
             this.dateEmision.TabIndex = 17;
-            this.dateEmision.Validated += new System.EventHandler(this.dateEmision_Validated);
             // 
             // dateEntrega
             // 
@@ -353,7 +494,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEntrega.Size = new System.Drawing.Size(96, 20);
             this.dateEntrega.TabIndex = 18;
-            this.dateEntrega.Validated += new System.EventHandler(this.dateEntrega_Validated);
             // 
             // labelControl5
             // 
@@ -418,7 +558,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtnmAlmacen.Size = new System.Drawing.Size(198, 20);
             this.txtnmAlmacen.TabIndex = 19;
-            this.txtnmAlmacen.Validated += new System.EventHandler(this.txtnmAlmacen_Validated);
             // 
             // txtcdAlmacen
             // 
@@ -430,7 +569,6 @@
             this.txtcdAlmacen.Size = new System.Drawing.Size(65, 20);
             this.txtcdAlmacen.TabIndex = 20;
             this.txtcdAlmacen.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtcdAlmacen_ButtonClick);
-            this.txtcdAlmacen.Validated += new System.EventHandler(this.txtcdAlmacen_Validated);
             // 
             // txtValorAfecto
             // 
@@ -736,19 +874,46 @@
             this.tabReparto.Controls.Add(this.txtcdDistrito);
             this.tabReparto.Controls.Add(this.txtcdZona);
             this.tabReparto.Controls.Add(this.labelControl19);
-            this.tabReparto.Controls.Add(this.txtnmDireccion);
             this.tabReparto.Controls.Add(this.labelControl18);
             this.tabReparto.Controls.Add(this.txtnmZona);
             this.tabReparto.Controls.Add(this.labelControl17);
             this.tabReparto.Controls.Add(this.txtnmDistrito);
             this.tabReparto.Controls.Add(this.labelControl16);
             this.tabReparto.Controls.Add(this.txtnmProvincia);
+            this.tabReparto.Controls.Add(this.txtnmDireccion);
             this.tabReparto.Location = new System.Drawing.Point(4, 22);
             this.tabReparto.Margin = new System.Windows.Forms.Padding(0);
             this.tabReparto.Name = "tabReparto";
             this.tabReparto.Size = new System.Drawing.Size(817, 246);
             this.tabReparto.TabIndex = 1;
             this.tabReparto.Text = "Reparto";
+            // 
+            // txtcdProvincia
+            // 
+            this.txtcdProvincia.Enabled = false;
+            this.txtcdProvincia.Location = new System.Drawing.Point(398, 120);
+            this.txtcdProvincia.Name = "txtcdProvincia";
+            this.txtcdProvincia.Size = new System.Drawing.Size(100, 20);
+            this.txtcdProvincia.TabIndex = 11;
+            this.txtcdProvincia.Visible = false;
+            // 
+            // txtcdDistrito
+            // 
+            this.txtcdDistrito.Enabled = false;
+            this.txtcdDistrito.Location = new System.Drawing.Point(398, 88);
+            this.txtcdDistrito.Name = "txtcdDistrito";
+            this.txtcdDistrito.Size = new System.Drawing.Size(100, 20);
+            this.txtcdDistrito.TabIndex = 10;
+            this.txtcdDistrito.Visible = false;
+            // 
+            // txtcdZona
+            // 
+            this.txtcdZona.Enabled = false;
+            this.txtcdZona.Location = new System.Drawing.Point(400, 56);
+            this.txtcdZona.Name = "txtcdZona";
+            this.txtcdZona.Size = new System.Drawing.Size(100, 20);
+            this.txtcdZona.TabIndex = 9;
+            this.txtcdZona.Visible = false;
             // 
             // labelControl19
             // 
@@ -757,13 +922,6 @@
             this.labelControl19.Size = new System.Drawing.Size(44, 13);
             this.labelControl19.TabIndex = 7;
             this.labelControl19.Text = "Provincia";
-            // 
-            // txtnmDireccion
-            // 
-            this.txtnmDireccion.Location = new System.Drawing.Point(99, 24);
-            this.txtnmDireccion.Name = "txtnmDireccion";
-            this.txtnmDireccion.Size = new System.Drawing.Size(287, 20);
-            this.txtnmDireccion.TabIndex = 6;
             // 
             // labelControl18
             // 
@@ -820,6 +978,10 @@
             this.txtcdGestion.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.txtcdGestion.Size = new System.Drawing.Size(56, 20);
             this.txtcdGestion.TabIndex = 52;
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule4.ErrorText = "Gestion no puede estar vacio.";
+            conditionValidationRule4.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtcdGestion, conditionValidationRule4);
             // 
             // labelControl20
             // 
@@ -828,129 +990,6 @@
             this.labelControl20.Size = new System.Drawing.Size(37, 13);
             this.labelControl20.TabIndex = 53;
             this.labelControl20.Text = "Gestion";
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.Width = 60;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Cantidad
-            // 
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0.00";
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 55;
-            // 
-            // cantpedido
-            // 
-            this.cantpedido.HeaderText = "cantidadPedido";
-            this.cantpedido.Name = "cantpedido";
-            this.cantpedido.ReadOnly = true;
-            this.cantpedido.Visible = false;
-            // 
-            // Unidad
-            // 
-            this.Unidad.HeaderText = "Unidad";
-            this.Unidad.Name = "Unidad";
-            this.Unidad.ReadOnly = true;
-            this.Unidad.Width = 50;
-            // 
-            // TpPrecio
-            // 
-            this.TpPrecio.HeaderText = "TPr";
-            this.TpPrecio.Name = "TpPrecio";
-            this.TpPrecio.ReadOnly = true;
-            this.TpPrecio.Width = 30;
-            // 
-            // PrecioUnitario
-            // 
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0.00";
-            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle11;
-            this.PrecioUnitario.HeaderText = "PrecioUnit";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.ReadOnly = true;
-            this.PrecioUnitario.Width = 60;
-            // 
-            // PrecioNeto
-            // 
-            this.PrecioNeto.HeaderText = "PrecioNeto";
-            this.PrecioNeto.Name = "PrecioNeto";
-            this.PrecioNeto.ReadOnly = true;
-            this.PrecioNeto.Width = 55;
-            // 
-            // Total
-            // 
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = "0.00";
-            this.Total.DefaultCellStyle = dataGridViewCellStyle12;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.Width = 60;
-            // 
-            // Descuento
-            // 
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.NullValue = "0.00";
-            this.Descuento.DefaultCellStyle = dataGridViewCellStyle13;
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            this.Descuento.ReadOnly = true;
-            this.Descuento.Width = 60;
-            // 
-            // Recargo
-            // 
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = "0.00";
-            this.Recargo.DefaultCellStyle = dataGridViewCellStyle14;
-            this.Recargo.HeaderText = "Recargo";
-            this.Recargo.Name = "Recargo";
-            this.Recargo.ReadOnly = true;
-            this.Recargo.Width = 60;
-            // 
-            // Bonif
-            // 
-            this.Bonif.HeaderText = "Bonif";
-            this.Bonif.Name = "Bonif";
-            this.Bonif.ReadOnly = true;
-            this.Bonif.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bonif.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Bonif.Width = 30;
-            // 
-            // Credito
-            // 
-            this.Credito.HeaderText = "Credito";
-            this.Credito.Name = "Credito";
-            this.Credito.ReadOnly = true;
-            this.Credito.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Credito.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Credito.Width = 30;
-            // 
-            // Afecto
-            // 
-            this.Afecto.HeaderText = "Afecto";
-            this.Afecto.Name = "Afecto";
-            this.Afecto.ReadOnly = true;
-            this.Afecto.Width = 30;
-            // 
-            // IDBonificacion
-            // 
-            this.IDBonificacion.HeaderText = "IDBonificacion";
-            this.IDBonificacion.Name = "IDBonificacion";
-            this.IDBonificacion.ReadOnly = true;
-            this.IDBonificacion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IDBonificacion.Visible = false;
             // 
             // txtformaPago
             // 
@@ -974,32 +1013,33 @@
             this.CodigoFP.Text = "CodigoFP";
             this.CodigoFP.Visible = false;
             // 
-            // txtcdZona
+            // txtnmDireccion
             // 
-            this.txtcdZona.Location = new System.Drawing.Point(400, 56);
-            this.txtcdZona.Name = "txtcdZona";
-            this.txtcdZona.Size = new System.Drawing.Size(100, 20);
-            this.txtcdZona.TabIndex = 9;
+            this.txtnmDireccion.Location = new System.Drawing.Point(99, 24);
+            this.txtnmDireccion.Name = "txtnmDireccion";
+            this.txtnmDireccion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtnmDireccion.Size = new System.Drawing.Size(287, 20);
+            this.txtnmDireccion.TabIndex = 6;
             // 
-            // txtcdDistrito
+            // btnFueraRuta
             // 
-            this.txtcdDistrito.Location = new System.Drawing.Point(398, 88);
-            this.txtcdDistrito.Name = "txtcdDistrito";
-            this.txtcdDistrito.Size = new System.Drawing.Size(100, 20);
-            this.txtcdDistrito.TabIndex = 10;
+            this.btnFueraRuta.Location = new System.Drawing.Point(675, 93);
+            this.btnFueraRuta.Name = "btnFueraRuta";
+            this.btnFueraRuta.Size = new System.Drawing.Size(81, 23);
+            this.btnFueraRuta.TabIndex = 56;
+            this.btnFueraRuta.Text = "Fuera De Ruta";
             // 
-            // txtcdProvincia
+            // dxValidationProvider1
             // 
-            this.txtcdProvincia.Location = new System.Drawing.Point(398, 120);
-            this.txtcdProvincia.Name = "txtcdProvincia";
-            this.txtcdProvincia.Size = new System.Drawing.Size(100, 20);
-            this.txtcdProvincia.TabIndex = 11;
+            this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Manual;
             // 
             // frmpedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 567);
+            this.Controls.Add(this.btnFueraRuta);
             this.Controls.Add(this.CodigoFP);
             this.Controls.Add(this.txtformaPago);
             this.Controls.Add(this.labelControl20);
@@ -1090,14 +1130,15 @@
             this.tabDetalle.ResumeLayout(false);
             this.tabReparto.ResumeLayout(false);
             this.tabReparto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtnmDireccion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcdProvincia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcdDistrito.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcdZona.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmZona.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmDistrito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmProvincia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcdGestion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcdZona.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcdDistrito.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcdProvincia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtnmDireccion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1167,7 +1208,6 @@
         public DevExpress.XtraEditors.TextEdit txtcdGestion;
         public DevExpress.XtraEditors.TextEdit txtnmProvincia;
         public DevExpress.XtraEditors.TextEdit txtnmDistrito;
-        public DevExpress.XtraEditors.TextEdit txtnmDireccion;
         public DevExpress.XtraEditors.TextEdit txtnmZona;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
@@ -1189,5 +1229,8 @@
         public DevExpress.XtraEditors.TextEdit txtcdProvincia;
         public DevExpress.XtraEditors.TextEdit txtcdDistrito;
         public DevExpress.XtraEditors.TextEdit txtcdZona;
+        public DevExpress.XtraEditors.ButtonEdit txtnmDireccion;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        public DevExpress.XtraEditors.CheckButton btnFueraRuta;
     }
 }

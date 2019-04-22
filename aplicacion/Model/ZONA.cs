@@ -17,8 +17,8 @@ namespace xtraForm.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ZONA()
         {
-            this.CLIENTE = new HashSet<CLIENTE>();
             this.ZONA_PERSONAL = new HashSet<ZONA_PERSONAL>();
+            this.CLIENTE = new HashSet<CLIENTE>();
         }
     
         public string Zona1 { get; set; }
@@ -29,8 +29,8 @@ namespace xtraForm.Model
         public string DesCorta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
     }
 }

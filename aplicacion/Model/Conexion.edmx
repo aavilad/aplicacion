@@ -92,6 +92,37 @@
           <Property Name="descrip" Type="char" MaxLength="30" />
           <Property Name="idprovincia" Type="char" MaxLength="4" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Lider2018.dbo.Filtro' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Filtro">
+          <Key>
+            <PropertyRef Name="PKID" />
+            <PropertyRef Name="campo" />
+            <PropertyRef Name="condicion" />
+            <PropertyRef Name="valor" />
+            <PropertyRef Name="union" />
+            <PropertyRef Name="tabla" />
+          </Key>
+          <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="campo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="condicion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="union" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="tabla" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="FiltroConfiguracion">
+          <Key>
+            <PropertyRef Name="PKID" />
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="FORMAPAGO">
           <Key>
             <PropertyRef Name="FormaPago" />
@@ -170,12 +201,15 @@
           <Property Name="codunilever" Type="int" Nullable="false" />
           <Property Name="region" Type="char" MaxLength="25" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Lider2018.dbo.REPARTO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="REPARTO">
           <Key>
             <PropertyRef Name="Ruta" />
             <PropertyRef Name="Dia" />
             <PropertyRef Name="Personal" />
           </Key>
+          <Property Name="PKID" Type="int" />
           <Property Name="Ruta" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="Dia" Type="tinyint" Nullable="false" />
           <Property Name="Personal" Type="char" MaxLength="2" Nullable="false" />
@@ -207,6 +241,68 @@
           <Property Name="Personal" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="Dia" Type="datetime" />
           <Property Name="Numero" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vva_Producto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Fisico" />
+            <PropertyRef Name="IDMarca" />
+            <PropertyRef Name="IDGrupo" />
+            <PropertyRef Name="IDClase" />
+            <PropertyRef Name="ESPECIAL07" />
+            <PropertyRef Name="sku" />
+            <PropertyRef Name="Activo" />
+            <PropertyRef Name="Afecto" />
+            <PropertyRef Name="Unidades" />
+          </Key>
+          <Property Name="Codigo" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="40" />
+          <Property Name="Unidad" Type="char" MaxLength="8" />
+          <Property Name="Fisico" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Disponible" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="IDProv" Type="char" MaxLength="5" />
+          <Property Name="IDMarca" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="IDLinea" Type="char" MaxLength="2" />
+          <Property Name="IDGrupo" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="IDCategoria" Type="char" MaxLength="2" />
+          <Property Name="IDClase" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="C_MENOR" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="C_MAYOR" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="CR_MENOR" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="CR_MAYOR" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ESPECIAL05" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ESPECIAL06" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ESPECIAL07" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="sku" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="factor" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="FP" Type="int" />
+          <Property Name="Web" Type="bit" />
+          <Property Name="Dms" Type="bit" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Afecto" Type="bit" Nullable="false" />
+          <Property Name="Unidades" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vva_Vendedor">
+          <Key>
+            <PropertyRef Name="Fuerza Ventas" />
+            <PropertyRef Name="Codigo vendedor" />
+            <PropertyRef Name="Nombre Vendedor" />
+            <PropertyRef Name="Activo" />
+            <PropertyRef Name="TpLista" />
+            <PropertyRef Name="IDGrupo" />
+          </Key>
+          <Property Name="Fuerza Ventas" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="Codigo vendedor" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Nombre Vendedor" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="TipoPersona" Type="char" MaxLength="1" />
+          <Property Name="Doc Identidad" Type="char" MaxLength="8" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="TpLista" Type="int" Nullable="false" />
+          <Property Name="IDGrupo" Type="char" MaxLength="2" Nullable="false" />
         </EntityType>
         <Association Name="FK__CLIENTE__Zona__4959E263">
           <End Role="ZONA" Type="Self.ZONA" Multiplicity="1" />
@@ -268,6 +364,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CLIENTE_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="0..1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Distrito_provincia">
           <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
           <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
@@ -304,6 +412,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_REPARTO_PERSONAL">
+          <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="1" />
+          <End Role="REPARTO" Type="Self.REPARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal" />
+            </Principal>
+            <Dependent Role="REPARTO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPARTO_RUTAS">
+          <End Role="RUTAS" Type="Self.RUTAS" Multiplicity="1" />
+          <End Role="REPARTO" Type="Self.REPARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUTAS">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="REPARTO">
+              <PropertyRef Name="Ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="LiderAppModelStoreContainer">
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
@@ -313,10 +445,77 @@
           <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="REPARTO" EntityType="Self.REPARTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RUTAS" EntityType="Self.RUTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZONA" EntityType="Self.ZONA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZONA_PERSONAL" EntityType="Self.ZONA_PERSONAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Filtro" EntityType="Self.Filtro" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Filtro].[PKID] AS [PKID], 
+    [Filtro].[campo] AS [campo], 
+    [Filtro].[condicion] AS [condicion], 
+    [Filtro].[valor] AS [valor], 
+    [Filtro].[union] AS [union], 
+    [Filtro].[tabla] AS [tabla]
+    FROM [dbo].[Filtro] AS [Filtro]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FiltroConfiguracion" EntityType="Self.FiltroConfiguracion" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FiltroConfiguracion].[PKID] AS [PKID], 
+    [FiltroConfiguracion].[codigo] AS [codigo], 
+    [FiltroConfiguracion].[Descripcion] AS [Descripcion], 
+    [FiltroConfiguracion].[Tipo] AS [Tipo]
+    FROM [dbo].[FiltroConfiguracion] AS [FiltroConfiguracion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="REPARTO" EntityType="Self.REPARTO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [REPARTO].[PKID] AS [PKID], 
+    [REPARTO].[Ruta] AS [Ruta], 
+    [REPARTO].[Dia] AS [Dia], 
+    [REPARTO].[Personal] AS [Personal]
+    FROM [dbo].[REPARTO] AS [REPARTO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vva_Producto" EntityType="Self.Vva_Producto" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vva_Producto].[Codigo] AS [Codigo], 
+    [Vva_Producto].[Descripcion] AS [Descripcion], 
+    [Vva_Producto].[Unidad] AS [Unidad], 
+    [Vva_Producto].[Fisico] AS [Fisico], 
+    [Vva_Producto].[Disponible] AS [Disponible], 
+    [Vva_Producto].[IDProv] AS [IDProv], 
+    [Vva_Producto].[IDMarca] AS [IDMarca], 
+    [Vva_Producto].[IDLinea] AS [IDLinea], 
+    [Vva_Producto].[IDGrupo] AS [IDGrupo], 
+    [Vva_Producto].[IDCategoria] AS [IDCategoria], 
+    [Vva_Producto].[IDClase] AS [IDClase], 
+    [Vva_Producto].[C_MENOR] AS [C_MENOR], 
+    [Vva_Producto].[C_MAYOR] AS [C_MAYOR], 
+    [Vva_Producto].[CR_MENOR] AS [CR_MENOR], 
+    [Vva_Producto].[CR_MAYOR] AS [CR_MAYOR], 
+    [Vva_Producto].[ESPECIAL05] AS [ESPECIAL05], 
+    [Vva_Producto].[ESPECIAL06] AS [ESPECIAL06], 
+    [Vva_Producto].[ESPECIAL07] AS [ESPECIAL07], 
+    [Vva_Producto].[sku] AS [sku], 
+    [Vva_Producto].[factor] AS [factor], 
+    [Vva_Producto].[FP] AS [FP], 
+    [Vva_Producto].[Web] AS [Web], 
+    [Vva_Producto].[Dms] AS [Dms], 
+    [Vva_Producto].[Activo] AS [Activo], 
+    [Vva_Producto].[Afecto] AS [Afecto], 
+    [Vva_Producto].[Unidades] AS [Unidades]
+    FROM [dbo].[Vva_Producto] AS [Vva_Producto]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vva_Vendedor" EntityType="Self.Vva_Vendedor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vva_Vendedor].[Fuerza Ventas] AS [Fuerza Ventas], 
+    [Vva_Vendedor].[Codigo vendedor] AS [Codigo vendedor], 
+    [Vva_Vendedor].[Nombre Vendedor] AS [Nombre Vendedor], 
+    [Vva_Vendedor].[TipoPersona] AS [TipoPersona], 
+    [Vva_Vendedor].[Doc Identidad] AS [Doc Identidad], 
+    [Vva_Vendedor].[Activo] AS [Activo], 
+    [Vva_Vendedor].[TpLista] AS [TpLista], 
+    [Vva_Vendedor].[IDGrupo] AS [IDGrupo]
+    FROM [dbo].[Vva_Vendedor] AS [Vva_Vendedor]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="Self.FK__CLIENTE__Zona__4959E263">
             <End Role="ZONA" EntitySet="ZONA" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
@@ -337,6 +536,10 @@
             <End Role="ZONA" EntitySet="ZONA" />
             <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
           </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_Distrito" Association="Self.FK_CLIENTE_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
           <AssociationSet Name="FK_Distrito_provincia" Association="Self.FK_Distrito_provincia">
             <End Role="provincia" EntitySet="provincia" />
             <End Role="Distrito" EntitySet="Distrito" />
@@ -349,62 +552,19 @@
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="provincia" EntitySet="provincia" />
           </AssociationSet>
+          <AssociationSet Name="FK_REPARTO_PERSONAL" Association="Self.FK_REPARTO_PERSONAL">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="REPARTO" EntitySet="REPARTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPARTO_RUTAS" Association="Self.FK_REPARTO_RUTAS">
+            <End Role="RUTAS" EntitySet="RUTAS" />
+            <End Role="REPARTO" EntitySet="REPARTO" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LiderAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CLIENTE">
-          <Key>
-            <PropertyRef Name="Cliente1" />
-          </Key>
-          <Property Name="Cliente1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Zona" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="TipoCli" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="FechIng" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TopeCredito" Type="Int32" />
-          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
-          <Property Name="Saldo" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Credito" Type="Boolean" Nullable="false" />
-          <Property Name="Alias" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="iddistrito" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-          <Property Name="IdNegocio" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="nuevo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="ultmod" Type="DateTime" Precision="3" />
-          <Property Name="usuario" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
-          <Property Name="observacion" Type="String" MaxLength="70" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="ap_paterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="ap_materno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="nombre1" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
-          <Property Name="nombre2" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
-          <Property Name="codbase" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-          <Property Name="codant" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-          <Property Name="clasecli" Type="Byte" />
-          <Property Name="ptollegada" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="distllegada" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="porcentaje" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
-          <Property Name="RAZ" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="control" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="agente_ret" Type="Boolean" Nullable="false" />
-          <Property Name="agente_per" Type="Boolean" Nullable="false" />
-          <Property Name="agente_userf" Type="Boolean" Nullable="false" />
-          <Property Name="X" Type="Decimal" Precision="12" Scale="7" />
-          <Property Name="Y" Type="Decimal" Precision="12" Scale="7" />
-          <Property Name="CodVen1" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="dia1" Type="Int16" />
-          <Property Name="sec" Type="Int32" />
-          <Property Name="CodVen2" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="dia2" Type="Int16" />
-          <Property Name="EstadoCli" Type="Byte" />
-          <Property Name="Correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ZONA1" Relationship="LiderAppModel.FK__CLIENTE__Zona__4959E263" FromRole="CLIENTE" ToRole="ZONA" />
-          <NavigationProperty Name="Distrito" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="CLIENTE" ToRole="Distrito" />
-          <NavigationProperty Name="PEDIDO" Relationship="LiderAppModel.FK_PEDIDO_CLIENTE" FromRole="CLIENTE" ToRole="PEDIDO" />
-        </EntityType>
         <EntityType Name="PERSONAL">
           <Key>
             <PropertyRef Name="Personal1" />
@@ -430,16 +590,47 @@
           <Property Name="pparticipa" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="pcuota" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="supercodigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PEDIDO" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PERSONAL" ToRole="PEDIDO" />
           <NavigationProperty Name="ZONA_PERSONAL" Relationship="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8" FromRole="PERSONAL" ToRole="ZONA_PERSONAL" />
-          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.FK_REPARTO_RUTAS1" FromRole="PERSONAL" ToRole="REPARTO" />
+          <NavigationProperty Name="PEDIDO" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PERSONAL" ToRole="PEDIDO" />
+          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.FK_REPARTO_PERSONAL" FromRole="PERSONAL" ToRole="REPARTO" />
         </EntityType>
         <EntityContainer Name="LiderAppEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
           <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" />
           <EntitySet Name="FORMAPAGO" EntityType="LiderAppModel.FORMAPAGO" />
           <EntitySet Name="DETPEDIDO" EntityType="LiderAppModel.DETPEDIDO" />
+          <EntitySet Name="ZONA" EntityType="LiderAppModel.ZONA" />
+          <EntitySet Name="ZONA_PERSONAL" EntityType="LiderAppModel.ZONA_PERSONAL" />
+          <AssociationSet Name="FK__ZONA_PERS__Perso__6501FCD8" Association="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ZONA_PERSO__Zona__65F62111" Association="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <EntitySet Name="Departamento" EntityType="LiderAppModel.Departamento" />
+          <EntitySet Name="provincia" EntityType="LiderAppModel.provincia" />
+          <AssociationSet Name="FK_provincia_Departamento" Association="LiderAppModel.FK_provincia_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="provincia" EntitySet="provincia" />
+          </AssociationSet>
+          <EntitySet Name="Distrito" EntityType="LiderAppModel.Distrito" />
+          <AssociationSet Name="FK_Distrito_provincia" Association="LiderAppModel.FK_Distrito_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <EntitySet Name="CLIENTE" EntityType="LiderAppModel.CLIENTE" />
+          <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="LiderAppModel.FK__CLIENTE__Zona__4959E263">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_Distrito" Association="LiderAppModel.FK_CLIENTE_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
           <EntitySet Name="PEDIDO" EntityType="LiderAppModel.PEDIDO" />
+          <EntitySet Name="RUTAS" EntityType="LiderAppModel.RUTAS" />
+          <EntitySet Name="REPARTO" EntityType="LiderAppModel.REPARTO" />
           <AssociationSet Name="FK__DETPEDIDO__Pedid__55BFB948" Association="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948">
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
@@ -452,49 +643,18 @@
             <End Role="PERSONAL" EntitySet="PERSONAL" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
-          <EntitySet Name="ZONA" EntityType="LiderAppModel.ZONA" />
-          <EntitySet Name="ZONA_PERSONAL" EntityType="LiderAppModel.ZONA_PERSONAL" />
-          <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="LiderAppModel.FK__CLIENTE__Zona__4959E263">
-            <End Role="ZONA" EntitySet="ZONA" />
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ZONA_PERS__Perso__6501FCD8" Association="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8">
+          <AssociationSet Name="FK_REPARTO_PERSONAL" Association="LiderAppModel.FK_REPARTO_PERSONAL">
             <End Role="PERSONAL" EntitySet="PERSONAL" />
-            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+            <End Role="REPARTO" EntitySet="REPARTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__ZONA_PERSO__Zona__65F62111" Association="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111">
-            <End Role="ZONA" EntitySet="ZONA" />
-            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
-          </AssociationSet>
-          <EntitySet Name="REPARTO" EntityType="LiderAppModel.REPARTO" />
-          <EntitySet Name="RUTAS" EntityType="LiderAppModel.RUTAS" />
           <AssociationSet Name="FK_REPARTO_RUTAS" Association="LiderAppModel.FK_REPARTO_RUTAS">
             <End Role="RUTAS" EntitySet="RUTAS" />
             <End Role="REPARTO" EntitySet="REPARTO" />
           </AssociationSet>
-          <EntitySet Name="Departamento" EntityType="LiderAppModel.Departamento" />
-          <EntitySet Name="provincia" EntityType="LiderAppModel.provincia" />
-          <AssociationSet Name="FK_provincia_Departamento" Association="LiderAppModel.FK_provincia_Departamento">
-            <End Role="Departamento" EntitySet="Departamento" />
-            <End Role="provincia" EntitySet="provincia" />
-          </AssociationSet>
-          <EntitySet Name="Distrito" EntityType="LiderAppModel.Distrito" />
-          <AssociationSet Name="FK_CLIENTE_Distrito" Association="LiderAppModel.FK_CLIENTE_Distrito">
-            <End Role="Distrito" EntitySet="Distrito" />
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Distrito_provincia" Association="LiderAppModel.FK_Distrito_provincia">
-            <End Role="provincia" EntitySet="provincia" />
-            <End Role="Distrito" EntitySet="Distrito" />
-          </AssociationSet>
-          <AssociationSet Name="FK_REPARTO_RUTAS1" Association="LiderAppModel.FK_REPARTO_RUTAS1">
-            <End Role="PERSONAL" EntitySet="PERSONAL" />
-            <End Role="REPARTO" EntitySet="REPARTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PEDIDO_CLIENTE" Association="LiderAppModel.FK_PEDIDO_CLIENTE">
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-          </AssociationSet>
+          <EntitySet Name="Vva_Vendedor" EntityType="LiderAppModel.Vva_Vendedor" />
+          <EntitySet Name="Vva_Producto" EntityType="LiderAppModel.Vva_Producto" />
+          <EntitySet Name="Filtro" EntityType="LiderAppModel.Filtro" />
+          <EntitySet Name="FiltroConfiguracion" EntityType="LiderAppModel.FiltroConfiguracion" />
           </EntityContainer>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -532,77 +692,6 @@
           <Property Name="Bonif" Type="Boolean" />
           <NavigationProperty Name="PEDIDO1" Relationship="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="DETPEDIDO" ToRole="PEDIDO" />
         </EntityType>
-        <EntityType Name="PEDIDO">
-          <Key>
-            <PropertyRef Name="Pedido1" />
-          </Key>
-          <Property Name="Pedido1" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
-          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="Cliente" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
-          <Property Name="FormaPago" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
-          <Property Name="Estado" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
-          <Property Name="Reparto" Type="Boolean" Nullable="false" />
-          <Property Name="TipoPersona" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="Procesado" Type="Boolean" Nullable="false" />
-          <Property Name="rsocial" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <Property Name="ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
-          <Property Name="direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <Property Name="dni" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
-          <Property Name="encargado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="npersonal" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
-          <Property Name="nencargado" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
-          <Property Name="gestion" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="ptollegada" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <Property Name="distllegada" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-          <Property Name="pdscto" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="dscto" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <Property Name="tipodoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="flagCobertura" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="Fecha_web" Type="DateTime" Precision="3" />
-          <Property Name="statusWeb" Type="Boolean" />
-          <Property Name="Aprobado" Type="Boolean" />
-          <NavigationProperty Name="DETPEDIDO" Relationship="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="PEDIDO" ToRole="DETPEDIDO" />
-          <NavigationProperty Name="FORMAPAGO1" Relationship="LiderAppModel.FK_PEDIDO_FORMAPAGO" FromRole="PEDIDO" ToRole="FORMAPAGO" />
-          <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PEDIDO" ToRole="PERSONAL" />
-          <NavigationProperty Name="CLIENTE1" Relationship="LiderAppModel.FK_PEDIDO_CLIENTE" FromRole="PEDIDO" ToRole="CLIENTE" />
-        </EntityType>
-        <Association Name="FK__DETPEDIDO__Pedid__55BFB948">
-          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="1" />
-          <End Type="LiderAppModel.DETPEDIDO" Role="DETPEDIDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="Pedido1" />
-            </Principal>
-            <Dependent Role="DETPEDIDO">
-              <PropertyRef Name="Pedido" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PEDIDO_FORMAPAGO">
-          <End Type="LiderAppModel.FORMAPAGO" Role="FORMAPAGO" Multiplicity="1" />
-          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FORMAPAGO">
-              <PropertyRef Name="FormaPago1" />
-            </Principal>
-            <Dependent Role="PEDIDO">
-              <PropertyRef Name="FormaPago" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO__Personal__68D28DBC">
-          <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
-          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PERSONAL">
-              <PropertyRef Name="Personal1" />
-            </Principal>
-            <Dependent Role="PEDIDO">
-              <PropertyRef Name="Personal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="ZONA">
           <Key>
             <PropertyRef Name="Zona1" />
@@ -613,8 +702,8 @@
           <Property Name="Riesgo" Type="Boolean" Nullable="false" />
           <Property Name="proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="DesCorta" Type="String" Nullable="false" MaxLength="70" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="CLIENTE" Relationship="LiderAppModel.FK__CLIENTE__Zona__4959E263" FromRole="ZONA" ToRole="CLIENTE" />
           <NavigationProperty Name="ZONA_PERSONAL" Relationship="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" FromRole="ZONA" ToRole="ZONA_PERSONAL" />
+          <NavigationProperty Name="CLIENTE" Relationship="LiderAppModel.FK__CLIENTE__Zona__4959E263" FromRole="ZONA" ToRole="CLIENTE" />
         </EntityType>
         <EntityType Name="ZONA_PERSONAL">
           <Key>
@@ -628,18 +717,6 @@
           <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8" FromRole="ZONA_PERSONAL" ToRole="PERSONAL" />
           <NavigationProperty Name="ZONA1" Relationship="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" FromRole="ZONA_PERSONAL" ToRole="ZONA" />
         </EntityType>
-        <Association Name="FK__CLIENTE__Zona__4959E263">
-          <End Type="LiderAppModel.ZONA" Role="ZONA" Multiplicity="1" />
-          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ZONA">
-              <PropertyRef Name="Zona1" />
-            </Principal>
-            <Dependent Role="CLIENTE">
-              <PropertyRef Name="Zona" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ZONA_PERS__Perso__6501FCD8">
           <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
           <End Type="LiderAppModel.ZONA_PERSONAL" Role="ZONA_PERSONAL" Multiplicity="*" />
@@ -661,37 +738,6 @@
             </Principal>
             <Dependent Role="ZONA_PERSONAL">
               <PropertyRef Name="Zona" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="REPARTO">
-          <Key>
-            <PropertyRef Name="PKID" />
-          </Key>
-          <Property Name="PKID" Type="Int32" Nullable="false" />
-          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="Dia" Type="Byte" Nullable="false" />
-          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="RUTAS" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="REPARTO" ToRole="RUTAS" />
-          <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK_REPARTO_RUTAS1" FromRole="REPARTO" ToRole="PERSONAL" />
-        </EntityType>
-        <EntityType Name="RUTAS">
-          <Key>
-            <PropertyRef Name="codigo" />
-          </Key>
-          <Property Name="codigo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="RUTAS" ToRole="REPARTO" />
-        </EntityType>
-        <Association Name="FK_REPARTO_RUTAS">
-          <End Type="LiderAppModel.RUTAS" Role="RUTAS" Multiplicity="1" />
-          <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RUTAS">
-              <PropertyRef Name="codigo" />
-            </Principal>
-            <Dependent Role="REPARTO">
-              <PropertyRef Name="Ruta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -735,21 +781,9 @@
           <Property Name="iddistrito" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
           <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
           <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="CLIENTE" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="Distrito" ToRole="CLIENTE" />
           <NavigationProperty Name="provincia" Relationship="LiderAppModel.FK_Distrito_provincia" FromRole="Distrito" ToRole="provincia" />
+          <NavigationProperty Name="CLIENTE" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="Distrito" ToRole="CLIENTE" />
         </EntityType>
-        <Association Name="FK_CLIENTE_Distrito">
-          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="0..1" />
-          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Distrito">
-              <PropertyRef Name="iddistrito" />
-            </Principal>
-            <Dependent Role="CLIENTE">
-              <PropertyRef Name="iddistrito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Distrito_provincia">
           <End Type="LiderAppModel.provincia" Role="provincia" Multiplicity="1" />
           <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="*" />
@@ -762,7 +796,172 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_REPARTO_RUTAS1">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="Cliente1" />
+          </Key>
+          <Property Name="Cliente1" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="TipoCli" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TopeCredito" Type="Int32" />
+          <Property Name="DNI" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Credito" Type="Boolean" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="iddistrito" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="IdNegocio" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="nuevo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ultmod" Type="DateTime" Precision="3" />
+          <Property Name="usuario" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="observacion" Type="String" Nullable="false" MaxLength="70" FixedLength="true" Unicode="false" />
+          <Property Name="ap_paterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ap_materno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nombre1" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="nombre2" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="codbase" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="codant" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="clasecli" Type="Byte" />
+          <Property Name="ptollegada" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="distllegada" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="porcentaje" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+          <Property Name="RAZ" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="control" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="agente_ret" Type="Boolean" Nullable="false" />
+          <Property Name="agente_per" Type="Boolean" Nullable="false" />
+          <Property Name="agente_userf" Type="Boolean" Nullable="false" />
+          <Property Name="X" Type="Decimal" Precision="12" Scale="7" />
+          <Property Name="Y" Type="Decimal" Precision="12" Scale="7" />
+          <Property Name="CodVen1" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="dia1" Type="Int16" />
+          <Property Name="sec" Type="Int32" />
+          <Property Name="CodVen2" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="dia2" Type="Int16" />
+          <Property Name="EstadoCli" Type="Byte" />
+          <Property Name="Correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ZONA1" Relationship="LiderAppModel.FK__CLIENTE__Zona__4959E263" FromRole="CLIENTE" ToRole="ZONA" />
+          <NavigationProperty Name="Distrito" Relationship="LiderAppModel.FK_CLIENTE_Distrito" FromRole="CLIENTE" ToRole="Distrito" />
+        </EntityType>
+        <Association Name="FK__CLIENTE__Zona__4959E263">
+          <End Type="LiderAppModel.ZONA" Role="ZONA" Multiplicity="1" />
+          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona1" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_Distrito">
+          <End Type="LiderAppModel.Distrito" Role="Distrito" Multiplicity="0..1" />
+          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido1" />
+          </Key>
+          <Property Name="Pedido1" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Cliente" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="FormaPago" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="Reparto" Type="Boolean" Nullable="false" />
+          <Property Name="TipoPersona" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Procesado" Type="Boolean" Nullable="false" />
+          <Property Name="rsocial" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="dni" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="encargado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="npersonal" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="nencargado" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="gestion" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ptollegada" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="distllegada" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="pdscto" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="dscto" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="tipodoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="flagCobertura" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha_web" Type="DateTime" Precision="3" />
+          <Property Name="statusWeb" Type="Boolean" />
+          <Property Name="Aprobado" Type="Boolean" />
+          <NavigationProperty Name="DETPEDIDO" Relationship="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="PEDIDO" ToRole="DETPEDIDO" />
+          <NavigationProperty Name="FORMAPAGO1" Relationship="LiderAppModel.FK_PEDIDO_FORMAPAGO" FromRole="PEDIDO" ToRole="FORMAPAGO" />
+          <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PEDIDO" ToRole="PERSONAL" />
+        </EntityType>
+        <EntityType Name="RUTAS">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="RUTAS" ToRole="REPARTO" />
+        </EntityType>
+        <EntityType Name="REPARTO">
+          <Key>
+            <PropertyRef Name="Ruta" />
+            <PropertyRef Name="Dia" />
+            <PropertyRef Name="Personal" />
+          </Key>
+          <Property Name="PKID" Type="Int32" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Dia" Type="Byte" Nullable="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK_REPARTO_PERSONAL" FromRole="REPARTO" ToRole="PERSONAL" />
+          <NavigationProperty Name="RUTAS" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="REPARTO" ToRole="RUTAS" />
+        </EntityType>
+        <Association Name="FK__DETPEDIDO__Pedid__55BFB948">
+          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="1" />
+          <End Type="LiderAppModel.DETPEDIDO" Role="DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="Pedido1" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_FORMAPAGO">
+          <End Type="LiderAppModel.FORMAPAGO" Role="FORMAPAGO" Multiplicity="1" />
+          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMAPAGO">
+              <PropertyRef Name="FormaPago1" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="FormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEDIDO__Personal__68D28DBC">
+          <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
+          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal1" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPARTO_PERSONAL">
           <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
           <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -774,73 +973,109 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PEDIDO_CLIENTE">
-          <End Type="LiderAppModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
-          <End Type="LiderAppModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+        <Association Name="FK_REPARTO_RUTAS">
+          <End Type="LiderAppModel.RUTAS" Role="RUTAS" Multiplicity="1" />
+          <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CLIENTE">
-              <PropertyRef Name="Cliente1" />
+            <Principal Role="RUTAS">
+              <PropertyRef Name="codigo" />
             </Principal>
-            <Dependent Role="PEDIDO">
-              <PropertyRef Name="Cliente" />
+            <Dependent Role="REPARTO">
+              <PropertyRef Name="Ruta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Vva_Vendedor">
+          <Key>
+            <PropertyRef Name="Fuerza_Ventas" />
+            <PropertyRef Name="Codigo_vendedor" />
+            <PropertyRef Name="Nombre_Vendedor" />
+            <PropertyRef Name="Activo" />
+            <PropertyRef Name="TpLista" />
+            <PropertyRef Name="IDGrupo" />
+          </Key>
+          <Property Name="Fuerza_Ventas" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Codigo_vendedor" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre_Vendedor" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPersona" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Doc_Identidad" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="TpLista" Type="Int32" Nullable="false" />
+          <Property Name="IDGrupo" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Vva_Producto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Fisico" />
+            <PropertyRef Name="IDMarca" />
+            <PropertyRef Name="IDGrupo" />
+            <PropertyRef Name="IDClase" />
+            <PropertyRef Name="ESPECIAL07" />
+            <PropertyRef Name="sku" />
+            <PropertyRef Name="Activo" />
+            <PropertyRef Name="Afecto" />
+            <PropertyRef Name="Unidades" />
+          </Key>
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Fisico" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Disponible" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="IDProv" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="IDMarca" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="IDLinea" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="IDGrupo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="IDCategoria" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="IDClase" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="C_MENOR" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="C_MAYOR" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="CR_MENOR" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="CR_MAYOR" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ESPECIAL05" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ESPECIAL06" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ESPECIAL07" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="sku" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="factor" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="FP" Type="Int32" />
+          <Property Name="Web" Type="Boolean" />
+          <Property Name="Dms" Type="Boolean" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Afecto" Type="Boolean" Nullable="false" />
+          <Property Name="Unidades" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Filtro">
+          <Key>
+            <PropertyRef Name="PKID" />
+            <PropertyRef Name="campo" />
+            <PropertyRef Name="condicion" />
+            <PropertyRef Name="valor" />
+            <PropertyRef Name="union" />
+            <PropertyRef Name="tabla" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="campo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="condicion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="union" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="tabla" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FiltroConfiguracion">
+          <Key>
+            <PropertyRef Name="PKID" />
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LiderAppModelStoreContainer" CdmEntityContainer="LiderAppEntities">
-          <EntitySetMapping Name="CLIENTE">
-            <EntityTypeMapping TypeName="LiderAppModel.CLIENTE">
-              <MappingFragment StoreEntitySet="CLIENTE">
-                <ScalarProperty Name="Cliente1" ColumnName="Cliente" />
-                <ScalarProperty Name="Zona" ColumnName="Zona" />
-                <ScalarProperty Name="TipoCli" ColumnName="TipoCli" />
-                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="FechIng" ColumnName="FechIng" />
-                <ScalarProperty Name="TopeCredito" ColumnName="TopeCredito" />
-                <ScalarProperty Name="DNI" ColumnName="DNI" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="Credito" ColumnName="Credito" />
-                <ScalarProperty Name="Alias" ColumnName="Alias" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
-                <ScalarProperty Name="IdNegocio" ColumnName="IdNegocio" />
-                <ScalarProperty Name="nuevo" ColumnName="nuevo" />
-                <ScalarProperty Name="ultmod" ColumnName="ultmod" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="observacion" ColumnName="observacion" />
-                <ScalarProperty Name="ap_paterno" ColumnName="ap_paterno" />
-                <ScalarProperty Name="ap_materno" ColumnName="ap_materno" />
-                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
-                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
-                <ScalarProperty Name="codbase" ColumnName="codbase" />
-                <ScalarProperty Name="codant" ColumnName="codant" />
-                <ScalarProperty Name="clasecli" ColumnName="clasecli" />
-                <ScalarProperty Name="ptollegada" ColumnName="ptollegada" />
-                <ScalarProperty Name="distllegada" ColumnName="distllegada" />
-                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
-                <ScalarProperty Name="RAZ" ColumnName="RAZ" />
-                <ScalarProperty Name="control" ColumnName="control" />
-                <ScalarProperty Name="agente_ret" ColumnName="agente_ret" />
-                <ScalarProperty Name="agente_per" ColumnName="agente_per" />
-                <ScalarProperty Name="agente_userf" ColumnName="agente_userf" />
-                <ScalarProperty Name="X" ColumnName="X" />
-                <ScalarProperty Name="Y" ColumnName="Y" />
-                <ScalarProperty Name="CodVen1" ColumnName="CodVen1" />
-                <ScalarProperty Name="dia1" ColumnName="dia1" />
-                <ScalarProperty Name="sec" ColumnName="sec" />
-                <ScalarProperty Name="CodVen2" ColumnName="CodVen2" />
-                <ScalarProperty Name="dia2" ColumnName="dia2" />
-                <ScalarProperty Name="EstadoCli" ColumnName="EstadoCli" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PERSONAL">
             <EntityTypeMapping TypeName="LiderAppModel.PERSONAL">
               <MappingFragment StoreEntitySet="PERSONAL">
@@ -903,6 +1138,106 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ZONA">
+            <EntityTypeMapping TypeName="LiderAppModel.ZONA">
+              <MappingFragment StoreEntitySet="ZONA">
+                <ScalarProperty Name="DesCorta" ColumnName="DesCorta" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="Riesgo" ColumnName="Riesgo" />
+                <ScalarProperty Name="Distancia" ColumnName="Distancia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Zona1" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZONA_PERSONAL">
+            <EntityTypeMapping TypeName="LiderAppModel.ZONA_PERSONAL">
+              <MappingFragment StoreEntitySet="ZONA_PERSONAL">
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="LiderAppModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincia">
+            <EntityTypeMapping TypeName="LiderAppModel.provincia">
+              <MappingFragment StoreEntitySet="provincia">
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distrito">
+            <EntityTypeMapping TypeName="LiderAppModel.Distrito">
+              <MappingFragment StoreEntitySet="Distrito">
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="LiderAppModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="EstadoCli" ColumnName="EstadoCli" />
+                <ScalarProperty Name="dia2" ColumnName="dia2" />
+                <ScalarProperty Name="CodVen2" ColumnName="CodVen2" />
+                <ScalarProperty Name="sec" ColumnName="sec" />
+                <ScalarProperty Name="dia1" ColumnName="dia1" />
+                <ScalarProperty Name="CodVen1" ColumnName="CodVen1" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="agente_userf" ColumnName="agente_userf" />
+                <ScalarProperty Name="agente_per" ColumnName="agente_per" />
+                <ScalarProperty Name="agente_ret" ColumnName="agente_ret" />
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="RAZ" ColumnName="RAZ" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+                <ScalarProperty Name="distllegada" ColumnName="distllegada" />
+                <ScalarProperty Name="ptollegada" ColumnName="ptollegada" />
+                <ScalarProperty Name="clasecli" ColumnName="clasecli" />
+                <ScalarProperty Name="codant" ColumnName="codant" />
+                <ScalarProperty Name="codbase" ColumnName="codbase" />
+                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="ap_materno" ColumnName="ap_materno" />
+                <ScalarProperty Name="ap_paterno" ColumnName="ap_paterno" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="ultmod" ColumnName="ultmod" />
+                <ScalarProperty Name="nuevo" ColumnName="nuevo" />
+                <ScalarProperty Name="IdNegocio" ColumnName="IdNegocio" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="TopeCredito" ColumnName="TopeCredito" />
+                <ScalarProperty Name="FechIng" ColumnName="FechIng" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="TipoCli" ColumnName="TipoCli" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Cliente1" ColumnName="Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PEDIDO">
             <EntityTypeMapping TypeName="LiderAppModel.PEDIDO">
               <MappingFragment StoreEntitySet="PEDIDO">
@@ -935,25 +1270,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ZONA">
-            <EntityTypeMapping TypeName="LiderAppModel.ZONA">
-              <MappingFragment StoreEntitySet="ZONA">
-                <ScalarProperty Name="DesCorta" ColumnName="DesCorta" />
-                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
-                <ScalarProperty Name="Riesgo" ColumnName="Riesgo" />
-                <ScalarProperty Name="Distancia" ColumnName="Distancia" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Zona1" ColumnName="Zona" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ZONA_PERSONAL">
-            <EntityTypeMapping TypeName="LiderAppModel.ZONA_PERSONAL">
-              <MappingFragment StoreEntitySet="ZONA_PERSONAL">
-                <ScalarProperty Name="Numero" ColumnName="Numero" />
-                <ScalarProperty Name="Dia" ColumnName="Dia" />
-                <ScalarProperty Name="Personal" ColumnName="Personal" />
-                <ScalarProperty Name="Zona" ColumnName="Zona" />
+          <EntitySetMapping Name="RUTAS">
+            <EntityTypeMapping TypeName="LiderAppModel.RUTAS">
+              <MappingFragment StoreEntitySet="RUTAS">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -963,43 +1284,75 @@
                 <ScalarProperty Name="Personal" ColumnName="Personal" />
                 <ScalarProperty Name="Dia" ColumnName="Dia" />
                 <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RUTAS">
-            <EntityTypeMapping TypeName="LiderAppModel.RUTAS">
-              <MappingFragment StoreEntitySet="RUTAS">
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <EntitySetMapping Name="Vva_Vendedor">
+            <EntityTypeMapping TypeName="LiderAppModel.Vva_Vendedor">
+              <MappingFragment StoreEntitySet="Vva_Vendedor">
+                <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
+                <ScalarProperty Name="TpLista" ColumnName="TpLista" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Doc_Identidad" ColumnName="Doc Identidad" />
+                <ScalarProperty Name="TipoPersona" ColumnName="TipoPersona" />
+                <ScalarProperty Name="Nombre_Vendedor" ColumnName="Nombre Vendedor" />
+                <ScalarProperty Name="Codigo_vendedor" ColumnName="Codigo vendedor" />
+                <ScalarProperty Name="Fuerza_Ventas" ColumnName="Fuerza Ventas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vva_Producto">
+            <EntityTypeMapping TypeName="LiderAppModel.Vva_Producto">
+              <MappingFragment StoreEntitySet="Vva_Producto">
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="Afecto" ColumnName="Afecto" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Dms" ColumnName="Dms" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="FP" ColumnName="FP" />
+                <ScalarProperty Name="factor" ColumnName="factor" />
+                <ScalarProperty Name="sku" ColumnName="sku" />
+                <ScalarProperty Name="ESPECIAL07" ColumnName="ESPECIAL07" />
+                <ScalarProperty Name="ESPECIAL06" ColumnName="ESPECIAL06" />
+                <ScalarProperty Name="ESPECIAL05" ColumnName="ESPECIAL05" />
+                <ScalarProperty Name="CR_MAYOR" ColumnName="CR_MAYOR" />
+                <ScalarProperty Name="CR_MENOR" ColumnName="CR_MENOR" />
+                <ScalarProperty Name="C_MAYOR" ColumnName="C_MAYOR" />
+                <ScalarProperty Name="C_MENOR" ColumnName="C_MENOR" />
+                <ScalarProperty Name="IDClase" ColumnName="IDClase" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
+                <ScalarProperty Name="IDLinea" ColumnName="IDLinea" />
+                <ScalarProperty Name="IDMarca" ColumnName="IDMarca" />
+                <ScalarProperty Name="IDProv" ColumnName="IDProv" />
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+                <ScalarProperty Name="Fisico" ColumnName="Fisico" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Filtro">
+            <EntityTypeMapping TypeName="LiderAppModel.Filtro">
+              <MappingFragment StoreEntitySet="Filtro">
+                <ScalarProperty Name="tabla" ColumnName="tabla" />
+                <ScalarProperty Name="union" ColumnName="union" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="condicion" ColumnName="condicion" />
+                <ScalarProperty Name="campo" ColumnName="campo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FiltroConfiguracion">
+            <EntityTypeMapping TypeName="LiderAppModel.FiltroConfiguracion">
+              <MappingFragment StoreEntitySet="FiltroConfiguracion">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Departamento">
-            <EntityTypeMapping TypeName="LiderAppModel.Departamento">
-              <MappingFragment StoreEntitySet="Departamento">
-                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
-                <ScalarProperty Name="descrip" ColumnName="descrip" />
-                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="provincia">
-            <EntityTypeMapping TypeName="LiderAppModel.provincia">
-              <MappingFragment StoreEntitySet="provincia">
-                <ScalarProperty Name="region" ColumnName="region" />
-                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
-                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
-                <ScalarProperty Name="descrip" ColumnName="descrip" />
-                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Distrito">
-            <EntityTypeMapping TypeName="LiderAppModel.Distrito">
-              <MappingFragment StoreEntitySet="Distrito">
-                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
-                <ScalarProperty Name="descrip" ColumnName="descrip" />
-                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

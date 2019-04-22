@@ -27,8 +27,8 @@ namespace xtraForm.Modulos.Elementos
             txtcdVendedor.Select();
         }
 
-        public delegate void varaible(string CdPedido,string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
-            string Gestion,string IdDistrito,DataGridView dgv);
+        public delegate void varaible(string CdPedido, string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
+            string Gestion, string IdDistrito, DataGridView dgv);
 
         public event varaible pasar;
 
@@ -46,10 +46,28 @@ namespace xtraForm.Modulos.Elementos
             CpPedido.Gestion = txtcdGestion.Text.Trim();
             CpPedido.DistritoCliente = txtcdDistrito.Text.Trim();
             CpPedido.TipoPedido = txtdocCliente.Text.Trim().Length == 8 ? "B" : "F";
-            pasar(CpPedido.NumeroPedido, CpPedido.TipoPedido, CpPedido.CodigoVendedor, CpPedido.CodigoCliente, CpPedido.FormaPago, Convert.ToDateTime(dateEmision.EditValue), CpPedido.NombreCliente,
-                CpPedido.DocumentoCliente.Length == 8 ? string.Empty: CpPedido.DocumentoCliente,CpPedido.DireccionCliente, CpPedido.DocumentoCliente.Length == 8 ? CpPedido.DocumentoCliente : string.Empty ,
-                CpPedido.NombreVendedor,CpPedido.Gestion,CpPedido.DistritoCliente,dataGridView1);
-            this.Close();
+            if (!proceso.ConsultarVerdad("Procesado", "Pedido", "pedido = '" + CpPedido.NumeroPedido + "'"))
+            {
+                try
+                {
+                    if (dxValidationProvider1.Validate())
+                    {
+                        pasar(CpPedido.NumeroPedido, CpPedido.TipoPedido, CpPedido.CodigoVendedor, CpPedido.CodigoCliente, CpPedido.FormaPago, Convert.ToDateTime(dateEmision.EditValue),
+                        CpPedido.NombreCliente, CpPedido.DocumentoCliente.Length == 8 ? string.Empty : CpPedido.DocumentoCliente, CpPedido.DireccionCliente,
+                        CpPedido.DocumentoCliente.Length == 8 ? CpPedido.DocumentoCliente : string.Empty, CpPedido.NombreVendedor, CpPedido.Gestion, CpPedido.DistritoCliente, dataGridView1);
+                        this.Close();
+                    }
+                }
+                catch (Exception t)
+                {
+                    MessageBox.Show(t.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pedido se encuentra procesado.");
+            }
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -1122,13 +1140,17 @@ namespace xtraForm.Modulos.Elementos
 
         private void txtcdVendedor_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
-            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
-            proceso.consultar(@"select personal Codigo,nombre Nombre from personal where vendedor = 1 and activo = 1", "vendedor");
-            frmvendedor.gridControl1.DataSource = proceso.ds.Tables["vendedor"];
-            formato.Grilla(frmvendedor.gridView1);
-            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
-            frmvendedor.ShowDialog();
+            using (var Context = new Model.LiderAppEntities())
+            {
+                Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
+                frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
+                var ListVendedorA = (from p in Context.Vva_Vendedor where p.Activo == true select new { Codigo = p.Codigo_vendedor, Nombre = p.Nombre_Vendedor });
+                var ListVendedorB = (from p in Context.PERSONAL where p.Activo == true && p.vendedor == 1 select new { Codigo = p.Personal1, Nombre = p.Nombre });
+                frmvendedor.gridControl1.DataSource = btnFueraRuta.Checked == false ? ListVendedorA.ToList() : ListVendedorB.ToList();
+                formato.Grilla(frmvendedor.gridView1);
+                frmvendedor.StartPosition = FormStartPosition.CenterScreen;
+                frmvendedor.ShowDialog();
+            }
         }
 
         private void txtcdVendedor_KeyPress(object sender, KeyPressEventArgs e)
@@ -1142,34 +1164,86 @@ namespace xtraForm.Modulos.Elementos
                     txtnmCliente.ResetText();
                     txtdocCliente.ResetText();
                 }
-                if (txtcdVendedor.Text.Length == 0)
+                switch (btnFueraRuta.Checked)
                 {
-                    entidad.tabla = "vendedor";
-                    Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
-                    frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
-                    proceso.consultar(
-                    @"select personal Codigo,nombre Nombre from personal where vendedor = 1 and activo = 1", "vendedor");
-                    frmvendedor.gridControl1.DataSource = proceso.ds.Tables["vendedor"];
-                    formato.Grilla(frmvendedor.gridView1);
-                    frmvendedor.StartPosition = FormStartPosition.CenterScreen;
-                    frmvendedor.ShowDialog();
+                    case true:
+                        var Context_ = new Model.LiderAppEntities();
+                        if (txtcdVendedor.Text.Length == 0)
+                        {
+                            entidad.tabla = "vendedor";
+                            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
+                            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
+                            var ListVendedorA = (from p in Context_.Vva_Vendedor where p.Activo == true select new { Codigo = p.Codigo_vendedor, Nombre = p.Nombre_Vendedor });
+                            var ListVendedorB = (from p in Context_.PERSONAL where p.Activo == true && p.vendedor == 1 select new { Codigo = p.Personal1, Nombre = p.Nombre });
+                            frmvendedor.gridControl1.DataSource = btnFueraRuta.Checked == false ? ListVendedorA.ToList() : ListVendedorB.ToList();
+                            formato.Grilla(frmvendedor.gridView1);
+                            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
+                            frmvendedor.ShowDialog();
+                        }
+                        else if (Context_.PERSONAL.Where(p => p.Personal1.Equals(txtcdVendedor.Text.Trim()) && p.vendedor.Equals(1) && p.Activo.Equals(true)).FirstOrDefault() != null)
+                        {
+                            var Contex = new Model.LiderAppEntities();
+                            txtnmVendedor.Text = (from p in Contex.PERSONAL where p.Activo.Equals(true) && p.vendedor.Equals(1) && p.Personal1.Equals(txtcdVendedor.Text.Trim())
+                                                  select p.Nombre).FirstOrDefault();
+                        }
+                        else if (Context_.PERSONAL.Where(p => p.Personal1.Contains(txtcdVendedor.Text.Trim()) && p.vendedor.Equals(1) && p.Activo.Equals(true)).ToList().Count > 0)
+                        {
+                            var Contex = new Model.LiderAppEntities();
+                            entidad.tabla = "vendedor";
+                            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
+                            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
+                            var ListVendedorB = (from p in Contex.PERSONAL
+                                                 where p.Activo == true && p.vendedor == 1 && p.Personal1.Contains(txtcdVendedor.Text.Trim())
+                                                 select new { Codigo = p.Personal1, Nombre = p.Nombre });
+                            frmvendedor.gridControl1.DataSource = ListVendedorB.ToList();
+                            formato.Grilla(frmvendedor.gridView1);
+                            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
+                            frmvendedor.ShowDialog();
+                        }
+                        else
+                            MessageBox.Show("Codigo no existe");
+                        break;
+                    case false:
+                        var Context = new Model.LiderAppEntities();
+                        if (txtcdVendedor.Text.Length == 0)
+                        {
+                            entidad.tabla = "vendedor";
+                            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
+                            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
+                            var ListVendedorA = (from p in Context.Vva_Vendedor where p.Activo == true select new { Codigo = p.Codigo_vendedor, Nombre = p.Nombre_Vendedor });
+                            var ListVendedorB = (from p in Context.PERSONAL where p.Activo == true && p.vendedor == 1 select new { Codigo = p.Personal1, Nombre = p.Nombre });
+                            frmvendedor.gridControl1.DataSource = btnFueraRuta.Checked == false ? ListVendedorA.ToList() : ListVendedorB.ToList();
+                            formato.Grilla(frmvendedor.gridView1);
+                            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
+                            frmvendedor.ShowDialog();
+                        }
+                        else if ((Context.Vva_Vendedor.Where(p => p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim()) && p.Activo.Equals(true))).FirstOrDefault() != null)
+                        {
+                            var Contex = new Model.LiderAppEntities();
+                            txtnmVendedor.Text = (from p in Context.Vva_Vendedor where p.Activo.Equals(true) && p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim())
+                                                  select p.Nombre_Vendedor).FirstOrDefault();
+                        }
+                        else if (Context.Vva_Vendedor.Where(p => p.Codigo_vendedor.Contains(txtcdVendedor.Text.Trim()) && p.Activo.Equals(true)).ToList().Count > 0)
+                        {
+                            var Contex = new Model.LiderAppEntities();
+                            entidad.tabla = "vendedor";
+                            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
+                            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
+                            var ListVendedorA = (from p in Context.Vva_Vendedor
+                                                 where p.Activo == true && p.Codigo_vendedor.Contains(txtcdVendedor.Text.Trim())
+                                                 select new { Codigo = p.Codigo_vendedor, Nombre = p.Nombre_Vendedor });
+                            frmvendedor.gridControl1.DataSource = ListVendedorA.ToList();
+                            formato.Grilla(frmvendedor.gridView1);
+                            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
+                            frmvendedor.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Codigo no existe");
+                            txtnmVendedor.ResetText();
+                        }
+                        break;
                 }
-                else if (proceso.ExistenciaCampo("personal", "personal", "personal = '" + txtcdVendedor.Text.Trim() + "'"))
-                    txtnmVendedor.Text = proceso.ConsultarCadena("nombre", "personal", "personal = '" + txtcdVendedor.Text.Trim() + "'");
-                else if (proceso.ConsultarTabla_("personal", "personal like '%" + txtcdVendedor.Text.Trim() + "%'").Rows.Count > 0)
-                {
-                    entidad.tabla = "vendedor";
-                    Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
-                    frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
-                    proceso.consultar(
-                    @"select personal Codigo,nombre Nombre from personal where vendedor = 1 and activo = 1 and personal like '%" + txtcdVendedor.Text.Trim() + "%'", "vendedor");
-                    frmvendedor.gridControl1.DataSource = proceso.ds.Tables["vendedor"];
-                    formato.Grilla(frmvendedor.gridView1);
-                    frmvendedor.StartPosition = FormStartPosition.CenterScreen;
-                    frmvendedor.ShowDialog();
-                }
-                else
-                    MessageBox.Show("Codigo no existe");
             }
         }
 

@@ -7,17 +7,6 @@ namespace xtraForm.Libreria
     {
         string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["conexion"].ToString();
 
-        public DataTable tipoBonificacion()
-        {
-            DataTable TBonif = new DataTable();
-            TBonif.Columns.Add("ID", typeof(System.Int32));
-            TBonif.Columns.Add("Descripcion", typeof(System.String));
-            TBonif.Rows.Add("1", "Reglas basicas (ejemp: [apartir de 10 und] X [regalo 1 und] Y)");
-            TBonif.Rows.Add("2", "Reglas de rango (ejemp: [desde de 10 und  hasta 20 und] X [regalo 1 und] Y)");
-            TBonif.Rows.Add("3", "Reglas basicas soles (ejemp: [desde de 10 soles] X [regalo 1 und] Y)");
-            TBonif.Rows.Add("4", "Reglas de rango soles (ejemp: [desde de 10 soles  hasta 20 soles] X [regalo 1 und] Y)");
-            return TBonif;
-        }
         public DataTable pedido()
         {
             string sql =

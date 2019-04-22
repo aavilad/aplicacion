@@ -25,17 +25,21 @@ namespace xtraForm.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<PERSONAL> PERSONAL { get; set; }
         public virtual DbSet<FORMAPAGO> FORMAPAGO { get; set; }
         public virtual DbSet<DETPEDIDO> DETPEDIDO { get; set; }
-        public virtual DbSet<PEDIDO> PEDIDO { get; set; }
         public virtual DbSet<ZONA> ZONA { get; set; }
         public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
-        public virtual DbSet<REPARTO> REPARTO { get; set; }
-        public virtual DbSet<RUTAS> RUTAS { get; set; }
         public virtual DbSet<Departamento> Departamento { get; set; }
         public virtual DbSet<provincia> provincia { get; set; }
         public virtual DbSet<Distrito> Distrito { get; set; }
+        public virtual DbSet<CLIENTE> CLIENTE { get; set; }
+        public virtual DbSet<PEDIDO> PEDIDO { get; set; }
+        public virtual DbSet<RUTAS> RUTAS { get; set; }
+        public virtual DbSet<REPARTO> REPARTO { get; set; }
+        public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
+        public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
+        public virtual DbSet<Filtro> Filtro { get; set; }
+        public virtual DbSet<FiltroConfiguracion> FiltroConfiguracion { get; set; }
     }
 }

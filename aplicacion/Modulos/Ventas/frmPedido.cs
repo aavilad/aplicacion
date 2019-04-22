@@ -18,7 +18,7 @@ namespace xtraForm.Modulos.Ventas
         Libreria.Producto producto = new Libreria.Producto();
         private DateTime ahora;
         private DateTime inicio;
-        private string tabla = "pedido";
+        public string tabla = "vva_pedido";
         public frmPedido()
         {
             InitializeComponent();
@@ -31,28 +31,30 @@ namespace xtraForm.Modulos.Ventas
 
         private void filtarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            proceso.actualizar("pedido", "FECHA = REPLACE(CONVERT(VARCHAR(10),Fecha,120),'-','')", "procesado = 0 and statusweb is null");
-            actualizavalores(inicio.ToString("yyyyMMdd"));
-            DataTable mapa = new DataTable();
-            mapa.Columns.Add("campos", typeof(System.String));
-            Filtros.frmFiltros filtro = new Filtros.frmFiltros();
-            proceso.consultar("select campo,condicion,valor,[union] from filtro where tabla = '" + entidad.tabla + "'", entidad.tabla);
-            foreach (string dr in (from t in maestro.pedido().Columns.Cast<DataColumn>() select t.ColumnName).ToList())
+            using (var Context = new Model.LiderAppEntities())
             {
-                mapa.Rows.Add(dr);
+                proceso.actualizar("pedido", "FECHA = REPLACE(CONVERT(VARCHAR(10),Fecha,120),'-','')", "procesado = 0 and statusweb is null");
+                actualizavalores(inicio.ToString("yyyyMMdd"));
+                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
+                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
+                i.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DisplayMember = "Descripcion";
+                i.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
+                j.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DisplayMember = "Descripcion";
+                j.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
+                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'vva_pedido'").ToList();
+                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
+                filtro.StartPosition = FormStartPosition.CenterScreen;
+                foreach (var fila in Context.Filtro.Where(w => w.tabla.Equals(tabla)).ToList())
+                {
+                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
+                }
+                filtro.entidad = tabla;
+                filtro.ShowDialog();
             }
-            foreach (DataRow dr in proceso.ds.Tables[entidad.tabla].Rows)
-            {
-                filtro.dataGridView1.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
-            }
-            filtro.tabla = entidad.tabla;
-            filtro.cboxCampo.DataSource = mapa;
-            filtro.cboxCampo.DisplayMember = "campos";
-            filtro.cboxCampo.ValueMember = "campos";
-            filtro.pasar += new Filtros.frmFiltros.variables(condicion);
-            filtro.StartPosition = FormStartPosition.CenterScreen;
-
-            filtro.ShowDialog();
         }
 
         void CamposPedido(string CdPedido, string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
@@ -60,8 +62,8 @@ namespace xtraForm.Modulos.Ventas
         {
             using (Model.LiderAppEntities Context = new Model.LiderAppEntities())
             {
-                //try
-                //{
+                try
+                {
                     Model.PEDIDO Cp = new Model.PEDIDO { Pedido1 = CdPedido };
                     Context.PEDIDO.Attach(Cp);
                     Cp.Personal = CdVendedor;
@@ -104,23 +106,20 @@ namespace xtraForm.Modulos.Ventas
                         Context.DETPEDIDO.Add(ItemCp);
                     }
                     Context.SaveChanges();
-                //}
-                //catch (System.Exception e)
-                //{
-                //    MessageBox.Show(e.Message);
-                //}
+                }
+                catch (System.Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
-
-
         }
 
         void condicion(string cadena)
         {
-            entidad.sql = Libreria.Constante.Pedidos;
             if (cadena.Length == 0)
             {
-                proceso.consultar(entidad.sql, entidad.tabla);
-                gridControl1.DataSource = proceso.ds.Tables[entidad.tabla];
+                proceso.consultar(Libreria.Constante.Pedidos, tabla);
+                gridControl1.DataSource = proceso.ds.Tables[tabla];
                 gridView1.OptionsView.ColumnAutoWidth = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsBehavior.ReadOnly = true;
@@ -141,8 +140,8 @@ namespace xtraForm.Modulos.Ventas
             {
                 try
                 {
-                    proceso.consultar(entidad.sql + " where " + cadena, entidad.tabla);
-                    gridControl1.DataSource = proceso.ds.Tables[entidad.tabla];
+                    proceso.consultar(Libreria.Constante.Pedidos + " having " + cadena, tabla);
+                    gridControl1.DataSource = proceso.ds.Tables[tabla];
                     gridView1.OptionsView.ColumnAutoWidth = false;
                     gridView1.OptionsBehavior.Editable = false;
                     gridView1.OptionsBehavior.ReadOnly = true;
@@ -158,8 +157,9 @@ namespace xtraForm.Modulos.Ventas
                     gridView1.Appearance.Row.FontSizeDelta = 0;
                     gridView1.BestFitColumns();
                 }
-                catch
+                catch (Exception t)
                 {
+                    MessageBox.Show(t.Message);
                     gridControl1.DataSource = null;
                     gridControl1.Refresh();
                 }
@@ -201,70 +201,78 @@ namespace xtraForm.Modulos.Ventas
         {
             if (gridView1.SelectedRowsCount > 0)
             {
+                var Context = new Model.LiderAppEntities();
                 Elementos.frmpedido frmpedido = new Elementos.frmpedido();
                 frmpedido.Existe = true;
                 frmpedido.pasar += new Elementos.frmpedido.varaible(CamposPedido);
                 pedido.NumeroPedido = gridView1.GetFocusedRowCellValue("num Pedido").ToString();
-                pedido.CodigoVendedor = proceso.ConsultarCadena("Personal", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
-                pedido.NombreVendedor = proceso.ConsultarCadena("[Nombre Vendedor]", "Vva_Vendedor", "[Codigo vendedor] = '" + pedido.CodigoVendedor + "'");
-                pedido.CodigoCliente = proceso.ConsultarCadena("Cliente", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
-                pedido.NombreCliente = proceso.ConsultarCadena("Nombre", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
+                pedido.CodigoVendedor = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.Personal).FirstOrDefault();
+                pedido.NombreVendedor = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.npersonal).FirstOrDefault();
+                pedido.CodigoCliente = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.Cliente).FirstOrDefault();
+                pedido.NombreCliente = Context.CLIENTE.Where(p => p.Cliente1.Equals(pedido.CodigoCliente)).Select(a => a.Alias.Trim()).FirstOrDefault();
                 pedido.DocumentoCliente = proceso.ConsultarCadena("Documento", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
-                pedido.DireccionCliente = proceso.ConsultarCadena("Direccion", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
+                pedido.DireccionCliente = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.direccion).FirstOrDefault();
                 pedido.ZonaCliente = proceso.ConsultarCadena("descripcion", "Zona", "Zona = (select zona from Vva_Cliente where Codigo = '" + pedido.CodigoCliente + "')");
                 pedido.DistritoCliente = proceso.ConsultarCadena("descrip", "Distrito", "iddistrito = (select distllegada from pedido where pedido = '" + pedido.NumeroPedido + "')");
                 pedido.ProvinciaCliente = proceso.ConsultarCadena("descrip", "provincia", " idprovincia = (select idprovincia from Distrito where iddistrito = (select idprovincia from pedido where pedido = '" + pedido.NumeroPedido + "'))");
-                pedido.Gestion = proceso.ConsultarCadena("Gestion", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
+                pedido.Gestion = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.gestion).FirstOrDefault();
                 pedido.Credito = proceso.ConsultarVerdad("Credito", "Vva_Pedido", "NrPedido = '" + pedido.NumeroPedido + "'");
                 pedido.FormaPago = proceso.ConsultarCadena("FormaPago", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
                 pedido.FechaEmision = proceso.ConsultarCadena("FechaEmision", "Vva_Pedido", "NrPedido = '" + pedido.NumeroPedido + "'");
-                frmpedido.txtcdDocumento.Text = pedido.NumeroPedido;
-                frmpedido.txtcdVendedor.Text = pedido.CodigoVendedor;
-                frmpedido.txtnmVendedor.Text = pedido.NombreVendedor;
-                frmpedido.txtcdCLiente.Text = pedido.CodigoCliente;
-                frmpedido.txtnmCliente.Text = pedido.NombreCliente;
-                frmpedido.txtdocCliente.Text = pedido.DocumentoCliente;
-                frmpedido.txtnmDireccion.EditValue = pedido.DireccionCliente;
-                frmpedido.txtnmZona.EditValue = pedido.ZonaCliente;
-                frmpedido.txtcdZona.EditValue = proceso.ConsultarCadena("Zona", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
-                frmpedido.txtnmDistrito.EditValue = pedido.DistritoCliente;
-                frmpedido.txtcdDistrito.EditValue = proceso.ConsultarCadena("IDDistrito", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
-                frmpedido.txtnmProvincia.EditValue = pedido.ProvinciaCliente;
-                frmpedido.txtcdProvincia.EditValue = proceso.ConsultarCadena("idprovincia", "Distrito", "iddistrito = (select IDDistrito from Vva_Cliente where codigo = '" + pedido.CodigoCliente + "')");
-                frmpedido.txtcdGestion.Text = pedido.Gestion;
-                frmpedido.dateEmision.EditValue = Convert.ToDateTime(pedido.FechaEmision).ToString("dd/MM/yyyy");
-                frmpedido.dateEntrega.EditValue = Convert.ToDateTime(pedido.FechaEmision).AddDays(1).ToString("dd/MM/yyyy");
-                frmpedido.btnCredito.Checked = pedido.Credito == true ? true : false;
-                frmpedido.txtformaPago.Text = proceso.ConsultarCadena("Descripcion", "FormaPago", "FormaPago = '" + pedido.FormaPago + "'");
-                frmpedido.CodigoFP.Text = pedido.FormaPago;
-                proceso.consultar("select * from detpedido where pedido = '" + pedido.NumeroPedido + "'", tabla);
-                foreach (DataRow DR_0 in proceso.ds.Tables[tabla].Rows)
+                try
                 {
-                    producto.Codigo = DR_0["Producto"].ToString();
-                    producto.Descripcion = proceso.ConsultarCadena("Descripcion", "Vva_Producto", "Codigo = '" + producto.Codigo + "'");
-                    producto.Cantidad = (decimal)DR_0["Cantidad"];
-                    producto.Unidad = proceso.ConsultarCadena("Unidad", "Vva_producto", "Codigo = '" + producto.Codigo + "'");
-                    producto.PrecioUnitario = Convert.ToDecimal(DR_0["PrecioUnitario"]);
-                    producto.PrecioNeto = Convert.ToDecimal(DR_0["PrecioNeto"]);
-                    producto.Descuento = Convert.ToDecimal(DR_0["Descuento"]);
-                    producto.Recargo = Convert.ToDecimal(DR_0["Recargo"]);
-                    producto.Bonificacion = Convert.ToBoolean(DR_0["Bonif"]);
-                    producto.Afecto = Convert.ToBoolean(DR_0["Afecto"]);
-                    var IdBonif = DR_0["IDBonificacion"] is DBNull ? 0 : DR_0["IDBonificacion"];
-                    producto.TipoPrecio = Convert.ToInt32(DR_0["TipoPrecio"]);
+                    frmpedido.txtcdDocumento.Text = pedido.NumeroPedido;
+                    frmpedido.txtcdVendedor.Text = pedido.CodigoVendedor;
+                    frmpedido.txtnmVendedor.Text = pedido.NombreVendedor;
+                    frmpedido.txtcdCLiente.Text = pedido.CodigoCliente;
+                    frmpedido.txtnmCliente.Text = pedido.NombreCliente;
+                    frmpedido.txtdocCliente.Text = pedido.DocumentoCliente;
+                    frmpedido.txtnmDireccion.EditValue = pedido.DireccionCliente;
+                    frmpedido.txtnmZona.EditValue = pedido.ZonaCliente;
+                    frmpedido.txtcdZona.EditValue = proceso.ConsultarCadena("Zona", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
+                    frmpedido.txtnmDistrito.EditValue = pedido.DistritoCliente;
+                    frmpedido.txtcdDistrito.EditValue = proceso.ConsultarCadena("IDDistrito", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
+                    frmpedido.txtnmProvincia.EditValue = pedido.ProvinciaCliente;
+                    frmpedido.txtcdProvincia.EditValue = proceso.ConsultarCadena("idprovincia", "Distrito", "iddistrito = (select IDDistrito from Vva_Cliente where codigo = '" + pedido.CodigoCliente + "')");
+                    frmpedido.txtcdGestion.Text = pedido.Gestion;
+                    frmpedido.dateEmision.EditValue = Convert.ToDateTime(pedido.FechaEmision).ToString("dd/MM/yyyy");
+                    frmpedido.dateEntrega.EditValue = Convert.ToDateTime(pedido.FechaEmision).AddDays(1).ToString("dd/MM/yyyy");
+                    frmpedido.btnCredito.Checked = pedido.Credito == true ? true : false;
+                    frmpedido.txtformaPago.Text = proceso.ConsultarCadena("Descripcion", "FormaPago", "FormaPago = '" + pedido.FormaPago + "'");
+                    frmpedido.CodigoFP.Text = pedido.FormaPago;
+                    proceso.consultar("select * from detpedido where pedido = '" + pedido.NumeroPedido + "'", tabla);
+                    foreach (DataRow DR_0 in proceso.ds.Tables[tabla].Rows)
+                    {
+                        producto.Codigo = DR_0["Producto"].ToString();
+                        producto.Descripcion = proceso.ConsultarCadena("Descripcion", "Vva_Producto", "Codigo = '" + producto.Codigo + "'");
+                        producto.Cantidad = (decimal)DR_0["Cantidad"];
+                        producto.Unidad = proceso.ConsultarCadena("Unidad", "Vva_producto", "Codigo = '" + producto.Codigo + "'");
+                        producto.PrecioUnitario = Convert.ToDecimal(DR_0["PrecioUnitario"]);
+                        producto.PrecioNeto = Convert.ToDecimal(DR_0["PrecioNeto"]);
+                        producto.Descuento = Convert.ToDecimal(DR_0["Descuento"]);
+                        producto.Recargo = Convert.ToDecimal(DR_0["Recargo"]);
+                        producto.Bonificacion = Convert.ToBoolean(DR_0["Bonif"]);
+                        producto.Afecto = Convert.ToBoolean(DR_0["Afecto"]);
+                        var IdBonif = DR_0["IDBonificacion"] is DBNull ? 0 : DR_0["IDBonificacion"];
+                        producto.TipoPrecio = Convert.ToInt32(DR_0["TipoPrecio"]);
 
-                    frmpedido.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion, producto.Cantidad, producto.Cantidad, producto.Unidad, producto.TipoPrecio, producto.PrecioUnitario, producto.PrecioNeto,
-                        (producto.Cantidad * producto.PrecioNeto), producto.Descuento, producto.Recargo, producto.Bonificacion, pedido.Credito, producto.Afecto, IdBonif);
-                    frmpedido.dataGridView1.CurrentRow.ReadOnly = producto.Bonificacion == true ? true : false;
-                    frmpedido.dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
-                    frmpedido.dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
-                    frmpedido.dataGridView1.CurrentRow.Cells["Cantidad"].ReadOnly = false;
-                    frmpedido.dataGridView1.CurrentRow.Cells["PrecioNeto"].ReadOnly = false;
+                        frmpedido.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion, producto.Cantidad, producto.Cantidad, producto.Unidad, producto.TipoPrecio, producto.PrecioUnitario, producto.PrecioNeto,
+                            (producto.Cantidad * producto.PrecioNeto), producto.Descuento, producto.Recargo, producto.Bonificacion, pedido.Credito, producto.Afecto, IdBonif);
+                        frmpedido.dataGridView1.CurrentRow.ReadOnly = producto.Bonificacion == true ? true : false;
+                        frmpedido.dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
+                        frmpedido.dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
+                        frmpedido.dataGridView1.CurrentRow.Cells["Cantidad"].ReadOnly = false;
+                        frmpedido.dataGridView1.CurrentRow.Cells["PrecioNeto"].ReadOnly = false;
+                    }
+                    frmpedido.calculartotal();
+                    frmpedido.StartPosition = FormStartPosition.CenterScreen;
+                    frmpedido.Existe = false;
+                    frmpedido.Show();
                 }
-                frmpedido.calculartotal();
-                frmpedido.StartPosition = FormStartPosition.CenterScreen;
-                frmpedido.Existe = false;
-                frmpedido.Show();
+                catch (Exception t)
+                {
+                    MessageBox.Show(t.Message);
+                }
             }
         }
 

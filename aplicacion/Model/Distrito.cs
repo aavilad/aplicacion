@@ -24,8 +24,8 @@ namespace xtraForm.Model
         public string descrip { get; set; }
         public string idprovincia { get; set; }
     
+        public virtual provincia provincia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CLIENTE> CLIENTE { get; set; }
-        public virtual provincia provincia { get; set; }
     }
 }
