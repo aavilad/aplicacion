@@ -101,7 +101,7 @@ namespace xtraForm.Modulos.Inventario
             {
                 Elementos.frmProducto frmproducto = new Elementos.frmProducto();
                 string CodigoProducto = gridView1.GetFocusedRowCellValue("Codigo").ToString();
-                string ProductoProveedor = Context.Vva_Producto.Where(x=>x.Codigo.Equals(CodigoProducto)).Select(y=>y.IDProv).FirstOrDefault();
+                string ProductoProveedor = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDProv).FirstOrDefault();
                 string CodigoFabrica = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.sku).FirstOrDefault();
                 string CodigoEan = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.EAN).FirstOrDefault();
                 string productoDescripcion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Descripcion).FirstOrDefault();
@@ -117,6 +117,24 @@ namespace xtraForm.Modulos.Inventario
                 bool ProductoWeb = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Web).FirstOrDefault();
                 bool ProductoAfecto = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Afecto).FirstOrDefault();
                 bool ProductoActivo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Activo).FirstOrDefault();
+                frmproducto.TxtNmProveedor.EditValue = ProductoProveedor;
+                frmproducto.TxtCodigoProducto.EditValue = CodigoProducto;
+                frmproducto.TxtCodigoFabrica.EditValue = CodigoFabrica;
+                frmproducto.TxtCodigoEan.EditValue = CodigoEan;
+                frmproducto.TxtDescripcionProducto.EditValue = productoDescripcion;
+                frmproducto.TxtLinea.EditValue = ProductoLinea;
+                frmproducto.TxtMarca.EditValue = ProductoMarca;
+                frmproducto.TxtGrupo.EditValue = ProductoGrupo;
+                frmproducto.TxtClase.EditValue = ProductoClase;
+                frmproducto.TxtCategoria.EditValue = ProductoCategoria;
+                frmproducto.CheckArticuloVenta.Checked = ProductoVenta;
+                frmproducto.CheckArticuloCompra.Checked = ProductoCompra;
+                frmproducto.CheckProductoCombo.Checked = ProductoCombo;
+                frmproducto.CheckActivoUnilever.Checked = ProductoUnilever;
+                frmproducto.CheckActivoWeb.Checked = ProductoWeb;
+                frmproducto.CheckAfecto.Checked = ProductoAfecto;
+                frmproducto.CheckActivo.Checked = ProductoActivo;
+                frmproducto.Show();
             }
 
         }

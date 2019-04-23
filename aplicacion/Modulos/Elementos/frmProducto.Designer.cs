@@ -274,7 +274,7 @@
             this.TxtLinea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TxtLinea.Properties.NullText = "";
-            this.TxtLinea.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TxtLinea.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.TxtLinea.Size = new System.Drawing.Size(361, 20);
             this.TxtLinea.TabIndex = 0;
             // 
@@ -285,6 +285,7 @@
             this.TxtMarca.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TxtMarca.Properties.NullText = "";
+            this.TxtMarca.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.TxtMarca.Size = new System.Drawing.Size(361, 20);
             this.TxtMarca.TabIndex = 1;
             // 
@@ -295,6 +296,7 @@
             this.TxtGrupo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TxtGrupo.Properties.NullText = "";
+            this.TxtGrupo.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.TxtGrupo.Size = new System.Drawing.Size(361, 20);
             this.TxtGrupo.TabIndex = 2;
             // 
@@ -381,6 +383,7 @@
             // 
             // TxtCaracteristica1
             // 
+            this.TxtCaracteristica1.Enabled = false;
             this.TxtCaracteristica1.Location = new System.Drawing.Point(89, 16);
             this.TxtCaracteristica1.Name = "TxtCaracteristica1";
             this.TxtCaracteristica1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -390,6 +393,7 @@
             // 
             // TxtCaracteristica2
             // 
+            this.TxtCaracteristica2.Enabled = false;
             this.TxtCaracteristica2.Location = new System.Drawing.Point(89, 45);
             this.TxtCaracteristica2.Name = "TxtCaracteristica2";
             this.TxtCaracteristica2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -399,6 +403,7 @@
             // 
             // TxtCaracteristica3
             // 
+            this.TxtCaracteristica3.Enabled = false;
             this.TxtCaracteristica3.Location = new System.Drawing.Point(89, 74);
             this.TxtCaracteristica3.Name = "TxtCaracteristica3";
             this.TxtCaracteristica3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -408,6 +413,7 @@
             // 
             // TxtCaracteristica4
             // 
+            this.TxtCaracteristica4.Enabled = false;
             this.TxtCaracteristica4.Location = new System.Drawing.Point(89, 104);
             this.TxtCaracteristica4.Name = "TxtCaracteristica4";
             this.TxtCaracteristica4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -417,6 +423,7 @@
             // 
             // TxtCaracteristica5
             // 
+            this.TxtCaracteristica5.Enabled = false;
             this.TxtCaracteristica5.Location = new System.Drawing.Point(89, 133);
             this.TxtCaracteristica5.Name = "TxtCaracteristica5";
             this.TxtCaracteristica5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -517,6 +524,7 @@
             this.TxtNmProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TxtNmProveedor.Properties.NullText = "";
+            this.TxtNmProveedor.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.TxtNmProveedor.Size = new System.Drawing.Size(391, 20);
             this.TxtNmProveedor.TabIndex = 31;
             // 
