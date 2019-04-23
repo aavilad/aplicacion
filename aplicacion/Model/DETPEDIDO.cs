@@ -33,5 +33,6 @@ namespace xtraForm.Model
         public Nullable<bool> Bonif { get; set; }
     
         public virtual PEDIDO PEDIDO1 { get; set; }
+        public virtual PRODUCTO PRODUCTO1 { get; set; }
     }
 }

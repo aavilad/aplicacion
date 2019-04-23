@@ -5,6 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="LiderAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="categoria" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="descripcorta" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="clase">
+          <Key>
+            <PropertyRef Name="clase" />
+          </Key>
+          <Property Name="clase" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="cuenta" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="ctacargo" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="ctaabono" Type="char" MaxLength="12" Nullable="false" />
+        </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
             <PropertyRef Name="Cliente" />
@@ -115,13 +133,14 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
         <EntityType Name="FiltroConfiguracion">
           <Key>
             <PropertyRef Name="PKID" />
-            <PropertyRef Name="codigo" />
+            <PropertyRef Name="Codigo" />
             <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Tipo" />
           </Key>
           <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Tipo" Type="varchar" MaxLength="20" />
+          <Property Name="Tipo" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -133,6 +152,43 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
           <Property Name="Nrodia" Type="tinyint" Nullable="false" />
           <Property Name="contado" Type="bit" Nullable="false" />
           <Property Name="DiasFinta" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="grupo" />
+          </Key>
+          <Property Name="grupo" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="descrip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descorta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="orden" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LINEA">
+          <Key>
+            <PropertyRef Name="Linea" />
+          </Key>
+          <Property Name="Linea" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CanMenor" Type="int" Nullable="false" />
+          <Property Name="CanMayor" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="25" />
+          <Property Name="ComiMayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ComiMenor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CredMayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CredMenor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ComiEspecial" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ComiSEspecial" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="orden" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARCA">
+          <Key>
+            <PropertyRef Name="Marca" />
+          </Key>
+          <Property Name="Marca" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Proveedor" Type="char" MaxLength="5" />
+          <Property Name="Linea" Type="char" MaxLength="2" />
+          <Property Name="Descripcion" Type="char" MaxLength="38" />
+          <Property Name="Descorta" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Orden" Type="char" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
@@ -190,6 +246,98 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
           <Property Name="pparticipa" Type="numeric" Precision="8" Scale="2" Nullable="false" />
           <Property Name="pcuota" Type="numeric" Precision="8" Scale="2" Nullable="false" />
           <Property Name="supercodigo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="Producto" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Marca" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="40" />
+          <Property Name="ConIgv" Type="bit" Nullable="false" />
+          <Property Name="StockMin" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="StockMax" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="StockAc" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="StockDia" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="PrecMayContado" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMenContado" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMayCredito" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMenCredito" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecEspecial" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="CanEspecial" Type="int" />
+          <Property Name="CodAlterno" Type="char" MaxLength="8" />
+          <Property Name="Peso" Type="numeric" Precision="9" Scale="3" />
+          <Property Name="Costo" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="UniMed" Type="char" MaxLength="8" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Unidades" Type="smallint" Nullable="false" />
+          <Property Name="StockMal" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="ean13" Type="char" MaxLength="15" />
+          <Property Name="grupo" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="stkbafecha" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="stkmafecha" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="comimayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="comimenor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="credmayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="credmenor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="codbase" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="proveedor" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="linea" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="marcas" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="minimomay" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="categoria" Type="char" MaxLength="2" />
+          <Property Name="ncodigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="nunimed" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="PrecSEspecial" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="percepcion" Type="bit" Nullable="false" />
+          <Property Name="priesgomaycon" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="priesgomencon" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="priesgomaycre" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="priesgomencre" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="costorep" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="PrecSSEspecial" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="comiespecial" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="comisespecial" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="detraccion" Type="bit" Nullable="false" />
+          <Property Name="pdetraccion" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="conivap" Type="bit" Nullable="false" />
+          <Property Name="Meta_Cant" Type="varchar" MaxLength="50" />
+          <Property Name="Meta" Type="varchar" MaxLength="50" />
+          <Property Name="sku" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="factor" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="clase_producto" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Orden" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CodigoUM" Type="char" MaxLength="3" />
+          <Property Name="IdClaseBSC" Type="char" MaxLength="3" />
+          <Property Name="FP" Type="int" />
+          <Property Name="StatusWeb" Type="bit" />
+          <Property Name="StatusDms" Type="bit" />
+          <Property Name="ArticuloVenta" Type="bit" />
+          <Property Name="ArticuloCompra" Type="bit" />
+          <Property Name="ProductoCombo" Type="bit" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="Ruc" />
+          </Key>
+          <Property Name="Proveedor" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Ruc" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="60" />
+          <Property Name="Telefono" Type="char" MaxLength="11" />
+          <Property Name="Fax" Type="char" MaxLength="11" />
+          <Property Name="Email" Type="varchar" MaxLength="60" />
+          <Property Name="Ciudad" Type="char" MaxLength="18" />
+          <Property Name="cuenta" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="nuevo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ap_paterno" Type="varchar" MaxLength="30" />
+          <Property Name="ap_materno" Type="varchar" MaxLength="30" />
+          <Property Name="nombre1" Type="char" MaxLength="25" />
+          <Property Name="nombre2" Type="char" MaxLength="25" />
+          <Property Name="clasepro" Type="tinyint" Nullable="false" />
+          <Property Name="tipo" Type="tinyint" Nullable="false" />
+          <Property Name="orden" Type="char" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="provincia">
           <Key>
@@ -253,9 +401,14 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Producto' no tiene definid
             <PropertyRef Name="IDClase" />
             <PropertyRef Name="ESPECIAL07" />
             <PropertyRef Name="sku" />
+            
+            
             <PropertyRef Name="Activo" />
             <PropertyRef Name="Afecto" />
             <PropertyRef Name="Unidades" />
+            <PropertyRef Name="ArticuloVenta" />
+            <PropertyRef Name="ArticuloCompra" />
+            <PropertyRef Name="ArticuloCombo" />
           </Key>
           <Property Name="Codigo" Type="char" MaxLength="8" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="40" />
@@ -276,13 +429,17 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Producto' no tiene definid
           <Property Name="ESPECIAL06" Type="decimal" Precision="8" Scale="2" />
           <Property Name="ESPECIAL07" Type="decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="sku" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EAN" Type="char" MaxLength="15" />
           <Property Name="factor" Type="numeric" Precision="8" Scale="2" />
           <Property Name="FP" Type="int" />
-          <Property Name="Web" Type="bit" />
-          <Property Name="Dms" Type="bit" />
+          <Property Name="Web" Type="bit" Nullable="false" />
+          <Property Name="Dms" Type="bit" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
           <Property Name="Afecto" Type="bit" Nullable="false" />
           <Property Name="Unidades" Type="smallint" Nullable="false" />
+          <Property Name="ArticuloVenta" Type="bit" Nullable="false" />
+          <Property Name="ArticuloCompra" Type="bit" Nullable="false" />
+          <Property Name="ArticuloCombo" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -325,6 +482,18 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Principal>
             <Dependent Role="DETPEDIDO">
               <PropertyRef Name="Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETPEDIDO__Produ__54CB950F">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="DETPEDIDO" Type="Self.DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Producto" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Producto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -388,6 +557,18 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MARCA_LINEA">
+          <End Role="LINEA" Type="Self.LINEA" Multiplicity="0..1" />
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINEA">
+              <PropertyRef Name="Linea" />
+            </Principal>
+            <Dependent Role="MARCA">
+              <PropertyRef Name="Linea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PEDIDO_FORMAPAGO">
           <End Role="FORMAPAGO" Type="Self.FORMAPAGO" Multiplicity="1" />
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
@@ -437,13 +618,20 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LiderAppModelStoreContainer">
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clase" EntityType="Self.clase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETPEDIDO" EntityType="Self.DETPEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FORMAPAGO" EntityType="Self.FORMAPAGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupo" EntityType="Self.grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LINEA" EntityType="Self.LINEA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RUTAS" EntityType="Self.RUTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZONA" EntityType="Self.ZONA" Schema="dbo" store:Type="Tables" />
@@ -461,7 +649,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <EntitySet Name="FiltroConfiguracion" EntityType="Self.FiltroConfiguracion" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [FiltroConfiguracion].[PKID] AS [PKID], 
-    [FiltroConfiguracion].[codigo] AS [codigo], 
+    [FiltroConfiguracion].[Codigo] AS [Codigo], 
     [FiltroConfiguracion].[Descripcion] AS [Descripcion], 
     [FiltroConfiguracion].[Tipo] AS [Tipo]
     FROM [dbo].[FiltroConfiguracion] AS [FiltroConfiguracion]</DefiningQuery>
@@ -495,13 +683,17 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
     [Vva_Producto].[ESPECIAL06] AS [ESPECIAL06], 
     [Vva_Producto].[ESPECIAL07] AS [ESPECIAL07], 
     [Vva_Producto].[sku] AS [sku], 
+    [Vva_Producto].[EAN] AS [EAN], 
     [Vva_Producto].[factor] AS [factor], 
     [Vva_Producto].[FP] AS [FP], 
     [Vva_Producto].[Web] AS [Web], 
     [Vva_Producto].[Dms] AS [Dms], 
     [Vva_Producto].[Activo] AS [Activo], 
     [Vva_Producto].[Afecto] AS [Afecto], 
-    [Vva_Producto].[Unidades] AS [Unidades]
+    [Vva_Producto].[Unidades] AS [Unidades], 
+    [Vva_Producto].[ArticuloVenta] AS [ArticuloVenta], 
+    [Vva_Producto].[ArticuloCompra] AS [ArticuloCompra], 
+    [Vva_Producto].[ArticuloCombo] AS [ArticuloCombo]
     FROM [dbo].[Vva_Producto] AS [Vva_Producto]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vva_Vendedor" EntityType="Self.Vva_Vendedor" store:Type="Views" store:Schema="dbo">
@@ -524,6 +716,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
           </AssociationSet>
+          <AssociationSet Name="FK__DETPEDIDO__Produ__54CB950F" Association="Self.FK__DETPEDIDO__Produ__54CB950F">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
+          </AssociationSet>
           <AssociationSet Name="FK__PEDIDO__Personal__68D28DBC" Association="Self.FK__PEDIDO__Personal__68D28DBC">
             <End Role="PERSONAL" EntitySet="PERSONAL" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
@@ -543,6 +739,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <AssociationSet Name="FK_Distrito_provincia" Association="Self.FK_Distrito_provincia">
             <End Role="provincia" EntitySet="provincia" />
             <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARCA_LINEA" Association="Self.FK_MARCA_LINEA">
+            <End Role="LINEA" EntitySet="LINEA" />
+            <End Role="MARCA" EntitySet="MARCA" />
           </AssociationSet>
           <AssociationSet Name="FK_PEDIDO_FORMAPAGO" Association="Self.FK_PEDIDO_FORMAPAGO">
             <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
@@ -654,6 +854,21 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <EntitySet Name="Vva_Vendedor" EntityType="LiderAppModel.Vva_Vendedor" />
           <EntitySet Name="Vva_Producto" EntityType="LiderAppModel.Vva_Producto" />
           <EntitySet Name="Filtro" EntityType="LiderAppModel.Filtro" />
+          <EntitySet Name="categoria" EntityType="LiderAppModel.categoria" />
+          <EntitySet Name="clase" EntityType="LiderAppModel.clase" />
+          <EntitySet Name="grupo" EntityType="LiderAppModel.grupo" />
+          <EntitySet Name="LINEA" EntityType="LiderAppModel.LINEA" />
+          <EntitySet Name="MARCA" EntityType="LiderAppModel.MARCA" />
+          <EntitySet Name="PRODUCTO" EntityType="LiderAppModel.PRODUCTO" />
+          <EntitySet Name="PROVEEDOR" EntityType="LiderAppModel.PROVEEDOR" />
+          <AssociationSet Name="FK__DETPEDIDO__Produ__54CB950F" Association="LiderAppModel.FK__DETPEDIDO__Produ__54CB950F">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARCA_LINEA" Association="LiderAppModel.FK_MARCA_LINEA">
+            <End Role="LINEA" EntitySet="LINEA" />
+            <End Role="MARCA" EntitySet="MARCA" />
+          </AssociationSet>
           <EntitySet Name="FiltroConfiguracion" EntityType="LiderAppModel.FiltroConfiguracion" />
           </EntityContainer>
         <EntityType Name="FORMAPAGO">
@@ -691,6 +906,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="Afecto" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Bonif" Type="Boolean" />
           <NavigationProperty Name="PEDIDO1" Relationship="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="DETPEDIDO" ToRole="PEDIDO" />
+          <NavigationProperty Name="PRODUCTO1" Relationship="LiderAppModel.FK__DETPEDIDO__Produ__54CB950F" FromRole="DETPEDIDO" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="ZONA">
           <Key>
@@ -1015,6 +1231,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <PropertyRef Name="Activo" />
             <PropertyRef Name="Afecto" />
             <PropertyRef Name="Unidades" />
+            <PropertyRef Name="ArticuloVenta" />
+            <PropertyRef Name="ArticuloCompra" />
+            <PropertyRef Name="ArticuloCombo" />
           </Key>
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
@@ -1037,11 +1256,15 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="sku" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="factor" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="FP" Type="Int32" />
-          <Property Name="Web" Type="Boolean" />
-          <Property Name="Dms" Type="Boolean" />
+          <Property Name="Web" Type="Boolean" Nullable="false" />
+          <Property Name="Dms" Type="Boolean" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <Property Name="Afecto" Type="Boolean" Nullable="false" />
           <Property Name="Unidades" Type="Int16" Nullable="false" />
+          <Property Name="EAN" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="ArticuloVenta" Type="Boolean" Nullable="false" />
+          <Property Name="ArticuloCompra" Type="Boolean" Nullable="false" />
+          <Property Name="ArticuloCombo" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Filtro">
           <Key>
@@ -1059,16 +1282,191 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="union" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="tabla" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="categoria1" />
+          </Key>
+          <Property Name="categoria1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="descripcorta" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="clase">
+          <Key>
+            <PropertyRef Name="clase1" />
+          </Key>
+          <Property Name="clase1" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="45" FixedLength="true" Unicode="false" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="ctacargo" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="ctaabono" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="grupo1" />
+          </Key>
+          <Property Name="grupo1" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descorta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LINEA">
+          <Key>
+            <PropertyRef Name="Linea1" />
+          </Key>
+          <Property Name="Linea1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CanMenor" Type="Int32" Nullable="false" />
+          <Property Name="CanMayor" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ComiMayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ComiMenor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="CredMayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="CredMenor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ComiEspecial" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ComiSEspecial" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MARCA" Relationship="LiderAppModel.FK_MARCA_LINEA" FromRole="LINEA" ToRole="MARCA" />
+        </EntityType>
+        <EntityType Name="MARCA">
+          <Key>
+            <PropertyRef Name="Marca1" />
+          </Key>
+          <Property Name="Marca1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Linea" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="38" FixedLength="true" Unicode="false" />
+          <Property Name="Descorta" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="LINEA1" Relationship="LiderAppModel.FK_MARCA_LINEA" FromRole="MARCA" ToRole="LINEA" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Producto1" />
+          </Key>
+          <Property Name="Producto1" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Marca" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ConIgv" Type="Boolean" Nullable="false" />
+          <Property Name="StockMin" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="StockMax" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="StockAc" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="StockDia" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="PrecMayContado" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMenContado" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMayCredito" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMenCredito" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecEspecial" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="CanEspecial" Type="Int32" />
+          <Property Name="CodAlterno" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Peso" Type="Decimal" Precision="9" Scale="3" />
+          <Property Name="Costo" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="UniMed" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Unidades" Type="Int16" Nullable="false" />
+          <Property Name="StockMal" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="ean13" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="grupo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="stkbafecha" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="stkmafecha" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="comimayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="comimenor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="credmayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="credmenor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="codbase" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="proveedor" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="linea" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="marcas" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="minimomay" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="categoria" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ncodigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="nunimed" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PrecSEspecial" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="percepcion" Type="Boolean" Nullable="false" />
+          <Property Name="priesgomaycon" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="priesgomencon" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="priesgomaycre" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="priesgomencre" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="costorep" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="PrecSSEspecial" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="comiespecial" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="comisespecial" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="detraccion" Type="Boolean" Nullable="false" />
+          <Property Name="pdetraccion" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="conivap" Type="Boolean" Nullable="false" />
+          <Property Name="Meta_Cant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Meta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sku" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="factor" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="clase_producto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Orden" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="CodigoUM" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="IdClaseBSC" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="FP" Type="Int32" />
+          <Property Name="StatusWeb" Type="Boolean" />
+          <Property Name="StatusDms" Type="Boolean" />
+          <NavigationProperty Name="DETPEDIDO" Relationship="LiderAppModel.FK__DETPEDIDO__Produ__54CB950F" FromRole="PRODUCTO" ToRole="DETPEDIDO" />
+          <Property Name="ArticuloVenta" Type="Boolean" />
+          <Property Name="ArticuloCompra" Type="Boolean" />
+          <Property Name="ProductoCombo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="Proveedor1" />
+            <PropertyRef Name="Ruc" />
+          </Key>
+          <Property Name="Proveedor1" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Ruc" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="nuevo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ap_paterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ap_materno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nombre1" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="nombre2" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="clasepro" Type="Byte" Nullable="false" />
+          <Property Name="tipo" Type="Byte" Nullable="false" />
+          <Property Name="orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__DETPEDIDO__Produ__54CB950F">
+          <End Type="LiderAppModel.PRODUCTO" Role="PRODUCTO" Multiplicity="1" />
+          <End Type="LiderAppModel.DETPEDIDO" Role="DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Producto1" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARCA_LINEA">
+          <End Type="LiderAppModel.LINEA" Role="LINEA" Multiplicity="0..1" />
+          <End Type="LiderAppModel.MARCA" Role="MARCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINEA">
+              <PropertyRef Name="Linea1" />
+            </Principal>
+            <Dependent Role="MARCA">
+              <PropertyRef Name="Linea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="FiltroConfiguracion">
           <Key>
             <PropertyRef Name="PKID" />
-            <PropertyRef Name="codigo" />
+            <PropertyRef Name="Codigo" />
             <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Tipo" />
           </Key>
           <Property Name="PKID" Type="Guid" Nullable="false" />
-          <Property Name="codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1305,6 +1703,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <EntitySetMapping Name="Vva_Producto">
             <EntityTypeMapping TypeName="LiderAppModel.Vva_Producto">
               <MappingFragment StoreEntitySet="Vva_Producto">
+                <ScalarProperty Name="ArticuloCombo" ColumnName="ArticuloCombo" />
+                <ScalarProperty Name="ArticuloCompra" ColumnName="ArticuloCompra" />
+                <ScalarProperty Name="ArticuloVenta" ColumnName="ArticuloVenta" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
                 <ScalarProperty Name="Unidades" ColumnName="Unidades" />
                 <ScalarProperty Name="Afecto" ColumnName="Afecto" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -1346,12 +1748,165 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="LiderAppModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="descripcorta" ColumnName="descripcorta" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="categoria1" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clase">
+            <EntityTypeMapping TypeName="LiderAppModel.clase">
+              <MappingFragment StoreEntitySet="clase">
+                <ScalarProperty Name="ctaabono" ColumnName="ctaabono" />
+                <ScalarProperty Name="ctacargo" ColumnName="ctacargo" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="clase1" ColumnName="clase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupo">
+            <EntityTypeMapping TypeName="LiderAppModel.grupo">
+              <MappingFragment StoreEntitySet="grupo">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="descorta" ColumnName="descorta" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="grupo1" ColumnName="grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LINEA">
+            <EntityTypeMapping TypeName="LiderAppModel.LINEA">
+              <MappingFragment StoreEntitySet="LINEA">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="ComiSEspecial" ColumnName="ComiSEspecial" />
+                <ScalarProperty Name="ComiEspecial" ColumnName="ComiEspecial" />
+                <ScalarProperty Name="CredMenor" ColumnName="CredMenor" />
+                <ScalarProperty Name="CredMayor" ColumnName="CredMayor" />
+                <ScalarProperty Name="ComiMenor" ColumnName="ComiMenor" />
+                <ScalarProperty Name="ComiMayor" ColumnName="ComiMayor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CanMayor" ColumnName="CanMayor" />
+                <ScalarProperty Name="CanMenor" ColumnName="CanMenor" />
+                <ScalarProperty Name="Linea1" ColumnName="Linea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARCA">
+            <EntityTypeMapping TypeName="LiderAppModel.MARCA">
+              <MappingFragment StoreEntitySet="MARCA">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Descorta" ColumnName="Descorta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Marca1" ColumnName="Marca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="LiderAppModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="ProductoCombo" ColumnName="ProductoCombo" />
+                <ScalarProperty Name="ArticuloCompra" ColumnName="ArticuloCompra" />
+                <ScalarProperty Name="ArticuloVenta" ColumnName="ArticuloVenta" />
+                <ScalarProperty Name="StatusDms" ColumnName="StatusDms" />
+                <ScalarProperty Name="StatusWeb" ColumnName="StatusWeb" />
+                <ScalarProperty Name="FP" ColumnName="FP" />
+                <ScalarProperty Name="IdClaseBSC" ColumnName="IdClaseBSC" />
+                <ScalarProperty Name="CodigoUM" ColumnName="CodigoUM" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="clase_producto" ColumnName="clase_producto" />
+                <ScalarProperty Name="factor" ColumnName="factor" />
+                <ScalarProperty Name="sku" ColumnName="sku" />
+                <ScalarProperty Name="Meta" ColumnName="Meta" />
+                <ScalarProperty Name="Meta_Cant" ColumnName="Meta_Cant" />
+                <ScalarProperty Name="conivap" ColumnName="conivap" />
+                <ScalarProperty Name="pdetraccion" ColumnName="pdetraccion" />
+                <ScalarProperty Name="detraccion" ColumnName="detraccion" />
+                <ScalarProperty Name="comisespecial" ColumnName="comisespecial" />
+                <ScalarProperty Name="comiespecial" ColumnName="comiespecial" />
+                <ScalarProperty Name="PrecSSEspecial" ColumnName="PrecSSEspecial" />
+                <ScalarProperty Name="costorep" ColumnName="costorep" />
+                <ScalarProperty Name="priesgomencre" ColumnName="priesgomencre" />
+                <ScalarProperty Name="priesgomaycre" ColumnName="priesgomaycre" />
+                <ScalarProperty Name="priesgomencon" ColumnName="priesgomencon" />
+                <ScalarProperty Name="priesgomaycon" ColumnName="priesgomaycon" />
+                <ScalarProperty Name="percepcion" ColumnName="percepcion" />
+                <ScalarProperty Name="PrecSEspecial" ColumnName="PrecSEspecial" />
+                <ScalarProperty Name="nunimed" ColumnName="nunimed" />
+                <ScalarProperty Name="ncodigo" ColumnName="ncodigo" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="minimomay" ColumnName="minimomay" />
+                <ScalarProperty Name="marcas" ColumnName="marcas" />
+                <ScalarProperty Name="linea" ColumnName="linea" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="codbase" ColumnName="codbase" />
+                <ScalarProperty Name="credmenor" ColumnName="credmenor" />
+                <ScalarProperty Name="credmayor" ColumnName="credmayor" />
+                <ScalarProperty Name="comimenor" ColumnName="comimenor" />
+                <ScalarProperty Name="comimayor" ColumnName="comimayor" />
+                <ScalarProperty Name="stkmafecha" ColumnName="stkmafecha" />
+                <ScalarProperty Name="stkbafecha" ColumnName="stkbafecha" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="ean13" ColumnName="ean13" />
+                <ScalarProperty Name="StockMal" ColumnName="StockMal" />
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UniMed" ColumnName="UniMed" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="CodAlterno" ColumnName="CodAlterno" />
+                <ScalarProperty Name="CanEspecial" ColumnName="CanEspecial" />
+                <ScalarProperty Name="PrecEspecial" ColumnName="PrecEspecial" />
+                <ScalarProperty Name="PrecMenCredito" ColumnName="PrecMenCredito" />
+                <ScalarProperty Name="PrecMayCredito" ColumnName="PrecMayCredito" />
+                <ScalarProperty Name="PrecMenContado" ColumnName="PrecMenContado" />
+                <ScalarProperty Name="PrecMayContado" ColumnName="PrecMayContado" />
+                <ScalarProperty Name="StockDia" ColumnName="StockDia" />
+                <ScalarProperty Name="StockAc" ColumnName="StockAc" />
+                <ScalarProperty Name="StockMax" ColumnName="StockMax" />
+                <ScalarProperty Name="StockMin" ColumnName="StockMin" />
+                <ScalarProperty Name="ConIgv" ColumnName="ConIgv" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Producto1" ColumnName="Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDOR">
+            <EntityTypeMapping TypeName="LiderAppModel.PROVEEDOR">
+              <MappingFragment StoreEntitySet="PROVEEDOR">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="clasepro" ColumnName="clasepro" />
+                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="ap_materno" ColumnName="ap_materno" />
+                <ScalarProperty Name="ap_paterno" ColumnName="ap_paterno" />
+                <ScalarProperty Name="nuevo" ColumnName="nuevo" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="Proveedor1" ColumnName="Proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="FiltroConfiguracion">
             <EntityTypeMapping TypeName="LiderAppModel.FiltroConfiguracion">
               <MappingFragment StoreEntitySet="FiltroConfiguracion">
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="PKID" ColumnName="PKID" />
               </MappingFragment>
             </EntityTypeMapping>

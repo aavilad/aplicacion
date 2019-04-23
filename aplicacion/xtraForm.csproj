@@ -246,6 +246,12 @@
     <Compile Include="Maestro\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\categoria.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\clase.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\CLIENTE.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
@@ -282,10 +288,25 @@
     <Compile Include="Model\FORMAPAGO.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\grupo.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LINEA.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MARCA.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\PEDIDO.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PERSONAL.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUCTO.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PROVEEDOR.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\provincia.cs">
@@ -332,6 +353,12 @@
     </Compile>
     <Compile Include="Modulos\Elementos\frmComprobante.Designer.cs">
       <DependentUpon>frmComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmProducto.Designer.cs">
+      <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Elementos\frmReglaBonificacion.cs">
       <SubType>Form</SubType>
@@ -493,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmComprobante.resx">
       <DependentUpon>frmComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmProducto.resx">
+      <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmReglaBonificacion.resx">
       <DependentUpon>frmReglaBonificacion.cs</DependentUpon>

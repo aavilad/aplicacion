@@ -35,10 +35,14 @@ namespace xtraForm.Model
         public string sku { get; set; }
         public Nullable<decimal> factor { get; set; }
         public Nullable<int> FP { get; set; }
-        public Nullable<bool> Web { get; set; }
-        public Nullable<bool> Dms { get; set; }
+        public bool Web { get; set; }
+        public bool Dms { get; set; }
         public bool Activo { get; set; }
         public bool Afecto { get; set; }
         public short Unidades { get; set; }
+        public string EAN { get; set; }
+        public bool ArticuloVenta { get; set; }
+        public bool ArticuloCompra { get; set; }
+        public bool ArticuloCombo { get; set; }
     }
 }

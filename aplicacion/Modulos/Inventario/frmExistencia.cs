@@ -97,7 +97,34 @@ namespace xtraForm.Modulos.Inventario
 
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            using (var Context = new Model.LiderAppEntities())
+            {
+                Elementos.frmProducto frmproducto = new Elementos.frmProducto();
+                string CodigoProducto = gridView1.GetFocusedRowCellValue("Codigo").ToString();
+                string ProductoProveedor = Context.Vva_Producto.Where(x=>x.Codigo.Equals(CodigoProducto)).Select(y=>y.IDProv).FirstOrDefault();
+                string CodigoFabrica = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.sku).FirstOrDefault();
+                string CodigoEan = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.EAN).FirstOrDefault();
+                string productoDescripcion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Descripcion).FirstOrDefault();
+                string ProductoLinea = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDLinea).FirstOrDefault();
+                string ProductoMarca = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDMarca).FirstOrDefault();
+                string ProductoGrupo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDGrupo).FirstOrDefault();
+                string ProductoClase = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDClase).FirstOrDefault();
+                string ProductoCategoria = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDCategoria).FirstOrDefault();
+                bool ProductoVenta = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloVenta).FirstOrDefault();
+                bool ProductoCompra = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloCompra).FirstOrDefault();
+                bool ProductoCombo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloCombo).FirstOrDefault();
+                bool ProductoUnilever = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Dms).FirstOrDefault();
+                bool ProductoWeb = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Web).FirstOrDefault();
+                bool ProductoAfecto = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Afecto).FirstOrDefault();
+                bool ProductoActivo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Activo).FirstOrDefault();
+            }
 
+        }
+
+        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Elementos.frmProducto frmproducto = new Elementos.frmProducto();
+            frmproducto.Show();
         }
     }
 }

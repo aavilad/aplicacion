@@ -12,11 +12,10 @@ namespace xtraForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class FiltroConfiguracion
+    public partial class categoria
     {
-        public System.Guid PKID { get; set; }
-        public string Codigo { get; set; }
-        public string Descripcion { get; set; }
-        public string Tipo { get; set; }
+        public string categoria1 { get; set; }
+        public string descrip { get; set; }
+        public string descripcorta { get; set; }
     }
 }

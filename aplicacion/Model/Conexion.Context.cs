@@ -40,6 +40,13 @@ namespace xtraForm.Model
         public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
         public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
         public virtual DbSet<Filtro> Filtro { get; set; }
+        public virtual DbSet<categoria> categoria { get; set; }
+        public virtual DbSet<clase> clase { get; set; }
+        public virtual DbSet<grupo> grupo { get; set; }
+        public virtual DbSet<LINEA> LINEA { get; set; }
+        public virtual DbSet<MARCA> MARCA { get; set; }
+        public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
+        public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
         public virtual DbSet<FiltroConfiguracion> FiltroConfiguracion { get; set; }
     }
 }
