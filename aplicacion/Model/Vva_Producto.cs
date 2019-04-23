@@ -20,6 +20,7 @@ namespace xtraForm.Model
         public decimal Fisico { get; set; }
         public Nullable<decimal> Disponible { get; set; }
         public string IDProv { get; set; }
+        public Nullable<decimal> Peso { get; set; }
         public string IDMarca { get; set; }
         public string IDLinea { get; set; }
         public string IDGrupo { get; set; }
@@ -33,16 +34,20 @@ namespace xtraForm.Model
         public Nullable<decimal> ESPECIAL06 { get; set; }
         public decimal ESPECIAL07 { get; set; }
         public string sku { get; set; }
-        public Nullable<decimal> factor { get; set; }
+        public string EAN { get; set; }
+        public Nullable<int> factor { get; set; }
         public Nullable<int> FP { get; set; }
         public bool Web { get; set; }
         public bool Dms { get; set; }
         public bool Activo { get; set; }
         public bool Afecto { get; set; }
-        public short Unidades { get; set; }
-        public string EAN { get; set; }
+        public int Unidades { get; set; }
         public bool ArticuloVenta { get; set; }
         public bool ArticuloCompra { get; set; }
         public bool ArticuloCombo { get; set; }
+        public bool percepcion { get; set; }
+        public bool detraccion { get; set; }
+        public string RowNber { get; set; }
+        public Nullable<int> IDUnidad { get; set; }
     }
 }

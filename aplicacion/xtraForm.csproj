@@ -249,7 +249,7 @@
     <Compile Include="Model\categoria.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\clase.cs">
+    <Compile Include="Model\Clase_Producto.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CLIENTE.cs">
@@ -301,6 +301,9 @@
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PERSONAL.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PlantillaUnidad.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PRODUCTO.cs">

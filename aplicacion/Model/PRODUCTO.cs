@@ -39,7 +39,7 @@ namespace xtraForm.Model
         public Nullable<decimal> Costo { get; set; }
         public string UniMed { get; set; }
         public bool Activo { get; set; }
-        public short Unidades { get; set; }
+        public int Unidades { get; set; }
         public decimal StockMal { get; set; }
         public string ean13 { get; set; }
         public string grupo { get; set; }
@@ -73,7 +73,7 @@ namespace xtraForm.Model
         public string Meta_Cant { get; set; }
         public string Meta { get; set; }
         public string sku { get; set; }
-        public Nullable<decimal> factor { get; set; }
+        public Nullable<int> factor { get; set; }
         public string clase_producto { get; set; }
         public string Orden { get; set; }
         public string CodigoUM { get; set; }
@@ -84,6 +84,7 @@ namespace xtraForm.Model
         public Nullable<bool> ArticuloVenta { get; set; }
         public Nullable<bool> ArticuloCompra { get; set; }
         public Nullable<bool> ProductoCombo { get; set; }
+        public Nullable<int> IDUnidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETPEDIDO> DETPEDIDO { get; set; }

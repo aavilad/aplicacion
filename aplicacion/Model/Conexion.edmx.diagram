@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fa91626330374897a1caa3cf6a2256bd" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="fa91626330374897a1caa3cf6a2256bd" Name="Diagram1" ZoomLevel="53">
         <EntityTypeShape EntityType="LiderAppModel.PERSONAL" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LiderAppModel.FORMAPAGO" Width="1.5" PointX="3.75" PointY="17.375" />
         <EntityTypeShape EntityType="LiderAppModel.DETPEDIDO" Width="1.5" PointX="8.25" PointY="12.375" />
@@ -29,18 +29,19 @@
         <AssociationConnector Association="LiderAppModel.FK_REPARTO_PERSONAL" />
         <AssociationConnector Association="LiderAppModel.FK_REPARTO_RUTAS" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_Vendedor" Width="1.5" PointX="11" PointY="1.125" />
-        <EntityTypeShape EntityType="LiderAppModel.Vva_Producto" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="LiderAppModel.Filtro" Width="1.5" PointX="8.375" PointY="4.75" />
         <EntityTypeShape EntityType="LiderAppModel.categoria" Width="1.5" PointX="12.375" PointY="9.75" />
-        <EntityTypeShape EntityType="LiderAppModel.clase" Width="1.5" PointX="12.375" PointY="12.75" />
         <EntityTypeShape EntityType="LiderAppModel.grupo" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="LiderAppModel.LINEA" Width="1.5" PointX="12.375" PointY="5" />
         <EntityTypeShape EntityType="LiderAppModel.MARCA" Width="1.5" PointX="14.625" PointY="5.5" />
-        <EntityTypeShape EntityType="LiderAppModel.PRODUCTO" Width="1.5" PointX="10.375" PointY="8.5" />
         <EntityTypeShape EntityType="LiderAppModel.PROVEEDOR" Width="1.5" PointX="14.375" PointY="8.75" />
-        <AssociationConnector Association="LiderAppModel.FK__DETPEDIDO__Produ__54CB950F" />
         <AssociationConnector Association="LiderAppModel.FK_MARCA_LINEA" />
         <EntityTypeShape EntityType="LiderAppModel.FiltroConfiguracion" Width="1.5" PointX="10.375" PointY="4.875" />
+        <EntityTypeShape EntityType="LiderAppModel.Clase_Producto" Width="1.5" PointX="12.375" PointY="14.75" />
+        <EntityTypeShape EntityType="LiderAppModel.PlantillaUnidad" Width="1.5" PointX="14.375" PointY="14.75" />
+        <EntityTypeShape EntityType="LiderAppModel.PRODUCTO" Width="1.5" PointX="16.375" PointY="9.5" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_Producto" Width="1.5" PointX="17.375" PointY="0.75" />
+        <AssociationConnector Association="LiderAppModel.FK__DETPEDIDO__Produ__54CB950F" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

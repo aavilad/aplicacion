@@ -53,6 +53,11 @@
             this.TxtClase = new DevExpress.XtraEditors.LookUpEdit();
             this.TxtCategoria = new DevExpress.XtraEditors.LookUpEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.TxtNumeroOrdern = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
@@ -63,8 +68,11 @@
             this.TxtCaracteristica3 = new DevExpress.XtraEditors.ButtonEdit();
             this.TxtCaracteristica4 = new DevExpress.XtraEditors.ButtonEdit();
             this.TxtCaracteristica5 = new DevExpress.XtraEditors.ButtonEdit();
+            this.TxtProductoPeso = new DevExpress.XtraEditors.SpinEdit();
+            this.TxtProductoMedida = new DevExpress.XtraEditors.LookUpEdit();
+            this.TxtFactorMinimo = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.TxtProductoObs = new DevExpress.XtraEditors.MemoEdit();
             this.CheckAfecto = new DevExpress.XtraEditors.CheckEdit();
             this.CheckProductoCombo = new DevExpress.XtraEditors.CheckEdit();
             this.CheckActivoUnilever = new DevExpress.XtraEditors.CheckEdit();
@@ -75,6 +83,9 @@
             this.IdProducto = new DevExpress.XtraEditors.LabelControl();
             this.TxtDescripcionProducto = new DevExpress.XtraEditors.TextEdit();
             this.TxtNmProveedor = new DevExpress.XtraEditors.LookUpEdit();
+            this.CheckPercepcion = new DevExpress.XtraEditors.CheckEdit();
+            this.CheckDetraccion = new DevExpress.XtraEditors.CheckEdit();
+            this.MedidaAnterior = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCodigoProducto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCodigoFabrica.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCodigoEan.Properties)).BeginInit();
@@ -90,13 +101,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtClase.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCategoria.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtNumeroOrdern.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtProductoPeso.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtProductoMedida.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtFactorMinimo.Properties)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtProductoObs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckAfecto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckProductoCombo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckActivoUnilever.Properties)).BeginInit();
@@ -104,6 +119,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CheckActivo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDescripcionProducto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNmProveedor.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckPercepcion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckDetraccion.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtCodigoProducto
@@ -217,7 +234,7 @@
             // 
             // CheckArticuloVenta
             // 
-            this.CheckArticuloVenta.Location = new System.Drawing.Point(13, 328);
+            this.CheckArticuloVenta.Location = new System.Drawing.Point(13, 341);
             this.CheckArticuloVenta.Name = "CheckArticuloVenta";
             this.CheckArticuloVenta.Properties.Caption = "Articulo de venta";
             this.CheckArticuloVenta.Size = new System.Drawing.Size(130, 20);
@@ -225,7 +242,7 @@
             // 
             // CheckArticuloCompra
             // 
-            this.CheckArticuloCompra.Location = new System.Drawing.Point(13, 354);
+            this.CheckArticuloCompra.Location = new System.Drawing.Point(13, 367);
             this.CheckArticuloCompra.Name = "CheckArticuloCompra";
             this.CheckArticuloCompra.Properties.Caption = "Articulo de compra";
             this.CheckArticuloCompra.Size = new System.Drawing.Size(129, 20);
@@ -236,7 +253,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(12, 128);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(456, 194);
+            this.xtraTabControl1.Size = new System.Drawing.Size(456, 207);
             this.xtraTabControl1.TabIndex = 6;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -322,6 +339,12 @@
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.MedidaAnterior);
+            this.xtraTabPage2.Controls.Add(this.labelControl20);
+            this.xtraTabPage2.Controls.Add(this.TxtNumeroOrdern);
+            this.xtraTabPage2.Controls.Add(this.labelControl19);
+            this.xtraTabPage2.Controls.Add(this.labelControl18);
+            this.xtraTabPage2.Controls.Add(this.labelControl17);
             this.xtraTabPage2.Controls.Add(this.labelControl16);
             this.xtraTabPage2.Controls.Add(this.labelControl15);
             this.xtraTabPage2.Controls.Add(this.labelControl14);
@@ -332,9 +355,64 @@
             this.xtraTabPage2.Controls.Add(this.TxtCaracteristica3);
             this.xtraTabPage2.Controls.Add(this.TxtCaracteristica4);
             this.xtraTabPage2.Controls.Add(this.TxtCaracteristica5);
+            this.xtraTabPage2.Controls.Add(this.TxtProductoPeso);
+            this.xtraTabPage2.Controls.Add(this.TxtProductoMedida);
+            this.xtraTabPage2.Controls.Add(this.TxtFactorMinimo);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(454, 165);
+            this.xtraTabPage2.Size = new System.Drawing.Size(454, 178);
             this.xtraTabPage2.Text = "Caracteristicas";
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Enabled = false;
+            this.labelControl20.Location = new System.Drawing.Point(252, 130);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(69, 13);
+            this.labelControl20.TabIndex = 31;
+            this.labelControl20.Text = "Numero Orden";
+            // 
+            // TxtNumeroOrdern
+            // 
+            this.TxtNumeroOrdern.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.TxtNumeroOrdern.Location = new System.Drawing.Point(328, 126);
+            this.TxtNumeroOrdern.Name = "TxtNumeroOrdern";
+            this.TxtNumeroOrdern.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TxtNumeroOrdern.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.TxtNumeroOrdern.Properties.Mask.EditMask = "d";
+            this.TxtNumeroOrdern.Size = new System.Drawing.Size(123, 20);
+            this.TxtNumeroOrdern.TabIndex = 30;
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Enabled = false;
+            this.labelControl19.Location = new System.Drawing.Point(252, 100);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(66, 13);
+            this.labelControl19.TabIndex = 29;
+            this.labelControl19.Text = "FactorMinimo";
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Enabled = false;
+            this.labelControl18.Location = new System.Drawing.Point(252, 21);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(72, 13);
+            this.labelControl18.TabIndex = 27;
+            this.labelControl18.Text = "Unidad Medida";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Enabled = false;
+            this.labelControl17.Location = new System.Drawing.Point(252, 66);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(42, 13);
+            this.labelControl17.TabIndex = 25;
+            this.labelControl17.Text = "Peso (Kg)";
             // 
             // labelControl16
             // 
@@ -431,31 +509,68 @@
             this.TxtCaracteristica5.Size = new System.Drawing.Size(123, 20);
             this.TxtCaracteristica5.TabIndex = 22;
             // 
+            // TxtProductoPeso
+            // 
+            this.TxtProductoPeso.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.TxtProductoPeso.Location = new System.Drawing.Point(328, 62);
+            this.TxtProductoPeso.Name = "TxtProductoPeso";
+            this.TxtProductoPeso.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TxtProductoPeso.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.TxtProductoPeso.Properties.Mask.EditMask = "n";
+            this.TxtProductoPeso.Size = new System.Drawing.Size(123, 20);
+            this.TxtProductoPeso.TabIndex = 24;
+            // 
+            // TxtProductoMedida
+            // 
+            this.TxtProductoMedida.Location = new System.Drawing.Point(328, 17);
+            this.TxtProductoMedida.Name = "TxtProductoMedida";
+            this.TxtProductoMedida.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TxtProductoMedida.Properties.NullText = "";
+            this.TxtProductoMedida.Size = new System.Drawing.Size(123, 20);
+            this.TxtProductoMedida.TabIndex = 26;
+            this.TxtProductoMedida.EditValueChanged += new System.EventHandler(this.TxtProductoMedida_EditValueChanged);
+            // 
+            // TxtFactorMinimo
+            // 
+            this.TxtFactorMinimo.EditValue = "";
+            this.TxtFactorMinimo.Location = new System.Drawing.Point(328, 96);
+            this.TxtFactorMinimo.Name = "TxtFactorMinimo";
+            this.TxtFactorMinimo.Properties.Mask.EditMask = "99999";
+            this.TxtFactorMinimo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
+            this.TxtFactorMinimo.Size = new System.Drawing.Size(123, 20);
+            this.TxtFactorMinimo.TabIndex = 28;
+            // 
             // xtraTabPage3
             // 
-            this.xtraTabPage3.Controls.Add(this.memoEdit1);
+            this.xtraTabPage3.Controls.Add(this.TxtProductoObs);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(454, 165);
             this.xtraTabPage3.Text = "Observacion";
             // 
-            // memoEdit1
+            // TxtProductoObs
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(9, 21);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(436, 122);
-            this.memoEdit1.TabIndex = 0;
+            this.TxtProductoObs.Location = new System.Drawing.Point(9, 21);
+            this.TxtProductoObs.Name = "TxtProductoObs";
+            this.TxtProductoObs.Size = new System.Drawing.Size(436, 122);
+            this.TxtProductoObs.TabIndex = 0;
             // 
             // CheckAfecto
             // 
-            this.CheckAfecto.Location = new System.Drawing.Point(281, 354);
+            this.CheckAfecto.Location = new System.Drawing.Point(399, 367);
             this.CheckAfecto.Name = "CheckAfecto";
             this.CheckAfecto.Properties.Caption = "Afecto";
-            this.CheckAfecto.Size = new System.Drawing.Size(114, 20);
+            this.CheckAfecto.Size = new System.Drawing.Size(68, 20);
             this.CheckAfecto.TabIndex = 12;
             // 
             // CheckProductoCombo
             // 
-            this.CheckProductoCombo.Location = new System.Drawing.Point(147, 328);
+            this.CheckProductoCombo.Location = new System.Drawing.Point(147, 341);
             this.CheckProductoCombo.Name = "CheckProductoCombo";
             this.CheckProductoCombo.Properties.Caption = "Producto Combo";
             this.CheckProductoCombo.Size = new System.Drawing.Size(130, 20);
@@ -463,7 +578,7 @@
             // 
             // CheckActivoUnilever
             // 
-            this.CheckActivoUnilever.Location = new System.Drawing.Point(147, 354);
+            this.CheckActivoUnilever.Location = new System.Drawing.Point(147, 367);
             this.CheckActivoUnilever.Name = "CheckActivoUnilever";
             this.CheckActivoUnilever.Properties.Caption = "Activo para unilever";
             this.CheckActivoUnilever.Size = new System.Drawing.Size(129, 20);
@@ -471,7 +586,7 @@
             // 
             // CheckActivoWeb
             // 
-            this.CheckActivoWeb.Location = new System.Drawing.Point(281, 328);
+            this.CheckActivoWeb.Location = new System.Drawing.Point(281, 341);
             this.CheckActivoWeb.Name = "CheckActivoWeb";
             this.CheckActivoWeb.Properties.Caption = "Activo para web";
             this.CheckActivoWeb.Size = new System.Drawing.Size(114, 20);
@@ -479,7 +594,7 @@
             // 
             // CheckActivo
             // 
-            this.CheckActivo.Location = new System.Drawing.Point(399, 328);
+            this.CheckActivo.Location = new System.Drawing.Point(399, 341);
             this.CheckActivo.Name = "CheckActivo";
             this.CheckActivo.Properties.Caption = "Activo";
             this.CheckActivo.Size = new System.Drawing.Size(68, 20);
@@ -487,23 +602,25 @@
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(392, 385);
+            this.BtnCancelar.Location = new System.Drawing.Point(392, 423);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
             this.BtnCancelar.TabIndex = 14;
             this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnAceptar
             // 
-            this.BtnAceptar.Location = new System.Drawing.Point(302, 385);
+            this.BtnAceptar.Location = new System.Drawing.Point(302, 423);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
             this.BtnAceptar.TabIndex = 15;
             this.BtnAceptar.Text = "Aceptar";
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // IdProducto
             // 
-            this.IdProducto.Location = new System.Drawing.Point(10, 391);
+            this.IdProducto.Location = new System.Drawing.Point(10, 429);
             this.IdProducto.Name = "IdProducto";
             this.IdProducto.Size = new System.Drawing.Size(6, 13);
             this.IdProducto.TabIndex = 30;
@@ -528,11 +645,38 @@
             this.TxtNmProveedor.Size = new System.Drawing.Size(391, 20);
             this.TxtNmProveedor.TabIndex = 31;
             // 
+            // CheckPercepcion
+            // 
+            this.CheckPercepcion.Location = new System.Drawing.Point(281, 367);
+            this.CheckPercepcion.Name = "CheckPercepcion";
+            this.CheckPercepcion.Properties.Caption = "Percepcion";
+            this.CheckPercepcion.Size = new System.Drawing.Size(114, 20);
+            this.CheckPercepcion.TabIndex = 32;
+            // 
+            // CheckDetraccion
+            // 
+            this.CheckDetraccion.Location = new System.Drawing.Point(13, 393);
+            this.CheckDetraccion.Name = "CheckDetraccion";
+            this.CheckDetraccion.Properties.Caption = "Detraccion";
+            this.CheckDetraccion.Size = new System.Drawing.Size(129, 20);
+            this.CheckDetraccion.TabIndex = 33;
+            // 
+            // MedidaAnterior
+            // 
+            this.MedidaAnterior.Enabled = false;
+            this.MedidaAnterior.Location = new System.Drawing.Point(367, 43);
+            this.MedidaAnterior.Name = "MedidaAnterior";
+            this.MedidaAnterior.Size = new System.Drawing.Size(52, 13);
+            this.MedidaAnterior.TabIndex = 32;
+            this.MedidaAnterior.Text = "MedidaAnt";
+            // 
             // frmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 416);
+            this.ClientSize = new System.Drawing.Size(480, 458);
+            this.Controls.Add(this.CheckDetraccion);
+            this.Controls.Add(this.CheckPercepcion);
             this.Controls.Add(this.IdProducto);
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.BtnCancelar);
@@ -575,13 +719,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtCategoria.Properties)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtNumeroOrdern.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCaracteristica5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtProductoPeso.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtProductoMedida.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtFactorMinimo.Properties)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtProductoObs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckAfecto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckProductoCombo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckActivoUnilever.Properties)).EndInit();
@@ -589,6 +737,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CheckActivo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDescripcionProducto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNmProveedor.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckPercepcion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckDetraccion.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -624,7 +774,7 @@
         public DevExpress.XtraEditors.TextEdit TxtCodigoDun;
         public DevExpress.XtraEditors.CheckEdit CheckArticuloVenta;
         public DevExpress.XtraEditors.CheckEdit CheckArticuloCompra;
-        public DevExpress.XtraEditors.MemoEdit memoEdit1;
+        public DevExpress.XtraEditors.MemoEdit TxtProductoObs;
         public DevExpress.XtraEditors.CheckEdit CheckAfecto;
         public DevExpress.XtraEditors.CheckEdit CheckProductoCombo;
         public DevExpress.XtraEditors.LookUpEdit TxtLinea;
@@ -642,5 +792,16 @@
         public DevExpress.XtraEditors.ButtonEdit TxtCaracteristica4;
         public DevExpress.XtraEditors.ButtonEdit TxtCaracteristica5;
         public DevExpress.XtraEditors.LookUpEdit TxtNmProveedor;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        public DevExpress.XtraEditors.SpinEdit TxtProductoPeso;
+        public DevExpress.XtraEditors.LookUpEdit TxtProductoMedida;
+        public DevExpress.XtraEditors.CheckEdit CheckPercepcion;
+        public DevExpress.XtraEditors.CheckEdit CheckDetraccion;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        public DevExpress.XtraEditors.SpinEdit TxtNumeroOrdern;
+        public DevExpress.XtraEditors.TextEdit TxtFactorMinimo;
+        public DevExpress.XtraEditors.LabelControl MedidaAnterior;
     }
 }

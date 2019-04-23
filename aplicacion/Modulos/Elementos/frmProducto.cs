@@ -14,6 +14,11 @@ namespace xtraForm.Modulos.Elementos
 {
     public partial class frmProducto : DevExpress.XtraEditors.XtraForm
     {
+        public delegate void Variables(string ProductoProveedor, string CodigoProducto, string CodigoFabrica, string CodigoEan, string CodigoDun, string productoDescripcion, string ProductoLinea,
+            string ProductoMarca, string ProductoGrupo, string ProductoClase, string ProductoCategoria, string ProductoObservacion, int ProductoMedida, string ProductoMedidaAnt, decimal ProductoPeso, int ProductoFactorMinimo, bool ProductoVenta, bool ProductoCompra, bool ProductoCombo,
+            bool ProductoUnilever, bool ProductoWeb, bool ProductoAfecto, bool ProductoActivo, bool ProductoPercepcion, bool ProductoDetraccion, string ProductoOrden);
+        public event Variables pasar;
+        public bool Existe;
         public frmProducto()
         {
             InitializeComponent();
@@ -43,7 +48,7 @@ namespace xtraForm.Modulos.Elementos
                 TxtGrupo.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaD = TxtGrupo.Properties.Columns;
                 ColumnaD.Add(new LookUpColumnInfo("Descripcion", ""));
-                TxtClase.Properties.DataSource = Context.clase.Select(p => new { Codigo = p.clase1.Trim(), Descripcion = p.descrip.Trim() }).ToList();
+                TxtClase.Properties.DataSource = Context.Clase_Producto.Select(p => new { Codigo = p.Clase_Producto1.Trim(), Descripcion = p.Descripcion.Trim() }).ToList();
                 TxtClase.Properties.DisplayMember = "Descripcion";
                 TxtClase.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaE = TxtClase.Properties.Columns;
@@ -53,6 +58,74 @@ namespace xtraForm.Modulos.Elementos
                 TxtCategoria.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaF = TxtCategoria.Properties.Columns;
                 ColumnaF.Add(new LookUpColumnInfo("Descripcion", ""));
+                TxtProductoMedida.Properties.DataSource = Context.PlantillaUnidad.ToList();
+                TxtProductoMedida.Properties.DisplayMember = "Descripcion";
+                TxtProductoMedida.Properties.ValueMember = "PKID";
+                TxtProductoMedida.Properties.Columns.Add(new LookUpColumnInfo("Descripcion", ""));
+                TxtProductoMedida.Properties.Columns.Add(new LookUpColumnInfo("Factor", ""));
+            }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Libreria.Proceso proceso = new Libreria.Proceso();
+            if (proceso.MensagePregunta("¿Cancelar?") == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            string ProductoProveedor = Convert.ToString(TxtNmProveedor.EditValue).Trim();
+            string CodigoProducto = Convert.ToString(TxtCodigoProducto.EditValue).Trim();
+            string CodigoFabrica = Convert.ToString(TxtCodigoFabrica.EditValue).Trim();
+            string CodigoEan = Convert.ToString(TxtCodigoEan.EditValue).Trim();
+            string CodigoDun = Convert.ToString(TxtCodigoDun.EditValue).Trim();
+            string productoDescripcion = Convert.ToString(TxtDescripcionProducto.EditValue).Trim();
+            string ProductoLinea = Convert.ToString(TxtLinea.EditValue).Trim();
+            string ProductoMarca = Convert.ToString(TxtMarca.EditValue).Trim();
+            string ProductoGrupo = Convert.ToString(TxtGrupo.EditValue).Trim();
+            string ProductoClase = Convert.ToString(TxtClase.EditValue).Trim();
+            string ProductoCategoria = Convert.ToString(TxtCategoria.EditValue).Trim();
+            string ProductoObservacion = Convert.ToString(TxtProductoObs.EditValue).Trim();
+            int ProductoMedida = Convert.ToInt32(TxtProductoMedida.EditValue);
+            string ProductoMedidaAnt = Convert.ToString(MedidaAnterior.Text);
+            decimal ProductoPeso = Convert.ToDecimal(TxtProductoPeso.EditValue);
+            int ProductoFactorMinimo = Convert.ToInt32(TxtFactorMinimo.EditValue);
+            string ProductoOrden = Convert.ToString(TxtNumeroOrdern.EditValue);
+            bool ProductoVenta = CheckArticuloVenta.Checked;
+            bool ProductoCompra = CheckArticuloCompra.Checked;
+            bool ProductoCombo = CheckProductoCombo.Checked;
+            bool ProductoUnilever = CheckActivoUnilever.Checked;
+            bool ProductoWeb = CheckActivoWeb.Checked;
+            bool ProductoAfecto = CheckAfecto.Checked;
+            bool ProductoActivo = CheckActivo.Checked;
+            bool ProductoPercepcion = CheckPercepcion.Checked;
+            bool ProductoDetraccion = CheckDetraccion.Checked;
+
+            try
+            {
+                pasar(ProductoProveedor, CodigoProducto, CodigoFabrica, CodigoEan, CodigoDun, productoDescripcion, ProductoLinea, ProductoMarca, ProductoGrupo, ProductoClase, ProductoCategoria,
+                    ProductoObservacion, ProductoMedida, ProductoMedidaAnt, ProductoPeso, ProductoFactorMinimo, ProductoVenta, ProductoCompra, ProductoCombo, ProductoUnilever, ProductoWeb, ProductoAfecto, ProductoActivo,
+                    ProductoPercepcion, ProductoDetraccion, ProductoOrden);
+                this.Close();
+            }
+            catch (Exception t)
+            {
+                MessageBox.Show(t.Message);
+            }
+        }
+
+        private void TxtProductoMedida_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!Existe)
+            {
+                using (var Context = new Model.LiderAppEntities())
+                {
+                    int valor = Convert.ToInt32(TxtProductoMedida.EditValue);
+                    TxtFactorMinimo.EditValue = Context.PlantillaUnidad.Where(x => x.PKID == valor).Select(p => p.Factor).FirstOrDefault(); ;
+                }
             }
         }
     }

@@ -24,6 +24,178 @@ namespace xtraForm.Modulos.Inventario
             InitializeComponent();
         }
 
+        void Refrescar()
+        {
+            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
+            List<string> lista_ = new List<string>();
+            foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
+                lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
+            string cadena = string.Join(" ", lista_.ToArray());
+            condicion(cadena);
+        }
+
+        void CamposProducto(string ProductoProveedor, string CodigoProducto, string CodigoFabrica, string CodigoEan, string CodigoDun, string productoDescripcion, string ProductoLinea,
+            string ProductoMarca, string ProductoGrupo, string ProductoClase, string ProductoCategoria, string ProductoObservacion, int ProductoMedida, string ProductoMedidaAnt, decimal ProductoPeso, int ProductoFactorMinimo, bool ProductoVenta, bool ProductoCompra, bool ProductoCombo,
+            bool ProductoUnilever, bool ProductoWeb, bool ProductoAfecto, bool ProductoActivo, bool ProductoPercepcion, bool ProductoDetraccion, string ProductoOrden)
+        {
+            try
+            {
+                using (var Context = new Model.LiderAppEntities())
+                {
+                    Model.PRODUCTO Art = new Model.PRODUCTO { Producto1 = CodigoProducto };
+                    Context.PRODUCTO.Attach(Art);
+                    Art.ean13 = CodigoEan;
+                    Art.Marca = ProductoMarca;
+                    Art.Descripcion = productoDescripcion;
+                    Art.ConIgv = ProductoAfecto;
+                    Art.StockMin = 1;
+                    Art.StockMax = 100;
+                    Art.StockAc = (decimal)0.00;
+                    Art.StockDia = (decimal)0.00;
+                    Art.PrecMayContado = (decimal)0.00;
+                    Art.PrecMenContado = (decimal)0.00;
+                    Art.PrecMayCredito = (decimal)0.00;
+                    Art.PrecMenCredito = (decimal)0.00;
+                    Art.PrecEspecial = (decimal)0.00;
+                    Art.CodAlterno = CodigoProducto;
+                    Art.Peso = ProductoPeso;
+                    Art.Costo = (decimal)0.00;
+                    Art.UniMed = ProductoMedidaAnt;
+                    Art.Activo = ProductoActivo;
+                    Art.Unidades = 1;
+                    Art.StockMal = (decimal)0.00;
+                    Art.ean13 = CodigoEan;
+                    Art.grupo = ProductoGrupo;
+                    Art.stkbafecha = (decimal)0.00;
+                    Art.stkmafecha = (decimal)0.00;
+                    Art.comimayor = (decimal)0.00;
+                    Art.comimenor = (decimal)0.00;
+                    Art.credmayor = (decimal)0.00;
+                    Art.credmenor = (decimal)0.00;
+                    Art.codbase = CodigoProducto;
+                    Art.proveedor = ProductoProveedor;
+                    Art.linea = ProductoLinea;
+                    Art.marcas = string.Empty;
+                    Art.minimomay = (decimal)0.00;
+                    Art.categoria = ProductoCategoria;
+                    Art.ncodigo = string.Empty;
+                    Art.nunimed = string.Empty;
+                    Art.PrecSEspecial = (decimal)0.00;
+                    Art.percepcion = ProductoPercepcion;
+                    Art.priesgomaycon = (decimal)0.00;
+                    Art.priesgomencon = (decimal)0.00;
+                    Art.priesgomaycre = (decimal)0.00;
+                    Art.priesgomencre = (decimal)0.00;
+                    Art.costorep = (decimal)0.00;
+                    Art.PrecSSEspecial = (decimal)0.00;
+                    Art.comiespecial = (decimal)0.00;
+                    Art.comisespecial = (decimal)0.00;
+                    Art.detraccion = ProductoDetraccion;
+                    Art.pdetraccion = (decimal)0.00;
+                    Art.conivap = false;
+                    Art.Meta_Cant = string.Empty;
+                    Art.Meta = string.Empty;
+                    Art.sku = CodigoFabrica;
+                    Art.factor = ProductoFactorMinimo;
+                    Art.clase_producto = ProductoClase;
+                    Art.Orden = ProductoOrden;
+                    Art.CodigoUM = string.Empty;
+                    Art.IdClaseBSC = string.Empty;
+                    Art.FP = 1;
+                    Art.StatusWeb = ProductoWeb;
+                    Art.StatusDms = ProductoUnilever;
+                    Art.ArticuloVenta = ProductoVenta;
+                    Art.ArticuloCompra = ProductoVenta;
+                    Art.ProductoCombo = ProductoCombo;
+                    Art.IDUnidad = ProductoMedida;
+                    Context.SaveChanges();
+                }
+                Refrescar();
+            }
+            catch (Exception t)
+            {
+                MessageBox.Show(t.Message);
+            }
+        }
+
+        void CamposProducto_(string ProductoProveedor, string CodigoProducto, string CodigoFabrica, string CodigoEan, string CodigoDun, string productoDescripcion, string ProductoLinea,
+                    string ProductoMarca, string ProductoGrupo, string ProductoClase, string ProductoCategoria, string ProductoObservacion, int ProductoMedida, string ProductoMedidaAnt,
+                    decimal ProductoPeso, int ProductoFactorMinimo, bool ProductoVenta, bool ProductoCompra, bool ProductoCombo, bool ProductoUnilever, bool ProductoWeb, bool ProductoAfecto,
+                    bool ProductoActivo, bool ProductoPercepcion, bool ProductoDetraccion, string ProductoOrden)
+        {
+            using (var Context = new Model.LiderAppEntities())
+            {
+                Model.PRODUCTO Art = new Model.PRODUCTO();
+                Art.Producto1 = CodigoProducto;
+                Art.Marca = ProductoMarca;
+                Art.Descripcion = productoDescripcion;
+                Art.ConIgv = ProductoAfecto;
+                Art.StockMin = 1;
+                Art.StockMax = 100;
+                Art.StockAc = (decimal)0.00;
+                Art.StockDia = (decimal)0.00;
+                Art.PrecMayContado = (decimal)0.00;
+                Art.PrecMenContado = (decimal)0.00;
+                Art.PrecMayCredito = (decimal)0.00;
+                Art.PrecMenCredito = (decimal)0.00;
+                Art.PrecEspecial = (decimal)0.00;
+                Art.CanEspecial = 0;
+                Art.CodAlterno = CodigoProducto;
+                Art.Peso = ProductoPeso;
+                Art.Costo = (decimal)0.00;
+                Art.UniMed = ProductoMedidaAnt;
+                Art.Activo = ProductoActivo;
+                Art.Unidades = 1;
+                Art.StockMal = (decimal)0.00;
+                Art.ean13 = CodigoEan;
+                Art.grupo = ProductoGrupo;
+                Art.stkbafecha = (decimal)0.00;
+                Art.stkmafecha = (decimal)0.00;
+                Art.comimayor = (decimal)0.00;
+                Art.comimenor = (decimal)0.00;
+                Art.credmayor = (decimal)0.00;
+                Art.credmenor = (decimal)0.00;
+                Art.codbase = CodigoProducto;
+                Art.proveedor = ProductoProveedor;
+                Art.linea = ProductoLinea;
+                Art.marcas = string.Empty;
+                Art.minimomay = (decimal)0.00;
+                Art.categoria = ProductoCategoria;
+                Art.ncodigo = string.Empty;
+                Art.nunimed = string.Empty;
+                Art.PrecSEspecial = (decimal)0.00;
+                Art.percepcion = ProductoPercepcion;
+                Art.priesgomaycon = (decimal)0.00;
+                Art.priesgomencon = (decimal)0.00;
+                Art.priesgomaycre = (decimal)0.00;
+                Art.priesgomencre = (decimal)0.00;
+                Art.costorep = (decimal)0.00;
+                Art.PrecSSEspecial = (decimal)0.00;
+                Art.comiespecial = (decimal)0.00;
+                Art.comisespecial = (decimal)0.00;
+                Art.detraccion = ProductoDetraccion;
+                Art.pdetraccion = (decimal)0.00;
+                Art.conivap = false;
+                Art.Meta_Cant = string.Empty;
+                Art.Meta = string.Empty;
+                Art.sku = CodigoFabrica;
+                Art.factor = ProductoFactorMinimo;
+                Art.clase_producto = ProductoClase;
+                Art.Orden = ProductoOrden;
+                Art.CodigoUM = string.Empty;
+                Art.IdClaseBSC = string.Empty;
+                Art.FP = 1;
+                Art.StatusWeb = ProductoWeb;
+                Art.StatusDms = ProductoUnilever;
+                Art.ArticuloVenta = ProductoVenta;
+                Art.ArticuloCompra = ProductoVenta;
+                Art.ProductoCombo = ProductoCombo;
+                Art.IDUnidad = ProductoMedida;
+                Context.PRODUCTO.Add(Art);
+                Context.SaveChanges();
+            }
+        }
+
         private void filtarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var Context = new Model.LiderAppEntities())
@@ -71,7 +243,6 @@ namespace xtraForm.Modulos.Inventario
                 }
                 else
                 {
-
                     proceso.consultar(Libreria.Constante.Existencias + " where " + cadena, tabla);
                     gridControl1.DataSource = proceso.ds.Tables[tabla];
                     gridView1.OptionsView.ColumnAutoWidth = false;
@@ -97,52 +268,84 @@ namespace xtraForm.Modulos.Inventario
 
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            try
             {
-                Elementos.frmProducto frmproducto = new Elementos.frmProducto();
-                string CodigoProducto = gridView1.GetFocusedRowCellValue("Codigo").ToString();
-                string ProductoProveedor = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDProv).FirstOrDefault();
-                string CodigoFabrica = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.sku).FirstOrDefault();
-                string CodigoEan = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.EAN).FirstOrDefault();
-                string productoDescripcion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Descripcion).FirstOrDefault();
-                string ProductoLinea = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDLinea).FirstOrDefault();
-                string ProductoMarca = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDMarca).FirstOrDefault();
-                string ProductoGrupo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDGrupo).FirstOrDefault();
-                string ProductoClase = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDClase).FirstOrDefault();
-                string ProductoCategoria = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDCategoria).FirstOrDefault();
-                bool ProductoVenta = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloVenta).FirstOrDefault();
-                bool ProductoCompra = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloCompra).FirstOrDefault();
-                bool ProductoCombo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloCombo).FirstOrDefault();
-                bool ProductoUnilever = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Dms).FirstOrDefault();
-                bool ProductoWeb = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Web).FirstOrDefault();
-                bool ProductoAfecto = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Afecto).FirstOrDefault();
-                bool ProductoActivo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Activo).FirstOrDefault();
-                frmproducto.TxtNmProveedor.EditValue = ProductoProveedor;
-                frmproducto.TxtCodigoProducto.EditValue = CodigoProducto;
-                frmproducto.TxtCodigoFabrica.EditValue = CodigoFabrica;
-                frmproducto.TxtCodigoEan.EditValue = CodigoEan;
-                frmproducto.TxtDescripcionProducto.EditValue = productoDescripcion;
-                frmproducto.TxtLinea.EditValue = ProductoLinea;
-                frmproducto.TxtMarca.EditValue = ProductoMarca;
-                frmproducto.TxtGrupo.EditValue = ProductoGrupo;
-                frmproducto.TxtClase.EditValue = ProductoClase;
-                frmproducto.TxtCategoria.EditValue = ProductoCategoria;
-                frmproducto.CheckArticuloVenta.Checked = ProductoVenta;
-                frmproducto.CheckArticuloCompra.Checked = ProductoCompra;
-                frmproducto.CheckProductoCombo.Checked = ProductoCombo;
-                frmproducto.CheckActivoUnilever.Checked = ProductoUnilever;
-                frmproducto.CheckActivoWeb.Checked = ProductoWeb;
-                frmproducto.CheckAfecto.Checked = ProductoAfecto;
-                frmproducto.CheckActivo.Checked = ProductoActivo;
-                frmproducto.Show();
+                using (var Context = new Model.LiderAppEntities())
+                {
+                    Elementos.frmProducto frmproducto = new Elementos.frmProducto();
+                    frmproducto.Existe = true;
+                    frmproducto.pasar += new Elementos.frmProducto.Variables(CamposProducto);
+                    string CodigoProducto = gridView1.GetFocusedRowCellValue("Codigo").ToString();
+                    string ProductoProveedor = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDProv).FirstOrDefault();
+                    string CodigoFabrica = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.sku).FirstOrDefault();
+                    string CodigoEan = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.EAN).FirstOrDefault();
+                    string productoDescripcion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Descripcion).FirstOrDefault();
+                    string ProductoLinea = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDLinea).FirstOrDefault();
+                    string ProductoMarca = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDMarca).FirstOrDefault();
+                    string ProductoGrupo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDGrupo).FirstOrDefault();
+                    string ProductoClase = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDClase).FirstOrDefault();
+                    string ProductoCategoria = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDCategoria).FirstOrDefault();
+                    int ProductoMedida = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => (int)y.IDUnidad).FirstOrDefault();
+                    string ProductoMedidaAnt = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Unidad).FirstOrDefault();
+                    decimal ProductoPeso = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => (decimal)y.Peso).FirstOrDefault();
+                    string ProductoFactorMinimo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.factor.ToString()).FirstOrDefault();
+                    string ProductoOrden = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.RowNber).FirstOrDefault();
+                    bool ProductoVenta = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloVenta).FirstOrDefault();
+                    bool ProductoCompra = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloCompra).FirstOrDefault();
+                    bool ProductoCombo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.ArticuloCombo).FirstOrDefault();
+                    bool ProductoUnilever = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Dms).FirstOrDefault();
+                    bool ProductoWeb = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Web).FirstOrDefault();
+                    bool ProductoAfecto = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Afecto).FirstOrDefault();
+                    bool ProductoActivo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Activo).FirstOrDefault();
+                    bool ProductoPercepcion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.percepcion).FirstOrDefault();
+                    bool ProductoDetraccion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.detraccion).FirstOrDefault();
+                    frmproducto.TxtNmProveedor.EditValue = ProductoProveedor;
+                    frmproducto.TxtCodigoProducto.EditValue = CodigoProducto;
+                    frmproducto.TxtCodigoFabrica.EditValue = CodigoFabrica;
+                    frmproducto.TxtCodigoEan.EditValue = CodigoEan;
+                    frmproducto.TxtDescripcionProducto.EditValue = productoDescripcion;
+                    frmproducto.TxtLinea.EditValue = ProductoLinea;
+                    frmproducto.TxtMarca.EditValue = ProductoMarca;
+                    frmproducto.TxtGrupo.EditValue = ProductoGrupo;
+                    frmproducto.TxtClase.EditValue = ProductoClase;
+                    frmproducto.TxtCategoria.EditValue = ProductoCategoria;
+                    frmproducto.TxtProductoMedida.EditValue = ProductoMedida;
+                    frmproducto.MedidaAnterior.Text = ProductoMedidaAnt;
+                    frmproducto.TxtProductoPeso.EditValue = ProductoPeso;
+                    frmproducto.TxtFactorMinimo.EditValue = ProductoFactorMinimo;
+                    frmproducto.CheckArticuloVenta.Checked = ProductoVenta;
+                    frmproducto.CheckArticuloCompra.Checked = ProductoCompra;
+                    frmproducto.CheckProductoCombo.Checked = ProductoCombo;
+                    frmproducto.CheckActivoUnilever.Checked = ProductoUnilever;
+                    frmproducto.CheckActivoWeb.Checked = ProductoWeb;
+                    frmproducto.CheckAfecto.Checked = ProductoAfecto;
+                    frmproducto.CheckActivo.Checked = ProductoActivo;
+                    frmproducto.CheckPercepcion.Checked = ProductoPercepcion;
+                    frmproducto.CheckDetraccion.Checked = ProductoDetraccion;
+                    frmproducto.TxtNumeroOrdern.EditValue = ProductoOrden;
+                    frmproducto.Existe = false;
+                    frmproducto.StartPosition = FormStartPosition.CenterScreen;
+                    frmproducto.Show();
+                }
             }
-
+            catch (Exception t)
+            {
+                MessageBox.Show(t.Message);
+            }
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Elementos.frmProducto frmproducto = new Elementos.frmProducto();
+            frmproducto.pasar += new Elementos.frmProducto.Variables(CamposProducto_);
+            frmproducto.StartPosition = FormStartPosition.CenterScreen;
             frmproducto.Show();
+        }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+            try { modificarToolStripMenuItem_Click(sender, e); }
+            catch { }
         }
     }
 }

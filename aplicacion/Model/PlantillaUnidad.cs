@@ -12,12 +12,12 @@ namespace xtraForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class clase
+    public partial class PlantillaUnidad
     {
-        public string clase1 { get; set; }
-        public string descrip { get; set; }
-        public string cuenta { get; set; }
-        public string ctacargo { get; set; }
-        public string ctaabono { get; set; }
+        public int PKID { get; set; }
+        public string Descripcion { get; set; }
+        public string Abreviacion { get; set; }
+        public int Factor { get; set; }
+        public string Codigo { get; set; }
     }
 }
