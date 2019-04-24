@@ -83,7 +83,7 @@
             <PropertyRef Name="Producto" />
           </Key>
           <Property Name="Pedido" Type="char" MaxLength="9" Nullable="false" />
-          <Property Name="Producto" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Producto" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PrecUnit" Type="decimal" Precision="10" Scale="3" Nullable="false" />
           <Property Name="Cantidad" Type="decimal" Precision="8" Scale="2" />
           <Property Name="Estado" Type="char" MaxLength="1" />
@@ -259,7 +259,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
           <Key>
             <PropertyRef Name="Producto" />
           </Key>
-          <Property Name="Producto" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Producto" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Marca" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="40" />
           <Property Name="ConIgv" Type="bit" Nullable="false" />
@@ -276,7 +276,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
           <Property Name="CodAlterno" Type="char" MaxLength="8" />
           <Property Name="Peso" Type="numeric" Precision="9" Scale="3" />
           <Property Name="Costo" Type="numeric" Precision="9" Scale="2" />
-          <Property Name="UniMed" Type="char" MaxLength="8" />
+          <Property Name="UniMed" Type="varchar" MaxLength="10" />
           <Property Name="Activo" Type="bit" Nullable="false" />
           <Property Name="Unidades" Type="int" Nullable="false" />
           <Property Name="StockMal" Type="numeric" Precision="9" Scale="2" Nullable="false" />
@@ -418,8 +418,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Producto' no tiene definid
             <PropertyRef Name="ArticuloVenta" />
             <PropertyRef Name="ArticuloCompra" />
             <PropertyRef Name="ArticuloCombo" />
-            <PropertyRef Name="percepcion" />
-            <PropertyRef Name="detraccion" />
+            <PropertyRef Name="Percepcion" />
+            <PropertyRef Name="Detraccion" />
             <PropertyRef Name="RowNber" />
           </Key>
           <Property Name="Codigo" Type="char" MaxLength="8" Nullable="false" />
@@ -453,8 +453,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Producto' no tiene definid
           <Property Name="ArticuloVenta" Type="bit" Nullable="false" />
           <Property Name="ArticuloCompra" Type="bit" Nullable="false" />
           <Property Name="ArticuloCombo" Type="bit" Nullable="false" />
-          <Property Name="percepcion" Type="bit" Nullable="false" />
-          <Property Name="detraccion" Type="bit" Nullable="false" />
+          <Property Name="Percepcion" Type="bit" Nullable="false" />
+          <Property Name="Detraccion" Type="bit" Nullable="false" />
           <Property Name="RowNber" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="IDUnidad" Type="int" />
         </EntityType>
@@ -713,8 +713,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
     [Vva_Producto].[ArticuloVenta] AS [ArticuloVenta], 
     [Vva_Producto].[ArticuloCompra] AS [ArticuloCompra], 
     [Vva_Producto].[ArticuloCombo] AS [ArticuloCombo], 
-    [Vva_Producto].[percepcion] AS [percepcion], 
-    [Vva_Producto].[detraccion] AS [detraccion], 
+    [Vva_Producto].[Percepcion] AS [Percepcion], 
+    [Vva_Producto].[Detraccion] AS [Detraccion], 
     [Vva_Producto].[RowNber] AS [RowNber], 
     [Vva_Producto].[IDUnidad] AS [IDUnidad]
     FROM [dbo].[Vva_Producto] AS [Vva_Producto]</DefiningQuery>
@@ -889,11 +889,11 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <EntitySet Name="Clase_Producto" EntityType="LiderAppModel.Clase_Producto" />
           <EntitySet Name="PlantillaUnidad" EntityType="LiderAppModel.PlantillaUnidad" />
           <EntitySet Name="PRODUCTO" EntityType="LiderAppModel.PRODUCTO" />
-          <EntitySet Name="Vva_Producto" EntityType="LiderAppModel.Vva_Producto" />
           <AssociationSet Name="FK__DETPEDIDO__Produ__54CB950F" Association="LiderAppModel.FK__DETPEDIDO__Produ__54CB950F">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
           </AssociationSet>
+          <EntitySet Name="Vva_Producto" EntityType="LiderAppModel.Vva_Producto" />
           </EntityContainer>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -913,7 +913,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <PropertyRef Name="Producto" />
           </Key>
           <Property Name="Pedido" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
-          <Property Name="Producto" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="PrecUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
           <Property Name="Cantidad" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
@@ -1375,7 +1375,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Key>
             <PropertyRef Name="Producto1" />
           </Key>
-          <Property Name="Producto1" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Producto1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Marca" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="ConIgv" Type="Boolean" Nullable="false" />
@@ -1392,7 +1392,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="CodAlterno" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
           <Property Name="Peso" Type="Decimal" Precision="9" Scale="3" />
           <Property Name="Costo" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="UniMed" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="UniMed" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <Property Name="Unidades" Type="Int32" Nullable="false" />
           <Property Name="StockMal" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
@@ -1442,6 +1442,18 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="IDUnidad" Type="Int32" />
           <NavigationProperty Name="DETPEDIDO" Relationship="LiderAppModel.FK__DETPEDIDO__Produ__54CB950F" FromRole="PRODUCTO" ToRole="DETPEDIDO" />
         </EntityType>
+        <Association Name="FK__DETPEDIDO__Produ__54CB950F">
+          <End Type="LiderAppModel.PRODUCTO" Role="PRODUCTO" Multiplicity="1" />
+          <End Type="LiderAppModel.DETPEDIDO" Role="DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Producto1" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Vva_Producto">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -1459,8 +1471,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <PropertyRef Name="ArticuloVenta" />
             <PropertyRef Name="ArticuloCompra" />
             <PropertyRef Name="ArticuloCombo" />
-            <PropertyRef Name="percepcion" />
-            <PropertyRef Name="detraccion" />
+            <PropertyRef Name="Percepcion" />
+            <PropertyRef Name="Detraccion" />
             <PropertyRef Name="RowNber" />
           </Key>
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
@@ -1494,23 +1506,11 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="ArticuloVenta" Type="Boolean" Nullable="false" />
           <Property Name="ArticuloCompra" Type="Boolean" Nullable="false" />
           <Property Name="ArticuloCombo" Type="Boolean" Nullable="false" />
-          <Property Name="percepcion" Type="Boolean" Nullable="false" />
-          <Property Name="detraccion" Type="Boolean" Nullable="false" />
+          <Property Name="Percepcion" Type="Boolean" Nullable="false" />
+          <Property Name="Detraccion" Type="Boolean" Nullable="false" />
           <Property Name="RowNber" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="IDUnidad" Type="Int32" />
         </EntityType>
-        <Association Name="FK__DETPEDIDO__Produ__54CB950F">
-          <End Type="LiderAppModel.PRODUCTO" Role="PRODUCTO" Multiplicity="1" />
-          <End Type="LiderAppModel.DETPEDIDO" Role="DETPEDIDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTO">
-              <PropertyRef Name="Producto1" />
-            </Principal>
-            <Dependent Role="DETPEDIDO">
-              <PropertyRef Name="Producto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1933,8 +1933,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
               <MappingFragment StoreEntitySet="Vva_Producto">
                 <ScalarProperty Name="IDUnidad" ColumnName="IDUnidad" />
                 <ScalarProperty Name="RowNber" ColumnName="RowNber" />
-                <ScalarProperty Name="detraccion" ColumnName="detraccion" />
-                <ScalarProperty Name="percepcion" ColumnName="percepcion" />
+                <ScalarProperty Name="Detraccion" ColumnName="Detraccion" />
+                <ScalarProperty Name="Percepcion" ColumnName="Percepcion" />
                 <ScalarProperty Name="ArticuloCombo" ColumnName="ArticuloCombo" />
                 <ScalarProperty Name="ArticuloCompra" ColumnName="ArticuloCompra" />
                 <ScalarProperty Name="ArticuloVenta" ColumnName="ArticuloVenta" />

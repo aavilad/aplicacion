@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -111,9 +112,16 @@ namespace xtraForm.Modulos.Elementos
                     ProductoPercepcion, ProductoDetraccion, ProductoOrden);
                 this.Close();
             }
-            catch (Exception t)
+            catch (DbEntityValidationException t)
             {
-                MessageBox.Show(t.Message);
+                foreach (var eve in t.EntityValidationErrors)
+                {
+                    MessageBox.Show("Entity of type \"" + eve.Entry.Entity.GetType().Name + "\" in state \"" + eve.Entry.State + "\" has the following validation errors:");
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        MessageBox.Show("- Property: \"" + ve.PropertyName + "\", Error: \"" + ve.ErrorMessage + "\"");
+                    }
+                }
             }
         }
 

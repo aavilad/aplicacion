@@ -45,8 +45,8 @@ namespace xtraForm.Model
         public bool ArticuloVenta { get; set; }
         public bool ArticuloCompra { get; set; }
         public bool ArticuloCombo { get; set; }
-        public bool percepcion { get; set; }
-        public bool detraccion { get; set; }
+        public bool Percepcion { get; set; }
+        public bool Detraccion { get; set; }
         public string RowNber { get; set; }
         public Nullable<int> IDUnidad { get; set; }
     }

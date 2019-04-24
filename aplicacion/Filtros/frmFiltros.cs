@@ -90,7 +90,12 @@ namespace xtraForm.Filtros
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.BeginEdit(true);
+            try
+            {
+                dataGridView1.BeginEdit(true);
+            }
+            catch { }
+
         }
     }
 }
