@@ -108,6 +108,15 @@ namespace xtraForm.Libreria
                                        FROM sys.columns columna
                                             INNER JOIN sys.views tabla ON columna.object_id = tabla.object_id
                                        WHERE tabla.name = ";
+        public const string Marcas = @"
+                SELECT PROVEEDOR.RazonSocial AS Proveedor,
+                MARCA.Marca AS Codigo, 
+                MARCA.Descripcion, 
+                LINEA.Descripcion AS Linea
+                FROM MARCA
+                INNER JOIN PROVEEDOR ON MARCA.Proveedor = PROVEEDOR.Proveedor
+                INNER JOIN LINEA ON MARCA.Linea = LINEA.Linea;
+                ";
 
     }
 }

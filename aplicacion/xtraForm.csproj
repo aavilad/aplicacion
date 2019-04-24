@@ -357,6 +357,12 @@
     <Compile Include="Modulos\Elementos\frmComprobante.Designer.cs">
       <DependentUpon>frmComprobante.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Elementos\frmMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmMarca.Designer.cs">
+      <DependentUpon>frmMarca.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Elementos\frmProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +386,12 @@
     </Compile>
     <Compile Include="Modulos\Inventario\frmExistencia.Designer.cs">
       <DependentUpon>frmExistencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Inventario\frmMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Inventario\frmMarca.Designer.cs">
+      <DependentUpon>frmMarca.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
@@ -524,6 +536,9 @@
     <EmbeddedResource Include="Modulos\Elementos\frmComprobante.resx">
       <DependentUpon>frmComprobante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmMarca.resx">
+      <DependentUpon>frmMarca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -535,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Inventario\frmExistencia.resx">
       <DependentUpon>frmExistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Inventario\frmMarca.resx">
+      <DependentUpon>frmMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>

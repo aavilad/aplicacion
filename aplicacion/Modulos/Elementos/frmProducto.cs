@@ -107,10 +107,13 @@ namespace xtraForm.Modulos.Elementos
 
             try
             {
-                pasar(ProductoProveedor, CodigoProducto, CodigoFabrica, CodigoEan, CodigoDun, productoDescripcion, ProductoLinea, ProductoMarca, ProductoGrupo, ProductoClase, ProductoCategoria,
-                    ProductoObservacion, ProductoMedida, ProductoMedidaAnt, ProductoPeso, ProductoFactorMinimo, ProductoVenta, ProductoCompra, ProductoCombo, ProductoUnilever, ProductoWeb, ProductoAfecto, ProductoActivo,
-                    ProductoPercepcion, ProductoDetraccion, ProductoOrden);
-                this.Close();
+                if (dxValidationProvider1.Validate())
+                {
+                    pasar(ProductoProveedor, CodigoProducto, CodigoFabrica, CodigoEan, CodigoDun, productoDescripcion, ProductoLinea, ProductoMarca, ProductoGrupo, ProductoClase, ProductoCategoria,
+                        ProductoObservacion, ProductoMedida, ProductoMedidaAnt, ProductoPeso, ProductoFactorMinimo, ProductoVenta, ProductoCompra, ProductoCombo, ProductoUnilever, ProductoWeb, ProductoAfecto, ProductoActivo,
+                        ProductoPercepcion, ProductoDetraccion, ProductoOrden);
+                    this.Close();
+                }
             }
             catch (DbEntityValidationException t)
             {

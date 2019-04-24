@@ -218,6 +218,7 @@
             this.BtnMarca.Id = 12;
             this.BtnMarca.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnMarca.ImageOptions.Image")));
             this.BtnMarca.Name = "BtnMarca";
+            this.BtnMarca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnMarca_ItemClick);
             // 
             // BtnGrupos
             // 
