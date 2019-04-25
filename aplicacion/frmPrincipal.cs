@@ -420,5 +420,12 @@ namespace xtraForm
                 objeto.Show();
             }
         }
+
+        private void BtnCanjear_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var frmfacturacion = new Modulos.Elementos.frmFacturacion();
+            frmfacturacion.StartPosition = FormStartPosition.CenterScreen;
+            frmfacturacion.Show();
+        }
     }
 }

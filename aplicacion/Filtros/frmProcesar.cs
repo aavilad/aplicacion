@@ -42,12 +42,15 @@ namespace xtraForm.Filtros
                 {
                     if (gridView1.SelectedRowsCount > 0)
                     {
-                        Point loc = new Point(510, 450);
-                        splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Manual;
-                        splashScreenManager1.SplashFormLocation = loc;
+                        splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
                         frmmensage.Show();
                         splashScreenManager1.ShowWaitForm();
                         //evento # 01
+                        using (var Context = new Model.LiderAppEntities())
+                        {
+                            Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                            Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                        }
                         ejecutar.horasBonificacion();
                         ejecutar.deleteBonificacion(entidad.fecha);
                         //evento # 02

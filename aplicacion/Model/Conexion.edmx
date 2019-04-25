@@ -377,6 +377,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.REPARTO' no tiene definida nin
           </Key>
           <Property Name="codigo" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="descripcion" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
         </EntityType>
         <EntityType Name="ZONA">
           <Key>
@@ -634,6 +635,14 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_stock_sistema" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="datetime" Mode="In" />
+          <Parameter Name="tipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_stock_sistema_web" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="datetime" Mode="In" />
+          <Parameter Name="tipo" Type="tinyint" Mode="In" />
+        </Function>
         <EntityContainer Name="LiderAppModelStoreContainer">
           <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clase_Producto" EntityType="Self.Clase_Producto" Schema="dbo" store:Type="Tables" />
@@ -852,7 +861,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <EntitySet Name="PEDIDO" EntityType="LiderAppModel.PEDIDO" />
-          <EntitySet Name="RUTAS" EntityType="LiderAppModel.RUTAS" />
           <EntitySet Name="REPARTO" EntityType="LiderAppModel.REPARTO" />
           <AssociationSet Name="FK__DETPEDIDO__Pedid__55BFB948" Association="LiderAppModel.FK__DETPEDIDO__Pedid__55BFB948">
             <End Role="PEDIDO" EntitySet="PEDIDO" />
@@ -868,10 +876,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           </AssociationSet>
           <AssociationSet Name="FK_REPARTO_PERSONAL" Association="LiderAppModel.FK_REPARTO_PERSONAL">
             <End Role="PERSONAL" EntitySet="PERSONAL" />
-            <End Role="REPARTO" EntitySet="REPARTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_REPARTO_RUTAS" Association="LiderAppModel.FK_REPARTO_RUTAS">
-            <End Role="RUTAS" EntitySet="RUTAS" />
             <End Role="REPARTO" EntitySet="REPARTO" />
           </AssociationSet>
           <EntitySet Name="Vva_Vendedor" EntityType="LiderAppModel.Vva_Vendedor" />
@@ -894,6 +898,19 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
           </AssociationSet>
           <EntitySet Name="Vva_Producto" EntityType="LiderAppModel.Vva_Producto" />
+          <FunctionImport Name="sp_stock_sistema" ReturnType="Collection(DateTime)">
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="tipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_stock_sistema_web" ReturnType="Collection(DateTime)">
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="tipo" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <EntitySet Name="RUTAS" EntityType="LiderAppModel.RUTAS" />
+          <AssociationSet Name="FK_REPARTO_RUTAS" Association="LiderAppModel.FK_REPARTO_RUTAS">
+            <End Role="RUTAS" EntitySet="RUTAS" />
+            <End Role="REPARTO" EntitySet="REPARTO" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -1144,14 +1161,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <NavigationProperty Name="FORMAPAGO1" Relationship="LiderAppModel.FK_PEDIDO_FORMAPAGO" FromRole="PEDIDO" ToRole="FORMAPAGO" />
           <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PEDIDO" ToRole="PERSONAL" />
         </EntityType>
-        <EntityType Name="RUTAS">
-          <Key>
-            <PropertyRef Name="codigo" />
-          </Key>
-          <Property Name="codigo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="RUTAS" ToRole="REPARTO" />
-        </EntityType>
         <EntityType Name="REPARTO">
           <Key>
             <PropertyRef Name="Ruta" />
@@ -1210,18 +1219,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Principal>
             <Dependent Role="REPARTO">
               <PropertyRef Name="Personal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_REPARTO_RUTAS">
-          <End Type="LiderAppModel.RUTAS" Role="RUTAS" Multiplicity="1" />
-          <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RUTAS">
-              <PropertyRef Name="codigo" />
-            </Principal>
-            <Dependent Role="REPARTO">
-              <PropertyRef Name="Ruta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1511,6 +1508,27 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="RowNber" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="IDUnidad" Type="Int32" />
         </EntityType>
+        <EntityType Name="RUTAS">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="REPARTO" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="RUTAS" ToRole="REPARTO" />
+        </EntityType>
+        <Association Name="FK_REPARTO_RUTAS">
+          <End Type="LiderAppModel.RUTAS" Role="RUTAS" Multiplicity="1" />
+          <End Type="LiderAppModel.REPARTO" Role="REPARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUTAS">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="REPARTO">
+              <PropertyRef Name="Ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1708,14 +1726,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
                 <ScalarProperty Name="Personal" ColumnName="Personal" />
                 <ScalarProperty Name="Pedido1" ColumnName="Pedido" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RUTAS">
-            <EntityTypeMapping TypeName="LiderAppModel.RUTAS">
-              <MappingFragment StoreEntitySet="RUTAS">
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1966,6 +1976,17 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="Unidad" ColumnName="Unidad" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_stock_sistema" FunctionName="LiderAppModel.Store.sp_stock_sistema" />
+          <FunctionImportMapping FunctionImportName="sp_stock_sistema_web" FunctionName="LiderAppModel.Store.sp_stock_sistema_web" />
+          <EntitySetMapping Name="RUTAS">
+            <EntityTypeMapping TypeName="LiderAppModel.RUTAS">
+              <MappingFragment StoreEntitySet="RUTAS">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

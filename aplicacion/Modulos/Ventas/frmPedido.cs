@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -62,55 +63,50 @@ namespace xtraForm.Modulos.Ventas
         {
             using (Model.LiderAppEntities Context = new Model.LiderAppEntities())
             {
-                try
+                Model.PEDIDO Cp = new Model.PEDIDO { Pedido1 = CdPedido };
+                Context.PEDIDO.Attach(Cp);
+                Cp.Personal = CdVendedor;
+                Cp.Cliente = CdCliente;
+                Cp.FormaPago = CdFP;
+                Cp.Fecha = Fecha;
+                Cp.rsocial = NmCliente;
+                Cp.ruc = Ruc;
+                Cp.direccion = Direccion;
+                Cp.dni = Dni;
+                Cp.encargado = CdVendedor;
+                Cp.npersonal = NmVendedor;
+                Cp.nencargado = NmVendedor;
+                Cp.gestion = Gestion;
+                Cp.ptollegada = Direccion;
+                Cp.distllegada = IdDistrito;
+                Cp.tipodoc = TpDoc;
+                Context.Configuration.ValidateOnSaveEnabled = false;
+                Context.DETPEDIDO.RemoveRange(Context.DETPEDIDO.Where(a => a.Pedido == CdPedido));
+                foreach (DataGridViewRow fila in dgv.Rows)
                 {
-                    Model.PEDIDO Cp = new Model.PEDIDO { Pedido1 = CdPedido };
-                    Context.PEDIDO.Attach(Cp);
-                    Cp.Personal = CdVendedor;
-                    Cp.Cliente = CdCliente;
-                    Cp.FormaPago = CdFP;
-                    Cp.Fecha = Fecha;
-                    Cp.rsocial = NmCliente;
-                    Cp.ruc = Ruc;
-                    Cp.direccion = Direccion;
-                    Cp.dni = Dni;
-                    Cp.encargado = CdVendedor;
-                    Cp.npersonal = NmVendedor;
-                    Cp.nencargado = NmVendedor;
-                    Cp.gestion = Gestion;
-                    Cp.ptollegada = Direccion;
-                    Cp.distllegada = IdDistrito;
-                    Cp.tipodoc = TpDoc;
-                    Context.Configuration.ValidateOnSaveEnabled = false;
-                    Context.DETPEDIDO.RemoveRange(Context.DETPEDIDO.Where(a => a.Pedido == CdPedido));
-                    foreach (DataGridViewRow fila in dgv.Rows)
-                    {
-                        Model.DETPEDIDO ItemCp = new Model.DETPEDIDO();
-                        ItemCp.Pedido = CdPedido;
-                        ItemCp.Producto = Convert.ToString(fila.Cells["Codigo"].Value);
-                        ItemCp.PrecUnit = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
-                        ItemCp.Cantidad = Convert.ToDecimal(fila.Cells["Cantidad"].Value);
-                        ItemCp.Estado = "P";
-                        ItemCp.TipoPrecio = Convert.ToString(fila.Cells["TpPrecio"].Value);
-                        ItemCp.TranGratuita = (decimal)0.00;
-                        ItemCp.lote = string.Empty;
-                        ItemCp.fvctolote = Convert.ToDateTime("1990/01/01");
-                        ItemCp.flgSurtido = "N";
-                        ItemCp.IDBonificacion = Convert.ToInt32(fila.Cells["IDBonificacion"].Value == "" ? 0 : fila.Cells["IDBonificacion"].Value);
-                        ItemCp.PrecioUnitario = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
-                        ItemCp.PrecioNeto = Convert.ToDecimal(fila.Cells["PrecioNeto"].Value);
-                        ItemCp.Descuento = Convert.ToDecimal(fila.Cells["Descuento"].Value);
-                        ItemCp.Recargo = Convert.ToDecimal(fila.Cells["Recargo"].Value);
-                        ItemCp.Afecto = Convert.ToDecimal(fila.Cells["Afecto"].Value);
-                        ItemCp.Bonif = Convert.ToBoolean(fila.Cells["Bonif"].Value);
-                        Context.DETPEDIDO.Add(ItemCp);
-                    }
-                    Context.SaveChanges();
+                    Model.DETPEDIDO ItemCp = new Model.DETPEDIDO();
+                    ItemCp.Pedido = CdPedido;
+                    ItemCp.Producto = Convert.ToString(fila.Cells["Codigo"].Value);
+                    ItemCp.PrecUnit = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
+                    ItemCp.Cantidad = Convert.ToDecimal(fila.Cells["Cantidad"].Value);
+                    ItemCp.Estado = "P";
+                    ItemCp.TipoPrecio = Convert.ToString(fila.Cells["TpPrecio"].Value);
+                    ItemCp.TranGratuita = (decimal)0.00;
+                    ItemCp.lote = string.Empty;
+                    ItemCp.fvctolote = Convert.ToDateTime("1990/01/01");
+                    ItemCp.flgSurtido = "N";
+                    ItemCp.IDBonificacion = Convert.ToInt32(fila.Cells["IDBonificacion"].Value == "" ? 0 : fila.Cells["IDBonificacion"].Value);
+                    ItemCp.PrecioUnitario = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
+                    ItemCp.PrecioNeto = Convert.ToDecimal(fila.Cells["PrecioNeto"].Value);
+                    ItemCp.Descuento = Convert.ToDecimal(fila.Cells["Descuento"].Value);
+                    ItemCp.Recargo = Convert.ToDecimal(fila.Cells["Recargo"].Value);
+                    ItemCp.Afecto = Convert.ToDecimal(fila.Cells["Afecto"].Value);
+                    ItemCp.Bonif = Convert.ToBoolean(fila.Cells["Bonif"].Value);
+                    Context.DETPEDIDO.Add(ItemCp);
                 }
-                catch (System.Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
+                Context.SaveChanges();
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2",DateTime.Now.Date.ToString("yyyyMMdd"));
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
             }
         }
 
@@ -235,7 +231,7 @@ namespace xtraForm.Modulos.Ventas
                     frmpedido.txtnmProvincia.EditValue = pedido.ProvinciaCliente;
                     frmpedido.txtcdProvincia.EditValue = proceso.ConsultarCadena("idprovincia", "Distrito", "iddistrito = (select IDDistrito from Vva_Cliente where codigo = '" + pedido.CodigoCliente + "')");
                     frmpedido.txtcdGestion.Text = pedido.Gestion;
-                    frmpedido.dateEmision.EditValue = Convert.ToDateTime(pedido.FechaEmision).ToString("dd/MM/yyyy");
+                    frmpedido.dateEmision.EditValue = Convert.ToDateTime(pedido.FechaEmision).AddDays(0).ToString("dd/MM/yyyy");
                     frmpedido.dateEntrega.EditValue = Convert.ToDateTime(pedido.FechaEmision).AddDays(1).ToString("dd/MM/yyyy");
                     frmpedido.btnCredito.Checked = pedido.Credito == true ? true : false;
                     frmpedido.txtformaPago.Text = proceso.ConsultarCadena("Descripcion", "FormaPago", "FormaPago = '" + pedido.FormaPago + "'");

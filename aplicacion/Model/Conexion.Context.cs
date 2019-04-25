@@ -12,6 +12,8 @@ namespace xtraForm.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class LiderAppEntities : DbContext
     {
@@ -35,7 +37,6 @@ namespace xtraForm.Model
         public virtual DbSet<Distrito> Distrito { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<PEDIDO> PEDIDO { get; set; }
-        public virtual DbSet<RUTAS> RUTAS { get; set; }
         public virtual DbSet<REPARTO> REPARTO { get; set; }
         public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
         public virtual DbSet<Filtro> Filtro { get; set; }
@@ -49,5 +50,32 @@ namespace xtraForm.Model
         public virtual DbSet<PlantillaUnidad> PlantillaUnidad { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
         public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
+        public virtual DbSet<RUTAS> RUTAS { get; set; }
+    
+        public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("sp_stock_sistema", fechaParameter, tipoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema_web(Nullable<System.DateTime> fecha, Nullable<byte> tipo)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("sp_stock_sistema_web", fechaParameter, tipoParameter);
+        }
     }
 }

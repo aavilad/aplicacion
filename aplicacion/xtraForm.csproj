@@ -357,6 +357,12 @@
     <Compile Include="Modulos\Elementos\frmComprobante.Designer.cs">
       <DependentUpon>frmComprobante.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Elementos\frmFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmFacturacion.Designer.cs">
+      <DependentUpon>frmFacturacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Elementos\frmMarca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -428,6 +434,12 @@
     </Compile>
     <Compile Include="Modulos\Progreso.Designer.cs">
       <DependentUpon>Progreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Ventas\frmFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Ventas\frmFacturacion.Designer.cs">
+      <DependentUpon>frmFacturacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmMaestroDetalle.cs">
       <SubType>Form</SubType>
@@ -536,6 +548,9 @@
     <EmbeddedResource Include="Modulos\Elementos\frmComprobante.resx">
       <DependentUpon>frmComprobante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmFacturacion.resx">
+      <DependentUpon>frmFacturacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmMarca.resx">
       <DependentUpon>frmMarca.cs</DependentUpon>
     </EmbeddedResource>
@@ -571,6 +586,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Progreso.resx">
       <DependentUpon>Progreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Ventas\frmFacturacion.resx">
+      <DependentUpon>frmFacturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmMaestroDetalle.resx">
       <DependentUpon>frmMaestroDetalle.cs</DependentUpon>

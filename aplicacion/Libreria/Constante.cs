@@ -87,18 +87,38 @@ namespace xtraForm.Libreria
                 dbo.Vva_Pedido.Procesado,
                 dbo.Vva_Pedido.Aprobado";
         public const string Existencias = @"
-                SELECT        dbo.Vva_Producto.Codigo, dbo.Vva_Producto.Descripcion, dbo.Vva_Producto.Unidad AS Medida, dbo.Vva_Producto.Fisico, dbo.Vva_Producto.Disponible, 
-                dbo.PROVEEDOR.RazonSocial AS Proveedor, ISNULL(dbo.MARCA.Descripcion, '') AS Marca, ISNULL(dbo.LINEA.Descripcion, '') AS Linea, ISNULL(dbo.grupo.descrip, 
-                '') AS Grupo, ISNULL(dbo.categoria.descrip, '') AS Categoria, ISNULL(dbo.clase.descrip, '') AS Clase, dbo.Vva_Producto.C_MENOR, dbo.Vva_Producto.C_MAYOR, 
-                dbo.Vva_Producto.CR_MENOR, dbo.Vva_Producto.CR_MAYOR, dbo.Vva_Producto.ESPECIAL05, dbo.Vva_Producto.ESPECIAL06, dbo.Vva_Producto.ESPECIAL07, 
-                dbo.Vva_Producto.sku, dbo.Vva_Producto.EAN, dbo.Vva_Producto.Web, dbo.Vva_Producto.Dms, dbo.Vva_Producto.Activo
-                FROM            dbo.PROVEEDOR INNER JOIN
-                dbo.Vva_Producto ON dbo.PROVEEDOR.Proveedor = dbo.Vva_Producto.IDProv LEFT OUTER JOIN
-                dbo.clase ON dbo.Vva_Producto.IDClase = dbo.clase.clase LEFT OUTER JOIN
-                dbo.categoria ON dbo.Vva_Producto.IDCategoria = dbo.categoria.categoria LEFT OUTER JOIN
-                dbo.MARCA INNER JOIN
-                dbo.LINEA ON dbo.MARCA.Linea = dbo.LINEA.Linea ON dbo.Vva_Producto.IDMarca = dbo.MARCA.Marca LEFT OUTER JOIN
-                dbo.grupo ON dbo.Vva_Producto.IDGrupo = dbo.grupo.grupo 
+                 SELECT Vva_Producto.Codigo, 
+                 Vva_Producto.Descripcion, 
+                 Vva_Producto.Unidad AS Medida_, 
+                 ISNULL(PlantillaUnidad.Abreviacion, '') AS Medida, 
+                 Vva_Producto.Fisico, 
+                 Vva_Producto.Disponible, 
+                 PROVEEDOR.RazonSocial AS Proveedor, 
+                 ISNULL(MARCA.Descripcion, '') AS Marca, 
+                 ISNULL(LINEA.Descripcion, '') AS Linea, 
+                 ISNULL(grupo.descrip, '') AS Grupo, 
+                 ISNULL(categoria.descrip, '') AS Categoria, 
+                 ISNULL(clase.descrip, '') AS Clase, 
+                 Vva_Producto.C_MENOR, 
+                 Vva_Producto.C_MAYOR, 
+                 Vva_Producto.CR_MENOR, 
+                 Vva_Producto.CR_MAYOR, 
+                 Vva_Producto.ESPECIAL05, 
+                 Vva_Producto.ESPECIAL06, 
+                 Vva_Producto.ESPECIAL07, 
+                 Vva_Producto.sku, 
+                 Vva_Producto.EAN, 
+                 Vva_Producto.Web, 
+                 Vva_Producto.Dms, 
+                 Vva_Producto.Activo
+                 FROM PROVEEDOR
+                 INNER JOIN Vva_Producto ON PROVEEDOR.Proveedor = Vva_Producto.IDProv
+                 LEFT OUTER JOIN PlantillaUnidad ON Vva_Producto.IDUnidad = PlantillaUnidad.PKID
+                 LEFT OUTER JOIN clase ON Vva_Producto.IDClase = clase.clase
+                 LEFT OUTER JOIN categoria ON Vva_Producto.IDCategoria = categoria.categoria
+                 LEFT OUTER JOIN MARCA
+                 INNER JOIN LINEA ON MARCA.Linea = LINEA.Linea ON Vva_Producto.IDMarca = MARCA.Marca
+                 LEFT OUTER JOIN grupo ON Vva_Producto.IDGrupo = grupo.grupo;
                 ";
         public const string Mapa_Table = @"SELECT columna.name
                                        FROM sys.columns columna

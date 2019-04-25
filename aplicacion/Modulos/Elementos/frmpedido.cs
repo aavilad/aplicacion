@@ -84,6 +84,11 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnBonificar_Click(object sender, EventArgs e)
         {
+            using (var Context = new Model.LiderAppEntities())
+            {
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+            }
             DataTable dt = new DataTable();
             dt.Columns.Add("id", typeof(System.Int32));
             dt.Columns.Add("Cantidad", typeof(System.Decimal));
@@ -650,6 +655,11 @@ namespace xtraForm.Modulos.Elementos
                 }
             }
             Existe = false;
+            using (var Context = new Model.LiderAppEntities())
+            {
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e) { if (proceso.MensageError("Cancelar Proceso") == DialogResult.Yes) this.Close(); }
