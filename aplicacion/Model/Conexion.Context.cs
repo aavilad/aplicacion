@@ -38,7 +38,6 @@ namespace xtraForm.Model
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<PEDIDO> PEDIDO { get; set; }
         public virtual DbSet<REPARTO> REPARTO { get; set; }
-        public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
         public virtual DbSet<Filtro> Filtro { get; set; }
         public virtual DbSet<categoria> categoria { get; set; }
         public virtual DbSet<grupo> grupo { get; set; }
@@ -51,6 +50,12 @@ namespace xtraForm.Model
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
         public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
         public virtual DbSet<RUTAS> RUTAS { get; set; }
+        public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
+        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
+        public virtual DbSet<DOCTIPO> DOCTIPO { get; set; }
+        public virtual DbSet<Vva_ItemPedido> Vva_ItemPedido { get; set; }
+        public virtual DbSet<Vva_Pedido> Vva_Pedido { get; set; }
+        public virtual DbSet<Gestion> Gestion { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {
@@ -76,6 +81,40 @@ namespace xtraForm.Model
                 new ObjectParameter("tipo", typeof(byte));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("sp_stock_sistema_web", fechaParameter, tipoParameter);
+        }
+    
+        public virtual ObjectResult<string> FacturarcionPorRutas(string ruta, Nullable<System.DateTime> fecha, string gestion)
+        {
+            var rutaParameter = ruta != null ?
+                new ObjectParameter("Ruta", ruta) :
+                new ObjectParameter("Ruta", typeof(string));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            var gestionParameter = gestion != null ?
+                new ObjectParameter("Gestion", gestion) :
+                new ObjectParameter("Gestion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("FacturarcionPorRutas", rutaParameter, fechaParameter, gestionParameter);
+        }
+    
+        public virtual int sp_genera_documento(string pedido, Nullable<int> tipo, string tdoc)
+        {
+            var pedidoParameter = pedido != null ?
+                new ObjectParameter("pedido", pedido) :
+                new ObjectParameter("pedido", typeof(string));
+    
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(int));
+    
+            var tdocParameter = tdoc != null ?
+                new ObjectParameter("tdoc", tdoc) :
+                new ObjectParameter("tdoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_genera_documento", pedidoParameter, tipoParameter, tdocParameter);
         }
     }
 }

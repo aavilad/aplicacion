@@ -137,7 +137,7 @@ namespace xtraForm.Modulos.Inventario
                 Art.CodAlterno = CodigoProducto;
                 Art.Peso = ProductoPeso;
                 Art.Costo = (decimal)0.00;
-                Art.UniMed = string.Empty;
+                Art.UniMed = Context.PlantillaUnidad.Where(x=>x.PKID == ProductoMedida).Select(p=>p.Abreviacion.Trim()).FirstOrDefault();
                 Art.Activo = ProductoActivo;
                 Art.Unidades = 1;
                 Art.StockMal = (decimal)0.00;

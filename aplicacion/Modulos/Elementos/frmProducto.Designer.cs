@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule13 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
@@ -40,16 +41,6 @@
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule9 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule10 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule11 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule12 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule13 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule14 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule15 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule16 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule17 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule18 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule19 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule20 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule21 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.TxtCodigoProducto = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -153,10 +144,10 @@
             this.TxtCodigoProducto.Name = "TxtCodigoProducto";
             this.TxtCodigoProducto.Size = new System.Drawing.Size(149, 20);
             this.TxtCodigoProducto.TabIndex = 1;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "This value is not valid";
-            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtCodigoProducto, conditionValidationRule1);
+            conditionValidationRule13.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule13.ErrorText = "This value is not valid";
+            conditionValidationRule13.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtCodigoProducto, conditionValidationRule13);
             // 
             // labelControl1
             // 
@@ -188,10 +179,10 @@
             this.TxtCodigoFabrica.Name = "TxtCodigoFabrica";
             this.TxtCodigoFabrica.Size = new System.Drawing.Size(149, 20);
             this.TxtCodigoFabrica.TabIndex = 2;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "This value is not valid";
-            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtCodigoFabrica, conditionValidationRule2);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "This value is not valid";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtCodigoFabrica, conditionValidationRule1);
             // 
             // labelControl4
             // 
@@ -207,10 +198,10 @@
             this.TxtCodigoEan.Name = "TxtCodigoEan";
             this.TxtCodigoEan.Size = new System.Drawing.Size(149, 20);
             this.TxtCodigoEan.TabIndex = 3;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsBlank;
-            conditionValidationRule3.ErrorText = "This value is not valid";
-            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtCodigoEan, conditionValidationRule3);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "This value is not valid";
+            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtCodigoEan, conditionValidationRule2);
             // 
             // labelControl5
             // 
@@ -275,10 +266,6 @@
             this.CheckArticuloVenta.Properties.Caption = "Articulo de venta";
             this.CheckArticuloVenta.Size = new System.Drawing.Size(130, 20);
             this.CheckArticuloVenta.TabIndex = 7;
-            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule4.ErrorText = "This value is not valid";
-            conditionValidationRule4.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckArticuloVenta, conditionValidationRule4);
             // 
             // CheckArticuloCompra
             // 
@@ -287,10 +274,6 @@
             this.CheckArticuloCompra.Properties.Caption = "Articulo de compra";
             this.CheckArticuloCompra.Size = new System.Drawing.Size(129, 20);
             this.CheckArticuloCompra.TabIndex = 8;
-            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsBlank;
-            conditionValidationRule5.ErrorText = "This value is not valid";
-            conditionValidationRule5.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckArticuloCompra, conditionValidationRule5);
             // 
             // xtraTabControl1
             // 
@@ -338,10 +321,10 @@
             this.TxtLinea.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.TxtLinea.Size = new System.Drawing.Size(361, 20);
             this.TxtLinea.TabIndex = 0;
-            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule6.ErrorText = "This value is not valid";
-            conditionValidationRule6.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtLinea, conditionValidationRule6);
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "This value is not valid";
+            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtLinea, conditionValidationRule3);
             // 
             // TxtMarca
             // 
@@ -353,10 +336,10 @@
             this.TxtMarca.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.TxtMarca.Size = new System.Drawing.Size(361, 20);
             this.TxtMarca.TabIndex = 1;
-            conditionValidationRule7.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule7.ErrorText = "This value is not valid";
-            conditionValidationRule7.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtMarca, conditionValidationRule7);
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule4.ErrorText = "This value is not valid";
+            conditionValidationRule4.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtMarca, conditionValidationRule4);
             // 
             // TxtGrupo
             // 
@@ -368,10 +351,10 @@
             this.TxtGrupo.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.TxtGrupo.Size = new System.Drawing.Size(361, 20);
             this.TxtGrupo.TabIndex = 2;
-            conditionValidationRule8.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule8.ErrorText = "This value is not valid";
-            conditionValidationRule8.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtGrupo, conditionValidationRule8);
+            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule5.ErrorText = "This value is not valid";
+            conditionValidationRule5.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtGrupo, conditionValidationRule5);
             // 
             // TxtClase
             // 
@@ -382,10 +365,10 @@
             this.TxtClase.Properties.NullText = "";
             this.TxtClase.Size = new System.Drawing.Size(361, 20);
             this.TxtClase.TabIndex = 3;
-            conditionValidationRule9.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule9.ErrorText = "This value is not valid";
-            conditionValidationRule9.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtClase, conditionValidationRule9);
+            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule6.ErrorText = "This value is not valid";
+            conditionValidationRule6.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtClase, conditionValidationRule6);
             // 
             // TxtCategoria
             // 
@@ -396,10 +379,10 @@
             this.TxtCategoria.Properties.NullText = "";
             this.TxtCategoria.Size = new System.Drawing.Size(361, 20);
             this.TxtCategoria.TabIndex = 4;
-            conditionValidationRule10.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule10.ErrorText = "This value is not valid";
-            conditionValidationRule10.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtCategoria, conditionValidationRule10);
+            conditionValidationRule7.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule7.ErrorText = "This value is not valid";
+            conditionValidationRule7.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtCategoria, conditionValidationRule7);
             // 
             // xtraTabPage2
             // 
@@ -459,10 +442,10 @@
             this.TxtNumeroOrdern.Properties.Mask.EditMask = "d";
             this.TxtNumeroOrdern.Size = new System.Drawing.Size(123, 20);
             this.TxtNumeroOrdern.TabIndex = 30;
-            conditionValidationRule11.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule11.ErrorText = "This value is not valid";
-            conditionValidationRule11.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtNumeroOrdern, conditionValidationRule11);
+            conditionValidationRule8.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule8.ErrorText = "This value is not valid";
+            conditionValidationRule8.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtNumeroOrdern, conditionValidationRule8);
             // 
             // labelControl19
             // 
@@ -611,10 +594,10 @@
             this.TxtProductoMedida.Properties.NullText = "";
             this.TxtProductoMedida.Size = new System.Drawing.Size(123, 20);
             this.TxtProductoMedida.TabIndex = 26;
-            conditionValidationRule12.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule12.ErrorText = "This value is not valid";
-            conditionValidationRule12.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtProductoMedida, conditionValidationRule12);
+            conditionValidationRule9.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule9.ErrorText = "This value is not valid";
+            conditionValidationRule9.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtProductoMedida, conditionValidationRule9);
             this.TxtProductoMedida.EditValueChanged += new System.EventHandler(this.TxtProductoMedida_EditValueChanged);
             // 
             // TxtFactorMinimo
@@ -648,10 +631,6 @@
             this.CheckAfecto.Properties.Caption = "Afecto";
             this.CheckAfecto.Size = new System.Drawing.Size(68, 20);
             this.CheckAfecto.TabIndex = 12;
-            conditionValidationRule13.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule13.ErrorText = "This value is not valid";
-            conditionValidationRule13.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckAfecto, conditionValidationRule13);
             // 
             // CheckProductoCombo
             // 
@@ -660,10 +639,6 @@
             this.CheckProductoCombo.Properties.Caption = "Producto Combo";
             this.CheckProductoCombo.Size = new System.Drawing.Size(130, 20);
             this.CheckProductoCombo.TabIndex = 9;
-            conditionValidationRule14.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule14.ErrorText = "This value is not valid";
-            conditionValidationRule14.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckProductoCombo, conditionValidationRule14);
             // 
             // CheckActivoUnilever
             // 
@@ -672,10 +647,6 @@
             this.CheckActivoUnilever.Properties.Caption = "Activo para unilever";
             this.CheckActivoUnilever.Size = new System.Drawing.Size(129, 20);
             this.CheckActivoUnilever.TabIndex = 10;
-            conditionValidationRule15.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule15.ErrorText = "This value is not valid";
-            conditionValidationRule15.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckActivoUnilever, conditionValidationRule15);
             // 
             // CheckActivoWeb
             // 
@@ -684,10 +655,6 @@
             this.CheckActivoWeb.Properties.Caption = "Activo para web";
             this.CheckActivoWeb.Size = new System.Drawing.Size(114, 20);
             this.CheckActivoWeb.TabIndex = 11;
-            conditionValidationRule16.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule16.ErrorText = "This value is not valid";
-            conditionValidationRule16.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckActivoWeb, conditionValidationRule16);
             // 
             // CheckActivo
             // 
@@ -696,10 +663,6 @@
             this.CheckActivo.Properties.Caption = "Activo";
             this.CheckActivo.Size = new System.Drawing.Size(68, 20);
             this.CheckActivo.TabIndex = 13;
-            conditionValidationRule17.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule17.ErrorText = "This value is not valid";
-            conditionValidationRule17.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckActivo, conditionValidationRule17);
             // 
             // BtnCancelar
             // 
@@ -734,10 +697,10 @@
             this.TxtDescripcionProducto.Name = "TxtDescripcionProducto";
             this.TxtDescripcionProducto.Size = new System.Drawing.Size(392, 20);
             this.TxtDescripcionProducto.TabIndex = 5;
-            conditionValidationRule18.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule18.ErrorText = "This value is not valid";
-            conditionValidationRule18.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtDescripcionProducto, conditionValidationRule18);
+            conditionValidationRule10.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule10.ErrorText = "This value is not valid";
+            conditionValidationRule10.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtDescripcionProducto, conditionValidationRule10);
             // 
             // TxtNmProveedor
             // 
@@ -749,10 +712,10 @@
             this.TxtNmProveedor.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.TxtNmProveedor.Size = new System.Drawing.Size(391, 20);
             this.TxtNmProveedor.TabIndex = 31;
-            conditionValidationRule19.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule19.ErrorText = "This value is not valid";
-            conditionValidationRule19.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.TxtNmProveedor, conditionValidationRule19);
+            conditionValidationRule11.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule11.ErrorText = "This value is not valid";
+            conditionValidationRule11.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.TxtNmProveedor, conditionValidationRule11);
             // 
             // CheckPercepcion
             // 
@@ -761,10 +724,6 @@
             this.CheckPercepcion.Properties.Caption = "Percepcion";
             this.CheckPercepcion.Size = new System.Drawing.Size(114, 20);
             this.CheckPercepcion.TabIndex = 32;
-            conditionValidationRule20.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule20.ErrorText = "This value is not valid";
-            conditionValidationRule20.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckPercepcion, conditionValidationRule20);
             // 
             // CheckDetraccion
             // 
@@ -773,10 +732,6 @@
             this.CheckDetraccion.Properties.Caption = "Detraccion";
             this.CheckDetraccion.Size = new System.Drawing.Size(129, 20);
             this.CheckDetraccion.TabIndex = 33;
-            conditionValidationRule21.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule21.ErrorText = "This value is not valid";
-            conditionValidationRule21.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.CheckDetraccion, conditionValidationRule21);
             // 
             // frmProducto
             // 

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fa91626330374897a1caa3cf6a2256bd" Name="Diagram1" ZoomLevel="58">
+      <Diagram DiagramId="fa91626330374897a1caa3cf6a2256bd" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="LiderAppModel.PERSONAL" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LiderAppModel.FORMAPAGO" Width="1.5" PointX="3.75" PointY="17.375" />
         <EntityTypeShape EntityType="LiderAppModel.DETPEDIDO" Width="1.5" PointX="8.25" PointY="12.375" />
@@ -26,7 +26,6 @@
         <AssociationConnector Association="LiderAppModel.FK_PEDIDO_FORMAPAGO" />
         <AssociationConnector Association="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" />
         <AssociationConnector Association="LiderAppModel.FK_REPARTO_PERSONAL" />
-        <EntityTypeShape EntityType="LiderAppModel.Vva_Vendedor" Width="1.5" PointX="11" PointY="1.125" />
         <EntityTypeShape EntityType="LiderAppModel.Filtro" Width="1.5" PointX="8.375" PointY="4.75" />
         <EntityTypeShape EntityType="LiderAppModel.categoria" Width="1.5" PointX="12.375" PointY="9.75" />
         <EntityTypeShape EntityType="LiderAppModel.grupo" Width="1.5" PointX="13.375" PointY="0.75" />
@@ -42,6 +41,12 @@
         <EntityTypeShape EntityType="LiderAppModel.Vva_Producto" Width="1.5" PointX="17.375" PointY="0.75" />
         <EntityTypeShape EntityType="LiderAppModel.RUTAS" Width="1.5" PointX="1.5" PointY="18.25" />
         <AssociationConnector Association="LiderAppModel.FK_REPARTO_RUTAS" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_Vendedor" Width="1.5" PointX="9.5" PointY="0.625" />
+        <EntityTypeShape EntityType="LiderAppModel.FuerzaVentas" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LiderAppModel.DOCTIPO" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_ItemPedido" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_Pedido" Width="1.5" PointX="10.375" PointY="17.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Gestion" Width="1.5" PointX="12.375" PointY="17.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

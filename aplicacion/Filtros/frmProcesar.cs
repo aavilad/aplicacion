@@ -30,7 +30,7 @@ namespace xtraForm.Filtros
             List<string> lista = new List<string>();
             foreach (var fila in gridView1.GetSelectedRows())
             {
-                lista.Add("'" + gridView1.GetDataRow(fila)[1].ToString() + "'");
+                lista.Add("'" + gridView1.GetDataRow(fila)["Codigo"].ToString() + "'");
             }
             string codigos = string.Join(",", lista.ToArray());
             //

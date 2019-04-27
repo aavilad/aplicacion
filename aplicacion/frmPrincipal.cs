@@ -106,7 +106,7 @@ namespace xtraForm
             string query1 = @"(SELECT conigv
                                 FROM PRODUCTO
                                 WHERE Producto = DETPEDIDO.Producto)";
-            //
+
             Libreria.Proceso proceso = new Libreria.Proceso();
             entidad.i = proceso.ConsultarTabla_("pedido", "fecha >= '" + entidad.fechainicio + "' and fecha < '" + entidad.fechafin + "' and statusweb is null and procesado = 0 ").Rows.Count;
             if (entidad.i > 0)
@@ -242,10 +242,14 @@ namespace xtraForm
         private void btnBonificar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Filtros.frmProcesar frmbonificar = new Filtros.frmProcesar();
-            proceso.consultar("select [Fuerza Ventas], [Codigo Vendedor], [Nombre Vendedor] from Vva_Vendedor","vendedor");
+            proceso.consultar(@"SELECT Vva_Vendedor.[Codigo vendedor] AS Codigo, 
+                                FuerzaVentas.descrip AS FzaVentas, 
+                                Vva_Vendedor.[Nombre Vendedor] AS Nombre
+                                FROM Vva_Vendedor
+                                INNER JOIN FuerzaVentas ON Vva_Vendedor.IDFzaVentas = FuerzaVentas.fzavtas;", "vendedor");
             frmbonificar.gridControl1.DataSource = proceso.ds.Tables["vendedor"];
             frmbonificar.gridView1.OptionsView.ShowGroupPanel = false;
-            frmbonificar.gridView1.Columns["Fuerza Ventas"].GroupIndex = 1;
+            frmbonificar.gridView1.Columns["FzaVentas"].GroupIndex = 1;
             frmbonificar.gridView1.GroupRowHeight = 1;
             frmbonificar.gridView1.OptionsSelection.MultiSelect = true;
             frmbonificar.gridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
