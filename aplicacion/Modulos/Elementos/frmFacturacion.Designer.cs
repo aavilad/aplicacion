@@ -31,9 +31,7 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.FechaProceso = new DevExpress.XtraEditors.DateEdit();
             this.BtnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.BtnAceptar = new DevExpress.XtraEditors.SimpleButton();
             this.SerieBoletas = new DevExpress.XtraEditors.LookUpEdit();
@@ -53,8 +51,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.Properties)).BeginInit();
+            this.FechaProceso = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.SerieBoletas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SerieFacturas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flRuta.Properties)).BeginInit();
@@ -78,23 +75,6 @@
             this.labelControl1.Size = new System.Drawing.Size(73, 13);
             this.labelControl1.TabIndex = 10;
             this.labelControl1.Text = "Fecha emision :";
-            // 
-            // FechaProceso
-            // 
-            this.FechaProceso.EditValue = null;
-            this.FechaProceso.Location = new System.Drawing.Point(111, 12);
-            this.FechaProceso.Name = "FechaProceso";
-            this.FechaProceso.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.FechaProceso.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.FechaProceso.Size = new System.Drawing.Size(128, 20);
-            this.FechaProceso.TabIndex = 9;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.AnyOf;
-            conditionValidationRule1.ErrorText = "fecha no puede queda vacia.";
-            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.FechaProceso, conditionValidationRule1);
-            this.FechaProceso.EditValueChanged += new System.EventHandler(this.FechaProceso_EditValueChanged);
             // 
             // BtnCancelar
             // 
@@ -129,10 +109,10 @@
             this.SerieBoletas.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.SerieBoletas.Size = new System.Drawing.Size(59, 20);
             this.SerieBoletas.TabIndex = 20;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "Serie de boletas no puede esdtar vacio.";
-            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.SerieBoletas, conditionValidationRule2);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Serie de boletas no puede esdtar vacio.";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.SerieBoletas, conditionValidationRule1);
             this.SerieBoletas.EditValueChanged += new System.EventHandler(this.SerieBoletas_EditValueChanged);
             // 
             // SerieFacturas
@@ -150,10 +130,10 @@
             this.SerieFacturas.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.SerieFacturas.Size = new System.Drawing.Size(59, 20);
             this.SerieFacturas.TabIndex = 21;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "Serie facturas no debe estar vacio.";
-            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.SerieFacturas, conditionValidationRule3);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "Serie facturas no debe estar vacio.";
+            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.SerieFacturas, conditionValidationRule2);
             this.SerieFacturas.EditValueChanged += new System.EventHandler(this.SerieFacturas_EditValueChanged);
             // 
             // labelControl4
@@ -274,11 +254,21 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
+            // FechaProceso
+            // 
+            this.FechaProceso.CustomFormat = "dd/MM/yyyy";
+            this.FechaProceso.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.FechaProceso.Location = new System.Drawing.Point(98, 10);
+            this.FechaProceso.Name = "FechaProceso";
+            this.FechaProceso.Size = new System.Drawing.Size(147, 21);
+            this.FechaProceso.TabIndex = 38;
+            // 
             // frmFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 492);
+            this.Controls.Add(this.FechaProceso);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.Gestion);
@@ -293,7 +283,6 @@
             this.Controls.Add(this.SerieFacturas);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.SerieBoletas);
-            this.Controls.Add(this.FechaProceso);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl1);
             this.MaximizeBox = false;
@@ -301,8 +290,6 @@
             this.MinimumSize = new System.Drawing.Size(398, 530);
             this.Name = "frmFacturacion";
             this.Load += new System.EventHandler(this.frmFacturacion_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SerieBoletas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SerieFacturas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.flRuta.Properties)).EndInit();
@@ -324,7 +311,6 @@
 
         #endregion
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.DateEdit FechaProceso;
         private DevExpress.XtraEditors.SimpleButton BtnCancelar;
         private DevExpress.XtraEditors.SimpleButton BtnAceptar;
         private DevExpress.XtraEditors.LookUpEdit SerieBoletas;
@@ -344,5 +330,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private System.Windows.Forms.DateTimePicker FechaProceso;
     }
 }

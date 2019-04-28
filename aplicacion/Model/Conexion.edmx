@@ -120,6 +120,58 @@
           <Property Name="codigo" Type="char" MaxLength="2" />
           <Property Name="PKID" Type="int" />
         </EntityType>
+        <EntityType Name="DOCUMENTO">
+          <Key>
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="TipoDoc" />
+          </Key>
+          <Property Name="Documento" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="TipoDoc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Personal" Type="char" MaxLength="2" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Cliente" Type="char" MaxLength="6" />
+          <Property Name="Proveedor" Type="char" MaxLength="5" />
+          <Property Name="Pedido" Type="char" MaxLength="9" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DocRefer" Type="char" MaxLength="9" />
+          <Property Name="TipoDocR" Type="char" MaxLength="1" />
+          <Property Name="Motivo" Type="tinyint" Nullable="false" />
+          <Property Name="Pagado" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Generado" Type="char" MaxLength="11" />
+          <Property Name="TipoIng" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Nrodia" Type="tinyint" Nullable="false" />
+          <Property Name="Cerrado" Type="bit" Nullable="false" />
+          <Property Name="FechaRep" Type="datetime" />
+          <Property Name="PersonalRep" Type="char" MaxLength="2" />
+          <Property Name="Marca" Type="char" MaxLength="1" />
+          <Property Name="fecha1" Type="datetime" />
+          <Property Name="FechaCancelar" Type="datetime" />
+          <Property Name="Procesado" Type="bit" Nullable="false" />
+          <Property Name="observacion" Type="varchar" MaxLength="70" />
+          <Property Name="hora" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="diasfinta" Type="tinyint" Nullable="false" />
+          <Property Name="rsocial" Type="varchar" MaxLength="70" />
+          <Property Name="ruc" Type="char" MaxLength="11" />
+          <Property Name="direccion" Type="varchar" MaxLength="70" />
+          <Property Name="dni" Type="char" MaxLength="12" />
+          <Property Name="fechacont" Type="datetime" Nullable="false" />
+          <Property Name="afecto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="inafecto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="igv" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="impreso" Type="bit" Nullable="false" />
+          <Property Name="registro" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="encargado" Type="char" MaxLength="2" />
+          <Property Name="npersonal" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nencargado" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="totdscto" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="gestion" Type="char" MaxLength="2" />
+          <Property Name="ptollegada" Type="varchar" MaxLength="70" />
+          <Property Name="distllegada" Type="char" MaxLength="6" />
+          <Property Name="percepcion" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="detraccion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="ivap" Type="numeric" Precision="8" Scale="2" />
+        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Lider2018.dbo.Filtro' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Filtro">
@@ -653,6 +705,18 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DOCUMENTO_DOCTIPO">
+          <End Role="DOCTIPO" Type="Self.DOCTIPO" Multiplicity="1" />
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTIPO">
+              <PropertyRef Name="DocTipo" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="TipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MARCA_LINEA">
           <End Role="LINEA" Type="Self.LINEA" Multiplicity="0..1" />
           <End Role="MARCA" Type="Self.MARCA" Multiplicity="*" />
@@ -734,6 +798,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <EntitySet Name="DETPEDIDO" EntityType="Self.DETPEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DOCTIPO" EntityType="Self.DOCTIPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTO" EntityType="Self.DOCUMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FORMAPAGO" EntityType="Self.FORMAPAGO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FuerzaVentas" EntityType="Self.FuerzaVentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gestion" EntityType="Self.Gestion" Schema="dbo" store:Type="Tables" />
@@ -890,6 +955,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <End Role="provincia" EntitySet="provincia" />
             <End Role="Distrito" EntitySet="Distrito" />
           </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_DOCTIPO" Association="Self.FK_DOCUMENTO_DOCTIPO">
+            <End Role="DOCTIPO" EntitySet="DOCTIPO" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
           <AssociationSet Name="FK_MARCA_LINEA" Association="Self.FK_MARCA_LINEA">
             <End Role="LINEA" EntitySet="LINEA" />
             <End Role="MARCA" EntitySet="MARCA" />
@@ -1044,6 +1113,11 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <Parameter Name="tdoc" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Gestion" EntityType="LiderAppModel.Gestion" />
+          <EntitySet Name="DOCUMENTO" EntityType="LiderAppModel.DOCUMENTO" />
+          <AssociationSet Name="FK_DOCUMENTO_DOCTIPO" Association="LiderAppModel.FK_DOCUMENTO_DOCTIPO">
+            <End Role="DOCTIPO" EntitySet="DOCTIPO" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -1680,6 +1754,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="Signo" Type="Int16" Nullable="false" />
           <Property Name="codigo" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="PKID" Type="Int32" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="LiderAppModel.FK_DOCUMENTO_DOCTIPO" FromRole="DOCTIPO" ToRole="DOCUMENTO" />
         </EntityType>
         <EntityType Name="Vva_ItemPedido">
           <Key>
@@ -1736,6 +1811,71 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="activa" Type="Boolean" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="DOCUMENTO">
+          <Key>
+            <PropertyRef Name="Documento1" />
+            <PropertyRef Name="TipoDoc" />
+          </Key>
+          <Property Name="Documento1" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="TipoDoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Personal" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Cliente" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Pedido" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DocRefer" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="TipoDocR" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Motivo" Type="Byte" Nullable="false" />
+          <Property Name="Pagado" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Generado" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="TipoIng" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Nrodia" Type="Byte" Nullable="false" />
+          <Property Name="Cerrado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaRep" Type="DateTime" Precision="3" />
+          <Property Name="PersonalRep" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fecha1" Type="DateTime" Precision="3" />
+          <Property Name="FechaCancelar" Type="DateTime" Precision="3" />
+          <Property Name="Procesado" Type="Boolean" Nullable="false" />
+          <Property Name="observacion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="hora" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="diasfinta" Type="Byte" Nullable="false" />
+          <Property Name="rsocial" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="dni" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="fechacont" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="afecto" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="inafecto" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="igv" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="impreso" Type="Boolean" Nullable="false" />
+          <Property Name="registro" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="encargado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="npersonal" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="nencargado" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="totdscto" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="gestion" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ptollegada" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="distllegada" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="percepcion" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="detraccion" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="ivap" Type="Decimal" Precision="8" Scale="2" />
+          <NavigationProperty Name="DOCTIPO" Relationship="LiderAppModel.FK_DOCUMENTO_DOCTIPO" FromRole="DOCUMENTO" ToRole="DOCTIPO" />
+        </EntityType>
+        <Association Name="FK_DOCUMENTO_DOCTIPO">
+          <End Type="LiderAppModel.DOCTIPO" Role="DOCTIPO" Multiplicity="1" />
+          <End Type="LiderAppModel.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTIPO">
+              <PropertyRef Name="DocTipo1" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="TipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2263,6 +2403,58 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTO">
+            <EntityTypeMapping TypeName="LiderAppModel.DOCUMENTO">
+              <MappingFragment StoreEntitySet="DOCUMENTO">
+                <ScalarProperty Name="ivap" ColumnName="ivap" />
+                <ScalarProperty Name="detraccion" ColumnName="detraccion" />
+                <ScalarProperty Name="percepcion" ColumnName="percepcion" />
+                <ScalarProperty Name="distllegada" ColumnName="distllegada" />
+                <ScalarProperty Name="ptollegada" ColumnName="ptollegada" />
+                <ScalarProperty Name="gestion" ColumnName="gestion" />
+                <ScalarProperty Name="totdscto" ColumnName="totdscto" />
+                <ScalarProperty Name="nencargado" ColumnName="nencargado" />
+                <ScalarProperty Name="npersonal" ColumnName="npersonal" />
+                <ScalarProperty Name="encargado" ColumnName="encargado" />
+                <ScalarProperty Name="registro" ColumnName="registro" />
+                <ScalarProperty Name="impreso" ColumnName="impreso" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="igv" ColumnName="igv" />
+                <ScalarProperty Name="inafecto" ColumnName="inafecto" />
+                <ScalarProperty Name="afecto" ColumnName="afecto" />
+                <ScalarProperty Name="fechacont" ColumnName="fechacont" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="rsocial" ColumnName="rsocial" />
+                <ScalarProperty Name="diasfinta" ColumnName="diasfinta" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+                <ScalarProperty Name="FechaCancelar" ColumnName="FechaCancelar" />
+                <ScalarProperty Name="fecha1" ColumnName="fecha1" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="PersonalRep" ColumnName="PersonalRep" />
+                <ScalarProperty Name="FechaRep" ColumnName="FechaRep" />
+                <ScalarProperty Name="Cerrado" ColumnName="Cerrado" />
+                <ScalarProperty Name="Nrodia" ColumnName="Nrodia" />
+                <ScalarProperty Name="TipoIng" ColumnName="TipoIng" />
+                <ScalarProperty Name="Generado" ColumnName="Generado" />
+                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="TipoDocR" ColumnName="TipoDocR" />
+                <ScalarProperty Name="DocRefer" ColumnName="DocRefer" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Pedido" ColumnName="Pedido" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="TipoDoc" ColumnName="TipoDoc" />
+                <ScalarProperty Name="Documento1" ColumnName="Documento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

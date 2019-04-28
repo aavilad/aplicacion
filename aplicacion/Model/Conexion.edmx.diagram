@@ -47,6 +47,8 @@
         <EntityTypeShape EntityType="LiderAppModel.Vva_ItemPedido" Width="1.5" PointX="8.375" PointY="7.75" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_Pedido" Width="1.5" PointX="10.375" PointY="17.75" />
         <EntityTypeShape EntityType="LiderAppModel.Gestion" Width="1.5" PointX="12.375" PointY="17.75" />
+        <EntityTypeShape EntityType="LiderAppModel.DOCUMENTO" Width="1.5" PointX="3" PointY="27.875" />
+        <AssociationConnector Association="LiderAppModel.FK_DOCUMENTO_DOCTIPO" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

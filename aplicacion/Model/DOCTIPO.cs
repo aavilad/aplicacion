@@ -14,6 +14,12 @@ namespace xtraForm.Model
     
     public partial class DOCTIPO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DOCTIPO()
+        {
+            this.DOCUMENTO = new HashSet<DOCUMENTO>();
+        }
+    
         public string DocTipo1 { get; set; }
         public string Descripcion { get; set; }
         public string Serie { get; set; }
@@ -21,5 +27,8 @@ namespace xtraForm.Model
         public short Signo { get; set; }
         public string codigo { get; set; }
         public Nullable<int> PKID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DOCUMENTO> DOCUMENTO { get; set; }
     }
 }

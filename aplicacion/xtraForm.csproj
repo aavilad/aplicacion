@@ -292,6 +292,9 @@
     <Compile Include="Model\DOCTIPO.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DOCUMENTO.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Filtro.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
