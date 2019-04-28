@@ -118,7 +118,7 @@ namespace xtraForm.Libreria
                  LEFT OUTER JOIN categoria ON Vva_Producto.IDCategoria = categoria.categoria
                  LEFT OUTER JOIN MARCA
                  INNER JOIN LINEA ON MARCA.Linea = LINEA.Linea ON Vva_Producto.IDMarca = MARCA.Marca
-                 LEFT OUTER JOIN grupo ON Vva_Producto.IDGrupo = grupo.grupo;
+                 LEFT OUTER JOIN grupo ON Vva_Producto.IDGrupo = grupo.grupo
                 ";
         public const string Mapa_Table = @"SELECT columna.name
                                        FROM sys.columns columna

@@ -179,25 +179,28 @@ namespace xtraForm.Modulos.Elementos
                                    join r in Context.REPARTO.AsEnumerable() on p.IDVend equals r.Personal
                                    where p.FechaEmision == Convert.ToDateTime(FechaProceso.Value).Date &&
                                    r.Dia == (int)Convert.ToDateTime(FechaProceso.Value).DayOfWeek &&
-                                   cadena.Contains(r.Ruta) && p.Aprobado == true && p.Procesado == true
+                                   cadena.Contains(r.Ruta) && p.Aprobado == true && p.Procesado == false
                                    select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
                     foreach (var fila in Pedidos)
                     {
-                        //Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
+                        Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
                     }
-                    //var Documentos = (from p in Context.DOCUMENTO.AsEnumerable()
-                    //                 join r in Pedidos on p.Pedido equals r.Pedido
-                    //                 select new { Pedido = p.Documento1.Trim(), Tipo = p.TipoDoc.Trim() }).ToList();
-                    //foreach (var fila in Documentos)
-                    //{
-                    //    if (fila.Tipo == "B")
-                    //    {
-                    //        var Numero = Convert.ToInt32(BCorrelativo.EditValue).ToString("D8");
-                    //        var serie = Convert.ToString(SerieBoletas.EditValue);
-                    //        var NumeroComprobante = serie + Numero;
-                    //    }
-                       
-                    //}
+                    var Documentos = (from p in Context.DOCUMENTO.AsEnumerable()
+                                      join r in Pedidos on p.Pedido equals r.Pedido
+                                      select new { Documento = p.Documento1.Trim(), Tipo = p.TipoDoc.Trim() }).ToList();
+                    foreach (var fila in Documentos)
+                    {
+                        if (fila.Tipo == "B")
+                        {
+                            var Numero = Convert.ToInt32(BCorrelativo.EditValue).ToString("D8");
+                            var serie = SerieBoletas.Text.Trim();
+                            var NumeroComprobante = serie + Numero;
+                            Model.DOCUMENTO Cp = new Model.DOCUMENTO { Documento1 = fila.Documento ,TipoDoc = fila.Tipo};
+                            Context.DOCUMENTO.Attach(Cp);
+                            Cp.Generado = NumeroComprobante;
+                        }
+                    }
+                    Context.SaveChanges();
                 }
             }
             else if (flVendedor.Checked)
