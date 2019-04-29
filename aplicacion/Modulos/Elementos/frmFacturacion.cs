@@ -156,6 +156,7 @@ namespace xtraForm.Modulos.Elementos
         void GeneraDocumentos()
         {
             var fecha = Convert.ToDateTime(FechaProceso.EditValue).ToString();
+            var fecha_ = Convert.ToDateTime(FechaProceso.EditValue).ToString("dd/MM/yyyy");
             if (flRuta.Checked)
             {
                 var Campos = new List<string>();
@@ -168,9 +169,9 @@ namespace xtraForm.Modulos.Elementos
                 {
                     var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
                                    join r in Context.REPARTO.AsEnumerable() on p.IDVend equals r.Personal
-                                   where p.FechaEmision.Value == Convert.ToDateTime(FechaProceso.EditValue).Date &&
+                                   where p.FechaEmision.Value == DateTime.Parse(fecha_) &&
                                    r.Dia == (int)Convert.ToDateTime(FechaProceso.EditValue).DayOfWeek &&
-                                   cadena.Contains(r.Ruta) && p.Aprobado == true && p.Procesado == false
+                                   cadena.Contains(r.Ruta) && p.Aprobado == true && p.Procesado == false && p.Gestion == Gestion.EditValue
                                    select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
                     foreach (var fila in Pedidos)
                     {

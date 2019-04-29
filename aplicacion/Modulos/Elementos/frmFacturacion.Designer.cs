@@ -265,6 +265,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.FechaProceso.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.FechaProceso.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.FechaProceso.Size = new System.Drawing.Size(146, 20);
             this.FechaProceso.TabIndex = 38;
             // 
@@ -292,7 +293,7 @@
             this.Controls.Add(this.labelControl1);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(398, 531);
-            this.MinimumSize = new System.Drawing.Size(398, 531);
+            this.MinimumSize = new System.Drawing.Size(398, 530);
             this.Name = "frmFacturacion";
             this.Load += new System.EventHandler(this.frmFacturacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SerieBoletas.Properties)).EndInit();

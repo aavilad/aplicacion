@@ -362,7 +362,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
           <Property Name="Unidades" Type="int" Nullable="false" />
           <Property Name="StockMal" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="ean13" Type="char" MaxLength="15" />
-          <Property Name="grupo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="grupo" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="stkbafecha" Type="decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="stkmafecha" Type="decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="comimayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
@@ -552,7 +552,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Producto' no tiene definid
             <PropertyRef Name="percepcion" />
             <PropertyRef Name="detraccion" />
             <PropertyRef Name="RowNber" />
-            <PropertyRef Name="ValorMinMayorista" />
+            <PropertyRef Name="MinimoMayorista" />
           </Key>
           <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="40" />
@@ -563,10 +563,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Producto' no tiene definid
           <Property Name="Peso" Type="numeric" Precision="9" Scale="3" />
           <Property Name="IDMarca" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="IDLinea" Type="char" MaxLength="2" />
-          <Property Name="IDGrupo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IDGrupo" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="IDCategoria" Type="char" MaxLength="2" />
           <Property Name="IDClase" Type="char" MaxLength="2" Nullable="false" />
-          <Property Name="Costo" Type="numeric" Precision="9" Scale="2" />
           <Property Name="C_MENOR" Type="decimal" Precision="8" Scale="2" />
           <Property Name="C_MAYOR" Type="decimal" Precision="8" Scale="2" />
           <Property Name="CR_MENOR" Type="decimal" Precision="8" Scale="2" />
@@ -590,8 +589,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Producto' no tiene definid
           <Property Name="detraccion" Type="bit" Nullable="false" />
           <Property Name="RowNber" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="IDUnidad" Type="int" />
-          <Property Name="ValorMinEspecial" Type="int" />
-          <Property Name="ValorMinMayorista" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Costo" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="MinimoEspecial" Type="int" />
+          <Property Name="MinimoMayorista" Type="numeric" Precision="6" Scale="2" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -710,9 +710,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DOCUMENTO_DOCTIPO">
-          <End Role="DOCTIPO" Type="Self.DOCTIPO" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="DOCTIPO" Type="Self.DOCTIPO" Multiplicity="1" />
           <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DOCTIPO">
@@ -892,7 +890,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
     [Vva_Producto].[IDGrupo] AS [IDGrupo], 
     [Vva_Producto].[IDCategoria] AS [IDCategoria], 
     [Vva_Producto].[IDClase] AS [IDClase], 
-    [Vva_Producto].[Costo] AS [Costo], 
     [Vva_Producto].[C_MENOR] AS [C_MENOR], 
     [Vva_Producto].[C_MAYOR] AS [C_MAYOR], 
     [Vva_Producto].[CR_MENOR] AS [CR_MENOR], 
@@ -916,8 +913,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
     [Vva_Producto].[detraccion] AS [detraccion], 
     [Vva_Producto].[RowNber] AS [RowNber], 
     [Vva_Producto].[IDUnidad] AS [IDUnidad], 
-    [Vva_Producto].[ValorMinEspecial] AS [ValorMinEspecial], 
-    [Vva_Producto].[ValorMinMayorista] AS [ValorMinMayorista]
+    [Vva_Producto].[Costo] AS [Costo], 
+    [Vva_Producto].[MinimoEspecial] AS [MinimoEspecial], 
+    [Vva_Producto].[MinimoMayorista] AS [MinimoMayorista]
     FROM [dbo].[Vva_Producto] AS [Vva_Producto]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vva_Vendedor" EntityType="Self.Vva_Vendedor" store:Type="Views" store:Schema="dbo">
@@ -1592,7 +1590,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="Unidades" Type="Int32" Nullable="false" />
           <Property Name="StockMal" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
           <Property Name="ean13" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
-          <Property Name="grupo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="grupo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="stkbafecha" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
           <Property Name="stkmafecha" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
           <Property Name="comimayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
@@ -1848,7 +1846,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <PropertyRef Name="percepcion" />
             <PropertyRef Name="detraccion" />
             <PropertyRef Name="RowNber" />
-            <PropertyRef Name="ValorMinMayorista" />
+            <PropertyRef Name="MinimoMayorista" />
           </Key>
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
@@ -1859,10 +1857,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="Peso" Type="Decimal" Precision="9" Scale="3" />
           <Property Name="IDMarca" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="IDLinea" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="IDGrupo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IDGrupo" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="IDCategoria" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="IDClase" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="Costo" Type="Decimal" Precision="9" Scale="2" />
           <Property Name="C_MENOR" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="C_MAYOR" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="CR_MENOR" Type="Decimal" Precision="8" Scale="2" />
@@ -1886,8 +1883,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="detraccion" Type="Boolean" Nullable="false" />
           <Property Name="RowNber" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="IDUnidad" Type="Int32" />
-          <Property Name="ValorMinEspecial" Type="Int32" />
-          <Property Name="ValorMinMayorista" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="Costo" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="MinimoEspecial" Type="Int32" />
+          <Property Name="MinimoMayorista" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2433,8 +2431,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <EntitySetMapping Name="Vva_Producto">
             <EntityTypeMapping TypeName="LiderAppModel.Vva_Producto">
               <MappingFragment StoreEntitySet="Vva_Producto">
-                <ScalarProperty Name="ValorMinMayorista" ColumnName="ValorMinMayorista" />
-                <ScalarProperty Name="ValorMinEspecial" ColumnName="ValorMinEspecial" />
+                <ScalarProperty Name="MinimoMayorista" ColumnName="MinimoMayorista" />
+                <ScalarProperty Name="MinimoEspecial" ColumnName="MinimoEspecial" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
                 <ScalarProperty Name="IDUnidad" ColumnName="IDUnidad" />
                 <ScalarProperty Name="RowNber" ColumnName="RowNber" />
                 <ScalarProperty Name="detraccion" ColumnName="detraccion" />
@@ -2458,7 +2457,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="CR_MENOR" ColumnName="CR_MENOR" />
                 <ScalarProperty Name="C_MAYOR" ColumnName="C_MAYOR" />
                 <ScalarProperty Name="C_MENOR" ColumnName="C_MENOR" />
-                <ScalarProperty Name="Costo" ColumnName="Costo" />
                 <ScalarProperty Name="IDClase" ColumnName="IDClase" />
                 <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
                 <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />

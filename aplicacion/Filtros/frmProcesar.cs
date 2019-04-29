@@ -84,7 +84,7 @@ namespace xtraForm.Filtros
                                                                            FROM dbo.ItemBonificacion
                                                                            WHERE (IDBonificacion = " + entidad.idbonificacion + @"))) AND
                                                     ( (dbo.Vva_Pedido.IDVend IN (" + codigos + @"))) AND
-                                                    (dbo.Vva_Pedido.Procesado = 0)
+                                                    (dbo.Vva_Pedido.Procesado = 0)  AND (dbo.Vva_Pedido.Bajado is null)
                                                     ",
                                                         @"
                                                     (SUM (dbo.Vva_ItemPedido.Cantidad) >= " + entidad.cantidadminima + ")");
@@ -159,7 +159,7 @@ namespace xtraForm.Filtros
                                                                            FROM dbo.ItemBonificacion
                                                                            WHERE (IDBonificacion = " + entidad.idbonificacion + @"))) AND
                                                     ( (dbo.Vva_Pedido.IDVend IN (" + codigos + @"))) AND
-                                                    (dbo.Vva_Pedido.Procesado = 0)
+                                                    (dbo.Vva_Pedido.Procesado = 0) AND (dbo.Vva_Pedido.Bajado is null)
                                                     ",
                                                        @"(SUM (dbo.Vva_ItemPedido.Cantidad) >= " + entidad.cantidadminima + ") " +
                                                        "and (SUM (dbo.Vva_ItemPedido.Cantidad) < " + entidad.cantidadmaxima + ")");
@@ -236,7 +236,7 @@ namespace xtraForm.Filtros
                                         WHERE
                                             (Vva_Pedido.FechaEmision = '" + entidad.fecha + "') AND PRODUCTO." + entidad.codigoasociado + @" in (SELECT cdProductoColeccion
                                             FROM ItemBonificacion WHERE (IDBonificacion = " + entidad.idbonificacion + @")) AND ( (Vva_Pedido.IDVend IN (" + codigos + @"))) AND
-                                            (Vva_Pedido.Procesado = 0)
+                                            (Vva_Pedido.Procesado = 0)  AND (dbo.Vva_Pedido.Bajado is null)
                                         GROUP BY Vva_Pedido.NrPedido
                                         HAVING
                                         (SUM (Vva_ItemPedido.Cantidad * Vva_ItemPedido.Precio) >= " + entidad.cantidadminima + ")", "Soles");
@@ -316,7 +316,7 @@ namespace xtraForm.Filtros
                                         WHERE
                                             (Vva_Pedido.FechaEmision = '" + entidad.fecha + "') AND PRODUCTO." + entidad.codigoasociado + @" in (SELECT cdProductoColeccion
                                             FROM ItemBonificacion WHERE (IDBonificacion = " + entidad.idbonificacion + @")) AND ( (Vva_Pedido.IDVend IN (" + codigos + @"))) AND
-                                            (Vva_Pedido.Procesado = 0)
+                                            (Vva_Pedido.Procesado = 0)  AND (dbo.Vva_Pedido.Bajado is null)
                                         GROUP BY Vva_Pedido.NrPedido
                                         HAVING
                                         (SUM (Vva_ItemPedido.Cantidad * Vva_ItemPedido.Precio) >= " + entidad.cantidadminima + ") and (SUM (Vva_ItemPedido.Cantidad * Vva_ItemPedido.Precio) < " + entidad.cantidadmaxima + ")", "Soles");
@@ -402,6 +402,11 @@ namespace xtraForm.Filtros
                     else
                     {
                         MessageBox.Show("No existen vendedores seleccionados");
+                    }
+                    using (var Context = new Model.LiderAppEntities())
+                    {
+                        Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                        Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                     }
 
                 }
