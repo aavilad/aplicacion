@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.CompareAgainstControlValidationRule compareAgainstControlValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.CompareAgainstControlValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.BtnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.BtnAceptar = new DevExpress.XtraEditors.SimpleButton();
@@ -172,6 +175,11 @@
             this.flRuta.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
             this.flRuta.Size = new System.Drawing.Size(62, 20);
             this.flRuta.TabIndex = 28;
+            compareAgainstControlValidationRule1.CompareControlOperator = DevExpress.XtraEditors.DXErrorProvider.CompareControlOperator.NotEquals;
+            compareAgainstControlValidationRule1.Control = this.flVendedor;
+            compareAgainstControlValidationRule1.ErrorText = "This value is not valid";
+            compareAgainstControlValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.flRuta, compareAgainstControlValidationRule1);
             this.flRuta.CheckedChanged += new System.EventHandler(this.flRuta_CheckedChanged);
             // 
             // flVendedor
@@ -232,6 +240,10 @@
             this.Gestion.Properties.NullText = "";
             this.Gestion.Size = new System.Drawing.Size(73, 20);
             this.Gestion.TabIndex = 35;
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "Gestion no debe estar  vacio.";
+            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.Gestion, conditionValidationRule3);
             // 
             // labelControl2
             // 
@@ -268,6 +280,10 @@
             this.FechaProceso.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.FechaProceso.Size = new System.Drawing.Size(146, 20);
             this.FechaProceso.TabIndex = 38;
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.NotEquals;
+            conditionValidationRule4.ErrorText = "This value is not valid";
+            conditionValidationRule4.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.FechaProceso, conditionValidationRule4);
             // 
             // frmFacturacion
             // 

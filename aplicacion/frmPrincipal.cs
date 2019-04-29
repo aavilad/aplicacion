@@ -262,50 +262,30 @@ namespace xtraForm
 
         private void btnBuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (FechaProceso.EditValue != null)
+            bool existe = false;
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == "Relacion de bonificaciones")
+                {
+
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    existe = true;
+                }
+            if (!existe)
             {
-                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
-                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
-                Modulos.Ventas.frmMaestroDetalle mdpromocioal = new Modulos.Ventas.frmMaestroDetalle
+                objeto = new Modulos.Ventas.frmMaestroDetalle
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
                     Dock = DockStyle.Fill
                 };
-                bool existe = false;
-                    for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-                        if (xtraTabControl1.TabPages[i].Text == "Contraste Bonificacion")
-                        {
-                            xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
-                            existe = true;
-                        }
-
-                mdpromocioal.fecha = Convert.ToDateTime(FechaProceso.EditValue).ToString("yyyyMMdd");
-                switch (existe)
-                {
-                    case true:
-                        if (proceso.MensageError("¿Reprocesar Vista?") == DialogResult.Yes)
-                        {
-                            xtraTabControl1.TabPages.Add(pedidos);
-                            xtraTabControl1.SelectedTabPage = pedidos;
-                            pedidos.Text = "Contraste Bonificacion";
-                            entidad.index = xtraTabControl1.SelectedTabPageIndex;
-                            pedidos.Controls.Add(mdpromocioal);
-                            mdpromocioal.Show();
-                        }
-                        break;
-                    case false:
-                        xtraTabControl1.TabPages.Add(pedidos);
-                        xtraTabControl1.SelectedTabPage = pedidos;
-                        pedidos.Text = "Contraste Bonificacion";
-                        entidad.index = xtraTabControl1.SelectedTabPageIndex;
-                        pedidos.Controls.Add(mdpromocioal);
-                        mdpromocioal.Show();
-                        break;
-                }
-                splashScreenManager1.CloseWaitForm();
+                xtraTabControl1.TabPages.Add(pedidos);
+                xtraTabControl1.SelectedTabPage = pedidos;
+                pedidos.Text = "Relacion de bonificaciones";
+                entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                pedidos.Controls.Add(objeto);
+                objeto.Show();
             }
         }
 
