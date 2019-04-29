@@ -69,10 +69,12 @@
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.BtnCanjear = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnProductoEscala = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -142,9 +144,10 @@
             this.barButtonItem5,
             this.barButtonItem10,
             this.BtnCanjear,
-            this.barButtonItem12});
+            this.barButtonItem12,
+            this.BtnProductoEscala});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 55;
+            this.ribbonControl1.MaxItemId = 56;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -453,7 +456,7 @@
             // 
             this.BtnCanjear.Caption = "Canjear";
             this.BtnCanjear.Id = 47;
-            this.BtnCanjear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
+            this.BtnCanjear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnCanjear.ImageOptions.SvgImage")));
             this.BtnCanjear.Name = "BtnCanjear";
             this.BtnCanjear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnCanjear_ItemClick);
             // 
@@ -464,12 +467,21 @@
             this.barButtonItem12.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem12.ImageOptions.SvgImage")));
             this.barButtonItem12.Name = "barButtonItem12";
             // 
+            // BtnProductoEscala
+            // 
+            this.BtnProductoEscala.Caption = "LIstaPrecios";
+            this.BtnProductoEscala.Id = 55;
+            this.BtnProductoEscala.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
+            this.BtnProductoEscala.Name = "BtnProductoEscala";
+            this.BtnProductoEscala.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnProductoEscala_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroup9,
-            this.ribbonPageGroup11});
+            this.ribbonPageGroup11,
+            this.ribbonPageGroup12});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Modulo de ventas";
             // 
@@ -498,6 +510,12 @@
             this.ribbonPageGroup11.ItemLinks.Add(this.barButtonItem12);
             this.ribbonPageGroup11.Name = "ribbonPageGroup11";
             this.ribbonPageGroup11.Text = "Facturacion de documentos";
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.BtnProductoEscala);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            this.ribbonPageGroup12.Text = "Lista de precios";
             // 
             // ribbonPage3
             // 
@@ -727,5 +745,7 @@
         private DevExpress.XtraBars.BarButtonItem BtnCanjear;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.BarButtonItem BtnProductoEscala;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
     }
 }

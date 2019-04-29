@@ -61,15 +61,6 @@ namespace xtraForm.Modulos.Elementos
 
         }
 
-        private void FechaProceso_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ChVendedor_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
         private void BtnFiltrar_Click(object sender, EventArgs e)
         {
             if (flRuta.Checked)
@@ -79,7 +70,7 @@ namespace xtraForm.Modulos.Elementos
                     gridControl1.DataSource =
                     (from p in Context.RUTAS.AsEnumerable()
                      join q in Context.REPARTO.AsEnumerable() on p.codigo equals q.Ruta
-                     where p.Activo.Equals(true) && q.Dia == (int)Convert.ToDateTime(FechaProceso.Value).DayOfWeek
+                     where p.Activo.Equals(true) && q.Dia == (int)Convert.ToDateTime(FechaProceso.EditValue).DayOfWeek
                      select new { Codigo = p.codigo.Trim(), Descripcion = p.descripcion.Trim() }).Distinct().ToList();
                     gridView1.OptionsView.ColumnAutoWidth = false;
                     gridView1.OptionsView.ShowGroupPanel = false;
@@ -164,7 +155,7 @@ namespace xtraForm.Modulos.Elementos
         }
         void GeneraDocumentos()
         {
-            var fecha = Convert.ToDateTime(FechaProceso.Value).ToString();
+            var fecha = Convert.ToDateTime(FechaProceso.EditValue).ToString();
             if (flRuta.Checked)
             {
                 var Campos = new List<string>();
@@ -177,8 +168,8 @@ namespace xtraForm.Modulos.Elementos
                 {
                     var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
                                    join r in Context.REPARTO.AsEnumerable() on p.IDVend equals r.Personal
-                                   where p.FechaEmision == Convert.ToDateTime(FechaProceso.Value).Date &&
-                                   r.Dia == (int)Convert.ToDateTime(FechaProceso.Value).DayOfWeek &&
+                                   where p.FechaEmision.Value == Convert.ToDateTime(FechaProceso.EditValue).Date &&
+                                   r.Dia == (int)Convert.ToDateTime(FechaProceso.EditValue).DayOfWeek &&
                                    cadena.Contains(r.Ruta) && p.Aprobado == true && p.Procesado == false
                                    select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
                     foreach (var fila in Pedidos)
@@ -198,6 +189,13 @@ namespace xtraForm.Modulos.Elementos
                             Model.DOCUMENTO Cp = new Model.DOCUMENTO { Documento1 = fila.Documento ,TipoDoc = fila.Tipo};
                             Context.DOCUMENTO.Attach(Cp);
                             Cp.Generado = NumeroComprobante;
+                            Model.PEDIDO Pd = new Model.PEDIDO { Pedido1 = Context.DOCUMENTO.Where(p=>p.Documento1== fila.Documento && p.TipoDoc == fila.Tipo).Select(x=>x.Pedido).FirstOrDefault()};
+                            Context.PEDIDO.Attach(Pd);
+                            Pd.Procesado = true;
+                            Pd.statusWeb = true;
+                            Model.DOCTIPO Dt = new Model.DOCTIPO { PKID = (int)SerieBoletas.EditValue};
+                            Context.DOCTIPO.Attach(Dt);
+                            Dt.Numero = Dt.Numero + 1;
                         }
                     }
                     Context.SaveChanges();
@@ -214,7 +212,7 @@ namespace xtraForm.Modulos.Elementos
                 using (var Context = new Model.LiderAppEntities())
                 {
                     var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
-                                   where p.FechaEmision == Convert.ToDateTime(FechaProceso.Value).Date && cadena.Contains(p.IDVend) && p.Aprobado == true && p.Procesado == false
+                                   where p.FechaEmision == Convert.ToDateTime(FechaProceso.EditValue).Date && cadena.Contains(p.IDVend) && p.Aprobado == true && p.Procesado == false
                                    select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
                     foreach (var fila in Pedidos)
                     {

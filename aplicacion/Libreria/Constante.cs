@@ -137,6 +137,13 @@ namespace xtraForm.Libreria
                 INNER JOIN PROVEEDOR ON MARCA.Proveedor = PROVEEDOR.Proveedor
                 INNER JOIN LINEA ON MARCA.Linea = LINEA.Linea;
                 ";
+        public const string ProductoEscala = @"
+                SELECT        
+                PROVEEDOR.RazonSocial AS Proveedor, Vva_ProductoEscala.Codigo, Vva_ProductoEscala.Descripcion, Vva_ProductoEscala.Unidad_, Vva_ProductoEscala.Unidad, Vva_ProductoEscala.C_MENOR, 
+                Vva_ProductoEscala.C_MAYOR, Vva_ProductoEscala.CR_MENOR, Vva_ProductoEscala.CR_MAYOR, Vva_ProductoEscala.ESPECIAL05, Vva_ProductoEscala.ESPECIAL06, Vva_ProductoEscala.ESPECIAL07, 
+                Vva_ProductoEscala.ValorMinEspecial, Vva_ProductoEscala.ValorMinMayorista
+                FROM
+                PROVEEDOR INNER JOIN Vva_ProductoEscala ON PROVEEDOR.Proveedor = Vva_ProductoEscala.IDProv";
 
     }
 }

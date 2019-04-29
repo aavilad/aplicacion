@@ -292,8 +292,8 @@ namespace xtraForm.Modulos.Inventario
                         bool ProductoWeb = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Web).FirstOrDefault();
                         bool ProductoAfecto = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Afecto).FirstOrDefault();
                         bool ProductoActivo = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Activo).FirstOrDefault();
-                        bool ProductoPercepcion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Percepcion).FirstOrDefault();
-                        bool ProductoDetraccion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Detraccion).FirstOrDefault();
+                        bool ProductoPercepcion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.percepcion).FirstOrDefault();
+                        bool ProductoDetraccion = Context.Vva_Producto.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.detraccion).FirstOrDefault();
                         frmproducto.TxtNmProveedor.EditValue = ProductoProveedor;
                         frmproducto.TxtCodigoProducto.EditValue = CodigoProducto;
                         frmproducto.TxtCodigoFabrica.EditValue = CodigoFabrica;

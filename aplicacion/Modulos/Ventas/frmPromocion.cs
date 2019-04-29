@@ -342,8 +342,7 @@ namespace xtraForm.Modulos.Ventas
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
-            try { modificarToolStripMenuItem_Click(sender, e); }
-            catch { }
+
         }
     }
 }

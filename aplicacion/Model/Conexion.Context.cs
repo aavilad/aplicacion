@@ -48,7 +48,6 @@ namespace xtraForm.Model
         public virtual DbSet<Clase_Producto> Clase_Producto { get; set; }
         public virtual DbSet<PlantillaUnidad> PlantillaUnidad { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
-        public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
         public virtual DbSet<RUTAS> RUTAS { get; set; }
         public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
         public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
@@ -57,6 +56,7 @@ namespace xtraForm.Model
         public virtual DbSet<Vva_Pedido> Vva_Pedido { get; set; }
         public virtual DbSet<Gestion> Gestion { get; set; }
         public virtual DbSet<DOCUMENTO> DOCUMENTO { get; set; }
+        public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {

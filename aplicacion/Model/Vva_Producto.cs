@@ -26,6 +26,7 @@ namespace xtraForm.Model
         public string IDGrupo { get; set; }
         public string IDCategoria { get; set; }
         public string IDClase { get; set; }
+        public Nullable<decimal> Costo { get; set; }
         public Nullable<decimal> C_MENOR { get; set; }
         public Nullable<decimal> C_MAYOR { get; set; }
         public Nullable<decimal> CR_MENOR { get; set; }
@@ -45,9 +46,11 @@ namespace xtraForm.Model
         public bool ArticuloVenta { get; set; }
         public bool ArticuloCompra { get; set; }
         public bool ArticuloCombo { get; set; }
-        public bool Percepcion { get; set; }
-        public bool Detraccion { get; set; }
+        public bool percepcion { get; set; }
+        public bool detraccion { get; set; }
         public string RowNber { get; set; }
         public Nullable<int> IDUnidad { get; set; }
+        public Nullable<int> ValorMinEspecial { get; set; }
+        public decimal ValorMinMayorista { get; set; }
     }
 }

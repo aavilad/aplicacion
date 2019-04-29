@@ -51,7 +51,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.FechaProceso = new System.Windows.Forms.DateTimePicker();
+            this.FechaProceso = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.SerieBoletas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SerieFacturas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flRuta.Properties)).BeginInit();
@@ -66,6 +66,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Gestion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -256,11 +258,14 @@
             // 
             // FechaProceso
             // 
-            this.FechaProceso.CustomFormat = "dd/MM/yyyy";
-            this.FechaProceso.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaProceso.Location = new System.Drawing.Point(98, 10);
+            this.FechaProceso.EditValue = null;
+            this.FechaProceso.Location = new System.Drawing.Point(91, 13);
             this.FechaProceso.Name = "FechaProceso";
-            this.FechaProceso.Size = new System.Drawing.Size(147, 21);
+            this.FechaProceso.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.FechaProceso.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.FechaProceso.Size = new System.Drawing.Size(146, 20);
             this.FechaProceso.TabIndex = 38;
             // 
             // frmFacturacion
@@ -286,8 +291,8 @@
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(398, 530);
-            this.MinimumSize = new System.Drawing.Size(398, 530);
+            this.MaximumSize = new System.Drawing.Size(398, 531);
+            this.MinimumSize = new System.Drawing.Size(398, 531);
             this.Name = "frmFacturacion";
             this.Load += new System.EventHandler(this.frmFacturacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SerieBoletas.Properties)).EndInit();
@@ -304,6 +309,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Gestion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,6 +337,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private System.Windows.Forms.DateTimePicker FechaProceso;
+        private DevExpress.XtraEditors.DateEdit FechaProceso;
     }
 }
