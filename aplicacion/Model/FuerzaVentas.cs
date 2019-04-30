@@ -14,6 +14,7 @@ namespace xtraForm.Model
     
     public partial class FuerzaVentas
     {
+        public int PKID { get; set; }
         public string fzavtas { get; set; }
         public string descrip { get; set; }
     }

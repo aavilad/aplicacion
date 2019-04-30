@@ -40,8 +40,8 @@ namespace xtraForm.Model
         public string fzavtas { get; set; }
         public bool novedad { get; set; }
         public bool dms { get; set; }
-        public decimal pparticipa { get; set; }
         public decimal pcuota { get; set; }
+        public decimal pparticipa { get; set; }
         public string supercodigo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

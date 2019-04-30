@@ -55,11 +55,11 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.FechaProceso = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.btnBuscar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockingMenuItem1 = new DevExpress.XtraBars.BarDockingMenuItem();
             this.barMdiChildrenListItem1 = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.barToggleSwitchItem1 = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.btnBuscar = new DevExpress.XtraBars.BarButtonItem();
             this.BtnOrderdecompra = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
@@ -69,6 +69,7 @@
             this.BtnCanjear = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.BtnProductoEscala = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnValidar = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -93,7 +94,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
-            this.BtnValidar = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
@@ -365,14 +365,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Caption = "Bucar";
-            this.btnBuscar.Id = 40;
-            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBuscar.ImageOptions.SvgImage")));
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscar_ItemClick);
-            // 
             // barButtonItem7
             // 
             this.barButtonItem7.Caption = "Aceptar";
@@ -396,6 +388,14 @@
             this.barToggleSwitchItem1.Caption = "barToggleSwitchItem1";
             this.barToggleSwitchItem1.Id = 39;
             this.barToggleSwitchItem1.Name = "barToggleSwitchItem1";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Caption = "Bucar";
+            this.btnBuscar.Id = 40;
+            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBuscar.ImageOptions.SvgImage")));
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscar_ItemClick);
             // 
             // BtnOrderdecompra
             // 
@@ -464,6 +464,14 @@
             this.BtnProductoEscala.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnProductoEscala.ImageOptions.SvgImage")));
             this.BtnProductoEscala.Name = "BtnProductoEscala";
             this.BtnProductoEscala.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnProductoEscala_ItemClick);
+            // 
+            // BtnValidar
+            // 
+            this.BtnValidar.Caption = "Validacion";
+            this.BtnValidar.Id = 56;
+            this.BtnValidar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnValidar.ImageOptions.SvgImage")));
+            this.BtnValidar.Name = "BtnValidar";
+            this.BtnValidar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnValidar_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -649,14 +657,6 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // BtnValidar
-            // 
-            this.BtnValidar.Caption = "Validacion";
-            this.BtnValidar.Id = 56;
-            this.BtnValidar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
-            this.BtnValidar.Name = "BtnValidar";
-            this.BtnValidar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnValidar_ItemClick);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -722,7 +722,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage8;
         private DevExpress.XtraBars.BarButtonItem btnNotasCredito;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private DevExpress.XtraBars.BarButtonItem btnBonificar;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
@@ -745,5 +744,6 @@
         private DevExpress.XtraBars.BarButtonItem BtnProductoEscala;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem BtnValidar;
+        public DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

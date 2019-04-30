@@ -19,7 +19,7 @@ namespace xtraForm.Model
         public Nullable<System.DateTime> Dia { get; set; }
         public byte Numero { get; set; }
     
-        public virtual PERSONAL PERSONAL1 { get; set; }
         public virtual ZONA ZONA1 { get; set; }
+        public virtual PERSONAL PERSONAL1 { get; set; }
     }
 }

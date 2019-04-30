@@ -18,6 +18,6 @@ namespace xtraForm.Model
         public string descrip { get; set; }
         public string descorta { get; set; }
         public string orden { get; set; }
-        public bool activo { get; set; }
+        public bool Activo { get; set; }
     }
 }

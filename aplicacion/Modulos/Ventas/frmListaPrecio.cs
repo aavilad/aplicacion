@@ -23,27 +23,45 @@ namespace xtraForm.Modulos.Ventas
 
         private void TxtCodigoProducto_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
+            var frmprincipal = new frmPrincipal();
+            frmprincipal.splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
+            frmprincipal.splashScreenManager1.ShowWaitForm();
             var Codigo = Convert.ToString(TxtCodigoProducto.EditValue);
-            using (var Context = new Model.LiderAppEntities())
+            try
             {
-                var ProductoEscala = (from p in Context.Vva_Producto.AsEnumerable().Where(x => x.Codigo.StartsWith(Codigo))
-                                      from pu in Context.PlantillaUnidad.AsEnumerable().Where(x => x.PKID == p.IDUnidad).DefaultIfEmpty()
-                                      select new
-                                      {
-                                          Codigo = p.Codigo.Trim(),
-                                          Descripcion = p.Descripcion.Trim(),
-                                          UnidadAnterior = p.Unidad.Trim(),
-                                          Unidad = pu == null ? "" : pu.Abreviacion.Trim()
-                                      }).ToList();
-                gridControl1.DataSource = ProductoEscala;
-                gridView1.OptionsView.ColumnAutoWidth = false;
-                gridView1.OptionsView.ShowGroupPanel = false;
-                gridView1.BestFitColumns();
-                gridView1.OptionsView.ShowIndicator = false;
-                gridView1.OptionsBehavior.ReadOnly = true;
-                gridView1.OptionsBehavior.Editable = false;
-                gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+                using (var Context = new Model.LiderAppEntities())
+                {
+                    var ProductoEscala = (from p in Context.Vva_Producto.AsEnumerable().Where(x => x.Codigo.StartsWith(Codigo))
+                                          from pu in Context.PlantillaUnidad.AsEnumerable().Where(x => x.PKID == p.IDUnidad).DefaultIfEmpty()
+                                          select new
+                                          {
+                                              Codigo = p.Codigo.Trim(),
+                                              Descripcion = p.Descripcion.Trim(),
+                                              UnidadAnterior = p.Unidad.Trim(),
+                                              Unidad = pu == null ? "" : pu.Abreviacion.Trim()
+                                          }).ToList();
+                    gridControl1.DataSource = ProductoEscala;
+                    gridView1.OptionsView.ColumnAutoWidth = false;
+                    gridView1.OptionsView.ShowGroupPanel = false;
+                    gridView1.BestFitColumns();
+                    gridView1.OptionsView.ShowIndicator = false;
+                    gridView1.OptionsBehavior.ReadOnly = true;
+                    gridView1.OptionsBehavior.Editable = false;
+                    gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+                }
+                frmprincipal.splashScreenManager1.CloseWaitForm();
             }
+            catch (DbEntityValidationException t)
+            {
+                foreach (var eve in t.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        MessageBox.Show("- Propiedad: \"" + ve.PropertyName + "\", Error: \"" + ve.ErrorMessage + "\"");
+                    }
+                }
+            }
+
         }
         string Codigo;
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -83,7 +101,7 @@ namespace xtraForm.Modulos.Ventas
                     var P6 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL06).FirstOrDefault();
                     var P7 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL07).FirstOrDefault();
                     dataGridView1.Rows.Clear();
-                    dataGridView1.Rows.Add(Costo, P1,MinMay, P2, P3, P4, MinEsp, P5, P6, P7);
+                    dataGridView1.Rows.Add(Costo, P1, MinMay, P2, P3, P4, MinEsp, P5, P6, P7);
                 }
             }
         }

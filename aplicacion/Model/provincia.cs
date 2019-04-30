@@ -26,8 +26,8 @@ namespace xtraForm.Model
         public int codunilever { get; set; }
         public string region { get; set; }
     
-        public virtual Departamento Departamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Distrito> Distrito { get; set; }
+        public virtual Departamento Departamento { get; set; }
     }
 }

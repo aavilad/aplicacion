@@ -175,7 +175,7 @@ namespace xtraForm.Modulos.Elementos
                     var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
                                    join r in Context.REPARTO.AsEnumerable() on p.IDVend equals r.Personal
                                    where p.FechaEmision == DateTime.Parse(fecha) && r.Dia == (int)DateTime.Parse(fecha).DayOfWeek &&
-                                   cadena.Contains(r.Ruta) && p.Aprobado == true && p.Procesado == false && p.Gestion == Gestion.EditValue.ToString().Trim()
+                                   cadena.Contains(r.Ruta) && p.Aprobado == true && p.Procesado == false && p.gestion == Gestion.EditValue.ToString().Trim()
                                    select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
                     if (Pedidos.Count > 0)
                     {
@@ -259,7 +259,7 @@ namespace xtraForm.Modulos.Elementos
                 {
                     var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
                                    where p.FechaEmision == DateTime.Parse(fecha) &&
-                                   cadena.Contains(p.IDVend) && p.Aprobado == true && p.Procesado == false && p.Gestion == Gestion.EditValue.ToString().Trim()
+                                   cadena.Contains(p.IDVend) && p.Aprobado == true && p.Procesado == false && p.gestion == Gestion.EditValue.ToString().Trim()
                                    select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
                     if (Pedidos.Count > 0)
                     {

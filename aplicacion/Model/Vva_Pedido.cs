@@ -25,7 +25,7 @@ namespace xtraForm.Model
         public string TpDoc { get; set; }
         public Nullable<System.DateTime> Hora { get; set; }
         public Nullable<bool> Bajado { get; set; }
-        public string Gestion { get; set; }
+        public string gestion { get; set; }
         public bool Aprobado { get; set; }
     }
 }

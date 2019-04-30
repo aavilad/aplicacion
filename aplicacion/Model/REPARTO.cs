@@ -14,9 +14,9 @@ namespace xtraForm.Model
     
     public partial class REPARTO
     {
-        public Nullable<int> PKID { get; set; }
+        public int PKID { get; set; }
         public string Ruta { get; set; }
-        public byte Dia { get; set; }
+        public int Dia { get; set; }
         public string Personal { get; set; }
     
         public virtual PERSONAL PERSONAL1 { get; set; }

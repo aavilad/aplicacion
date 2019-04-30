@@ -29,14 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaestroDetalle));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.ContarA = new DevExpress.XtraEditors.LabelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.ContarB = new DevExpress.XtraEditors.LabelControl();
+            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.BtnBuscar = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -51,8 +56,6 @@
             this.splitterItem2 = new DevExpress.XtraLayout.SplitterItem();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
@@ -62,6 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -75,10 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -108,15 +110,28 @@
             this.lookUpEdit1.Size = new System.Drawing.Size(384, 20);
             this.lookUpEdit1.StyleController = this.layoutControl1;
             this.lookUpEdit1.TabIndex = 8;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Regla no puede estar vacio.";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.lookUpEdit1, conditionValidationRule1);
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.ContarA);
             this.groupControl3.Controls.Add(this.gridControl1);
             this.groupControl3.Location = new System.Drawing.Point(12, 40);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(880, 210);
             this.groupControl3.TabIndex = 7;
             this.groupControl3.Text = "Pedidos comprometidos";
+            // 
+            // ContarA
+            // 
+            this.ContarA.Location = new System.Drawing.Point(800, 8);
+            this.ContarA.Name = "ContarA";
+            this.ContarA.Size = new System.Drawing.Size(20, 13);
+            this.ContarA.TabIndex = 3;
+            this.ContarA.Text = "Fila:";
             // 
             // gridControl1
             // 
@@ -136,12 +151,37 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.ContarB);
             this.groupControl1.Controls.Add(this.gridControl3);
             this.groupControl1.Location = new System.Drawing.Point(12, 254);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(880, 252);
             this.groupControl1.TabIndex = 6;
             this.groupControl1.Text = "Pedidos Bonificados";
+            // 
+            // ContarB
+            // 
+            this.ContarB.Location = new System.Drawing.Point(800, 8);
+            this.ContarB.Name = "ContarB";
+            this.ContarB.Size = new System.Drawing.Size(20, 13);
+            this.ContarB.TabIndex = 2;
+            this.ContarB.Text = "Fila:";
+            // 
+            // gridControl3
+            // 
+            this.gridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl3.Location = new System.Drawing.Point(2, 27);
+            this.gridControl3.MainView = this.gridView3;
+            this.gridControl3.Name = "gridControl3";
+            this.gridControl3.Size = new System.Drawing.Size(876, 223);
+            this.gridControl3.TabIndex = 0;
+            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.GridControl = this.gridControl3;
+            this.gridView3.Name = "gridView3";
             // 
             // dateEdit1
             // 
@@ -296,29 +336,12 @@
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Manual;
             // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.gridControl3;
-            this.gridView3.Name = "gridView3";
-            // 
-            // gridControl3
-            // 
-            this.gridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl3.Location = new System.Drawing.Point(2, 27);
-            this.gridControl3.MainView = this.gridView3;
-            this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(876, 223);
-            this.gridControl3.TabIndex = 0;
-            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
-            // 
             // frmMaestroDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(904, 518);
             this.Controls.Add(this.layoutControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMaestroDetalle";
             this.Text = "frmMaestroDetalle";
             this.Load += new System.EventHandler(this.frmMaestroDetalle_Load);
@@ -327,10 +350,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
+            this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -344,10 +371,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,5 +400,7 @@
         private DevExpress.XtraLayout.SplitterItem splitterItem2;
         private DevExpress.XtraGrid.GridControl gridControl3;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraEditors.LabelControl ContarB;
+        private DevExpress.XtraEditors.LabelControl ContarA;
     }
 }

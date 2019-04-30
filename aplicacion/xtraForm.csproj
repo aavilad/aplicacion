@@ -475,12 +475,6 @@
     <Compile Include="Modulos\Progreso.Designer.cs">
       <DependentUpon>Progreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Ventas\frmFacturacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulos\Ventas\frmFacturacion.Designer.cs">
-      <DependentUpon>frmFacturacion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Modulos\Ventas\frmListaPrecio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -635,9 +629,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Progreso.resx">
       <DependentUpon>Progreso.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Ventas\frmFacturacion.resx">
-      <DependentUpon>frmFacturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmListaPrecio.resx">
       <DependentUpon>frmListaPrecio.cs</DependentUpon>
