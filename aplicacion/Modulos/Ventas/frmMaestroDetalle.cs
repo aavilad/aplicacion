@@ -1,13 +1,14 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace xtraForm.Modulos.Ventas
 {
@@ -20,33 +21,142 @@ namespace xtraForm.Modulos.Ventas
             InitializeComponent();
         }
 
-        private void gridControl1_Load(object sender, EventArgs e)
+        private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            //DataTable tabla = new DataTable();
-            //tabla.Columns.Add("[Nombre Proveedor]",typeof(System.String));
-            //tabla.Columns.Add("[Estado]", typeof(System.String));
-            //tabla.Columns.Add("[Descripcion Promocional]", typeof(System.String));
-            //tabla.Columns.Add("[Codigo Pedido]", typeof(System.String));
-            //tabla.Columns.Add("[Codigo Vendedor]", typeof(System.String));
-            //tabla.Columns.Add("[Nombre Cliente]", typeof(System.String));
-            //tabla.Columns.Add("[Producto Regalo]", typeof(System.String));
-            //tabla.Columns.Add("[Unidad]", typeof(System.String));
-            //tabla.Columns.Add("[Cantidad Vendida]", typeof(System.String));
-            //tabla.Columns.Add("[Cantidad Regalo]", typeof(System.String));
-            //tabla.Rows.Clear();
-            //proceso.consultar("select pkid,tipomecanica from bonificacion where '" + fecha + "' >= Desde and '" + fecha + "' < Hasta and activo = 1", "bonif");
-            //foreach (DataRow DR_0 in proceso.ds.Tables["bonif"].Rows)
-            //{
-            //    proceso.consultar("select * from detallepromocional("+DR_0[1]+","+DR_0[0]+",'"+ fecha + "','"+fecha+"')","detalle");
-            //    foreach (DataRow DR_1 in proceso.ds.Tables["detalle"].Rows)
-            //        tabla.Rows.Add(DR_1[0], DR_1[1], DR_1[2], DR_1[3], DR_1[4], DR_1[5], DR_1[6], DR_1[7], DR_1[8], DR_1[9]);
-            //}
-            //gridControl1.DataSource = null;
-            //gridControl1.DataSource = tabla;
-            //gridView1.Columns["[Nombre Proveedor]"].GroupIndex = 0;
-            //gridView1.Columns["[Descripcion Promocional]"].GroupIndex = 1;
-            //gridView1.Columns["[Nombre Proveedor]"].Caption = "Prov";
-            //gridView1.Columns["[Descripcion Promocional]"].Caption = "|";
+            if (dxValidationProvider1.Validate())
+            {
+                var Cadena = new List<string>();
+                var PedidosComprometidos = (dynamic)null;
+                var PedidosBonificados = (dynamic)null;
+                string Fecha = Convert.ToDateTime(dateEdit1.EditValue).ToString("dd/MM/yyyy");
+                using (var Context = new Model.LiderAppEntities())
+                {
+                    int Tipo = Context.Bonificacion.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.TipoMecanica).FirstOrDefault();
+                    var Coleccion = Context.ItemBonificacion.Distinct().Where(x => x.IDBonificacion == (int)lookUpEdit1.EditValue).Select(c => new { Codigo = c.cdProductoColeccion.Trim() }).ToList();
+                    var Minimo = Context.Bonificacion.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.CantidadMinima).FirstOrDefault();
+                    var Maximo = Context.Bonificacion.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.CantidadMaxima).FirstOrDefault();
+                    foreach (var i in Coleccion)
+                    {
+                        Cadena.Add("'" + i.Codigo + "'");
+                    }
+                    string Producto = string.Join(",", Cadena.ToArray());
+                    //Pedidos compromeditos
+                    switch (Tipo)
+                    {
+                        case 1:
+                            PedidosComprometidos = (from p in Context.Vva_Pedido.AsEnumerable()
+                                                    join ip in Context.Vva_ItemPedido.AsEnumerable() on p.NrPedido equals ip.NrPedido
+                                                    join cl in Context.CLIENTE.AsEnumerable() on p.IDClient equals cl.Cliente1
+                                                    where p.FechaEmision == DateTime.Parse(Fecha) && Producto.Contains(ip.IDProducto)
+                                                    && ip.Cantidad >= Convert.ToDecimal(Minimo)
+                                                    select new
+                                                    {
+                                                        Pedido = p.NrPedido.Trim(),
+                                                        Codigo_Cliente = cl.Cliente1.Trim(),
+                                                        Nombre_Cliente = cl.Alias.Trim(),
+                                                        Cantidad_vendida = ip.Cantidad
+                                                    }).ToList();
+                            break;
+                        case 2:
+                            PedidosComprometidos = (from p in Context.Vva_Pedido.AsEnumerable()
+                                                    join ip in Context.Vva_ItemPedido.AsEnumerable() on p.NrPedido equals ip.NrPedido
+                                                    join cl in Context.CLIENTE.AsEnumerable() on p.IDClient equals cl.Cliente1
+                                                    where p.FechaEmision == DateTime.Parse(Fecha) && Producto.Contains(ip.IDProducto)
+                                                    && ip.Cantidad >= Convert.ToDecimal(Minimo) && ip.Cantidad < Convert.ToInt32(Maximo)
+                                                    select new
+                                                    {
+                                                        Pedido = p.NrPedido.Trim(),
+                                                        Codigo_Cliente = cl.Cliente1.Trim(),
+                                                        Nombre_Cliente = cl.Alias.Trim(),
+                                                        Cantidad_vendida = ip.Cantidad
+                                                    }).ToList();
+                            break;
+                        case 3:
+                            PedidosComprometidos = (from p in Context.Vva_Pedido.AsEnumerable()
+                                                    join ip in Context.Vva_ItemPedido.AsEnumerable() on p.NrPedido equals ip.NrPedido
+                                                    join cl in Context.CLIENTE.AsEnumerable() on p.IDClient equals cl.Cliente1
+                                                    where p.FechaEmision == DateTime.Parse(Fecha) && Producto.Contains(ip.IDProducto)
+                                                    && ip.Cantidad * ip.Precio >= Convert.ToDecimal(Minimo)
+                                                    select new
+                                                    {
+                                                        Pedido = p.NrPedido.Trim(),
+                                                        Codigo_Cliente = cl.Cliente1.Trim(),
+                                                        Nombre_Cliente = cl.Alias.Trim(),
+                                                        Cantidad_vendida = ip.Cantidad * ip.Precio
+                                                    }).ToList();
+                            break;
+                        case 4:
+                            PedidosComprometidos = (from p in Context.Vva_Pedido.AsEnumerable()
+                                                    join ip in Context.Vva_ItemPedido.AsEnumerable() on p.NrPedido equals ip.NrPedido
+                                                    join cl in Context.CLIENTE.AsEnumerable() on p.IDClient equals cl.Cliente1
+                                                    where p.FechaEmision == DateTime.Parse(Fecha) && Producto.Contains(ip.IDProducto)
+                                                    && ip.Cantidad * ip.Precio >= Convert.ToDecimal(Minimo) && ip.Cantidad * ip.Precio < Convert.ToDecimal(Maximo)
+                                                    select new
+                                                    {
+                                                        Pedido = p.NrPedido.Trim(),
+                                                        Codigo_Cliente = cl.Cliente1.Trim(),
+                                                        Nombre_Cliente = cl.Alias.Trim(),
+                                                        Cantidad_vendida = ip.Cantidad * ip.Precio
+                                                    }).ToList();
+                            break;
+                    }
+                    gridControl1.DataSource = PedidosComprometidos;
+                    gridView1.OptionsBehavior.ReadOnly = true;
+                    gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+                    gridView1.OptionsBehavior.Editable = false;
+                    gridView1.OptionsView.ColumnAutoWidth = false;
+                    gridView1.BestFitColumns();
+                    gridView1.OptionsView.ShowGroupPanel = false;
+
+                    //pedidos bonificados
+                    PedidosBonificados = (from p in Context.Vva_Pedido.AsEnumerable()
+                                          join ip in Context.Vva_ItemPedido.AsEnumerable() on p.NrPedido equals ip.NrPedido
+                                          join b in Context.Bonificacion.AsEnumerable() on ip.IDBonif equals b.PKID
+                                          join cl in Context.CLIENTE.AsEnumerable() on p.IDClient equals cl.Cliente1
+                                          where b.PKID == (int)lookUpEdit1.EditValue
+                                          select new
+                                          {
+                                              Pedido = p.NrPedido.Trim(),
+                                              Codigo_Cliente = cl.Cliente1.Trim(),
+                                              Nombre_Cliente = cl.Alias.Trim(),
+                                              Cantidad_vendida = ip.Cantidad
+                                          }).ToList();
+                    gridControl3.DataSource = PedidosBonificados;
+                    gridView3.OptionsBehavior.ReadOnly = true;
+                    gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+                    gridView3.OptionsBehavior.Editable = false;
+                    gridView3.OptionsView.ColumnAutoWidth = false;
+                    gridView3.BestFitColumns();
+                    gridView3.OptionsView.ShowGroupPanel = false;
+                }
+
+            }
+        }
+
+        private void frmMaestroDetalle_Load(object sender, EventArgs e)
+        {
+            using (var Context = new Model.LiderAppEntities())
+            {
+                var Bonif = from a in (from b in Context.Bonificacion
+                                       join ib in Context.ItemBonificacion on b.PKID equals ib.IDBonificacion
+                                       join pv in Context.PROVEEDOR on b.IDProveedor equals pv.Proveedor1
+                                       where b.Activo == true
+                                       select new { ID = b.PKID, pv.RazonSocial, b.Mecanica }).Distinct()
+                            orderby a.RazonSocial
+                            select new
+                            {
+                                ID = a.ID,
+                                Proveedor = a.RazonSocial.Trim(),
+                                Mecanica = a.Mecanica
+                            };
+                lookUpEdit1.Properties.ShowHeader = false;
+                lookUpEdit1.Properties.DisplayMember = "Mecanica";
+                lookUpEdit1.Properties.ValueMember = "ID";
+                lookUpEdit1.Properties.Columns.Add(new LookUpColumnInfo("Proveedor", "", 10));
+                lookUpEdit1.Properties.Columns.Add(new LookUpColumnInfo("Mecanica", "", 10));
+                lookUpEdit1.Properties.DataSource = Bonif.ToList();
+            }
+
         }
     }
 }

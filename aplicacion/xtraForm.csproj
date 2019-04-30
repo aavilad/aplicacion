@@ -256,6 +256,9 @@
     <Compile Include="Maestro\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Bonificacion.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\categoria.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
@@ -311,6 +314,9 @@
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\grupo.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ItemBonificacion.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LINEA.cs">

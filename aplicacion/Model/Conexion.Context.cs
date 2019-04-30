@@ -57,6 +57,8 @@ namespace xtraForm.Model
         public virtual DbSet<Gestion> Gestion { get; set; }
         public virtual DbSet<DOCUMENTO> DOCUMENTO { get; set; }
         public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
+        public virtual DbSet<Bonificacion> Bonificacion { get; set; }
+        public virtual DbSet<ItemBonificacion> ItemBonificacion { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {

@@ -53,7 +53,6 @@
             this.btnNotasCredito = new DevExpress.XtraBars.BarButtonItem();
             this.btnBonificar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.FechaProceso = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.btnBuscar = new DevExpress.XtraBars.BarButtonItem();
@@ -94,6 +93,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
+            this.BtnValidar = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
@@ -130,7 +130,6 @@
             this.btnNotasCredito,
             this.btnBonificar,
             this.barButtonItem3,
-            this.barSubItem1,
             this.FechaProceso,
             this.barButtonItem7,
             this.barDockingMenuItem1,
@@ -145,9 +144,10 @@
             this.barButtonItem10,
             this.BtnCanjear,
             this.barButtonItem12,
-            this.BtnProductoEscala});
+            this.BtnProductoEscala,
+            this.BtnValidar});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 56;
+            this.ribbonControl1.MaxItemId = 57;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -349,16 +349,6 @@
             this.barButtonItem3.Id = 29;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Constraste";
-            this.barSubItem1.Id = 32;
-            this.barSubItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.PaintStyle | DevExpress.XtraBars.BarLinkUserDefines.Width))), this.FechaProceso, "", false, true, true, 108, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBuscar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barSubItem1.Name = "barSubItem1";
-            // 
             // FechaProceso
             // 
             this.FechaProceso.Edit = this.repositoryItemDateEdit2;
@@ -471,7 +461,7 @@
             // 
             this.BtnProductoEscala.Caption = "LIstaPrecios";
             this.BtnProductoEscala.Id = 55;
-            this.BtnProductoEscala.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
+            this.BtnProductoEscala.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnProductoEscala.ImageOptions.SvgImage")));
             this.BtnProductoEscala.Name = "BtnProductoEscala";
             this.BtnProductoEscala.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnProductoEscala_ItemClick);
             // 
@@ -500,7 +490,7 @@
             this.ribbonPageGroup9.ItemLinks.Add(this.btnReglasBonificacion);
             this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup9.ItemLinks.Add(this.btnBonificar);
-            this.ribbonPageGroup9.ItemLinks.Add(this.barSubItem1);
+            this.ribbonPageGroup9.ItemLinks.Add(this.BtnValidar);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             this.ribbonPageGroup9.Text = "Reglas de bonificacion";
             // 
@@ -659,6 +649,14 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // BtnValidar
+            // 
+            this.BtnValidar.Caption = "Validacion";
+            this.BtnValidar.Id = 56;
+            this.BtnValidar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
+            this.BtnValidar.Name = "BtnValidar";
+            this.BtnValidar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnValidar_ItemClick);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -727,7 +725,6 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private DevExpress.XtraBars.BarButtonItem btnBonificar;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarDockingMenuItem barDockingMenuItem1;
@@ -747,5 +744,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.BarButtonItem BtnProductoEscala;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
+        private DevExpress.XtraBars.BarButtonItem BtnValidar;
     }
 }

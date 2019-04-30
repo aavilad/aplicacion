@@ -49,6 +49,9 @@
         <EntityTypeShape EntityType="LiderAppModel.DOCUMENTO" Width="1.5" PointX="3" PointY="27.875" />
         <AssociationConnector Association="LiderAppModel.FK_DOCUMENTO_DOCTIPO" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_Producto" Width="1.5" PointX="18.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Bonificacion" Width="1.5" PointX="18.375" PointY="11" />
+        <EntityTypeShape EntityType="LiderAppModel.ItemBonificacion" Width="1.5" PointX="20.625" PointY="12.25" />
+        <AssociationConnector Association="LiderAppModel.FK_ItemBonificacion_Bonificacion" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
