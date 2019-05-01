@@ -17,5 +17,32 @@ namespace xtraForm.Reportes.Ventas
         {
             InitializeComponent();
         }
+
+        private void frmDistribucion_Load(object sender, EventArgs e)
+        {
+            using (var Context = new Model.LiderAppEntities())
+            {
+                var Reporte = (from r in Context.Reporte
+                               where r.Tipo == 2
+                               select new
+                               {
+                                   Codigo = r.Codigo,
+                                   Nombre = r.Descripcion
+                               }).ToList();
+                gridControl1.DataSource = Reporte;
+                gridView1.OptionsBehavior.ReadOnly = true;
+                gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+                gridView1.OptionsBehavior.Editable = false;
+                gridView1.OptionsView.ColumnAutoWidth = false;
+                gridView1.BestFitColumns();
+                gridView1.OptionsView.ShowGroupPanel = false;
+
+            }
+        }
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

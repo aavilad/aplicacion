@@ -44,7 +44,7 @@
         <AssociationConnector Association="LiderAppModel.FK_DOCUMENTO_DOCTIPO" />
         <AssociationConnector Association="LiderAppModel.FK_MARCA_LINEA" />
         <EntityTypeShape EntityType="LiderAppModel.categoria" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="LiderAppModel.CLIENTE" Width="1.5" PointX="11" PointY="17.75" />
+        <EntityTypeShape EntityType="LiderAppModel.CLIENTE" Width="1.5" PointX="4.875" PointY="7" />
         <AssociationConnector Association="LiderAppModel.FK__CLIENTE__Zona__4959E263" />
         <AssociationConnector Association="LiderAppModel.FK_CLIENTE_Distrito" />
         <EntityTypeShape EntityType="LiderAppModel.grupo" Width="1.5" PointX="13.5" PointY="1" />
@@ -55,6 +55,11 @@
         <EntityTypeShape EntityType="LiderAppModel.Gestion" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_ItemPedido" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_Pedido" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Reporte" Width="1.5" PointX="15.375" PointY="5.25" />
+        <EntityTypeShape EntityType="LiderAppModel.TipoReporte" Width="1.5" PointX="11.25" PointY="7.625" />
+        <EntityTypeShape EntityType="LiderAppModel.VistaReporte" Width="1.5" PointX="12.875" PointY="6" />
+        <AssociationConnector Association="LiderAppModel.FK_Reporte_TipoReporte" />
+        <AssociationConnector Association="LiderAppModel.FK_Reporte_VistaReporte" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

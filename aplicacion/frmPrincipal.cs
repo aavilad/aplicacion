@@ -469,5 +469,34 @@ namespace xtraForm
                 objeto.Show();
             }
         }
+
+        private void BtnReportesDistribucion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bool existe = false;
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == "Reportes de distribucion")
+            {
+
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    existe = true;
+                }
+            if (!existe)
+            {
+                XtraTabPage pedidos = new XtraTabPage();
+                entidad.index = 0;
+                objeto = new Reportes.Ventas.frmDistribucion
+                {
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill
+                };
+                xtraTabControl1.TabPages.Add(pedidos);
+                xtraTabControl1.SelectedTabPage = pedidos;
+                pedidos.Text = "Reportes de distribucion";
+                entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                pedidos.Controls.Add(objeto);
+                objeto.Show();
+            }
+        }
     }
 }

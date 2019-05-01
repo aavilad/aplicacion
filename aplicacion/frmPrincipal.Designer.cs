@@ -256,7 +256,7 @@
             // 
             this.BtnRerportesVentas.Caption = "Ventas";
             this.BtnRerportesVentas.Id = 15;
-            this.BtnRerportesVentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.Image")));
+            this.BtnRerportesVentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnRerportesVentas.ImageOptions.Image")));
             this.BtnRerportesVentas.Name = "BtnRerportesVentas";
             this.BtnRerportesVentas.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
@@ -274,10 +274,11 @@
             // 
             this.BtnReportesDistribucion.Caption = "Distribucion";
             this.BtnReportesDistribucion.Id = 17;
-            this.BtnReportesDistribucion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem16.ImageOptions.Image")));
+            this.BtnReportesDistribucion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnReportesDistribucion.ImageOptions.Image")));
             this.BtnReportesDistribucion.Name = "BtnReportesDistribucion";
             this.BtnReportesDistribucion.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.BtnReportesDistribucion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnReportesDistribucion_ItemClick);
             // 
             // barButtonItem17
             // 
