@@ -127,7 +127,8 @@
             // 
             // ContarA
             // 
-            this.ContarA.Location = new System.Drawing.Point(800, 8);
+            this.ContarA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContarA.Location = new System.Drawing.Point(831, 8);
             this.ContarA.Name = "ContarA";
             this.ContarA.Size = new System.Drawing.Size(20, 13);
             this.ContarA.TabIndex = 3;
@@ -161,7 +162,9 @@
             // 
             // ContarB
             // 
-            this.ContarB.Location = new System.Drawing.Point(800, 8);
+            this.ContarB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContarB.Location = new System.Drawing.Point(831, 8);
             this.ContarB.Name = "ContarB";
             this.ContarB.Size = new System.Drawing.Size(20, 13);
             this.ContarB.TabIndex = 2;

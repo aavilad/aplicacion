@@ -136,6 +136,8 @@ namespace xtraForm.Modulos.Ventas
                         gridView3.OptionsView.ShowGroupPanel = false;
                     }
                     frmprincipal.splashScreenManager1.CloseWaitForm();
+                    ContarA.Text = "Filas: " + gridView1.RowCount;
+                    ContarB.Text = "Filas: " + gridView3.RowCount;
                 }
                 catch (DbEntityValidationException t)
                 {
