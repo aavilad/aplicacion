@@ -22,6 +22,7 @@ namespace xtraForm.Reportes.Vistas
         {
 
             this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
         }
     }
 }
