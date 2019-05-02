@@ -22,8 +22,8 @@ namespace xtraForm.Model
     
         public string codigo { get; set; }
         public string descripcion { get; set; }
-        public string IDRutaVendedor { get; set; }
         public Nullable<bool> Activo { get; set; }
+        public Nullable<int> IDRutaVendedor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REPARTO> REPARTO { get; set; }

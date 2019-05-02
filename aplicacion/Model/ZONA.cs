@@ -26,6 +26,7 @@ namespace xtraForm.Model
         public int Distancia { get; set; }
         public bool Riesgo { get; set; }
         public string proveedor { get; set; }
+        public string DesCorta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }

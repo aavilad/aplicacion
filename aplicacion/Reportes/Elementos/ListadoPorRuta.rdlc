@@ -309,7 +309,7 @@
         <Top>1.16099cm</Top>
         <Left>1.3462cm</Left>
         <Height>1.2cm</Height>
-        <Width>11.95792cm</Width>
+        <Width>11.95791cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -367,28 +367,6 @@
         <DataSourceName>Listado</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
-      <Fields>
-        <Field Name="Codigo">
-          <DataField>Codigo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Descripcion">
-          <DataField>Descripcion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Unidad">
-          <DataField>Unidad</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Cantidad">
-          <DataField>Cantidad</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="IDVendedor">
-          <DataField>IDVendedor</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Listado</rd:DataSetName>
         <rd:SchemaPath>C:\Users\aavilad\Documents\GitHub\aplicacion\aplicacion\Listado.xsd</rd:SchemaPath>

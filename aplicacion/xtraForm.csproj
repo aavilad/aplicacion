@@ -718,7 +718,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Reportes\Elementos\Listado Por Ruta.rdlc" />
+    <EmbeddedResource Include="Reportes\Elementos\ListadoPorRuta.rdlc" />
     <EmbeddedResource Include="Reportes\Ventas\frmDistribucion.resx">
       <DependentUpon>frmDistribucion.cs</DependentUpon>
     </EmbeddedResource>

@@ -76,6 +76,8 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.ContextMenuStrip = this.contextMenuStrip1;
+            this.gridControl1.EmbeddedNavigator.ContextMenuStrip = this.contextMenuStrip1;
             this.gridControl1.Location = new System.Drawing.Point(12, 12);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";

@@ -42,7 +42,8 @@ namespace xtraForm.Reportes.Ventas
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var frmrepdistribucion = new Reportes.Vistas.frmVistaPrincipal();
+            frmrepdistribucion.Show();
         }
     }
 }

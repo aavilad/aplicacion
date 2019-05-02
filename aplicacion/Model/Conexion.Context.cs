@@ -38,7 +38,6 @@ namespace xtraForm.Model
         public virtual DbSet<Clase_Producto> Clase_Producto { get; set; }
         public virtual DbSet<PlantillaUnidad> PlantillaUnidad { get; set; }
         public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
-        public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
         public virtual DbSet<Bonificacion> Bonificacion { get; set; }
         public virtual DbSet<ItemBonificacion> ItemBonificacion { get; set; }
         public virtual DbSet<ZONA> ZONA { get; set; }
@@ -49,19 +48,20 @@ namespace xtraForm.Model
         public virtual DbSet<DOCTIPO> DOCTIPO { get; set; }
         public virtual DbSet<DOCUMENTO> DOCUMENTO { get; set; }
         public virtual DbSet<PEDIDO> PEDIDO { get; set; }
-        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
         public virtual DbSet<MARCA> MARCA { get; set; }
         public virtual DbSet<categoria> categoria { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
-        public virtual DbSet<grupo> grupo { get; set; }
-        public virtual DbSet<REPARTO> REPARTO { get; set; }
-        public virtual DbSet<RUTAS> RUTAS { get; set; }
-        public virtual DbSet<Gestion> Gestion { get; set; }
         public virtual DbSet<Vva_ItemPedido> Vva_ItemPedido { get; set; }
-        public virtual DbSet<Vva_Pedido> Vva_Pedido { get; set; }
         public virtual DbSet<Reporte> Reporte { get; set; }
         public virtual DbSet<TipoReporte> TipoReporte { get; set; }
         public virtual DbSet<VistaReporte> VistaReporte { get; set; }
+        public virtual DbSet<REPARTO> REPARTO { get; set; }
+        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
+        public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
+        public virtual DbSet<RUTAS> RUTAS { get; set; }
+        public virtual DbSet<grupo> grupo { get; set; }
+        public virtual DbSet<Gestion> Gestion { get; set; }
+        public virtual DbSet<Vva_Pedido> Vva_Pedido { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {
