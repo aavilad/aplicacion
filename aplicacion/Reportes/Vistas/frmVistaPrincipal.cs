@@ -38,32 +38,35 @@ namespace xtraForm.Reportes.Vistas
                 string Gestion_ = Convert.ToString(Gestion.EditValue);
                 string Ruta_ = Convert.ToString(Ruta.EditValue);
                 proceso.consultar(@"
-                SELECT RTRIM(dbo.Vva_Producto.Codigo) AS Codigo, 
-                       RTRIM(dbo.Vva_Producto.Descripcion) AS Descripcion, 
-                       RTRIM(dbo.Vva_Producto.Unidad) AS Unidad, 
-                       SUM(dbo.Vva_ItemTicketv.Cantidad) AS Cantidad, 
-                       RTRIM(Concat('Rv', dbo.Vva_Ticketv.IDVendedor)) AS Rv
-                FROM dbo.RUTAS
-                     INNER JOIN dbo.REPARTO ON dbo.RUTAS.codigo = dbo.REPARTO.Ruta
-                     INNER JOIN dbo.ZONA_PERSONAL
-                     INNER JOIN dbo.ZONA ON dbo.ZONA_PERSONAL.Zona = dbo.ZONA.Zona
-                     INNER JOIN dbo.Vva_Ticketv
-                     INNER JOIN dbo.Vva_ItemTicketv ON dbo.Vva_Ticketv.NrDoc = dbo.Vva_ItemTicketv.NrDoc
-                                                       AND dbo.Vva_Ticketv.TpDoc = dbo.Vva_ItemTicketv.TpDoc
-                     INNER JOIN dbo.Vva_Producto ON dbo.Vva_ItemTicketv.IDProducto = dbo.Vva_Producto.Codigo ON dbo.ZONA_PERSONAL.Personal = dbo.Vva_Ticketv.IDVendedor ON dbo.REPARTO.Personal = dbo.ZONA_PERSONAL.Personal
-                WHERE(dbo.Vva_Ticketv.Fecha = '" + Fecha + @"')
-                     AND (dbo.REPARTO.Ruta = '" + Ruta_ + @"')
-                     AND (dbo.REPARTO.Dia = DATEPART(w, '" + Fecha + @"'))
-                     AND (dbo.Vva_Ticketv.Anulado = 0)
-                     AND (dbo.Vva_Ticketv.Gestion = '" + Gestion_ + @"')
-                     AND (dbo.Vva_Ticketv.Procesado = " + Facturado + @")
-                GROUP BY dbo.Vva_Producto.Codigo, 
-                         dbo.Vva_Producto.Descripcion, 
-                         dbo.Vva_Producto.Unidad, 
-                         dbo.Vva_Ticketv.IDVendedor;", "L1");
-                ReportDataSource DS = new ReportDataSource("Listado", proceso.ds.Tables["L1"]);
-                reportViewer1.LocalReport.DataSources.Add(DS);
-                reportViewer1.LocalReport.ReportPath = @"\Report\Distribucion\ListadoPorRuta.rdlc";
+                SELECT       PROVEEDOR.RazonSocial AS Proveedor,RTRIM(Vva_Producto.Codigo) AS Codigo, RTRIM(Vva_Producto.Descripcion) AS Descripcion, RTRIM(Vva_Producto.Unidad) AS Unidad, 
+                                         SUM(Vva_ItemTicketv.Cantidad) AS Cantidad, RTRIM( CONCAT('Rv', Vva_Ticketv.IDVendedor)) AS Rv,
+                                         Vva_Producto.RowNber
+                FROM            RUTAS INNER JOIN
+                                         REPARTO ON RUTAS.codigo = REPARTO.Ruta INNER JOIN
+                                         ZONA_PERSONAL INNER JOIN
+                                         ZONA ON ZONA_PERSONAL.Zona = ZONA.Zona INNER JOIN
+                                         Vva_Ticketv INNER JOIN
+                                         Vva_ItemTicketv ON Vva_Ticketv.NrDoc = Vva_ItemTicketv.NrDoc AND Vva_Ticketv.TpDoc = Vva_ItemTicketv.TpDoc INNER JOIN
+                                         Vva_Producto ON Vva_ItemTicketv.IDProducto = Vva_Producto.Codigo ON ZONA_PERSONAL.Personal = Vva_Ticketv.IDVendedor ON 
+                                         REPARTO.Personal = ZONA_PERSONAL.Personal INNER JOIN
+                                         PROVEEDOR ON Vva_Producto.IDProv = PROVEEDOR.Proveedor
+                WHERE        (Vva_Ticketv.Fecha = '"+Fecha+@"') AND (REPARTO.Ruta = '"+Ruta_+ @"') AND (REPARTO.Dia = DATEPART(w, '" + Fecha + @"')) AND (Vva_Ticketv.Anulado = 0) AND 
+                                         (Vva_Ticketv.Gestion = '" + Gestion_+ @"') AND (Vva_Ticketv.Procesado = " + Facturado + @")
+                GROUP BY Vva_Producto.Codigo, Vva_Producto.Descripcion, Vva_Producto.Unidad, Vva_Ticketv.IDVendedor, PROVEEDOR.RazonSocial, Vva_Producto.RowNber
+                order by RazonSocial,RowNber", "L1");
+                proceso.consultar(@"select a = STUFF((
+                SELECT'  '+concat('''',rtrim(ZONA.Descripcion),'''')
+                FROM            ZONA INNER JOIN
+                                         ZONA_PERSONAL ON ZONA.Zona = ZONA_PERSONAL.Zona INNER JOIN
+                                         REPARTO ON ZONA_PERSONAL.Personal = REPARTO.Personal
+                WHERE        (REPARTO.Ruta ='" + Ruta_ + @"') AND (REPARTO.Dia = DATEPART(w, '" + Fecha + @"')) and (ZONA_PERSONAL.Numero = DATEPART(w, '" + Fecha + @"')) for xml path('')),1,1,' ')", "L2");
+                var Tabla0 = proceso.ds.Tables["L1"];
+                var Tabla1 = proceso.ds.Tables["L2"];
+                ReportDataSource DS0 = new ReportDataSource("Listado", Tabla0);
+                ReportDataSource DS1 = new ReportDataSource("Listado", Tabla1);
+                reportViewer1.LocalReport.DataSources.Add(DS0);
+                reportViewer1.LocalReport.DataSources.Add(DS1);
+                reportViewer1.LocalReport.ReportPath = @"C:\Online\Poject\aplicacion\aplicacion\Reportes\Elementos\Distribucion\ListadoPorRutas.rdlc";
                 reportViewer1.RefreshReport();
             }
         }

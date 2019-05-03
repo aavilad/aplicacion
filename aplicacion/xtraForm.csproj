@@ -572,7 +572,6 @@
     <Compile Include="Reportes\Vistas\frmVistaPrincipal.Designer.cs">
       <DependentUpon>frmVistaPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Filtros\frmConsultar.resx">
       <DependentUpon>frmConsultar.cs</DependentUpon>
     </EmbeddedResource>
@@ -718,7 +717,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Reportes\Elementos\ListadoPorRuta.rdlc" />
+    <EmbeddedResource Include="Reportes\Elementos\Distribucion\ListadoPorRutas.rdlc" />
     <EmbeddedResource Include="Reportes\Ventas\frmDistribucion.resx">
       <DependentUpon>frmDistribucion.cs</DependentUpon>
     </EmbeddedResource>
@@ -768,6 +767,7 @@
   <ItemGroup>
     <Folder Include="Filtros\Bonificacion\" />
     <Folder Include="Properties\DataSources\" />
+    <Folder Include="Reportes\Elementos\Ventas\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -794,19 +794,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Conexion.edmx</DependentUpon>
       <LastGenOutput>Conexion.cs</LastGenOutput>
-    </Content>
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

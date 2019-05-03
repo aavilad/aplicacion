@@ -128,7 +128,7 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "xtraForm.Reportes.Elementos.ListadoPorRuta.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "xtraForm.Reportes.Elementos.Distribucion.ListadoPorRutas.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(12, 38);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
