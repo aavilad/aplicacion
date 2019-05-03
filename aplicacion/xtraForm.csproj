@@ -765,6 +765,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Ds\" />
     <Folder Include="Filtros\Bonificacion\" />
     <Folder Include="Properties\DataSources\" />
     <Folder Include="Reportes\Elementos\Ventas\" />
