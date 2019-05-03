@@ -37,6 +37,9 @@
             this.filtarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.descargarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.facturarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aprobarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.desaprobarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -49,7 +52,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1035, 543);
+            this.gridControl1.Size = new System.Drawing.Size(839, 406);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -62,9 +65,12 @@
             this.modificarToolStripMenuItem,
             this.eliminarToolStripMenuItem,
             this.filtarToolStripMenuItem,
-            this.descargarToolStripMenuItem});
+            this.descargarToolStripMenuItem,
+            this.facturarToolStripMenuItem,
+            this.aprobarToolStripMenuItem,
+            this.desaprobarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(127, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 202);
             // 
             // nuevoToolStripMenuItem
             // 
@@ -90,8 +96,8 @@
             // filtarToolStripMenuItem
             // 
             this.filtarToolStripMenuItem.Name = "filtarToolStripMenuItem";
-            this.filtarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.filtarToolStripMenuItem.Text = "Filtar";
+            this.filtarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filtarToolStripMenuItem.Text = "Filtro";
             this.filtarToolStripMenuItem.Click += new System.EventHandler(this.filtarToolStripMenuItem_Click);
             // 
             // descargarToolStripMenuItem
@@ -113,11 +119,29 @@
             this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridView1.OptionsSelection.MultiSelect = true;
             // 
+            // facturarToolStripMenuItem
+            // 
+            this.facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
+            this.facturarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.facturarToolStripMenuItem.Text = "Facturar";
+            // 
+            // aprobarToolStripMenuItem
+            // 
+            this.aprobarToolStripMenuItem.Name = "aprobarToolStripMenuItem";
+            this.aprobarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aprobarToolStripMenuItem.Text = "Aprobar";
+            // 
+            // desaprobarToolStripMenuItem
+            // 
+            this.desaprobarToolStripMenuItem.Name = "desaprobarToolStripMenuItem";
+            this.desaprobarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.desaprobarToolStripMenuItem.Text = "Desaprobar";
+            // 
             // frmPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 543);
+            this.ClientSize = new System.Drawing.Size(839, 406);
             this.Controls.Add(this.gridControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPedido";
@@ -139,5 +163,8 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem descargarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aprobarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem desaprobarToolStripMenuItem;
     }
 }

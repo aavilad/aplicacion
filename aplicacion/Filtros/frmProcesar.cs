@@ -25,6 +25,7 @@ namespace xtraForm.Filtros
                 this.Close();
             }
         }
+        int contador = 0;
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             List<string> lista = new List<string>();
@@ -88,6 +89,10 @@ namespace xtraForm.Filtros
                                                     ",
                                                         @"
                                                     (SUM (dbo.Vva_ItemPedido.Cantidad) >= " + entidad.cantidadminima + ")");
+                                        if (entidad.table.Rows.Count == 0)
+                                        {
+                                            contador += 1;
+                                        }
                                         entidad.suma = ((int)(from R in entidad.table.AsEnumerable() select Convert.ToDecimal(R["Cantidad"])).Sum() / entidad.cantidadminima) * entidad.cantidadobsequio;
                                         if (proceso.ExistenciaStock(entidad.codigoregalo, 0, entidad.suma))
                                         {
@@ -163,6 +168,10 @@ namespace xtraForm.Filtros
                                                     ",
                                                        @"(SUM (dbo.Vva_ItemPedido.Cantidad) >= " + entidad.cantidadminima + ") " +
                                                        "and (SUM (dbo.Vva_ItemPedido.Cantidad) < " + entidad.cantidadmaxima + ")");
+                                        if (entidad.table.Rows.Count == 0)
+                                        {
+                                            contador += 1;
+                                        }
                                         entidad.suma = ((int)(from R in entidad.table.AsEnumerable() select Convert.ToDecimal(R["Cantidad"])).Sum() / entidad.cantidadminima) * entidad.cantidadobsequio;
                                         if (proceso.ExistenciaStock(entidad.codigoregalo, 0, entidad.suma))
                                         {
@@ -241,6 +250,10 @@ namespace xtraForm.Filtros
                                         HAVING
                                         (SUM (Vva_ItemPedido.Cantidad * Vva_ItemPedido.Precio) >= " + entidad.cantidadminima + ")", "Soles");
                                         entidad.table = proceso.ds.Tables["Soles"];
+                                        if (entidad.table.Rows.Count == 0)
+                                        {
+                                            contador += 1;
+                                        }
                                         entidad.suma = ((int)(from R in entidad.table.AsEnumerable() select Convert.ToDecimal(R["Cantidad"])).Sum() / entidad.cantidadminima) * entidad.cantidadobsequio;
                                         if (proceso.ExistenciaStock(entidad.codigoregalo, 0, entidad.suma))
                                         {
@@ -321,6 +334,10 @@ namespace xtraForm.Filtros
                                         HAVING
                                         (SUM (Vva_ItemPedido.Cantidad * Vva_ItemPedido.Precio) >= " + entidad.cantidadminima + ") and (SUM (Vva_ItemPedido.Cantidad * Vva_ItemPedido.Precio) < " + entidad.cantidadmaxima + ")", "Soles");
                                         entidad.table = proceso.ds.Tables["Soles"];
+                                        if (entidad.table.Rows.Count == 0)
+                                        {
+                                            contador += 1;
+                                        }
                                         entidad.suma = ((int)(from R in entidad.table.AsEnumerable() select Convert.ToDecimal(R["Cantidad"])).Sum() / entidad.cantidadminima) * entidad.cantidadobsequio;
                                         if (proceso.ExistenciaStock(entidad.codigoregalo, 0, entidad.suma))
                                         {
@@ -388,7 +405,14 @@ namespace xtraForm.Filtros
                             splashScreenManager1.CloseWaitForm();
                             if (frmmensage.dataGridView1.Rows.Count == 0)
                             {
-                                frmmensage.dataGridView1.Rows.Add(string.Empty, "!! PROMOCIONES INSERTADAS CON EXITO !!", string.Empty, string.Empty);
+                                if (bonificacion.Rows.Count == contador)
+                                {
+                                    frmmensage.dataGridView1.Rows.Add(string.Empty, "NO SE HA INGRESADO NINGUNA BONIFICACION", string.Empty, string.Empty);
+                                }
+                                else
+                                {
+                                    frmmensage.dataGridView1.Rows.Add(string.Empty, "!! PROMOCIONES INSERTADAS CON EXITO !!", string.Empty, string.Empty);
+                                }
                                 this.Close();
                             }
                         }
