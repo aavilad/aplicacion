@@ -1,7 +1,9 @@
 ﻿using DevExpress.XtraSplashScreen;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -105,7 +107,7 @@ namespace xtraForm.Modulos.Ventas
                     Context.DETPEDIDO.Add(ItemCp);
                 }
                 Context.SaveChanges();
-                Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2",DateTime.Now.Date.ToString("yyyyMMdd"));
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
             }
         }
@@ -357,6 +359,156 @@ namespace xtraForm.Modulos.Ventas
                 }
             }
 
+
+        }
+
+        private void aprobarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (gridView1.SelectedRowsCount > 0)
+            {
+                using (var Context = new Model.LiderAppEntities())
+                {
+                    foreach (var fila in gridView1.GetSelectedRows())
+                    {
+                        var pedido = (from p in Context.PEDIDO where p.Pedido1 == Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido")) select p).FirstOrDefault();
+                        pedido.Aprobado = true;
+                    }
+                    Context.SaveChanges();
+                }
+            }
+        }
+
+        private void desaprobarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (gridView1.SelectedRowsCount > 0)
+            {
+                using (var Context = new Model.LiderAppEntities())
+                {
+                    foreach (var fila in gridView1.GetSelectedRows())
+                    {
+                        var pedido = (from p in Context.PEDIDO where p.Pedido1 == Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido")) select p).FirstOrDefault();
+                        pedido.Aprobado = false;
+                    }
+                    Context.SaveChanges();
+                }
+            }
+        }
+
+        private void facturarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            var facturar = new Elementos.frmFacturacionPedido();
+            facturar.pasar += new Elementos.frmFacturacionPedido.Variables(Campos);
+
+            facturar.Show();
+        }
+
+        void Campos(string Fecha, int SerieB, int SerieF)
+        {
+            int Contador = 0;
+            if (gridView1.SelectedRowsCount > 0)
+            {
+                List<string> Lista = new List<string>();
+                var frmmensage = new Elementos.frmMsg();
+                frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
+                frmmensage.dataGridView1.Columns[1].HeaderText = "Mensage";
+                frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+                frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
+                using (var Context = new Model.LiderAppEntities())
+                {
+                    foreach (var fila in gridView1.GetSelectedRows())
+                    {
+                        string Pedido_ = Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido"));
+                        string Tipo = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.tipodoc).FirstOrDefault();
+                        string Persona = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.TipoPersona).FirstOrDefault();
+                        var Estado = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.Procesado).FirstOrDefault();
+                        var Aprobado = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => (bool)p.Aprobado).FirstOrDefault();
+                        if (Estado)
+                        {
+                            Contador += 1;
+                            if (Aprobado)
+                            {
+                                Contador += 1;
+                                Lista.Add(Pedido_);
+                                Context.sp_genera_documento(Pedido_, Convert.ToInt32(Persona), Tipo);
+                            }
+                            else
+                            {
+                                frmmensage.dataGridView1.Rows.Add(Pedido_, "Pedido se encuentra desaprobado.");
+                                frmmensage.Show();
+                            }
+                        }
+                        else
+                        {
+                            frmmensage.dataGridView1.Rows.Add(Pedido_, "Pedido se encuentra procesado.");
+                            frmmensage.Show();
+                        }
+                    }
+                    if (Contador == 2)
+                    {
+
+                        string cadena = string.Join(",", Lista.ToArray());
+                        var Documentos = (from doc in Context.DOCUMENTO
+                                          where cadena.Contains(doc.Pedido.Trim())
+                                          select new
+                                          {
+                                              Documento = doc.Documento1,
+                                              Tipo = doc.TipoDoc
+                                          }).ToList();
+                        foreach (var fila in Documentos)
+                        {
+                            try
+                            {
+                                int Numero;
+                                string serie, NumeroComprobante;
+                                switch (fila.Tipo)
+                                {
+                                    case "B":
+                                        Numero = Convert.ToInt32((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == SerieB select p.Numero).FirstOrDefault());
+                                        serie = Convert.ToString((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == SerieB select p.Serie).FirstOrDefault());
+                                        NumeroComprobante = serie + Numero.ToString("D8");
+                                        var Cp = (from p in Context.DOCUMENTO where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
+                                        Cp.Generado = NumeroComprobante;
+                                        var Pd = (from p in Context.PEDIDO
+                                                  where p.Pedido1 == Context.DOCUMENTO.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
+                                                  select p).FirstOrDefault();
+                                        Pd.Procesado = true;
+                                        Pd.statusWeb = true;
+                                        var DTp = (from p in Context.DOCTIPO where p.PKID == SerieB select p).FirstOrDefault();
+                                        DTp.Numero = DTp.Numero + 1;
+                                        break;
+                                    case "F":
+                                        Numero = Convert.ToInt32((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == SerieF select p.Numero).FirstOrDefault());
+                                        serie = Convert.ToString((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == SerieF select p.Serie).FirstOrDefault());
+                                        NumeroComprobante = serie + Numero.ToString("D8");
+                                        var Cp_ = (from p in Context.DOCUMENTO where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
+                                        Cp_.Generado = NumeroComprobante;
+                                        var Pd_ = (from p in Context.PEDIDO
+                                                   where p.Pedido1 == Context.DOCUMENTO.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
+                                                   select p).FirstOrDefault();
+                                        Pd_.Procesado = true;
+                                        Pd_.statusWeb = true;
+                                        var DTp_ = (from p in Context.DOCTIPO where p.PKID == SerieB select p).FirstOrDefault();
+                                        DTp_.Numero = DTp_.Numero + 1;
+                                        break;
+                                }
+                            }
+                            catch (DbEntityValidationException t)
+                            {
+                                foreach (var eve in t.EntityValidationErrors)
+                                {
+                                    foreach (var ve in eve.ValidationErrors)
+                                    {
+                                        MessageBox.Show("Propiedad: \"" + ve.PropertyName + "\", Error: \"" + ve.ErrorMessage + "\"");
+                                    }
+                                }
+                            }
+                        }
+                        Context.SaveChanges();
+                        MessageBox.Show("Se realizo la facturacion de : " + Lista.Count + " con exito.\n Detalles en control genera.");
+                    }
+                }
+            }
 
         }
     }

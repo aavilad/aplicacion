@@ -408,6 +408,12 @@
     <Compile Include="Modulos\Compras\frmCompra.Designer.cs">
       <DependentUpon>frmCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Distribucion\frmRutas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Distribucion\frmRutas.Designer.cs">
+      <DependentUpon>frmRutas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Elementos\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -431,6 +437,12 @@
     </Compile>
     <Compile Include="Modulos\Elementos\frmFacturacion.Designer.cs">
       <DependentUpon>frmFacturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmFacturacionPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmFacturacionPedido.Designer.cs">
+      <DependentUpon>frmFacturacionPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Elementos\frmMarca.cs">
       <SubType>Form</SubType>
@@ -638,6 +650,9 @@
     <EmbeddedResource Include="Modulos\Compras\frmCompra.resx">
       <DependentUpon>frmCompra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Distribucion\frmRutas.resx">
+      <DependentUpon>frmRutas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -649,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmFacturacion.resx">
       <DependentUpon>frmFacturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmFacturacionPedido.resx">
+      <DependentUpon>frmFacturacionPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmMarca.resx">
       <DependentUpon>frmMarca.cs</DependentUpon>
