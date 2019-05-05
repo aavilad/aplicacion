@@ -20,8 +20,6 @@
         <EntityTypeShape EntityType="LiderAppModel.Bonificacion" Width="1.5" PointX="18.375" PointY="11" />
         <EntityTypeShape EntityType="LiderAppModel.ItemBonificacion" Width="1.5" PointX="20.625" PointY="12.25" />
         <AssociationConnector Association="LiderAppModel.FK_ItemBonificacion_Bonificacion" />
-        <EntityTypeShape EntityType="LiderAppModel.ZONA" Width="1.5" PointX="0.75" PointY="7.5" />
-        <AssociationConnector Association="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" />
         <EntityTypeShape EntityType="LiderAppModel.PERSONAL" Width="1.5" PointX="0.75" PointY="11.5" />
         <AssociationConnector Association="LiderAppModel.FK__ZONA_PERS__Perso__6501FCD8" />
         <EntityTypeShape EntityType="LiderAppModel.Departamento" Width="1.5" PointX="2.125" PointY="24.875" />
@@ -43,7 +41,6 @@
         <AssociationConnector Association="LiderAppModel.FK_MARCA_LINEA" />
         <EntityTypeShape EntityType="LiderAppModel.categoria" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="LiderAppModel.CLIENTE" Width="1.5" PointX="4.875" PointY="7" />
-        <AssociationConnector Association="LiderAppModel.FK__CLIENTE__Zona__4959E263" />
         <AssociationConnector Association="LiderAppModel.FK_CLIENTE_Distrito" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_ItemPedido" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="LiderAppModel.Reporte" Width="1.5" PointX="15.375" PointY="5.25" />
@@ -51,15 +48,21 @@
         <EntityTypeShape EntityType="LiderAppModel.VistaReporte" Width="1.5" PointX="12.875" PointY="6" />
         <AssociationConnector Association="LiderAppModel.FK_Reporte_TipoReporte" />
         <AssociationConnector Association="LiderAppModel.FK_Reporte_VistaReporte" />
-        <EntityTypeShape EntityType="LiderAppModel.REPARTO" Width="1.5" PointX="2.75" PointY="13.5" />
-        <AssociationConnector Association="LiderAppModel.FK_REPARTO_PERSONAL" />
-        <EntityTypeShape EntityType="LiderAppModel.FuerzaVentas" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_Producto" Width="1.5" PointX="17.75" PointY="0.75" />
-        <EntityTypeShape EntityType="LiderAppModel.RUTAS" Width="1.5" PointX="7.375" PointY="7.875" />
-        <AssociationConnector Association="LiderAppModel.FK_REPARTO_RUTAS" />
         <EntityTypeShape EntityType="LiderAppModel.grupo" Width="1.5" PointX="10.375" PointY="10.75" />
         <EntityTypeShape EntityType="LiderAppModel.Gestion" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_Pedido" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LiderAppModel.RUTAS" Width="1.5" PointX="7.375" PointY="7.875" />
+        <EntityTypeShape EntityType="LiderAppModel.ZONA" Width="1.5" PointX="0.75" PointY="7.625" />
+        <AssociationConnector Association="LiderAppModel.FK__CLIENTE__Zona__4959E263" />
+        <AssociationConnector Association="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" />
+        <EntityTypeShape EntityType="LiderAppModel.REPARTO" Width="1.5" PointX="3" PointY="13.375" />
+        <AssociationConnector Association="LiderAppModel.FK_REPARTO_PERSONAL" />
+        <AssociationConnector Association="LiderAppModel.FK_REPARTO_RUTAS" />
+        <EntityTypeShape EntityType="LiderAppModel.FuerzaVentas" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Modulo" Width="1.5" PointX="10.375" PointY="18" />
+        <EntityTypeShape EntityType="LiderAppModel.VistaAdministrativa" Width="1.5" PointX="12.625" PointY="18.25" />
+        <AssociationConnector Association="LiderAppModel.FK_VistaAdministrativa_Modulo" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -54,28 +54,12 @@ namespace xtraForm.Modulos.Ventas
         }
         void condicion(string cadena)
         {
-            if (cadena.Length == 0)
+            using (var Context = new Model.LiderAppEntities())
             {
-                proceso.consultar(Libreria.Constante.Bonificacion, tabla);
-                gridcontrolBonificacion.DataSource = proceso.ds.Tables[tabla];
-                gridView1.Columns[0].Visible = true;
-                gridView1.Columns["Proveedor"].GroupIndex = 1;
-                gridView1.Columns["TipoMecanica"].GroupIndex = 2;
-                gridView1.OptionsView.ColumnAutoWidth = false;
-                gridView1.OptionsBehavior.Editable = false;
-                gridView1.OptionsBehavior.ReadOnly = true;
-                gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-                gridView1.OptionsView.ShowGroupPanel = false;
-                gridView1.GroupRowHeight = 1;
-                gridView1.RowHeight = 1;
-                gridView1.Appearance.Row.FontSizeDelta = 0;
-                gridView1.BestFitColumns();
-                gridView1.OptionsView.ShowFooter = true;
-            }
-            else
-                try
+                string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == 7).Select(a => a.Vista.Trim()).FirstOrDefault());
+                if (cadena.Length == 0)
                 {
-                    proceso.consultar(Libreria.Constante.Bonificacion + " where " + cadena, tabla);
+                    proceso.consultar(Query, tabla);
                     gridcontrolBonificacion.DataSource = proceso.ds.Tables[tabla];
                     gridView1.Columns[0].Visible = true;
                     gridView1.Columns["Proveedor"].GroupIndex = 1;
@@ -91,12 +75,32 @@ namespace xtraForm.Modulos.Ventas
                     gridView1.BestFitColumns();
                     gridView1.OptionsView.ShowFooter = true;
                 }
-                catch (Exception t)
-                {
-                    MessageBox.Show(t.Message);
-                    gridcontrolBonificacion.DataSource = null;
-                    gridcontrolBonificacion.Refresh();
-                }
+                else
+                    try
+                    {
+                        proceso.consultar(Query + " where " + cadena, tabla);
+                        gridcontrolBonificacion.DataSource = proceso.ds.Tables[tabla];
+                        gridView1.Columns[0].Visible = true;
+                        gridView1.Columns["Proveedor"].GroupIndex = 1;
+                        gridView1.Columns["TipoMecanica"].GroupIndex = 2;
+                        gridView1.OptionsView.ColumnAutoWidth = false;
+                        gridView1.OptionsBehavior.Editable = false;
+                        gridView1.OptionsBehavior.ReadOnly = true;
+                        gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+                        gridView1.OptionsView.ShowGroupPanel = false;
+                        gridView1.GroupRowHeight = 1;
+                        gridView1.RowHeight = 1;
+                        gridView1.Appearance.Row.FontSizeDelta = 0;
+                        gridView1.BestFitColumns();
+                        gridView1.OptionsView.ShowFooter = true;
+                    }
+                    catch (Exception t)
+                    {
+                        MessageBox.Show(t.Message);
+                        gridcontrolBonificacion.DataSource = null;
+                        gridcontrolBonificacion.Refresh();
+                    }
+            }
         }
 
         private void copiarToolStripMenuItem_Click(object sender, EventArgs e)

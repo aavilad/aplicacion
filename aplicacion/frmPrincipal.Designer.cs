@@ -73,8 +73,8 @@
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
-            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -154,10 +154,10 @@
             this.barButtonItem11,
             this.barButtonItem13,
             this.barButtonItem14,
-            this.skinRibbonGalleryBarItem1,
-            this.skinDropDownButtonItem1});
+            this.skinDropDownButtonItem1,
+            this.skinPaletteRibbonGalleryBarItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 63;
+            this.ribbonControl1.MaxItemId = 64;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -167,7 +167,7 @@
             this.ribbonPage5,
             this.ribbonPage7,
             this.ribbonPage8});
-            this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinRibbonGalleryBarItem1);
+            this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1);
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1,
             this.repositoryItemDateEdit2});
@@ -267,7 +267,7 @@
             // 
             this.BtnRerportesVentas.Caption = "Ventas";
             this.BtnRerportesVentas.Id = 15;
-            this.BtnRerportesVentas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnRerportesVentas.ImageOptions.Image")));
+            this.BtnRerportesVentas.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnRerportesVentas.ImageOptions.SvgImage")));
             this.BtnRerportesVentas.Name = "BtnRerportesVentas";
             this.BtnRerportesVentas.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
@@ -276,7 +276,7 @@
             // 
             this.barButtonItem15.Caption = "Compras";
             this.barButtonItem15.Id = 16;
-            this.barButtonItem15.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem15.ImageOptions.Image")));
+            this.barButtonItem15.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem15.ImageOptions.SvgImage")));
             this.barButtonItem15.Name = "barButtonItem15";
             this.barButtonItem15.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
@@ -285,7 +285,7 @@
             // 
             this.BtnReportesDistribucion.Caption = "Distribucion";
             this.BtnReportesDistribucion.Id = 17;
-            this.BtnReportesDistribucion.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnReportesDistribucion.ImageOptions.Image")));
+            this.BtnReportesDistribucion.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnReportesDistribucion.ImageOptions.SvgImage")));
             this.BtnReportesDistribucion.Name = "BtnReportesDistribucion";
             this.BtnReportesDistribucion.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
@@ -295,7 +295,7 @@
             // 
             this.barButtonItem17.Caption = "Inventario";
             this.barButtonItem17.Id = 18;
-            this.barButtonItem17.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem17.ImageOptions.Image")));
+            this.barButtonItem17.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem17.ImageOptions.SvgImage")));
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
@@ -506,16 +506,16 @@
             this.barButtonItem14.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem14.ImageOptions.SvgImage")));
             this.barButtonItem14.Name = "barButtonItem14";
             // 
-            // skinRibbonGalleryBarItem1
-            // 
-            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
-            this.skinRibbonGalleryBarItem1.Id = 61;
-            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
-            // 
             // skinDropDownButtonItem1
             // 
             this.skinDropDownButtonItem1.Id = 62;
             this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            // 
+            // skinPaletteRibbonGalleryBarItem1
+            // 
+            this.skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
+            this.skinPaletteRibbonGalleryBarItem1.Id = 63;
+            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
             // ribbonPage1
             // 
@@ -796,7 +796,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
-        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
+        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
     }
 }

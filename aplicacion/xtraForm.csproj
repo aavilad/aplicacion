@@ -187,11 +187,6 @@
     <Compile Include="Libreria\Producto.cs" />
     <Compile Include="Libreria\Proveedor.cs" />
     <Compile Include="Libreria\Vendedor.cs" />
-    <Compile Include="Listado.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Listado.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Maestro\frmAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -351,6 +346,9 @@
     <Compile Include="Model\MARCA.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Modulo.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\PEDIDO.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
@@ -379,6 +377,9 @@
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TipoReporte.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\VistaAdministrativa.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\VistaReporte.cs">
@@ -560,30 +561,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reportes\Ventas\frmDistribucion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\Ventas\frmDistribucion.Designer.cs">
-      <DependentUpon>frmDistribucion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\Ventas\frmVenta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\Ventas\frmVenta.Designer.cs">
-      <DependentUpon>frmVenta.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\Vistas\frmVistaFiltro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\Vistas\frmVistaFiltro.Designer.cs">
-      <DependentUpon>frmVistaFiltro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\Vistas\frmVistaPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\Vistas\frmVistaPrincipal.Designer.cs">
-      <DependentUpon>frmVistaPrincipal.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Filtros\frmConsultar.resx">
       <DependentUpon>frmConsultar.cs</DependentUpon>
     </EmbeddedResource>
@@ -735,34 +712,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Reportes\Elementos\Distribucion\ListadoPorRutas.rdlc" />
-    <EmbeddedResource Include="Reportes\Ventas\frmDistribucion.resx">
-      <DependentUpon>frmDistribucion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Ventas\frmVenta.resx">
-      <DependentUpon>frmVenta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Vistas\frmVistaFiltro.resx">
-      <DependentUpon>frmVistaFiltro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Vistas\frmVistaPrincipal.resx">
-      <DependentUpon>frmVistaPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
     <EntityDeploy Include="Model\Conexion.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Conexion.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Listado.xsc">
-      <DependentUpon>Listado.xsd</DependentUpon>
-    </None>
-    <None Include="Listado.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Listado.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Listado.xss">
-      <DependentUpon>Listado.xsd</DependentUpon>
-    </None>
     <None Include="Model\Conexion.edmx.diagram">
       <DependentUpon>Conexion.edmx</DependentUpon>
     </None>
@@ -783,10 +736,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Ds\" />
     <Folder Include="Filtros\Bonificacion\" />
+    <Folder Include="Modulos\Reportes\Elementos\Distribucion\" />
+    <Folder Include="Modulos\Reportes\Elementos\Ventas\" />
+    <Folder Include="Modulos\Reportes\Modulos\Distribucion\" />
     <Folder Include="Properties\DataSources\" />
-    <Folder Include="Reportes\Elementos\Ventas\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

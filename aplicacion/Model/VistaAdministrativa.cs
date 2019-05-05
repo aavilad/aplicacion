@@ -12,14 +12,13 @@ namespace xtraForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ZONA_PERSONAL
+    public partial class VistaAdministrativa
     {
-        public string Zona { get; set; }
-        public string Personal { get; set; }
-        public Nullable<System.DateTime> Dia { get; set; }
-        public byte Numero { get; set; }
+        public int PKID { get; set; }
+        public string Vista { get; set; }
+        public int IDModulo { get; set; }
+        public System.Guid Registro { get; set; }
     
-        public virtual PERSONAL PERSONAL1 { get; set; }
-        public virtual ZONA ZONA1 { get; set; }
+        public virtual Modulo Modulo { get; set; }
     }
 }

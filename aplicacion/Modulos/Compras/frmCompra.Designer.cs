@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -53,20 +53,15 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoToolStripMenuItem,
-            this.eliminarToolStripMenuItem,
             this.modificarToolStripMenuItem,
+            this.eliminarToolStripMenuItem,
             this.filtrarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 92);
             // 
             // nuevoToolStripMenuItem
             // 
@@ -89,9 +84,14 @@
             // filtrarToolStripMenuItem
             // 
             this.filtrarToolStripMenuItem.Name = "filtrarToolStripMenuItem";
-            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.filtrarToolStripMenuItem.Text = "Filtrar";
+            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.filtrarToolStripMenuItem.Text = "Filtro";
             this.filtrarToolStripMenuItem.Click += new System.EventHandler(this.filtrarToolStripMenuItem_Click);
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
             // 
             // frmCompra
             // 
@@ -103,8 +103,8 @@
             this.Name = "frmCompra";
             this.Text = "frmCompra";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -58,7 +58,6 @@ namespace xtraForm.Modulos.Elementos
                     context.DOCTIPO.Where(x => x.codigo == "03").
                     Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
             }
-
         }
 
         private void SerieBoleta_EditValueChanged(object sender, EventArgs e)

@@ -22,6 +22,7 @@ namespace xtraForm.Modulos.Ventas
         private DateTime ahora;
         private DateTime inicio;
         public string tabla = "vva_pedido";
+
         public frmPedido()
         {
             InitializeComponent();
@@ -30,6 +31,16 @@ namespace xtraForm.Modulos.Ventas
             ahora = DateTime.Now;
             inicio = new DateTime(ahora.Year, ahora.Month, 1);
             entidad.fechafin = Convert.ToDateTime(DateTime.Today.AddDays(1)).ToString("yyyyMMdd");
+        }
+
+        void Refrescar()
+        {
+            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
+            List<string> lista_ = new List<string>();
+            foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
+                lista_.Add(tabla+"."+"[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
+            string cadena = string.Join(" ", lista_.ToArray());
+            condicion(cadena);
         }
 
         private void filtarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,57 +120,61 @@ namespace xtraForm.Modulos.Ventas
                 Context.SaveChanges();
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                Refrescar();
             }
         }
 
         void condicion(string cadena)
         {
-            if (cadena.Length == 0)
+            using (var Context = new Model.LiderAppEntities())
             {
-                proceso.consultar(Libreria.Constante.Pedidos, tabla);
-                gridControl1.DataSource = proceso.ds.Tables[tabla];
-                gridView1.OptionsView.ColumnAutoWidth = false;
-                gridView1.OptionsBehavior.Editable = false;
-                gridView1.OptionsBehavior.ReadOnly = true;
-                gridView1.OptionsView.ShowGroupPanel = false;
-                gridView1.OptionsView.ShowFooter = true;
-                gridView1.FooterPanelHeight = -2;
-                gridView1.Columns["Valor Venta"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                gridView1.Columns["Igv"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                gridView1.Columns["Valor Total"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                gridView1.Columns["Tipo Condicion"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
-                gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-                gridView1.GroupRowHeight = 1;
-                gridView1.RowHeight = 1;
-                gridView1.Appearance.Row.FontSizeDelta = 0;
-                gridView1.BestFitColumns();
-            }
-            else
-            {
-                try
+                string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == 1).Select(a => a.Vista.Trim()).FirstOrDefault());
+                if (cadena.Length == 0)
                 {
-                    proceso.consultar(Libreria.Constante.Pedidos + " having " + cadena, tabla);
+                    proceso.consultar(Query, tabla);
                     gridControl1.DataSource = proceso.ds.Tables[tabla];
                     gridView1.OptionsView.ColumnAutoWidth = false;
                     gridView1.OptionsBehavior.Editable = false;
                     gridView1.OptionsBehavior.ReadOnly = true;
-                    gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
                     gridView1.OptionsView.ShowGroupPanel = false;
                     gridView1.OptionsView.ShowFooter = true;
+                    gridView1.FooterPanelHeight = -2;
                     gridView1.Columns["Valor Venta"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView1.Columns["Igv"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView1.Columns["Valor Total"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView1.Columns["Tipo Condicion"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
+                    gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
                     gridView1.GroupRowHeight = 1;
                     gridView1.RowHeight = 1;
                     gridView1.Appearance.Row.FontSizeDelta = 0;
                     gridView1.BestFitColumns();
                 }
-                catch (Exception t)
+                else
                 {
-                    MessageBox.Show(t.Message);
-                    gridControl1.DataSource = null;
-                    gridControl1.Refresh();
+                    try
+                    {
+                        proceso.consultar(Query + " having " + cadena, tabla);
+                        gridControl1.DataSource = proceso.ds.Tables[tabla];
+                        gridView1.OptionsView.ColumnAutoWidth = false;
+                        gridView1.OptionsBehavior.Editable = false;
+                        gridView1.OptionsBehavior.ReadOnly = true;
+                        gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+                        gridView1.OptionsView.ShowGroupPanel = false;
+                        gridView1.OptionsView.ShowFooter = true;
+                        gridView1.Columns["Valor Venta"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                        gridView1.Columns["Igv"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                        gridView1.Columns["Valor Total"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                        gridView1.Columns["Tipo Condicion"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
+                        gridView1.GroupRowHeight = 1;
+                        gridView1.RowHeight = 1;
+                        gridView1.Appearance.Row.FontSizeDelta = 0;
+                        gridView1.BestFitColumns();
+                    }
+                    catch 
+                    {
+                        gridControl1.DataSource = null;
+                        gridControl1.Refresh();
+                    }
                 }
             }
 
@@ -180,7 +195,7 @@ namespace xtraForm.Modulos.Ventas
             proceso.actualizar("detpedido", "Recargo = IIF ((PrecioNeto - PrecioUnitario) < 0,0,(PrecioNeto - PrecioUnitario))", queryA);
             proceso.actualizar("detpedido", "Afecto = (SELECT conigv FROM PRODUCTO WHERE Producto = DETPEDIDO.Producto)", queryA);
             proceso.actualizar("detpedido", "Bonif = CASE WHEN PrecUnit = 0.00 THEN 1 WHEN IDBonificacion > 0 THEN 1 ELSE 0 END", queryA);
-            proceso.actualizar("pedido", "Aprobado = 1", queryA);
+            proceso.actualizar("pedido", "Aprobado = 1", queryA + " and pedido.Aprobado is null");
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -283,10 +298,8 @@ namespace xtraForm.Modulos.Ventas
         {
             if (gridView1.SelectedRowsCount > 0)
             {
-                Point loc = new Point(510, 450);
                 Elementos.frmMsg frmmensage = new Elementos.frmMsg();
-                frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Manual;
-                frmmensage.splashScreenManager1.SplashFormLocation = loc;
+                frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
                 frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
                 frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
                 frmmensage.dataGridView1.Columns[2].HeaderText = "";
@@ -320,7 +333,7 @@ namespace xtraForm.Modulos.Ventas
                     }
                 }
                 frmmensage.splashScreenManager1.CloseWaitForm();
-                gridControl1.DataSource = null;
+                Refrescar();
             }
         }
 
@@ -331,10 +344,8 @@ namespace xtraForm.Modulos.Ventas
             {
                 if (proceso.MensageError("¿Continuar?") == DialogResult.Yes)
                 {
-                    Point loc = new Point(510, 450);
                     Elementos.frmMsg frmmensage = new Elementos.frmMsg();
-                    frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Manual;
-                    frmmensage.splashScreenManager1.SplashFormLocation = loc;
+                    frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
                     frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
                     frmmensage.dataGridView1.Columns[2].HeaderText = "";
@@ -355,41 +366,92 @@ namespace xtraForm.Modulos.Ventas
                         }
                     }
                     frmmensage.splashScreenManager1.CloseWaitForm();
-                    gridControl1.DataSource = null;
+                    Refrescar();
                 }
             }
-
-
         }
 
         private void aprobarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var frmmensage = new Elementos.frmMsg();
+            frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
+            frmmensage.dataGridView1.Columns[1].HeaderText = "Mensage";
+            frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+            frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
             if (gridView1.SelectedRowsCount > 0)
             {
                 using (var Context = new Model.LiderAppEntities())
                 {
                     foreach (var fila in gridView1.GetSelectedRows())
                     {
-                        var pedido = (from p in Context.PEDIDO where p.Pedido1 == Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido")) select p).FirstOrDefault();
-                        pedido.Aprobado = true;
+                        string numPedido = Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido"));
+                        bool Estado = Context.PEDIDO.Where(x => x.Pedido1 == numPedido).Select(p => p.Procesado).FirstOrDefault();
+                        var Aprob = Context.PEDIDO.Where(x => x.Pedido1 == numPedido).Select(p => p.Aprobado).FirstOrDefault();
+                        if (!Estado)
+                        {
+                            if (!(Aprob is DBNull ? false : (bool)Aprob))
+                            {
+                                var pedido = (from p in Context.PEDIDO where p.Pedido1 == numPedido select p).FirstOrDefault();
+                                pedido.Aprobado = true;
+                                frmmensage.dataGridView1.Rows.Add(numPedido, "Aprobado Exitosamente.");
+                            }
+                            else
+                            {
+                                frmmensage.dataGridView1.Rows.Add(numPedido, "Pedido ya se encuentra aprobado.");
+                            }
+                        }
+                        else
+                        {
+                            frmmensage.dataGridView1.Rows.Add(numPedido, "Pedido se encuentra facturado y ya no es modificable.");
+                        }
                     }
                     Context.SaveChanges();
+                    frmmensage.Show();
+                    Refrescar();
                 }
             }
         }
 
         private void desaprobarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int Contador = 0;
+            var frmmensage = new Elementos.frmMsg();
+            frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
+            frmmensage.dataGridView1.Columns[1].HeaderText = "Mensage";
+            frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+            frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
             if (gridView1.SelectedRowsCount > 0)
             {
                 using (var Context = new Model.LiderAppEntities())
                 {
                     foreach (var fila in gridView1.GetSelectedRows())
                     {
-                        var pedido = (from p in Context.PEDIDO where p.Pedido1 == Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido")) select p).FirstOrDefault();
-                        pedido.Aprobado = false;
+                        string numPedido = Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido"));
+                        bool Estado = Context.PEDIDO.Where(x => x.Pedido1 == numPedido).Select(p => p.Procesado).FirstOrDefault();
+                        var Aprob = Context.PEDIDO.Where(x => x.Pedido1 == numPedido).Select(p => p.Aprobado).FirstOrDefault();
+                        if (!Estado)
+                        {
+                            if (Aprob is DBNull ? false : (bool)Aprob)
+                            {
+                                var pedido = (from p in Context.PEDIDO where p.Pedido1 == numPedido select p).FirstOrDefault();
+                                pedido.Aprobado = false;
+                                frmmensage.dataGridView1.Rows.Add(numPedido, "Desaprobado Exitosamente.");
+                            }
+                            else
+                            {
+                                Contador += 1;
+                                frmmensage.dataGridView1.Rows.Add(numPedido, "Pedido ya se encuentra desaprobado.");
+                            }
+                        }
+                        else
+                        {
+                            Contador += 1;
+                            frmmensage.dataGridView1.Rows.Add(numPedido, "Pedido se encuentra facturado, ya no es modificable.");
+                        }
                     }
                     Context.SaveChanges();
+                    frmmensage.Show();
+                    Refrescar();
                 }
             }
         }
@@ -399,8 +461,9 @@ namespace xtraForm.Modulos.Ventas
 
             var facturar = new Elementos.frmFacturacionPedido();
             facturar.pasar += new Elementos.frmFacturacionPedido.Variables(Campos);
-
+            facturar.StartPosition = FormStartPosition.CenterParent;
             facturar.Show();
+            Refrescar();
         }
 
         void Campos(string Fecha, int SerieB, int SerieF)
@@ -420,31 +483,33 @@ namespace xtraForm.Modulos.Ventas
                     {
                         string Pedido_ = Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido"));
                         string Tipo = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.tipodoc).FirstOrDefault();
-                        string Persona = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.TipoPersona).FirstOrDefault();
+                        int Persona = Convert.ToInt32(Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.TipoPersona).FirstOrDefault());
                         var Estado = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.Procesado).FirstOrDefault();
-                        var Aprobado = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => (bool)p.Aprobado).FirstOrDefault();
-                        if (Estado)
+                        var Aprobado = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.Aprobado).FirstOrDefault();
+                        if (!Estado)
                         {
                             Contador += 1;
-                            if (Aprobado)
+                            if (Aprobado is DBNull ? false : (bool)Aprobado)
                             {
                                 Contador += 1;
                                 Lista.Add(Pedido_);
-                                Context.sp_genera_documento(Pedido_, Convert.ToInt32(Persona), Tipo);
+                                Context.sp_genera_documento(Pedido_, (int)Persona, Tipo);
                             }
                             else
                             {
                                 frmmensage.dataGridView1.Rows.Add(Pedido_, "Pedido se encuentra desaprobado.");
-                                frmmensage.Show();
                             }
                         }
                         else
                         {
                             frmmensage.dataGridView1.Rows.Add(Pedido_, "Pedido se encuentra procesado.");
-                            frmmensage.Show();
                         }
                     }
-                    if (Contador == 2)
+                    if (Contador == 0)
+                    {
+                        frmmensage.Show();
+                    }
+                    else if (Contador == 2)
                     {
 
                         string cadena = string.Join(",", Lista.ToArray());
@@ -502,10 +567,14 @@ namespace xtraForm.Modulos.Ventas
                                         MessageBox.Show("Propiedad: \"" + ve.PropertyName + "\", Error: \"" + ve.ErrorMessage + "\"");
                                     }
                                 }
+                                Refrescar();
                             }
                         }
                         Context.SaveChanges();
+                        Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                        Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                         MessageBox.Show("Se realizo la facturacion de : " + Lista.Count + " con exito.\n Detalles en control genera.");
+                        Refrescar();
                     }
                 }
             }

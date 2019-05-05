@@ -12,24 +12,23 @@ namespace xtraForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ZONA
+    public partial class Modulo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ZONA()
+        public Modulo()
         {
-            this.CLIENTE = new HashSet<CLIENTE>();
-            this.ZONA_PERSONAL = new HashSet<ZONA_PERSONAL>();
+            this.VistaAdministrativa = new HashSet<VistaAdministrativa>();
         }
     
-        public string Zona1 { get; set; }
-        public string Descripcion { get; set; }
-        public int Distancia { get; set; }
-        public bool Riesgo { get; set; }
-        public string proveedor { get; set; }
+        public int PKID { get; set; }
+        public int IDModuloPadre { get; set; }
+        public string Codigo { get; set; }
+        public string Nombre { get; set; }
+        public System.Guid Registro { get; set; }
+        public int Nivel { get; set; }
+        public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
+        public virtual ICollection<VistaAdministrativa> VistaAdministrativa { get; set; }
     }
 }

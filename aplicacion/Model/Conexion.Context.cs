@@ -40,7 +40,6 @@ namespace xtraForm.Model
         public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
         public virtual DbSet<Bonificacion> Bonificacion { get; set; }
         public virtual DbSet<ItemBonificacion> ItemBonificacion { get; set; }
-        public virtual DbSet<ZONA> ZONA { get; set; }
         public virtual DbSet<PERSONAL> PERSONAL { get; set; }
         public virtual DbSet<Departamento> Departamento { get; set; }
         public virtual DbSet<LINEA> LINEA { get; set; }
@@ -55,13 +54,16 @@ namespace xtraForm.Model
         public virtual DbSet<Reporte> Reporte { get; set; }
         public virtual DbSet<TipoReporte> TipoReporte { get; set; }
         public virtual DbSet<VistaReporte> VistaReporte { get; set; }
-        public virtual DbSet<REPARTO> REPARTO { get; set; }
-        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
         public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
-        public virtual DbSet<RUTAS> RUTAS { get; set; }
         public virtual DbSet<grupo> grupo { get; set; }
         public virtual DbSet<Gestion> Gestion { get; set; }
         public virtual DbSet<Vva_Pedido> Vva_Pedido { get; set; }
+        public virtual DbSet<RUTAS> RUTAS { get; set; }
+        public virtual DbSet<ZONA> ZONA { get; set; }
+        public virtual DbSet<REPARTO> REPARTO { get; set; }
+        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
+        public virtual DbSet<Modulo> Modulo { get; set; }
+        public virtual DbSet<VistaAdministrativa> VistaAdministrativa { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {
@@ -121,23 +123,6 @@ namespace xtraForm.Model
                 new ObjectParameter("tdoc", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_genera_documento", pedidoParameter, tipoParameter, tdocParameter);
-        }
-    
-        public virtual int sp_genera_documento1(string pedido, Nullable<int> tipo, string tdoc)
-        {
-            var pedidoParameter = pedido != null ?
-                new ObjectParameter("pedido", pedido) :
-                new ObjectParameter("pedido", typeof(string));
-    
-            var tipoParameter = tipo.HasValue ?
-                new ObjectParameter("tipo", tipo) :
-                new ObjectParameter("tipo", typeof(int));
-    
-            var tdocParameter = tdoc != null ?
-                new ObjectParameter("tdoc", tdoc) :
-                new ObjectParameter("tdoc", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_genera_documento1", pedidoParameter, tipoParameter, tdocParameter);
         }
     }
 }

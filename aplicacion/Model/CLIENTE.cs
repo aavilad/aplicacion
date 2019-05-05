@@ -58,7 +58,7 @@ namespace xtraForm.Model
         public Nullable<byte> EstadoCli { get; set; }
         public string Correo { get; set; }
     
-        public virtual ZONA ZONA1 { get; set; }
         public virtual Distrito Distrito { get; set; }
+        public virtual ZONA ZONA1 { get; set; }
     }
 }
