@@ -560,6 +560,68 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
           <Property Name="Numero" Type="tinyint" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vva_Cliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="Zona" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="FechIng" />
+            <PropertyRef Name="Saldo" />
+            <PropertyRef Name="Credito" />
+          </Key>
+          <Property Name="Codigo" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="70" />
+          <Property Name="Direccion" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Zona" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Tipo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Documento" Type="char" MaxLength="11" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="FechIng" Type="datetime" Nullable="false" />
+          <Property Name="TopeCredito" Type="int" />
+          <Property Name="Telefono" Type="char" MaxLength="7" />
+          <Property Name="Saldo" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Credito" Type="bit" Nullable="false" />
+          <Property Name="IDDistrito" Type="char" MaxLength="6" />
+          <Property Name="IDNegocio" Type="char" MaxLength="2" />
+          <Property Name="Clase" Type="tinyint" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_ItemCp' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vva_ItemCp">
+          <Key>
+            <PropertyRef Name="NrDoc" />
+            <PropertyRef Name="TpDoc" />
+            <PropertyRef Name="IDProducto" />
+            <PropertyRef Name="Anulado" />
+            <PropertyRef Name="percepcion" />
+            <PropertyRef Name="detraccion" />
+            <PropertyRef Name="Signo" />
+          </Key>
+          <Property Name="NrDoc" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="TpDoc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="IDProveedor" Type="char" MaxLength="5" />
+          <Property Name="IDProducto" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="TpPrecio" Type="char" MaxLength="1" />
+          <Property Name="igv" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Anulado" Type="int" Nullable="false" />
+          <Property Name="pdscto" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="totdscto" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="percepcion" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="detraccion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Signo" Type="int" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioNeto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Descuento" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="IDBonificacion" Type="int" />
+          <Property Name="Recargo" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Afecto" Type="bit" />
+          <Property Name="Bonif" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_ItemPedido' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vva_ItemPedido">
           <Key>
@@ -972,6 +1034,50 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
     [FiltroConfiguracion].[Tipo] AS [Tipo]
     FROM [dbo].[FiltroConfiguracion] AS [FiltroConfiguracion]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Vva_Cliente" EntityType="Self.Vva_Cliente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vva_Cliente].[Codigo] AS [Codigo], 
+    [Vva_Cliente].[Nombre] AS [Nombre], 
+    [Vva_Cliente].[Direccion] AS [Direccion], 
+    [Vva_Cliente].[Zona] AS [Zona], 
+    [Vva_Cliente].[Tipo] AS [Tipo], 
+    [Vva_Cliente].[Documento] AS [Documento], 
+    [Vva_Cliente].[Estado] AS [Estado], 
+    [Vva_Cliente].[FechIng] AS [FechIng], 
+    [Vva_Cliente].[TopeCredito] AS [TopeCredito], 
+    [Vva_Cliente].[Telefono] AS [Telefono], 
+    [Vva_Cliente].[Saldo] AS [Saldo], 
+    [Vva_Cliente].[Credito] AS [Credito], 
+    [Vva_Cliente].[IDDistrito] AS [IDDistrito], 
+    [Vva_Cliente].[IDNegocio] AS [IDNegocio], 
+    [Vva_Cliente].[Clase] AS [Clase]
+    FROM [dbo].[Vva_Cliente] AS [Vva_Cliente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vva_ItemCp" EntityType="Self.Vva_ItemCp" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vva_ItemCp].[NrDoc] AS [NrDoc], 
+    [Vva_ItemCp].[TpDoc] AS [TpDoc], 
+    [Vva_ItemCp].[Cantidad] AS [Cantidad], 
+    [Vva_ItemCp].[IDProveedor] AS [IDProveedor], 
+    [Vva_ItemCp].[IDProducto] AS [IDProducto], 
+    [Vva_ItemCp].[Precio] AS [Precio], 
+    [Vva_ItemCp].[TpPrecio] AS [TpPrecio], 
+    [Vva_ItemCp].[igv] AS [igv], 
+    [Vva_ItemCp].[Anulado] AS [Anulado], 
+    [Vva_ItemCp].[pdscto] AS [pdscto], 
+    [Vva_ItemCp].[totdscto] AS [totdscto], 
+    [Vva_ItemCp].[percepcion] AS [percepcion], 
+    [Vva_ItemCp].[detraccion] AS [detraccion], 
+    [Vva_ItemCp].[Signo] AS [Signo], 
+    [Vva_ItemCp].[PrecioUnitario] AS [PrecioUnitario], 
+    [Vva_ItemCp].[PrecioNeto] AS [PrecioNeto], 
+    [Vva_ItemCp].[Descuento] AS [Descuento], 
+    [Vva_ItemCp].[IDBonificacion] AS [IDBonificacion], 
+    [Vva_ItemCp].[Recargo] AS [Recargo], 
+    [Vva_ItemCp].[Afecto] AS [Afecto], 
+    [Vva_ItemCp].[Bonif] AS [Bonif]
+    FROM [dbo].[Vva_ItemCp] AS [Vva_ItemCp]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Vva_ItemPedido" EntityType="Self.Vva_ItemPedido" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Vva_ItemPedido].[NrPedido] AS [NrPedido], 
@@ -1275,6 +1381,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <End Role="Modulo" EntitySet="Modulo" />
             <End Role="VistaAdministrativa" EntitySet="VistaAdministrativa" />
           </AssociationSet>
+          <EntitySet Name="Vva_Cliente" EntityType="LiderAppModel.Vva_Cliente" />
+          <EntitySet Name="Vva_ItemCp" EntityType="LiderAppModel.Vva_ItemCp" />
           </EntityContainer>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -2246,6 +2354,64 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Vva_Cliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="Zona" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="FechIng" />
+            <PropertyRef Name="Saldo" />
+            <PropertyRef Name="Credito" />
+          </Key>
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Documento" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TopeCredito" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Credito" Type="Boolean" Nullable="false" />
+          <Property Name="IDDistrito" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="IDNegocio" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Clase" Type="Byte" />
+        </EntityType>
+        <EntityType Name="Vva_ItemCp">
+          <Key>
+            <PropertyRef Name="NrDoc" />
+            <PropertyRef Name="TpDoc" />
+            <PropertyRef Name="IDProducto" />
+            <PropertyRef Name="Anulado" />
+            <PropertyRef Name="percepcion" />
+            <PropertyRef Name="detraccion" />
+            <PropertyRef Name="Signo" />
+          </Key>
+          <Property Name="NrDoc" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="TpDoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="IDProveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="IDProducto" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="TpPrecio" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="igv" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Anulado" Type="Int32" Nullable="false" />
+          <Property Name="pdscto" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="totdscto" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="percepcion" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="detraccion" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Signo" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioNeto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Descuento" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IDBonificacion" Type="Int32" />
+          <Property Name="Recargo" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Afecto" Type="Boolean" />
+          <Property Name="Bonif" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2917,6 +3083,54 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
                 <ScalarProperty Name="Vista" ColumnName="Vista" />
                 <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vva_Cliente">
+            <EntityTypeMapping TypeName="LiderAppModel.Vva_Cliente">
+              <MappingFragment StoreEntitySet="Vva_Cliente">
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="IDNegocio" ColumnName="IDNegocio" />
+                <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="TopeCredito" ColumnName="TopeCredito" />
+                <ScalarProperty Name="FechIng" ColumnName="FechIng" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vva_ItemCp">
+            <EntityTypeMapping TypeName="LiderAppModel.Vva_ItemCp">
+              <MappingFragment StoreEntitySet="Vva_ItemCp">
+                <ScalarProperty Name="Bonif" ColumnName="Bonif" />
+                <ScalarProperty Name="Afecto" ColumnName="Afecto" />
+                <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+                <ScalarProperty Name="IDBonificacion" ColumnName="IDBonificacion" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="PrecioNeto" ColumnName="PrecioNeto" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="Signo" ColumnName="Signo" />
+                <ScalarProperty Name="detraccion" ColumnName="detraccion" />
+                <ScalarProperty Name="percepcion" ColumnName="percepcion" />
+                <ScalarProperty Name="totdscto" ColumnName="totdscto" />
+                <ScalarProperty Name="pdscto" ColumnName="pdscto" />
+                <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+                <ScalarProperty Name="igv" ColumnName="igv" />
+                <ScalarProperty Name="TpPrecio" ColumnName="TpPrecio" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IDProducto" ColumnName="IDProducto" />
+                <ScalarProperty Name="IDProveedor" ColumnName="IDProveedor" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="TpDoc" ColumnName="TpDoc" />
+                <ScalarProperty Name="NrDoc" ColumnName="NrDoc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

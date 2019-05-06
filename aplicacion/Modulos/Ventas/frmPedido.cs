@@ -289,11 +289,6 @@ namespace xtraForm.Modulos.Ventas
             }
         }
 
-        private void gridControl1_DoubleClick(object sender, EventArgs e)
-        {
-            modificarToolStripMenuItem_Click(sender, e);
-        }
-
         private void descargarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (gridView1.SelectedRowsCount > 0)

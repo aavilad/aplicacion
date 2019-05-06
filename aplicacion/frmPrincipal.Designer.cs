@@ -30,283 +30,263 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.btnPedido = new DevExpress.XtraBars.BarButtonItem();
-            this.btnComprobantes = new DevExpress.XtraBars.BarButtonItem();
-            this.btnReglasBonificacion = new DevExpress.XtraBars.BarButtonItem();
-            this.ClienteBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.btnVendedor = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnExistencias = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnMarca = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnGrupos = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnLinea = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnRerportesVentas = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnReportesDistribucion = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDescargarPedidos = new DevExpress.XtraBars.BarButtonItem();
+            this.PEDIDOVENTA = new DevExpress.XtraBars.BarButtonItem();
+            this.COMPROBANTEVENTA = new DevExpress.XtraBars.BarButtonItem();
+            this.BONIFICACION = new DevExpress.XtraBars.BarButtonItem();
+            this.CLIENTES = new DevExpress.XtraBars.BarButtonItem();
+            this.VENDEDORES = new DevExpress.XtraBars.BarButtonItem();
+            this.INVENTARIOPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
+            this.EXISTENCIAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
+            this.MARCAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
+            this.GRUPOPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
+            this.LINEAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
+            this.VENTASREPORTE = new DevExpress.XtraBars.BarButtonItem();
+            this.COMPRAREPORTE = new DevExpress.XtraBars.BarButtonItem();
+            this.DISTRIBUCIONREPORTE = new DevExpress.XtraBars.BarButtonItem();
+            this.INVENTARIOREPORTE = new DevExpress.XtraBars.BarButtonItem();
+            this.DESCARGAPEDIDO = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.btnPesos = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnNotasCredito = new DevExpress.XtraBars.BarButtonItem();
-            this.btnBonificar = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.FechaProceso = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.barDockingMenuItem1 = new DevExpress.XtraBars.BarDockingMenuItem();
-            this.barMdiChildrenListItem1 = new DevExpress.XtraBars.BarMdiChildrenListItem();
-            this.barToggleSwitchItem1 = new DevExpress.XtraBars.BarToggleSwitchItem();
-            this.btnBuscar = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnOrderdecompra = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
+            this.DESCUENTO = new DevExpress.XtraBars.BarButtonItem();
+            this.NOTACREDITOVENTA = new DevExpress.XtraBars.BarButtonItem();
+            this.BONIFICAR = new DevExpress.XtraBars.BarButtonItem();
+            this.ORDENCOMPRA = new DevExpress.XtraBars.BarButtonItem();
+            this.NOTACREDITOCOMPRA = new DevExpress.XtraBars.BarButtonItem();
+            this.NOTADEBITOCOMPRA = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnCanjear = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnProductoEscala = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnValidar = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
-            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage6 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage8 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.CLASEPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
+            this.PLANTILLAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
+            this.FACTURARVENTA = new DevExpress.XtraBars.BarButtonItem();
+            this.CONTROLGENERA = new DevExpress.XtraBars.BarButtonItem();
+            this.LISTAPRECIOS = new DevExpress.XtraBars.BarButtonItem();
+            this.VALIDARBONIFICACION = new DevExpress.XtraBars.BarButtonItem();
+            this.RUTAS = new DevExpress.XtraBars.BarButtonItem();
+            this.REPARTO = new DevExpress.XtraBars.BarButtonItem();
+            this.ZONA = new DevExpress.XtraBars.BarButtonItem();
+            this.SKINMODEL = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
+            this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.G02 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.G03 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.G04 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.MCOMPRAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.COMPRAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.G001 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.MDISTRIBUCION = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.DISTRIBUCION = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.MINVENTARIOS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.INVENTARIOS = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.G021 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.G011 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.MREPORTES = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.REPORTES = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.G031 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
             // 
+            this.ribbonControl1.Categories.AddRange(new DevExpress.XtraBars.BarManagerCategory[] {
+            new DevExpress.XtraBars.BarManagerCategory("VENTAS", new System.Guid("38b9411c-051d-4729-811b-f148a16da82d")),
+            new DevExpress.XtraBars.BarManagerCategory("COMPRAS", new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460")),
+            new DevExpress.XtraBars.BarManagerCategory("SKIN", new System.Guid("367e2d27-c8ef-4234-807e-ed8f91701ee0")),
+            new DevExpress.XtraBars.BarManagerCategory("REPORTES", new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539")),
+            new DevExpress.XtraBars.BarManagerCategory("INVENTARIOS", new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520")),
+            new DevExpress.XtraBars.BarManagerCategory("DISTRIBUCION", new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2"))});
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
-            this.btnPedido,
-            this.btnComprobantes,
-            this.btnReglasBonificacion,
-            this.ClienteBtn,
-            this.btnVendedor,
-            this.barButtonItem8,
-            this.barButtonItem9,
-            this.BtnExistencias,
-            this.BtnMarca,
-            this.BtnGrupos,
-            this.BtnLinea,
-            this.BtnRerportesVentas,
-            this.barButtonItem15,
-            this.BtnReportesDistribucion,
-            this.barButtonItem17,
-            this.btnDescargarPedidos,
+            this.PEDIDOVENTA,
+            this.COMPROBANTEVENTA,
+            this.BONIFICACION,
+            this.CLIENTES,
+            this.VENDEDORES,
+            this.INVENTARIOPRODUCTO,
+            this.EXISTENCIAPRODUCTO,
+            this.MARCAPRODUCTO,
+            this.GRUPOPRODUCTO,
+            this.LINEAPRODUCTO,
+            this.VENTASREPORTE,
+            this.COMPRAREPORTE,
+            this.DISTRIBUCIONREPORTE,
+            this.INVENTARIOREPORTE,
+            this.DESCARGAPEDIDO,
             this.barButtonItem4,
             this.btnPesos,
-            this.barButtonItem6,
-            this.barButtonItem1,
-            this.btnNotasCredito,
-            this.btnBonificar,
-            this.barButtonItem3,
-            this.FechaProceso,
-            this.barButtonItem7,
-            this.barDockingMenuItem1,
-            this.barMdiChildrenListItem1,
-            this.barToggleSwitchItem1,
-            this.btnBuscar,
-            this.BtnOrderdecompra,
-            this.barButtonItem18,
-            this.barButtonItem19,
+            this.DESCUENTO,
+            this.NOTACREDITOVENTA,
+            this.BONIFICAR,
+            this.ORDENCOMPRA,
+            this.NOTACREDITOCOMPRA,
+            this.NOTADEBITOCOMPRA,
             this.barButtonItem20,
-            this.barButtonItem5,
-            this.barButtonItem10,
-            this.BtnCanjear,
-            this.barButtonItem12,
-            this.BtnProductoEscala,
-            this.BtnValidar,
-            this.barButtonItem11,
-            this.barButtonItem13,
-            this.barButtonItem14,
-            this.skinDropDownButtonItem1,
-            this.skinPaletteRibbonGalleryBarItem1});
+            this.CLASEPRODUCTO,
+            this.PLANTILLAPRODUCTO,
+            this.FACTURARVENTA,
+            this.CONTROLGENERA,
+            this.LISTAPRECIOS,
+            this.VALIDARBONIFICACION,
+            this.RUTAS,
+            this.REPARTO,
+            this.ZONA,
+            this.SKINMODEL});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 64;
+            this.ribbonControl1.MaxItemId = 2;
             this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1,
-            this.ribbonPage3,
-            this.ribbonPage4,
-            this.ribbonPage6,
-            this.ribbonPage5,
-            this.ribbonPage7,
-            this.ribbonPage8});
-            this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1);
-            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemDateEdit1,
-            this.repositoryItemDateEdit2});
+            this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
+            this.MVENTAS,
+            this.MCOMPRAS,
+            this.MDISTRIBUCION,
+            this.MINVENTARIOS,
+            this.MREPORTES});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
             this.ribbonControl1.Size = new System.Drawing.Size(977, 143);
             // 
-            // btnPedido
+            // PEDIDOVENTA
             // 
-            this.btnPedido.Caption = "Pedidos";
-            this.btnPedido.Id = 1;
-            this.btnPedido.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPedido.ImageOptions.SvgImage")));
-            this.btnPedido.Name = "btnPedido";
-            this.btnPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedido_ItemClick);
+            this.PEDIDOVENTA.Caption = "Pedidos";
+            this.PEDIDOVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.PEDIDOVENTA.Id = 1;
+            this.PEDIDOVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("PEDIDO.ImageOptions.SvgImage")));
+            this.PEDIDOVENTA.Name = "PEDIDOVENTA";
+            this.PEDIDOVENTA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedido_ItemClick);
             // 
-            // btnComprobantes
+            // COMPROBANTEVENTA
             // 
-            this.btnComprobantes.Caption = "Comprobantes";
-            this.btnComprobantes.Id = 3;
-            this.btnComprobantes.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnComprobantes.ImageOptions.SvgImage")));
-            this.btnComprobantes.Name = "btnComprobantes";
-            this.btnComprobantes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnComprobantes_ItemClick);
+            this.COMPROBANTEVENTA.Caption = "Comprobantes";
+            this.COMPROBANTEVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.COMPROBANTEVENTA.Id = 3;
+            this.COMPROBANTEVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("COMPROBANTE.ImageOptions.SvgImage")));
+            this.COMPROBANTEVENTA.Name = "COMPROBANTEVENTA";
+            this.COMPROBANTEVENTA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnComprobantes_ItemClick);
             // 
-            // btnReglasBonificacion
+            // BONIFICACION
             // 
-            this.btnReglasBonificacion.Caption = "Bonificacion";
-            this.btnReglasBonificacion.Id = 4;
-            this.btnReglasBonificacion.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReglasBonificacion.ImageOptions.SvgImage")));
-            this.btnReglasBonificacion.Name = "btnReglasBonificacion";
-            this.btnReglasBonificacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReglasBonificacion_ItemClick);
+            this.BONIFICACION.Caption = "Bonificacion";
+            this.BONIFICACION.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.BONIFICACION.Id = 4;
+            this.BONIFICACION.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BONIFICACION.ImageOptions.SvgImage")));
+            this.BONIFICACION.Name = "BONIFICACION";
+            this.BONIFICACION.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReglasBonificacion_ItemClick);
             // 
-            // ClienteBtn
+            // CLIENTES
             // 
-            this.ClienteBtn.Caption = "Clientes";
-            this.ClienteBtn.Id = 5;
-            this.ClienteBtn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ClienteBtn.ImageOptions.SvgImage")));
-            this.ClienteBtn.Name = "ClienteBtn";
-            this.ClienteBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ClienteBtn_ItemClick);
+            this.CLIENTES.Caption = "Clientes";
+            this.CLIENTES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.CLIENTES.Id = 5;
+            this.CLIENTES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CLIENTES.ImageOptions.SvgImage")));
+            this.CLIENTES.Name = "CLIENTES";
+            this.CLIENTES.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ClienteBtn_ItemClick);
             // 
-            // btnVendedor
+            // VENDEDORES
             // 
-            this.btnVendedor.Caption = "Vendedores";
-            this.btnVendedor.Id = 6;
-            this.btnVendedor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnVendedor.ImageOptions.SvgImage")));
-            this.btnVendedor.Name = "btnVendedor";
+            this.VENDEDORES.Caption = "Vendedores";
+            this.VENDEDORES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.VENDEDORES.Id = 6;
+            this.VENDEDORES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENDEDORES.ImageOptions.SvgImage")));
+            this.VENDEDORES.Name = "VENDEDORES";
             // 
-            // barButtonItem8
+            // INVENTARIOPRODUCTO
             // 
-            this.barButtonItem8.Caption = "Nuevo Inventario";
-            this.barButtonItem8.Id = 8;
-            this.barButtonItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.Image")));
-            this.barButtonItem8.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem8.ImageOptions.SvgImage")));
-            this.barButtonItem8.Name = "barButtonItem8";
+            this.INVENTARIOPRODUCTO.Caption = "Inventarios";
+            this.INVENTARIOPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.INVENTARIOPRODUCTO.Id = 9;
+            this.INVENTARIOPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem9.ImageOptions.SvgImage")));
+            this.INVENTARIOPRODUCTO.Name = "INVENTARIOPRODUCTO";
+            this.INVENTARIOPRODUCTO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
-            // barButtonItem9
+            // EXISTENCIAPRODUCTO
             // 
-            this.barButtonItem9.Caption = "Inventarios";
-            this.barButtonItem9.Id = 9;
-            this.barButtonItem9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.Image")));
-            this.barButtonItem9.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem9.ImageOptions.SvgImage")));
-            this.barButtonItem9.Name = "barButtonItem9";
+            this.EXISTENCIAPRODUCTO.Caption = "Existencias";
+            this.EXISTENCIAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.EXISTENCIAPRODUCTO.Id = 11;
+            this.EXISTENCIAPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnExistencias.ImageOptions.Image")));
+            this.EXISTENCIAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnExistencias.ImageOptions.SvgImage")));
+            this.EXISTENCIAPRODUCTO.Name = "EXISTENCIAPRODUCTO";
+            this.EXISTENCIAPRODUCTO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnExistencias_ItemClick);
             // 
-            // BtnExistencias
+            // MARCAPRODUCTO
             // 
-            this.BtnExistencias.Caption = "Existencias";
-            this.BtnExistencias.Id = 11;
-            this.BtnExistencias.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnExistencias.ImageOptions.Image")));
-            this.BtnExistencias.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnExistencias.ImageOptions.SvgImage")));
-            this.BtnExistencias.Name = "BtnExistencias";
-            this.BtnExistencias.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnExistencias_ItemClick);
+            this.MARCAPRODUCTO.Caption = "Marcas";
+            this.MARCAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.MARCAPRODUCTO.Id = 12;
+            this.MARCAPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnMarca.ImageOptions.Image")));
+            this.MARCAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnMarca.ImageOptions.SvgImage")));
+            this.MARCAPRODUCTO.Name = "MARCAPRODUCTO";
+            this.MARCAPRODUCTO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnMarca_ItemClick);
             // 
-            // BtnMarca
+            // GRUPOPRODUCTO
             // 
-            this.BtnMarca.Caption = "Marcas";
-            this.BtnMarca.Id = 12;
-            this.BtnMarca.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnMarca.ImageOptions.Image")));
-            this.BtnMarca.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnMarca.ImageOptions.SvgImage")));
-            this.BtnMarca.Name = "BtnMarca";
-            this.BtnMarca.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnMarca_ItemClick);
+            this.GRUPOPRODUCTO.Caption = "Grupos";
+            this.GRUPOPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.GRUPOPRODUCTO.Id = 13;
+            this.GRUPOPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGrupos.ImageOptions.Image")));
+            this.GRUPOPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnGrupos.ImageOptions.SvgImage")));
+            this.GRUPOPRODUCTO.Name = "GRUPOPRODUCTO";
             // 
-            // BtnGrupos
+            // LINEAPRODUCTO
             // 
-            this.BtnGrupos.Caption = "Grupos";
-            this.BtnGrupos.Id = 13;
-            this.BtnGrupos.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGrupos.ImageOptions.Image")));
-            this.BtnGrupos.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnGrupos.ImageOptions.SvgImage")));
-            this.BtnGrupos.Name = "BtnGrupos";
+            this.LINEAPRODUCTO.Caption = "Lineas";
+            this.LINEAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.LINEAPRODUCTO.Id = 14;
+            this.LINEAPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnLinea.ImageOptions.Image")));
+            this.LINEAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnLinea.ImageOptions.SvgImage")));
+            this.LINEAPRODUCTO.Name = "LINEAPRODUCTO";
             // 
-            // BtnLinea
+            // VENTASREPORTE
             // 
-            this.BtnLinea.Caption = "Lineas";
-            this.BtnLinea.Id = 14;
-            this.BtnLinea.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnLinea.ImageOptions.Image")));
-            this.BtnLinea.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnLinea.ImageOptions.SvgImage")));
-            this.BtnLinea.Name = "BtnLinea";
-            // 
-            // BtnRerportesVentas
-            // 
-            this.BtnRerportesVentas.Caption = "Ventas";
-            this.BtnRerportesVentas.Id = 15;
-            this.BtnRerportesVentas.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnRerportesVentas.ImageOptions.SvgImage")));
-            this.BtnRerportesVentas.Name = "BtnRerportesVentas";
-            this.BtnRerportesVentas.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.VENTASREPORTE.Caption = "Ventas";
+            this.VENTASREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.VENTASREPORTE.Id = 15;
+            this.VENTASREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnRerportesVentas.ImageOptions.SvgImage")));
+            this.VENTASREPORTE.Name = "VENTASREPORTE";
+            this.VENTASREPORTE.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
-            // barButtonItem15
+            // COMPRAREPORTE
             // 
-            this.barButtonItem15.Caption = "Compras";
-            this.barButtonItem15.Id = 16;
-            this.barButtonItem15.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem15.ImageOptions.SvgImage")));
-            this.barButtonItem15.Name = "barButtonItem15";
-            this.barButtonItem15.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.COMPRAREPORTE.Caption = "Compras";
+            this.COMPRAREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.COMPRAREPORTE.Id = 16;
+            this.COMPRAREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem15.ImageOptions.SvgImage")));
+            this.COMPRAREPORTE.Name = "COMPRAREPORTE";
+            this.COMPRAREPORTE.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
-            // BtnReportesDistribucion
+            // DISTRIBUCIONREPORTE
             // 
-            this.BtnReportesDistribucion.Caption = "Distribucion";
-            this.BtnReportesDistribucion.Id = 17;
-            this.BtnReportesDistribucion.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnReportesDistribucion.ImageOptions.SvgImage")));
-            this.BtnReportesDistribucion.Name = "BtnReportesDistribucion";
-            this.BtnReportesDistribucion.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.DISTRIBUCIONREPORTE.Caption = "Distribucion";
+            this.DISTRIBUCIONREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.DISTRIBUCIONREPORTE.Id = 17;
+            this.DISTRIBUCIONREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnReportesDistribucion.ImageOptions.SvgImage")));
+            this.DISTRIBUCIONREPORTE.Name = "DISTRIBUCIONREPORTE";
+            this.DISTRIBUCIONREPORTE.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.BtnReportesDistribucion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnReportesDistribucion_ItemClick);
+            this.DISTRIBUCIONREPORTE.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnReportesDistribucion_ItemClick);
             // 
-            // barButtonItem17
+            // INVENTARIOREPORTE
             // 
-            this.barButtonItem17.Caption = "Inventario";
-            this.barButtonItem17.Id = 18;
-            this.barButtonItem17.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem17.ImageOptions.SvgImage")));
-            this.barButtonItem17.Name = "barButtonItem17";
-            this.barButtonItem17.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.INVENTARIOREPORTE.Caption = "Inventario";
+            this.INVENTARIOREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.INVENTARIOREPORTE.Id = 18;
+            this.INVENTARIOREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem17.ImageOptions.SvgImage")));
+            this.INVENTARIOREPORTE.Name = "INVENTARIOREPORTE";
+            this.INVENTARIOREPORTE.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
-            // btnDescargarPedidos
+            // DESCARGAPEDIDO
             // 
-            this.btnDescargarPedidos.Caption = "Descargar Pedidos";
-            this.btnDescargarPedidos.Id = 19;
-            this.btnDescargarPedidos.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDescargarPedidos.ImageOptions.SvgImage")));
-            this.btnDescargarPedidos.Name = "btnDescargarPedidos";
-            this.btnDescargarPedidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDescargarPedidos_ItemClick);
+            this.DESCARGAPEDIDO.Caption = "Descargar Pedidos";
+            this.DESCARGAPEDIDO.Id = 19;
+            this.DESCARGAPEDIDO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDescargarPedidos.ImageOptions.SvgImage")));
+            this.DESCARGAPEDIDO.Name = "DESCARGAPEDIDO";
+            this.DESCARGAPEDIDO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDescargarPedidos_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -324,355 +304,155 @@
             this.btnPesos.Name = "btnPesos";
             this.btnPesos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPesos_ItemClick);
             // 
-            // barButtonItem6
+            // DESCUENTO
             // 
-            this.barButtonItem6.Caption = "Actualizar";
-            this.barButtonItem6.Id = 24;
-            this.barButtonItem6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem6.ImageOptions.SvgImage")));
-            this.barButtonItem6.Name = "barButtonItem6";
+            this.DESCUENTO.Caption = "Descuento";
+            this.DESCUENTO.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.DESCUENTO.Enabled = false;
+            this.DESCUENTO.Id = 25;
+            this.DESCUENTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("DESCUENTO.ImageOptions.SvgImage")));
+            this.DESCUENTO.Name = "DESCUENTO";
             // 
-            // barButtonItem1
+            // NOTACREDITOVENTA
             // 
-            this.barButtonItem1.Caption = "Descuento";
-            this.barButtonItem1.Enabled = false;
-            this.barButtonItem1.Id = 25;
-            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.NOTACREDITOVENTA.Caption = "Notas Credito";
+            this.NOTACREDITOVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.NOTACREDITOVENTA.Id = 26;
+            this.NOTACREDITOVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTACREDITO.ImageOptions.SvgImage")));
+            this.NOTACREDITOVENTA.Name = "NOTACREDITOVENTA";
+            this.NOTACREDITOVENTA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNotasCredito_ItemClick);
             // 
-            // btnNotasCredito
+            // BONIFICAR
             // 
-            this.btnNotasCredito.Caption = "Notas Credito";
-            this.btnNotasCredito.Id = 26;
-            this.btnNotasCredito.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnNotasCredito.ImageOptions.SvgImage")));
-            this.btnNotasCredito.Name = "btnNotasCredito";
-            this.btnNotasCredito.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNotasCredito_ItemClick);
+            this.BONIFICAR.Caption = "Bonificar";
+            this.BONIFICAR.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.BONIFICAR.Id = 27;
+            this.BONIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BONIFICAR.ImageOptions.SvgImage")));
+            this.BONIFICAR.Name = "BONIFICAR";
+            this.BONIFICAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBonificar_ItemClick);
             // 
-            // btnBonificar
+            // ORDENCOMPRA
             // 
-            this.btnBonificar.Caption = "Bonificar";
-            this.btnBonificar.Id = 27;
-            this.btnBonificar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBonificar.ImageOptions.SvgImage")));
-            this.btnBonificar.Name = "btnBonificar";
-            this.btnBonificar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBonificar_ItemClick);
+            this.ORDENCOMPRA.Caption = "Ordenes";
+            this.ORDENCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
+            this.ORDENCOMPRA.Id = 41;
+            this.ORDENCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnOrderdecompra.ImageOptions.SvgImage")));
+            this.ORDENCOMPRA.Name = "ORDENCOMPRA";
+            this.ORDENCOMPRA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnOrderdecompra_ItemClick);
             // 
-            // barButtonItem3
+            // NOTACREDITOCOMPRA
             // 
-            this.barButtonItem3.Caption = "barButtonItem3";
-            this.barButtonItem3.Id = 29;
-            this.barButtonItem3.Name = "barButtonItem3";
+            this.NOTACREDITOCOMPRA.Caption = "Nota Credito";
+            this.NOTACREDITOCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
+            this.NOTACREDITOCOMPRA.Id = 42;
+            this.NOTACREDITOCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem18.ImageOptions.SvgImage")));
+            this.NOTACREDITOCOMPRA.Name = "NOTACREDITOCOMPRA";
             // 
-            // FechaProceso
+            // NOTADEBITOCOMPRA
             // 
-            this.FechaProceso.Edit = this.repositoryItemDateEdit2;
-            this.FechaProceso.Id = 33;
-            this.FechaProceso.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FechaProceso.ImageOptions.SvgImage")));
-            this.FechaProceso.Name = "FechaProceso";
-            // 
-            // repositoryItemDateEdit2
-            // 
-            this.repositoryItemDateEdit2.AutoHeight = false;
-            this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "Aceptar";
-            this.barButtonItem7.Id = 34;
-            this.barButtonItem7.Name = "barButtonItem7";
-            // 
-            // barDockingMenuItem1
-            // 
-            this.barDockingMenuItem1.Caption = "barDockingMenuItem1";
-            this.barDockingMenuItem1.Id = 35;
-            this.barDockingMenuItem1.Name = "barDockingMenuItem1";
-            // 
-            // barMdiChildrenListItem1
-            // 
-            this.barMdiChildrenListItem1.Caption = "barMdiChildrenListItem1";
-            this.barMdiChildrenListItem1.Id = 37;
-            this.barMdiChildrenListItem1.Name = "barMdiChildrenListItem1";
-            // 
-            // barToggleSwitchItem1
-            // 
-            this.barToggleSwitchItem1.Caption = "barToggleSwitchItem1";
-            this.barToggleSwitchItem1.Id = 39;
-            this.barToggleSwitchItem1.Name = "barToggleSwitchItem1";
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Caption = "Bucar";
-            this.btnBuscar.Id = 40;
-            this.btnBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBuscar.ImageOptions.SvgImage")));
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBuscar_ItemClick);
-            // 
-            // BtnOrderdecompra
-            // 
-            this.BtnOrderdecompra.Caption = "Ordenes";
-            this.BtnOrderdecompra.Id = 41;
-            this.BtnOrderdecompra.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnOrderdecompra.ImageOptions.SvgImage")));
-            this.BtnOrderdecompra.Name = "BtnOrderdecompra";
-            this.BtnOrderdecompra.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnOrderdecompra_ItemClick);
-            // 
-            // barButtonItem18
-            // 
-            this.barButtonItem18.Caption = "Nota Credito";
-            this.barButtonItem18.Id = 42;
-            this.barButtonItem18.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem18.ImageOptions.SvgImage")));
-            this.barButtonItem18.Name = "barButtonItem18";
-            // 
-            // barButtonItem19
-            // 
-            this.barButtonItem19.Caption = "Nota Debito";
-            this.barButtonItem19.Id = 43;
-            this.barButtonItem19.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem19.ImageOptions.SvgImage")));
-            this.barButtonItem19.Name = "barButtonItem19";
+            this.NOTADEBITOCOMPRA.Caption = "Nota Debito";
+            this.NOTADEBITOCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
+            this.NOTADEBITOCOMPRA.Id = 43;
+            this.NOTADEBITOCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem19.ImageOptions.SvgImage")));
+            this.NOTADEBITOCOMPRA.Name = "NOTADEBITOCOMPRA";
             // 
             // barButtonItem20
             // 
             this.barButtonItem20.Caption = "Proveedor";
+            this.barButtonItem20.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
             this.barButtonItem20.Id = 44;
             this.barButtonItem20.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem20.ImageOptions.SvgImage")));
             this.barButtonItem20.Name = "barButtonItem20";
             // 
-            // barButtonItem5
+            // CLASEPRODUCTO
             // 
-            this.barButtonItem5.Caption = "Clases";
-            this.barButtonItem5.Id = 45;
-            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
-            this.barButtonItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.CLASEPRODUCTO.Caption = "Clases";
+            this.CLASEPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.CLASEPRODUCTO.Id = 45;
+            this.CLASEPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.CLASEPRODUCTO.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.CLASEPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
+            this.CLASEPRODUCTO.Name = "CLASEPRODUCTO";
             // 
-            // barButtonItem10
+            // PLANTILLAPRODUCTO
             // 
-            this.barButtonItem10.Caption = "Plantilla";
-            this.barButtonItem10.Id = 46;
-            this.barButtonItem10.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem10.ImageOptions.SvgImage")));
-            this.barButtonItem10.Name = "barButtonItem10";
+            this.PLANTILLAPRODUCTO.Caption = "Plantilla";
+            this.PLANTILLAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.PLANTILLAPRODUCTO.Id = 46;
+            this.PLANTILLAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem10.ImageOptions.SvgImage")));
+            this.PLANTILLAPRODUCTO.Name = "PLANTILLAPRODUCTO";
             // 
-            // BtnCanjear
+            // FACTURARVENTA
             // 
-            this.BtnCanjear.Caption = "Canjear";
-            this.BtnCanjear.Id = 47;
-            this.BtnCanjear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnCanjear.ImageOptions.SvgImage")));
-            this.BtnCanjear.Name = "BtnCanjear";
-            this.BtnCanjear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnCanjear_ItemClick);
+            this.FACTURARVENTA.Caption = "Canjear";
+            this.FACTURARVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.FACTURARVENTA.Id = 47;
+            this.FACTURARVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURAR.ImageOptions.SvgImage")));
+            this.FACTURARVENTA.Name = "FACTURARVENTA";
+            this.FACTURARVENTA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnCanjear_ItemClick);
             // 
-            // barButtonItem12
+            // CONTROLGENERA
             // 
-            this.barButtonItem12.Caption = "Correlativo";
-            this.barButtonItem12.Id = 48;
-            this.barButtonItem12.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem12.ImageOptions.SvgImage")));
-            this.barButtonItem12.Name = "barButtonItem12";
+            this.CONTROLGENERA.Caption = "Correlativo";
+            this.CONTROLGENERA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.CONTROLGENERA.Id = 48;
+            this.CONTROLGENERA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CONTROLGENERA.ImageOptions.SvgImage")));
+            this.CONTROLGENERA.Name = "CONTROLGENERA";
             // 
-            // BtnProductoEscala
+            // LISTAPRECIOS
             // 
-            this.BtnProductoEscala.Caption = "LIstaPrecios";
-            this.BtnProductoEscala.Id = 55;
-            this.BtnProductoEscala.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnProductoEscala.ImageOptions.SvgImage")));
-            this.BtnProductoEscala.Name = "BtnProductoEscala";
-            this.BtnProductoEscala.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnProductoEscala_ItemClick);
+            this.LISTAPRECIOS.Caption = "LIstaPrecios";
+            this.LISTAPRECIOS.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.LISTAPRECIOS.Id = 55;
+            this.LISTAPRECIOS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("LISTAPRECIOS.ImageOptions.SvgImage")));
+            this.LISTAPRECIOS.Name = "LISTAPRECIOS";
+            this.LISTAPRECIOS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnProductoEscala_ItemClick);
             // 
-            // BtnValidar
+            // VALIDARBONIFICACION
             // 
-            this.BtnValidar.Caption = "Validacion";
-            this.BtnValidar.Id = 56;
-            this.BtnValidar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnValidar.ImageOptions.SvgImage")));
-            this.BtnValidar.Name = "BtnValidar";
-            this.BtnValidar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnValidar_ItemClick);
+            this.VALIDARBONIFICACION.Caption = "Validacion";
+            this.VALIDARBONIFICACION.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.VALIDARBONIFICACION.Id = 56;
+            this.VALIDARBONIFICACION.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VALIDARBONIFICACION.ImageOptions.SvgImage")));
+            this.VALIDARBONIFICACION.Name = "VALIDARBONIFICACION";
+            this.VALIDARBONIFICACION.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnValidar_ItemClick);
             // 
-            // barButtonItem11
+            // RUTAS
             // 
-            this.barButtonItem11.Caption = "Rutas";
-            this.barButtonItem11.Id = 57;
-            this.barButtonItem11.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
-            this.barButtonItem11.Name = "barButtonItem11";
+            this.RUTAS.Caption = "Rutas";
+            this.RUTAS.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
+            this.RUTAS.Id = 57;
+            this.RUTAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
+            this.RUTAS.Name = "RUTAS";
             // 
-            // barButtonItem13
+            // REPARTO
             // 
-            this.barButtonItem13.Caption = "Reparto";
-            this.barButtonItem13.Id = 58;
-            this.barButtonItem13.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem13.ImageOptions.SvgImage")));
-            this.barButtonItem13.Name = "barButtonItem13";
+            this.REPARTO.Caption = "Reparto";
+            this.REPARTO.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
+            this.REPARTO.Id = 58;
+            this.REPARTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem13.ImageOptions.SvgImage")));
+            this.REPARTO.Name = "REPARTO";
             // 
-            // barButtonItem14
+            // ZONA
             // 
-            this.barButtonItem14.Caption = "Zona de venta";
-            this.barButtonItem14.Id = 59;
-            this.barButtonItem14.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem14.ImageOptions.SvgImage")));
-            this.barButtonItem14.Name = "barButtonItem14";
+            this.ZONA.Caption = "Zona de venta";
+            this.ZONA.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
+            this.ZONA.Id = 59;
+            this.ZONA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem14.ImageOptions.SvgImage")));
+            this.ZONA.Name = "ZONA";
             // 
-            // skinDropDownButtonItem1
+            // SKINMODEL
             // 
-            this.skinDropDownButtonItem1.Id = 62;
-            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            this.SKINMODEL.CategoryGuid = new System.Guid("367e2d27-c8ef-4234-807e-ed8f91701ee0");
+            this.SKINMODEL.Id = 62;
+            this.SKINMODEL.Name = "SKINMODEL";
             // 
-            // skinPaletteRibbonGalleryBarItem1
+            // MVENTAS
             // 
-            this.skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
-            this.skinPaletteRibbonGalleryBarItem1.Id = 63;
-            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
-            // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup9,
-            this.ribbonPageGroup11,
-            this.ribbonPageGroup12});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Modulo de ventas";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnPedido);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnComprobantes);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnNotasCredito);
-            this.ribbonPageGroup1.ItemLinks.Add(this.ClienteBtn);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnVendedor);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Entidades de ventas";
-            // 
-            // ribbonPageGroup9
-            // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.btnReglasBonificacion);
-            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup9.ItemLinks.Add(this.btnBonificar);
-            this.ribbonPageGroup9.ItemLinks.Add(this.BtnValidar);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            this.ribbonPageGroup9.Text = "Reglas de bonificacion";
-            // 
-            // ribbonPageGroup11
-            // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.BtnCanjear);
-            this.ribbonPageGroup11.ItemLinks.Add(this.barButtonItem12);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            this.ribbonPageGroup11.Text = "Facturacion de documentos";
-            // 
-            // ribbonPageGroup12
-            // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.BtnProductoEscala);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
-            this.ribbonPageGroup12.Text = "Lista de precios";
-            // 
-            // ribbonPage3
-            // 
-            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3,
-            this.ribbonPageGroup4});
-            this.ribbonPage3.Name = "ribbonPage3";
-            this.ribbonPage3.Text = "Modulo de inventarios";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem8);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem9);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Inventario";
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.BtnExistencias);
-            this.ribbonPageGroup4.ItemLinks.Add(this.BtnMarca);
-            this.ribbonPageGroup4.ItemLinks.Add(this.BtnGrupos);
-            this.ribbonPageGroup4.ItemLinks.Add(this.BtnLinea);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem5);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem10);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Entidades";
-            // 
-            // ribbonPage4
-            // 
-            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup5,
-            this.ribbonPageGroup10});
-            this.ribbonPage4.Name = "ribbonPage4";
-            this.ribbonPage4.Text = "Modulo de compras";
-            // 
-            // ribbonPageGroup5
-            // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.BtnOrderdecompra);
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem18);
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem19);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            // 
-            // ribbonPageGroup10
-            // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem20);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            this.ribbonPageGroup10.Text = "Maestro";
-            // 
-            // ribbonPage6
-            // 
-            this.ribbonPage6.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup7});
-            this.ribbonPage6.Name = "ribbonPage6";
-            this.ribbonPage6.Text = "Modulo de distribucion";
-            // 
-            // ribbonPageGroup7
-            // 
-            this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem11);
-            this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem14);
-            this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem13);
-            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            this.ribbonPageGroup7.Text = "ribbonPageGroup7";
-            // 
-            // ribbonPage5
-            // 
-            this.ribbonPage5.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup6});
-            this.ribbonPage5.Name = "ribbonPage5";
-            this.ribbonPage5.Text = "Modulo de reportes";
-            // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.BtnRerportesVentas);
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem15);
-            this.ribbonPageGroup6.ItemLinks.Add(this.BtnReportesDistribucion);
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem17);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Reportes";
-            // 
-            // ribbonPage7
-            // 
-            this.ribbonPage7.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
-            this.ribbonPage7.Name = "ribbonPage7";
-            this.ribbonPage7.Text = "Modulo Web";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnDescargarPedidos);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "aplicacion web";
-            // 
-            // ribbonPage8
-            // 
-            this.ribbonPage8.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup8});
-            this.ribbonPage8.Name = "ribbonPage8";
-            this.ribbonPage8.Text = "Modulo San Fernando";
-            // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnPesos);
-            this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem6);
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
-            this.ribbonPageGroup8.Text = "Carnes _ Pesos";
-            // 
-            // repositoryItemDateEdit1
-            // 
-            this.repositoryItemDateEdit1.AutoHeight = false;
-            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            this.MVENTAS.Name = "MVENTAS";
+            this.MVENTAS.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.VENTAS});
+            this.MVENTAS.Text = "MODULO VENTAS";
             // 
             // ribbonPage2
             // 
@@ -704,6 +484,139 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // VENTAS
+            // 
+            this.VENTAS.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.G01,
+            this.G02,
+            this.G03,
+            this.G04});
+            this.VENTAS.Name = "VENTAS";
+            this.VENTAS.Text = "VENTAS";
+            // 
+            // G01
+            // 
+            this.G01.ItemLinks.Add(this.PEDIDOVENTA);
+            this.G01.ItemLinks.Add(this.COMPROBANTEVENTA);
+            this.G01.ItemLinks.Add(this.NOTACREDITOVENTA);
+            this.G01.ItemLinks.Add(this.CLIENTES);
+            this.G01.ItemLinks.Add(this.VENDEDORES);
+            this.G01.Name = "G01";
+            this.G01.Text = "Entidades";
+            // 
+            // G02
+            // 
+            this.G02.ItemLinks.Add(this.BONIFICACION);
+            this.G02.ItemLinks.Add(this.DESCUENTO);
+            this.G02.ItemLinks.Add(this.BONIFICAR);
+            this.G02.ItemLinks.Add(this.VALIDARBONIFICACION);
+            this.G02.Name = "G02";
+            this.G02.Text = "Reglas Bonificacion";
+            // 
+            // G03
+            // 
+            this.G03.ItemLinks.Add(this.FACTURARVENTA);
+            this.G03.ItemLinks.Add(this.CONTROLGENERA);
+            this.G03.Name = "G03";
+            this.G03.Text = "Facturar Documentos";
+            // 
+            // G04
+            // 
+            this.G04.ItemLinks.Add(this.LISTAPRECIOS);
+            this.G04.Name = "G04";
+            this.G04.Text = "Lista Precios";
+            // 
+            // MCOMPRAS
+            // 
+            this.MCOMPRAS.Name = "MCOMPRAS";
+            this.MCOMPRAS.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.COMPRAS});
+            this.MCOMPRAS.Text = "MODULO COMPRAS";
+            // 
+            // COMPRAS
+            // 
+            this.COMPRAS.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.G001});
+            this.COMPRAS.Name = "COMPRAS";
+            this.COMPRAS.Text = "COMPRAS";
+            // 
+            // G001
+            // 
+            this.G001.ItemLinks.Add(this.ORDENCOMPRA);
+            this.G001.ItemLinks.Add(this.NOTACREDITOCOMPRA);
+            this.G001.ItemLinks.Add(this.NOTADEBITOCOMPRA);
+            this.G001.ItemLinks.Add(this.barButtonItem20);
+            this.G001.Name = "G001";
+            this.G001.Text = "Entidades";
+            // 
+            // MDISTRIBUCION
+            // 
+            this.MDISTRIBUCION.Name = "MDISTRIBUCION";
+            this.MDISTRIBUCION.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.DISTRIBUCION});
+            this.MDISTRIBUCION.Text = "MODULO DISTRIBUCION";
+            // 
+            // DISTRIBUCION
+            // 
+            this.DISTRIBUCION.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.G011});
+            this.DISTRIBUCION.Name = "DISTRIBUCION";
+            this.DISTRIBUCION.Text = "DISTRIBUCION";
+            // 
+            // MINVENTARIOS
+            // 
+            this.MINVENTARIOS.Name = "MINVENTARIOS";
+            this.MINVENTARIOS.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.INVENTARIOS});
+            this.MINVENTARIOS.Text = "MODULO INVENTARIOS";
+            // 
+            // INVENTARIOS
+            // 
+            this.INVENTARIOS.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.G021});
+            this.INVENTARIOS.Name = "INVENTARIOS";
+            this.INVENTARIOS.Text = "INVENTARIOS";
+            // 
+            // G021
+            // 
+            this.G021.ItemLinks.Add(this.EXISTENCIAPRODUCTO);
+            this.G021.ItemLinks.Add(this.CLASEPRODUCTO);
+            this.G021.ItemLinks.Add(this.INVENTARIOPRODUCTO);
+            this.G021.ItemLinks.Add(this.GRUPOPRODUCTO);
+            this.G021.ItemLinks.Add(this.LINEAPRODUCTO);
+            this.G021.ItemLinks.Add(this.MARCAPRODUCTO);
+            this.G021.ItemLinks.Add(this.PLANTILLAPRODUCTO);
+            this.G021.Name = "G021";
+            this.G021.Text = "ribbonPageGroup1";
+            // 
+            // G011
+            // 
+            this.G011.Name = "G011";
+            this.G011.Text = "ribbonPageGroup1";
+            // 
+            // MREPORTES
+            // 
+            this.MREPORTES.Name = "MREPORTES";
+            this.MREPORTES.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.REPORTES});
+            this.MREPORTES.Text = "MODULO REPORTES";
+            // 
+            // REPORTES
+            // 
+            this.REPORTES.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.G031});
+            this.REPORTES.Name = "REPORTES";
+            this.REPORTES.Text = "REPORTES";
+            // 
+            // G031
+            // 
+            this.G031.ItemLinks.Add(this.COMPRAREPORTE);
+            this.G031.ItemLinks.Add(this.DISTRIBUCIONREPORTE);
+            this.G031.ItemLinks.Add(this.INVENTARIOREPORTE);
+            this.G031.ItemLinks.Add(this.VENTASREPORTE);
+            this.G031.Name = "G031";
+            this.G031.Text = "ribbonPageGroup1";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -716,10 +629,6 @@
             this.Ribbon = this.ribbonControl1;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -729,74 +638,61 @@
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
-        private DevExpress.XtraBars.BarButtonItem btnPedido;
-        private DevExpress.XtraBars.BarButtonItem btnComprobantes;
+        private DevExpress.XtraBars.BarButtonItem PEDIDOVENTA;
+        private DevExpress.XtraBars.BarButtonItem COMPROBANTEVENTA;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem btnReglasBonificacion;
-        private DevExpress.XtraBars.BarButtonItem ClienteBtn;
-        private DevExpress.XtraBars.BarButtonItem btnVendedor;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        private DevExpress.XtraBars.BarButtonItem BtnExistencias;
-        private DevExpress.XtraBars.BarButtonItem BtnMarca;
-        private DevExpress.XtraBars.BarButtonItem BtnGrupos;
-        private DevExpress.XtraBars.BarButtonItem BtnLinea;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
-        private DevExpress.XtraBars.BarButtonItem BtnRerportesVentas;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
-        private DevExpress.XtraBars.BarButtonItem BtnReportesDistribucion;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem17;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage6;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarButtonItem BONIFICACION;
+        private DevExpress.XtraBars.BarButtonItem CLIENTES;
+        private DevExpress.XtraBars.BarButtonItem VENDEDORES;
+        private DevExpress.XtraBars.BarButtonItem INVENTARIOPRODUCTO;
+        private DevExpress.XtraBars.BarButtonItem EXISTENCIAPRODUCTO;
+        private DevExpress.XtraBars.BarButtonItem MARCAPRODUCTO;
+        private DevExpress.XtraBars.BarButtonItem GRUPOPRODUCTO;
+        private DevExpress.XtraBars.BarButtonItem LINEAPRODUCTO;
+        private DevExpress.XtraBars.BarButtonItem VENTASREPORTE;
+        private DevExpress.XtraBars.BarButtonItem COMPRAREPORTE;
+        private DevExpress.XtraBars.BarButtonItem DISTRIBUCIONREPORTE;
+        private DevExpress.XtraBars.BarButtonItem INVENTARIOREPORTE;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraBars.BarButtonItem btnDescargarPedidos;
+        private DevExpress.XtraBars.BarButtonItem DESCARGAPEDIDO;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem btnPesos;
-        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage7;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage8;
-        private DevExpress.XtraBars.BarButtonItem btnNotasCredito;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
-        private DevExpress.XtraBars.BarButtonItem btnBonificar;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private DevExpress.XtraBars.BarDockingMenuItem barDockingMenuItem1;
-        private DevExpress.XtraBars.BarButtonItem btnBuscar;
-        private DevExpress.XtraBars.BarMdiChildrenListItem barMdiChildrenListItem1;
-        private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItem1;
-        public DevExpress.XtraBars.BarEditItem FechaProceso;
-        private DevExpress.XtraBars.BarButtonItem BtnOrderdecompra;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem18;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem19;
+        private DevExpress.XtraBars.BarButtonItem DESCUENTO;
+        private DevExpress.XtraBars.BarButtonItem NOTACREDITOVENTA;
+        private DevExpress.XtraBars.BarButtonItem BONIFICAR;
+        private DevExpress.XtraBars.BarButtonItem ORDENCOMPRA;
+        private DevExpress.XtraBars.BarButtonItem NOTACREDITOCOMPRA;
+        private DevExpress.XtraBars.BarButtonItem NOTADEBITOCOMPRA;
         private DevExpress.XtraBars.BarButtonItem barButtonItem20;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.BarButtonItem BtnCanjear;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
-        private DevExpress.XtraBars.BarButtonItem BtnProductoEscala;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
-        private DevExpress.XtraBars.BarButtonItem BtnValidar;
+        private DevExpress.XtraBars.BarButtonItem CLASEPRODUCTO;
+        private DevExpress.XtraBars.BarButtonItem PLANTILLAPRODUCTO;
+        private DevExpress.XtraBars.BarButtonItem FACTURARVENTA;
+        private DevExpress.XtraBars.BarButtonItem CONTROLGENERA;
+        private DevExpress.XtraBars.BarButtonItem LISTAPRECIOS;
+        private DevExpress.XtraBars.BarButtonItem VALIDARBONIFICACION;
         public DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
-        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
-        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
+        private DevExpress.XtraBars.BarButtonItem RUTAS;
+        private DevExpress.XtraBars.BarButtonItem REPARTO;
+        private DevExpress.XtraBars.BarButtonItem ZONA;
+        private DevExpress.XtraBars.SkinDropDownButtonItem SKINMODEL;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory MVENTAS;
+        private DevExpress.XtraBars.Ribbon.RibbonPage VENTAS;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup G01;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup G02;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup G03;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup G04;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory MCOMPRAS;
+        private DevExpress.XtraBars.Ribbon.RibbonPage COMPRAS;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup G001;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory MDISTRIBUCION;
+        private DevExpress.XtraBars.Ribbon.RibbonPage DISTRIBUCION;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup G011;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory MINVENTARIOS;
+        private DevExpress.XtraBars.Ribbon.RibbonPage INVENTARIOS;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup G021;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory MREPORTES;
+        private DevExpress.XtraBars.Ribbon.RibbonPage REPORTES;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup G031;
     }
 }

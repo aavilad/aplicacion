@@ -1014,22 +1014,6 @@ namespace xtraForm.Modulos.Elementos
                 dataGridView1.BeginEdit(true);
             }
         }
-
-        private void dateEmision_Validated(object sender, EventArgs e)
-        {
-            if (dateEmision.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(dateEmision, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
-        }
-
-        private void dateEntrega_Validated(object sender, EventArgs e)
-        {
-            if (dateEntrega.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(dateEntrega, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
-        }
         void formapago(string Codigo, string condicion)
         {
             txtformaPago.Text = condicion;
@@ -1045,7 +1029,6 @@ namespace xtraForm.Modulos.Elementos
         private void frmpedido_Load(object sender, EventArgs e)
         {
             dataGridView1.RowTemplate.Height = 18;
-            dxErrorProvider1.ClearErrors();
         }
 
         private void txtcdAlmacen_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -1058,14 +1041,6 @@ namespace xtraForm.Modulos.Elementos
             formato.Grilla(frmalmacen.gridView1);
             frmalmacen.StartPosition = FormStartPosition.CenterScreen;
             frmalmacen.ShowDialog();
-        }
-
-        private void txtcdAlmacen_Validated(object sender, EventArgs e)
-        {
-            if (txtcdAlmacen.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(txtcdAlmacen, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
         }
 
         private void txtcdCLiente_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -1138,14 +1113,6 @@ namespace xtraForm.Modulos.Elementos
                         MessageBox.Show("Codigo no existe");
                 else
                     MessageBox.Show("pedido no cuenta con datos de vendedor");
-        }
-
-        private void txtcdCLiente_Validated(object sender, EventArgs e)
-        {
-            if (txtcdCLiente.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(txtcdCLiente, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
         }
 
         private void txtcdVendedor_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -1257,14 +1224,6 @@ namespace xtraForm.Modulos.Elementos
             }
         }
 
-        private void txtcdVendedor_Validated(object sender, EventArgs e)
-        {
-            if (txtcdVendedor.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(txtcdVendedor, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
-        }
-
         private void txtdocCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
             entidad.tabla = "cliente";
@@ -1319,22 +1278,6 @@ namespace xtraForm.Modulos.Elementos
                     MessageBox.Show("pedido no cuenta con datos de vendedor");
         }
 
-        private void txtdocCliente_Validated(object sender, EventArgs e)
-        {
-            if (txtdocCliente.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(txtdocCliente, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
-        }
-
-        private void txtnmAlmacen_Validated(object sender, EventArgs e)
-        {
-            if (txtnmAlmacen.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(txtnmAlmacen, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
-        }
-
         private void txtnmCliente_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e) => txtcdCLiente_ButtonClick(sender, e);
 
         private void txtnmCliente_KeyPress(object sender, KeyPressEventArgs e)
@@ -1384,14 +1327,6 @@ namespace xtraForm.Modulos.Elementos
                     MessageBox.Show("Codigo no existe");
         }
 
-        private void txtnmCliente_Validated(object sender, EventArgs e)
-        {
-            if (txtnmCliente.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(txtnmCliente, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
-        }
-
         private void txtnmVendedor_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             entidad.tabla = "vendedor";
@@ -1437,14 +1372,6 @@ namespace xtraForm.Modulos.Elementos
                     MessageBox.Show("Codigo no existe");
         }
 
-        private void txtnmVendedor_Validated(object sender, EventArgs e)
-        {
-            if (txtnmVendedor.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(txtnmVendedor, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
-        }
-
         private void txttipoDocumento_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             entidad.tabla = "tipodocumento";
@@ -1455,14 +1382,6 @@ namespace xtraForm.Modulos.Elementos
             formato.Grilla(frmtipodocumento.gridView1);
             frmtipodocumento.ShowDialog();
 
-        }
-
-        private void txttipoDocumento_Validated(object sender, EventArgs e)
-        {
-            if (txttipoDocumento.Text.Trim() == string.Empty)
-                dxErrorProvider1.SetError(txttipoDocumento, "Introducir inforacion");
-            else
-                dxErrorProvider1.ClearErrors();
         }
         #region Enlazados:
         void camposproducto(string codigo, string descripcion, string unidad)

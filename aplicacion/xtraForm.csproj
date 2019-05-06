@@ -385,6 +385,12 @@
     <Compile Include="Model\VistaReporte.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Vva_Cliente.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vva_ItemCp.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Vva_ItemPedido.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
@@ -535,11 +541,11 @@
     <Compile Include="Modulos\Ventas\frmMaestroDetalle.Designer.cs">
       <DependentUpon>frmMaestroDetalle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Ventas\frmNotasCredito.cs">
+    <Compile Include="Modulos\Ventas\frmNotaCredito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Ventas\frmNotasCredito.Designer.cs">
-      <DependentUpon>frmNotasCredito.cs</DependentUpon>
+    <Compile Include="Modulos\Ventas\frmNotaCredito.Designer.cs">
+      <DependentUpon>frmNotaCredito.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmPedido.cs">
       <SubType>Form</SubType>
@@ -690,8 +696,8 @@
     <EmbeddedResource Include="Modulos\Ventas\frmMaestroDetalle.resx">
       <DependentUpon>frmMaestroDetalle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Ventas\frmNotasCredito.resx">
-      <DependentUpon>frmNotasCredito.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Ventas\frmNotaCredito.resx">
+      <DependentUpon>frmNotaCredito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmPedido.resx">
       <DependentUpon>frmPedido.cs</DependentUpon>

@@ -42,7 +42,7 @@
         <EntityTypeShape EntityType="LiderAppModel.categoria" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="LiderAppModel.CLIENTE" Width="1.5" PointX="4.875" PointY="7" />
         <AssociationConnector Association="LiderAppModel.FK_CLIENTE_Distrito" />
-        <EntityTypeShape EntityType="LiderAppModel.Vva_ItemPedido" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_ItemPedido" Width="1.5" PointX="3.375" PointY="2.25" />
         <EntityTypeShape EntityType="LiderAppModel.Reporte" Width="1.5" PointX="15.375" PointY="5.25" />
         <EntityTypeShape EntityType="LiderAppModel.TipoReporte" Width="1.5" PointX="11.25" PointY="7.625" />
         <EntityTypeShape EntityType="LiderAppModel.VistaReporte" Width="1.5" PointX="12.875" PointY="6" />
@@ -63,6 +63,8 @@
         <EntityTypeShape EntityType="LiderAppModel.Modulo" Width="1.5" PointX="10.375" PointY="18" />
         <EntityTypeShape EntityType="LiderAppModel.VistaAdministrativa" Width="1.5" PointX="12.625" PointY="18.25" />
         <AssociationConnector Association="LiderAppModel.FK_VistaAdministrativa_Modulo" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_Cliente" Width="1.5" PointX="20.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LiderAppModel.Vva_ItemCp" Width="1.5" PointX="20.375" PointY="5.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

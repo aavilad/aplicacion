@@ -29,19 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule6 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule6 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule7 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.txtcdDocumento = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -105,7 +107,6 @@
             this.btnImportar = new DevExpress.XtraEditors.SimpleButton();
             this.btnConsultar = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.btnPrecio = new DevExpress.XtraEditors.SimpleButton();
             this.btnCredito = new DevExpress.XtraEditors.CheckButton();
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
@@ -122,11 +123,11 @@
             this.txtnmDistrito = new DevExpress.XtraEditors.TextEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.txtnmProvincia = new DevExpress.XtraEditors.TextEdit();
+            this.txtnmDireccion = new DevExpress.XtraEditors.ButtonEdit();
             this.txtcdGestion = new DevExpress.XtraEditors.TextEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.txtformaPago = new DevExpress.XtraEditors.LabelControl();
             this.CodigoFP = new DevExpress.XtraEditors.LabelControl();
-            this.txtnmDireccion = new DevExpress.XtraEditors.ButtonEdit();
             this.btnFueraRuta = new DevExpress.XtraEditors.CheckButton();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtcdDocumento.Properties)).BeginInit();
@@ -154,7 +155,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtValorRecargo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtValorImporteTotal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservacion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabDetalle.SuspendLayout();
             this.tabReparto.SuspendLayout();
@@ -164,8 +164,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtnmZona.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmDistrito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmProvincia.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcdGestion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmDireccion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcdGestion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,7 +204,6 @@
             this.txttipoDocumento.Size = new System.Drawing.Size(198, 20);
             this.txttipoDocumento.TabIndex = 17;
             this.txttipoDocumento.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txttipoDocumento_ButtonClick);
-            this.txttipoDocumento.Validated += new System.EventHandler(this.txttipoDocumento_Validated);
             // 
             // dataGridView1
             // 
@@ -212,14 +211,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -237,23 +236,23 @@
             this.Credito,
             this.Afecto,
             this.IDBonificacion});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Calibri", 8.25F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.LightCyan;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(817, 246);
             this.dataGridView1.TabIndex = 4;
@@ -278,9 +277,9 @@
             // 
             // Cantidad
             // 
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0.00";
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0.00";
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle2;
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
@@ -309,9 +308,9 @@
             // 
             // PrecioUnitario
             // 
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0.00";
-            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0.00";
+            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle3;
             this.PrecioUnitario.HeaderText = "PrecioUnit";
             this.PrecioUnitario.Name = "PrecioUnitario";
             this.PrecioUnitario.ReadOnly = true;
@@ -326,9 +325,9 @@
             // 
             // Total
             // 
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = "0.00";
-            this.Total.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0.00";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle4;
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
@@ -336,9 +335,9 @@
             // 
             // Descuento
             // 
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.NullValue = "0.00";
-            this.Descuento.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0.00";
+            this.Descuento.DefaultCellStyle = dataGridViewCellStyle5;
             this.Descuento.HeaderText = "Descuento";
             this.Descuento.Name = "Descuento";
             this.Descuento.ReadOnly = true;
@@ -346,9 +345,9 @@
             // 
             // Recargo
             // 
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = "0.00";
-            this.Recargo.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0.00";
+            this.Recargo.DefaultCellStyle = dataGridViewCellStyle6;
             this.Recargo.HeaderText = "Recargo";
             this.Recargo.Name = "Recargo";
             this.Recargo.ReadOnly = true;
@@ -395,10 +394,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtnmVendedor.Size = new System.Drawing.Size(198, 20);
             this.txtnmVendedor.TabIndex = 2;
-            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule6.ErrorText = "Nombre de vendedor no puede estar vacio";
-            conditionValidationRule6.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.txtnmVendedor, conditionValidationRule6);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Nombre de vendedor no puede estar vacio";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtnmVendedor, conditionValidationRule1);
             this.txtnmVendedor.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtnmVendedor_ButtonClick);
             this.txtnmVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnmVendedor_KeyPress);
             // 
@@ -410,10 +409,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtcdVendedor.Size = new System.Drawing.Size(65, 20);
             this.txtcdVendedor.TabIndex = 0;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "Codigo de vendedor no puede estar vacio";
-            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.txtcdVendedor, conditionValidationRule1);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "Codigo de vendedor no puede estar vacio";
+            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtcdVendedor, conditionValidationRule2);
             this.txtcdVendedor.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtcdVendedor_ButtonClick);
             this.txtcdVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcdVendedor_KeyPress);
             // 
@@ -425,10 +424,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtnmCliente.Size = new System.Drawing.Size(198, 20);
             this.txtnmCliente.TabIndex = 4;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "Nombre de cliente no puede estar vacio";
-            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.txtnmCliente, conditionValidationRule2);
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "Nombre de cliente no puede estar vacio";
+            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtnmCliente, conditionValidationRule3);
             this.txtnmCliente.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtnmCliente_ButtonClick);
             this.txtnmCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnmCliente_KeyPress);
             // 
@@ -440,10 +439,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtcdCLiente.Size = new System.Drawing.Size(65, 20);
             this.txtcdCLiente.TabIndex = 3;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "Codigo de cliente no puede estar en blanco";
-            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.txtcdCLiente, conditionValidationRule3);
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule4.ErrorText = "Codigo de cliente no puede estar en blanco";
+            conditionValidationRule4.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtcdCLiente, conditionValidationRule4);
             this.txtcdCLiente.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtcdCLiente_ButtonClick);
             this.txtcdCLiente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcdCLiente_KeyPress);
             // 
@@ -482,6 +481,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEmision.Size = new System.Drawing.Size(96, 20);
             this.dateEmision.TabIndex = 17;
+            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.NotEquals;
+            conditionValidationRule5.ErrorText = "Fecha no debe estar vacia.";
+            conditionValidationRule5.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.dateEmision, conditionValidationRule5);
             // 
             // dateEntrega
             // 
@@ -494,6 +497,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEntrega.Size = new System.Drawing.Size(96, 20);
             this.dateEntrega.TabIndex = 18;
+            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.NotEquals;
+            conditionValidationRule6.ErrorText = "Fecha no puede estar vacio.";
+            conditionValidationRule6.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.dateEntrega, conditionValidationRule6);
             // 
             // labelControl5
             // 
@@ -815,10 +822,6 @@
             this.labelControl15.TabIndex = 47;
             this.labelControl15.Text = "Observaciones_";
             // 
-            // dxErrorProvider1
-            // 
-            this.dxErrorProvider1.ContainerControl = this;
-            // 
             // btnPrecio
             // 
             this.btnPrecio.Location = new System.Drawing.Point(501, 399);
@@ -968,6 +971,15 @@
             this.txtnmProvincia.Size = new System.Drawing.Size(220, 20);
             this.txtnmProvincia.TabIndex = 0;
             // 
+            // txtnmDireccion
+            // 
+            this.txtnmDireccion.Location = new System.Drawing.Point(99, 24);
+            this.txtnmDireccion.Name = "txtnmDireccion";
+            this.txtnmDireccion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtnmDireccion.Size = new System.Drawing.Size(287, 20);
+            this.txtnmDireccion.TabIndex = 6;
+            // 
             // txtcdGestion
             // 
             this.txtcdGestion.EditValue = "01";
@@ -978,10 +990,10 @@
             this.txtcdGestion.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.txtcdGestion.Size = new System.Drawing.Size(56, 20);
             this.txtcdGestion.TabIndex = 52;
-            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule4.ErrorText = "Gestion no puede estar vacio.";
-            conditionValidationRule4.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.txtcdGestion, conditionValidationRule4);
+            conditionValidationRule7.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule7.ErrorText = "Gestion no puede estar vacio.";
+            conditionValidationRule7.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.txtcdGestion, conditionValidationRule7);
             // 
             // labelControl20
             // 
@@ -1012,15 +1024,6 @@
             this.CodigoFP.TabIndex = 55;
             this.CodigoFP.Text = "CodigoFP";
             this.CodigoFP.Visible = false;
-            // 
-            // txtnmDireccion
-            // 
-            this.txtnmDireccion.Location = new System.Drawing.Point(99, 24);
-            this.txtnmDireccion.Name = "txtnmDireccion";
-            this.txtnmDireccion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtnmDireccion.Size = new System.Drawing.Size(287, 20);
-            this.txtnmDireccion.TabIndex = 6;
             // 
             // btnFueraRuta
             // 
@@ -1125,7 +1128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtValorRecargo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtValorImporteTotal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservacion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabDetalle.ResumeLayout(false);
             this.tabReparto.ResumeLayout(false);
@@ -1136,8 +1138,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtnmZona.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmDistrito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmProvincia.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtcdGestion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnmDireccion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtcdGestion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1176,7 +1178,6 @@
         private DevExpress.XtraEditors.SimpleButton btnImportar;
         private DevExpress.XtraEditors.SimpleButton btnConsultar;
         private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.SimpleButton btnPrecio;
         private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialog1;
         public System.Windows.Forms.DataGridView dataGridView1;

@@ -64,6 +64,8 @@ namespace xtraForm.Model
         public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
         public virtual DbSet<Modulo> Modulo { get; set; }
         public virtual DbSet<VistaAdministrativa> VistaAdministrativa { get; set; }
+        public virtual DbSet<Vva_Cliente> Vva_Cliente { get; set; }
+        public virtual DbSet<Vva_ItemCp> Vva_ItemCp { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {

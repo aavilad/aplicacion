@@ -224,11 +224,12 @@ namespace xtraForm
             {
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
-                objeto = new Modulos.Ventas.frmNotasCredito
+                objeto = new Modulos.Ventas.frmNotaCredito
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill
+                    Dock = DockStyle.Fill,
+                    //Modulo = ribb/*onControl1.Pages.fiel*/
                 };
                 xtraTabControl1.TabPages.Add(pedidos);
                 xtraTabControl1.SelectedTabPage = pedidos;
@@ -472,6 +473,11 @@ namespace xtraForm
 
         private void BtnReportesDistribucion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
