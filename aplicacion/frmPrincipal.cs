@@ -38,7 +38,8 @@ namespace xtraForm
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill
+                    Dock = DockStyle.Fill,
+                    NModulo = e.Item.Name,
                 };
                 xtraTabControl1.TabPages.Add(promocion);
                 xtraTabControl1.SelectedTabPage = promocion;
@@ -82,7 +83,8 @@ namespace xtraForm
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill
+                    Dock = DockStyle.Fill,
+                    NModulo = e.Item.Name,
                 };
                 xtraTabControl1.TabPages.Add(pedidos);
                 xtraTabControl1.SelectedTabPage = pedidos;
@@ -199,7 +201,8 @@ namespace xtraForm
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill
+                    Dock = DockStyle.Fill,
+                    NModulo = e.Item.Name,
                 };
                 xtraTabControl1.TabPages.Add(pedidos);
                 xtraTabControl1.SelectedTabPage = pedidos;
@@ -471,13 +474,33 @@ namespace xtraForm
             }
         }
 
-        private void BtnReportesDistribucion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void DISTRIBUCIONREPORTE_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-        }
+            bool existe = false;
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == "Reportes de distribucion")
+                {
 
-        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    existe = true;
+                }
+            if (!existe)
+            {
+                XtraTabPage pedidos = new XtraTabPage();
+                entidad.index = 0;
+                objeto = new Modulos.Reportes.Modulos.Distribucion.frmDistribucion
+                {
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill
+                };
+                xtraTabControl1.TabPages.Add(pedidos);
+                xtraTabControl1.SelectedTabPage = pedidos;
+                pedidos.Text = "Reportes de distribucion";
+                entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                pedidos.Controls.Add(objeto);
+                objeto.Show();
+            }
         }
     }
 }

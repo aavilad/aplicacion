@@ -28,10 +28,10 @@ namespace xtraForm.Model
         public decimal percepcion { get; set; }
         public decimal detraccion { get; set; }
         public int Signo { get; set; }
+        public Nullable<int> IDBonificacion { get; set; }
         public Nullable<decimal> PrecioUnitario { get; set; }
         public Nullable<decimal> PrecioNeto { get; set; }
         public Nullable<decimal> Descuento { get; set; }
-        public Nullable<int> IDBonificacion { get; set; }
         public Nullable<decimal> Recargo { get; set; }
         public Nullable<bool> Afecto { get; set; }
         public Nullable<bool> Bonif { get; set; }

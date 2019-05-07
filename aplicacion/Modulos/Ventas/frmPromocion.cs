@@ -11,6 +11,7 @@ namespace xtraForm.Modulos.Ventas
 {
     public partial class frmPromocion : DevExpress.XtraEditors.XtraForm
     {
+        public string NModulo;
         Libreria.maestroBonif_Reglas ejecutar_ = new Libreria.maestroBonif_Reglas();
         Libreria.Ejecutar ejecutar = new Libreria.Ejecutar();
         Libreria.Bonificacion bonificacion = new Libreria.Bonificacion();
@@ -56,7 +57,7 @@ namespace xtraForm.Modulos.Ventas
         {
             using (var Context = new Model.LiderAppEntities())
             {
-                string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == 7).Select(a => a.Vista.Trim()).FirstOrDefault());
+                string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == (Context.Modulo.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
                 {
                     proceso.consultar(Query, tabla);

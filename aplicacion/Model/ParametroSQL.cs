@@ -12,15 +12,13 @@ namespace xtraForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class REPARTO
+    public partial class ParametroSQL
     {
         public int PKID { get; set; }
-        public string Ruta { get; set; }
-        public int Dia { get; set; }
-        public string Personal { get; set; }
-        public bool Activo { get; set; }
+        public int IDVistaReporte { get; set; }
+        public string Campo { get; set; }
+        public string TipoDato { get; set; }
     
-        public virtual PERSONAL PERSONAL1 { get; set; }
-        public virtual RUTAS RUTAS { get; set; }
+        public virtual VistaReporte VistaReporte { get; set; }
     }
 }

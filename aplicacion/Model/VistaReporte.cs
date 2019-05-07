@@ -17,12 +17,16 @@ namespace xtraForm.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VistaReporte()
         {
+            this.ParametroSQL = new HashSet<ParametroSQL>();
             this.Reporte = new HashSet<Reporte>();
         }
     
         public int PKID { get; set; }
-        public string Vista { get; set; }
+        public string Comando { get; set; }
+        public System.Guid Registro { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ParametroSQL> ParametroSQL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reporte> Reporte { get; set; }
     }

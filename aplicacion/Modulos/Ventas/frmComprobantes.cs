@@ -9,6 +9,7 @@ namespace xtraForm.Modulos.Elementos
     public partial class frmComprobantes : DevExpress.XtraEditors.XtraForm
     {
         string tabla = "Vva_Cp";
+        public string NModulo;
         Libreria.Entidad entidad = new Libreria.Entidad();
         Libreria.Proceso proceso = new Libreria.Proceso();
         Libreria.Maestra maestro = new Libreria.Maestra();
@@ -56,7 +57,7 @@ namespace xtraForm.Modulos.Elementos
         {
             using (var Context = new Model.LiderAppEntities())
             {
-                string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == 3).Select(a => a.Vista.Trim()).FirstOrDefault());
+                string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == (Context.Modulo.Where(a=>a.Nombre == NModulo).Select(b=>b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
                 {
                     proceso.consultar(Query, tabla);

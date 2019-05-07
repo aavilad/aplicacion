@@ -313,6 +313,15 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
           <Property Name="Nivel" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="ParametroSQL">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="IDVistaReporte" Type="int" Nullable="false" />
+          <Property Name="Campo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TipoDato" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
             <PropertyRef Name="Pedido" />
@@ -491,6 +500,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
           <Property Name="Ruta" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Dia" Type="int" Nullable="false" />
           <Property Name="Personal" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Reporte">
           <Key>
@@ -537,7 +547,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.FiltroConfiguracion' no tiene 
             <PropertyRef Name="PKID" />
           </Key>
           <Property Name="PKID" Type="int" Nullable="false" />
-          <Property Name="Vista" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Comando" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Registro" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="ZONA">
           <Key>
@@ -613,10 +624,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_ItemCp' no tiene definida 
           <Property Name="percepcion" Type="numeric" Precision="8" Scale="2" Nullable="false" />
           <Property Name="detraccion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Signo" Type="int" Nullable="false" />
+          <Property Name="IDBonificacion" Type="int" />
           <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" />
           <Property Name="PrecioNeto" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Descuento" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="IDBonificacion" Type="int" />
           <Property Name="Recargo" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Afecto" Type="bit" />
           <Property Name="Bonif" Type="bit" />
@@ -887,6 +898,18 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ParametroSQL_VistaReporte">
+          <End Role="VistaReporte" Type="Self.VistaReporte" Multiplicity="1" />
+          <End Role="ParametroSQL" Type="Self.ParametroSQL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VistaReporte">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="ParametroSQL">
+              <PropertyRef Name="IDVistaReporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PEDIDO_FORMAPAGO">
           <End Role="FORMAPAGO" Type="Self.FORMAPAGO" Multiplicity="1" />
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
@@ -1002,6 +1025,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <EntitySet Name="LINEA" EntityType="Self.LINEA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParametroSQL" EntityType="Self.ParametroSQL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlantillaUnidad" EntityType="Self.PlantillaUnidad" Schema="dbo" store:Type="Tables" />
@@ -1069,10 +1093,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
     [Vva_ItemCp].[percepcion] AS [percepcion], 
     [Vva_ItemCp].[detraccion] AS [detraccion], 
     [Vva_ItemCp].[Signo] AS [Signo], 
+    [Vva_ItemCp].[IDBonificacion] AS [IDBonificacion], 
     [Vva_ItemCp].[PrecioUnitario] AS [PrecioUnitario], 
     [Vva_ItemCp].[PrecioNeto] AS [PrecioNeto], 
     [Vva_ItemCp].[Descuento] AS [Descuento], 
-    [Vva_ItemCp].[IDBonificacion] AS [IDBonificacion], 
     [Vva_ItemCp].[Recargo] AS [Recargo], 
     [Vva_ItemCp].[Afecto] AS [Afecto], 
     [Vva_ItemCp].[Bonif] AS [Bonif]
@@ -1208,6 +1232,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <End Role="LINEA" EntitySet="LINEA" />
             <End Role="MARCA" EntitySet="MARCA" />
           </AssociationSet>
+          <AssociationSet Name="FK_ParametroSQL_VistaReporte" Association="Self.FK_ParametroSQL_VistaReporte">
+            <End Role="VistaReporte" EntitySet="VistaReporte" />
+            <End Role="ParametroSQL" EntitySet="ParametroSQL" />
+          </AssociationSet>
           <AssociationSet Name="FK_PEDIDO_FORMAPAGO" Association="Self.FK_PEDIDO_FORMAPAGO">
             <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
@@ -1335,17 +1363,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <EntitySet Name="Vva_ItemPedido" EntityType="LiderAppModel.Vva_ItemPedido" />
-          <EntitySet Name="Reporte" EntityType="LiderAppModel.Reporte" />
           <EntitySet Name="TipoReporte" EntityType="LiderAppModel.TipoReporte" />
-          <EntitySet Name="VistaReporte" EntityType="LiderAppModel.VistaReporte" />
-          <AssociationSet Name="FK_Reporte_TipoReporte" Association="LiderAppModel.FK_Reporte_TipoReporte">
-            <End Role="TipoReporte" EntitySet="TipoReporte" />
-            <End Role="Reporte" EntitySet="Reporte" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reporte_VistaReporte" Association="LiderAppModel.FK_Reporte_VistaReporte">
-            <End Role="VistaReporte" EntitySet="VistaReporte" />
-            <End Role="Reporte" EntitySet="Reporte" />
-          </AssociationSet>
           <EntitySet Name="Vva_Producto" EntityType="LiderAppModel.Vva_Producto" />
           <EntitySet Name="grupo" EntityType="LiderAppModel.grupo" />
           <EntitySet Name="Gestion" EntityType="LiderAppModel.Gestion" />
@@ -1383,6 +1401,21 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           </AssociationSet>
           <EntitySet Name="Vva_Cliente" EntityType="LiderAppModel.Vva_Cliente" />
           <EntitySet Name="Vva_ItemCp" EntityType="LiderAppModel.Vva_ItemCp" />
+          <EntitySet Name="ParametroSQL" EntityType="LiderAppModel.ParametroSQL" />
+          <EntitySet Name="Reporte" EntityType="LiderAppModel.Reporte" />
+          <EntitySet Name="VistaReporte" EntityType="LiderAppModel.VistaReporte" />
+          <AssociationSet Name="FK_ParametroSQL_VistaReporte" Association="LiderAppModel.FK_ParametroSQL_VistaReporte">
+            <End Role="VistaReporte" EntitySet="VistaReporte" />
+            <End Role="ParametroSQL" EntitySet="ParametroSQL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reporte_TipoReporte" Association="LiderAppModel.FK_Reporte_TipoReporte">
+            <End Role="TipoReporte" EntitySet="TipoReporte" />
+            <End Role="Reporte" EntitySet="Reporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reporte_VistaReporte" Association="LiderAppModel.FK_Reporte_VistaReporte">
+            <End Role="VistaReporte" EntitySet="VistaReporte" />
+            <End Role="Reporte" EntitySet="Reporte" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -2066,21 +2099,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="Recargo" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Afecto" Type="Decimal" Precision="10" Scale="2" />
         </EntityType>
-        <EntityType Name="Reporte">
-          <Key>
-            <PropertyRef Name="PKID" />
-          </Key>
-          <Property Name="PKID" Type="Int32" Nullable="false" />
-          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IDVistaReporte" Type="Int32" Nullable="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <Property Name="IDUsuarioConfiguracion" Type="Int32" Nullable="false" />
-          <Property Name="Tipo" Type="Int32" Nullable="false" />
-          <Property Name="Registro" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="TipoReporte" Relationship="LiderAppModel.FK_Reporte_TipoReporte" FromRole="Reporte" ToRole="TipoReporte" />
-          <NavigationProperty Name="VistaReporte" Relationship="LiderAppModel.FK_Reporte_VistaReporte" FromRole="Reporte" ToRole="VistaReporte" />
-        </EntityType>
         <EntityType Name="TipoReporte">
           <Key>
             <PropertyRef Name="PKID" />
@@ -2091,38 +2109,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Reporte" Relationship="LiderAppModel.FK_Reporte_TipoReporte" FromRole="TipoReporte" ToRole="Reporte" />
         </EntityType>
-        <EntityType Name="VistaReporte">
-          <Key>
-            <PropertyRef Name="PKID" />
-          </Key>
-          <Property Name="PKID" Type="Int32" Nullable="false" />
-          <Property Name="Vista" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Reporte" Relationship="LiderAppModel.FK_Reporte_VistaReporte" FromRole="VistaReporte" ToRole="Reporte" />
-        </EntityType>
-        <Association Name="FK_Reporte_TipoReporte">
-          <End Type="LiderAppModel.TipoReporte" Role="TipoReporte" Multiplicity="1" />
-          <End Type="LiderAppModel.Reporte" Role="Reporte" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoReporte">
-              <PropertyRef Name="PKID" />
-            </Principal>
-            <Dependent Role="Reporte">
-              <PropertyRef Name="Tipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reporte_VistaReporte">
-          <End Type="LiderAppModel.VistaReporte" Role="VistaReporte" Multiplicity="1" />
-          <End Type="LiderAppModel.Reporte" Role="Reporte" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VistaReporte">
-              <PropertyRef Name="PKID" />
-            </Principal>
-            <Dependent Role="Reporte">
-              <PropertyRef Name="IDVistaReporte" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Vva_Producto">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -2286,6 +2272,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="Personal" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PERSONAL1" Relationship="LiderAppModel.FK_REPARTO_PERSONAL" FromRole="REPARTO" ToRole="PERSONAL" />
           <NavigationProperty Name="RUTAS" Relationship="LiderAppModel.FK_REPARTO_RUTAS" FromRole="REPARTO" ToRole="RUTAS" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_REPARTO_PERSONAL">
           <End Type="LiderAppModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
@@ -2404,14 +2391,85 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="percepcion" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
           <Property Name="detraccion" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
           <Property Name="Signo" Type="Int32" Nullable="false" />
+          <Property Name="IDBonificacion" Type="Int32" />
           <Property Name="PrecioUnitario" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="PrecioNeto" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Descuento" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="IDBonificacion" Type="Int32" />
           <Property Name="Recargo" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Afecto" Type="Boolean" />
           <Property Name="Bonif" Type="Boolean" />
         </EntityType>
+        <EntityType Name="ParametroSQL">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="IDVistaReporte" Type="Int32" Nullable="false" />
+          <Property Name="Campo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDato" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VistaReporte" Relationship="LiderAppModel.FK_ParametroSQL_VistaReporte" FromRole="ParametroSQL" ToRole="VistaReporte" />
+        </EntityType>
+        <EntityType Name="Reporte">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDVistaReporte" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="IDUsuarioConfiguracion" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="Registro" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="TipoReporte" Relationship="LiderAppModel.FK_Reporte_TipoReporte" FromRole="Reporte" ToRole="TipoReporte" />
+          <NavigationProperty Name="VistaReporte" Relationship="LiderAppModel.FK_Reporte_VistaReporte" FromRole="Reporte" ToRole="VistaReporte" />
+        </EntityType>
+        <EntityType Name="VistaReporte">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Comando" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Registro" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ParametroSQL" Relationship="LiderAppModel.FK_ParametroSQL_VistaReporte" FromRole="VistaReporte" ToRole="ParametroSQL" />
+          <NavigationProperty Name="Reporte" Relationship="LiderAppModel.FK_Reporte_VistaReporte" FromRole="VistaReporte" ToRole="Reporte" />
+        </EntityType>
+        <Association Name="FK_ParametroSQL_VistaReporte">
+          <End Type="LiderAppModel.VistaReporte" Role="VistaReporte" Multiplicity="1" />
+          <End Type="LiderAppModel.ParametroSQL" Role="ParametroSQL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VistaReporte">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="ParametroSQL">
+              <PropertyRef Name="IDVistaReporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reporte_TipoReporte">
+          <End Type="LiderAppModel.TipoReporte" Role="TipoReporte" Multiplicity="1" />
+          <End Type="LiderAppModel.Reporte" Role="Reporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoReporte">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="Reporte">
+              <PropertyRef Name="Tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reporte_VistaReporte">
+          <End Type="LiderAppModel.VistaReporte" Role="VistaReporte" Multiplicity="1" />
+          <End Type="LiderAppModel.Reporte" Role="Reporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VistaReporte">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="Reporte">
+              <PropertyRef Name="IDVistaReporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2905,34 +2963,12 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reporte">
-            <EntityTypeMapping TypeName="LiderAppModel.Reporte">
-              <MappingFragment StoreEntitySet="Reporte">
-                <ScalarProperty Name="Registro" ColumnName="Registro" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="IDUsuarioConfiguracion" ColumnName="IDUsuarioConfiguracion" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="IDVistaReporte" ColumnName="IDVistaReporte" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="PKID" ColumnName="PKID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TipoReporte">
             <EntityTypeMapping TypeName="LiderAppModel.TipoReporte">
               <MappingFragment StoreEntitySet="TipoReporte">
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="PKID" ColumnName="PKID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VistaReporte">
-            <EntityTypeMapping TypeName="LiderAppModel.VistaReporte">
-              <MappingFragment StoreEntitySet="VistaReporte">
-                <ScalarProperty Name="Vista" ColumnName="Vista" />
                 <ScalarProperty Name="PKID" ColumnName="PKID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3046,6 +3082,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <EntitySetMapping Name="REPARTO">
             <EntityTypeMapping TypeName="LiderAppModel.REPARTO">
               <MappingFragment StoreEntitySet="REPARTO">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="Personal" ColumnName="Personal" />
                 <ScalarProperty Name="Dia" ColumnName="Dia" />
                 <ScalarProperty Name="Ruta" ColumnName="Ruta" />
@@ -3113,10 +3150,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="Bonif" ColumnName="Bonif" />
                 <ScalarProperty Name="Afecto" ColumnName="Afecto" />
                 <ScalarProperty Name="Recargo" ColumnName="Recargo" />
-                <ScalarProperty Name="IDBonificacion" ColumnName="IDBonificacion" />
                 <ScalarProperty Name="Descuento" ColumnName="Descuento" />
                 <ScalarProperty Name="PrecioNeto" ColumnName="PrecioNeto" />
                 <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="IDBonificacion" ColumnName="IDBonificacion" />
                 <ScalarProperty Name="Signo" ColumnName="Signo" />
                 <ScalarProperty Name="detraccion" ColumnName="detraccion" />
                 <ScalarProperty Name="percepcion" ColumnName="percepcion" />
@@ -3131,6 +3168,39 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="TpDoc" ColumnName="TpDoc" />
                 <ScalarProperty Name="NrDoc" ColumnName="NrDoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParametroSQL">
+            <EntityTypeMapping TypeName="LiderAppModel.ParametroSQL">
+              <MappingFragment StoreEntitySet="ParametroSQL">
+                <ScalarProperty Name="TipoDato" ColumnName="TipoDato" />
+                <ScalarProperty Name="Campo" ColumnName="Campo" />
+                <ScalarProperty Name="IDVistaReporte" ColumnName="IDVistaReporte" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reporte">
+            <EntityTypeMapping TypeName="LiderAppModel.Reporte">
+              <MappingFragment StoreEntitySet="Reporte">
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="IDUsuarioConfiguracion" ColumnName="IDUsuarioConfiguracion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDVistaReporte" ColumnName="IDVistaReporte" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VistaReporte">
+            <EntityTypeMapping TypeName="LiderAppModel.VistaReporte">
+              <MappingFragment StoreEntitySet="VistaReporte">
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Comando" ColumnName="Comando" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

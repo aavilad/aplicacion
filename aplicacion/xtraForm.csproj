@@ -33,7 +33,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\Compilacion\Aplicacion\</OutputPath>
+    <OutputPath>..\..\..\..\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>0</WarningLevel>
@@ -53,6 +53,10 @@
     <StartupObject>xtraForm.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Data.18.1.6\lib\net40\DevExpress.Data.v18.1.dll</HintPath>
@@ -97,6 +101,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -122,16 +127,12 @@
       <HintPath>..\packages\ProgressBar.1.0.10\lib\ProgressBar.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
@@ -349,6 +350,9 @@
     <Compile Include="Model\Modulo.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ParametroSQL.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\PEDIDO.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
@@ -492,6 +496,24 @@
     </Compile>
     <Compile Include="Modulos\Inventario\frmMarca.Designer.cs">
       <DependentUpon>frmMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Elementos\frmParametros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Elementos\frmParametros.Designer.cs">
+      <DependentUpon>frmParametros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Elementos\frmReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Elementos\frmReportView.Designer.cs">
+      <DependentUpon>frmReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.Designer.cs">
+      <DependentUpon>frmDistribucion.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
@@ -672,6 +694,15 @@
     <EmbeddedResource Include="Modulos\Inventario\frmMarca.resx">
       <DependentUpon>frmMarca.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Elementos\frmParametros.resx">
+      <DependentUpon>frmParametros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Elementos\frmReportView.resx">
+      <DependentUpon>frmReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.resx">
+      <DependentUpon>frmDistribucion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -745,7 +776,6 @@
     <Folder Include="Filtros\Bonificacion\" />
     <Folder Include="Modulos\Reportes\Elementos\Distribucion\" />
     <Folder Include="Modulos\Reportes\Elementos\Ventas\" />
-    <Folder Include="Modulos\Reportes\Modulos\Distribucion\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

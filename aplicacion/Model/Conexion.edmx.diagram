@@ -43,11 +43,7 @@
         <EntityTypeShape EntityType="LiderAppModel.CLIENTE" Width="1.5" PointX="4.875" PointY="7" />
         <AssociationConnector Association="LiderAppModel.FK_CLIENTE_Distrito" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_ItemPedido" Width="1.5" PointX="3.375" PointY="2.25" />
-        <EntityTypeShape EntityType="LiderAppModel.Reporte" Width="1.5" PointX="15.375" PointY="5.25" />
         <EntityTypeShape EntityType="LiderAppModel.TipoReporte" Width="1.5" PointX="11.25" PointY="7.625" />
-        <EntityTypeShape EntityType="LiderAppModel.VistaReporte" Width="1.5" PointX="12.875" PointY="6" />
-        <AssociationConnector Association="LiderAppModel.FK_Reporte_TipoReporte" />
-        <AssociationConnector Association="LiderAppModel.FK_Reporte_VistaReporte" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_Producto" Width="1.5" PointX="17.75" PointY="0.75" />
         <EntityTypeShape EntityType="LiderAppModel.grupo" Width="1.5" PointX="10.375" PointY="10.75" />
         <EntityTypeShape EntityType="LiderAppModel.Gestion" Width="1.5" PointX="12.375" PointY="0.75" />
@@ -65,6 +61,12 @@
         <AssociationConnector Association="LiderAppModel.FK_VistaAdministrativa_Modulo" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_Cliente" Width="1.5" PointX="20.375" PointY="0.75" />
         <EntityTypeShape EntityType="LiderAppModel.Vva_ItemCp" Width="1.5" PointX="20.375" PointY="5.75" />
+        <EntityTypeShape EntityType="LiderAppModel.ParametroSQL" Width="1.5" PointX="15.125" PointY="2.125" />
+        <EntityTypeShape EntityType="LiderAppModel.Reporte" Width="1.5" PointX="13" PointY="3.25" />
+        <EntityTypeShape EntityType="LiderAppModel.VistaReporte" Width="1.5" PointX="15.25" PointY="5.25" />
+        <AssociationConnector Association="LiderAppModel.FK_ParametroSQL_VistaReporte" />
+        <AssociationConnector Association="LiderAppModel.FK_Reporte_TipoReporte" />
+        <AssociationConnector Association="LiderAppModel.FK_Reporte_VistaReporte" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

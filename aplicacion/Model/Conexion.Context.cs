@@ -51,9 +51,7 @@ namespace xtraForm.Model
         public virtual DbSet<categoria> categoria { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<Vva_ItemPedido> Vva_ItemPedido { get; set; }
-        public virtual DbSet<Reporte> Reporte { get; set; }
         public virtual DbSet<TipoReporte> TipoReporte { get; set; }
-        public virtual DbSet<VistaReporte> VistaReporte { get; set; }
         public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
         public virtual DbSet<grupo> grupo { get; set; }
         public virtual DbSet<Gestion> Gestion { get; set; }
@@ -66,6 +64,9 @@ namespace xtraForm.Model
         public virtual DbSet<VistaAdministrativa> VistaAdministrativa { get; set; }
         public virtual DbSet<Vva_Cliente> Vva_Cliente { get; set; }
         public virtual DbSet<Vva_ItemCp> Vva_ItemCp { get; set; }
+        public virtual DbSet<ParametroSQL> ParametroSQL { get; set; }
+        public virtual DbSet<Reporte> Reporte { get; set; }
+        public virtual DbSet<VistaReporte> VistaReporte { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {
