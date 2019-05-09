@@ -29,11 +29,8 @@ namespace xtraForm.Model
     
         public virtual DbSet<FORMAPAGO> FORMAPAGO { get; set; }
         public virtual DbSet<DETPEDIDO> DETPEDIDO { get; set; }
-        public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
         public virtual DbSet<provincia> provincia { get; set; }
         public virtual DbSet<Distrito> Distrito { get; set; }
-        public virtual DbSet<Filtro> Filtro { get; set; }
-        public virtual DbSet<FiltroConfiguracion> FiltroConfiguracion { get; set; }
         public virtual DbSet<Clase_Producto> Clase_Producto { get; set; }
         public virtual DbSet<PlantillaUnidad> PlantillaUnidad { get; set; }
         public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
@@ -69,6 +66,9 @@ namespace xtraForm.Model
         public virtual DbSet<PERSONAL> PERSONAL { get; set; }
         public virtual DbSet<REPARTO> REPARTO { get; set; }
         public virtual DbSet<Vva_ListadoPorRuta> Vva_ListadoPorRuta { get; set; }
+        public virtual DbSet<FiltroConfiguracion> FiltroConfiguracion { get; set; }
+        public virtual DbSet<Filtro> Filtro { get; set; }
+        public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {

@@ -20,8 +20,8 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
 
         private void frm1_Load(object sender, EventArgs e)
         {
-
-    
+            //rptListadoPorRutas rpt = new rptListadoPorRutas();
+            
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)

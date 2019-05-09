@@ -20,5 +20,7 @@ namespace xtraForm.Model
         public string valor { get; set; }
         public string union { get; set; }
         public string tabla { get; set; }
+    
+        public virtual FiltroConfiguracion FiltroConfiguracion { get; set; }
     }
 }

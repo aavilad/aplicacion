@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
 {
-    public partial class frmcs : DevExpress.XtraReports.UI.XtraReport
+    public partial class rptListadoPorRutas : DevExpress.XtraReports.UI.XtraReport
     {
-        public frmcs()
+        public rptListadoPorRutas()
         {
             InitializeComponent();
         }

@@ -522,17 +522,17 @@
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\frm1.Designer.cs">
       <DependentUpon>frm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmcs.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmcs.Designer.cs">
-      <DependentUpon>frmcs.cs</DependentUpon>
-    </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.Designer.cs">
       <DependentUpon>frmDistribucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\rptListadoPorRutas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\rptListadoPorRutas.Designer.cs">
+      <DependentUpon>rptListadoPorRutas.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
@@ -716,11 +716,11 @@
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frm1.resx">
       <DependentUpon>frm1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frmcs.resx">
-      <DependentUpon>frmcs.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.resx">
       <DependentUpon>frmDistribucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\rptListadoPorRutas.resx">
+      <DependentUpon>rptListadoPorRutas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>

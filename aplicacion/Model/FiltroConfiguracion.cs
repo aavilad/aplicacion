@@ -14,9 +14,18 @@ namespace xtraForm.Model
     
     public partial class FiltroConfiguracion
     {
-        public System.Guid PKID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FiltroConfiguracion()
+        {
+            this.Filtro = new HashSet<Filtro>();
+        }
+    
+        public System.Guid Registro { get; set; }
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
         public string Tipo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Filtro> Filtro { get; set; }
     }
 }

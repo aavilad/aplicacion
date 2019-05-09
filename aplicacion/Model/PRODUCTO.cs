@@ -92,5 +92,7 @@ namespace xtraForm.Model
         public virtual MARCA MARCA1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETADOC> DETADOC { get; set; }
+        public virtual Clase_Producto Clase_Producto1 { get; set; }
+        public virtual PlantillaUnidad PlantillaUnidad { get; set; }
     }
 }
