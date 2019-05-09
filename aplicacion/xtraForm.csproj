@@ -58,6 +58,7 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Data.18.1.6\lib\net40\DevExpress.Data.v18.1.dll</HintPath>
     </Reference>
@@ -67,10 +68,12 @@
     <Reference Include="DevExpress.ExpressApp.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Mvvm.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Persistent.Base.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Export, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.SpellChecker.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Spreadsheet.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -82,12 +85,14 @@
     <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraDialogs.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraNavBar.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPivotGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v18.1.Extensions, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -135,6 +140,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
@@ -307,7 +315,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Conexion.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\ConsolidadoPorRuta_Result.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Departamento.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DETADOC.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DETPEDIDO.cs">
@@ -398,6 +412,9 @@
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vva_ItemPedido.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vva_ListadoPorRuta.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vva_Pedido.cs">
@@ -499,17 +516,17 @@
     <Compile Include="Modulos\Inventario\frmMarca.Designer.cs">
       <DependentUpon>frmMarca.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Elementos\frmParametros.cs">
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Reportes\Elementos\frmParametros.Designer.cs">
-      <DependentUpon>frmParametros.cs</DependentUpon>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frm1.Designer.cs">
+      <DependentUpon>frm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Elementos\frmReportView.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmcs.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulos\Reportes\Elementos\frmReportView.Designer.cs">
-      <DependentUpon>frmReportView.cs</DependentUpon>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmcs.Designer.cs">
+      <DependentUpon>frmcs.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.cs">
       <SubType>Form</SubType>
@@ -696,11 +713,11 @@
     <EmbeddedResource Include="Modulos\Inventario\frmMarca.resx">
       <DependentUpon>frmMarca.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Elementos\frmParametros.resx">
-      <DependentUpon>frmParametros.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frm1.resx">
+      <DependentUpon>frm1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Elementos\frmReportView.resx">
-      <DependentUpon>frmReportView.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frmcs.resx">
+      <DependentUpon>frmcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.resx">
       <DependentUpon>frmDistribucion.cs</DependentUpon>
@@ -776,8 +793,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filtros\Bonificacion\" />
-    <Folder Include="Modulos\Reportes\Elementos\Distribucion\" />
-    <Folder Include="Modulos\Reportes\Elementos\Ventas\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
@@ -794,6 +809,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Conexion.Context.tt">

@@ -18,6 +18,7 @@ namespace xtraForm.Model
         public PRODUCTO()
         {
             this.DETPEDIDO = new HashSet<DETPEDIDO>();
+            this.DETADOC = new HashSet<DETADOC>();
         }
     
         public string Producto1 { get; set; }
@@ -88,8 +89,8 @@ namespace xtraForm.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETPEDIDO> DETPEDIDO { get; set; }
-        public virtual LINEA LINEA1 { get; set; }
-        public virtual PlantillaUnidad PlantillaUnidad { get; set; }
         public virtual MARCA MARCA1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETADOC> DETADOC { get; set; }
     }
 }

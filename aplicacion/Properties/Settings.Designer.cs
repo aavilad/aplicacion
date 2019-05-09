@@ -33,5 +33,16 @@ namespace xtraForm.Properties {
                 return ((string)(this["Lider2018ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=srvlider;Initial Catalog=Lider2018;Persist Security Info=True;User ID" +
+            "=mineria;Password=0211")]
+        public string datasets {
+            get {
+                return ((string)(this["datasets"]));
+            }
+        }
     }
 }

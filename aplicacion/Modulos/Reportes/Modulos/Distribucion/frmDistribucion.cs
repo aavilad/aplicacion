@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using DevExpress.XtraEditors;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,25 +35,14 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
                 gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             }
         }
-
+        string sql;
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
             using (var Context = new Model.LiderAppEntities())
             {
-                var frmparametro = new Reportes.Elementos.frmParametros();
-                var IDReporte = Convert.ToInt32(gridView1.GetFocusedRowCellValue("ID"));
-                var IDVista = (Context.Reporte.Where(y => y.PKID == IDReporte).Select(z => z.IDVistaReporte)).FirstOrDefault();
-                var sql = Context.VistaReporte.Where(x => x.PKID == IDVista).Select(t => t.Comando).FirstOrDefault();
-                var parametros = Context.ParametroSQL.Where(x => x.IDVistaReporte == IDVista).Select(p=>new { Campo = p.Campo,Tipo=p.TipoDato}).ToList();
-                //foreach (var fila in parametros)
-                //{
-                //    frmparametro.dataGridView1.Rows.Add(fila.Campo,fila.TipoDato);
-                //}
-                frmparametro.Show();
-                
-
+                var vista = new Reportes.Modulos.Distribucion.frm1();
+                vista.Show();
             }
-
         }
     }
 }

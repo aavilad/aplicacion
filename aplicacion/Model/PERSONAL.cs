@@ -17,8 +17,9 @@ namespace xtraForm.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PERSONAL()
         {
-            this.ZONA_PERSONAL = new HashSet<ZONA_PERSONAL>();
+            this.DOCUMENTO = new HashSet<DOCUMENTO>();
             this.PEDIDO = new HashSet<PEDIDO>();
+            this.ZONA_PERSONAL = new HashSet<ZONA_PERSONAL>();
             this.REPARTO = new HashSet<REPARTO>();
         }
     
@@ -40,14 +41,17 @@ namespace xtraForm.Model
         public string fzavtas { get; set; }
         public bool novedad { get; set; }
         public bool dms { get; set; }
-        public decimal pcuota { get; set; }
         public decimal pparticipa { get; set; }
+        public decimal pcuota { get; set; }
         public string supercodigo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
+        public virtual ICollection<DOCUMENTO> DOCUMENTO { get; set; }
+        public virtual FuerzaVentas FuerzaVentas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REPARTO> REPARTO { get; set; }
     }

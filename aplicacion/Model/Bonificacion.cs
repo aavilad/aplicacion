@@ -18,6 +18,7 @@ namespace xtraForm.Model
         public Bonificacion()
         {
             this.ItemBonificacion = new HashSet<ItemBonificacion>();
+            this.DETADOC = new HashSet<DETADOC>();
         }
     
         public int PKID { get; set; }
@@ -40,5 +41,7 @@ namespace xtraForm.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemBonificacion> ItemBonificacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETADOC> DETADOC { get; set; }
     }
 }

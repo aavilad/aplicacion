@@ -480,7 +480,6 @@ namespace xtraForm
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
                 if (xtraTabControl1.TabPages[i].Text == "Reportes de distribucion")
                 {
-
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }

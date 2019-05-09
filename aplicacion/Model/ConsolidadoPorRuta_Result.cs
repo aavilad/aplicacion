@@ -10,16 +10,17 @@
 namespace xtraForm.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ZONA_PERSONAL
+    public partial class ConsolidadoPorRuta_Result
     {
+        public string NombreEmpresa { get; set; }
+        public string NombreProveedor { get; set; }
+        public string CodigoProducto { get; set; }
+        public string DescripcionProducto { get; set; }
+        public string UnidadProducto { get; set; }
+        public Nullable<decimal> CantidadProducto { get; set; }
+        public string Vendedor { get; set; }
+        public Nullable<int> Orden { get; set; }
         public string Zona { get; set; }
-        public string Personal { get; set; }
-        public Nullable<System.DateTime> Dia { get; set; }
-        public byte Numero { get; set; }
-    
-        public virtual ZONA ZONA1 { get; set; }
-        public virtual PERSONAL PERSONAL1 { get; set; }
     }
 }

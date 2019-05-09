@@ -14,6 +14,12 @@ namespace xtraForm.Model
     
     public partial class DOCUMENTO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DOCUMENTO()
+        {
+            this.DETADOC = new HashSet<DETADOC>();
+        }
+    
         public string Documento1 { get; set; }
         public string TipoDoc { get; set; }
         public string Personal { get; set; }
@@ -61,6 +67,11 @@ namespace xtraForm.Model
         public decimal detraccion { get; set; }
         public Nullable<decimal> ivap { get; set; }
     
+        public virtual CLIENTE CLIENTE1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETADOC> DETADOC { get; set; }
         public virtual DOCTIPO DOCTIPO { get; set; }
+        public virtual Gestion Gestion1 { get; set; }
+        public virtual PERSONAL PERSONAL1 { get; set; }
     }
 }

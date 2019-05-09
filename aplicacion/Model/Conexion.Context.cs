@@ -33,33 +33,25 @@ namespace xtraForm.Model
         public virtual DbSet<provincia> provincia { get; set; }
         public virtual DbSet<Distrito> Distrito { get; set; }
         public virtual DbSet<Filtro> Filtro { get; set; }
-        public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
         public virtual DbSet<FiltroConfiguracion> FiltroConfiguracion { get; set; }
         public virtual DbSet<Clase_Producto> Clase_Producto { get; set; }
         public virtual DbSet<PlantillaUnidad> PlantillaUnidad { get; set; }
         public virtual DbSet<Vva_Vendedor> Vva_Vendedor { get; set; }
         public virtual DbSet<Bonificacion> Bonificacion { get; set; }
         public virtual DbSet<ItemBonificacion> ItemBonificacion { get; set; }
-        public virtual DbSet<PERSONAL> PERSONAL { get; set; }
         public virtual DbSet<Departamento> Departamento { get; set; }
         public virtual DbSet<LINEA> LINEA { get; set; }
-        public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
         public virtual DbSet<DOCTIPO> DOCTIPO { get; set; }
-        public virtual DbSet<DOCUMENTO> DOCUMENTO { get; set; }
         public virtual DbSet<PEDIDO> PEDIDO { get; set; }
-        public virtual DbSet<MARCA> MARCA { get; set; }
         public virtual DbSet<categoria> categoria { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<Vva_ItemPedido> Vva_ItemPedido { get; set; }
         public virtual DbSet<TipoReporte> TipoReporte { get; set; }
         public virtual DbSet<Vva_Producto> Vva_Producto { get; set; }
         public virtual DbSet<grupo> grupo { get; set; }
-        public virtual DbSet<Gestion> Gestion { get; set; }
         public virtual DbSet<Vva_Pedido> Vva_Pedido { get; set; }
         public virtual DbSet<RUTAS> RUTAS { get; set; }
         public virtual DbSet<ZONA> ZONA { get; set; }
-        public virtual DbSet<REPARTO> REPARTO { get; set; }
-        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
         public virtual DbSet<Modulo> Modulo { get; set; }
         public virtual DbSet<VistaAdministrativa> VistaAdministrativa { get; set; }
         public virtual DbSet<Vva_Cliente> Vva_Cliente { get; set; }
@@ -67,6 +59,16 @@ namespace xtraForm.Model
         public virtual DbSet<ParametroSQL> ParametroSQL { get; set; }
         public virtual DbSet<Reporte> Reporte { get; set; }
         public virtual DbSet<VistaReporte> VistaReporte { get; set; }
+        public virtual DbSet<MARCA> MARCA { get; set; }
+        public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
+        public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
+        public virtual DbSet<DETADOC> DETADOC { get; set; }
+        public virtual DbSet<DOCUMENTO> DOCUMENTO { get; set; }
+        public virtual DbSet<Gestion> Gestion { get; set; }
+        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
+        public virtual DbSet<PERSONAL> PERSONAL { get; set; }
+        public virtual DbSet<REPARTO> REPARTO { get; set; }
+        public virtual DbSet<Vva_ListadoPorRuta> Vva_ListadoPorRuta { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {
@@ -126,6 +128,24 @@ namespace xtraForm.Model
                 new ObjectParameter("tdoc", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_genera_documento", pedidoParameter, tipoParameter, tdocParameter);
+        }
+    
+        [DbFunction("LiderAppEntities", "ConsolidadoPorRuta")]
+        public virtual IQueryable<ConsolidadoPorRuta_Result> ConsolidadoPorRuta(Nullable<System.DateTime> fecha, string ruta, string gestion)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            var rutaParameter = ruta != null ?
+                new ObjectParameter("Ruta", ruta) :
+                new ObjectParameter("Ruta", typeof(string));
+    
+            var gestionParameter = gestion != null ?
+                new ObjectParameter("Gestion", gestion) :
+                new ObjectParameter("Gestion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ConsolidadoPorRuta_Result>("[LiderAppEntities].[ConsolidadoPorRuta](@Fecha, @Ruta, @Gestion)", fechaParameter, rutaParameter, gestionParameter);
         }
     }
 }

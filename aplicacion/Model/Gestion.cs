@@ -14,10 +14,19 @@ namespace xtraForm.Model
     
     public partial class Gestion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Gestion()
+        {
+            this.DOCUMENTO = new HashSet<DOCUMENTO>();
+        }
+    
         public int PKID { get; set; }
         public string codigo { get; set; }
         public string descripcion { get; set; }
         public bool activa { get; set; }
         public System.DateTime Fecha { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DOCUMENTO> DOCUMENTO { get; set; }
     }
 }
