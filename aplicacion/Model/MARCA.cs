@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class MARCA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +19,14 @@ namespace xtraForm.Model
         {
             this.PRODUCTO = new HashSet<PRODUCTO>();
         }
-    
+
         public string Marca1 { get; set; }
         public string Proveedor { get; set; }
         public string Linea { get; set; }
         public string Descripcion { get; set; }
         public string Descorta { get; set; }
         public string Orden { get; set; }
-    
+
         public virtual LINEA LINEA1 { get; set; }
         public virtual PROVEEDOR PROVEEDOR1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -22,7 +22,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void frmCliente_Load(object sender, EventArgs e)

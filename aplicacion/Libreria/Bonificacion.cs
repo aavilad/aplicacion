@@ -12,7 +12,7 @@ namespace xtraForm.Libreria
         public string Mecanica { get; set; }
         public int TipoMecanica { get; set; }
         public string CodigoTipoMecanica { get; set; }
-        public string  DescripcionTipoMecanica { get; set; }
+        public string DescripcionTipoMecanica { get; set; }
         public string CodigoObsequio { get; set; }
         public decimal CantidadMinima { get; set; }
         public int CantidadMaxima { get; set; }
@@ -30,6 +30,6 @@ namespace xtraForm.Libreria
         public string IdItemBonificacion { get; set; }
         public int IdAsociado { get; set; }
         public string CodigoAsociado { get; set; }
-        
+
     }
 }

@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class DETADOC
     {
         public string Documento { get; set; }
@@ -41,7 +41,7 @@ namespace xtraForm.Model
         public Nullable<decimal> Recargo { get; set; }
         public Nullable<bool> Afecto { get; set; }
         public Nullable<bool> Bonif { get; set; }
-    
+
         public virtual PRODUCTO PRODUCTO1 { get; set; }
         public virtual Bonificacion Bonificacion { get; set; }
         public virtual DOCUMENTO DOCUMENTO1 { get; set; }

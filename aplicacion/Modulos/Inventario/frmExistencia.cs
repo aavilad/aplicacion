@@ -137,7 +137,7 @@ namespace xtraForm.Modulos.Inventario
                 Art.CodAlterno = CodigoProducto;
                 Art.Peso = ProductoPeso;
                 Art.Costo = (decimal)0.00;
-                Art.UniMed = Context.PlantillaUnidad.Where(x=>x.PKID == ProductoMedida).Select(p=>p.Abreviacion.Trim()).FirstOrDefault();
+                Art.UniMed = Context.PlantillaUnidad.Where(x => x.PKID == ProductoMedida).Select(p => p.Abreviacion.Trim()).FirstOrDefault();
                 Art.Activo = ProductoActivo;
                 Art.Unidades = 1;
                 Art.StockMal = (decimal)0.00;
@@ -348,8 +348,8 @@ namespace xtraForm.Modulos.Inventario
                     frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
                     frmmensage.dataGridView1.Columns[0].HeaderText = "Producto";
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
-                    frmmensage.dataGridView1.Columns[2].HeaderText = "";
-                    frmmensage.dataGridView1.Columns[3].HeaderText = "";
+                    frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+                    frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                     frmmensage.Show();
                     frmmensage.splashScreenManager1.ShowWaitForm();
                     foreach (var fila in gridView1.GetSelectedRows())

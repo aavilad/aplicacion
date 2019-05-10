@@ -1,6 +1,5 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using DevExpress.XtraEditors;
-using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

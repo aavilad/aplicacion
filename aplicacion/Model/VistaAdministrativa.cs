@@ -11,14 +11,14 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class VistaAdministrativa
     {
         public int PKID { get; set; }
         public string Vista { get; set; }
         public int IDModulo { get; set; }
         public System.Guid Registro { get; set; }
-    
+
         public virtual Modulo Modulo { get; set; }
     }
 }

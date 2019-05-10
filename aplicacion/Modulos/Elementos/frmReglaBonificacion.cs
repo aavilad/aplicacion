@@ -6,7 +6,7 @@ namespace xtraForm.Modulos.Elementos
 {
     public partial class frmReglaBonificacion : DevExpress.XtraEditors.XtraForm
     {
-        public delegate void variable(int PKID ,string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente,
+        public delegate void variable(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente,
             decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, DataGridView dgv);
         public event variable pasar;
         Libreria.Proceso proceso = new Libreria.Proceso();

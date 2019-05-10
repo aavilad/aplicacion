@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class RUTAS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +19,12 @@ namespace xtraForm.Model
         {
             this.REPARTO = new HashSet<REPARTO>();
         }
-    
+
         public string codigo { get; set; }
         public string descripcion { get; set; }
         public string IDRutaVendedor { get; set; }
         public Nullable<bool> Activo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REPARTO> REPARTO { get; set; }
     }

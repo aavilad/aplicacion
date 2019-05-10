@@ -326,8 +326,8 @@ namespace xtraForm.Modulos.Ventas
                     frmmensage.dataGridView1.Columns[0].Width = 200;
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
                     frmmensage.dataGridView1.Columns[1].Width = 100;
-                    frmmensage.dataGridView1.Columns[2].HeaderText = "";
-                    frmmensage.dataGridView1.Columns[3].HeaderText = "";
+                    frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+                    frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                     frmmensage.Show();
                     frmmensage.splashScreenManager1.ShowWaitForm();
                     foreach (var bonificacion in gridView1.GetSelectedRows())

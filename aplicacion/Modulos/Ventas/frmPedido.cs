@@ -81,7 +81,7 @@ namespace xtraForm.Modulos.Ventas
                     ItemCp.lote = string.Empty;
                     ItemCp.fvctolote = Convert.ToDateTime("1990/01/01");
                     ItemCp.flgSurtido = "N";
-                    ItemCp.IDBonificacion = Convert.ToInt32(fila.Cells["IDBonificacion"].Value == "" ? 0 : fila.Cells["IDBonificacion"].Value);
+                    ItemCp.IDBonificacion = Convert.ToInt32(fila.Cells["IDBonificacion"].Value == string.Empty ? 0 : fila.Cells["IDBonificacion"].Value);
                     ItemCp.PrecioUnitario = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
                     ItemCp.PrecioNeto = Convert.ToDecimal(fila.Cells["PrecioNeto"].Value);
                     ItemCp.Descuento = Convert.ToDecimal(fila.Cells["Descuento"].Value);
@@ -198,7 +198,7 @@ namespace xtraForm.Modulos.Ventas
                             {
                                 Contador += 1;
                                 Lista.Add(Pedido_);
-                                Context.sp_genera_documento(Pedido_, (int)Persona, Tipo);
+                                Context.sp_genera_documento(Pedido_, Persona, Tipo);
                             }
                             else
                             {
@@ -393,8 +393,8 @@ namespace xtraForm.Modulos.Ventas
                     frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
                     frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
-                    frmmensage.dataGridView1.Columns[2].HeaderText = "";
-                    frmmensage.dataGridView1.Columns[3].HeaderText = "";
+                    frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+                    frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                     frmmensage.Show();
                     frmmensage.splashScreenManager1.ShowWaitForm();
                     foreach (var pedido in gridView1.GetSelectedRows())
@@ -454,8 +454,8 @@ namespace xtraForm.Modulos.Ventas
                     frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
                     frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
-                    frmmensage.dataGridView1.Columns[2].HeaderText = "";
-                    frmmensage.dataGridView1.Columns[3].HeaderText = "";
+                    frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+                    frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                     frmmensage.Show();
                     frmmensage.splashScreenManager1.ShowWaitForm();
                     foreach (var pedido in gridView1.GetSelectedRows())

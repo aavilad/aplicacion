@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class PERSONAL
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +21,7 @@ namespace xtraForm.Model
             this.PEDIDO = new HashSet<PEDIDO>();
             this.REPARTO = new HashSet<REPARTO>();
         }
-    
+
         public string Personal1 { get; set; }
         public string TipoPersona { get; set; }
         public string Nombre { get; set; }
@@ -43,7 +43,7 @@ namespace xtraForm.Model
         public decimal pparticipa { get; set; }
         public decimal pcuota { get; set; }
         public string supercodigo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DOCUMENTO> DOCUMENTO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

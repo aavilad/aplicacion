@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class PEDIDO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace xtraForm.Model
         {
             this.DETPEDIDO = new HashSet<DETPEDIDO>();
         }
-    
+
         public string Pedido1 { get; set; }
         public string Personal { get; set; }
         public string Cliente { get; set; }
@@ -46,7 +46,7 @@ namespace xtraForm.Model
         public Nullable<System.DateTime> Fecha_web { get; set; }
         public Nullable<bool> statusWeb { get; set; }
         public Nullable<bool> Aprobado { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETPEDIDO> DETPEDIDO { get; set; }
         public virtual FORMAPAGO FORMAPAGO1 { get; set; }

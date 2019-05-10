@@ -46,7 +46,7 @@ namespace xtraForm.Filtros
                 List<string> lista = new List<string>();
                 foreach (DataGridViewRow dgv in dataGridView1.Rows)
                 {
-                    lista.Add(entidad+"."+"[" + dgv.Cells[0].Value + "]" + " " + dgv.Cells[1].Value + " " + "'" + dgv.Cells[2].Value.ToString() + "'" + " " + dgv.Cells[3].Value);
+                    lista.Add(entidad + "." + "[" + dgv.Cells[0].Value + "]" + " " + dgv.Cells[1].Value + " " + "'" + dgv.Cells[2].Value.ToString() + "'" + " " + dgv.Cells[3].Value);
                 }
                 string query = string.Join(" ", lista.ToArray());
                 pasar(query);

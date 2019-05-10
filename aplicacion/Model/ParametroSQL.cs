@@ -11,14 +11,14 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class ParametroSQL
     {
         public int PKID { get; set; }
         public int IDVistaReporte { get; set; }
         public string Campo { get; set; }
         public string TipoDato { get; set; }
-    
+
         public virtual VistaReporte VistaReporte { get; set; }
     }
 }

@@ -335,8 +335,8 @@ namespace xtraForm.Libreria
                         cmd0.Parameters.AddWithValue("@Desde", Desde);
                         cmd0.Parameters.AddWithValue("@Hasta", Hasta);
                         cmd0.Parameters.AddWithValue("@Activo", Activo);
-                    cmd0.Transaction = transaccion;
-                    cmd0.ExecuteNonQuery();
+                        cmd0.Transaction = transaccion;
+                        cmd0.ExecuteNonQuery();
                     }
                     foreach (DataGridViewRow Fila in dgv0.Rows)
                     {
@@ -352,13 +352,13 @@ namespace xtraForm.Libreria
                         PKIDItemBonificacion++;
                     }
                     transaccion.Commit();
-            }
+                }
                 catch (Exception f)
-            {
-                transaccion.Rollback();
-                MessageBox.Show(f.Message);
+                {
+                    transaccion.Rollback();
+                    MessageBox.Show(f.Message);
+                }
             }
-        }
 
         }
         public void saveBonificacion(int PKID, string Mecanica, int TipoMecanica, string cdProductoRegalo, decimal CantidadMinima, int CantidadMaxima,
@@ -431,8 +431,8 @@ namespace xtraForm.Libreria
                     {
                         cmd1.CommandType = CommandType.Text;
                         cmd1.Parameters.AddWithValue("@PKID", PKID);
-                    cmd1.Transaction = transaccion;
-                    cmd1.ExecuteNonQuery();
+                        cmd1.Transaction = transaccion;
+                        cmd1.ExecuteNonQuery();
                     }
 
                     foreach (DataGridViewRow Fila in dgv0.Rows)

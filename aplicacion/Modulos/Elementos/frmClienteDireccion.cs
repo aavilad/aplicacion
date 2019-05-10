@@ -33,7 +33,7 @@ namespace xtraForm.Modulos.Elementos
         {
             var Base = new Model.LiderAppEntities();
             Distrito.Properties.DataSource = from Dtto in Base.Distrito select Dtto;
-            
+
         }
     }
 }

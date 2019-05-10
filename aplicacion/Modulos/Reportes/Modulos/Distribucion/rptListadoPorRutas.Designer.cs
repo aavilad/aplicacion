@@ -262,6 +262,7 @@
             this.fieldCantidad.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.fieldCantidad.FieldName = "Cantidad";
             this.fieldCantidad.Name = "fieldCantidad";
+            this.fieldCantidad.Options.ShowGrandTotal = false;
             this.fieldCantidad.Options.ShowInFilter = true;
             this.fieldCantidad.Options.ShowTotals = false;
             // 

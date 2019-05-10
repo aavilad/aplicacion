@@ -6,7 +6,7 @@ namespace xtraForm.Maestro
 {
     public partial class frmBonificacion : DevExpress.XtraEditors.XtraForm
     {
-        public delegate void variables(int pkid,string Codigo, string Descripcion);
+        public delegate void variables(int pkid, string Codigo, string Descripcion);
         public event variables pasar;
         public frmBonificacion()
         {

@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Reporte
     {
         public int PKID { get; set; }
@@ -22,7 +22,7 @@ namespace xtraForm.Model
         public int IDUsuarioConfiguracion { get; set; }
         public int Tipo { get; set; }
         public System.Guid Registro { get; set; }
-    
+
         public virtual TipoReporte TipoReporte { get; set; }
         public virtual VistaReporte VistaReporte { get; set; }
     }

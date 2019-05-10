@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class provincia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +19,13 @@ namespace xtraForm.Model
         {
             this.Distrito = new HashSet<Distrito>();
         }
-    
+
         public string idprovincia { get; set; }
         public string descrip { get; set; }
         public string iddpto { get; set; }
         public int codunilever { get; set; }
         public string region { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Distrito> Distrito { get; set; }
         public virtual Departamento Departamento { get; set; }

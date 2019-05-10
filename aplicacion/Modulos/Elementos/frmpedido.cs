@@ -1160,7 +1160,8 @@ namespace xtraForm.Modulos.Elementos
                         else if (Context_.PERSONAL.Where(p => p.Personal1.Equals(txtcdVendedor.Text.Trim()) && p.vendedor.Equals(1) && p.Activo.Equals(true)).FirstOrDefault() != null)
                         {
                             var Contex = new Model.LiderAppEntities();
-                            txtnmVendedor.Text = (from p in Contex.PERSONAL where p.Activo.Equals(true) && p.vendedor.Equals(1) && p.Personal1.Equals(txtcdVendedor.Text.Trim())
+                            txtnmVendedor.Text = (from p in Contex.PERSONAL
+                                                  where p.Activo.Equals(true) && p.vendedor.Equals(1) && p.Personal1.Equals(txtcdVendedor.Text.Trim())
                                                   select p.Nombre).FirstOrDefault();
                         }
                         else if (Context_.PERSONAL.Where(p => p.Personal1.Contains(txtcdVendedor.Text.Trim()) && p.vendedor.Equals(1) && p.Activo.Equals(true)).ToList().Count > 0)
@@ -1197,7 +1198,8 @@ namespace xtraForm.Modulos.Elementos
                         else if ((Context.Vva_Vendedor.Where(p => p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim()) && p.Activo.Equals(true))).FirstOrDefault() != null)
                         {
                             var Contex = new Model.LiderAppEntities();
-                            txtnmVendedor.Text = (from p in Context.Vva_Vendedor where p.Activo.Equals(true) && p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim())
+                            txtnmVendedor.Text = (from p in Context.Vva_Vendedor
+                                                  where p.Activo.Equals(true) && p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim())
                                                   select p.Nombre_Vendedor).FirstOrDefault();
                         }
                         else if (Context.Vva_Vendedor.Where(p => p.Codigo_vendedor.Contains(txtcdVendedor.Text.Trim()) && p.Activo.Equals(true)).ToList().Count > 0)

@@ -180,8 +180,8 @@ namespace xtraForm.Modulos.Ventas
                     lookUpEdit1.Properties.ShowHeader = false;
                     lookUpEdit1.Properties.DisplayMember = "Mecanica";
                     lookUpEdit1.Properties.ValueMember = "ID";
-                    lookUpEdit1.Properties.Columns.Add(new LookUpColumnInfo("Proveedor", "", 10));
-                    lookUpEdit1.Properties.Columns.Add(new LookUpColumnInfo("Mecanica", "", 10));
+                    lookUpEdit1.Properties.Columns.Add(new LookUpColumnInfo("Proveedor", string.Empty, 10));
+                    lookUpEdit1.Properties.Columns.Add(new LookUpColumnInfo("Mecanica", string.Empty, 10));
                     lookUpEdit1.Properties.DataSource = Bonif.ToList();
                 }
             }

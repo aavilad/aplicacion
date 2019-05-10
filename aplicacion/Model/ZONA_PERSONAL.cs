@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class ZONA_PERSONAL
     {
         public string Zona { get; set; }
@@ -19,7 +19,7 @@ namespace xtraForm.Model
         public Nullable<System.DateTime> Dia { get; set; }
         public int Numero { get; set; }
         public int PKID { get; set; }
-    
+
         public virtual ZONA ZONA1 { get; set; }
     }
 }

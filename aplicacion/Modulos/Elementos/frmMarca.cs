@@ -15,7 +15,7 @@ namespace xtraForm.Modulos.Elementos
 {
     public partial class frmMarca : DevExpress.XtraEditors.XtraForm
     {
-        public delegate void Variables(string MarcaCodigo, string MarcaOrden,string MarcaProveedor,string MarcaLinea, string MarcaDescripcion,string MarcaAbreviacion);
+        public delegate void Variables(string MarcaCodigo, string MarcaOrden, string MarcaProveedor, string MarcaLinea, string MarcaDescripcion, string MarcaAbreviacion);
         public event Variables pasar;
         public frmMarca()
         {
@@ -29,11 +29,11 @@ namespace xtraForm.Modulos.Elementos
                 txtMarcaProveedor.Properties.DataSource = Context.PROVEEDOR.Select(x => new { Codigo = x.Proveedor1.Trim(), Nombre = x.RazonSocial.Trim() }).ToList();
                 txtMarcaProveedor.Properties.DisplayMember = "Nombre";
                 txtMarcaProveedor.Properties.ValueMember = "Codigo";
-                txtMarcaProveedor.Properties.Columns.Add(new LookUpColumnInfo("Nombre", ""));
+                txtMarcaProveedor.Properties.Columns.Add(new LookUpColumnInfo("Nombre", string.Empty));
                 txtMarcaLinea.Properties.DataSource = Context.LINEA.Select(x => new { Codigo = x.Linea1.Trim(), Nombre = x.Descripcion.Trim() }).ToList();
                 txtMarcaLinea.Properties.DisplayMember = "Nombre";
                 txtMarcaLinea.Properties.ValueMember = "Codigo";
-                txtMarcaLinea.Properties.Columns.Add(new LookUpColumnInfo("Nombre", ""));
+                txtMarcaLinea.Properties.Columns.Add(new LookUpColumnInfo("Nombre", string.Empty));
 
             }
         }

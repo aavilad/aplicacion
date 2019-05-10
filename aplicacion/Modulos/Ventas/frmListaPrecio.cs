@@ -38,7 +38,7 @@ namespace xtraForm.Modulos.Ventas
                                               Codigo = p.Codigo.Trim(),
                                               Descripcion = p.Descripcion.Trim(),
                                               UnidadAnterior = p.Unidad.Trim(),
-                                              Unidad = pu == null ? "" : pu.Abreviacion.Trim()
+                                              Unidad = pu == null ? string.Empty : pu.Abreviacion.Trim()
                                           }).ToList();
                     gridControl1.DataSource = ProductoEscala;
                     gridView1.OptionsView.ColumnAutoWidth = false;

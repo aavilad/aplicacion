@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Bonificacion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace xtraForm.Model
             this.ItemBonificacion = new HashSet<ItemBonificacion>();
             this.DETADOC = new HashSet<DETADOC>();
         }
-    
+
         public int PKID { get; set; }
         public string Mecanica { get; set; }
         public int TipoMecanica { get; set; }
@@ -38,7 +38,7 @@ namespace xtraForm.Model
         public System.DateTime Desde { get; set; }
         public System.DateTime Hasta { get; set; }
         public bool Activo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemBonificacion> ItemBonificacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

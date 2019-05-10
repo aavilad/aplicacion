@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class PlantillaUnidad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +19,13 @@ namespace xtraForm.Model
         {
             this.PRODUCTO = new HashSet<PRODUCTO>();
         }
-    
+
         public int PKID { get; set; }
         public string Descripcion { get; set; }
         public string Abreviacion { get; set; }
         public int Factor { get; set; }
         public string Codigo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }

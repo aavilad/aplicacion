@@ -45,7 +45,7 @@ namespace xtraForm.Modulos.Elementos
                 SerieFacturas.Properties.ShowHeader = false;
                 SerieFacturas.Properties.DisplayMember = "Serie";
                 SerieFacturas.Properties.ValueMember = "ID";
-                SerieFacturas.Properties.Columns.Add(new LookUpColumnInfo("Detalle", "", 10));
+                SerieFacturas.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
                 SerieFacturas.Properties.DataSource =
                     context.DOCTIPO.Where(x => x.codigo == "01").
                     Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
@@ -53,7 +53,7 @@ namespace xtraForm.Modulos.Elementos
                 SerieBoleta.Properties.ShowHeader = false;
                 SerieBoleta.Properties.DisplayMember = "Serie";
                 SerieBoleta.Properties.ValueMember = "ID";
-                SerieBoleta.Properties.Columns.Add(new LookUpColumnInfo("Detalle", "", 10));
+                SerieBoleta.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
                 SerieBoleta.Properties.DataSource =
                     context.DOCTIPO.Where(x => x.codigo == "03").
                     Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
