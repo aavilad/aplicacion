@@ -65,7 +65,6 @@
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.Fecha = new DevExpress.XtraReports.Parameters.Parameter();
             this.Ruta = new DevExpress.XtraReports.Parameters.Parameter();
-            this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.xrPivotGrid1 = new DevExpress.XtraReports.UI.XRPivotGrid();
             this.fieldCodigo = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldDescripcion = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
@@ -88,13 +87,16 @@
             // 
             // Detail
             // 
-            this.Detail.HeightF = 145.8333F;
+            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPivotGrid1});
+            this.Detail.HeightF = 58.33333F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // TopMargin
             // 
+            this.TopMargin.HeightF = 28.125F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -195,13 +197,6 @@
             this.Ruta.Description = "Ruta";
             this.Ruta.Name = "Ruta";
             // 
-            // ReportHeader
-            // 
-            this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPivotGrid1});
-            this.ReportHeader.HeightF = 75.41669F;
-            this.ReportHeader.Name = "ReportHeader";
-            // 
             // xrPivotGrid1
             // 
             this.xrPivotGrid1.Appearance.Cell.Font = new System.Drawing.Font("Calibri", 8.25F);
@@ -221,7 +216,7 @@
             this.fieldCantidad,
             this.fieldVendedor,
             this.fieldProveedor});
-            this.xrPivotGrid1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 21.875F);
+            this.xrPivotGrid1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 10.00001F);
             this.xrPivotGrid1.Name = "xrPivotGrid1";
             this.xrPivotGrid1.OptionsPrint.FilterSeparatorBarPadding = 3;
             this.xrPivotGrid1.OptionsPrint.PrintColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
@@ -388,14 +383,13 @@
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
             this.TopMargin,
-            this.BottomMargin,
-            this.ReportHeader});
+            this.BottomMargin});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
             this.DataMember = "Vva_ListadoPorRuta";
             this.DataSource = this.sqlDataSource1;
             this.FilterString = "[Fecha] = ?Fecha And [Ruta] = ?Ruta";
-            this.Margins = new System.Drawing.Printing.Margins(100, 31, 100, 100);
+            this.Margins = new System.Drawing.Printing.Margins(100, 31, 28, 100);
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.Fecha,
             this.Ruta});
@@ -423,7 +417,6 @@
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldRuta1;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldFecha1;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldGestion1;
-        private DevExpress.XtraReports.UI.ReportHeaderBand ReportHeader;
         private DevExpress.XtraReports.UI.XRPivotGrid xrPivotGrid1;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldCodigo;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldDescripcion;

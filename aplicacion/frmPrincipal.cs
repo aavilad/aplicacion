@@ -250,7 +250,7 @@ namespace xtraForm
                                 FuerzaVentas.descrip AS FzaVentas, 
                                 Vva_Vendedor.[Nombre Vendedor] AS Nombre
                                 FROM Vva_Vendedor
-                                INNER JOIN FuerzaVentas ON Vva_Vendedor.IDFzaVentas = FuerzaVentas.fzavtas;", "vendedor");
+                                INNER JOIN FuerzaVentas ON Vva_Vendedor.IDFzaVentas = FuerzaVentas.fzavtas where FuerzaVentas.activo = 1;", "vendedor");
             frmbonificar.gridControl1.DataSource = proceso.ds.Tables["vendedor"];
             frmbonificar.gridView1.OptionsView.ShowGroupPanel = false;
             frmbonificar.gridView1.Columns["FzaVentas"].GroupIndex = 1;

@@ -550,6 +550,7 @@
             // 
             this.G03.ItemLinks.Add(this.FACTURARVENTA);
             this.G03.ItemLinks.Add(this.CONTROLGENERA);
+            this.G03.ItemLinks.Add(this.DESCARGAPEDIDO);
             this.G03.Name = "G03";
             this.G03.Text = "Facturar Documentos";
             // 
@@ -676,7 +677,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 143);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.PaintStyleName = "Skin";
-            this.xtraTabControl1.Size = new System.Drawing.Size(977, 495);
+            this.xtraTabControl1.Size = new System.Drawing.Size(977, 429);
             this.xtraTabControl1.TabIndex = 5;
             this.xtraTabControl1.HeaderButtonClick += new DevExpress.XtraTab.ViewInfo.HeaderButtonEventHandler(this.xtraTabControl1_HeaderButtonClick);
             // 
@@ -688,7 +689,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 638);
+            this.ClientSize = new System.Drawing.Size(977, 572);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;

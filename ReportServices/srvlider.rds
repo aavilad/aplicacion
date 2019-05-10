@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="srvlider">
-  <ConnectionProperties>
-    <Extension>SQL</Extension>
-    <ConnectString>Data Source=srvlider;Initial Catalog=Lider2018</ConnectString>
-    <Prompt>Especifique un nombre de usuario y una contraseña para el origen de datos srvlider</Prompt>
-  </ConnectionProperties>
-  <DataSourceID>53e4f57f-1589-42f6-9e5a-9c3394ca95e8</DataSourceID>
-</RptDataSource>

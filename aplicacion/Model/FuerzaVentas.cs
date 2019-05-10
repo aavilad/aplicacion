@@ -23,6 +23,7 @@ namespace xtraForm.Model
         public int PKID { get; set; }
         public string fzavtas { get; set; }
         public string descrip { get; set; }
+        public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PERSONAL> PERSONAL { get; set; }

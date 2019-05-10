@@ -61,11 +61,9 @@
         <AssociationConnector Association="LiderAppModel.FK_DOCUMENTO_DOCTIPO1" />
         <EntityTypeShape EntityType="LiderAppModel.Gestion" Width="1.5" PointX="12.75" PointY="12" />
         <AssociationConnector Association="LiderAppModel.FK_DOCUMENTO_Gestion" />
-        <EntityTypeShape EntityType="LiderAppModel.FuerzaVentas" Width="1.5" PointX="6.125" PointY="21.5" />
         <EntityTypeShape EntityType="LiderAppModel.PERSONAL" Width="1.5" PointX="8.125" PointY="18.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LiderAppModel.REPARTO" Width="1.5" PointX="6.25" PointY="23.875" />
         <AssociationConnector Association="LiderAppModel.FK_DOCUMENTO_PERSONAL" />
-        <AssociationConnector Association="LiderAppModel.FK_PERSONAL_FuerzaVentas" />
         <AssociationConnector Association="LiderAppModel.FK__PEDIDO__Personal__68D28DBC" />
         <AssociationConnector Association="LiderAppModel.FK_REPARTO_PERSONAL" />
         <AssociationConnector Association="LiderAppModel.FK_REPARTO_RUTAS" />
@@ -77,6 +75,8 @@
         <AssociationConnector Association="LiderAppModel.FK_Filtro_FiltroConfiguracion" />
         <EntityTypeShape EntityType="LiderAppModel.ZONA_PERSONAL" Width="1.5" PointX="4.5" PointY="13.625" IsExpanded="true" />
         <AssociationConnector Association="LiderAppModel.FK__ZONA_PERSO__Zona__65F62111" />
+        <EntityTypeShape EntityType="LiderAppModel.FuerzaVentas" Width="1.5" PointX="6" PointY="21.375" />
+        <AssociationConnector Association="LiderAppModel.FK_PERSONAL_FuerzaVentas" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

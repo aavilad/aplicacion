@@ -62,13 +62,13 @@ namespace xtraForm.Model
         public virtual DbSet<DETADOC> DETADOC { get; set; }
         public virtual DbSet<DOCUMENTO> DOCUMENTO { get; set; }
         public virtual DbSet<Gestion> Gestion { get; set; }
-        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
         public virtual DbSet<PERSONAL> PERSONAL { get; set; }
         public virtual DbSet<REPARTO> REPARTO { get; set; }
         public virtual DbSet<Vva_ListadoPorRuta> Vva_ListadoPorRuta { get; set; }
         public virtual DbSet<FiltroConfiguracion> FiltroConfiguracion { get; set; }
         public virtual DbSet<Filtro> Filtro { get; set; }
         public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
+        public virtual DbSet<FuerzaVentas> FuerzaVentas { get; set; }
     
         public virtual ObjectResult<Nullable<System.DateTime>> sp_stock_sistema(Nullable<System.DateTime> fecha, Nullable<int> tipo)
         {
