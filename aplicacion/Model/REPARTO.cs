@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class REPARTO
     {
         public int PKID { get; set; }
@@ -19,7 +19,7 @@ namespace xtraForm.Model
         public int Dia { get; set; }
         public string Personal { get; set; }
         public bool Activo { get; set; }
-
+    
         public virtual PERSONAL PERSONAL1 { get; set; }
         public virtual RUTAS RUTAS { get; set; }
     }

@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Modulo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace xtraForm.Model
         {
             this.VistaAdministrativa = new HashSet<VistaAdministrativa>();
         }
-
+    
         public int PKID { get; set; }
         public int IDModuloPadre { get; set; }
         public string Codigo { get; set; }
@@ -27,7 +27,7 @@ namespace xtraForm.Model
         public System.Guid Registro { get; set; }
         public int Nivel { get; set; }
         public bool Activo { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VistaAdministrativa> VistaAdministrativa { get; set; }
     }

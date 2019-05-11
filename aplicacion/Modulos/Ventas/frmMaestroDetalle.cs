@@ -27,6 +27,8 @@ namespace xtraForm.Modulos.Ventas
         {
             if (dxValidationProvider1.Validate())
             {
+                gridControl1.DataSource = null;
+                gridControl3.DataSource = null;
                 var frmprincipal = new frmPrincipal();
                 frmprincipal.splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
                 frmprincipal.splashScreenManager1.ShowWaitForm();
@@ -55,7 +57,7 @@ namespace xtraForm.Modulos.Ventas
 
                                 string sql1 = @"
                                 SELECT        
-                                dbo.Vva_ItemPedido.NrPedido AS Pedido, dbo.CLIENTE.Cliente AS [Codigo Cliente], dbo.CLIENTE.Alias AS [Nombre Cliente], SUM(dbo.Vva_ItemPedido.Cantidad) AS [Cantidad Vendida]
+                                dbo.Vva_ItemPedido.NrPedido AS Pedido, dbo.CLIENTE.Cliente AS [Codigo], dbo.CLIENTE.Alias AS [Nombre], SUM(dbo.Vva_ItemPedido.Cantidad) AS [Venta]
                                 FROM           
                                 dbo.CLIENTE INNER JOIN
                                 dbo.Vva_Pedido ON dbo.CLIENTE.Cliente = dbo.Vva_Pedido.IDClient INNER JOIN
@@ -71,7 +73,7 @@ namespace xtraForm.Modulos.Ventas
                             case 2:
                                 string sql2 = @"
                                 SELECT        
-                                dbo.Vva_ItemPedido.NrPedido AS Pedido, dbo.CLIENTE.Cliente AS Codigo, dbo.CLIENTE.Alias AS Nombre, SUM(dbo.Vva_ItemPedido.Cantidad) AS Cantidad_Vendida
+                                dbo.Vva_ItemPedido.NrPedido AS Pedido, RTRIM(dbo.CLIENTE.Cliente) AS Codigo, Rtrim(dbo.CLIENTE.Alias) AS Nombre, SUM(dbo.Vva_ItemPedido.Cantidad) AS Venta
                                 FROM           
                                 dbo.CLIENTE INNER JOIN
                                 dbo.Vva_Pedido ON dbo.CLIENTE.Cliente = dbo.Vva_Pedido.IDClient INNER JOIN
@@ -113,28 +115,26 @@ namespace xtraForm.Modulos.Ventas
                                                         }).ToList();
                                 break;
                         }
-                        gridControl1.DataSource = PedidosComprometidos;
                         gridView1.OptionsBehavior.ReadOnly = true;
                         gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
                         gridView1.OptionsBehavior.Editable = false;
                         gridView1.OptionsView.ColumnAutoWidth = false;
-                        gridView1.BestFitColumns();
                         gridView1.OptionsView.ShowGroupPanel = false;
+                        gridControl1.DataSource = PedidosComprometidos;
+                        gridView1.BestFitColumns();
+
                         //pedidos bonificados
-                        PedidosBonificados = (from p in Context.Vva_Pedido.AsEnumerable()
-                                              join ip in Context.Vva_ItemPedido.AsEnumerable() on p.NrPedido equals ip.NrPedido
-                                              join b in Context.Bonificacion.AsEnumerable() on ip.IDBonif equals b.PKID
-                                              join cl in Context.CLIENTE.AsEnumerable() on p.IDClient equals cl.Cliente1
-                                              where b.PKID == (int)lookUpEdit1.EditValue
-                                              where p.FechaEmision == DateTime.Parse(Fecha)
-                                              select new
-                                              {
-                                                  Pedido = p.NrPedido.Trim(),
-                                                  Codigo_Cliente = cl.Cliente1.Trim(),
-                                                  Nombre_Cliente = cl.Alias.Trim(),
-                                                  Cantidad_Bonificada = ip.Cantidad
-                                              }).ToList();
-                        gridControl3.DataSource = PedidosBonificados;
+                        string sql0 = @"
+                        SELECT        dbo.Vva_Pedido.NrPedido AS Pedido, RTRIM(dbo.Vva_Cliente.Codigo) As Codigo, Rtrim(dbo.Vva_Cliente.Nombre) As Nombre, dbo.Vva_ItemPedido.Cantidad As Bonificacion
+                        FROM            dbo.Vva_Pedido INNER JOIN
+                                                 dbo.Vva_ItemPedido ON dbo.Vva_Pedido.NrPedido = dbo.Vva_ItemPedido.NrPedido INNER JOIN
+                                                 dbo.Vva_Cliente ON dbo.Vva_Pedido.IDClient = dbo.Vva_Cliente.Codigo INNER JOIN
+                                                 dbo.Bonificacion ON dbo.Vva_ItemPedido.IDBonif = dbo.Bonificacion.PKID
+                        WHERE        (dbo.Vva_Pedido.FechaEmision = '" + Fecha + @"') AND (dbo.Vva_ItemPedido.IDBonif = "+ (int)lookUpEdit1.EditValue + @")
+                        GROUP BY dbo.Vva_Pedido.NrPedido, dbo.Vva_Cliente.Codigo, dbo.Vva_Cliente.Nombre, dbo.Vva_ItemPedido.Cantidad
+                                ";
+                        proceso.consultar(sql0, "pedidos");
+                        gridControl3.DataSource = proceso.ds.Tables["pedidos"];
                         gridView3.OptionsBehavior.ReadOnly = true;
                         gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
                         gridView3.OptionsBehavior.Editable = false;

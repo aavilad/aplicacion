@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class PRODUCTO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace xtraForm.Model
             this.DETPEDIDO = new HashSet<DETPEDIDO>();
             this.DETADOC = new HashSet<DETADOC>();
         }
-
+    
         public string Producto1 { get; set; }
         public string Marca { get; set; }
         public string Descripcion { get; set; }
@@ -86,13 +86,13 @@ namespace xtraForm.Model
         public Nullable<bool> ArticuloCompra { get; set; }
         public Nullable<bool> ProductoCombo { get; set; }
         public Nullable<int> IDUnidad { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETPEDIDO> DETPEDIDO { get; set; }
         public virtual MARCA MARCA1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETADOC> DETADOC { get; set; }
-        public virtual Clase_Producto Clase_Producto1 { get; set; }
         public virtual PlantillaUnidad PlantillaUnidad { get; set; }
+        public virtual Clase_Producto Clase_Producto1 { get; set; }
     }
 }

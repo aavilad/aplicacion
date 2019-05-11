@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class LINEA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace xtraForm.Model
         {
             this.MARCA = new HashSet<MARCA>();
         }
-
+    
         public string Linea1 { get; set; }
         public int CanMenor { get; set; }
         public int CanMayor { get; set; }
@@ -31,7 +31,7 @@ namespace xtraForm.Model
         public decimal ComiEspecial { get; set; }
         public decimal ComiSEspecial { get; set; }
         public string orden { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MARCA> MARCA { get; set; }
     }

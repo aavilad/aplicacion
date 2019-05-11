@@ -8,24 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
 {
-    public partial class frm1 : DevExpress.XtraEditors.XtraForm
+    public partial class FrmMostrarReporte : DevExpress.XtraEditors.XtraForm
     {
-        public frm1()
+        public FrmMostrarReporte()
         {
             InitializeComponent();
-        }
-
-        private void frm1_Load(object sender, EventArgs e)
-        {
-            //rptListadoPorRutas rpt = new rptListadoPorRutas();
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-
         }
     }
 }

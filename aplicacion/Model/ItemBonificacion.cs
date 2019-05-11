@@ -11,14 +11,14 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class ItemBonificacion
     {
         public int PKID { get; set; }
         public int IDBonificacion { get; set; }
         public string cdProductoColeccion { get; set; }
         public int IDAsociado { get; set; }
-
+    
         public virtual Bonificacion Bonificacion { get; set; }
     }
 }

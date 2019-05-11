@@ -18,7 +18,12 @@ namespace xtraForm.Modulos.Compras
             InitializeComponent();
         }
 
-        private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
+        }
+
+        private void FiltroCompra_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }

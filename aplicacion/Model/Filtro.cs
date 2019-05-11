@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Filtro
     {
         public System.Guid PKID { get; set; }
@@ -20,7 +20,7 @@ namespace xtraForm.Model
         public string valor { get; set; }
         public string union { get; set; }
         public string tabla { get; set; }
-
+    
         public virtual FiltroConfiguracion FiltroConfiguracion { get; set; }
     }
 }

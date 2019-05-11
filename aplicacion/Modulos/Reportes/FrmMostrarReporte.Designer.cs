@@ -1,6 +1,6 @@
 ﻿namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
 {
-    partial class frmDistribucion
+    partial class FrmMostrarReporte
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDistribucion));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMostrarReporte));
             this.documentViewer1 = new DevExpress.XtraPrinting.Preview.DocumentViewer();
             this.documentViewerBarManager1 = new DevExpress.XtraPrinting.Preview.DocumentViewerBarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();

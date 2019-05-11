@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class FuerzaVentas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +19,12 @@ namespace xtraForm.Model
         {
             this.PERSONAL = new HashSet<PERSONAL>();
         }
-
+    
         public int PKID { get; set; }
         public string fzavtas { get; set; }
         public string descrip { get; set; }
         public bool Activo { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PERSONAL> PERSONAL { get; set; }
     }

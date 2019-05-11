@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class FORMAPAGO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +19,14 @@ namespace xtraForm.Model
         {
             this.PEDIDO = new HashSet<PEDIDO>();
         }
-
+    
         public string FormaPago1 { get; set; }
         public string Descripcion { get; set; }
         public byte PlazoMax { get; set; }
         public byte Nrodia { get; set; }
         public bool contado { get; set; }
         public byte DiasFinta { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }

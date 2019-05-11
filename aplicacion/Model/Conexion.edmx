@@ -39,9 +39,9 @@
           <Key>
             <PropertyRef Name="Clase_Producto" />
           </Key>
-          <Property Name="Clase_Producto" Type="char" MaxLength="2" Nullable="false" />
-          <Property Name="Descripcion" Type="char" MaxLength="30" Nullable="false" />
-          <Property Name="Orden" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Clase_Producto" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
@@ -470,7 +470,7 @@
           <Property Name="Meta" Type="varchar" MaxLength="50" />
           <Property Name="sku" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="factor" Type="int" />
-          <Property Name="clase_producto" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="clase_producto" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="Orden" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="CodigoUM" Type="char" MaxLength="3" />
           <Property Name="IdClaseBSC" Type="char" MaxLength="3" />
@@ -682,6 +682,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_ListadoPorRuta' no tiene d
             <PropertyRef Name="Orden" />
             <PropertyRef Name="Ruta" />
             <PropertyRef Name="Gestion" />
+            <PropertyRef Name="IDClase" />
           </Key>
           <Property Name="Proveedor" Type="varchar" MaxLength="60" />
           <Property Name="Codigo" Type="varchar" MaxLength="20" />
@@ -694,6 +695,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_ListadoPorRuta' no tiene d
           <Property Name="Ruta" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Gestion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IDClase" Type="char" MaxLength="2" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Pedido' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -1162,6 +1164,78 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="FacturarcionPorRutas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="avila">
+          <Parameter Name="Ruta" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="Gestion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ListadoPorRuta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="avila">
+          <Parameter Name="Ruta" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="Gestion" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Proveedor" Type="varchar" MaxLength="200" />
+                <Property Name="Codigo" Type="varchar" MaxLength="20" />
+                <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+                <Property Name="Unidad" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor1Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor2Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor3Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor4Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor5Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor6Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor7Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor8Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor1Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor2Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor3Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor4Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor5Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor6Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor7Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor8Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Zona" Type="varchar" MaxLength="200" />
+                <Property Name="IDClase" Type="varchar" MaxLength="5" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ListadoPorRuta_ClaseProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="avila">
+          <Parameter Name="Ruta" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="Gestion" Type="varchar" Mode="In" />
+          <Parameter Name="IDClase" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Proveedor" Type="varchar" MaxLength="200" />
+                <Property Name="Codigo" Type="varchar" MaxLength="20" />
+                <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+                <Property Name="Unidad" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor1Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor2Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor3Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor4Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor5Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor6Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor7Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor8Codigo" Type="varchar" MaxLength="10" />
+                <Property Name="Vendedor1Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor2Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor3Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor4Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor5Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor6Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor7Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Vendedor8Cantidad" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Zona" Type="varchar" MaxLength="300" />
+                <Property Name="ProductoClase" Type="varchar" MaxLength="300" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="ConsolidadoPorRuta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Fecha" Type="datetime" Mode="In" />
           <Parameter Name="Ruta" Type="varchar" Mode="In" />
@@ -1302,7 +1376,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
     [Vva_ListadoPorRuta].[Zona] AS [Zona], 
     [Vva_ListadoPorRuta].[Ruta] AS [Ruta], 
     [Vva_ListadoPorRuta].[Fecha] AS [Fecha], 
-    [Vva_ListadoPorRuta].[Gestion] AS [Gestion]
+    [Vva_ListadoPorRuta].[Gestion] AS [Gestion], 
+    [Vva_ListadoPorRuta].[IDClase] AS [IDClase]
     FROM [dbo].[Vva_ListadoPorRuta] AS [Vva_ListadoPorRuta]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vva_Pedido" EntityType="Self.Vva_Pedido" store:Type="Views" store:Schema="dbo">
@@ -1506,7 +1581,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <End Role="provincia" EntitySet="provincia" />
             <End Role="Distrito" EntitySet="Distrito" />
           </AssociationSet>
-          <EntitySet Name="Clase_Producto" EntityType="LiderAppModel.Clase_Producto" />
           <EntitySet Name="PlantillaUnidad" EntityType="LiderAppModel.PlantillaUnidad" />
           <FunctionImport Name="sp_stock_sistema" ReturnType="Collection(DateTime)">
             <Parameter Name="fecha" Mode="In" Type="DateTime" />
@@ -1658,11 +1732,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             <Parameter Name="Ruta" Mode="In" Type="String" />
             <Parameter Name="Gestion" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Vva_ListadoPorRuta" EntityType="LiderAppModel.Vva_ListadoPorRuta" />
-          <AssociationSet Name="FK_PRODUCTO_Clase_Producto" Association="LiderAppModel.FK_PRODUCTO_Clase_Producto">
-            <End Role="Clase_Producto" EntitySet="Clase_Producto" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
           <AssociationSet Name="FK_PRODUCTO_PlantillaUnidad" Association="LiderAppModel.FK_PRODUCTO_PlantillaUnidad">
             <End Role="PlantillaUnidad" EntitySet="PlantillaUnidad" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
@@ -1682,6 +1751,33 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <AssociationSet Name="FK_PERSONAL_FuerzaVentas" Association="LiderAppModel.FK_PERSONAL_FuerzaVentas">
             <End Role="FuerzaVentas" EntitySet="FuerzaVentas" />
             <End Role="PERSONAL" EntitySet="PERSONAL" />
+          </AssociationSet>
+          <EntitySet Name="Vva_ListadoPorRuta" EntityType="LiderAppModel.Vva_ListadoPorRuta" />
+          <FunctionImport Name="ListadoPorRuta" IsComposable="true" ReturnType="Collection(LiderAppModel.ListadoPorRuta_Result)">
+            <Parameter Name="Ruta" Mode="In" Type="String" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Gestion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FacturarcionPorRutas1" ReturnType="Collection(String)">
+            <Parameter Name="Ruta" Mode="In" Type="String" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Gestion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListadoPorRuta1" IsComposable="true" ReturnType="Collection(LiderAppModel.ListadoPorRuta1_Result)">
+            <Parameter Name="Ruta" Mode="In" Type="String" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Gestion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListadoPorRuta_ClaseProducto" IsComposable="true" ReturnType="Collection(LiderAppModel.ListadoPorRuta_ClaseProducto_Result1)">
+            <Parameter Name="Ruta" Mode="In" Type="String" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Gestion" Mode="In" Type="String" />
+            <Parameter Name="IDClase" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Clase_Producto" EntityType="LiderAppModel.Clase_Producto" />
+          <AssociationSet Name="FK_PRODUCTO_Clase_Producto" Association="LiderAppModel.FK_PRODUCTO_Clase_Producto">
+            <End Role="Clase_Producto" EntitySet="Clase_Producto" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="FORMAPAGO">
@@ -1755,15 +1851,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Clase_Producto">
-          <Key>
-            <PropertyRef Name="Clase_Producto1" />
-          </Key>
-          <Property Name="Clase_Producto1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
-          <Property Name="Orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="PRODUCTO" Relationship="LiderAppModel.FK_PRODUCTO_Clase_Producto" FromRole="Clase_Producto" ToRole="PRODUCTO" />
-        </EntityType>
         <EntityType Name="PlantillaUnidad">
           <Key>
             <PropertyRef Name="PKID" />
@@ -2417,7 +2504,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Name="Meta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="sku" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="factor" Type="Int32" />
-          <Property Name="clase_producto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="clase_producto" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="Orden" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="CodigoUM" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="IdClaseBSC" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
@@ -2431,8 +2518,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <NavigationProperty Name="DETPEDIDO" Relationship="LiderAppModel.FK__DETPEDIDO__Produ__54CB950F" FromRole="PRODUCTO" ToRole="DETPEDIDO" />
           <NavigationProperty Name="MARCA1" Relationship="LiderAppModel.FK_PRODUCTO_MARCA" FromRole="PRODUCTO" ToRole="MARCA" />
           <NavigationProperty Name="DETADOC" Relationship="LiderAppModel.FK__DETADOC__Product__4F12BBB9" FromRole="PRODUCTO" ToRole="DETADOC" />
-          <NavigationProperty Name="Clase_Producto1" Relationship="LiderAppModel.FK_PRODUCTO_Clase_Producto" FromRole="PRODUCTO" ToRole="Clase_Producto" />
           <NavigationProperty Name="PlantillaUnidad" Relationship="LiderAppModel.FK_PRODUCTO_PlantillaUnidad" FromRole="PRODUCTO" ToRole="PlantillaUnidad" />
+          <NavigationProperty Name="Clase_Producto1" Relationship="LiderAppModel.FK_PRODUCTO_Clase_Producto" FromRole="PRODUCTO" ToRole="Clase_Producto" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
@@ -2789,36 +2876,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
           <Property Type="Int32" Name="Orden" Nullable="true" />
           <Property Type="String" Name="Zona" Nullable="true" MaxLength="150" />
         </ComplexType>
-        <EntityType Name="Vva_ListadoPorRuta">
-          <Key>
-            <PropertyRef Name="Orden" />
-            <PropertyRef Name="Ruta" />
-            <PropertyRef Name="Gestion" />
-          </Key>
-          <Property Name="Proveedor" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="Unidad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Cantidad" Type="Decimal" Precision="38" Scale="2" />
-          <Property Name="Vendedor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Orden" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="Zona" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
-          <Property Name="Gestion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="FK_PRODUCTO_Clase_Producto">
-          <End Type="LiderAppModel.Clase_Producto" Role="Clase_Producto" Multiplicity="1" />
-          <End Type="LiderAppModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clase_Producto">
-              <PropertyRef Name="Clase_Producto1" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="clase_producto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PRODUCTO_PlantillaUnidad">
           <End Type="LiderAppModel.PlantillaUnidad" Role="PlantillaUnidad" Multiplicity="0..1" />
           <End Type="LiderAppModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
@@ -2910,6 +2967,142 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Vva_ListadoPorRuta">
+          <Key>
+            <PropertyRef Name="Orden" />
+            <PropertyRef Name="Ruta" />
+            <PropertyRef Name="Gestion" />
+            <PropertyRef Name="IDClase" />
+          </Key>
+          <Property Name="Proveedor" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="Vendedor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Zona" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Gestion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IDClase" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="ListadoPorRuta_Result">
+          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor1Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor2Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor3Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor4Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor5Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor6Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor7Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor8Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Vendedor1Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor2Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor3Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor4Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor5Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor6Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor7Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor8Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Zona" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="ListadoPorRuta_ClaseProducto_Result">
+          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor1Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor2Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor3Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor4Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor5Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor6Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor7Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor8Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Vendedor1Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor2Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor3Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor4Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor5Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor6Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor7Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor8Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Zona" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="IDClase" Nullable="true" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="ListadoPorRuta1_Result">
+          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor1Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor2Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor3Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor4Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor5Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor6Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor7Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor8Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Vendedor1Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor2Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor3Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor4Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor5Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor6Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor7Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor8Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Zona" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="IDClase" Nullable="true" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="ListadoPorRuta_ClaseProducto_Result1">
+          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor1Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor2Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor3Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor4Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor5Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor6Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor7Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Vendedor8Codigo" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Vendedor1Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor2Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor3Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor4Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor5Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor6Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor7Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Vendedor8Cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Zona" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="ProductoClase" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <EntityType Name="Clase_Producto">
+          <Key>
+            <PropertyRef Name="Clase_Producto1" />
+          </Key>
+          <Property Name="Clase_Producto1" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="LiderAppModel.FK_PRODUCTO_Clase_Producto" FromRole="Clase_Producto" ToRole="PRODUCTO" />
+        </EntityType>
+        <Association Name="FK_PRODUCTO_Clase_Producto">
+          <End Type="LiderAppModel.Clase_Producto" Role="Clase_Producto" Multiplicity="1" />
+          <End Type="LiderAppModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase_Producto">
+              <PropertyRef Name="Clase_Producto1" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="clase_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2968,15 +3161,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
                 <ScalarProperty Name="descrip" ColumnName="descrip" />
                 <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Clase_Producto">
-            <EntityTypeMapping TypeName="LiderAppModel.Clase_Producto">
-              <MappingFragment StoreEntitySet="Clase_Producto">
-                <ScalarProperty Name="Orden" ColumnName="Orden" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Clase_Producto1" ColumnName="Clase_Producto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3651,23 +3835,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Vva_ListadoPorRuta">
-            <EntityTypeMapping TypeName="LiderAppModel.Vva_ListadoPorRuta">
-              <MappingFragment StoreEntitySet="Vva_ListadoPorRuta">
-                <ScalarProperty Name="Gestion" ColumnName="Gestion" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
-                <ScalarProperty Name="Zona" ColumnName="Zona" />
-                <ScalarProperty Name="Orden" ColumnName="Orden" />
-                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FiltroConfiguracion">
             <EntityTypeMapping TypeName="LiderAppModel.FiltroConfiguracion">
               <MappingFragment StoreEntitySet="FiltroConfiguracion">
@@ -3708,6 +3875,90 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Vendedor' no tiene definid
                 <ScalarProperty Name="descrip" ColumnName="descrip" />
                 <ScalarProperty Name="fzavtas" ColumnName="fzavtas" />
                 <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vva_ListadoPorRuta">
+            <EntityTypeMapping TypeName="LiderAppModel.Vva_ListadoPorRuta">
+              <MappingFragment StoreEntitySet="Vva_ListadoPorRuta">
+                <ScalarProperty Name="IDClase" ColumnName="IDClase" />
+                <ScalarProperty Name="Gestion" ColumnName="Gestion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FacturarcionPorRutas1" FunctionName="LiderAppModel.Store.FacturarcionPorRutas" />
+          <FunctionImportMapping FunctionImportName="ListadoPorRuta1" FunctionName="LiderAppModel.Store.ListadoPorRuta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LiderAppModel.ListadoPorRuta1_Result">
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Vendedor1Codigo" ColumnName="Vendedor1Codigo" />
+                <ScalarProperty Name="Vendedor2Codigo" ColumnName="Vendedor2Codigo" />
+                <ScalarProperty Name="Vendedor3Codigo" ColumnName="Vendedor3Codigo" />
+                <ScalarProperty Name="Vendedor4Codigo" ColumnName="Vendedor4Codigo" />
+                <ScalarProperty Name="Vendedor5Codigo" ColumnName="Vendedor5Codigo" />
+                <ScalarProperty Name="Vendedor6Codigo" ColumnName="Vendedor6Codigo" />
+                <ScalarProperty Name="Vendedor7Codigo" ColumnName="Vendedor7Codigo" />
+                <ScalarProperty Name="Vendedor8Codigo" ColumnName="Vendedor8Codigo" />
+                <ScalarProperty Name="Vendedor1Cantidad" ColumnName="Vendedor1Cantidad" />
+                <ScalarProperty Name="Vendedor2Cantidad" ColumnName="Vendedor2Cantidad" />
+                <ScalarProperty Name="Vendedor3Cantidad" ColumnName="Vendedor3Cantidad" />
+                <ScalarProperty Name="Vendedor4Cantidad" ColumnName="Vendedor4Cantidad" />
+                <ScalarProperty Name="Vendedor5Cantidad" ColumnName="Vendedor5Cantidad" />
+                <ScalarProperty Name="Vendedor6Cantidad" ColumnName="Vendedor6Cantidad" />
+                <ScalarProperty Name="Vendedor7Cantidad" ColumnName="Vendedor7Cantidad" />
+                <ScalarProperty Name="Vendedor8Cantidad" ColumnName="Vendedor8Cantidad" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="IDClase" ColumnName="IDClase" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListadoPorRuta_ClaseProducto" FunctionName="LiderAppModel.Store.ListadoPorRuta_ClaseProducto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LiderAppModel.ListadoPorRuta_ClaseProducto_Result1">
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Vendedor1Codigo" ColumnName="Vendedor1Codigo" />
+                <ScalarProperty Name="Vendedor2Codigo" ColumnName="Vendedor2Codigo" />
+                <ScalarProperty Name="Vendedor3Codigo" ColumnName="Vendedor3Codigo" />
+                <ScalarProperty Name="Vendedor4Codigo" ColumnName="Vendedor4Codigo" />
+                <ScalarProperty Name="Vendedor5Codigo" ColumnName="Vendedor5Codigo" />
+                <ScalarProperty Name="Vendedor6Codigo" ColumnName="Vendedor6Codigo" />
+                <ScalarProperty Name="Vendedor7Codigo" ColumnName="Vendedor7Codigo" />
+                <ScalarProperty Name="Vendedor8Codigo" ColumnName="Vendedor8Codigo" />
+                <ScalarProperty Name="Vendedor1Cantidad" ColumnName="Vendedor1Cantidad" />
+                <ScalarProperty Name="Vendedor2Cantidad" ColumnName="Vendedor2Cantidad" />
+                <ScalarProperty Name="Vendedor3Cantidad" ColumnName="Vendedor3Cantidad" />
+                <ScalarProperty Name="Vendedor4Cantidad" ColumnName="Vendedor4Cantidad" />
+                <ScalarProperty Name="Vendedor5Cantidad" ColumnName="Vendedor5Cantidad" />
+                <ScalarProperty Name="Vendedor6Cantidad" ColumnName="Vendedor6Cantidad" />
+                <ScalarProperty Name="Vendedor7Cantidad" ColumnName="Vendedor7Cantidad" />
+                <ScalarProperty Name="Vendedor8Cantidad" ColumnName="Vendedor8Cantidad" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="ProductoClase" ColumnName="ProductoClase" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Clase_Producto">
+            <EntityTypeMapping TypeName="LiderAppModel.Clase_Producto">
+              <MappingFragment StoreEntitySet="Clase_Producto">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clase_Producto1" ColumnName="Clase_Producto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -90,9 +90,6 @@
             this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.xrLine3 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLabel36 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPivotGrid1 = new DevExpress.XtraReports.UI.XRPivotGrid();
             this.fieldCodigo1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldNombre1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
@@ -101,13 +98,16 @@
             this.fieldFactura1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldBoletas1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldComprobantes1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
+            this.SubBand1 = new DevExpress.XtraReports.UI.SubBand();
+            this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLabel36 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.efDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // efDataSource1
             // 
             efConnectionParameters1.ConnectionString = "";
-            efConnectionParameters1.ConnectionStringName = "LiderAppEntities";
+            efConnectionParameters1.ConnectionStringName = "conexion";
             efConnectionParameters1.Source = typeof(xtraForm.Model.LiderAppEntities);
             this.efDataSource1.ConnectionParameters = efConnectionParameters1;
             this.efDataSource1.Name = "efDataSource1";
@@ -139,6 +139,7 @@
             this.xrLabel22.Multiline = true;
             this.xrLabel22.Name = "xrLabel22";
             this.xrLabel22.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel22.StylePriority.UseFont = false;
             this.xrLabel22.StylePriority.UseTextAlignment = false;
             // 
             // xrLabel21
@@ -327,6 +328,7 @@
             resources.ApplyResources(this.Fecha, "Fecha");
             this.Fecha.Name = "Fecha";
             this.Fecha.Type = typeof(System.DateTime);
+            this.Fecha.ValueInfo = "2019-05-11";
             // 
             // Ruta
             // 
@@ -368,7 +370,7 @@
             customSqlQuery1.Parameters.Add(queryParameter1);
             customSqlQuery1.Parameters.Add(queryParameter2);
             customSqlQuery1.Parameters.Add(queryParameter3);
-            customSqlQuery1.Sql = "select * from  ListadoPorRuta (@Ruta,@Fecha,@Gestion)";
+            customSqlQuery1.Sql = "select * from  avila.ListadoPorRuta (@Ruta,@Fecha,@Gestion)";
             customSqlQuery2.Name = "Query_1";
             queryParameter4.Name = "Ruta";
             queryParameter4.Type = typeof(DevExpress.DataAccess.Expression);
@@ -549,6 +551,7 @@
             this.xrLabel29.Multiline = true;
             this.xrLabel29.Name = "xrLabel29";
             this.xrLabel29.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel29.StylePriority.UseFont = false;
             this.xrLabel29.StylePriority.UseTextAlignment = false;
             // 
             // xrLabel28
@@ -568,6 +571,7 @@
             this.xrLabel27.Multiline = true;
             this.xrLabel27.Name = "xrLabel27";
             this.xrLabel27.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel27.StylePriority.UseFont = false;
             this.xrLabel27.StylePriority.UseTextAlignment = false;
             // 
             // xrLabel26
@@ -587,6 +591,7 @@
             this.xrLabel25.Multiline = true;
             this.xrLabel25.Name = "xrLabel25";
             this.xrLabel25.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel25.StylePriority.UseFont = false;
             this.xrLabel25.StylePriority.UseTextAlignment = false;
             // 
             // xrLabel24
@@ -631,35 +636,12 @@
             // ReportFooter
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLine3,
-            this.xrLine2,
-            this.xrLabel36,
             this.xrPivotGrid1});
             resources.ApplyResources(this.ReportFooter, "ReportFooter");
             this.ReportFooter.Name = "ReportFooter";
-            // 
-            // xrLine3
-            // 
-            resources.ApplyResources(this.xrLine3, "xrLine3");
-            this.xrLine3.Name = "xrLine3";
-            // 
-            // xrLine2
-            // 
-            resources.ApplyResources(this.xrLine2, "xrLine2");
-            this.xrLine2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
-            this.xrLine2.Name = "xrLine2";
-            this.xrLine2.StylePriority.UseBorderColor = false;
-            this.xrLine2.StylePriority.UseBorderDashStyle = false;
-            this.xrLine2.StylePriority.UseForeColor = false;
-            // 
-            // xrLabel36
-            // 
-            resources.ApplyResources(this.xrLabel36, "xrLabel36");
-            this.xrLabel36.Multiline = true;
-            this.xrLabel36.Name = "xrLabel36";
-            this.xrLabel36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel36.StylePriority.UseFont = false;
-            this.xrLabel36.StylePriority.UseForeColor = false;
+            this.ReportFooter.PageBreak = DevExpress.XtraReports.UI.PageBreak.AfterBandExceptLastEntry;
+            this.ReportFooter.SubBands.AddRange(new DevExpress.XtraReports.UI.SubBand[] {
+            this.SubBand1});
             // 
             // xrPivotGrid1
             // 
@@ -697,6 +679,8 @@
             // 
             // fieldCodigo1
             // 
+            this.fieldCodigo1.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.fieldCodigo1.Appearance.FieldValue.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fieldCodigo1.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
             this.fieldCodigo1.AreaIndex = 0;
             resources.ApplyResources(this.fieldCodigo1, "fieldCodigo1");
@@ -757,6 +741,32 @@
             this.fieldComprobantes1.FieldName = "#Comprobantes";
             this.fieldComprobantes1.Name = "fieldComprobantes1";
             this.fieldComprobantes1.Options.ShowInFilter = true;
+            // 
+            // SubBand1
+            // 
+            this.SubBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLine2,
+            this.xrLabel36});
+            resources.ApplyResources(this.SubBand1, "SubBand1");
+            this.SubBand1.Name = "SubBand1";
+            // 
+            // xrLine2
+            // 
+            resources.ApplyResources(this.xrLine2, "xrLine2");
+            this.xrLine2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
+            this.xrLine2.Name = "xrLine2";
+            this.xrLine2.StylePriority.UseBorderColor = false;
+            this.xrLine2.StylePriority.UseBorderDashStyle = false;
+            this.xrLine2.StylePriority.UseForeColor = false;
+            // 
+            // xrLabel36
+            // 
+            resources.ApplyResources(this.xrLabel36, "xrLabel36");
+            this.xrLabel36.Multiline = true;
+            this.xrLabel36.Name = "xrLabel36";
+            this.xrLabel36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel36.StylePriority.UseFont = false;
+            this.xrLabel36.StylePriority.UseForeColor = false;
             // 
             // rptListado
             // 
@@ -840,10 +850,10 @@
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldBoletas1;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldComprobantes1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel36;
-        private DevExpress.XtraReports.UI.XRLine xrLine3;
         private DevExpress.XtraReports.UI.XRLine xrLine2;
         private DevExpress.DataAccess.EntityFramework.EFDataSource efDataSource1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel37;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldClientes1;
+        private DevExpress.XtraReports.UI.SubBand SubBand1;
     }
 }

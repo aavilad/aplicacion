@@ -487,7 +487,7 @@ namespace xtraForm
             {
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
-                objeto = new Modulos.Reportes.Modulos.Distribucion.frmDistribucion
+                objeto = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
@@ -508,7 +508,25 @@ namespace xtraForm
             var pedidos = new XtraTabPage();
             entidad.index = 0;
             var rpt = new rptListado();
-            var frmrpt = new Modulos.Reportes.Modulos.Distribucion.frmDistribucion();
+            var frmrpt = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte();
+            frmrpt.TopLevel = false;
+            frmrpt.FormBorderStyle = FormBorderStyle.None;
+            frmrpt.Dock = DockStyle.Fill;
+            frmrpt.documentViewer1.DocumentSource = rpt;
+            xtraTabControl1.TabPages.Add(pedidos);
+            xtraTabControl1.SelectedTabPage = pedidos;
+            pedidos.Text = "Reportes de distribucion";
+            entidad.index = xtraTabControl1.SelectedTabPageIndex;
+            pedidos.Controls.Add(frmrpt);
+            frmrpt.Show();
+        }
+
+        private void ListadoProductoClase_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var pedidos = new XtraTabPage();
+            entidad.index = 0;
+            var rpt = new ListadoPorClaseProducto();
+            var frmrpt = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte();
             frmrpt.TopLevel = false;
             frmrpt.FormBorderStyle = FormBorderStyle.None;
             frmrpt.Dock = DockStyle.Fill;

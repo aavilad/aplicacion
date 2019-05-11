@@ -11,7 +11,7 @@ namespace xtraForm.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Vva_Pedido
     {
         public string NrPedido { get; set; }

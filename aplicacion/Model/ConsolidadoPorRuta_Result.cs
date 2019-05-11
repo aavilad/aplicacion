@@ -10,7 +10,7 @@
 namespace xtraForm.Model
 {
     using System;
-
+    
     public partial class ConsolidadoPorRuta_Result
     {
         public string NombreEmpresa { get; set; }

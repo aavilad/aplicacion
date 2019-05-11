@@ -289,6 +289,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Conexion.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Conexion1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Conexion.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Model\ConsolidadoPorRuta_Result.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
@@ -332,6 +337,18 @@
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LINEA.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ListadoPorRuta1_Result.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ListadoPorRuta_ClaseProducto_Result.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ListadoPorRuta_ClaseProducto_Result1.cs">
+      <DependentUpon>Conexion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ListadoPorRuta_Result.cs">
       <DependentUpon>Conexion.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\MARCA.cs">
@@ -490,17 +507,23 @@
     <Compile Include="Modulos\Inventario\frmMarca.Designer.cs">
       <DependentUpon>frmMarca.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frm1.cs">
+    <Compile Include="Modulos\Reportes\FrmMostrarReporte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frm1.Designer.cs">
-      <DependentUpon>frm1.cs</DependentUpon>
+    <Compile Include="Modulos\Reportes\FrmMostrarReporte.Designer.cs">
+      <DependentUpon>FrmMostrarReporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.cs">
+    <Compile Include="Modulos\Reportes\ModeloReporte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.Designer.cs">
-      <DependentUpon>frmDistribucion.cs</DependentUpon>
+    <Compile Include="Modulos\Reportes\ModeloReporte.Designer.cs">
+      <DependentUpon>ModeloReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\ListadoPorClaseProducto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\ListadoPorClaseProducto.Designer.cs">
+      <DependentUpon>ListadoPorClaseProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\rptListado.cs">
       <SubType>Component</SubType>
@@ -687,11 +710,14 @@
     <EmbeddedResource Include="Modulos\Inventario\frmMarca.resx">
       <DependentUpon>frmMarca.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frm1.resx">
-      <DependentUpon>frm1.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\FrmMostrarReporte.resx">
+      <DependentUpon>FrmMostrarReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.resx">
-      <DependentUpon>frmDistribucion.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\ModeloReporte.resx">
+      <DependentUpon>ModeloReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\ListadoPorClaseProducto.resx">
+      <DependentUpon>ListadoPorClaseProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\rptListado.es-PE.resx">
       <DependentUpon>rptListado.cs</DependentUpon>
@@ -747,7 +773,7 @@
     </Compile>
     <EntityDeploy Include="Model\Conexion.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Conexion.Designer.cs</LastGenOutput>
+      <LastGenOutput>Conexion1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Model\Conexion.edmx.diagram">
       <DependentUpon>Conexion.edmx</DependentUpon>
