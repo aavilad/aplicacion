@@ -103,8 +103,8 @@
             this.fieldComprobantes1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldIDClase = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.xrLine4 = new DevExpress.XtraReports.UI.XRLine();
+            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ClaseProducto = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.efDataSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -747,6 +747,7 @@
             this.GroupHeader2.HeightF = 64.27173F;
             this.GroupHeader2.Level = 2;
             this.GroupHeader2.Name = "GroupHeader2";
+            this.GroupHeader2.RepeatEveryPage = true;
             // 
             // xrLine3
             // 
@@ -922,6 +923,18 @@
             this.ReportFooter.HeightF = 39.06797F;
             this.ReportFooter.Name = "ReportFooter";
             // 
+            // xrLine4
+            // 
+            this.xrLine4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.xrLine4.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
+            this.xrLine4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.xrLine4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrLine4.Name = "xrLine4";
+            this.xrLine4.SizeF = new System.Drawing.SizeF(795.3949F, 10.94298F);
+            this.xrLine4.StylePriority.UseBorderColor = false;
+            this.xrLine4.StylePriority.UseBorderDashStyle = false;
+            this.xrLine4.StylePriority.UseForeColor = false;
+            // 
             // sqlDataSource1
             // 
             this.sqlDataSource1.ConnectionName = "conexion";
@@ -945,18 +958,6 @@
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             customSqlQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
-            // 
-            // xrLine4
-            // 
-            this.xrLine4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.xrLine4.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
-            this.xrLine4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.xrLine4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.xrLine4.Name = "xrLine4";
-            this.xrLine4.SizeF = new System.Drawing.SizeF(795.3949F, 10.94298F);
-            this.xrLine4.StylePriority.UseBorderColor = false;
-            this.xrLine4.StylePriority.UseBorderDashStyle = false;
-            this.xrLine4.StylePriority.UseForeColor = false;
             // 
             // ListadoPorClaseProducto
             // 

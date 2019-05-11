@@ -122,14 +122,14 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="xrLabel22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <assembly alias="DevExpress.Data.v18.1" name="DevExpress.Data.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="xrLabel22.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>458.000153, 0.458330154</value>
+    <value>450.895874, 3.12501144</value>
   </data>
   <data name="xrLabel22.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
+    <value>40, 13</value>
   </data>
   <data name="xrLabel22.Text" xml:space="preserve">
     <value>xrLabel22</value>
@@ -137,29 +137,14 @@
   <data name="xrLabel22.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
     <value>TopCenter</value>
   </data>
-  <data name="xrLabel21.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
-  </data>
-  <data name="xrLabel21.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>729.8334, 0</value>
-  </data>
-  <data name="xrLabel21.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 14.04168</value>
-  </data>
-  <data name="xrLabel21.Text" xml:space="preserve">
-    <value>xrLabel21</value>
-  </data>
-  <data name="xrLabel21.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
-    <value>TopCenter</value>
-  </data>
   <data name="xrLabel11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel11.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>692.8334, 0</value>
+    <value>722.75, 3.12501144</value>
   </data>
   <data name="xrLabel11.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 14.04168</value>
+    <value>40, 13</value>
   </data>
   <data name="xrLabel11.Text" xml:space="preserve">
     <value>xrLabel11</value>
@@ -168,13 +153,13 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel10.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>655.8334, 0</value>
+    <value>673.937561, 3.12501144</value>
   </data>
   <data name="xrLabel10.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 14.04168</value>
+    <value>40, 13</value>
   </data>
   <data name="xrLabel10.Text" xml:space="preserve">
     <value>xrLabel10</value>
@@ -183,13 +168,13 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel9.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>618.8334, 0</value>
+    <value>629.437561, 3.12501144</value>
   </data>
   <data name="xrLabel9.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 14.04168</value>
+    <value>40, 13</value>
   </data>
   <data name="xrLabel9.Text" xml:space="preserve">
     <value>xrLabel9</value>
@@ -198,13 +183,13 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel8.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>581.8334, 0</value>
+    <value>584.937561, 3.12501144</value>
   </data>
   <data name="xrLabel8.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 14.04168</value>
+    <value>40, 13</value>
   </data>
   <data name="xrLabel8.Text" xml:space="preserve">
     <value>xrLabel8</value>
@@ -213,13 +198,13 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel7.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>544.8334, 0</value>
+    <value>540.437561, 3.12501144</value>
   </data>
   <data name="xrLabel7.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 14.04168</value>
+    <value>40, 13</value>
   </data>
   <data name="xrLabel7.Text" xml:space="preserve">
     <value>xrLabel7</value>
@@ -228,13 +213,13 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel5.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>507.8333, 0</value>
+    <value>495.937531, 3.12501144</value>
   </data>
   <data name="xrLabel5.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 14.04168</value>
+    <value>40, 13</value>
   </data>
   <data name="xrLabel5.Text" xml:space="preserve">
     <value>xrLabel5</value>
@@ -243,13 +228,13 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel4.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>418.000183, 0</value>
+    <value>397.208435, 3.12501144</value>
   </data>
   <data name="xrLabel4.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>40, 14.04168</value>
+    <value>48.62494, 13</value>
   </data>
   <data name="xrLabel4.Text" xml:space="preserve">
     <value>xrLabel4</value>
@@ -258,22 +243,22 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel2.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>75.29173, 0</value>
+    <value>75.29173, 3.12501144</value>
   </data>
   <data name="xrLabel2.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>342.708435, 13</value>
+    <value>315.4696, 13</value>
   </data>
   <data name="xrLabel2.Text" xml:space="preserve">
     <value>xrLabel2</value>
   </data>
   <data name="xrLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 9pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel1.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>1.041667, 0</value>
+    <value>1.041667, 3.12501144</value>
   </data>
   <data name="xrLabel1.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>62.5, 13</value>
@@ -283,7 +268,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Detail.HeightF" type="System.Single, mscorlib">
-    <value>14.04168</value>
+    <value>16.1250114</value>
   </data>
   <data name="Detail.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
     <value>TopLeft</value>
@@ -292,7 +277,7 @@
     <value>Calibri, 12pt, style=Bold</value>
   </data>
   <data name="xrLabel35.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>2.41228747, 12.5</value>
+    <value>2.41228747, 11.6227913</value>
   </data>
   <data name="xrLabel35.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>100, 37.5833359</value>
@@ -303,8 +288,11 @@
   <data name="xrLabel35.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
     <value>MiddleLeft</value>
   </data>
+  <data name="xrPageInfo1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
   <data name="xrPageInfo1.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>615.3917, 35.5811272</value>
+    <value>607.5542, 35.5811272</value>
   </data>
   <data name="xrPageInfo1.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>44.79167, 13.625001</value>
@@ -313,13 +301,13 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel34.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel34.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>618.8334, 19.8727932</value>
+    <value>604.06665, 19.8727932</value>
   </data>
   <data name="xrLabel34.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37.9084167, 13.625001</value>
+    <value>51.7667236, 13.6250019</value>
   </data>
   <data name="xrLabel34.Text" xml:space="preserve">
     <value>Pagina</value>
@@ -328,13 +316,13 @@
     <value>TopCenter</value>
   </data>
   <data name="xrLabel33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel33.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>692.8334, 17.78946</value>
+    <value>683.2917, 17.78946</value>
   </data>
   <data name="xrLabel33.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>88.083374, 15.7083368</value>
+    <value>106.708313, 15.7083359</value>
   </data>
   <data name="xrLabel33.Text" xml:space="preserve">
     <value>Fecha Impresion</value>
@@ -342,8 +330,11 @@
   <data name="xrLabel33.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
     <value>MiddleCenter</value>
   </data>
+  <data name="xrLabel32.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
   <data name="xrLabel32.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>683.2917, 34.53946</value>
+    <value>683.0625, 34.53946</value>
   </data>
   <data name="xrLabel32.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>107.166687, 15.7083359</value>
@@ -358,13 +349,13 @@
     <value>{0:dd/MM/yyyy hh:mm tt}</value>
   </data>
   <data name="xrLabel20.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 14pt, style=Bold</value>
+    <value>Tahoma, 14pt, style=Bold</value>
   </data>
   <data name="xrLabel20.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>250, 6.37501144</value>
+    <value>198.458282, 3.25001073</value>
   </data>
   <data name="xrLabel20.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>313.5833, 30.2477837</value>
+    <value>383.375, 30.2477837</value>
   </data>
   <data name="xrLabel20.Text" xml:space="preserve">
     <value>LISTADO GENERAL DE PRODUCTOS </value>
@@ -415,10 +406,10 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTIiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iUHJvdmVlZG9yIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJEZXNjcmlwY2lvbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJVbmlkYWQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3IxQ29kaWdvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yMkNvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjNDb2RpZ28iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3I0Q29kaWdvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yNUNvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjZDb2RpZ28iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3I3Q29kaWdvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yOENvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjFDYW50aWRhZCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3IyQ2FudGlkYWQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yM0NhbnRpZGFkIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjRDYW50aWRhZCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3I1Q2FudGlkYWQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yNkNhbnRpZGFkIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjdDYW50aWRhZCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3I4Q2FudGlkYWQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlpvbmEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iSURDbGFzZSIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48VmlldyBOYW1lPSJRdWVyeV8xIj48RmllbGQgTmFtZT0iQ29kaWdvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik5vbWJyZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSIjUGVkaWRvcyIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IiNDbGllbnRlcyIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IiNGYWN0dXJhIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iI0JvbGV0YXMiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSIjQ29tcHJvYmFudGVzIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
   </data>
   <data name="xrLabel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8.25pt, style=Bold</value>
+    <value>Tahoma, 8.25pt, style=Bold</value>
   </data>
   <data name="xrLabel3.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>1.041667, 0</value>
+    <value>1.04166663, 0</value>
   </data>
   <data name="xrLabel3.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>444.7917, 13</value>
@@ -427,16 +418,16 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>xrLabel3</value>
   </data>
   <data name="GroupHeader1.HeightF" type="System.Single, mscorlib">
-    <value>16.75</value>
+    <value>13</value>
   </data>
   <data name="xrLabel19.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel19.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>729.8333, 30.0109825</value>
+    <value>502.6623, 45.318</value>
   </data>
   <data name="xrLabel19.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
+    <value>40, 12.08334</value>
   </data>
   <data name="xrLabel19.Text" xml:space="preserve">
     <value>xrLabel19</value>
@@ -445,13 +436,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>TopCenter</value>
   </data>
   <data name="xrLabel18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel18.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>692.8333, 30.0109825</value>
+    <value>547.1623, 45.318</value>
   </data>
   <data name="xrLabel18.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
+    <value>40, 12.08334</value>
   </data>
   <data name="xrLabel18.Text" xml:space="preserve">
     <value>xrLabel18</value>
@@ -460,13 +451,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>TopCenter</value>
   </data>
   <data name="xrLabel17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel17.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>655.8334, 30.0109825</value>
+    <value>591.6623, 45.318</value>
   </data>
   <data name="xrLabel17.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
+    <value>40, 12.08334</value>
   </data>
   <data name="xrLabel17.Text" xml:space="preserve">
     <value>xrLabel17</value>
@@ -475,13 +466,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>TopCenter</value>
   </data>
   <data name="xrLabel16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel16.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>618.8333, 30.0109825</value>
+    <value>636.1623, 45.318</value>
   </data>
   <data name="xrLabel16.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
+    <value>40, 12.08334</value>
   </data>
   <data name="xrLabel16.Text" xml:space="preserve">
     <value>xrLabel16</value>
@@ -490,13 +481,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>TopCenter</value>
   </data>
   <data name="xrLabel15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel15.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>581.8333, 30.0109825</value>
+    <value>680.6623, 45.318</value>
   </data>
   <data name="xrLabel15.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
+    <value>40, 12.08334</value>
   </data>
   <data name="xrLabel15.Text" xml:space="preserve">
     <value>xrLabel15</value>
@@ -505,13 +496,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>TopCenter</value>
   </data>
   <data name="xrLabel14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel14.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>544.8333, 30.0109825</value>
+    <value>725.1623, 45.318</value>
   </data>
   <data name="xrLabel14.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
+    <value>40, 12.08334</value>
   </data>
   <data name="xrLabel14.Text" xml:space="preserve">
     <value>xrLabel14</value>
@@ -519,29 +510,20 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
   <data name="xrLabel14.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
     <value>TopCenter</value>
   </data>
-  <data name="xrLabel6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+  <data name="xrLine1.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
+    <value>2.41228747, 57.8596764</value>
   </data>
-  <data name="xrLabel6.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>507.8333, 30.0109825</value>
-  </data>
-  <data name="xrLabel6.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
-  </data>
-  <data name="xrLabel6.Text" xml:space="preserve">
-    <value>xrLabel6</value>
-  </data>
-  <data name="xrLabel6.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
-    <value>TopCenter</value>
+  <data name="xrLine1.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>797.5877, 10.94298</value>
   </data>
   <data name="xrLabel37.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel37.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>418.750244, 30.0109825</value>
+    <value>399.465179, 45.318</value>
   </data>
   <data name="xrLabel37.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>38.49991, 12.08334</value>
+    <value>48.62494, 12.08334</value>
   </data>
   <data name="xrLabel37.Text" xml:space="preserve">
     <value>Unidad</value>
@@ -550,7 +532,7 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>TopCenter</value>
   </data>
   <data name="xrLabel31.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel31.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
     <value>2.41228747, 0</value>
@@ -563,6 +545,9 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
   </data>
   <data name="xrLabel31.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
     <value>MiddleLeft</value>
+  </data>
+  <data name="xrLabel30.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel30.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
     <value>38.8335228, 0</value>
@@ -577,13 +562,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>MiddleLeft</value>
   </data>
   <data name="xrLabel29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel29.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>469.1667, 12.5833492</value>
+    <value>445.833344, 23.0000172</value>
   </data>
   <data name="xrLabel29.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>76.04166, 12.5833359</value>
+    <value>94.416626, 12.5833359</value>
   </data>
   <data name="xrLabel29.Text" xml:space="preserve">
     <value>xrLabel29</value>
@@ -595,13 +580,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>{0:dd/MM/yyyy}</value>
   </data>
   <data name="xrLabel28.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel28.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>393.125031, 12.5833492</value>
+    <value>358.333374, 23.0000172</value>
   </data>
   <data name="xrLabel28.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>76.04166, 12.5833359</value>
+    <value>87.5, 12.5833359</value>
   </data>
   <data name="xrLabel28.Text" xml:space="preserve">
     <value>FechaEmision:</value>
@@ -610,10 +595,10 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>MiddleLeft</value>
   </data>
   <data name="xrLabel27.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel27.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>753.7917, 12.5833492</value>
+    <value>753.7917, 23.0000172</value>
   </data>
   <data name="xrLabel27.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>36.4583321, 12.5833359</value>
@@ -625,13 +610,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>MiddleLeft</value>
   </data>
   <data name="xrLabel26.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel26.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>704.8334, 12.5833492</value>
+    <value>698.279968, 23.0000172</value>
   </data>
   <data name="xrLabel26.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>48.958313, 12.5833359</value>
+    <value>50.57118, 12.5833359</value>
   </data>
   <data name="xrLabel26.Text" xml:space="preserve">
     <value>Gestion:</value>
@@ -640,13 +625,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>MiddleLeft</value>
   </data>
   <data name="xrLabel25.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="xrLabel25.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>604.749939, 12.5833492</value>
+    <value>586.5894, 23.0000172</value>
   </data>
   <data name="xrLabel25.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>88.083374, 12.5833359</value>
+    <value>106.75, 12.5833359</value>
   </data>
   <data name="xrLabel25.Text" xml:space="preserve">
     <value>xrLabel25</value>
@@ -655,10 +640,10 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>MiddleLeft</value>
   </data>
   <data name="xrLabel24.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel24.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>568.2916, 12.5833492</value>
+    <value>545.190552, 23.0000172</value>
   </data>
   <data name="xrLabel24.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>36.4583321, 12.5833359</value>
@@ -670,13 +655,13 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>MiddleLeft</value>
   </data>
   <data name="xrLabel23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel23.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>458.000122, 30.0109825</value>
+    <value>453.308167, 44.8596954</value>
   </data>
   <data name="xrLabel23.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>37, 12.08334</value>
+    <value>40, 13</value>
   </data>
   <data name="xrLabel23.Text" xml:space="preserve">
     <value>Total</value>
@@ -685,22 +670,22 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>TopCenter</value>
   </data>
   <data name="xrLabel13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel13.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>75.29173, 30.0109825</value>
+    <value>68.17351, 45.318</value>
   </data>
   <data name="xrLabel13.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>342.708435, 12.08334</value>
+    <value>325.000122, 12.08334</value>
   </data>
   <data name="xrLabel13.Text" xml:space="preserve">
     <value>Descripcion</value>
   </data>
   <data name="xrLabel12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt, style=Bold</value>
+    <value>Tahoma, 8pt, style=Bold</value>
   </data>
   <data name="xrLabel12.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>4.605277, 30.0109825</value>
+    <value>2.41228747, 45.318</value>
   </data>
   <data name="xrLabel12.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>58.93641, 12.08334</value>
@@ -708,14 +693,11 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
   <data name="xrLabel12.Text" xml:space="preserve">
     <value>Codigo</value>
   </data>
-  <data name="xrLine1.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v18.1">
-    <value>2.41228747, 41.15134</value>
-  </data>
-  <data name="xrLine1.SizeF" type="System.Drawing.SizeF, System.Drawing">
-    <value>797.5877, 10.94298</value>
+  <data name="xrLabel12.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v18.1">
+    <value>TopCenter</value>
   </data>
   <data name="GroupHeader2.HeightF" type="System.Single, mscorlib">
-    <value>52.0943222</value>
+    <value>68.80266</value>
   </data>
   <data name="fieldCodigo1.Caption" xml:space="preserve">
     <value>Codigo</value>
@@ -805,7 +787,7 @@ GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
     <value>True</value>
   </metadata>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 8pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="$this.Margins" type="System.Drawing.Printing.Margins, System.Drawing">
     <value>25, 25, 51, 32</value>

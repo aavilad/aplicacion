@@ -44,7 +44,6 @@
             this.efDataSource1 = new DevExpress.DataAccess.EntityFramework.EFDataSource(this.components);
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrLabel22 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel21 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
@@ -74,7 +73,6 @@
             this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupHeader2 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel37 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel31 = new DevExpress.XtraReports.UI.XRLabel();
@@ -116,7 +114,6 @@
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel22,
-            this.xrLabel21,
             this.xrLabel11,
             this.xrLabel10,
             this.xrLabel9,
@@ -141,17 +138,6 @@
             this.xrLabel22.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel22.StylePriority.UseFont = false;
             this.xrLabel22.StylePriority.UseTextAlignment = false;
-            // 
-            // xrLabel21
-            // 
-            this.xrLabel21.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Vendedor7Cantidad]")});
-            resources.ApplyResources(this.xrLabel21, "xrLabel21");
-            this.xrLabel21.Multiline = true;
-            this.xrLabel21.Name = "xrLabel21";
-            this.xrLabel21.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel21.StylePriority.UseFont = false;
-            this.xrLabel21.StylePriority.UseTextAlignment = false;
             // 
             // xrLabel11
             // 
@@ -278,6 +264,7 @@
             resources.ApplyResources(this.xrPageInfo1, "xrPageInfo1");
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrPageInfo1.StylePriority.UseFont = false;
             this.xrPageInfo1.StylePriority.UseTextAlignment = false;
             // 
             // xrLabel34
@@ -306,6 +293,7 @@
             resources.ApplyResources(this.xrLabel32, "xrLabel32");
             this.xrLabel32.Name = "xrLabel32";
             this.xrLabel32.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel32.StylePriority.UseFont = false;
             this.xrLabel32.StylePriority.UseTextAlignment = false;
             // 
             // xrLabel20
@@ -413,7 +401,7 @@
             // xrLabel19
             // 
             this.xrLabel19.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor7Codigo])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor1Codigo])")});
             resources.ApplyResources(this.xrLabel19, "xrLabel19");
             this.xrLabel19.Multiline = true;
             this.xrLabel19.Name = "xrLabel19";
@@ -424,7 +412,7 @@
             // xrLabel18
             // 
             this.xrLabel18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor6Codigo])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor2Codigo])")});
             resources.ApplyResources(this.xrLabel18, "xrLabel18");
             this.xrLabel18.Multiline = true;
             this.xrLabel18.Name = "xrLabel18";
@@ -435,7 +423,7 @@
             // xrLabel17
             // 
             this.xrLabel17.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor5Codigo])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor3Codigo])")});
             resources.ApplyResources(this.xrLabel17, "xrLabel17");
             this.xrLabel17.Multiline = true;
             this.xrLabel17.Name = "xrLabel17";
@@ -457,7 +445,7 @@
             // xrLabel15
             // 
             this.xrLabel15.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor3Codigo])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor5Codigo])")});
             resources.ApplyResources(this.xrLabel15, "xrLabel15");
             this.xrLabel15.Multiline = true;
             this.xrLabel15.Name = "xrLabel15";
@@ -468,7 +456,7 @@
             // xrLabel14
             // 
             this.xrLabel14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor2Codigo])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor6Codigo])")});
             resources.ApplyResources(this.xrLabel14, "xrLabel14");
             this.xrLabel14.Multiline = true;
             this.xrLabel14.Name = "xrLabel14";
@@ -476,20 +464,10 @@
             this.xrLabel14.StylePriority.UseFont = false;
             this.xrLabel14.StylePriority.UseTextAlignment = false;
             // 
-            // xrLabel6
-            // 
-            this.xrLabel6.AutoWidth = true;
-            this.xrLabel6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Trim([Vendedor1Codigo])")});
-            resources.ApplyResources(this.xrLabel6, "xrLabel6");
-            this.xrLabel6.Name = "xrLabel6";
-            this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel6.StylePriority.UseFont = false;
-            this.xrLabel6.StylePriority.UseTextAlignment = false;
-            // 
             // GroupHeader2
             // 
             this.GroupHeader2.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLine1,
             this.xrLabel37,
             this.xrLabel31,
             this.xrLabel30,
@@ -502,8 +480,6 @@
             this.xrLabel23,
             this.xrLabel13,
             this.xrLabel12,
-            this.xrLine1,
-            this.xrLabel6,
             this.xrLabel18,
             this.xrLabel17,
             this.xrLabel16,
@@ -541,6 +517,7 @@
             this.xrLabel30.Multiline = true;
             this.xrLabel30.Name = "xrLabel30";
             this.xrLabel30.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel30.StylePriority.UseFont = false;
             this.xrLabel30.StylePriority.UseTextAlignment = false;
             // 
             // xrLabel29
@@ -627,6 +604,7 @@
             this.xrLabel12.Name = "xrLabel12";
             this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel12.StylePriority.UseFont = false;
+            this.xrLabel12.StylePriority.UseTextAlignment = false;
             // 
             // xrLine1
             // 
@@ -818,8 +796,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel16;
         private DevExpress.XtraReports.UI.XRLabel xrLabel15;
         private DevExpress.XtraReports.UI.XRLabel xrLabel14;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel6;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel21;
         private DevExpress.XtraReports.UI.XRLabel xrLabel3;
         private DevExpress.XtraReports.UI.GroupHeaderBand GroupHeader2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel13;

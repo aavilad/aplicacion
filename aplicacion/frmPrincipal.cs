@@ -538,5 +538,11 @@ namespace xtraForm
             pedidos.Controls.Add(frmrpt);
             frmrpt.Show();
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var rpte = new Modulos.Reportes.ModeloReporte();
+            rpte.Show();
+        }
     }
 }

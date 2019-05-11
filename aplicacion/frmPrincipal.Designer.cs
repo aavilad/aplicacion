@@ -73,6 +73,8 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.ListadoPorRuta = new DevExpress.XtraBars.BarButtonItem();
             this.ListadoProductoClase = new DevExpress.XtraBars.BarButtonItem();
+            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -95,7 +97,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
-            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.SuspendLayout();
@@ -155,9 +156,10 @@
             this.barSubItem1,
             this.ListadoPorRuta,
             this.ListadoProductoClase,
-            this.skinPaletteRibbonGalleryBarItem1});
+            this.skinPaletteRibbonGalleryBarItem1,
+            this.barButtonItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 5;
+            this.ribbonControl1.MaxItemId = 6;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -531,6 +533,19 @@
             this.ListadoProductoClase.Name = "ListadoProductoClase";
             this.ListadoProductoClase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ListadoProductoClase_ItemClick);
             // 
+            // skinPaletteRibbonGalleryBarItem1
+            // 
+            this.skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
+            this.skinPaletteRibbonGalleryBarItem1.Id = 4;
+            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 5;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // MVENTAS
             // 
             this.MVENTAS.Name = "MVENTAS";
@@ -674,6 +689,7 @@
             this.G031.ItemLinks.Add(this.INVENTARIOREPORTE);
             this.G031.ItemLinks.Add(this.VENTASREPORTE);
             this.G031.ItemLinks.Add(this.barSubItem1);
+            this.G031.ItemLinks.Add(this.barButtonItem1);
             this.G031.Name = "G031";
             this.G031.Text = "ribbonPageGroup1";
             // 
@@ -706,12 +722,6 @@
             // splashScreenManager1
             // 
             this.splashScreenManager1.ClosingDelay = 500;
-            // 
-            // skinPaletteRibbonGalleryBarItem1
-            // 
-            this.skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
-            this.skinPaletteRibbonGalleryBarItem1.Id = 4;
-            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
             // frmPrincipal
             // 
@@ -800,5 +810,6 @@
         private DevExpress.XtraBars.BarButtonItem ListadoPorRuta;
         private DevExpress.XtraBars.BarButtonItem ListadoProductoClase;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
