@@ -12,6 +12,5 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
         {
             InitializeComponent();
         }
-
     }
 }

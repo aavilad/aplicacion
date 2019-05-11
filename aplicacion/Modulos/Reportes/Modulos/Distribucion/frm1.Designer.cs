@@ -188,7 +188,6 @@
             this.documentViewer1 = new DevExpress.XtraPrinting.Preview.DocumentViewer();
             this.documentViewerRibbonController1 = new DevExpress.XtraPrinting.Preview.DocumentViewerRibbonController(this.components);
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.printPreviewBarItem1 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.printPreviewBarItem2 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.printPreviewBarItem3 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
@@ -242,12 +241,12 @@
             this.printPreviewBarItem51 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.printPreviewStaticItem1 = new DevExpress.XtraPrinting.Preview.PrintPreviewStaticItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
-            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.progressBarEditItem1 = new DevExpress.XtraPrinting.Preview.ProgressBarEditItem();
+            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.printPreviewBarItem52 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.printPreviewStaticItem2 = new DevExpress.XtraPrinting.Preview.PrintPreviewStaticItem();
-            this.repositoryItemZoomTrackBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar();
             this.zoomTrackBarEditItem1 = new DevExpress.XtraPrinting.Preview.ZoomTrackBarEditItem();
+            this.repositoryItemZoomTrackBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar();
             this.ribbonPage1 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPage();
             this.printPreviewRibbonPageGroup1 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup();
             this.printPreviewRibbonPageGroup2 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup();
@@ -257,6 +256,7 @@
             this.printPreviewRibbonPageGroup6 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup();
             this.printPreviewRibbonPageGroup7 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup();
             this.printPreviewRibbonPageGroup8 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup();
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.documentViewerRibbonController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -266,7 +266,7 @@
             // documentViewer1
             // 
             this.documentViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.documentViewer1.DocumentSource = typeof(xtraForm.Modulos.Reportes.Modulos.Distribucion.rptListadoPorRutas);
+            this.documentViewer1.DocumentSource = typeof(xtraForm.Modulos.Reportes.Modulos.Distribucion.rptListado);
             this.documentViewer1.IsMetric = true;
             this.documentViewer1.Location = new System.Drawing.Point(0, 158);
             this.documentViewer1.Name = "documentViewer1";
@@ -353,19 +353,6 @@
             this.ribbonControl1.Size = new System.Drawing.Size(860, 158);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.TransparentEditorsMode = DevExpress.Utils.DefaultBoolean.True;
-            // 
-            // ribbonStatusBar1
-            // 
-            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewStaticItem1);
-            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem1);
-            this.ribbonStatusBar1.ItemLinks.Add(this.progressBarEditItem1);
-            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewBarItem52);
-            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewStaticItem2);
-            this.ribbonStatusBar1.ItemLinks.Add(this.zoomTrackBarEditItem1);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 503);
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(860, 26);
             // 
             // printPreviewBarItem1
             // 
@@ -1285,10 +1272,6 @@
             this.barStaticItem1.Name = "barStaticItem1";
             this.barStaticItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.OnlyInRuntime;
             // 
-            // repositoryItemProgressBar1
-            // 
-            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
-            // 
             // progressBarEditItem1
             // 
             this.progressBarEditItem1.ContextSpecifier = this.documentViewerRibbonController1;
@@ -1298,6 +1281,10 @@
             this.progressBarEditItem1.Id = 54;
             this.progressBarEditItem1.Name = "progressBarEditItem1";
             this.progressBarEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // repositoryItemProgressBar1
+            // 
+            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
             // 
             // printPreviewBarItem52
             // 
@@ -1319,14 +1306,6 @@
             this.printPreviewStaticItem2.Name = "printPreviewStaticItem2";
             this.printPreviewStaticItem2.Type = "ZoomFactorText";
             // 
-            // repositoryItemZoomTrackBar1
-            // 
-            this.repositoryItemZoomTrackBar1.Alignment = DevExpress.Utils.VertAlignment.Center;
-            this.repositoryItemZoomTrackBar1.AllowFocused = false;
-            this.repositoryItemZoomTrackBar1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.repositoryItemZoomTrackBar1.Maximum = 180;
-            this.repositoryItemZoomTrackBar1.Name = "repositoryItemZoomTrackBar1";
-            // 
             // zoomTrackBarEditItem1
             // 
             this.zoomTrackBarEditItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -1340,6 +1319,14 @@
             this.zoomTrackBarEditItem1.Range = new int[] {
         10,
         500};
+            // 
+            // repositoryItemZoomTrackBar1
+            // 
+            this.repositoryItemZoomTrackBar1.Alignment = DevExpress.Utils.VertAlignment.Center;
+            this.repositoryItemZoomTrackBar1.AllowFocused = false;
+            this.repositoryItemZoomTrackBar1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.repositoryItemZoomTrackBar1.Maximum = 180;
+            this.repositoryItemZoomTrackBar1.Name = "repositoryItemZoomTrackBar1";
             // 
             // ribbonPage1
             // 
@@ -1465,6 +1452,19 @@
             this.printPreviewRibbonPageGroup8.Name = "printPreviewRibbonPageGroup8";
             this.printPreviewRibbonPageGroup8.ShowCaptionButton = false;
             this.printPreviewRibbonPageGroup8.Text = "Cerrar";
+            // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewStaticItem1);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem1);
+            this.ribbonStatusBar1.ItemLinks.Add(this.progressBarEditItem1);
+            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewBarItem52);
+            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewStaticItem2);
+            this.ribbonStatusBar1.ItemLinks.Add(this.zoomTrackBarEditItem1);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 503);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(860, 26);
             // 
             // frm1
             // 

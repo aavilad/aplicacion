@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraTab;
 using System;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using xtraForm.Modulos.Reportes.Modulos.Distribucion;
 
 namespace xtraForm
 {
@@ -93,8 +95,6 @@ namespace xtraForm
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
             }
-
-
         }
 
         private void btnDescargarPedidos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -492,6 +492,7 @@ namespace xtraForm
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
                     Dock = DockStyle.Fill
+
                 };
                 xtraTabControl1.TabPages.Add(pedidos);
                 xtraTabControl1.SelectedTabPage = pedidos;
@@ -500,6 +501,24 @@ namespace xtraForm
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
             }
+        }
+
+        private void ListadoPorRuta_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var pedidos = new XtraTabPage();
+            entidad.index = 0;
+            var rpt = new rptListado();
+            var frmrpt = new Modulos.Reportes.Modulos.Distribucion.frmDistribucion();
+            frmrpt.TopLevel = false;
+            frmrpt.FormBorderStyle = FormBorderStyle.None;
+            frmrpt.Dock = DockStyle.Fill;
+            frmrpt.documentViewer1.DocumentSource = rpt;
+            xtraTabControl1.TabPages.Add(pedidos);
+            xtraTabControl1.SelectedTabPage = pedidos;
+            pedidos.Text = "Reportes de distribucion";
+            entidad.index = xtraTabControl1.SelectedTabPageIndex;
+            pedidos.Controls.Add(frmrpt);
+            frmrpt.Show();
         }
     }
 }

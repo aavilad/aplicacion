@@ -508,12 +508,6 @@
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\rptListado.Designer.cs">
       <DependentUpon>rptListado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\rptListadoPorRutas.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\rptListadoPorRutas.Designer.cs">
-      <DependentUpon>rptListadoPorRutas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -699,11 +693,11 @@
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\frmDistribucion.resx">
       <DependentUpon>frmDistribucion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\rptListado.resx">
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\rptListado.es-PE.resx">
       <DependentUpon>rptListado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\rptListadoPorRutas.resx">
-      <DependentUpon>rptListadoPorRutas.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\rptListado.resx">
+      <DependentUpon>rptListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>

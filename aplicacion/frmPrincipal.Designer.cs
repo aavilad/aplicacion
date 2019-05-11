@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.PEDIDOVENTA = new DevExpress.XtraBars.BarButtonItem();
@@ -42,7 +43,6 @@
             this.LINEAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
             this.VENTASREPORTE = new DevExpress.XtraBars.BarButtonItem();
             this.COMPRAREPORTE = new DevExpress.XtraBars.BarButtonItem();
-            this.DISTRIBUCIONREPORTE = new DevExpress.XtraBars.BarButtonItem();
             this.INVENTARIOREPORTE = new DevExpress.XtraBars.BarButtonItem();
             this.DESCARGAPEDIDO = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -71,6 +71,8 @@
             this.ELIMINAR = new DevExpress.XtraBars.BarButtonItem();
             this.ANULAR = new DevExpress.XtraBars.BarButtonItem();
             this.FACTURAR = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.ListadoPorRuta = new DevExpress.XtraBars.BarButtonItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -93,8 +95,10 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
+            this.galleryDropDown1 = new DevExpress.XtraBars.Ribbon.GalleryDropDown(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -121,7 +125,6 @@
             this.LINEAPRODUCTO,
             this.VENTASREPORTE,
             this.COMPRAREPORTE,
-            this.DISTRIBUCIONREPORTE,
             this.INVENTARIOREPORTE,
             this.DESCARGAPEDIDO,
             this.barButtonItem4,
@@ -149,9 +152,11 @@
             this.FILTRO,
             this.ELIMINAR,
             this.ANULAR,
-            this.FACTURAR});
+            this.FACTURAR,
+            this.barSubItem1,
+            this.ListadoPorRuta});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 8;
+            this.ribbonControl1.MaxItemId = 20;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -271,17 +276,6 @@
             this.COMPRAREPORTE.Name = "COMPRAREPORTE";
             this.COMPRAREPORTE.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            // 
-            // DISTRIBUCIONREPORTE
-            // 
-            this.DISTRIBUCIONREPORTE.Caption = "Distribucion";
-            this.DISTRIBUCIONREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
-            this.DISTRIBUCIONREPORTE.Id = 17;
-            this.DISTRIBUCIONREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("DISTRIBUCIONREPORTE.ImageOptions.SvgImage")));
-            this.DISTRIBUCIONREPORTE.Name = "DISTRIBUCIONREPORTE";
-            this.DISTRIBUCIONREPORTE.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.DISTRIBUCIONREPORTE.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DISTRIBUCIONREPORTE_ItemClick);
             // 
             // INVENTARIOREPORTE
             // 
@@ -509,6 +503,23 @@
             this.FACTURAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURAR.ImageOptions.SvgImage")));
             this.FACTURAR.Name = "FACTURAR";
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Distribucion";
+            this.barSubItem1.Id = 18;
+            this.barSubItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.ListadoPorRuta)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // ListadoPorRuta
+            // 
+            this.ListadoPorRuta.Caption = "Listado Producto Por Ruta";
+            this.ListadoPorRuta.Id = 19;
+            this.ListadoPorRuta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.ListadoPorRuta.Name = "ListadoPorRuta";
+            this.ListadoPorRuta.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ListadoPorRuta_ItemClick);
+            // 
             // MVENTAS
             // 
             this.MVENTAS.Name = "MVENTAS";
@@ -649,9 +660,9 @@
             // G031
             // 
             this.G031.ItemLinks.Add(this.COMPRAREPORTE);
-            this.G031.ItemLinks.Add(this.DISTRIBUCIONREPORTE);
             this.G031.ItemLinks.Add(this.INVENTARIOREPORTE);
             this.G031.ItemLinks.Add(this.VENTASREPORTE);
+            this.G031.ItemLinks.Add(this.barSubItem1);
             this.G031.Name = "G031";
             this.G031.Text = "ribbonPageGroup1";
             // 
@@ -685,6 +696,11 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // galleryDropDown1
+            // 
+            this.galleryDropDown1.Name = "galleryDropDown1";
+            this.galleryDropDown1.Ribbon = this.ribbonControl1;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -698,6 +714,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -720,7 +737,6 @@
         private DevExpress.XtraBars.BarButtonItem LINEAPRODUCTO;
         private DevExpress.XtraBars.BarButtonItem VENTASREPORTE;
         private DevExpress.XtraBars.BarButtonItem COMPRAREPORTE;
-        private DevExpress.XtraBars.BarButtonItem DISTRIBUCIONREPORTE;
         private DevExpress.XtraBars.BarButtonItem INVENTARIOREPORTE;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraBars.BarButtonItem DESCARGAPEDIDO;
@@ -769,5 +785,8 @@
         private DevExpress.XtraBars.BarButtonItem ELIMINAR;
         private DevExpress.XtraBars.BarButtonItem ANULAR;
         private DevExpress.XtraBars.BarButtonItem FACTURAR;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem ListadoPorRuta;
+        private DevExpress.XtraBars.Ribbon.GalleryDropDown galleryDropDown1;
     }
 }
