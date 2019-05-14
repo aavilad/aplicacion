@@ -6,6 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Ventas
 {
@@ -16,7 +18,6 @@ namespace xtraForm.Modulos.Ventas
         Libreria.Ejecutar ejecutar = new Libreria.Ejecutar();
         Libreria.Bonificacion bonificacion = new Libreria.Bonificacion();
         Libreria.Producto producto = new Libreria.Producto();
-        Libreria.Maestra maestro = new Libreria.Maestra();
         Libreria.Proceso proceso = new Libreria.Proceso();
         private string tabla = "Bonificacion";
         private bool Existe = false;
@@ -55,7 +56,7 @@ namespace xtraForm.Modulos.Ventas
         }
         void condicion(string cadena)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == (Context.Modulo.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
@@ -185,7 +186,7 @@ namespace xtraForm.Modulos.Ventas
 
         private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 Filtros.frmFiltros filtro = new Filtros.frmFiltros();
                 DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;

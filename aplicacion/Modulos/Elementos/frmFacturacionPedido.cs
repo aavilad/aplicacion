@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -40,7 +42,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void frmFacturacionPedido_Load(object sender, EventArgs e)
         {
-            using (var context = new Model.LiderAppEntities())
+            using (var context = new LiderAppEntities())
             {
                 SerieFacturas.Properties.ShowHeader = false;
                 SerieFacturas.Properties.DisplayMember = "Serie";
@@ -62,7 +64,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void SerieBoleta_EditValueChanged(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 NumeroBoletas.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieBoleta.EditValue).Select(s => s.Numero).FirstOrDefault();
                 DescripcionBoletas.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieBoleta.EditValue).Select(s => s.Descripcion).FirstOrDefault();
@@ -71,7 +73,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void SerieFacturas_EditValueChanged(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 NumeroFacturas.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Numero).FirstOrDefault();
                 DescripcionFacturas.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Descripcion).FirstOrDefault();

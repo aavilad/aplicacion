@@ -9,13 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace xtraForm.Modulos.Reportes
+namespace xtraForm.Modulos.Ventas
 {
-    public partial class ModeloReporte : DevExpress.XtraEditors.XtraForm
+    public partial class frmCorrelativo : DevExpress.XtraEditors.XtraForm
     {
-        public ModeloReporte()
+        public frmCorrelativo()
         {
             InitializeComponent();
+        }
+
+        private void frmCorrelativo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

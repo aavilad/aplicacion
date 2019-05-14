@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Liderapp.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -10,9 +12,7 @@ namespace xtraForm.Modulos.Elementos
     {
         string tabla = "Vva_Cp";
         public string NModulo;
-        Libreria.Entidad entidad = new Libreria.Entidad();
         Libreria.Proceso proceso = new Libreria.Proceso();
-        Libreria.Maestra maestro = new Libreria.Maestra();
         public frmComprobantes()
         {
             InitializeComponent();
@@ -28,34 +28,9 @@ namespace xtraForm.Modulos.Elementos
             condicion(cadena);
         }
 
-        private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var Context = new Model.LiderAppEntities())
-            {
-                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
-                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
-                i.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "CONDICION").ToArray();
-                i.DisplayMember = "Descripcion";
-                i.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
-                j.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "OPERADOR").ToList();
-                j.DisplayMember = "Descripcion";
-                j.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
-                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'Vva_Cp'").ToList();
-                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
-                filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtro.Where(w => w.tabla.Equals(tabla)).ToList())
-                {
-                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
-                }
-                filtro.entidad = tabla;
-                filtro.ShowDialog();
-            }
-        }
         void condicion(string cadena)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == (Context.Modulo.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
@@ -112,58 +87,12 @@ namespace xtraForm.Modulos.Elementos
             }
         }
 
-        private void anularToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ABRIR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var frmmensage = new Elementos.frmMsg();
-            frmmensage.dataGridView1.Columns[0].HeaderText = "Comprobante";
-            frmmensage.dataGridView1.Columns[1].HeaderText = "Mensage";
-            frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
-            frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
-            frmmensage.dataGridView1.Columns[0].Width = 100;
-            using (var Context = new Model.LiderAppEntities())
-            {
-                if (gridView1.SelectedRowsCount > 0)
-                {
-                    var proceso = new Libreria.Proceso();
-                    if (proceso.MensagePregunta("¿Desea Continuar?") == DialogResult.Yes)
-                    {
-                        foreach (var fila in gridView1.GetSelectedRows())
-                        {
-                            string NumeroComprobante = Convert.ToString(gridView1.GetRowCellValue(fila, "Comprobante")).Trim();
-                            string Estado = Context.DOCUMENTO.Where(x => x.Generado == NumeroComprobante).Select(p => p.Estado).FirstOrDefault().Trim();
-                            if (Estado != "A")
-                            {
-                                var Comprobante = (from c in Context.DOCUMENTO where c.Generado == NumeroComprobante select c).FirstOrDefault();
-                                Comprobante.Estado = "A";
-                                frmmensage.dataGridView1.Rows.Add(NumeroComprobante, "Comprobante ha sido anulado con exito.");
-                            }
-                            else
-                            {
-                                frmmensage.dataGridView1.Rows.Add(NumeroComprobante, "Comprobante se encuentra anulado.");
-                            }
-                        }
-                        Context.SaveChanges();
-                        frmmensage.Show();
-                        Refrescar();
-                    }
-                }
-            }
-        }
 
-        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Elementos.frmComprobante frmcomprobante = new frmComprobante();
-            frmcomprobante.StartPosition = FormStartPosition.CenterScreen;
-            frmcomprobante.Show();
-        }
-
-
-
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
             if (gridView1.SelectedRowsCount > 0)
             {
-                var Context = new Model.LiderAppEntities();
+                var Context = new LiderAppEntities();
                 var frmOpenComprobante = new Elementos.frmComprobante();
                 string NumeroComprobante = gridView1.GetFocusedRowCellValue("Comprobante").ToString();
                 string PKDocumento = Context.DOCUMENTO.Where(p => p.Generado.Equals(NumeroComprobante)).Select(a => a.Documento1).FirstOrDefault();
@@ -242,7 +171,77 @@ namespace xtraForm.Modulos.Elementos
                     MessageBox.Show(t.Message);
                 }
             }
+        }
 
+        private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Elementos.frmComprobante frmcomprobante = new frmComprobante();
+            frmcomprobante.StartPosition = FormStartPosition.CenterScreen;
+            frmcomprobante.Show();
+        }
+
+        private void ANULAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var frmmensage = new Elementos.frmMsg();
+            frmmensage.dataGridView1.Columns[0].HeaderText = "Comprobante";
+            frmmensage.dataGridView1.Columns[1].HeaderText = "Mensage";
+            frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+            frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
+            frmmensage.dataGridView1.Columns[0].Width = 100;
+            using (var Context = new LiderAppEntities())
+            {
+                if (gridView1.SelectedRowsCount > 0)
+                {
+                    var proceso = new Libreria.Proceso();
+                    if (proceso.MensagePregunta("¿Desea Continuar?") == DialogResult.Yes)
+                    {
+                        foreach (var fila in gridView1.GetSelectedRows())
+                        {
+                            string NumeroComprobante = Convert.ToString(gridView1.GetRowCellValue(fila, "Comprobante")).Trim();
+                            string Estado = Context.DOCUMENTO.Where(x => x.Generado == NumeroComprobante).Select(p => p.Estado).FirstOrDefault().Trim();
+                            if (Estado != "A")
+                            {
+                                var Comprobante = (from c in Context.DOCUMENTO where c.Generado == NumeroComprobante select c).FirstOrDefault();
+                                Comprobante.Estado = "A";
+                                frmmensage.dataGridView1.Rows.Add(NumeroComprobante, "Comprobante ha sido anulado con exito.");
+                            }
+                            else
+                            {
+                                frmmensage.dataGridView1.Rows.Add(NumeroComprobante, "Comprobante se encuentra anulado.");
+                            }
+                        }
+                        Context.SaveChanges();
+                        frmmensage.Show();
+                        Refrescar();
+                    }
+                }
+            }
+        }
+
+        private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var Context = new LiderAppEntities())
+            {
+                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
+                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
+                i.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DisplayMember = "Descripcion";
+                i.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
+                j.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DisplayMember = "Descripcion";
+                j.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
+                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'Vva_Cp'").ToList();
+                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
+                filtro.StartPosition = FormStartPosition.CenterScreen;
+                foreach (var fila in Context.Filtro.Where(w => w.tabla.Equals(tabla)).ToList())
+                {
+                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
+                }
+                filtro.entidad = tabla;
+                filtro.ShowDialog();
+            }
         }
     }
 }

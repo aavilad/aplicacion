@@ -10,12 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
+using xtraForm.Model.Conexion.edmx.Conexion.tt;
 
 namespace xtraForm.Modulos.Ventas
 {
     public partial class frmListaPrecio : DevExpress.XtraEditors.XtraForm
     {
-        string tabla = "Vva_PrecioEscala";
         public frmListaPrecio()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace xtraForm.Modulos.Ventas
             var Codigo = Convert.ToString(TxtCodigoProducto.EditValue);
             try
             {
-                using (var Context = new Model.LiderAppEntities())
+                using (var Context = new LiderAppEntities())
                 {
                     var ProductoEscala = (from p in Context.Vva_Producto.AsEnumerable().Where(x => x.Codigo.StartsWith(Codigo))
                                           from pu in Context.PlantillaUnidad.AsEnumerable().Where(x => x.PKID == p.IDUnidad).DefaultIfEmpty()
@@ -67,7 +69,7 @@ namespace xtraForm.Modulos.Ventas
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             Codigo = Convert.ToString(gridView1.GetFocusedRowCellValue("Codigo"));
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 var Costo = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.Costo).FirstOrDefault();
                 var P1 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.C_MENOR).FirstOrDefault();
@@ -88,7 +90,7 @@ namespace xtraForm.Modulos.Ventas
         {
             if (gridView1.SelectedRowsCount > 0 && Codigo != null)
             {
-                using (var Context = new Model.LiderAppEntities())
+                using (var Context = new LiderAppEntities())
                 {
                     var Costo = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.Costo).FirstOrDefault();
                     var P1 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.C_MENOR).FirstOrDefault();
@@ -112,9 +114,9 @@ namespace xtraForm.Modulos.Ventas
             {
                 try
                 {
-                    using (var Context = new Model.LiderAppEntities())
+                    using (var Context = new LiderAppEntities())
                     {
-                        Model.PRODUCTO pd = new Model.PRODUCTO { Producto1 = Codigo };
+                        PRODUCTO pd = new PRODUCTO { Producto1 = Codigo };
                         Context.PRODUCTO.Attach(pd);
                         pd.Costo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0].Value);
                         pd.PrecMenContado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[1].Value);

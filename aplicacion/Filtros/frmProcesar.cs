@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using xtraForm.Model;
 
 namespace xtraForm.Filtros
 {
@@ -25,6 +26,7 @@ namespace xtraForm.Filtros
                 this.Close();
             }
         }
+
         int contador = 0;
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -47,7 +49,7 @@ namespace xtraForm.Filtros
                         frmmensage.Show();
                         splashScreenManager1.ShowWaitForm();
                         //evento # 01
-                        using (var Context = new Model.LiderAppEntities())
+                        using (var Context = new LiderAppEntities())
                         {
                             Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                             Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
@@ -427,7 +429,7 @@ namespace xtraForm.Filtros
                     {
                         MessageBox.Show("No existen vendedores seleccionados");
                     }
-                    using (var Context = new Model.LiderAppEntities())
+                    using (var Context = new LiderAppEntities())
                     {
                         Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                         Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));

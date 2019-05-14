@@ -13,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -35,7 +37,7 @@ namespace xtraForm.Modulos.Elementos
         private void frmFacturacion_Load(object sender, EventArgs e)
         {
 
-            using (var context = new Model.LiderAppEntities())
+            using (var context = new LiderAppEntities())
             {
                 SerieFacturas.Properties.ShowHeader = false;
                 SerieFacturas.Properties.DisplayMember = "Serie";
@@ -65,15 +67,24 @@ namespace xtraForm.Modulos.Elementos
 
         private void BtnFiltrar_Click(object sender, EventArgs e)
         {
+            var proceso = new Libreria.Proceso();
+            string Fecha = Convert.ToDateTime(FechaProceso.EditValue).ToString("yyyyMMdd");
             if (flRuta.Checked)
             {
-                using (var Context = new Model.LiderAppEntities())
+                gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
+                using (var Context = new LiderAppEntities())
                 {
-                    gridControl1.DataSource =
-                    (from p in Context.RUTAS.AsEnumerable()
-                     join q in Context.REPARTO.AsEnumerable() on p.codigo equals q.Ruta
-                     where p.Activo.Equals(true) && q.Dia == (int)Convert.ToDateTime(FechaProceso.EditValue).DayOfWeek
-                     select new { Codigo = p.codigo.Trim(), Descripcion = p.descripcion.Trim() }).Distinct().ToList();
+                    proceso.consultar(@"
+                    SELECT 
+                           REPARTO.Ruta As Codigo, 
+                           RUTAS.Descripcion
+                    FROM RUTAS
+                         INNER JOIN REPARTO ON RUTAS.codigo = REPARTO.Ruta
+                    WHERE(REPARTO.Dia = DATEPART(w, '" + Fecha + @"'))
+                         AND (RUTAS.Activo = 1) AND (REPARTO.Activo = 1)
+                    GROUP BY REPARTO.Ruta,RUTAS.Descripcion;", "Rutas");
+                    gridControl1.DataSource = proceso.ds.Tables["Rutas"];
                     gridView1.OptionsView.ColumnAutoWidth = false;
                     gridView1.OptionsView.ShowGroupPanel = false;
                     gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -86,24 +97,28 @@ namespace xtraForm.Modulos.Elementos
             }
             else if (flVendedor.Checked)
             {
-                using (var Context = new Model.LiderAppEntities())
+                gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
+                using (var Context = new LiderAppEntities())
                 {
-                    var proceso = new Libreria.Proceso();
-                    proceso.consultar(@"SELECT Vva_Vendedor.[Codigo vendedor] AS Codigo, 
-                                FuerzaVentas.descrip AS FzaVentas, 
-                                Vva_Vendedor.[Nombre Vendedor] AS Nombre
-                                FROM Vva_Vendedor
-                                INNER JOIN FuerzaVentas ON Vva_Vendedor.IDFzaVentas = FuerzaVentas.fzavtas;", "vendedor");
-                    gridControl1.DataSource = proceso.ds.Tables["vendedor"];
+                    proceso.consultar(@"
+                    SELECT Vva_Vendedor.[Codigo vendedor] AS Codigo, 
+                           FuerzaVentas.descrip AS FzaVentas, 
+                           Vva_Vendedor.[Nombre Vendedor] AS Nombre
+                    FROM Vva_Vendedor
+                         INNER JOIN FuerzaVentas ON Vva_Vendedor.IDFzaVentas = FuerzaVentas.fzavtas
+                    WHERE FuerzaVentas.PKID > 0;
+                    ", "vendedor");
                     gridView1.OptionsView.ColumnAutoWidth = false;
                     gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-                    gridView1.BestFitColumns();
-                    gridView1.Columns["FzaVentas"].GroupIndex = 1;
                     gridView1.OptionsView.ShowGroupPanel = false;
                     gridView1.OptionsBehavior.Editable = false;
                     gridView1.OptionsBehavior.ReadOnly = true;
                     gridView1.OptionsSelection.MultiSelect = true;
                     gridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
+                    gridControl1.DataSource = proceso.ds.Tables["vendedor"];
+                    gridView1.BestFitColumns();
+                    gridView1.Columns[1].GroupIndex = 1;
                 }
             }
         }
@@ -126,7 +141,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void SerieFacturas_EditValueChanged(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 FCorrelativo.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Numero).FirstOrDefault();
                 DescripcionF.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
@@ -136,7 +151,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void SerieBoletas_EditValueChanged(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 BCorrelativo.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieBoletas.EditValue).Select(s => s.Numero).FirstOrDefault();
                 DescripcionB.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieBoletas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
@@ -149,9 +164,13 @@ namespace xtraForm.Modulos.Elementos
             {
                 if (gridView1.SelectedRowsCount > 0)
                 {
+                    var frmwaint = new frmPrincipal();
+                    frmwaint.splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
+                    frmwaint.splashScreenManager1.ShowWaitForm();
                     GeneraDocumentos();
                     SerieFacturas_EditValueChanged(sender, e);
                     SerieBoletas_EditValueChanged(sender, e);
+                    frmwaint.splashScreenManager1.CloseWaitForm();
                 }
                 else
                 {
@@ -161,7 +180,10 @@ namespace xtraForm.Modulos.Elementos
         }
         void GeneraDocumentos()
         {
+            var proceso = new Libreria.Proceso();
             var fecha = Convert.ToDateTime(FechaProceso.EditValue).ToString("dd/MM/yyyy");
+            var Dia = Convert.ToInt32(DateTime.Parse(fecha).DayOfWeek) == 0 ? 7 : Convert.ToInt32(DateTime.Parse(fecha).DayOfWeek);
+
             if (flRuta.Checked)
             {
                 var Campos = new List<string>();
@@ -170,13 +192,13 @@ namespace xtraForm.Modulos.Elementos
                     Campos.Add("'" + Convert.ToString(gridView1.GetRowCellValue(i, "Codigo")).Trim() + "'");
                 }
                 string cadena = string.Join(",", Campos.ToArray());
-                using (var Context = new Model.LiderAppEntities())
+                using (var Context = new LiderAppEntities())
                 {
                     var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
-                                   join r in Context.REPARTO.AsEnumerable() on p.IDVend equals r.Personal
-                                   where p.FechaEmision == DateTime.Parse(fecha) && r.Dia == (int)DateTime.Parse(fecha).DayOfWeek &&
-                                   cadena.Contains(r.Ruta) && p.Aprobado == true && p.Procesado == false && p.gestion == Gestion.EditValue.ToString().Trim()
+                                   join r in Context.REPARTO.AsEnumerable().Where(x => x.Dia == Dia && cadena.Contains(x.Ruta)) on p.IDVend equals r.Personal
+                                   where p.FechaEmision == DateTime.Parse(fecha) && p.Aprobado == true && p.Procesado == false && p.gestion == Gestion.EditValue.ToString().Trim()
                                    select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
+
                     if (Pedidos.Count > 0)
                     {
                         foreach (var fila in Pedidos)
@@ -239,7 +261,7 @@ namespace xtraForm.Modulos.Elementos
                             }
                         }
                         Context.SaveChanges();
-                        MessageBox.Show("Se realizo la facturacion de : " + Pedidos.Count + " con exito.\n Detalles en control genera.");
+                        MessageBox.Show("Se realizo la facturacion de : " + Pedidos.Count + " Pedidos con exito.\n Detalles en control genera.");
                     }
                     else
                     {
@@ -255,7 +277,7 @@ namespace xtraForm.Modulos.Elementos
                     Campos.Add("'" + Convert.ToString(gridView1.GetRowCellValue(i, "Codigo")) + "'");
                 }
                 string cadena = string.Join(",", Campos.ToArray());
-                using (var Context = new Model.LiderAppEntities())
+                using (var Context = new LiderAppEntities())
                 {
                     var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
                                    where p.FechaEmision == DateTime.Parse(fecha) &&

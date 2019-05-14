@@ -8,6 +8,9 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
+using xtraForm.Model.Conexion.edmx.Conexion.tt;
 
 namespace xtraForm.Modulos.Ventas
 {
@@ -16,7 +19,6 @@ namespace xtraForm.Modulos.Ventas
         public string NModulo;
         Libreria.Proceso proceso = new Libreria.Proceso();
         Libreria.Pedido pedido = new Libreria.Pedido();
-        Libreria.Maestra maestro = new Libreria.Maestra();
         Libreria.Entidad entidad = new Libreria.Entidad();
         Libreria.Ejecutar ejecutar = new Libreria.Ejecutar();
         Libreria.Producto producto = new Libreria.Producto();
@@ -47,9 +49,9 @@ namespace xtraForm.Modulos.Ventas
         void CamposPedido(string CdPedido, string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
             string Gestion, string IdDistrito, DataGridView dgv)
         {
-            using (Model.LiderAppEntities Context = new Model.LiderAppEntities())
+            using (LiderAppEntities Context = new LiderAppEntities())
             {
-                Model.PEDIDO Cp = new Model.PEDIDO { Pedido1 = CdPedido };
+                PEDIDO Cp = new PEDIDO { Pedido1 = CdPedido };
                 Context.PEDIDO.Attach(Cp);
                 Cp.Personal = CdVendedor;
                 Cp.Cliente = CdCliente;
@@ -70,7 +72,7 @@ namespace xtraForm.Modulos.Ventas
                 Context.DETPEDIDO.RemoveRange(Context.DETPEDIDO.Where(a => a.Pedido == CdPedido));
                 foreach (DataGridViewRow fila in dgv.Rows)
                 {
-                    Model.DETPEDIDO ItemCp = new Model.DETPEDIDO();
+                    DETPEDIDO ItemCp = new DETPEDIDO();
                     ItemCp.Pedido = CdPedido;
                     ItemCp.Producto = Convert.ToString(fila.Cells["Codigo"].Value);
                     ItemCp.PrecUnit = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
@@ -99,7 +101,7 @@ namespace xtraForm.Modulos.Ventas
 
         void condicion(string cadena)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == (Context.Modulo.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
@@ -182,7 +184,7 @@ namespace xtraForm.Modulos.Ventas
                 frmmensage.dataGridView1.Columns[1].HeaderText = "Mensage";
                 frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
                 frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
-                using (var Context = new Model.LiderAppEntities())
+                using (var Context = new LiderAppEntities())
                 {
                     foreach (var fila in gridView1.GetSelectedRows())
                     {
@@ -216,7 +218,6 @@ namespace xtraForm.Modulos.Ventas
                     }
                     else if (Contador == 2)
                     {
-
                         string cadena = string.Join(",", Lista.ToArray());
                         var Documentos = (from doc in Context.DOCUMENTO
                                           where cadena.Contains(doc.Pedido.Trim())
@@ -224,7 +225,8 @@ namespace xtraForm.Modulos.Ventas
                                           {
                                               Documento = doc.Documento1,
                                               Tipo = doc.TipoDoc
-                                          }).ToList();
+                                          })
+                                          .ToList();
                         foreach (var fila in Documentos)
                         {
                             try
@@ -307,7 +309,7 @@ namespace xtraForm.Modulos.Ventas
         {
             if (gridView1.SelectedRowsCount > 0)
             {
-                var Context = new Model.LiderAppEntities();
+                var Context = new LiderAppEntities();
                 Elementos.frmpedido frmpedido = new Elementos.frmpedido();
                 frmpedido.Existe = true;
                 frmpedido.pasar += new Elementos.frmpedido.varaible(CamposPedido);
@@ -418,7 +420,7 @@ namespace xtraForm.Modulos.Ventas
 
         private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 proceso.actualizar("pedido", "FECHA = REPLACE(CONVERT(VARCHAR(10),Fecha,120),'-','')", "procesado = 0 and statusweb is null");
                 actualizavalores(inicio.ToString("yyyyMMdd"));
@@ -511,7 +513,7 @@ namespace xtraForm.Modulos.Ventas
             {
                 if (proceso.MensagePregunta("¿Continuar?") == DialogResult.Yes)
                 {
-                    using (var Context = new Model.LiderAppEntities())
+                    using (var Context = new LiderAppEntities())
                     {
                         foreach (var fila in gridView1.GetSelectedRows())
                         {
@@ -557,7 +559,7 @@ namespace xtraForm.Modulos.Ventas
             {
                 if (proceso.MensagePregunta("¿Continuar?") == DialogResult.Yes)
                 {
-                    using (var Context = new Model.LiderAppEntities())
+                    using (var Context = new LiderAppEntities())
                     {
                         foreach (var fila in gridView1.GetSelectedRows())
                         {

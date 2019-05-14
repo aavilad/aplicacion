@@ -409,6 +409,7 @@
             this.CONTROLGENERA.Id = 48;
             this.CONTROLGENERA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CONTROLGENERA.ImageOptions.SvgImage")));
             this.CONTROLGENERA.Name = "CONTROLGENERA";
+            this.CONTROLGENERA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CONTROLGENERA_ItemClick);
             // 
             // LISTAPRECIOS
             // 
@@ -544,7 +545,6 @@
             this.barButtonItem1.Caption = "barButtonItem1";
             this.barButtonItem1.Id = 5;
             this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // MVENTAS
             // 

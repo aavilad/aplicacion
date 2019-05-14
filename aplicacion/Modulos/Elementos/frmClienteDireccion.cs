@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -31,7 +33,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void frmClienteDireccion_Load(object sender, EventArgs e)
         {
-            var Base = new Model.LiderAppEntities();
+            var Base = new LiderAppEntities();
             Distrito.Properties.DataSource = from Dtto in Base.Distrito select Dtto;
 
         }

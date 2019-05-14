@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Ventas
 {
@@ -20,20 +22,9 @@ namespace xtraForm.Modulos.Ventas
             InitializeComponent();
         }
 
-        void Refrescar()
-        {
-            var proceso = new Libreria.Proceso();
-            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
-            List<string> lista_ = new List<string>();
-            foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
-                lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
-            string cadena = string.Join(" ", lista_.ToArray());
-            condicion(cadena);
-        }
-
         private void filtroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 Filtros.frmFiltros filtro = new Filtros.frmFiltros();
                 DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
@@ -59,7 +50,7 @@ namespace xtraForm.Modulos.Ventas
         void condicion(string cadena)
         {
             var proceso = new Libreria.Proceso();
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == (Context.Modulo.Where(a => a.Nombre == Modulo).Select(c => c.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)

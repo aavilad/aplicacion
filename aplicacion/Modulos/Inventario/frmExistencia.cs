@@ -14,6 +14,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
+using xtraForm.Model.Conexion.edmx.Conexion.tt;
+using xtraForm.Model.Conexion.edmx.Conexion.tt;
 
 namespace xtraForm.Modulos.Inventario
 {
@@ -40,9 +45,9 @@ namespace xtraForm.Modulos.Inventario
             string ProductoMarca, string ProductoGrupo, string ProductoClase, string ProductoCategoria, string ProductoObservacion, int ProductoMedida, string ProductoMedidaAnt, decimal ProductoPeso, int ProductoFactorMinimo, bool ProductoVenta, bool ProductoCompra, bool ProductoCombo,
             bool ProductoUnilever, bool ProductoWeb, bool ProductoAfecto, bool ProductoActivo, bool ProductoPercepcion, bool ProductoDetraccion, string ProductoOrden)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
-                Model.PRODUCTO Art = new Model.PRODUCTO { Producto1 = CodigoProducto };
+                PRODUCTO Art = new PRODUCTO { Producto1 = CodigoProducto };
                 Context.PRODUCTO.Attach(Art);
                 Art.ean13 = CodigoEan;
                 Art.Marca = ProductoMarca;
@@ -117,9 +122,9 @@ namespace xtraForm.Modulos.Inventario
                     decimal ProductoPeso, int ProductoFactorMinimo, bool ProductoVenta, bool ProductoCompra, bool ProductoCombo, bool ProductoUnilever, bool ProductoWeb, bool ProductoAfecto,
                     bool ProductoActivo, bool ProductoPercepcion, bool ProductoDetraccion, string ProductoOrden)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
-                Model.PRODUCTO Art = new Model.PRODUCTO();
+                PRODUCTO Art = new PRODUCTO();
                 Art.Producto1 = CodigoProducto;
                 Art.Marca = ProductoMarca;
                 Art.Descripcion = productoDescripcion;
@@ -192,7 +197,7 @@ namespace xtraForm.Modulos.Inventario
 
         private void filtarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 Filtros.frmFiltros filtro = new Filtros.frmFiltros();
                 DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
@@ -265,7 +270,7 @@ namespace xtraForm.Modulos.Inventario
             if (gridView1.SelectedRowsCount > 0)
                 try
                 {
-                    using (var Context = new Model.LiderAppEntities())
+                    using (var Context = new LiderAppEntities())
                     {
                         Elementos.frmProducto frmproducto = new Elementos.frmProducto();
                         frmproducto.Existe = true;
@@ -373,7 +378,7 @@ namespace xtraForm.Modulos.Inventario
                     string Resultado;
                     try
                     {
-                        using (var Context = new Model.LiderAppEntities())
+                        using (var Context = new LiderAppEntities())
                         {
                             Context.PRODUCTO.Remove(Context.PRODUCTO.Find(Convert.ToString(campo)));
                             Context.SaveChanges();

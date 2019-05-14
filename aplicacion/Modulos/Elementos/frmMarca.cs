@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -24,7 +26,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void frmMarca_Load(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 txtMarcaProveedor.Properties.DataSource = Context.PROVEEDOR.Select(x => new { Codigo = x.Proveedor1.Trim(), Nombre = x.RazonSocial.Trim() }).ToList();
                 txtMarcaProveedor.Properties.DisplayMember = "Nombre";

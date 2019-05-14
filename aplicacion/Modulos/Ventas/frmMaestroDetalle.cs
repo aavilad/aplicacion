@@ -11,13 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Ventas
 {
     public partial class frmMaestroDetalle : DevExpress.XtraEditors.XtraForm
     {
         public string fecha;
-        Libreria.Proceso proceso = new Libreria.Proceso();
         public frmMaestroDetalle()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace xtraForm.Modulos.Ventas
                     var PedidosComprometidos = (dynamic)null;
                     var PedidosBonificados = (dynamic)null;
                     string Fecha = Convert.ToDateTime(dateEdit1.EditValue).ToString("dd/MM/yyyy");
-                    using (var Context = new Model.LiderAppEntities())
+                    using (var Context = new LiderAppEntities())
                     {
                         int Tipo = Context.Bonificacion.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.TipoMecanica).FirstOrDefault();
                         var Coleccion = Context.ItemBonificacion.Distinct().Where(x => x.IDBonificacion == (int)lookUpEdit1.EditValue).Select(c => new { Codigo = c.cdProductoColeccion.Trim() }).ToList();
@@ -86,33 +87,34 @@ namespace xtraForm.Modulos.Ventas
                                 PedidosComprometidos = proceso.ds.Tables["pedidos"];//Context.Database.SqlQuery<List<string>>(sql).ToList();
                                 break;
                             case 3:
-                                PedidosComprometidos = (from p in Context.Vva_Pedido.AsEnumerable()
-                                                        join ip in Context.Vva_ItemPedido.AsEnumerable() on p.NrPedido equals ip.NrPedido
-                                                        join cl in Context.CLIENTE.AsEnumerable() on p.IDClient equals cl.Cliente1
-                                                        where p.FechaEmision == DateTime.Parse(Fecha)
-                                                        where Producto.Contains(ip.IDProducto)
-                                                        where ip.Cantidad * ip.Precio >= Convert.ToDecimal(Minimo)
-                                                        select new
-                                                        {
-                                                            Pedido = p.NrPedido.Trim(),
-                                                            Codigo_Cliente = cl.Cliente1.Trim(),
-                                                            Nombre_Cliente = cl.Alias.Trim(),
-                                                            Cantidad_vendida = Convert.ToDecimal(ip.Cantidad * ip.Precio)
-                                                        }).ToList();
+                                string sql3 = @"
+                                SELECT        
+                                dbo.Vva_ItemPedido.NrPedido AS Pedido, RTRIM(dbo.CLIENTE.Cliente) AS Codigo, Rtrim(dbo.CLIENTE.Alias) AS Nombre, SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio) AS Venta
+                                FROM           
+                                dbo.CLIENTE INNER JOIN
+                                dbo.Vva_Pedido ON dbo.CLIENTE.Cliente = dbo.Vva_Pedido.IDClient INNER JOIN
+                                dbo.Vva_ItemPedido ON dbo.Vva_Pedido.NrPedido = dbo.Vva_ItemPedido.NrPedido
+                                WHERE        (dbo.Vva_ItemPedido.IDProducto IN (" + Producto + @")) AND (dbo.Vva_Pedido.FechaEmision = '" + Fecha + @"')
+                                GROUP BY dbo.CLIENTE.Cliente, dbo.CLIENTE.Alias, dbo.Vva_ItemPedido.NrPedido
+                                HAVING        (SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio)) >= " + Minimo + @")
+                                ";
+                                proceso.consultar(sql3, "pedidos");
+                                PedidosComprometidos = proceso.ds.Tables["pedidos"];//Context.Database.SqlQuery<List<string>>(sql).ToList();
                                 break;
                             case 4:
-                                PedidosComprometidos = (from p in Context.Vva_Pedido.AsEnumerable()
-                                                        join ip in Context.Vva_ItemPedido.AsEnumerable() on p.NrPedido equals ip.NrPedido
-                                                        join cl in Context.CLIENTE.AsEnumerable() on p.IDClient equals cl.Cliente1
-                                                        where p.FechaEmision == DateTime.Parse(Fecha) && Producto.Contains(ip.IDProducto)
-                                                        && ip.Cantidad * ip.Precio >= Convert.ToDecimal(Minimo) && ip.Cantidad * ip.Precio < Convert.ToDecimal(Maximo)
-                                                        select new
-                                                        {
-                                                            Pedido = p.NrPedido.Trim(),
-                                                            Codigo_Cliente = cl.Cliente1.Trim(),
-                                                            Nombre_Cliente = cl.Alias.Trim(),
-                                                            Cantidad_vendida = Convert.ToDecimal(ip.Cantidad * ip.Precio)
-                                                        }).ToList();
+                                string sql4 = @"
+                                SELECT        
+                                dbo.Vva_ItemPedido.NrPedido AS Pedido, RTRIM(dbo.CLIENTE.Cliente) AS Codigo, Rtrim(dbo.CLIENTE.Alias) AS Nombre, SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio) AS Venta
+                                FROM           
+                                dbo.CLIENTE INNER JOIN
+                                dbo.Vva_Pedido ON dbo.CLIENTE.Cliente = dbo.Vva_Pedido.IDClient INNER JOIN
+                                dbo.Vva_ItemPedido ON dbo.Vva_Pedido.NrPedido = dbo.Vva_ItemPedido.NrPedido
+                                WHERE        (dbo.Vva_ItemPedido.IDProducto IN (" + Producto + @")) AND (dbo.Vva_Pedido.FechaEmision = '" + Fecha + @"')
+                                GROUP BY dbo.CLIENTE.Cliente, dbo.CLIENTE.Alias, dbo.Vva_ItemPedido.NrPedido
+                                HAVING        (SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio)) >= " + Minimo + @") AND ((SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio))) < " + Maximo + @")
+                                ";
+                                proceso.consultar(sql4, "pedidos");
+                                PedidosComprometidos = proceso.ds.Tables["pedidos"];//Context.Database.SqlQuery<List<string>>(sql).ToList();
                                 break;
                         }
                         gridView1.OptionsBehavior.ReadOnly = true;
@@ -130,7 +132,7 @@ namespace xtraForm.Modulos.Ventas
                                                  dbo.Vva_ItemPedido ON dbo.Vva_Pedido.NrPedido = dbo.Vva_ItemPedido.NrPedido INNER JOIN
                                                  dbo.Vva_Cliente ON dbo.Vva_Pedido.IDClient = dbo.Vva_Cliente.Codigo INNER JOIN
                                                  dbo.Bonificacion ON dbo.Vva_ItemPedido.IDBonif = dbo.Bonificacion.PKID
-                        WHERE        (dbo.Vva_Pedido.FechaEmision = '" + Fecha + @"') AND (dbo.Vva_ItemPedido.IDBonif = "+ (int)lookUpEdit1.EditValue + @")
+                        WHERE        (dbo.Vva_Pedido.FechaEmision = '" + Fecha + @"') AND (dbo.Vva_ItemPedido.IDBonif = " + (int)lookUpEdit1.EditValue + @")
                         GROUP BY dbo.Vva_Pedido.NrPedido, dbo.Vva_Cliente.Codigo, dbo.Vva_Cliente.Nombre, dbo.Vva_ItemPedido.Cantidad
                                 ";
                         proceso.consultar(sql0, "pedidos");
@@ -163,7 +165,7 @@ namespace xtraForm.Modulos.Ventas
         {
             try
             {
-                using (var Context = new Model.LiderAppEntities())
+                using (var Context = new LiderAppEntities())
                 {
                     var Bonif = from a in (from b in Context.Bonificacion
                                            join ib in Context.ItemBonificacion on b.PKID equals ib.IDBonificacion

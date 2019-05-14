@@ -264,35 +264,6 @@ namespace xtraForm
             frmbonificar.Show();
         }
 
-        private void btnBuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            bool existe = false;
-            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-                if (xtraTabControl1.TabPages[i].Text == "Relacion de bonificaciones")
-                {
-
-                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
-                    existe = true;
-                }
-            if (!existe)
-            {
-                XtraTabPage pedidos = new XtraTabPage();
-                entidad.index = 0;
-                objeto = new Modulos.Ventas.frmMaestroDetalle
-                {
-                    TopLevel = false,
-                    FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill
-                };
-                xtraTabControl1.TabPages.Add(pedidos);
-                xtraTabControl1.SelectedTabPage = pedidos;
-                pedidos.Text = "Relacion de bonificaciones";
-                entidad.index = xtraTabControl1.SelectedTabPageIndex;
-                pedidos.Controls.Add(objeto);
-                objeto.Show();
-            }
-        }
-
         private void ClienteBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bool existe = false;
@@ -474,40 +445,11 @@ namespace xtraForm
             }
         }
 
-        private void DISTRIBUCIONREPORTE_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            bool existe = false;
-            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-                if (xtraTabControl1.TabPages[i].Text == "Reportes de distribucion")
-                {
-                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
-                    existe = true;
-                }
-            if (!existe)
-            {
-                XtraTabPage pedidos = new XtraTabPage();
-                entidad.index = 0;
-                objeto = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte
-                {
-                    TopLevel = false,
-                    FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill
-
-                };
-                xtraTabControl1.TabPages.Add(pedidos);
-                xtraTabControl1.SelectedTabPage = pedidos;
-                pedidos.Text = "Reportes de distribucion";
-                entidad.index = xtraTabControl1.SelectedTabPageIndex;
-                pedidos.Controls.Add(objeto);
-                objeto.Show();
-            }
-        }
-
         private void ListadoPorRuta_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var pedidos = new XtraTabPage();
             entidad.index = 0;
-            var rpt = new rptListado();
+            var rpt = new RptListadoPorRutas();
             var frmrpt = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte();
             frmrpt.TopLevel = false;
             frmrpt.FormBorderStyle = FormBorderStyle.None;
@@ -525,7 +467,7 @@ namespace xtraForm
         {
             var pedidos = new XtraTabPage();
             entidad.index = 0;
-            var rpt = new ListadoPorClaseProducto();
+            var rpt = new RptListadoSegunClase();
             var frmrpt = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte();
             frmrpt.TopLevel = false;
             frmrpt.FormBorderStyle = FormBorderStyle.None;
@@ -539,10 +481,9 @@ namespace xtraForm
             frmrpt.Show();
         }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void CONTROLGENERA_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var rpte = new Modulos.Reportes.ModeloReporte();
-            rpte.Show();
+
         }
     }
 }

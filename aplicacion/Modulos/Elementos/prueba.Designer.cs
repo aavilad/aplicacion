@@ -1,4 +1,7 @@
-﻿namespace xtraForm.Modulos.Elementos
+﻿using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.tt;
+
+namespace xtraForm.Modulos.Elementos
 {
     partial class prueba
     {
@@ -44,7 +47,7 @@
             // 
             // vvaVendedorBindingSource
             // 
-            this.vvaVendedorBindingSource.DataSource = typeof(xtraForm.Model.Vva_Vendedor);
+            this.vvaVendedorBindingSource.DataSource = typeof(Vva_Vendedor);
             // 
             // treeList1
             // 
@@ -65,7 +68,7 @@
             // 
             // vvaVendedorBindingSource1
             // 
-            this.vvaVendedorBindingSource1.DataSource = typeof(xtraForm.Model.Vva_Vendedor);
+            this.vvaVendedorBindingSource1.DataSource = typeof(Vva_Vendedor);
             // 
             // colTipoPersona
             // 

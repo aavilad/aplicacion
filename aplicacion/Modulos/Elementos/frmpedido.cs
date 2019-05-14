@@ -5,6 +5,8 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -84,7 +86,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnBonificar_Click(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
@@ -655,7 +657,7 @@ namespace xtraForm.Modulos.Elementos
                 }
             }
             Existe = false;
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
@@ -1117,7 +1119,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void txtcdVendedor_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
                 frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
@@ -1144,7 +1146,7 @@ namespace xtraForm.Modulos.Elementos
                 switch (btnFueraRuta.Checked)
                 {
                     case true:
-                        var Context_ = new Model.LiderAppEntities();
+                        var Context_ = new LiderAppEntities();
                         if (txtcdVendedor.Text.Length == 0)
                         {
                             entidad.tabla = "vendedor";
@@ -1159,14 +1161,14 @@ namespace xtraForm.Modulos.Elementos
                         }
                         else if (Context_.PERSONAL.Where(p => p.Personal1.Equals(txtcdVendedor.Text.Trim()) && p.vendedor.Equals(1) && p.Activo.Equals(true)).FirstOrDefault() != null)
                         {
-                            var Contex = new Model.LiderAppEntities();
+                            var Contex = new LiderAppEntities();
                             txtnmVendedor.Text = (from p in Contex.PERSONAL
                                                   where p.Activo.Equals(true) && p.vendedor.Equals(1) && p.Personal1.Equals(txtcdVendedor.Text.Trim())
                                                   select p.Nombre).FirstOrDefault();
                         }
                         else if (Context_.PERSONAL.Where(p => p.Personal1.Contains(txtcdVendedor.Text.Trim()) && p.vendedor.Equals(1) && p.Activo.Equals(true)).ToList().Count > 0)
                         {
-                            var Contex = new Model.LiderAppEntities();
+                            var Contex = new LiderAppEntities();
                             entidad.tabla = "vendedor";
                             Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
                             frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
@@ -1182,7 +1184,7 @@ namespace xtraForm.Modulos.Elementos
                             MessageBox.Show("Codigo no existe");
                         break;
                     case false:
-                        var Context = new Model.LiderAppEntities();
+                        var Context = new LiderAppEntities();
                         if (txtcdVendedor.Text.Length == 0)
                         {
                             entidad.tabla = "vendedor";
@@ -1197,14 +1199,14 @@ namespace xtraForm.Modulos.Elementos
                         }
                         else if ((Context.Vva_Vendedor.Where(p => p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim()) && p.Activo.Equals(true))).FirstOrDefault() != null)
                         {
-                            var Contex = new Model.LiderAppEntities();
+                            var Contex = new LiderAppEntities();
                             txtnmVendedor.Text = (from p in Context.Vva_Vendedor
                                                   where p.Activo.Equals(true) && p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim())
                                                   select p.Nombre_Vendedor).FirstOrDefault();
                         }
                         else if (Context.Vva_Vendedor.Where(p => p.Codigo_vendedor.Contains(txtcdVendedor.Text.Trim()) && p.Activo.Equals(true)).ToList().Count > 0)
                         {
-                            var Contex = new Model.LiderAppEntities();
+                            var Contex = new LiderAppEntities();
                             entidad.tabla = "vendedor";
                             Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
                             frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);

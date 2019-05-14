@@ -3,6 +3,8 @@ using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -32,7 +34,7 @@ namespace xtraForm.Modulos.Elementos
         }
         private void TpCredito()
         {
-            var Conexion = new Model.LiderAppEntities();
+            var Conexion = new LiderEntities();
             var Registros = from p in Conexion.FORMAPAGO.Where(x => x.contado != true) select new { Codigo = p.FormaPago1, Descripcion = p.Descripcion };
             TipoCredito.Properties.DataSource = Registros.ToList();
             TipoCredito.Properties.DisplayMember = "Descripcion";
@@ -42,19 +44,13 @@ namespace xtraForm.Modulos.Elementos
         }
         private void TpContado()
         {
-            var Conexion = new Model.LiderAppEntities();
+            var Conexion = new LiderEntities();
             var Registros = from p in Conexion.FORMAPAGO.Where(x => x.contado == true) select new { Codigo = p.FormaPago1, Descripcion = p.Descripcion };
             TipoContado.Properties.DataSource = Registros.ToList();
             TipoContado.Properties.DisplayMember = "Descripcion";
             TipoContado.Properties.ValueMember = "Codigo";
             LookUpColumnInfoCollection columna = TipoContado.Properties.Columns;
             columna.Add(new LookUpColumnInfo("Descripcion", 0));
-        }
-        private void TpCliente()
-        {
-            var Conexion = new Model.LiderAppEntities();
-            //var Registros = from p in Conexion.
-            //TipoCliente.Properties.DataSource = Registros.
         }
     }
 }

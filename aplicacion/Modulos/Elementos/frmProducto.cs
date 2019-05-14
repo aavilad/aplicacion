@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -27,7 +29,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void frmProducto_Load(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 TxtNmProveedor.Properties.DataSource = Context.PROVEEDOR.Select(p => new { Codigo = p.Proveedor1.Trim(), Nombre = p.RazonSocial.Trim() }).ToList();
                 TxtNmProveedor.Properties.DisplayMember = "Nombre";
@@ -132,7 +134,7 @@ namespace xtraForm.Modulos.Elementos
         {
             if (!Existe)
             {
-                using (var Context = new Model.LiderAppEntities())
+                using (var Context = new LiderAppEntities())
                 {
                     int valor = Convert.ToInt32(TxtProductoMedida.EditValue);
                     TxtFactorMinimo.EditValue = Context.PlantillaUnidad.Where(x => x.PKID == valor).Select(p => p.Factor).FirstOrDefault(); ;

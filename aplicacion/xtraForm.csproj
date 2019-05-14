@@ -132,9 +132,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filtros\frmConsultar.cs">
@@ -276,166 +277,20 @@
     <Compile Include="Maestro\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Bonificacion.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\categoria.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Clase_Producto.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CLIENTE.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Conexion.Context.cs">
+    <Compile Include="Model\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Conexion.Context.tt</DependentUpon>
+      <DependentUpon>Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Conexion.cs">
+    <Compile Include="Model\Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Conexion.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Conexion.Designer.cs">
+    <Compile Include="Model\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Conexion.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Conexion1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Conexion.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ConsolidadoPorRuta_Result.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Departamento.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DETADOC.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DETPEDIDO.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Distrito.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DOCTIPO.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DOCUMENTO.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Filtro.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\FiltroConfiguracion.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\FORMAPAGO.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\FuerzaVentas.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Gestion.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\grupo.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ItemBonificacion.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\LINEA.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ListadoPorRuta1_Result.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ListadoPorRuta_ClaseProducto_Result.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ListadoPorRuta_ClaseProducto_Result1.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ListadoPorRuta_Result.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\MARCA.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Modulo.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ParametroSQL.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PEDIDO.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PERSONAL.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PlantillaUnidad.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PRODUCTO.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PROVEEDOR.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\provincia.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\REPARTO.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Reporte.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\RUTAS.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\TipoReporte.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\VistaAdministrativa.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\VistaReporte.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Vva_Cliente.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Vva_ItemCp.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Vva_ItemPedido.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Vva_ListadoPorRuta.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Vva_Pedido.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Vva_Producto.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Vva_Vendedor.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ZONA.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ZONA_PERSONAL.cs">
-      <DependentUpon>Conexion.tt</DependentUpon>
+      <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Compras\frmCompra.cs">
       <SubType>Form</SubType>
@@ -533,23 +388,23 @@
     <Compile Include="Modulos\Reportes\ModeloReporte.Designer.cs">
       <DependentUpon>ModeloReporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\ListadoPorClaseProducto.cs">
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoDeDevoluciones.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\ListadoPorClaseProducto.Designer.cs">
-      <DependentUpon>ListadoPorClaseProducto.cs</DependentUpon>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoDeDevoluciones.Designer.cs">
+      <DependentUpon>RptListadoDeDevoluciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\rptListado.cs">
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoSegunClase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Distribucion\rptListado.Designer.cs">
-      <DependentUpon>rptListado.cs</DependentUpon>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoSegunClase.Designer.cs">
+      <DependentUpon>RptListadoSegunClase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Ventas\rptCartavio.cs">
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoPorRutas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulos\Reportes\Modulos\Ventas\rptCartavio.Designer.cs">
-      <DependentUpon>rptCartavio.cs</DependentUpon>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoPorRutas.Designer.cs">
+      <DependentUpon>RptListadoPorRutas.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
@@ -586,6 +441,12 @@
     </Compile>
     <Compile Include="Modulos\Progreso.Designer.cs">
       <DependentUpon>Progreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Ventas\frmCorrelativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Ventas\frmCorrelativo.Designer.cs">
+      <DependentUpon>frmCorrelativo.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmListaPrecio.cs">
       <SubType>Form</SubType>
@@ -736,17 +597,17 @@
     <EmbeddedResource Include="Modulos\Reportes\ModeloReporte.resx">
       <DependentUpon>ModeloReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\ListadoPorClaseProducto.resx">
-      <DependentUpon>ListadoPorClaseProducto.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoDeDevoluciones.resx">
+      <DependentUpon>RptListadoDeDevoluciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\rptListado.es-PE.resx">
-      <DependentUpon>rptListado.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoSegunClase.resx">
+      <DependentUpon>RptListadoSegunClase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\rptListado.resx">
-      <DependentUpon>rptListado.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoPorRutas.es-PE.resx">
+      <DependentUpon>RptListadoPorRutas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\Modulos\Ventas\rptCartavio.resx">
-      <DependentUpon>rptCartavio.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoPorRutas.resx">
+      <DependentUpon>RptListadoPorRutas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
@@ -765,6 +626,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Progreso.resx">
       <DependentUpon>Progreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Ventas\frmCorrelativo.resx">
+      <DependentUpon>frmCorrelativo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmListaPrecio.resx">
       <DependentUpon>frmListaPrecio.cs</DependentUpon>
@@ -794,12 +658,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="Model\Conexion.edmx">
+    <EntityDeploy Include="Model\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Conexion1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\Conexion.edmx.diagram">
-      <DependentUpon>Conexion.edmx</DependentUpon>
+    <None Include="Model\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -819,6 +683,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filtros\Bonificacion\" />
+    <Folder Include="Modulos\Reportes\Modulos\Ventas\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
@@ -838,15 +703,15 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\Conexion.Context.tt">
+    <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Conexion.edmx</DependentUpon>
-      <LastGenOutput>Conexion.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\Conexion.tt">
+    <Content Include="Model\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Conexion.edmx</DependentUpon>
-      <LastGenOutput>Conexion.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

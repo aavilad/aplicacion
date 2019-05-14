@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xtraForm.Model;
+using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
+using xtraForm.Model.Conexion.edmx.Conexion.tt;
 
 namespace xtraForm.Modulos.Inventario
 {
@@ -20,17 +23,6 @@ namespace xtraForm.Modulos.Inventario
             InitializeComponent();
         }
 
-        void Refrescar()
-        {
-            var proceso = new Libreria.Proceso();
-            var lista_ = new List<string>();
-            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
-            foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
-                lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
-            string cadena = string.Join(" ", lista_.ToArray());
-            condicion(cadena);
-        }
-
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -38,7 +30,7 @@ namespace xtraForm.Modulos.Inventario
 
         private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
                 Filtros.frmFiltros filtro = new Filtros.frmFiltros();
                 DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
@@ -112,7 +104,7 @@ namespace xtraForm.Modulos.Inventario
         {
             try
             {
-                using (var Context = new Model.LiderAppEntities())
+                using (var Context = new LiderAppEntities())
                 {
                     var frmmarca = new Elementos.frmMarca();
                     frmmarca.pasar += new Elementos.frmMarca.Variables(Campos);
@@ -141,9 +133,9 @@ namespace xtraForm.Modulos.Inventario
         }
         void Campos(string MarcaCodigo, string MarcaOrden, string MarcaProveedor, string MarcaLinea, string MarcaDescripcion, string MarcaAbreviacion)
         {
-            using (var Context = new Model.LiderAppEntities())
+            using (var Context = new LiderAppEntities())
             {
-                Model.MARCA Mca = new Model.MARCA { Marca1 = MarcaCodigo };
+                MARCA Mca = new MARCA { Marca1 = MarcaCodigo };
                 Context.MARCA.Attach(Mca);
                 Mca.Linea = MarcaLinea;
                 Mca.Proveedor = MarcaProveedor;
