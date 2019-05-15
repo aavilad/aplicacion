@@ -107,7 +107,8 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // efDataSource1
             // 
             efConnectionParameters1.ConnectionString = "";
-            efConnectionParameters1.ConnectionStringName = "conexion";
+            efConnectionParameters1.ConnectionStringName = "LiderEntities";
+            efConnectionParameters1.Source = typeof(xtraForm.Model.LiderEntities);
             this.efDataSource1.ConnectionParameters = efConnectionParameters1;
             this.efDataSource1.Name = "efDataSource1";
             // 
@@ -334,7 +335,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // 
             resources.ApplyResources(this.Gestion, "Gestion");
             dynamicListLookUpSettings2.DataAdapter = null;
-            dynamicListLookUpSettings2.DataMember = "Gestion";
+            dynamicListLookUpSettings2.DataMember = "Gestions";
             dynamicListLookUpSettings2.DataSource = this.efDataSource1;
             dynamicListLookUpSettings2.DisplayMember = "codigo";
             dynamicListLookUpSettings2.ValueMember = "codigo";

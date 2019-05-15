@@ -4,20 +4,3035 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LiderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="LiderModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="LiderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bonificacion">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="Mecanica" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TipoMecanica" Type="int" Nullable="false" />
+          <Property Name="cdProductoRegalo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CantidadMinima" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CantidadMaxima" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CantidadRegalo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CantidadMaximaPorCliente" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Stock" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StockEntregado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TieneExclusion" Type="bit" Nullable="false" />
+          <Property Name="IDBonifcacionExcluida" Type="int" Nullable="false" />
+          <Property Name="cdProductoVenta" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IDProveedor" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Desde" Type="datetime" Nullable="false" />
+          <Property Name="Hasta" Type="datetime" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="categoria" />
+          </Key>
+          <Property Name="categoria" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="descripcorta" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clase_Producto">
+          <Key>
+            <PropertyRef Name="Clase_Producto" />
+          </Key>
+          <Property Name="Clase_Producto" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="Cliente" />
+          </Key>
+          <Property Name="Cliente" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Zona" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="TipoCli" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Ruc" Type="char" MaxLength="11" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="FechIng" Type="datetime" Nullable="false" />
+          <Property Name="TopeCredito" Type="int" />
+          <Property Name="DNI" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Telefono" Type="char" MaxLength="7" />
+          <Property Name="Saldo" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Credito" Type="bit" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="70" />
+          <Property Name="Direccion" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="iddistrito" Type="char" MaxLength="6" />
+          <Property Name="IdNegocio" Type="char" MaxLength="2" />
+          <Property Name="nuevo" Type="char" MaxLength="1" />
+          <Property Name="ultmod" Type="datetime" />
+          <Property Name="usuario" Type="char" MaxLength="20" />
+          <Property Name="observacion" Type="char" MaxLength="70" Nullable="false" />
+          <Property Name="ap_paterno" Type="varchar" MaxLength="30" />
+          <Property Name="ap_materno" Type="varchar" MaxLength="30" />
+          <Property Name="nombre1" Type="char" MaxLength="25" />
+          <Property Name="nombre2" Type="char" MaxLength="25" />
+          <Property Name="codbase" Type="char" MaxLength="6" />
+          <Property Name="codant" Type="char" MaxLength="6" />
+          <Property Name="clasecli" Type="tinyint" />
+          <Property Name="ptollegada" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="distllegada" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="porcentaje" Type="numeric" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="RAZ" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="control" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="agente_ret" Type="bit" Nullable="false" />
+          <Property Name="agente_per" Type="bit" Nullable="false" />
+          <Property Name="agente_userf" Type="bit" Nullable="false" />
+          <Property Name="X" Type="decimal" Precision="12" Scale="7" />
+          <Property Name="Y" Type="decimal" Precision="12" Scale="7" />
+          <Property Name="CodVen1" Type="char" MaxLength="3" />
+          <Property Name="dia1" Type="smallint" />
+          <Property Name="sec" Type="int" />
+          <Property Name="CodVen2" Type="char" MaxLength="3" />
+          <Property Name="dia2" Type="smallint" />
+          <Property Name="EstadoCli" Type="tinyint" />
+          <Property Name="Correo" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="iddpto" />
+          </Key>
+          <Property Name="iddpto" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" />
+          <Property Name="codunilever" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETADOC">
+          <Key>
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="TipoDoc" />
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="Documento" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="TipoDoc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Producto" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="PrecUnit" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Igv" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecProm" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="Comision" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Costo" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="TipoPrecio" Type="char" MaxLength="1" />
+          <Property Name="trangratuita" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="pdscto" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="totdscto" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="percepcion" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="lote" Type="varchar" MaxLength="20" />
+          <Property Name="fvctolote" Type="datetime" />
+          <Property Name="detraccion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="ivap" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="tg" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="IDBonificacion" Type="int" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioNeto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Descuento" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Recargo" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Afecto" Type="bit" />
+          <Property Name="Bonif" Type="bit" />
+        </EntityType>
+        <EntityType Name="DETPEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido" />
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="Pedido" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="Producto" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrecUnit" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="TipoPrecio" Type="char" MaxLength="1" />
+          <Property Name="TranGratuita" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="lote" Type="varchar" MaxLength="20" />
+          <Property Name="fvctolote" Type="datetime" />
+          <Property Name="flgSurtido" Type="char" MaxLength="1" />
+          <Property Name="IDBonificacion" Type="int" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioNeto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Descuento" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="Recargo" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Afecto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Bonif" Type="bit" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" />
+          <Property Name="idprovincia" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCTIPO">
+          <Key>
+            <PropertyRef Name="DocTipo" />
+          </Key>
+          <Property Name="DocTipo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="Serie" Type="char" MaxLength="3" />
+          <Property Name="Numero" Type="int" />
+          <Property Name="Signo" Type="smallint" Nullable="false" />
+          <Property Name="codigo" Type="char" MaxLength="2" />
+          <Property Name="PKID" Type="int" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO">
+          <Key>
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="TipoDoc" />
+          </Key>
+          <Property Name="Documento" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="TipoDoc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Personal" Type="varchar" MaxLength="10" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Cliente" Type="char" MaxLength="6" />
+          <Property Name="Proveedor" Type="char" MaxLength="5" />
+          <Property Name="Pedido" Type="char" MaxLength="9" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DocRefer" Type="char" MaxLength="9" />
+          <Property Name="TipoDocR" Type="char" MaxLength="1" />
+          <Property Name="Motivo" Type="tinyint" Nullable="false" />
+          <Property Name="Pagado" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Generado" Type="char" MaxLength="11" />
+          <Property Name="TipoIng" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Nrodia" Type="tinyint" Nullable="false" />
+          <Property Name="Cerrado" Type="bit" Nullable="false" />
+          <Property Name="FechaRep" Type="datetime" />
+          <Property Name="PersonalRep" Type="char" MaxLength="2" />
+          <Property Name="Marca" Type="char" MaxLength="1" />
+          <Property Name="fecha1" Type="datetime" />
+          <Property Name="FechaCancelar" Type="datetime" />
+          <Property Name="Procesado" Type="bit" Nullable="false" />
+          <Property Name="observacion" Type="varchar" MaxLength="70" />
+          <Property Name="hora" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="diasfinta" Type="tinyint" Nullable="false" />
+          <Property Name="rsocial" Type="varchar" MaxLength="70" />
+          <Property Name="ruc" Type="char" MaxLength="11" />
+          <Property Name="direccion" Type="varchar" MaxLength="70" />
+          <Property Name="dni" Type="char" MaxLength="12" />
+          <Property Name="fechacont" Type="datetime" Nullable="false" />
+          <Property Name="afecto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="inafecto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="igv" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="impreso" Type="bit" Nullable="false" />
+          <Property Name="registro" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="encargado" Type="char" MaxLength="2" />
+          <Property Name="npersonal" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nencargado" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="totdscto" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="gestion" Type="varchar" MaxLength="20" />
+          <Property Name="ptollegada" Type="varchar" MaxLength="70" />
+          <Property Name="distllegada" Type="char" MaxLength="6" />
+          <Property Name="percepcion" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="detraccion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="ivap" Type="numeric" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="Filtro">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="campo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="condicion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="union" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="tabla" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FiltroConfiguracion">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Registro" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FORMAPAGO">
+          <Key>
+            <PropertyRef Name="FormaPago" />
+          </Key>
+          <Property Name="FormaPago" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="PlazoMax" Type="tinyint" Nullable="false" />
+          <Property Name="Nrodia" Type="tinyint" Nullable="false" />
+          <Property Name="contado" Type="bit" Nullable="false" />
+          <Property Name="DiasFinta" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuerzaVentas">
+          <Key>
+            <PropertyRef Name="fzavtas" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="fzavtas" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gestion">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="activa" Type="bit" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="grupo" />
+          </Key>
+          <Property Name="grupo" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="descrip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descorta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="orden" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemBonificacion">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="IDBonificacion" Type="int" Nullable="false" />
+          <Property Name="cdProductoColeccion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IDAsociado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LINEA">
+          <Key>
+            <PropertyRef Name="Linea" />
+          </Key>
+          <Property Name="Linea" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CanMenor" Type="int" Nullable="false" />
+          <Property Name="CanMayor" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="25" />
+          <Property Name="ComiMayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ComiMenor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CredMayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CredMenor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ComiEspecial" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ComiSEspecial" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="orden" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARCA">
+          <Key>
+            <PropertyRef Name="Marca" />
+          </Key>
+          <Property Name="Marca" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Proveedor" Type="char" MaxLength="5" />
+          <Property Name="Linea" Type="char" MaxLength="2" />
+          <Property Name="Descripcion" Type="char" MaxLength="38" />
+          <Property Name="Descorta" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Orden" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="IDModuloPadre" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Registro" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nivel" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido" />
+          </Key>
+          <Property Name="Pedido" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="Personal" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Cliente" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="FormaPago" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Estado" Type="char" MaxLength="18" />
+          <Property Name="Reparto" Type="bit" Nullable="false" />
+          <Property Name="TipoPersona" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Procesado" Type="bit" Nullable="false" />
+          <Property Name="rsocial" Type="varchar" MaxLength="70" />
+          <Property Name="ruc" Type="char" MaxLength="11" />
+          <Property Name="direccion" Type="varchar" MaxLength="70" />
+          <Property Name="dni" Type="char" MaxLength="12" />
+          <Property Name="encargado" Type="char" MaxLength="2" />
+          <Property Name="npersonal" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="nencargado" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="gestion" Type="char" MaxLength="2" />
+          <Property Name="ptollegada" Type="varchar" MaxLength="70" />
+          <Property Name="distllegada" Type="char" MaxLength="6" />
+          <Property Name="pdscto" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="dscto" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="tipodoc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="flagCobertura" Type="char" MaxLength="1" />
+          <Property Name="Fecha_web" Type="datetime" />
+          <Property Name="statusWeb" Type="bit" />
+          <Property Name="Aprobado" Type="bit" />
+        </EntityType>
+        <EntityType Name="PERSONAL">
+          <Key>
+            <PropertyRef Name="Personal" />
+          </Key>
+          <Property Name="Personal" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TipoPersona" Type="char" MaxLength="1" />
+          <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="LibElec" Type="char" MaxLength="8" />
+          <Property Name="FechIng" Type="datetime" />
+          <Property Name="FechNac" Type="datetime" />
+          <Property Name="Telefono" Type="char" MaxLength="7" />
+          <Property Name="Comision" Type="bit" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Sueldo" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="vendedor" Type="tinyint" Nullable="false" />
+          <Property Name="clase" Type="int" Nullable="false" />
+          <Property Name="grupo" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="grupok" Type="char" MaxLength="2" />
+          <Property Name="distrito" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="fzavtas" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="novedad" Type="bit" Nullable="false" />
+          <Property Name="dms" Type="bit" Nullable="false" />
+          <Property Name="pparticipa" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="pcuota" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="supercodigo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PlantillaUnidad">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Abreviacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Factor" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="Producto" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Marca" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="40" />
+          <Property Name="ConIgv" Type="bit" Nullable="false" />
+          <Property Name="StockMin" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="StockMax" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="StockAc" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="StockDia" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="PrecMayContado" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMenContado" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMayCredito" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMenCredito" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PrecEspecial" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="CanEspecial" Type="int" />
+          <Property Name="CodAlterno" Type="char" MaxLength="8" />
+          <Property Name="Peso" Type="numeric" Precision="9" Scale="3" />
+          <Property Name="Costo" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="UniMed" Type="varchar" MaxLength="10" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Unidades" Type="int" Nullable="false" />
+          <Property Name="StockMal" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="ean13" Type="char" MaxLength="15" />
+          <Property Name="grupo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="stkbafecha" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="stkmafecha" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="comimayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="comimenor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="credmayor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="credmenor" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="codbase" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="proveedor" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="linea" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="marcas" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="minimomay" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="categoria" Type="char" MaxLength="2" />
+          <Property Name="ncodigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="nunimed" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="PrecSEspecial" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="percepcion" Type="bit" Nullable="false" />
+          <Property Name="priesgomaycon" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="priesgomencon" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="priesgomaycre" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="priesgomencre" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="costorep" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="PrecSSEspecial" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="comiespecial" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="comisespecial" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="detraccion" Type="bit" Nullable="false" />
+          <Property Name="pdetraccion" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="conivap" Type="bit" Nullable="false" />
+          <Property Name="Meta_Cant" Type="varchar" MaxLength="50" />
+          <Property Name="Meta" Type="varchar" MaxLength="50" />
+          <Property Name="sku" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="factor" Type="int" />
+          <Property Name="clase_producto" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Orden" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CodigoUM" Type="char" MaxLength="3" />
+          <Property Name="IdClaseBSC" Type="char" MaxLength="3" />
+          <Property Name="FP" Type="int" />
+          <Property Name="StatusWeb" Type="bit" />
+          <Property Name="StatusDms" Type="bit" />
+          <Property Name="ArticuloVenta" Type="bit" />
+          <Property Name="ArticuloCompra" Type="bit" />
+          <Property Name="ProductoCombo" Type="bit" />
+          <Property Name="IDUnidad" Type="int" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="Proveedor" />
+          </Key>
+          <Property Name="Proveedor" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Ruc" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="60" />
+          <Property Name="Telefono" Type="char" MaxLength="11" />
+          <Property Name="Fax" Type="char" MaxLength="11" />
+          <Property Name="Email" Type="varchar" MaxLength="60" />
+          <Property Name="Ciudad" Type="char" MaxLength="18" />
+          <Property Name="cuenta" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="nuevo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ap_paterno" Type="varchar" MaxLength="30" />
+          <Property Name="ap_materno" Type="varchar" MaxLength="30" />
+          <Property Name="nombre1" Type="char" MaxLength="25" />
+          <Property Name="nombre2" Type="char" MaxLength="25" />
+          <Property Name="clasepro" Type="tinyint" Nullable="false" />
+          <Property Name="tipo" Type="tinyint" Nullable="false" />
+          <Property Name="orden" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" />
+          <Property Name="iddpto" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="codunilever" Type="int" Nullable="false" />
+          <Property Name="region" Type="char" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Personal" />
+          </Key>
+          <Property Name="Region" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Personal" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REPARTO">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="Ruta" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Dia" Type="int" Nullable="false" />
+          <Property Name="Personal" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RUTAS">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="descripcion" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="IDRutaVendedor" Type="nchar" MaxLength="10" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoAsociado">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoBonificacion">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPONEG">
+          <Key>
+            <PropertyRef Name="IdNegocio" />
+          </Key>
+          <Property Name="IdNegocio" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Descrip" Type="char" MaxLength="40" />
+          <Property Name="codunilever" Type="char" MaxLength="3" />
+          <Property Name="coddms" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tipoprecio">
+          <Key>
+            <PropertyRef Name="tipoprecio" />
+          </Key>
+          <Property Name="tipoprecio" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="descrip" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="descripcorta" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="concre" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="maymin" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VistaAdministrativa">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="Vista" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IDModulo" Type="int" Nullable="false" />
+          <Property Name="Registro" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZONA">
+          <Key>
+            <PropertyRef Name="Zona" />
+          </Key>
+          <Property Name="Zona" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="60" Nullable="false" />
+          <Property Name="Distancia" Type="int" Nullable="false" />
+          <Property Name="Riesgo" Type="bit" Nullable="false" />
+          <Property Name="proveedor" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="ZONA_PERSONAL">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="Zona" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Personal" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Dia" Type="datetime" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="PKID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vva_Cliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="Zona" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="FechIng" />
+            <PropertyRef Name="Saldo" />
+            <PropertyRef Name="Credito" />
+          </Key>
+          <Property Name="Codigo" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="70" />
+          <Property Name="Direccion" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Zona" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Tipo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Documento" Type="char" MaxLength="11" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="FechIng" Type="datetime" Nullable="false" />
+          <Property Name="TopeCredito" Type="int" />
+          <Property Name="Telefono" Type="char" MaxLength="7" />
+          <Property Name="Saldo" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Credito" Type="bit" Nullable="false" />
+          <Property Name="IDDistrito" Type="char" MaxLength="6" />
+          <Property Name="IDNegocio" Type="char" MaxLength="2" />
+          <Property Name="Clase" Type="tinyint" />
+        </EntityType>
+        <Association Name="FK__CLIENTE__Zona__4959E263">
+          <End Role="ZONA" Type="Self.ZONA" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETADOC__Product__4F12BBB9">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DETADOC" Type="Self.DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Producto" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETPEDIDO__Pedid__55BFB948">
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
+          <End Role="DETPEDIDO" Type="Self.DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="Pedido" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETPEDIDO__Produ__54CB950F">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="DETPEDIDO" Type="Self.DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Producto" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEDIDO__Personal__68D28DBC">
+          <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ZONA_PERSO__Zona__65F62111">
+          <End Role="ZONA" Type="Self.ZONA" Multiplicity="1" />
+          <End Role="ZONA_PERSONAL" Type="Self.ZONA_PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona" />
+            </Principal>
+            <Dependent Role="ZONA_PERSONAL">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bonificacion_TipoBonificacion">
+          <End Role="TipoBonificacion" Type="Self.TipoBonificacion" Multiplicity="1" />
+          <End Role="Bonificacion" Type="Self.Bonificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoBonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="Bonificacion">
+              <PropertyRef Name="TipoMecanica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="0..1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_TIPONEG">
+          <End Role="TIPONEG" Type="Self.TIPONEG" Multiplicity="0..1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPONEG">
+              <PropertyRef Name="IdNegocio" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="IdNegocio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETADOC_Bonificacion">
+          <End Role="Bonificacion" Type="Self.Bonificacion" Multiplicity="0..1" />
+          <End Role="DETADOC" Type="Self.DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="IDBonificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETADOC_DOCUMENTO">
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DETADOC" Type="Self.DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="Documento" />
+              <PropertyRef Name="TipoDoc" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="Documento" />
+              <PropertyRef Name="TipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETADOC_tipoprecio">
+          <End Role="tipoprecio" Type="Self.tipoprecio" Multiplicity="0..1" />
+          <End Role="DETADOC" Type="Self.DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoprecio">
+              <PropertyRef Name="tipoprecio" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="TipoPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_provincia">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="idprovincia" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="Cliente" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_DOCTIPO1">
+          <End Role="DOCTIPO" Type="Self.DOCTIPO" Multiplicity="1" />
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTIPO">
+              <PropertyRef Name="DocTipo" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="TipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_Gestion">
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="0..1" />
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestion">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="gestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_PERSONAL">
+          <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="0..1" />
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filtro_FiltroConfiguracion">
+          <End Role="FiltroConfiguracion" Type="Self.FiltroConfiguracion" Multiplicity="1" />
+          <End Role="Filtro" Type="Self.Filtro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FiltroConfiguracion">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Filtro">
+              <PropertyRef Name="condicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemBonificacion_Bonificacion">
+          <End Role="Bonificacion" Type="Self.Bonificacion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ItemBonificacion" Type="Self.ItemBonificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="ItemBonificacion">
+              <PropertyRef Name="IDBonificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemBonificacion_TipoAsociado">
+          <End Role="TipoAsociado" Type="Self.TipoAsociado" Multiplicity="1" />
+          <End Role="ItemBonificacion" Type="Self.ItemBonificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsociado">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="ItemBonificacion">
+              <PropertyRef Name="IDAsociado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARCA_LINEA">
+          <End Role="LINEA" Type="Self.LINEA" Multiplicity="0..1" />
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINEA">
+              <PropertyRef Name="Linea" />
+            </Principal>
+            <Dependent Role="MARCA">
+              <PropertyRef Name="Linea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARCA_PROVEEDOR">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="Proveedor" />
+            </Principal>
+            <Dependent Role="MARCA">
+              <PropertyRef Name="Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_FORMAPAGO">
+          <End Role="FORMAPAGO" Type="Self.FORMAPAGO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMAPAGO">
+              <PropertyRef Name="FormaPago" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="FormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAL_FuerzaVentas">
+          <End Role="FuerzaVentas" Type="Self.FuerzaVentas" Multiplicity="1" />
+          <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuerzaVentas">
+              <PropertyRef Name="fzavtas" />
+            </Principal>
+            <Dependent Role="PERSONAL">
+              <PropertyRef Name="fzavtas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_Clase_Producto">
+          <End Role="Clase_Producto" Type="Self.Clase_Producto" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase_Producto">
+              <PropertyRef Name="Clase_Producto" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="clase_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_MARCA">
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCA">
+              <PropertyRef Name="Marca" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_PlantillaUnidad">
+          <End Role="PlantillaUnidad" Type="Self.PlantillaUnidad" Multiplicity="0..1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlantillaUnidad">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="IDUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provincia_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="provincia" Type="Self.provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="iddpto" />
+            </Principal>
+            <Dependent Role="provincia">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPARTO_RUTAS1">
+          <End Role="RUTAS" Type="Self.RUTAS" Multiplicity="1" />
+          <End Role="REPARTO" Type="Self.REPARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUTAS">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="REPARTO">
+              <PropertyRef Name="Ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VistaAdministrativa_Modulo">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+          <End Role="VistaAdministrativa" Type="Self.VistaAdministrativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="VistaAdministrativa">
+              <PropertyRef Name="IDModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_genera_documento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pedido" Type="char" Mode="In" />
+          <Parameter Name="tipo" Type="int" Mode="In" />
+          <Parameter Name="tdoc" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="LiderModelStoreContainer">
+          <EntitySet Name="Bonificacion" EntityType="Self.Bonificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clase_Producto" EntityType="Self.Clase_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETADOC" EntityType="Self.DETADOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETPEDIDO" EntityType="Self.DETPEDIDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCTIPO" EntityType="Self.DOCTIPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTO" EntityType="Self.DOCUMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Filtro" EntityType="Self.Filtro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FiltroConfiguracion" EntityType="Self.FiltroConfiguracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FORMAPAGO" EntityType="Self.FORMAPAGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuerzaVentas" EntityType="Self.FuerzaVentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gestion" EntityType="Self.Gestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupo" EntityType="Self.grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemBonificacion" EntityType="Self.ItemBonificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LINEA" EntityType="Self.LINEA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlantillaUnidad" EntityType="Self.PlantillaUnidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPARTO" EntityType="Self.REPARTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RUTAS" EntityType="Self.RUTAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAsociado" EntityType="Self.TipoAsociado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoBonificacion" EntityType="Self.TipoBonificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPONEG" EntityType="Self.TIPONEG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoprecio" EntityType="Self.tipoprecio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VistaAdministrativa" EntityType="Self.VistaAdministrativa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZONA" EntityType="Self.ZONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZONA_PERSONAL" EntityType="Self.ZONA_PERSONAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vva_Cliente" EntityType="Self.Vva_Cliente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vva_Cliente].[Codigo] AS [Codigo], 
+    [Vva_Cliente].[Nombre] AS [Nombre], 
+    [Vva_Cliente].[Direccion] AS [Direccion], 
+    [Vva_Cliente].[Zona] AS [Zona], 
+    [Vva_Cliente].[Tipo] AS [Tipo], 
+    [Vva_Cliente].[Documento] AS [Documento], 
+    [Vva_Cliente].[Estado] AS [Estado], 
+    [Vva_Cliente].[FechIng] AS [FechIng], 
+    [Vva_Cliente].[TopeCredito] AS [TopeCredito], 
+    [Vva_Cliente].[Telefono] AS [Telefono], 
+    [Vva_Cliente].[Saldo] AS [Saldo], 
+    [Vva_Cliente].[Credito] AS [Credito], 
+    [Vva_Cliente].[IDDistrito] AS [IDDistrito], 
+    [Vva_Cliente].[IDNegocio] AS [IDNegocio], 
+    [Vva_Cliente].[Clase] AS [Clase]
+    FROM [dbo].[Vva_Cliente] AS [Vva_Cliente]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="Self.FK__CLIENTE__Zona__4959E263">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETADOC__Product__4F12BBB9" Association="Self.FK__DETADOC__Product__4F12BBB9">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETADOC" EntitySet="DETADOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETPEDIDO__Pedid__55BFB948" Association="Self.FK__DETPEDIDO__Pedid__55BFB948">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETPEDIDO__Produ__54CB950F" Association="Self.FK__DETPEDIDO__Produ__54CB950F">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETPEDIDO" EntitySet="DETPEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__Personal__68D28DBC" Association="Self.FK__PEDIDO__Personal__68D28DBC">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ZONA_PERSO__Zona__65F62111" Association="Self.FK__ZONA_PERSO__Zona__65F62111">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bonificacion_TipoBonificacion" Association="Self.FK_Bonificacion_TipoBonificacion">
+            <End Role="TipoBonificacion" EntitySet="TipoBonificacion" />
+            <End Role="Bonificacion" EntitySet="Bonificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_Distrito" Association="Self.FK_CLIENTE_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_TIPONEG" Association="Self.FK_CLIENTE_TIPONEG">
+            <End Role="TIPONEG" EntitySet="TIPONEG" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETADOC_Bonificacion" Association="Self.FK_DETADOC_Bonificacion">
+            <End Role="Bonificacion" EntitySet="Bonificacion" />
+            <End Role="DETADOC" EntitySet="DETADOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETADOC_DOCUMENTO" Association="Self.FK_DETADOC_DOCUMENTO">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="DETADOC" EntitySet="DETADOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETADOC_tipoprecio" Association="Self.FK_DETADOC_tipoprecio">
+            <End Role="tipoprecio" EntitySet="tipoprecio" />
+            <End Role="DETADOC" EntitySet="DETADOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_provincia" Association="Self.FK_Distrito_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_CLIENTE" Association="Self.FK_DOCUMENTO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_DOCTIPO1" Association="Self.FK_DOCUMENTO_DOCTIPO1">
+            <End Role="DOCTIPO" EntitySet="DOCTIPO" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_Gestion" Association="Self.FK_DOCUMENTO_Gestion">
+            <End Role="Gestion" EntitySet="Gestion" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_PERSONAL" Association="Self.FK_DOCUMENTO_PERSONAL">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filtro_FiltroConfiguracion" Association="Self.FK_Filtro_FiltroConfiguracion">
+            <End Role="FiltroConfiguracion" EntitySet="FiltroConfiguracion" />
+            <End Role="Filtro" EntitySet="Filtro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemBonificacion_Bonificacion" Association="Self.FK_ItemBonificacion_Bonificacion">
+            <End Role="Bonificacion" EntitySet="Bonificacion" />
+            <End Role="ItemBonificacion" EntitySet="ItemBonificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemBonificacion_TipoAsociado" Association="Self.FK_ItemBonificacion_TipoAsociado">
+            <End Role="TipoAsociado" EntitySet="TipoAsociado" />
+            <End Role="ItemBonificacion" EntitySet="ItemBonificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARCA_LINEA" Association="Self.FK_MARCA_LINEA">
+            <End Role="LINEA" EntitySet="LINEA" />
+            <End Role="MARCA" EntitySet="MARCA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARCA_PROVEEDOR" Association="Self.FK_MARCA_PROVEEDOR">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="MARCA" EntitySet="MARCA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_FORMAPAGO" Association="Self.FK_PEDIDO_FORMAPAGO">
+            <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAL_FuerzaVentas" Association="Self.FK_PERSONAL_FuerzaVentas">
+            <End Role="FuerzaVentas" EntitySet="FuerzaVentas" />
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_Clase_Producto" Association="Self.FK_PRODUCTO_Clase_Producto">
+            <End Role="Clase_Producto" EntitySet="Clase_Producto" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_MARCA" Association="Self.FK_PRODUCTO_MARCA">
+            <End Role="MARCA" EntitySet="MARCA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_PlantillaUnidad" Association="Self.FK_PRODUCTO_PlantillaUnidad">
+            <End Role="PlantillaUnidad" EntitySet="PlantillaUnidad" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provincia_Departamento" Association="Self.FK_provincia_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="provincia" EntitySet="provincia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPARTO_RUTAS1" Association="Self.FK_REPARTO_RUTAS1">
+            <End Role="RUTAS" EntitySet="RUTAS" />
+            <End Role="REPARTO" EntitySet="REPARTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VistaAdministrativa_Modulo" Association="Self.FK_VistaAdministrativa_Modulo">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="VistaAdministrativa" EntitySet="VistaAdministrativa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LiderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="LiderEntities" annotation:LazyLoadingEnabled="true" />
+        <EntityContainer Name="LiderEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Clase_Producto" EntityType="LiderModel.Clase_Producto" />
+          <EntitySet Name="CLIENTEs" EntityType="LiderModel.CLIENTE" />
+          <EntitySet Name="Departamentoes" EntityType="LiderModel.Departamento" />
+          <EntitySet Name="DETADOCs" EntityType="LiderModel.DETADOC" />
+          <EntitySet Name="DETPEDIDOes" EntityType="LiderModel.DETPEDIDO" />
+          <EntitySet Name="Distritoes" EntityType="LiderModel.Distrito" />
+          <EntitySet Name="DOCTIPOes" EntityType="LiderModel.DOCTIPO" />
+          <EntitySet Name="DOCUMENTOes" EntityType="LiderModel.DOCUMENTO" />
+          <EntitySet Name="Filtroes" EntityType="LiderModel.Filtro" />
+          <EntitySet Name="FiltroConfiguracions" EntityType="LiderModel.FiltroConfiguracion" />
+          <EntitySet Name="FORMAPAGOes" EntityType="LiderModel.FORMAPAGO" />
+          <EntitySet Name="FuerzaVentas" EntityType="LiderModel.FuerzaVenta" />
+          <EntitySet Name="Gestions" EntityType="LiderModel.Gestion" />
+          <EntitySet Name="LINEAs" EntityType="LiderModel.LINEA" />
+          <EntitySet Name="MARCAs" EntityType="LiderModel.MARCA" />
+          <EntitySet Name="Moduloes" EntityType="LiderModel.Modulo" />
+          <EntitySet Name="PEDIDOes" EntityType="LiderModel.PEDIDO" />
+          <EntitySet Name="PERSONALs" EntityType="LiderModel.PERSONAL" />
+          <EntitySet Name="PRODUCTOes" EntityType="LiderModel.PRODUCTO" />
+          <EntitySet Name="PROVEEDORs" EntityType="LiderModel.PROVEEDOR" />
+          <EntitySet Name="provincias" EntityType="LiderModel.provincia" />
+          <EntitySet Name="Regions" EntityType="LiderModel.Region" />
+          <EntitySet Name="REPARTOes" EntityType="LiderModel.REPARTO" />
+          <EntitySet Name="RUTAS" EntityType="LiderModel.RUTA" />
+          <EntitySet Name="TIPONEGs" EntityType="LiderModel.TIPONEG" />
+          <EntitySet Name="tipoprecios" EntityType="LiderModel.tipoprecio" />
+          <EntitySet Name="ZONAs" EntityType="LiderModel.ZONA" />
+          <EntitySet Name="ZONA_PERSONAL" EntityType="LiderModel.ZONA_PERSONAL" />
+          <AssociationSet Name="FK_PRODUCTO_Clase_Producto" Association="LiderModel.FK_PRODUCTO_Clase_Producto">
+            <End Role="Clase_Producto" EntitySet="Clase_Producto" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="LiderModel.FK__CLIENTE__Zona__4959E263">
+            <End Role="ZONA" EntitySet="ZONAs" />
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_Distrito" Association="LiderModel.FK_CLIENTE_Distrito">
+            <End Role="Distrito" EntitySet="Distritoes" />
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_TIPONEG" Association="LiderModel.FK_CLIENTE_TIPONEG">
+            <End Role="TIPONEG" EntitySet="TIPONEGs" />
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_CLIENTE" Association="LiderModel.FK_DOCUMENTO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provincia_Departamento" Association="LiderModel.FK_provincia_Departamento">
+            <End Role="Departamento" EntitySet="Departamentoes" />
+            <End Role="provincia" EntitySet="provincias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETADOC__Product__4F12BBB9" Association="LiderModel.FK__DETADOC__Product__4F12BBB9">
+            <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
+            <End Role="DETADOC" EntitySet="DETADOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETADOC_DOCUMENTO" Association="LiderModel.FK_DETADOC_DOCUMENTO">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+            <End Role="DETADOC" EntitySet="DETADOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETADOC_tipoprecio" Association="LiderModel.FK_DETADOC_tipoprecio">
+            <End Role="tipoprecio" EntitySet="tipoprecios" />
+            <End Role="DETADOC" EntitySet="DETADOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETPEDIDO__Pedid__55BFB948" Association="LiderModel.FK__DETPEDIDO__Pedid__55BFB948">
+            <End Role="PEDIDO" EntitySet="PEDIDOes" />
+            <End Role="DETPEDIDO" EntitySet="DETPEDIDOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETPEDIDO__Produ__54CB950F" Association="LiderModel.FK__DETPEDIDO__Produ__54CB950F">
+            <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
+            <End Role="DETPEDIDO" EntitySet="DETPEDIDOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_provincia" Association="LiderModel.FK_Distrito_provincia">
+            <End Role="provincia" EntitySet="provincias" />
+            <End Role="Distrito" EntitySet="Distritoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_DOCTIPO1" Association="LiderModel.FK_DOCUMENTO_DOCTIPO1">
+            <End Role="DOCTIPO" EntitySet="DOCTIPOes" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_Gestion" Association="LiderModel.FK_DOCUMENTO_Gestion">
+            <End Role="Gestion" EntitySet="Gestions" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_PERSONAL" Association="LiderModel.FK_DOCUMENTO_PERSONAL">
+            <End Role="PERSONAL" EntitySet="PERSONALs" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filtro_FiltroConfiguracion" Association="LiderModel.FK_Filtro_FiltroConfiguracion">
+            <End Role="FiltroConfiguracion" EntitySet="FiltroConfiguracions" />
+            <End Role="Filtro" EntitySet="Filtroes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_FORMAPAGO" Association="LiderModel.FK_PEDIDO_FORMAPAGO">
+            <End Role="FORMAPAGO" EntitySet="FORMAPAGOes" />
+            <End Role="PEDIDO" EntitySet="PEDIDOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAL_FuerzaVentas" Association="LiderModel.FK_PERSONAL_FuerzaVentas">
+            <End Role="FuerzaVenta" EntitySet="FuerzaVentas" />
+            <End Role="PERSONAL" EntitySet="PERSONALs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARCA_LINEA" Association="LiderModel.FK_MARCA_LINEA">
+            <End Role="LINEA" EntitySet="LINEAs" />
+            <End Role="MARCA" EntitySet="MARCAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARCA_PROVEEDOR" Association="LiderModel.FK_MARCA_PROVEEDOR">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDORs" />
+            <End Role="MARCA" EntitySet="MARCAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_MARCA" Association="LiderModel.FK_PRODUCTO_MARCA">
+            <End Role="MARCA" EntitySet="MARCAs" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__Personal__68D28DBC" Association="LiderModel.FK__PEDIDO__Personal__68D28DBC">
+            <End Role="PERSONAL" EntitySet="PERSONALs" />
+            <End Role="PEDIDO" EntitySet="PEDIDOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPARTO_RUTAS1" Association="LiderModel.FK_REPARTO_RUTAS1">
+            <End Role="RUTA" EntitySet="RUTAS" />
+            <End Role="REPARTO" EntitySet="REPARTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ZONA_PERSO__Zona__65F62111" Association="LiderModel.FK__ZONA_PERSO__Zona__65F62111">
+            <End Role="ZONA" EntitySet="ZONAs" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <EntitySet Name="VistaAdministrativas" EntityType="LiderModel.VistaAdministrativa" />
+          <AssociationSet Name="FK_VistaAdministrativa_Modulo" Association="LiderModel.FK_VistaAdministrativa_Modulo">
+            <End Role="Modulo" EntitySet="Moduloes" />
+            <End Role="VistaAdministrativa" EntitySet="VistaAdministrativas" />
+          </AssociationSet>
+          <EntitySet Name="Vva_Cliente" EntityType="LiderModel.Vva_Cliente" />
+          <EntitySet Name="grupoes" EntityType="LiderModel.grupo" />
+          <EntitySet Name="categorias" EntityType="LiderModel.categoria" />
+          <EntitySet Name="PlantillaUnidads" EntityType="LiderModel.PlantillaUnidad" />
+          <AssociationSet Name="FK_PRODUCTO_PlantillaUnidad" Association="LiderModel.FK_PRODUCTO_PlantillaUnidad">
+            <End Role="PlantillaUnidad" EntitySet="PlantillaUnidads" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
+          </AssociationSet>
+          <EntitySet Name="ItemBonificacions" EntityType="LiderModel.ItemBonificacion" />
+          <EntitySet Name="Bonificacions" EntityType="LiderModel.Bonificacion" />
+          <EntitySet Name="TipoBonificacions" EntityType="LiderModel.TipoBonificacion" />
+          <AssociationSet Name="FK_Bonificacion_TipoBonificacion" Association="LiderModel.FK_Bonificacion_TipoBonificacion">
+            <End Role="TipoBonificacion" EntitySet="TipoBonificacions" />
+            <End Role="Bonificacion" EntitySet="Bonificacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETADOC_Bonificacion" Association="LiderModel.FK_DETADOC_Bonificacion">
+            <End Role="Bonificacion" EntitySet="Bonificacions" />
+            <End Role="DETADOC" EntitySet="DETADOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemBonificacion_Bonificacion" Association="LiderModel.FK_ItemBonificacion_Bonificacion">
+            <End Role="Bonificacion" EntitySet="Bonificacions" />
+            <End Role="ItemBonificacion" EntitySet="ItemBonificacions" />
+          </AssociationSet>
+          <EntitySet Name="TipoAsociadoes" EntityType="LiderModel.TipoAsociado" />
+          <AssociationSet Name="FK_ItemBonificacion_TipoAsociado" Association="LiderModel.FK_ItemBonificacion_TipoAsociado">
+            <End Role="TipoAsociado" EntitySet="TipoAsociadoes" />
+            <End Role="ItemBonificacion" EntitySet="ItemBonificacions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Clase_Producto">
+          <Key>
+            <PropertyRef Name="Clase_Producto1" />
+          </Key>
+          <Property Name="Clase_Producto1" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PRODUCTOes" Relationship="LiderModel.FK_PRODUCTO_Clase_Producto" FromRole="Clase_Producto" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="Cliente1" />
+          </Key>
+          <Property Name="Cliente1" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="TipoCli" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TopeCredito" Type="Int32" />
+          <Property Name="DNI" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Credito" Type="Boolean" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="iddistrito" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="IdNegocio" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="nuevo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ultmod" Type="DateTime" Precision="3" />
+          <Property Name="usuario" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="observacion" Type="String" Nullable="false" MaxLength="70" FixedLength="true" Unicode="false" />
+          <Property Name="ap_paterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ap_materno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nombre1" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="nombre2" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="codbase" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="codant" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="clasecli" Type="Byte" />
+          <Property Name="ptollegada" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="distllegada" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="porcentaje" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+          <Property Name="RAZ" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="control" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="agente_ret" Type="Boolean" Nullable="false" />
+          <Property Name="agente_per" Type="Boolean" Nullable="false" />
+          <Property Name="agente_userf" Type="Boolean" Nullable="false" />
+          <Property Name="X" Type="Decimal" Precision="12" Scale="7" />
+          <Property Name="Y" Type="Decimal" Precision="12" Scale="7" />
+          <Property Name="CodVen1" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="dia1" Type="Int16" />
+          <Property Name="sec" Type="Int32" />
+          <Property Name="CodVen2" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="dia2" Type="Int16" />
+          <Property Name="EstadoCli" Type="Byte" />
+          <Property Name="Correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ZONA1" Relationship="LiderModel.FK__CLIENTE__Zona__4959E263" FromRole="CLIENTE" ToRole="ZONA" />
+          <NavigationProperty Name="Distrito" Relationship="LiderModel.FK_CLIENTE_Distrito" FromRole="CLIENTE" ToRole="Distrito" />
+          <NavigationProperty Name="TIPONEG" Relationship="LiderModel.FK_CLIENTE_TIPONEG" FromRole="CLIENTE" ToRole="TIPONEG" />
+          <NavigationProperty Name="DOCUMENTOes" Relationship="LiderModel.FK_DOCUMENTO_CLIENTE" FromRole="CLIENTE" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="iddpto" />
+          </Key>
+          <Property Name="iddpto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="codunilever" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="provincias" Relationship="LiderModel.FK_provincia_Departamento" FromRole="Departamento" ToRole="provincia" />
+        </EntityType>
+        <EntityType Name="DETADOC">
+          <Key>
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="TipoDoc" />
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="Documento" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="TipoDoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="PrecUnit" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Igv" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecProm" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Comision" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Costo" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="TipoPrecio" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="trangratuita" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="pdscto" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="totdscto" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="percepcion" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="lote" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fvctolote" Type="DateTime" Precision="3" />
+          <Property Name="detraccion" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="ivap" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="tg" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="IDBonificacion" Type="Int32" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioNeto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Descuento" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Recargo" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Afecto" Type="Boolean" />
+          <Property Name="Bonif" Type="Boolean" />
+          <NavigationProperty Name="PRODUCTO1" Relationship="LiderModel.FK__DETADOC__Product__4F12BBB9" FromRole="DETADOC" ToRole="PRODUCTO" />
+          <NavigationProperty Name="DOCUMENTO1" Relationship="LiderModel.FK_DETADOC_DOCUMENTO" FromRole="DETADOC" ToRole="DOCUMENTO" />
+          <NavigationProperty Name="tipoprecio1" Relationship="LiderModel.FK_DETADOC_tipoprecio" FromRole="DETADOC" ToRole="tipoprecio" />
+          <NavigationProperty Name="Bonificacion" Relationship="LiderModel.FK_DETADOC_Bonificacion" FromRole="DETADOC" ToRole="Bonificacion" />
+        </EntityType>
+        <EntityType Name="DETPEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido" />
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="Pedido" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PrecUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="Cantidad" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TipoPrecio" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TranGratuita" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="lote" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fvctolote" Type="DateTime" Precision="3" />
+          <Property Name="flgSurtido" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IDBonificacion" Type="Int32" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioNeto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Descuento" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Recargo" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Afecto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Bonif" Type="Boolean" />
+          <NavigationProperty Name="PEDIDO1" Relationship="LiderModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="DETPEDIDO" ToRole="PEDIDO" />
+          <NavigationProperty Name="PRODUCTO1" Relationship="LiderModel.FK__DETPEDIDO__Produ__54CB950F" FromRole="DETPEDIDO" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CLIENTEs" Relationship="LiderModel.FK_CLIENTE_Distrito" FromRole="Distrito" ToRole="CLIENTE" />
+          <NavigationProperty Name="provincia" Relationship="LiderModel.FK_Distrito_provincia" FromRole="Distrito" ToRole="provincia" />
+        </EntityType>
+        <EntityType Name="DOCTIPO">
+          <Key>
+            <PropertyRef Name="DocTipo1" />
+          </Key>
+          <Property Name="DocTipo1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="Serie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Numero" Type="Int32" />
+          <Property Name="Signo" Type="Int16" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PKID" Type="Int32" />
+          <NavigationProperty Name="DOCUMENTOes" Relationship="LiderModel.FK_DOCUMENTO_DOCTIPO1" FromRole="DOCTIPO" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO">
+          <Key>
+            <PropertyRef Name="Documento1" />
+            <PropertyRef Name="TipoDoc" />
+          </Key>
+          <Property Name="Documento1" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="TipoDoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Personal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Cliente" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Pedido" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DocRefer" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="TipoDocR" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Motivo" Type="Byte" Nullable="false" />
+          <Property Name="Pagado" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Generado" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="TipoIng" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Nrodia" Type="Byte" Nullable="false" />
+          <Property Name="Cerrado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaRep" Type="DateTime" Precision="3" />
+          <Property Name="PersonalRep" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fecha1" Type="DateTime" Precision="3" />
+          <Property Name="FechaCancelar" Type="DateTime" Precision="3" />
+          <Property Name="Procesado" Type="Boolean" Nullable="false" />
+          <Property Name="observacion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="hora" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="diasfinta" Type="Byte" Nullable="false" />
+          <Property Name="rsocial" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="dni" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="fechacont" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="afecto" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="inafecto" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="igv" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="impreso" Type="Boolean" Nullable="false" />
+          <Property Name="registro" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="encargado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="npersonal" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="nencargado" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="totdscto" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="gestion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ptollegada" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="distllegada" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="percepcion" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="detraccion" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="ivap" Type="Decimal" Precision="8" Scale="2" />
+          <NavigationProperty Name="CLIENTE1" Relationship="LiderModel.FK_DOCUMENTO_CLIENTE" FromRole="DOCUMENTO" ToRole="CLIENTE" />
+          <NavigationProperty Name="DETADOCs" Relationship="LiderModel.FK_DETADOC_DOCUMENTO" FromRole="DOCUMENTO" ToRole="DETADOC" />
+          <NavigationProperty Name="DOCTIPO" Relationship="LiderModel.FK_DOCUMENTO_DOCTIPO1" FromRole="DOCUMENTO" ToRole="DOCTIPO" />
+          <NavigationProperty Name="Gestion1" Relationship="LiderModel.FK_DOCUMENTO_Gestion" FromRole="DOCUMENTO" ToRole="Gestion" />
+          <NavigationProperty Name="PERSONAL1" Relationship="LiderModel.FK_DOCUMENTO_PERSONAL" FromRole="DOCUMENTO" ToRole="PERSONAL" />
+        </EntityType>
+        <EntityType Name="Filtro">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="campo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="condicion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="union" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="tabla" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FiltroConfiguracion" Relationship="LiderModel.FK_Filtro_FiltroConfiguracion" FromRole="Filtro" ToRole="FiltroConfiguracion" />
+        </EntityType>
+        <EntityType Name="FiltroConfiguracion">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Registro" Type="Guid" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Filtroes" Relationship="LiderModel.FK_Filtro_FiltroConfiguracion" FromRole="FiltroConfiguracion" ToRole="Filtro" />
+        </EntityType>
+        <EntityType Name="FORMAPAGO">
+          <Key>
+            <PropertyRef Name="FormaPago1" />
+          </Key>
+          <Property Name="FormaPago1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="PlazoMax" Type="Byte" Nullable="false" />
+          <Property Name="Nrodia" Type="Byte" Nullable="false" />
+          <Property Name="contado" Type="Boolean" Nullable="false" />
+          <Property Name="DiasFinta" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="PEDIDOes" Relationship="LiderModel.FK_PEDIDO_FORMAPAGO" FromRole="FORMAPAGO" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="FuerzaVenta">
+          <Key>
+            <PropertyRef Name="fzavtas" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="fzavtas" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PERSONALs" Relationship="LiderModel.FK_PERSONAL_FuerzaVentas" FromRole="FuerzaVenta" ToRole="PERSONAL" />
+        </EntityType>
+        <EntityType Name="Gestion">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activa" Type="Boolean" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DOCUMENTOes" Relationship="LiderModel.FK_DOCUMENTO_Gestion" FromRole="Gestion" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="LINEA">
+          <Key>
+            <PropertyRef Name="Linea1" />
+          </Key>
+          <Property Name="Linea1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CanMenor" Type="Int32" Nullable="false" />
+          <Property Name="CanMayor" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ComiMayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ComiMenor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="CredMayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="CredMenor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ComiEspecial" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ComiSEspecial" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MARCAs" Relationship="LiderModel.FK_MARCA_LINEA" FromRole="LINEA" ToRole="MARCA" />
+        </EntityType>
+        <EntityType Name="MARCA">
+          <Key>
+            <PropertyRef Name="Marca1" />
+          </Key>
+          <Property Name="Marca1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Linea" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="38" FixedLength="true" Unicode="false" />
+          <Property Name="Descorta" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="LINEA1" Relationship="LiderModel.FK_MARCA_LINEA" FromRole="MARCA" ToRole="LINEA" />
+          <NavigationProperty Name="PROVEEDOR1" Relationship="LiderModel.FK_MARCA_PROVEEDOR" FromRole="MARCA" ToRole="PROVEEDOR" />
+          <NavigationProperty Name="PRODUCTOes" Relationship="LiderModel.FK_PRODUCTO_MARCA" FromRole="MARCA" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="IDModuloPadre" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Registro" Type="Guid" Nullable="false" />
+          <Property Name="Nivel" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="VistaAdministrativas" Relationship="LiderModel.FK_VistaAdministrativa_Modulo" FromRole="Modulo" ToRole="VistaAdministrativa" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="Pedido1" />
+          </Key>
+          <Property Name="Pedido1" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Cliente" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="FormaPago" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="Reparto" Type="Boolean" Nullable="false" />
+          <Property Name="TipoPersona" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Procesado" Type="Boolean" Nullable="false" />
+          <Property Name="rsocial" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="dni" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="encargado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="npersonal" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="nencargado" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="gestion" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ptollegada" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="distllegada" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="pdscto" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="dscto" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="tipodoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="flagCobertura" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha_web" Type="DateTime" Precision="3" />
+          <Property Name="statusWeb" Type="Boolean" />
+          <Property Name="Aprobado" Type="Boolean" />
+          <NavigationProperty Name="DETPEDIDOes" Relationship="LiderModel.FK__DETPEDIDO__Pedid__55BFB948" FromRole="PEDIDO" ToRole="DETPEDIDO" />
+          <NavigationProperty Name="FORMAPAGO1" Relationship="LiderModel.FK_PEDIDO_FORMAPAGO" FromRole="PEDIDO" ToRole="FORMAPAGO" />
+          <NavigationProperty Name="PERSONAL1" Relationship="LiderModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PEDIDO" ToRole="PERSONAL" />
+        </EntityType>
+        <EntityType Name="PERSONAL">
+          <Key>
+            <PropertyRef Name="Personal1" />
+          </Key>
+          <Property Name="Personal1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPersona" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="LibElec" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FechIng" Type="DateTime" Precision="3" />
+          <Property Name="FechNac" Type="DateTime" Precision="3" />
+          <Property Name="Telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Comision" Type="Boolean" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Sueldo" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="vendedor" Type="Byte" Nullable="false" />
+          <Property Name="clase" Type="Int32" Nullable="false" />
+          <Property Name="grupo" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="grupok" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="distrito" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="fzavtas" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="novedad" Type="Boolean" Nullable="false" />
+          <Property Name="dms" Type="Boolean" Nullable="false" />
+          <Property Name="pparticipa" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="pcuota" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="supercodigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DOCUMENTOes" Relationship="LiderModel.FK_DOCUMENTO_PERSONAL" FromRole="PERSONAL" ToRole="DOCUMENTO" />
+          <NavigationProperty Name="FuerzaVenta" Relationship="LiderModel.FK_PERSONAL_FuerzaVentas" FromRole="PERSONAL" ToRole="FuerzaVenta" />
+          <NavigationProperty Name="PEDIDOes" Relationship="LiderModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PERSONAL" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Producto1" />
+          </Key>
+          <Property Name="Producto1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ConIgv" Type="Boolean" Nullable="false" />
+          <Property Name="StockMin" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="StockMax" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="StockAc" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="StockDia" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="PrecMayContado" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMenContado" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMayCredito" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecMenCredito" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PrecEspecial" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="CanEspecial" Type="Int32" />
+          <Property Name="CodAlterno" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Peso" Type="Decimal" Precision="9" Scale="3" />
+          <Property Name="Costo" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="UniMed" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Unidades" Type="Int32" Nullable="false" />
+          <Property Name="StockMal" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="ean13" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="grupo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="stkbafecha" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="stkmafecha" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="comimayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="comimenor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="credmayor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="credmenor" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="codbase" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="proveedor" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="linea" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="marcas" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="minimomay" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="categoria" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ncodigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="nunimed" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PrecSEspecial" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="percepcion" Type="Boolean" Nullable="false" />
+          <Property Name="priesgomaycon" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="priesgomencon" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="priesgomaycre" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="priesgomencre" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="costorep" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="PrecSSEspecial" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="comiespecial" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="comisespecial" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="detraccion" Type="Boolean" Nullable="false" />
+          <Property Name="pdetraccion" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="conivap" Type="Boolean" Nullable="false" />
+          <Property Name="Meta_Cant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Meta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sku" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="factor" Type="Int32" />
+          <Property Name="clase_producto" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="CodigoUM" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="IdClaseBSC" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="FP" Type="Int32" />
+          <Property Name="StatusWeb" Type="Boolean" />
+          <Property Name="StatusDms" Type="Boolean" />
+          <Property Name="ArticuloVenta" Type="Boolean" />
+          <Property Name="ArticuloCompra" Type="Boolean" />
+          <Property Name="ProductoCombo" Type="Boolean" />
+          <Property Name="IDUnidad" Type="Int32" />
+          <NavigationProperty Name="Clase_Producto1" Relationship="LiderModel.FK_PRODUCTO_Clase_Producto" FromRole="PRODUCTO" ToRole="Clase_Producto" />
+          <NavigationProperty Name="DETADOCs" Relationship="LiderModel.FK__DETADOC__Product__4F12BBB9" FromRole="PRODUCTO" ToRole="DETADOC" />
+          <NavigationProperty Name="DETPEDIDOes" Relationship="LiderModel.FK__DETPEDIDO__Produ__54CB950F" FromRole="PRODUCTO" ToRole="DETPEDIDO" />
+          <NavigationProperty Name="MARCA1" Relationship="LiderModel.FK_PRODUCTO_MARCA" FromRole="PRODUCTO" ToRole="MARCA" />
+          <NavigationProperty Name="PlantillaUnidad" Relationship="LiderModel.FK_PRODUCTO_PlantillaUnidad" FromRole="PRODUCTO" ToRole="PlantillaUnidad" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="Proveedor1" />
+          </Key>
+          <Property Name="Proveedor1" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Ruc" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="cuenta" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="nuevo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ap_paterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ap_materno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nombre1" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="nombre2" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="clasepro" Type="Byte" Nullable="false" />
+          <Property Name="tipo" Type="Byte" Nullable="false" />
+          <Property Name="orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MARCAs" Relationship="LiderModel.FK_MARCA_PROVEEDOR" FromRole="PROVEEDOR" ToRole="MARCA" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="iddpto" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="codunilever" Type="Int32" Nullable="false" />
+          <Property Name="region" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Departamento" Relationship="LiderModel.FK_provincia_Departamento" FromRole="provincia" ToRole="Departamento" />
+          <NavigationProperty Name="Distritoes" Relationship="LiderModel.FK_Distrito_provincia" FromRole="provincia" ToRole="Distrito" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Personal" />
+          </Key>
+          <Property Name="Region1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="REPARTO">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Dia" Type="Int32" Nullable="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RUTA1" Relationship="LiderModel.FK_REPARTO_RUTAS1" FromRole="REPARTO" ToRole="RUTA" />
+        </EntityType>
+        <EntityType Name="RUTA">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="IDRutaVendedor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="REPARTOes" Relationship="LiderModel.FK_REPARTO_RUTAS1" FromRole="RUTA" ToRole="REPARTO" />
+        </EntityType>
+        <EntityType Name="TIPONEG">
+          <Key>
+            <PropertyRef Name="IdNegocio" />
+          </Key>
+          <Property Name="IdNegocio" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Descrip" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="codunilever" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="coddms" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLIENTEs" Relationship="LiderModel.FK_CLIENTE_TIPONEG" FromRole="TIPONEG" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="tipoprecio">
+          <Key>
+            <PropertyRef Name="tipoprecio1" />
+          </Key>
+          <Property Name="tipoprecio1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="descripcorta" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="concre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="maymin" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DETADOCs" Relationship="LiderModel.FK_DETADOC_tipoprecio" FromRole="tipoprecio" ToRole="DETADOC" />
+        </EntityType>
+        <EntityType Name="ZONA">
+          <Key>
+            <PropertyRef Name="Zona1" />
+          </Key>
+          <Property Name="Zona1" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="Distancia" Type="Int32" Nullable="false" />
+          <Property Name="Riesgo" Type="Boolean" Nullable="false" />
+          <Property Name="proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CLIENTEs" Relationship="LiderModel.FK__CLIENTE__Zona__4959E263" FromRole="ZONA" ToRole="CLIENTE" />
+          <NavigationProperty Name="ZONA_PERSONAL" Relationship="LiderModel.FK__ZONA_PERSO__Zona__65F62111" FromRole="ZONA" ToRole="ZONA_PERSONAL" />
+        </EntityType>
+        <EntityType Name="ZONA_PERSONAL">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Personal" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Dia" Type="DateTime" Precision="3" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ZONA1" Relationship="LiderModel.FK__ZONA_PERSO__Zona__65F62111" FromRole="ZONA_PERSONAL" ToRole="ZONA" />
+        </EntityType>
+        <Association Name="FK_PRODUCTO_Clase_Producto">
+          <End Type="LiderModel.Clase_Producto" Role="Clase_Producto" Multiplicity="1" />
+          <End Type="LiderModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase_Producto">
+              <PropertyRef Name="Clase_Producto1" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="clase_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLIENTE__Zona__4959E263">
+          <End Type="LiderModel.ZONA" Role="ZONA" Multiplicity="1" />
+          <End Type="LiderModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona1" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_Distrito">
+          <End Type="LiderModel.Distrito" Role="Distrito" Multiplicity="0..1" />
+          <End Type="LiderModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_TIPONEG">
+          <End Type="LiderModel.TIPONEG" Role="TIPONEG" Multiplicity="0..1" />
+          <End Type="LiderModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPONEG">
+              <PropertyRef Name="IdNegocio" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="IdNegocio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_CLIENTE">
+          <End Type="LiderModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+          <End Type="LiderModel.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="Cliente1" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provincia_Departamento">
+          <End Type="LiderModel.Departamento" Role="Departamento" Multiplicity="1" />
+          <End Type="LiderModel.provincia" Role="provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="iddpto" />
+            </Principal>
+            <Dependent Role="provincia">
+              <PropertyRef Name="iddpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETADOC__Product__4F12BBB9">
+          <End Type="LiderModel.PRODUCTO" Role="PRODUCTO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LiderModel.DETADOC" Role="DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Producto1" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETADOC_DOCUMENTO">
+          <End Type="LiderModel.DOCUMENTO" Role="DOCUMENTO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LiderModel.DETADOC" Role="DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="Documento1" />
+              <PropertyRef Name="TipoDoc" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="Documento" />
+              <PropertyRef Name="TipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETADOC_tipoprecio">
+          <End Type="LiderModel.tipoprecio" Role="tipoprecio" Multiplicity="0..1" />
+          <End Type="LiderModel.DETADOC" Role="DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoprecio">
+              <PropertyRef Name="tipoprecio1" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="TipoPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETPEDIDO__Pedid__55BFB948">
+          <End Type="LiderModel.PEDIDO" Role="PEDIDO" Multiplicity="1" />
+          <End Type="LiderModel.DETPEDIDO" Role="DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="Pedido1" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETPEDIDO__Produ__54CB950F">
+          <End Type="LiderModel.PRODUCTO" Role="PRODUCTO" Multiplicity="1" />
+          <End Type="LiderModel.DETPEDIDO" Role="DETPEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Producto1" />
+            </Principal>
+            <Dependent Role="DETPEDIDO">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_provincia">
+          <End Type="LiderModel.provincia" Role="provincia" Multiplicity="1" />
+          <End Type="LiderModel.Distrito" Role="Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="idprovincia" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_DOCTIPO1">
+          <End Type="LiderModel.DOCTIPO" Role="DOCTIPO" Multiplicity="1" />
+          <End Type="LiderModel.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTIPO">
+              <PropertyRef Name="DocTipo1" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="TipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_Gestion">
+          <End Type="LiderModel.Gestion" Role="Gestion" Multiplicity="0..1" />
+          <End Type="LiderModel.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestion">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="gestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_PERSONAL">
+          <End Type="LiderModel.PERSONAL" Role="PERSONAL" Multiplicity="0..1" />
+          <End Type="LiderModel.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal1" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filtro_FiltroConfiguracion">
+          <End Type="LiderModel.FiltroConfiguracion" Role="FiltroConfiguracion" Multiplicity="1" />
+          <End Type="LiderModel.Filtro" Role="Filtro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FiltroConfiguracion">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Filtro">
+              <PropertyRef Name="condicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_FORMAPAGO">
+          <End Type="LiderModel.FORMAPAGO" Role="FORMAPAGO" Multiplicity="1" />
+          <End Type="LiderModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMAPAGO">
+              <PropertyRef Name="FormaPago1" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="FormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAL_FuerzaVentas">
+          <End Type="LiderModel.FuerzaVenta" Role="FuerzaVenta" Multiplicity="1" />
+          <End Type="LiderModel.PERSONAL" Role="PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuerzaVenta">
+              <PropertyRef Name="fzavtas" />
+            </Principal>
+            <Dependent Role="PERSONAL">
+              <PropertyRef Name="fzavtas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARCA_LINEA">
+          <End Type="LiderModel.LINEA" Role="LINEA" Multiplicity="0..1" />
+          <End Type="LiderModel.MARCA" Role="MARCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINEA">
+              <PropertyRef Name="Linea1" />
+            </Principal>
+            <Dependent Role="MARCA">
+              <PropertyRef Name="Linea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARCA_PROVEEDOR">
+          <End Type="LiderModel.PROVEEDOR" Role="PROVEEDOR" Multiplicity="0..1" />
+          <End Type="LiderModel.MARCA" Role="MARCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="Proveedor1" />
+            </Principal>
+            <Dependent Role="MARCA">
+              <PropertyRef Name="Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_MARCA">
+          <End Type="LiderModel.MARCA" Role="MARCA" Multiplicity="1" />
+          <End Type="LiderModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCA">
+              <PropertyRef Name="Marca1" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEDIDO__Personal__68D28DBC">
+          <End Type="LiderModel.PERSONAL" Role="PERSONAL" Multiplicity="1" />
+          <End Type="LiderModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="Personal1" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPARTO_RUTAS1">
+          <End Type="LiderModel.RUTA" Role="RUTA" Multiplicity="1" />
+          <End Type="LiderModel.REPARTO" Role="REPARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUTA">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="REPARTO">
+              <PropertyRef Name="Ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ZONA_PERSO__Zona__65F62111">
+          <End Type="LiderModel.ZONA" Role="ZONA" Multiplicity="1" />
+          <End Type="LiderModel.ZONA_PERSONAL" Role="ZONA_PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona1" />
+            </Principal>
+            <Dependent Role="ZONA_PERSONAL">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VistaAdministrativa">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Vista" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDModulo" Type="Int32" Nullable="false" />
+          <Property Name="Registro" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Modulo" Relationship="LiderModel.FK_VistaAdministrativa_Modulo" FromRole="VistaAdministrativa" ToRole="Modulo" />
+        </EntityType>
+        <Association Name="FK_VistaAdministrativa_Modulo">
+          <End Type="LiderModel.Modulo" Role="Modulo" Multiplicity="1" />
+          <End Type="LiderModel.VistaAdministrativa" Role="VistaAdministrativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="VistaAdministrativa">
+              <PropertyRef Name="IDModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Vva_Cliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="Zona" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="FechIng" />
+            <PropertyRef Name="Saldo" />
+            <PropertyRef Name="Credito" />
+          </Key>
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Documento" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TopeCredito" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Credito" Type="Boolean" Nullable="false" />
+          <Property Name="IDDistrito" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="IDNegocio" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Clase" Type="Byte" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="grupo1" />
+          </Key>
+          <Property Name="grupo1" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descorta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orden" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="categoria1" />
+          </Key>
+          <Property Name="categoria1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="descripcorta" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PlantillaUnidad">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Abreviacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Factor" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTOes" Relationship="LiderModel.FK_PRODUCTO_PlantillaUnidad" FromRole="PlantillaUnidad" ToRole="PRODUCTO" />
+        </EntityType>
+        <Association Name="FK_PRODUCTO_PlantillaUnidad">
+          <End Type="LiderModel.PlantillaUnidad" Role="PlantillaUnidad" Multiplicity="0..1" />
+          <End Type="LiderModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlantillaUnidad">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="IDUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ItemBonificacion">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="IDBonificacion" Type="Int32" Nullable="false" />
+          <Property Name="cdProductoColeccion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IDAsociado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bonificacion" Relationship="LiderModel.FK_ItemBonificacion_Bonificacion" FromRole="ItemBonificacion" ToRole="Bonificacion" />
+          <NavigationProperty Name="TipoAsociado" Relationship="LiderModel.FK_ItemBonificacion_TipoAsociado" FromRole="ItemBonificacion" ToRole="TipoAsociado" />
+        </EntityType>
+        <EntityType Name="Bonificacion">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Mecanica" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TipoMecanica" Type="Int32" Nullable="false" />
+          <Property Name="cdProductoRegalo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadMinima" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="CantidadMaxima" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadRegalo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadMaximaPorCliente" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Stock" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="StockEntregado" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="TieneExclusion" Type="Boolean" Nullable="false" />
+          <Property Name="IDBonifcacionExcluida" Type="Int32" Nullable="false" />
+          <Property Name="cdProductoVenta" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IDProveedor" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TipoBonificacion" Relationship="LiderModel.FK_Bonificacion_TipoBonificacion" FromRole="Bonificacion" ToRole="TipoBonificacion" />
+          <NavigationProperty Name="DETADOCs" Relationship="LiderModel.FK_DETADOC_Bonificacion" FromRole="Bonificacion" ToRole="DETADOC" />
+          <NavigationProperty Name="ItemBonificacions" Relationship="LiderModel.FK_ItemBonificacion_Bonificacion" FromRole="Bonificacion" ToRole="ItemBonificacion" />
+        </EntityType>
+        <EntityType Name="TipoBonificacion">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Bonificacions" Relationship="LiderModel.FK_Bonificacion_TipoBonificacion" FromRole="TipoBonificacion" ToRole="Bonificacion" />
+        </EntityType>
+        <Association Name="FK_Bonificacion_TipoBonificacion">
+          <End Type="LiderModel.TipoBonificacion" Role="TipoBonificacion" Multiplicity="1" />
+          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoBonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="Bonificacion">
+              <PropertyRef Name="TipoMecanica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETADOC_Bonificacion">
+          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="0..1" />
+          <End Type="LiderModel.DETADOC" Role="DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="IDBonificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemBonificacion_Bonificacion">
+          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LiderModel.ItemBonificacion" Role="ItemBonificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="ItemBonificacion">
+              <PropertyRef Name="IDBonificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TipoAsociado">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ItemBonificacions" Relationship="LiderModel.FK_ItemBonificacion_TipoAsociado" FromRole="TipoAsociado" ToRole="ItemBonificacion" />
+        </EntityType>
+        <Association Name="FK_ItemBonificacion_TipoAsociado">
+          <End Type="LiderModel.TipoAsociado" Role="TipoAsociado" Multiplicity="1" />
+          <End Type="LiderModel.ItemBonificacion" Role="ItemBonificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsociado">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="ItemBonificacion">
+              <PropertyRef Name="IDAsociado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LiderModelStoreContainer" CdmEntityContainer="LiderEntities" />
+        <EntityContainerMapping StorageEntityContainer="LiderModelStoreContainer" CdmEntityContainer="LiderEntities" >
+          <EntitySetMapping Name="Clase_Producto">
+            <EntityTypeMapping TypeName="LiderModel.Clase_Producto">
+              <MappingFragment StoreEntitySet="Clase_Producto">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clase_Producto1" ColumnName="Clase_Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTEs">
+            <EntityTypeMapping TypeName="LiderModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="EstadoCli" ColumnName="EstadoCli" />
+                <ScalarProperty Name="dia2" ColumnName="dia2" />
+                <ScalarProperty Name="CodVen2" ColumnName="CodVen2" />
+                <ScalarProperty Name="sec" ColumnName="sec" />
+                <ScalarProperty Name="dia1" ColumnName="dia1" />
+                <ScalarProperty Name="CodVen1" ColumnName="CodVen1" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="agente_userf" ColumnName="agente_userf" />
+                <ScalarProperty Name="agente_per" ColumnName="agente_per" />
+                <ScalarProperty Name="agente_ret" ColumnName="agente_ret" />
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="RAZ" ColumnName="RAZ" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+                <ScalarProperty Name="distllegada" ColumnName="distllegada" />
+                <ScalarProperty Name="ptollegada" ColumnName="ptollegada" />
+                <ScalarProperty Name="clasecli" ColumnName="clasecli" />
+                <ScalarProperty Name="codant" ColumnName="codant" />
+                <ScalarProperty Name="codbase" ColumnName="codbase" />
+                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="ap_materno" ColumnName="ap_materno" />
+                <ScalarProperty Name="ap_paterno" ColumnName="ap_paterno" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="ultmod" ColumnName="ultmod" />
+                <ScalarProperty Name="nuevo" ColumnName="nuevo" />
+                <ScalarProperty Name="IdNegocio" ColumnName="IdNegocio" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="TopeCredito" ColumnName="TopeCredito" />
+                <ScalarProperty Name="FechIng" ColumnName="FechIng" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="TipoCli" ColumnName="TipoCli" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Cliente1" ColumnName="Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentoes">
+            <EntityTypeMapping TypeName="LiderModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETADOCs">
+            <EntityTypeMapping TypeName="LiderModel.DETADOC">
+              <MappingFragment StoreEntitySet="DETADOC">
+                <ScalarProperty Name="Bonif" ColumnName="Bonif" />
+                <ScalarProperty Name="Afecto" ColumnName="Afecto" />
+                <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="PrecioNeto" ColumnName="PrecioNeto" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="IDBonificacion" ColumnName="IDBonificacion" />
+                <ScalarProperty Name="tg" ColumnName="tg" />
+                <ScalarProperty Name="ivap" ColumnName="ivap" />
+                <ScalarProperty Name="detraccion" ColumnName="detraccion" />
+                <ScalarProperty Name="fvctolote" ColumnName="fvctolote" />
+                <ScalarProperty Name="lote" ColumnName="lote" />
+                <ScalarProperty Name="percepcion" ColumnName="percepcion" />
+                <ScalarProperty Name="totdscto" ColumnName="totdscto" />
+                <ScalarProperty Name="pdscto" ColumnName="pdscto" />
+                <ScalarProperty Name="trangratuita" ColumnName="trangratuita" />
+                <ScalarProperty Name="TipoPrecio" ColumnName="TipoPrecio" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Comision" ColumnName="Comision" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="PrecProm" ColumnName="PrecProm" />
+                <ScalarProperty Name="Igv" ColumnName="Igv" />
+                <ScalarProperty Name="PrecUnit" ColumnName="PrecUnit" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="TipoDoc" ColumnName="TipoDoc" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETPEDIDOes">
+            <EntityTypeMapping TypeName="LiderModel.DETPEDIDO">
+              <MappingFragment StoreEntitySet="DETPEDIDO">
+                <ScalarProperty Name="Bonif" ColumnName="Bonif" />
+                <ScalarProperty Name="Afecto" ColumnName="Afecto" />
+                <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="PrecioNeto" ColumnName="PrecioNeto" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="IDBonificacion" ColumnName="IDBonificacion" />
+                <ScalarProperty Name="flgSurtido" ColumnName="flgSurtido" />
+                <ScalarProperty Name="fvctolote" ColumnName="fvctolote" />
+                <ScalarProperty Name="lote" ColumnName="lote" />
+                <ScalarProperty Name="TranGratuita" ColumnName="TranGratuita" />
+                <ScalarProperty Name="TipoPrecio" ColumnName="TipoPrecio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecUnit" ColumnName="PrecUnit" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Pedido" ColumnName="Pedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distritoes">
+            <EntityTypeMapping TypeName="LiderModel.Distrito">
+              <MappingFragment StoreEntitySet="Distrito">
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCTIPOes">
+            <EntityTypeMapping TypeName="LiderModel.DOCTIPO">
+              <MappingFragment StoreEntitySet="DOCTIPO">
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="Signo" ColumnName="Signo" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="DocTipo1" ColumnName="DocTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTOes">
+            <EntityTypeMapping TypeName="LiderModel.DOCUMENTO">
+              <MappingFragment StoreEntitySet="DOCUMENTO">
+                <ScalarProperty Name="ivap" ColumnName="ivap" />
+                <ScalarProperty Name="detraccion" ColumnName="detraccion" />
+                <ScalarProperty Name="percepcion" ColumnName="percepcion" />
+                <ScalarProperty Name="distllegada" ColumnName="distllegada" />
+                <ScalarProperty Name="ptollegada" ColumnName="ptollegada" />
+                <ScalarProperty Name="gestion" ColumnName="gestion" />
+                <ScalarProperty Name="totdscto" ColumnName="totdscto" />
+                <ScalarProperty Name="nencargado" ColumnName="nencargado" />
+                <ScalarProperty Name="npersonal" ColumnName="npersonal" />
+                <ScalarProperty Name="encargado" ColumnName="encargado" />
+                <ScalarProperty Name="registro" ColumnName="registro" />
+                <ScalarProperty Name="impreso" ColumnName="impreso" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="igv" ColumnName="igv" />
+                <ScalarProperty Name="inafecto" ColumnName="inafecto" />
+                <ScalarProperty Name="afecto" ColumnName="afecto" />
+                <ScalarProperty Name="fechacont" ColumnName="fechacont" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="rsocial" ColumnName="rsocial" />
+                <ScalarProperty Name="diasfinta" ColumnName="diasfinta" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+                <ScalarProperty Name="FechaCancelar" ColumnName="FechaCancelar" />
+                <ScalarProperty Name="fecha1" ColumnName="fecha1" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="PersonalRep" ColumnName="PersonalRep" />
+                <ScalarProperty Name="FechaRep" ColumnName="FechaRep" />
+                <ScalarProperty Name="Cerrado" ColumnName="Cerrado" />
+                <ScalarProperty Name="Nrodia" ColumnName="Nrodia" />
+                <ScalarProperty Name="TipoIng" ColumnName="TipoIng" />
+                <ScalarProperty Name="Generado" ColumnName="Generado" />
+                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="TipoDocR" ColumnName="TipoDocR" />
+                <ScalarProperty Name="DocRefer" ColumnName="DocRefer" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Pedido" ColumnName="Pedido" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="TipoDoc" ColumnName="TipoDoc" />
+                <ScalarProperty Name="Documento1" ColumnName="Documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Filtroes">
+            <EntityTypeMapping TypeName="LiderModel.Filtro">
+              <MappingFragment StoreEntitySet="Filtro">
+                <ScalarProperty Name="tabla" ColumnName="tabla" />
+                <ScalarProperty Name="union" ColumnName="union" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="condicion" ColumnName="condicion" />
+                <ScalarProperty Name="campo" ColumnName="campo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FiltroConfiguracions">
+            <EntityTypeMapping TypeName="LiderModel.FiltroConfiguracion">
+              <MappingFragment StoreEntitySet="FiltroConfiguracion">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FORMAPAGOes">
+            <EntityTypeMapping TypeName="LiderModel.FORMAPAGO">
+              <MappingFragment StoreEntitySet="FORMAPAGO">
+                <ScalarProperty Name="DiasFinta" ColumnName="DiasFinta" />
+                <ScalarProperty Name="contado" ColumnName="contado" />
+                <ScalarProperty Name="Nrodia" ColumnName="Nrodia" />
+                <ScalarProperty Name="PlazoMax" ColumnName="PlazoMax" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FormaPago1" ColumnName="FormaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuerzaVentas">
+            <EntityTypeMapping TypeName="LiderModel.FuerzaVenta">
+              <MappingFragment StoreEntitySet="FuerzaVentas">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="fzavtas" ColumnName="fzavtas" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gestions">
+            <EntityTypeMapping TypeName="LiderModel.Gestion">
+              <MappingFragment StoreEntitySet="Gestion">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="activa" ColumnName="activa" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LINEAs">
+            <EntityTypeMapping TypeName="LiderModel.LINEA">
+              <MappingFragment StoreEntitySet="LINEA">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="ComiSEspecial" ColumnName="ComiSEspecial" />
+                <ScalarProperty Name="ComiEspecial" ColumnName="ComiEspecial" />
+                <ScalarProperty Name="CredMenor" ColumnName="CredMenor" />
+                <ScalarProperty Name="CredMayor" ColumnName="CredMayor" />
+                <ScalarProperty Name="ComiMenor" ColumnName="ComiMenor" />
+                <ScalarProperty Name="ComiMayor" ColumnName="ComiMayor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CanMayor" ColumnName="CanMayor" />
+                <ScalarProperty Name="CanMenor" ColumnName="CanMenor" />
+                <ScalarProperty Name="Linea1" ColumnName="Linea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARCAs">
+            <EntityTypeMapping TypeName="LiderModel.MARCA">
+              <MappingFragment StoreEntitySet="MARCA">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Descorta" ColumnName="Descorta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Marca1" ColumnName="Marca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moduloes">
+            <EntityTypeMapping TypeName="LiderModel.Modulo">
+              <MappingFragment StoreEntitySet="Modulo">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="IDModuloPadre" ColumnName="IDModuloPadre" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDOes">
+            <EntityTypeMapping TypeName="LiderModel.PEDIDO">
+              <MappingFragment StoreEntitySet="PEDIDO">
+                <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+                <ScalarProperty Name="statusWeb" ColumnName="statusWeb" />
+                <ScalarProperty Name="Fecha_web" ColumnName="Fecha_web" />
+                <ScalarProperty Name="flagCobertura" ColumnName="flagCobertura" />
+                <ScalarProperty Name="tipodoc" ColumnName="tipodoc" />
+                <ScalarProperty Name="dscto" ColumnName="dscto" />
+                <ScalarProperty Name="pdscto" ColumnName="pdscto" />
+                <ScalarProperty Name="distllegada" ColumnName="distllegada" />
+                <ScalarProperty Name="ptollegada" ColumnName="ptollegada" />
+                <ScalarProperty Name="gestion" ColumnName="gestion" />
+                <ScalarProperty Name="nencargado" ColumnName="nencargado" />
+                <ScalarProperty Name="npersonal" ColumnName="npersonal" />
+                <ScalarProperty Name="encargado" ColumnName="encargado" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="rsocial" ColumnName="rsocial" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+                <ScalarProperty Name="TipoPersona" ColumnName="TipoPersona" />
+                <ScalarProperty Name="Reparto" ColumnName="Reparto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Pedido1" ColumnName="Pedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONALs">
+            <EntityTypeMapping TypeName="LiderModel.PERSONAL">
+              <MappingFragment StoreEntitySet="PERSONAL">
+                <ScalarProperty Name="supercodigo" ColumnName="supercodigo" />
+                <ScalarProperty Name="pcuota" ColumnName="pcuota" />
+                <ScalarProperty Name="pparticipa" ColumnName="pparticipa" />
+                <ScalarProperty Name="dms" ColumnName="dms" />
+                <ScalarProperty Name="novedad" ColumnName="novedad" />
+                <ScalarProperty Name="fzavtas" ColumnName="fzavtas" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="grupok" ColumnName="grupok" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="clase" ColumnName="clase" />
+                <ScalarProperty Name="vendedor" ColumnName="vendedor" />
+                <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Comision" ColumnName="Comision" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechNac" ColumnName="FechNac" />
+                <ScalarProperty Name="FechIng" ColumnName="FechIng" />
+                <ScalarProperty Name="LibElec" ColumnName="LibElec" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoPersona" ColumnName="TipoPersona" />
+                <ScalarProperty Name="Personal1" ColumnName="Personal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTOes">
+            <EntityTypeMapping TypeName="LiderModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="IDUnidad" ColumnName="IDUnidad" />
+                <ScalarProperty Name="ProductoCombo" ColumnName="ProductoCombo" />
+                <ScalarProperty Name="ArticuloCompra" ColumnName="ArticuloCompra" />
+                <ScalarProperty Name="ArticuloVenta" ColumnName="ArticuloVenta" />
+                <ScalarProperty Name="StatusDms" ColumnName="StatusDms" />
+                <ScalarProperty Name="StatusWeb" ColumnName="StatusWeb" />
+                <ScalarProperty Name="FP" ColumnName="FP" />
+                <ScalarProperty Name="IdClaseBSC" ColumnName="IdClaseBSC" />
+                <ScalarProperty Name="CodigoUM" ColumnName="CodigoUM" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="clase_producto" ColumnName="clase_producto" />
+                <ScalarProperty Name="factor" ColumnName="factor" />
+                <ScalarProperty Name="sku" ColumnName="sku" />
+                <ScalarProperty Name="Meta" ColumnName="Meta" />
+                <ScalarProperty Name="Meta_Cant" ColumnName="Meta_Cant" />
+                <ScalarProperty Name="conivap" ColumnName="conivap" />
+                <ScalarProperty Name="pdetraccion" ColumnName="pdetraccion" />
+                <ScalarProperty Name="detraccion" ColumnName="detraccion" />
+                <ScalarProperty Name="comisespecial" ColumnName="comisespecial" />
+                <ScalarProperty Name="comiespecial" ColumnName="comiespecial" />
+                <ScalarProperty Name="PrecSSEspecial" ColumnName="PrecSSEspecial" />
+                <ScalarProperty Name="costorep" ColumnName="costorep" />
+                <ScalarProperty Name="priesgomencre" ColumnName="priesgomencre" />
+                <ScalarProperty Name="priesgomaycre" ColumnName="priesgomaycre" />
+                <ScalarProperty Name="priesgomencon" ColumnName="priesgomencon" />
+                <ScalarProperty Name="priesgomaycon" ColumnName="priesgomaycon" />
+                <ScalarProperty Name="percepcion" ColumnName="percepcion" />
+                <ScalarProperty Name="PrecSEspecial" ColumnName="PrecSEspecial" />
+                <ScalarProperty Name="nunimed" ColumnName="nunimed" />
+                <ScalarProperty Name="ncodigo" ColumnName="ncodigo" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="minimomay" ColumnName="minimomay" />
+                <ScalarProperty Name="marcas" ColumnName="marcas" />
+                <ScalarProperty Name="linea" ColumnName="linea" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="codbase" ColumnName="codbase" />
+                <ScalarProperty Name="credmenor" ColumnName="credmenor" />
+                <ScalarProperty Name="credmayor" ColumnName="credmayor" />
+                <ScalarProperty Name="comimenor" ColumnName="comimenor" />
+                <ScalarProperty Name="comimayor" ColumnName="comimayor" />
+                <ScalarProperty Name="stkmafecha" ColumnName="stkmafecha" />
+                <ScalarProperty Name="stkbafecha" ColumnName="stkbafecha" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="ean13" ColumnName="ean13" />
+                <ScalarProperty Name="StockMal" ColumnName="StockMal" />
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UniMed" ColumnName="UniMed" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="CodAlterno" ColumnName="CodAlterno" />
+                <ScalarProperty Name="CanEspecial" ColumnName="CanEspecial" />
+                <ScalarProperty Name="PrecEspecial" ColumnName="PrecEspecial" />
+                <ScalarProperty Name="PrecMenCredito" ColumnName="PrecMenCredito" />
+                <ScalarProperty Name="PrecMayCredito" ColumnName="PrecMayCredito" />
+                <ScalarProperty Name="PrecMenContado" ColumnName="PrecMenContado" />
+                <ScalarProperty Name="PrecMayContado" ColumnName="PrecMayContado" />
+                <ScalarProperty Name="StockDia" ColumnName="StockDia" />
+                <ScalarProperty Name="StockAc" ColumnName="StockAc" />
+                <ScalarProperty Name="StockMax" ColumnName="StockMax" />
+                <ScalarProperty Name="StockMin" ColumnName="StockMin" />
+                <ScalarProperty Name="ConIgv" ColumnName="ConIgv" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Producto1" ColumnName="Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDORs">
+            <EntityTypeMapping TypeName="LiderModel.PROVEEDOR">
+              <MappingFragment StoreEntitySet="PROVEEDOR">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="clasepro" ColumnName="clasepro" />
+                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="ap_materno" ColumnName="ap_materno" />
+                <ScalarProperty Name="ap_paterno" ColumnName="ap_paterno" />
+                <ScalarProperty Name="nuevo" ColumnName="nuevo" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="Proveedor1" ColumnName="Proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincias">
+            <EntityTypeMapping TypeName="LiderModel.provincia">
+              <MappingFragment StoreEntitySet="provincia">
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="iddpto" ColumnName="iddpto" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="LiderModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Region1" ColumnName="Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPARTOes">
+            <EntityTypeMapping TypeName="LiderModel.REPARTO">
+              <MappingFragment StoreEntitySet="REPARTO">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RUTAS">
+            <EntityTypeMapping TypeName="LiderModel.RUTA">
+              <MappingFragment StoreEntitySet="RUTAS">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDRutaVendedor" ColumnName="IDRutaVendedor" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPONEGs">
+            <EntityTypeMapping TypeName="LiderModel.TIPONEG">
+              <MappingFragment StoreEntitySet="TIPONEG">
+                <ScalarProperty Name="coddms" ColumnName="coddms" />
+                <ScalarProperty Name="codunilever" ColumnName="codunilever" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+                <ScalarProperty Name="IdNegocio" ColumnName="IdNegocio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoprecios">
+            <EntityTypeMapping TypeName="LiderModel.tipoprecio">
+              <MappingFragment StoreEntitySet="tipoprecio">
+                <ScalarProperty Name="maymin" ColumnName="maymin" />
+                <ScalarProperty Name="concre" ColumnName="concre" />
+                <ScalarProperty Name="descripcorta" ColumnName="descripcorta" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="tipoprecio1" ColumnName="tipoprecio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZONAs">
+            <EntityTypeMapping TypeName="LiderModel.ZONA">
+              <MappingFragment StoreEntitySet="ZONA">
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="Riesgo" ColumnName="Riesgo" />
+                <ScalarProperty Name="Distancia" ColumnName="Distancia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Zona1" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZONA_PERSONAL">
+            <EntityTypeMapping TypeName="LiderModel.ZONA_PERSONAL">
+              <MappingFragment StoreEntitySet="ZONA_PERSONAL">
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Personal" ColumnName="Personal" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VistaAdministrativas">
+            <EntityTypeMapping TypeName="LiderModel.VistaAdministrativa">
+              <MappingFragment StoreEntitySet="VistaAdministrativa">
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+                <ScalarProperty Name="Vista" ColumnName="Vista" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vva_Cliente">
+            <EntityTypeMapping TypeName="LiderModel.Vva_Cliente">
+              <MappingFragment StoreEntitySet="Vva_Cliente">
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="IDNegocio" ColumnName="IDNegocio" />
+                <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="TopeCredito" ColumnName="TopeCredito" />
+                <ScalarProperty Name="FechIng" ColumnName="FechIng" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupoes">
+            <EntityTypeMapping TypeName="LiderModel.grupo">
+              <MappingFragment StoreEntitySet="grupo">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="descorta" ColumnName="descorta" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="grupo1" ColumnName="grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categorias">
+            <EntityTypeMapping TypeName="LiderModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="descripcorta" ColumnName="descripcorta" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="categoria1" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantillaUnidads">
+            <EntityTypeMapping TypeName="LiderModel.PlantillaUnidad">
+              <MappingFragment StoreEntitySet="PlantillaUnidad">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="Abreviacion" ColumnName="Abreviacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemBonificacions">
+            <EntityTypeMapping TypeName="LiderModel.ItemBonificacion">
+              <MappingFragment StoreEntitySet="ItemBonificacion">
+                <ScalarProperty Name="IDAsociado" ColumnName="IDAsociado" />
+                <ScalarProperty Name="cdProductoColeccion" ColumnName="cdProductoColeccion" />
+                <ScalarProperty Name="IDBonificacion" ColumnName="IDBonificacion" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bonificacions">
+            <EntityTypeMapping TypeName="LiderModel.Bonificacion">
+              <MappingFragment StoreEntitySet="Bonificacion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="IDProveedor" ColumnName="IDProveedor" />
+                <ScalarProperty Name="cdProductoVenta" ColumnName="cdProductoVenta" />
+                <ScalarProperty Name="IDBonifcacionExcluida" ColumnName="IDBonifcacionExcluida" />
+                <ScalarProperty Name="TieneExclusion" ColumnName="TieneExclusion" />
+                <ScalarProperty Name="StockEntregado" ColumnName="StockEntregado" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="CantidadMaximaPorCliente" ColumnName="CantidadMaximaPorCliente" />
+                <ScalarProperty Name="CantidadRegalo" ColumnName="CantidadRegalo" />
+                <ScalarProperty Name="CantidadMaxima" ColumnName="CantidadMaxima" />
+                <ScalarProperty Name="CantidadMinima" ColumnName="CantidadMinima" />
+                <ScalarProperty Name="cdProductoRegalo" ColumnName="cdProductoRegalo" />
+                <ScalarProperty Name="TipoMecanica" ColumnName="TipoMecanica" />
+                <ScalarProperty Name="Mecanica" ColumnName="Mecanica" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoBonificacions">
+            <EntityTypeMapping TypeName="LiderModel.TipoBonificacion">
+              <MappingFragment StoreEntitySet="TipoBonificacion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAsociadoes">
+            <EntityTypeMapping TypeName="LiderModel.TipoAsociado">
+              <MappingFragment StoreEntitySet="TipoAsociado">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

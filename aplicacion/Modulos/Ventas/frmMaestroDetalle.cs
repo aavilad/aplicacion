@@ -12,7 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Ventas
 {
@@ -40,12 +39,12 @@ namespace xtraForm.Modulos.Ventas
                     var PedidosComprometidos = (dynamic)null;
                     var PedidosBonificados = (dynamic)null;
                     string Fecha = Convert.ToDateTime(dateEdit1.EditValue).ToString("dd/MM/yyyy");
-                    using (var Context = new LiderAppEntities())
+                    using (var Context = new LiderEntities())
                     {
-                        int Tipo = Context.Bonificacion.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.TipoMecanica).FirstOrDefault();
-                        var Coleccion = Context.ItemBonificacion.Distinct().Where(x => x.IDBonificacion == (int)lookUpEdit1.EditValue).Select(c => new { Codigo = c.cdProductoColeccion.Trim() }).ToList();
-                        var Minimo = Context.Bonificacion.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.CantidadMinima).FirstOrDefault();
-                        var Maximo = Context.Bonificacion.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.CantidadMaxima).FirstOrDefault();
+                        int Tipo = Context.Bonificacions.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.TipoMecanica).FirstOrDefault();
+                        var Coleccion = Context.ItemBonificacions.Distinct().Where(x => x.IDBonificacion == (int)lookUpEdit1.EditValue).Select(c => new { Codigo = c.cdProductoColeccion.Trim() }).ToList();
+                        var Minimo = Context.Bonificacions.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.CantidadMinima).FirstOrDefault();
+                        var Maximo = Context.Bonificacions.Where(x => x.PKID == (int)lookUpEdit1.EditValue).Select(c => c.CantidadMaxima).FirstOrDefault();
                         foreach (var i in Coleccion)
                         {
                             Cadena.Add("'" + i.Codigo + "'");
@@ -165,11 +164,11 @@ namespace xtraForm.Modulos.Ventas
         {
             try
             {
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
-                    var Bonif = from a in (from b in Context.Bonificacion
-                                           join ib in Context.ItemBonificacion on b.PKID equals ib.IDBonificacion
-                                           join pv in Context.PROVEEDOR on b.IDProveedor equals pv.Proveedor1
+                    var Bonif = from a in (from b in Context.Bonificacions
+                                           join ib in Context.ItemBonificacions on b.PKID equals ib.IDBonificacion
+                                           join pv in Context.PROVEEDORs on b.IDProveedor equals pv.Proveedor1
                                            where b.Activo == true
                                            select new { ID = b.PKID, pv.RazonSocial, b.Mecanica }).Distinct()
                                 orderby a.RazonSocial

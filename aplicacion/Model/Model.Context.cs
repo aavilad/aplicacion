@@ -7,20 +7,60 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-
-public partial class LiderEntities : DbContext
+namespace xtraForm.Model
 {
-    public LiderEntities()
-        : base("name=LiderEntities")
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
+    public partial class LiderEntities : DbContext
     {
+        public LiderEntities()
+            : base("name=LiderEntities")
+        {
+        }
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
+        public virtual DbSet<Clase_Producto> Clase_Producto { get; set; }
+        public virtual DbSet<CLIENTE> CLIENTEs { get; set; }
+        public virtual DbSet<Departamento> Departamentoes { get; set; }
+        public virtual DbSet<DETADOC> DETADOCs { get; set; }
+        public virtual DbSet<DETPEDIDO> DETPEDIDOes { get; set; }
+        public virtual DbSet<Distrito> Distritoes { get; set; }
+        public virtual DbSet<DOCTIPO> DOCTIPOes { get; set; }
+        public virtual DbSet<DOCUMENTO> DOCUMENTOes { get; set; }
+        public virtual DbSet<Filtro> Filtroes { get; set; }
+        public virtual DbSet<FiltroConfiguracion> FiltroConfiguracions { get; set; }
+        public virtual DbSet<FORMAPAGO> FORMAPAGOes { get; set; }
+        public virtual DbSet<FuerzaVenta> FuerzaVentas { get; set; }
+        public virtual DbSet<Gestion> Gestions { get; set; }
+        public virtual DbSet<LINEA> LINEAs { get; set; }
+        public virtual DbSet<MARCA> MARCAs { get; set; }
+        public virtual DbSet<Modulo> Moduloes { get; set; }
+        public virtual DbSet<PEDIDO> PEDIDOes { get; set; }
+        public virtual DbSet<PERSONAL> PERSONALs { get; set; }
+        public virtual DbSet<PRODUCTO> PRODUCTOes { get; set; }
+        public virtual DbSet<PROVEEDOR> PROVEEDORs { get; set; }
+        public virtual DbSet<provincia> provincias { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<REPARTO> REPARTOes { get; set; }
+        public virtual DbSet<RUTA> RUTAS { get; set; }
+        public virtual DbSet<TIPONEG> TIPONEGs { get; set; }
+        public virtual DbSet<tipoprecio> tipoprecios { get; set; }
+        public virtual DbSet<ZONA> ZONAs { get; set; }
+        public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
+        public virtual DbSet<VistaAdministrativa> VistaAdministrativas { get; set; }
+        public virtual DbSet<Vva_Cliente> Vva_Cliente { get; set; }
+        public virtual DbSet<grupo> grupoes { get; set; }
+        public virtual DbSet<categoria> categorias { get; set; }
+        public virtual DbSet<PlantillaUnidad> PlantillaUnidads { get; set; }
+        public virtual DbSet<ItemBonificacion> ItemBonificacions { get; set; }
+        public virtual DbSet<Bonificacion> Bonificacions { get; set; }
+        public virtual DbSet<TipoBonificacion> TipoBonificacions { get; set; }
+        public virtual DbSet<TipoAsociado> TipoAsociadoes { get; set; }
     }
-
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    {
-        throw new UnintentionalCodeFirstException();
-    }
-
 }

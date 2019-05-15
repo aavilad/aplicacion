@@ -1,5 +1,4 @@
 ﻿using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
 {
@@ -127,8 +126,8 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // efDataSource2
             // 
             efConnectionParameters1.ConnectionString = "";
-            efConnectionParameters1.ConnectionStringName = "conexion";
-            efConnectionParameters1.Source = typeof(LiderAppEntities);
+            efConnectionParameters1.ConnectionStringName = "LiderEntities";
+            efConnectionParameters1.Source = typeof(xtraForm.Model.LiderEntities);
             this.efDataSource2.ConnectionParameters = efConnectionParameters1;
             this.efDataSource2.Name = "efDataSource2";
             // 
@@ -327,7 +326,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 23F;
+            this.TopMargin.HeightF = 51F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -410,7 +409,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 24F;
+            this.BottomMargin.HeightF = 116F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -437,10 +436,9 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // 
             this.Gestion.Description = "Gestion";
             dynamicListLookUpSettings3.DataAdapter = null;
-            dynamicListLookUpSettings3.DataMember = "Gestion";
+            dynamicListLookUpSettings3.DataMember = "Gestions";
             dynamicListLookUpSettings3.DataSource = this.efDataSource2;
             dynamicListLookUpSettings3.DisplayMember = "codigo";
-            dynamicListLookUpSettings3.FilterString = "[activa] = True";
             dynamicListLookUpSettings3.ValueMember = "codigo";
             this.Gestion.LookUpSettings = dynamicListLookUpSettings3;
             this.Gestion.Name = "Gestion";
@@ -962,7 +960,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             customSqlQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
-            // ListadoPorClaseProducto
+            // RptListadoSegunClase
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
@@ -980,7 +978,10 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.DataSource = this.sqlDataSource1;
             this.FilterString = "[IDClase] In (?ClaseProducto)";
             this.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margins = new System.Drawing.Printing.Margins(23, 28, 23, 24);
+            this.Margins = new System.Drawing.Printing.Margins(25, 25, 51, 116);
+            this.PageHeight = 1346;
+            this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+            this.PaperName = "Custom";
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.Fecha,
             this.Ruta,

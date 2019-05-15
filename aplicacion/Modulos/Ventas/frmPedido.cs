@@ -9,8 +9,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
-using xtraForm.Model.Conexion.edmx.Conexion.tt;
 
 namespace xtraForm.Modulos.Ventas
 {
@@ -49,10 +47,10 @@ namespace xtraForm.Modulos.Ventas
         void CamposPedido(string CdPedido, string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
             string Gestion, string IdDistrito, DataGridView dgv)
         {
-            using (LiderAppEntities Context = new LiderAppEntities())
+            using (LiderEntities Context = new LiderEntities())
             {
                 PEDIDO Cp = new PEDIDO { Pedido1 = CdPedido };
-                Context.PEDIDO.Attach(Cp);
+                Context.PEDIDOes.Attach(Cp);
                 Cp.Personal = CdVendedor;
                 Cp.Cliente = CdCliente;
                 Cp.FormaPago = CdFP;
@@ -69,7 +67,7 @@ namespace xtraForm.Modulos.Ventas
                 Cp.distllegada = IdDistrito;
                 Cp.tipodoc = TpDoc;
                 Context.Configuration.ValidateOnSaveEnabled = false;
-                Context.DETPEDIDO.RemoveRange(Context.DETPEDIDO.Where(a => a.Pedido == CdPedido));
+                Context.DETPEDIDOes.RemoveRange(Context.DETPEDIDOes.Where(a => a.Pedido == CdPedido));
                 foreach (DataGridViewRow fila in dgv.Rows)
                 {
                     DETPEDIDO ItemCp = new DETPEDIDO();
@@ -90,7 +88,7 @@ namespace xtraForm.Modulos.Ventas
                     ItemCp.Recargo = Convert.ToDecimal(fila.Cells["Recargo"].Value);
                     ItemCp.Afecto = Convert.ToDecimal(fila.Cells["Afecto"].Value);
                     ItemCp.Bonif = Convert.ToBoolean(fila.Cells["Bonif"].Value);
-                    Context.DETPEDIDO.Add(ItemCp);
+                    Context.DETPEDIDOes.Add(ItemCp);
                 }
                 Context.SaveChanges();
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
@@ -101,9 +99,9 @@ namespace xtraForm.Modulos.Ventas
 
         void condicion(string cadena)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
-                string Query = Convert.ToString(Context.VistaAdministrativa.Where(x => x.IDModulo == (Context.Modulo.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
+                string Query = Convert.ToString(Context.VistaAdministrativas.Where(x => x.IDModulo == (Context.Moduloes.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
                 {
                     proceso.consultar(Query, tabla);
@@ -184,15 +182,15 @@ namespace xtraForm.Modulos.Ventas
                 frmmensage.dataGridView1.Columns[1].HeaderText = "Mensage";
                 frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
                 frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
                     foreach (var fila in gridView1.GetSelectedRows())
                     {
                         string Pedido_ = Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido"));
-                        string Tipo = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.tipodoc).FirstOrDefault();
-                        int Persona = Convert.ToInt32(Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.TipoPersona).FirstOrDefault());
-                        var Estado = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.Procesado).FirstOrDefault();
-                        var Aprobado = Context.PEDIDO.Where(x => x.Pedido1 == Pedido_).Select(p => p.Aprobado).FirstOrDefault();
+                        string Tipo = Context.PEDIDOes.Where(x => x.Pedido1 == Pedido_).Select(p => p.tipodoc).FirstOrDefault();
+                        int Persona = Convert.ToInt32(Context.PEDIDOes.Where(x => x.Pedido1 == Pedido_).Select(p => p.TipoPersona).FirstOrDefault());
+                        var Estado = Context.PEDIDOes.Where(x => x.Pedido1 == Pedido_).Select(p => p.Procesado).FirstOrDefault();
+                        var Aprobado = Context.PEDIDOes.Where(x => x.Pedido1 == Pedido_).Select(p => p.Aprobado).FirstOrDefault();
                         if (!Estado)
                         {
                             Contador += 1;
@@ -200,7 +198,7 @@ namespace xtraForm.Modulos.Ventas
                             {
                                 Contador += 1;
                                 Lista.Add(Pedido_);
-                                Context.sp_genera_documento(Pedido_, Persona, Tipo);
+                                //Context.sp_genera_documento(Pedido_, Persona, Tipo);
                             }
                             else
                             {
@@ -219,7 +217,7 @@ namespace xtraForm.Modulos.Ventas
                     else if (Contador == 2)
                     {
                         string cadena = string.Join(",", Lista.ToArray());
-                        var Documentos = (from doc in Context.DOCUMENTO
+                        var Documentos = (from doc in Context.DOCUMENTOes
                                           where cadena.Contains(doc.Pedido.Trim())
                                           select new
                                           {
@@ -236,31 +234,31 @@ namespace xtraForm.Modulos.Ventas
                                 switch (fila.Tipo)
                                 {
                                     case "B":
-                                        Numero = Convert.ToInt32((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == SerieB select p.Numero).FirstOrDefault());
-                                        serie = Convert.ToString((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == SerieB select p.Serie).FirstOrDefault());
+                                        Numero = Convert.ToInt32((from p in Context.DOCTIPOes.AsEnumerable() where p.PKID == SerieB select p.Numero).FirstOrDefault());
+                                        serie = Convert.ToString((from p in Context.DOCTIPOes.AsEnumerable() where p.PKID == SerieB select p.Serie).FirstOrDefault());
                                         NumeroComprobante = serie + Numero.ToString("D8");
-                                        var Cp = (from p in Context.DOCUMENTO where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
+                                        var Cp = (from p in Context.DOCUMENTOes where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
                                         Cp.Generado = NumeroComprobante;
-                                        var Pd = (from p in Context.PEDIDO
-                                                  where p.Pedido1 == Context.DOCUMENTO.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
+                                        var Pd = (from p in Context.PEDIDOes
+                                                  where p.Pedido1 == Context.DOCUMENTOes.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
                                                   select p).FirstOrDefault();
                                         Pd.Procesado = true;
                                         Pd.statusWeb = true;
-                                        var DTp = (from p in Context.DOCTIPO where p.PKID == SerieB select p).FirstOrDefault();
+                                        var DTp = (from p in Context.DOCTIPOes where p.PKID == SerieB select p).FirstOrDefault();
                                         DTp.Numero = DTp.Numero + 1;
                                         break;
                                     case "F":
-                                        Numero = Convert.ToInt32((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == SerieF select p.Numero).FirstOrDefault());
-                                        serie = Convert.ToString((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == SerieF select p.Serie).FirstOrDefault());
+                                        Numero = Convert.ToInt32((from p in Context.DOCTIPOes.AsEnumerable() where p.PKID == SerieF select p.Numero).FirstOrDefault());
+                                        serie = Convert.ToString((from p in Context.DOCTIPOes.AsEnumerable() where p.PKID == SerieF select p.Serie).FirstOrDefault());
                                         NumeroComprobante = serie + Numero.ToString("D8");
-                                        var Cp_ = (from p in Context.DOCUMENTO where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
+                                        var Cp_ = (from p in Context.DOCUMENTOes where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
                                         Cp_.Generado = NumeroComprobante;
-                                        var Pd_ = (from p in Context.PEDIDO
-                                                   where p.Pedido1 == Context.DOCUMENTO.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
+                                        var Pd_ = (from p in Context.PEDIDOes
+                                                   where p.Pedido1 == Context.DOCUMENTOes.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
                                                    select p).FirstOrDefault();
                                         Pd_.Procesado = true;
                                         Pd_.statusWeb = true;
-                                        var DTp_ = (from p in Context.DOCTIPO where p.PKID == SerieB select p).FirstOrDefault();
+                                        var DTp_ = (from p in Context.DOCTIPOes where p.PKID == SerieB select p).FirstOrDefault();
                                         DTp_.Numero = DTp_.Numero + 1;
                                         break;
                                 }
@@ -309,21 +307,21 @@ namespace xtraForm.Modulos.Ventas
         {
             if (gridView1.SelectedRowsCount > 0)
             {
-                var Context = new LiderAppEntities();
+                var Context = new LiderEntities();
                 Elementos.frmpedido frmpedido = new Elementos.frmpedido();
                 frmpedido.Existe = true;
                 frmpedido.pasar += new Elementos.frmpedido.varaible(CamposPedido);
                 pedido.NumeroPedido = gridView1.GetFocusedRowCellValue("num Pedido").ToString();
-                pedido.CodigoVendedor = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.Personal).FirstOrDefault();
-                pedido.NombreVendedor = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.npersonal).FirstOrDefault();
-                pedido.CodigoCliente = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.Cliente).FirstOrDefault();
-                pedido.NombreCliente = Context.CLIENTE.Where(p => p.Cliente1.Equals(pedido.CodigoCliente)).Select(a => a.Alias.Trim()).FirstOrDefault();
+                pedido.CodigoVendedor = Context.PEDIDOes.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.Personal).FirstOrDefault();
+                pedido.NombreVendedor = Context.PEDIDOes.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.npersonal).FirstOrDefault();
+                pedido.CodigoCliente = Context.PEDIDOes.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.Cliente).FirstOrDefault();
+                pedido.NombreCliente = Context.CLIENTEs.Where(p => p.Cliente1.Equals(pedido.CodigoCliente)).Select(a => a.Alias.Trim()).FirstOrDefault();
                 pedido.DocumentoCliente = proceso.ConsultarCadena("Documento", "Vva_Cliente", "Codigo = '" + pedido.CodigoCliente + "'");
-                pedido.DireccionCliente = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.direccion).FirstOrDefault();
+                pedido.DireccionCliente = Context.PEDIDOes.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.direccion).FirstOrDefault();
                 pedido.ZonaCliente = proceso.ConsultarCadena("descripcion", "Zona", "Zona = (select zona from Vva_Cliente where Codigo = '" + pedido.CodigoCliente + "')");
                 pedido.DistritoCliente = proceso.ConsultarCadena("descrip", "Distrito", "iddistrito = (select distllegada from pedido where pedido = '" + pedido.NumeroPedido + "')");
                 pedido.ProvinciaCliente = proceso.ConsultarCadena("descrip", "provincia", " idprovincia = (select idprovincia from Distrito where iddistrito = (select idprovincia from pedido where pedido = '" + pedido.NumeroPedido + "'))");
-                pedido.Gestion = Context.PEDIDO.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.gestion).FirstOrDefault();
+                pedido.Gestion = Context.PEDIDOes.Where(p => p.Pedido1.Equals(pedido.NumeroPedido)).Select(a => a.gestion).FirstOrDefault();
                 pedido.Credito = proceso.ConsultarVerdad("Credito", "Vva_Pedido", "NrPedido = '" + pedido.NumeroPedido + "'");
                 pedido.FormaPago = proceso.ConsultarCadena("FormaPago", "Pedido", "pedido = '" + pedido.NumeroPedido + "'");
                 pedido.FechaEmision = proceso.ConsultarCadena("FechaEmision", "Vva_Pedido", "NrPedido = '" + pedido.NumeroPedido + "'");
@@ -420,24 +418,24 @@ namespace xtraForm.Modulos.Ventas
 
         private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
                 proceso.actualizar("pedido", "FECHA = REPLACE(CONVERT(VARCHAR(10),Fecha,120),'-','')", "procesado = 0 and statusweb is null");
                 actualizavalores(inicio.ToString("yyyyMMdd"));
                 Filtros.frmFiltros filtro = new Filtros.frmFiltros();
                 DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
-                i.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
                 i.DisplayMember = "Descripcion";
                 i.ValueMember = "Codigo";
                 DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
-                j.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
                 j.DisplayMember = "Descripcion";
                 j.ValueMember = "Codigo";
                 DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
                 k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'vva_pedido'").ToList();
                 filtro.pasar += new Filtros.frmFiltros.variables(condicion);
                 filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtro.Where(w => w.tabla.Equals(tabla)).ToList())
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
                 {
                     filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
                 }
@@ -513,18 +511,18 @@ namespace xtraForm.Modulos.Ventas
             {
                 if (proceso.MensagePregunta("¿Continuar?") == DialogResult.Yes)
                 {
-                    using (var Context = new LiderAppEntities())
+                    using (var Context = new LiderEntities())
                     {
                         foreach (var fila in gridView1.GetSelectedRows())
                         {
                             string numPedido = Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido"));
-                            bool Estado = Context.PEDIDO.Where(x => x.Pedido1 == numPedido).Select(p => p.Procesado).FirstOrDefault();
-                            var Aprob = Context.PEDIDO.Where(x => x.Pedido1 == numPedido).Select(p => p.Aprobado).FirstOrDefault();
+                            bool Estado = Context.PEDIDOes.Where(x => x.Pedido1 == numPedido).Select(p => p.Procesado).FirstOrDefault();
+                            var Aprob = Context.PEDIDOes.Where(x => x.Pedido1 == numPedido).Select(p => p.Aprobado).FirstOrDefault();
                             if (!Estado)
                             {
                                 if (!(Aprob is DBNull ? false : (bool)Aprob))
                                 {
-                                    var pedido = (from p in Context.PEDIDO where p.Pedido1 == numPedido select p).FirstOrDefault();
+                                    var pedido = (from p in Context.PEDIDOes where p.Pedido1 == numPedido select p).FirstOrDefault();
                                     pedido.Aprobado = true;
                                     frmmensage.dataGridView1.Rows.Add(numPedido, "Aprobado Exitosamente.");
                                 }
@@ -559,18 +557,18 @@ namespace xtraForm.Modulos.Ventas
             {
                 if (proceso.MensagePregunta("¿Continuar?") == DialogResult.Yes)
                 {
-                    using (var Context = new LiderAppEntities())
+                    using (var Context = new LiderEntities())
                     {
                         foreach (var fila in gridView1.GetSelectedRows())
                         {
                             string numPedido = Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido"));
-                            bool Estado = Context.PEDIDO.Where(x => x.Pedido1 == numPedido).Select(p => p.Procesado).FirstOrDefault();
-                            var Aprob = Context.PEDIDO.Where(x => x.Pedido1 == numPedido).Select(p => p.Aprobado).FirstOrDefault();
+                            bool Estado = Context.PEDIDOes.Where(x => x.Pedido1 == numPedido).Select(p => p.Procesado).FirstOrDefault();
+                            var Aprob = Context.PEDIDOes.Where(x => x.Pedido1 == numPedido).Select(p => p.Aprobado).FirstOrDefault();
                             if (!Estado)
                             {
                                 if (Aprob is DBNull ? false : (bool)Aprob)
                                 {
-                                    var pedido = (from p in Context.PEDIDO where p.Pedido1 == numPedido select p).FirstOrDefault();
+                                    var pedido = (from p in Context.PEDIDOes where p.Pedido1 == numPedido select p).FirstOrDefault();
                                     pedido.Aprobado = false;
                                     frmmensage.dataGridView1.Rows.Add(numPedido, "Desaprobado Exitosamente.");
                                 }

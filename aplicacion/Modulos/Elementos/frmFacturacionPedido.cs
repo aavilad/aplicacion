@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -42,14 +41,14 @@ namespace xtraForm.Modulos.Elementos
 
         private void frmFacturacionPedido_Load(object sender, EventArgs e)
         {
-            using (var context = new LiderAppEntities())
+            using (var context = new LiderEntities())
             {
                 SerieFacturas.Properties.ShowHeader = false;
                 SerieFacturas.Properties.DisplayMember = "Serie";
                 SerieFacturas.Properties.ValueMember = "ID";
                 SerieFacturas.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
                 SerieFacturas.Properties.DataSource =
-                    context.DOCTIPO.Where(x => x.codigo == "01").
+                    context.DOCTIPOes.Where(x => x.codigo == "01").
                     Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
 
                 SerieBoleta.Properties.ShowHeader = false;
@@ -57,26 +56,26 @@ namespace xtraForm.Modulos.Elementos
                 SerieBoleta.Properties.ValueMember = "ID";
                 SerieBoleta.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
                 SerieBoleta.Properties.DataSource =
-                    context.DOCTIPO.Where(x => x.codigo == "03").
+                    context.DOCTIPOes.Where(x => x.codigo == "03").
                     Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
             }
         }
 
         private void SerieBoleta_EditValueChanged(object sender, EventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
-                NumeroBoletas.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieBoleta.EditValue).Select(s => s.Numero).FirstOrDefault();
-                DescripcionBoletas.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieBoleta.EditValue).Select(s => s.Descripcion).FirstOrDefault();
+                NumeroBoletas.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieBoleta.EditValue).Select(s => s.Numero).FirstOrDefault();
+                DescripcionBoletas.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieBoleta.EditValue).Select(s => s.Descripcion).FirstOrDefault();
             }
         }
 
         private void SerieFacturas_EditValueChanged(object sender, EventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
-                NumeroFacturas.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Numero).FirstOrDefault();
-                DescripcionFacturas.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
+                NumeroFacturas.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Numero).FirstOrDefault();
+                DescripcionFacturas.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
             }
         }
     }

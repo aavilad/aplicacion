@@ -14,8 +14,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
-
 namespace xtraForm.Modulos.Elementos
 {
     public partial class frmFacturacion : DevExpress.XtraEditors.XtraForm
@@ -36,15 +34,14 @@ namespace xtraForm.Modulos.Elementos
 
         private void frmFacturacion_Load(object sender, EventArgs e)
         {
-
-            using (var context = new LiderAppEntities())
+            using (var context = new LiderEntities())
             {
                 SerieFacturas.Properties.ShowHeader = false;
                 SerieFacturas.Properties.DisplayMember = "Serie";
                 SerieFacturas.Properties.ValueMember = "ID";
                 SerieFacturas.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
                 SerieFacturas.Properties.DataSource =
-                    context.DOCTIPO.Where(x => x.codigo == "01").
+                    context.DOCTIPOes.Where(x => x.codigo == "01").
                     Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
 
                 SerieBoletas.Properties.ShowHeader = false;
@@ -52,17 +49,15 @@ namespace xtraForm.Modulos.Elementos
                 SerieBoletas.Properties.ValueMember = "ID";
                 SerieBoletas.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
                 SerieBoletas.Properties.DataSource =
-                    context.DOCTIPO.Where(x => x.codigo == "03").
+                    context.DOCTIPOes.Where(x => x.codigo == "03").
                     Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
 
                 Gestion.Properties.ShowHeader = false;
                 Gestion.Properties.DisplayMember = "codigo";
                 Gestion.Properties.ValueMember = "codigo";
                 Gestion.Properties.Columns.Add(new LookUpColumnInfo("codigo", string.Empty, 10));
-                Gestion.Properties.DataSource = context.Gestion.ToList();
+                Gestion.Properties.DataSource = context.Gestions.ToList();
             }
-
-
         }
 
         private void BtnFiltrar_Click(object sender, EventArgs e)
@@ -73,7 +68,7 @@ namespace xtraForm.Modulos.Elementos
             {
                 gridControl1.DataSource = null;
                 gridView1.Columns.Clear();
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
                     proceso.consultar(@"
                     SELECT 
@@ -99,7 +94,7 @@ namespace xtraForm.Modulos.Elementos
             {
                 gridControl1.DataSource = null;
                 gridView1.Columns.Clear();
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
                     proceso.consultar(@"
                     SELECT Vva_Vendedor.[Codigo vendedor] AS Codigo, 
@@ -141,20 +136,20 @@ namespace xtraForm.Modulos.Elementos
 
         private void SerieFacturas_EditValueChanged(object sender, EventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
-                FCorrelativo.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Numero).FirstOrDefault();
-                DescripcionF.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
+                FCorrelativo.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Numero).FirstOrDefault();
+                DescripcionF.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
             }
 
         }
 
         private void SerieBoletas_EditValueChanged(object sender, EventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
-                BCorrelativo.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieBoletas.EditValue).Select(s => s.Numero).FirstOrDefault();
-                DescripcionB.EditValue = Context.DOCTIPO.Where(x => x.PKID == (int)SerieBoletas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
+                BCorrelativo.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieBoletas.EditValue).Select(s => s.Numero).FirstOrDefault();
+                DescripcionB.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieBoletas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
             }
         }
 
@@ -192,20 +187,20 @@ namespace xtraForm.Modulos.Elementos
                     Campos.Add("'" + Convert.ToString(gridView1.GetRowCellValue(i, "Codigo")).Trim() + "'");
                 }
                 string cadena = string.Join(",", Campos.ToArray());
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
-                    var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
-                                   join r in Context.REPARTO.AsEnumerable().Where(x => x.Dia == Dia && cadena.Contains(x.Ruta)) on p.IDVend equals r.Personal
-                                   where p.FechaEmision == DateTime.Parse(fecha) && p.Aprobado == true && p.Procesado == false && p.gestion == Gestion.EditValue.ToString().Trim()
-                                   select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
+                    var Pedidos = (from p in Context.PEDIDOes.AsEnumerable()
+                                   join r in Context.REPARTOes.AsEnumerable().Where(x => x.Dia == Dia && cadena.Contains(x.Ruta)) on p.Personal equals r.Personal
+                                   where p.Fecha == DateTime.Parse(fecha) && p.Aprobado == true && p.Procesado == false && p.gestion == Gestion.EditValue.ToString().Trim()
+                                   select new { Pedido = p.Pedido1, Persona = p.TipoPersona, Tipo = p.tipodoc }).ToList();
 
                     if (Pedidos.Count > 0)
                     {
                         foreach (var fila in Pedidos)
                         {
-                            Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
+                            //Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
                         }
-                        var Documentos = (from p in Context.DOCUMENTO.AsEnumerable()
+                        var Documentos = (from p in Context.DOCUMENTOes.AsEnumerable()
                                           join r in Pedidos on p.Pedido equals r.Pedido
                                           select new { Documento = p.Documento1.Trim(), Tipo = p.TipoDoc.Trim() }).ToList();
                         foreach (var fila in Documentos)
@@ -214,36 +209,36 @@ namespace xtraForm.Modulos.Elementos
                             {
                                 if (fila.Tipo == "B")
                                 {
-                                    var Numero = Convert.ToInt32((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == (int)SerieBoletas.EditValue select p.Numero).FirstOrDefault());
+                                    var Numero = Convert.ToInt32((from p in Context.DOCTIPOes.AsEnumerable() where p.PKID == (int)SerieBoletas.EditValue select p.Numero).FirstOrDefault());
                                     var serie = SerieBoletas.Text.Trim();
                                     var NumeroComprobante = serie + Numero.ToString("D8");
-                                    var Cp = (from p in Context.DOCUMENTO where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
+                                    var Cp = (from p in Context.DOCUMENTOes where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
                                     Cp.Generado = NumeroComprobante;
-                                    var Pd = (from p in Context.PEDIDO
-                                              where p.Pedido1 == Context.DOCUMENTO.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
+                                    var Pd = (from p in Context.PEDIDOes
+                                              where p.Pedido1 == Context.DOCUMENTOes.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
                                               select p).FirstOrDefault();
                                     Pd.Procesado = true;
                                     Pd.statusWeb = true;
-                                    var Dt = (from p in Context.DOCTIPO where p.PKID == (int)SerieBoletas.EditValue select p).FirstOrDefault();
+                                    var Dt = (from p in Context.DOCTIPOes where p.PKID == (int)SerieBoletas.EditValue select p).FirstOrDefault();
                                     Dt.Numero = Dt.Numero + 1;
                                 }
                                 else if (fila.Tipo == "F")
                                 {
-                                    var Numero = Convert.ToInt32((from p in Context.DOCTIPO.AsEnumerable()
+                                    var Numero = Convert.ToInt32((from p in Context.DOCTIPOes.AsEnumerable()
                                                                   where p.PKID == (int)SerieFacturas.EditValue
                                                                   select p.Numero).FirstOrDefault());
                                     var serie = SerieFacturas.Text.Trim();
                                     var NumeroComprobante = serie + Numero.ToString("D8");
-                                    var Cp = (from p in Context.DOCUMENTO
+                                    var Cp = (from p in Context.DOCUMENTOes
                                               where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo
                                               select p).FirstOrDefault();
                                     Cp.Generado = NumeroComprobante;
-                                    var Pd = (from p in Context.PEDIDO
-                                              where p.Pedido1 == Context.DOCUMENTO.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
+                                    var Pd = (from p in Context.PEDIDOes
+                                              where p.Pedido1 == Context.DOCUMENTOes.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
                                               select p).FirstOrDefault();
                                     Pd.Procesado = true;
                                     Pd.statusWeb = true;
-                                    var Dt = (from p in Context.DOCTIPO
+                                    var Dt = (from p in Context.DOCTIPOes
                                               where p.PKID == (int)SerieFacturas.EditValue
                                               select p).FirstOrDefault();
                                     Dt.Numero = Dt.Numero + 1;
@@ -277,19 +272,19 @@ namespace xtraForm.Modulos.Elementos
                     Campos.Add("'" + Convert.ToString(gridView1.GetRowCellValue(i, "Codigo")) + "'");
                 }
                 string cadena = string.Join(",", Campos.ToArray());
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
-                    var Pedidos = (from p in Context.Vva_Pedido.AsEnumerable()
-                                   where p.FechaEmision == DateTime.Parse(fecha) &&
-                                   cadena.Contains(p.IDVend) && p.Aprobado == true && p.Procesado == false && p.gestion == Gestion.EditValue.ToString().Trim()
-                                   select new { Pedido = p.NrPedido, Persona = p.TpPersona, Tipo = p.TpDoc }).ToList();
+                    var Pedidos = (from p in Context.PEDIDOes.AsEnumerable()
+                                   where p.Fecha == DateTime.Parse(fecha) &&
+                                   cadena.Contains(p.Personal) && p.Aprobado == true && p.Procesado == false && p.gestion == Gestion.EditValue.ToString().Trim()
+                                   select new { Pedido = p.Pedido1, Persona = p.TipoPersona, Tipo = p.tipodoc }).ToList();
                     if (Pedidos.Count > 0)
                     {
                         foreach (var fila in Pedidos)
                         {
-                            Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
+                            //Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
                         }
-                        var Documentos = (from p in Context.DOCUMENTO.AsEnumerable()
+                        var Documentos = (from p in Context.DOCUMENTOes.AsEnumerable()
                                           join r in Pedidos on p.Pedido equals r.Pedido
                                           select new { Documento = p.Documento1.Trim(), Tipo = p.TipoDoc.Trim() }).ToList();
                         foreach (var fila in Documentos)
@@ -298,36 +293,36 @@ namespace xtraForm.Modulos.Elementos
                             {
                                 if (fila.Tipo == "B")
                                 {
-                                    var Numero = Convert.ToInt32((from p in Context.DOCTIPO.AsEnumerable() where p.PKID == (int)SerieBoletas.EditValue select p.Numero).FirstOrDefault());
+                                    var Numero = Convert.ToInt32((from p in Context.DOCTIPOes.AsEnumerable() where p.PKID == (int)SerieBoletas.EditValue select p.Numero).FirstOrDefault());
                                     var serie = SerieBoletas.Text.Trim();
                                     var NumeroComprobante = serie + Numero.ToString("D8");
-                                    var Cp = (from p in Context.DOCUMENTO where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
+                                    var Cp = (from p in Context.DOCUMENTOes where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
                                     Cp.Generado = NumeroComprobante;
-                                    var Pd = (from p in Context.PEDIDO
-                                              where p.Pedido1 == Context.DOCUMENTO.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
+                                    var Pd = (from p in Context.PEDIDOes
+                                              where p.Pedido1 == Context.DOCUMENTOes.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
                                               select p).FirstOrDefault();
                                     Pd.Procesado = true;
                                     Pd.statusWeb = true;
-                                    var Dt = (from p in Context.DOCTIPO where p.PKID == (int)SerieBoletas.EditValue select p).FirstOrDefault();
+                                    var Dt = (from p in Context.DOCTIPOes where p.PKID == (int)SerieBoletas.EditValue select p).FirstOrDefault();
                                     Dt.Numero = Dt.Numero + 1;
                                 }
                                 else if (fila.Tipo == "F")
                                 {
-                                    var Numero = Convert.ToInt32((from p in Context.DOCTIPO.AsEnumerable()
+                                    var Numero = Convert.ToInt32((from p in Context.DOCTIPOes.AsEnumerable()
                                                                   where p.PKID == (int)SerieFacturas.EditValue
                                                                   select p.Numero).FirstOrDefault());
                                     var serie = SerieFacturas.Text.Trim();
                                     var NumeroComprobante = serie + Numero.ToString("D8");
-                                    var Cp = (from p in Context.DOCUMENTO
+                                    var Cp = (from p in Context.DOCUMENTOes
                                               where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo
                                               select p).FirstOrDefault();
                                     Cp.Generado = NumeroComprobante;
-                                    var Pd = (from p in Context.PEDIDO
-                                              where p.Pedido1 == Context.DOCUMENTO.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
+                                    var Pd = (from p in Context.PEDIDOes
+                                              where p.Pedido1 == Context.DOCUMENTOes.Where(y => y.Documento1 == fila.Documento && y.TipoDoc == fila.Tipo).Select(x => x.Pedido.Trim()).FirstOrDefault()
                                               select p).FirstOrDefault();
                                     Pd.Procesado = true;
                                     Pd.statusWeb = true;
-                                    var Dt = (from p in Context.DOCTIPO
+                                    var Dt = (from p in Context.DOCTIPOes
                                               where p.PKID == (int)SerieFacturas.EditValue
                                               select p).FirstOrDefault();
                                     Dt.Numero = Dt.Numero + 1;

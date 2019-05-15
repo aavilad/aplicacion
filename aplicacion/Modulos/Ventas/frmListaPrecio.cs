@@ -11,8 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
-using xtraForm.Model.Conexion.edmx.Conexion.tt;
 
 namespace xtraForm.Modulos.Ventas
 {
@@ -31,15 +29,15 @@ namespace xtraForm.Modulos.Ventas
             var Codigo = Convert.ToString(TxtCodigoProducto.EditValue);
             try
             {
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
-                    var ProductoEscala = (from p in Context.Vva_Producto.AsEnumerable().Where(x => x.Codigo.StartsWith(Codigo))
-                                          from pu in Context.PlantillaUnidad.AsEnumerable().Where(x => x.PKID == p.IDUnidad).DefaultIfEmpty()
+                    var ProductoEscala = (from p in Context.PRODUCTOes.AsEnumerable().Where(x => x.Producto1.StartsWith(Codigo))
+                                          from pu in Context.PlantillaUnidads.AsEnumerable().Where(x => x.PKID == p.IDUnidad).DefaultIfEmpty()
                                           select new
                                           {
-                                              Codigo = p.Codigo.Trim(),
+                                              Codigo = p.Producto1.Trim(),
                                               Descripcion = p.Descripcion.Trim(),
-                                              UnidadAnterior = p.Unidad.Trim(),
+                                              UnidadAnterior = p.UniMed.Trim(),
                                               Unidad = pu == null ? string.Empty : pu.Abreviacion.Trim()
                                           }).ToList();
                     gridControl1.DataSource = ProductoEscala;
@@ -69,18 +67,18 @@ namespace xtraForm.Modulos.Ventas
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             Codigo = Convert.ToString(gridView1.GetFocusedRowCellValue("Codigo"));
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
-                var Costo = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.Costo).FirstOrDefault();
-                var P1 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.C_MENOR).FirstOrDefault();
-                var P2 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.C_MAYOR).FirstOrDefault();
-                var MinMay = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.MinimoMayorista).FirstOrDefault();
-                var P3 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.CR_MENOR).FirstOrDefault();
-                var P4 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.CR_MENOR).FirstOrDefault();
-                var MinEsp = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.MinimoEspecial).FirstOrDefault();
-                var P5 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL05).FirstOrDefault();
-                var P6 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL06).FirstOrDefault();
-                var P7 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL07).FirstOrDefault();
+                var Costo = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.Costo).FirstOrDefault();
+                var P1 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMenContado).FirstOrDefault();
+                var P2 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMayContado).FirstOrDefault();
+                var MinMay = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.minimomay).FirstOrDefault();
+                var P3 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMenCredito).FirstOrDefault();
+                var P4 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMayCredito).FirstOrDefault();
+                var MinEsp = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.CanEspecial).FirstOrDefault();
+                var P5 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecEspecial).FirstOrDefault();
+                var P6 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecSEspecial).FirstOrDefault();
+                var P7 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecSSEspecial).FirstOrDefault();
                 dataGridView1.Rows.Clear();
                 dataGridView1.Rows.Add(Costo, P1, MinMay, P2, P3, P4, MinEsp, P5, P6, P7);
             }
@@ -90,18 +88,18 @@ namespace xtraForm.Modulos.Ventas
         {
             if (gridView1.SelectedRowsCount > 0 && Codigo != null)
             {
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
-                    var Costo = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.Costo).FirstOrDefault();
-                    var P1 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.C_MENOR).FirstOrDefault();
-                    var P2 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.C_MAYOR).FirstOrDefault();
-                    var MinMay = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.MinimoMayorista).FirstOrDefault();
-                    var P3 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.CR_MENOR).FirstOrDefault();
-                    var P4 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.CR_MENOR).FirstOrDefault();
-                    var MinEsp = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.MinimoEspecial).FirstOrDefault();
-                    var P5 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL05).FirstOrDefault();
-                    var P6 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL06).FirstOrDefault();
-                    var P7 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL07).FirstOrDefault();
+                    var Costo = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.Costo).FirstOrDefault();
+                    var P1 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMenContado).FirstOrDefault();
+                    var P2 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMayContado).FirstOrDefault();
+                    var MinMay = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.minimomay).FirstOrDefault();
+                    var P3 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMenCredito).FirstOrDefault();
+                    var P4 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMayCredito).FirstOrDefault();
+                    var MinEsp = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.CanEspecial).FirstOrDefault();
+                    var P5 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecEspecial).FirstOrDefault();
+                    var P6 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecSEspecial).FirstOrDefault();
+                    var P7 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecSSEspecial).FirstOrDefault();
                     dataGridView1.Rows.Clear();
                     dataGridView1.Rows.Add(Costo, P1, MinMay, P2, P3, P4, MinEsp, P5, P6, P7);
                 }
@@ -114,10 +112,10 @@ namespace xtraForm.Modulos.Ventas
             {
                 try
                 {
-                    using (var Context = new LiderAppEntities())
+                    using (var Context = new LiderEntities())
                     {
                         PRODUCTO pd = new PRODUCTO { Producto1 = Codigo };
-                        Context.PRODUCTO.Attach(pd);
+                        Context.PRODUCTOes.Attach(pd);
                         pd.Costo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0].Value);
                         pd.PrecMenContado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[1].Value);
                         pd.PrecMayContado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[2].Value);
@@ -130,16 +128,16 @@ namespace xtraForm.Modulos.Ventas
                         pd.PrecSSEspecial = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[9].Value);
                         Context.Configuration.ValidateOnSaveEnabled = false;
                         Context.SaveChanges();
-                        var Costo = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.Costo).FirstOrDefault();
-                        var P1 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.C_MENOR).FirstOrDefault();
-                        var P2 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.C_MAYOR).FirstOrDefault();
-                        var MinMay = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.MinimoMayorista).FirstOrDefault();
-                        var P3 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.CR_MENOR).FirstOrDefault();
-                        var P4 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.CR_MENOR).FirstOrDefault();
-                        var MinEsp = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.MinimoEspecial).FirstOrDefault();
-                        var P5 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL05).FirstOrDefault();
-                        var P6 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL06).FirstOrDefault();
-                        var P7 = Context.Vva_Producto.Where(x => x.Codigo == Codigo).Select(p => p.ESPECIAL07).FirstOrDefault();
+                        var Costo = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.Costo).FirstOrDefault();
+                        var P1 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMenContado).FirstOrDefault();
+                        var P2 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMayContado).FirstOrDefault();
+                        var MinMay = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.minimomay).FirstOrDefault();
+                        var P3 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMenCredito).FirstOrDefault();
+                        var P4 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecMayCredito).FirstOrDefault();
+                        var MinEsp = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.CanEspecial).FirstOrDefault();
+                        var P5 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecEspecial).FirstOrDefault();
+                        var P6 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecSEspecial).FirstOrDefault();
+                        var P7 = Context.PRODUCTOes.Where(x => x.Producto1 == Codigo).Select(p => p.PrecSSEspecial).FirstOrDefault();
                         dataGridView1.Rows.Clear();
                         dataGridView1.Rows.Add(Costo, P1, MinMay, P2, P3, P4, MinEsp, P5, P6, P7);
                         MessageBox.Show("Lista actualziada con exito.");

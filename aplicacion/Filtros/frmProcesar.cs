@@ -49,7 +49,7 @@ namespace xtraForm.Filtros
                         frmmensage.Show();
                         splashScreenManager1.ShowWaitForm();
                         //evento # 01
-                        using (var Context = new LiderAppEntities())
+                        using (var Context = new LiderEntities())
                         {
                             Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                             Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
@@ -429,7 +429,7 @@ namespace xtraForm.Filtros
                     {
                         MessageBox.Show("No existen vendedores seleccionados");
                     }
-                    using (var Context = new LiderAppEntities())
+                    using (var Context = new LiderEntities())
                     {
                         Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                         Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));

@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -86,7 +85,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnBonificar_Click(object sender, EventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
@@ -657,7 +656,7 @@ namespace xtraForm.Modulos.Elementos
                 }
             }
             Existe = false;
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
                 Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
@@ -1119,13 +1118,18 @@ namespace xtraForm.Modulos.Elementos
 
         private void txtcdVendedor_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
                 Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
                 frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
-                var ListVendedorA = (from p in Context.Vva_Vendedor where p.Activo == true select new { Codigo = p.Codigo_vendedor, Nombre = p.Nombre_Vendedor });
-                var ListVendedorB = (from p in Context.PERSONAL where p.Activo == true && p.vendedor == 1 select new { Codigo = p.Personal1, Nombre = p.Nombre });
-                frmvendedor.gridControl1.DataSource = btnFueraRuta.Checked == false ? ListVendedorA.ToList() : ListVendedorB.ToList();
+                var _RVentas = (from Rv in Context.PERSONALs.Where(w => w.Activo == true)
+                                     join Fv in Context.FuerzaVentas.Where(wx => wx.Activo == true) on Rv.fzavtas equals Fv.fzavtas
+                                     select new
+                                     {
+                                         Codigo = Rv.Personal1,
+                                         Nombre = Rv.Nombre
+                                     }).ToList();
+                frmvendedor.gridControl1.DataSource = _RVentas;
                 formato.Grilla(frmvendedor.gridView1);
                 frmvendedor.StartPosition = FormStartPosition.CenterScreen;
                 frmvendedor.ShowDialog();
@@ -1134,96 +1138,51 @@ namespace xtraForm.Modulos.Elementos
 
         private void txtcdVendedor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (int)Keys.Enter)
+            using (var Ctx = new LiderEntities())
             {
-                if (!proceso.ExistenciaCampo("codigo", "Vva_Clientevendedor", "codigo = '" + txtcdCLiente.Text.Trim() + "' and personal = " +
-                    "'" + txtcdVendedor.Text.Trim() + "'  AND (Dia = DATEPART(dw,'" + Convert.ToDateTime(dateEmision.EditValue).ToString("yyyyMMdd") + "'))"))
+                var _RVentas = (from Rv in Ctx.PERSONALs.Where(w => w.Activo == true)
+                                join Fv in Ctx.FuerzaVentas.Where(wx => wx.Activo == true) on Rv.fzavtas equals Fv.fzavtas
+                                select new
+                                {
+                                    Codigo = Rv.Personal1,
+                                    Nombre = Rv.Nombre
+                                }).ToList();
+
+                if (e.KeyChar == (int)Keys.Enter)
                 {
-                    txtcdCLiente.ResetText();
-                    txtnmCliente.ResetText();
-                    txtdocCliente.ResetText();
-                }
-                switch (btnFueraRuta.Checked)
-                {
-                    case true:
-                        var Context_ = new LiderAppEntities();
-                        if (txtcdVendedor.Text.Length == 0)
-                        {
-                            entidad.tabla = "vendedor";
-                            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
-                            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
-                            var ListVendedorA = (from p in Context_.Vva_Vendedor where p.Activo == true select new { Codigo = p.Codigo_vendedor, Nombre = p.Nombre_Vendedor });
-                            var ListVendedorB = (from p in Context_.PERSONAL where p.Activo == true && p.vendedor == 1 select new { Codigo = p.Personal1, Nombre = p.Nombre });
-                            frmvendedor.gridControl1.DataSource = btnFueraRuta.Checked == false ? ListVendedorA.ToList() : ListVendedorB.ToList();
-                            formato.Grilla(frmvendedor.gridView1);
-                            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
-                            frmvendedor.ShowDialog();
-                        }
-                        else if (Context_.PERSONAL.Where(p => p.Personal1.Equals(txtcdVendedor.Text.Trim()) && p.vendedor.Equals(1) && p.Activo.Equals(true)).FirstOrDefault() != null)
-                        {
-                            var Contex = new LiderAppEntities();
-                            txtnmVendedor.Text = (from p in Contex.PERSONAL
-                                                  where p.Activo.Equals(true) && p.vendedor.Equals(1) && p.Personal1.Equals(txtcdVendedor.Text.Trim())
-                                                  select p.Nombre).FirstOrDefault();
-                        }
-                        else if (Context_.PERSONAL.Where(p => p.Personal1.Contains(txtcdVendedor.Text.Trim()) && p.vendedor.Equals(1) && p.Activo.Equals(true)).ToList().Count > 0)
-                        {
-                            var Contex = new LiderAppEntities();
-                            entidad.tabla = "vendedor";
-                            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
-                            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
-                            var ListVendedorB = (from p in Contex.PERSONAL
-                                                 where p.Activo == true && p.vendedor == 1 && p.Personal1.Contains(txtcdVendedor.Text.Trim())
-                                                 select new { Codigo = p.Personal1, Nombre = p.Nombre });
-                            frmvendedor.gridControl1.DataSource = ListVendedorB.ToList();
-                            formato.Grilla(frmvendedor.gridView1);
-                            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
-                            frmvendedor.ShowDialog();
-                        }
-                        else
-                            MessageBox.Show("Codigo no existe");
-                        break;
-                    case false:
-                        var Context = new LiderAppEntities();
-                        if (txtcdVendedor.Text.Length == 0)
-                        {
-                            entidad.tabla = "vendedor";
-                            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
-                            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
-                            var ListVendedorA = (from p in Context.Vva_Vendedor where p.Activo == true select new { Codigo = p.Codigo_vendedor, Nombre = p.Nombre_Vendedor });
-                            var ListVendedorB = (from p in Context.PERSONAL where p.Activo == true && p.vendedor == 1 select new { Codigo = p.Personal1, Nombre = p.Nombre });
-                            frmvendedor.gridControl1.DataSource = btnFueraRuta.Checked == false ? ListVendedorA.ToList() : ListVendedorB.ToList();
-                            formato.Grilla(frmvendedor.gridView1);
-                            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
-                            frmvendedor.ShowDialog();
-                        }
-                        else if ((Context.Vva_Vendedor.Where(p => p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim()) && p.Activo.Equals(true))).FirstOrDefault() != null)
-                        {
-                            var Contex = new LiderAppEntities();
-                            txtnmVendedor.Text = (from p in Context.Vva_Vendedor
-                                                  where p.Activo.Equals(true) && p.Codigo_vendedor.Equals(txtcdVendedor.Text.Trim())
-                                                  select p.Nombre_Vendedor).FirstOrDefault();
-                        }
-                        else if (Context.Vva_Vendedor.Where(p => p.Codigo_vendedor.Contains(txtcdVendedor.Text.Trim()) && p.Activo.Equals(true)).ToList().Count > 0)
-                        {
-                            var Contex = new LiderAppEntities();
-                            entidad.tabla = "vendedor";
-                            Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
-                            frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
-                            var ListVendedorA = (from p in Context.Vva_Vendedor
-                                                 where p.Activo == true && p.Codigo_vendedor.Contains(txtcdVendedor.Text.Trim())
-                                                 select new { Codigo = p.Codigo_vendedor, Nombre = p.Nombre_Vendedor });
-                            frmvendedor.gridControl1.DataSource = ListVendedorA.ToList();
-                            formato.Grilla(frmvendedor.gridView1);
-                            frmvendedor.StartPosition = FormStartPosition.CenterScreen;
-                            frmvendedor.ShowDialog();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Codigo no existe");
-                            txtnmVendedor.ResetText();
-                        }
-                        break;
+                    if (!proceso.ExistenciaCampo("codigo", "Vva_Clientevendedor", "codigo = '" + txtcdCLiente.Text.Trim() + "' and personal = " +
+                        "'" + txtcdVendedor.Text.Trim() + "'  AND (Dia = DATEPART(dw,'" + Convert.ToDateTime(dateEmision.EditValue).ToString("yyyyMMdd") + "'))"))
+                    {
+                        txtcdCLiente.ResetText();
+                        txtnmCliente.ResetText();
+                        txtdocCliente.ResetText();
+                    }
+                    if (txtcdVendedor.Text.Length == 0)
+                    {
+                        Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
+                        frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
+                        frmvendedor.gridControl1.DataSource = _RVentas;
+                        formato.Grilla(frmvendedor.gridView1);
+                        frmvendedor.StartPosition = FormStartPosition.CenterScreen;
+                        frmvendedor.ShowDialog();
+                    }
+                    else if (_RVentas.Where(x => x.Codigo == txtcdVendedor.Text.Trim()).FirstOrDefault() != null)
+                    {
+                        txtnmVendedor.Text = Convert.ToString(_RVentas.Where(x => x.Codigo == txtcdVendedor.Text.Trim()).FirstOrDefault());
+                    }
+                    else if (_RVentas.Where(x => x.Codigo.Contains(txtcdVendedor.Text.Trim())).Count() > 0)
+                    {
+                        Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
+                        frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
+                        frmvendedor.gridControl1.DataSource = _RVentas.Where(x => x.Codigo.Contains(txtcdVendedor.Text.Trim()));
+                        formato.Grilla(frmvendedor.gridView1);
+                        frmvendedor.StartPosition = FormStartPosition.CenterScreen;
+                        frmvendedor.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Codigo no existe");
+                    }
                 }
             }
         }

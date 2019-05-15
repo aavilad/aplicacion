@@ -75,6 +75,9 @@
             this.ListadoProductoClase = new DevExpress.XtraBars.BarButtonItem();
             this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemPopupGalleryEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -93,23 +96,30 @@
             this.MREPORTES = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.REPORTES = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G031 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.MCONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.CONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
             // 
             this.ribbonControl1.Categories.AddRange(new DevExpress.XtraBars.BarManagerCategory[] {
-            new DevExpress.XtraBars.BarManagerCategory("VENTAS", new System.Guid("38b9411c-051d-4729-811b-f148a16da82d")),
-            new DevExpress.XtraBars.BarManagerCategory("COMPRAS", new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460")),
-            new DevExpress.XtraBars.BarManagerCategory("SKIN", new System.Guid("367e2d27-c8ef-4234-807e-ed8f91701ee0")),
-            new DevExpress.XtraBars.BarManagerCategory("REPORTES", new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539")),
-            new DevExpress.XtraBars.BarManagerCategory("INVENTARIOS", new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520")),
-            new DevExpress.XtraBars.BarManagerCategory("DISTRIBUCION", new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2"))});
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories"))),
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories1"))),
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories2"))),
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories3"))),
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories4"))),
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories5"))),
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories6")))});
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
@@ -157,23 +167,32 @@
             this.ListadoPorRuta,
             this.ListadoProductoClase,
             this.skinPaletteRibbonGalleryBarItem1,
-            this.barButtonItem1});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 6;
+            this.barButtonItem1,
+            this.barEditItem2,
+            this.barButtonItem3});
+            resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
+            this.ribbonControl1.MaxItemId = 2;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
             this.MCOMPRAS,
             this.MDISTRIBUCION,
             this.MINVENTARIOS,
-            this.MREPORTES});
-            this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1);
+            this.MREPORTES,
+            this.MCONFIGURACION});
+            this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1, "S");
+            this.ribbonControl1.QuickToolbarItemLinks.Add(this.DESCARGAPEDIDO);
+            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemPopupGalleryEdit1,
+            this.repositoryItemPopupContainerEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
-            this.ribbonControl1.Size = new System.Drawing.Size(977, 143);
+            this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbonControl1.ShowToolbarCustomizeItem = false;
+            this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             // 
             // PEDIDOVENTA
             // 
-            this.PEDIDOVENTA.Caption = "Pedidos";
+            resources.ApplyResources(this.PEDIDOVENTA, "PEDIDOVENTA");
             this.PEDIDOVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.PEDIDOVENTA.Id = 1;
             this.PEDIDOVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("PEDIDOVENTA.ImageOptions.SvgImage")));
@@ -182,7 +201,7 @@
             // 
             // COMPROBANTEVENTA
             // 
-            this.COMPROBANTEVENTA.Caption = "Comprobantes";
+            resources.ApplyResources(this.COMPROBANTEVENTA, "COMPROBANTEVENTA");
             this.COMPROBANTEVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.COMPROBANTEVENTA.Id = 3;
             this.COMPROBANTEVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("COMPROBANTEVENTA.ImageOptions.SvgImage")));
@@ -191,7 +210,7 @@
             // 
             // BONIFICACION
             // 
-            this.BONIFICACION.Caption = "Bonificacion";
+            resources.ApplyResources(this.BONIFICACION, "BONIFICACION");
             this.BONIFICACION.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.BONIFICACION.Id = 4;
             this.BONIFICACION.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BONIFICACION.ImageOptions.SvgImage")));
@@ -200,7 +219,7 @@
             // 
             // CLIENTES
             // 
-            this.CLIENTES.Caption = "Clientes";
+            resources.ApplyResources(this.CLIENTES, "CLIENTES");
             this.CLIENTES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.CLIENTES.Id = 5;
             this.CLIENTES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CLIENTES.ImageOptions.SvgImage")));
@@ -209,7 +228,7 @@
             // 
             // VENDEDORES
             // 
-            this.VENDEDORES.Caption = "Vendedores";
+            resources.ApplyResources(this.VENDEDORES, "VENDEDORES");
             this.VENDEDORES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.VENDEDORES.Id = 6;
             this.VENDEDORES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENDEDORES.ImageOptions.SvgImage")));
@@ -217,7 +236,7 @@
             // 
             // INVENTARIOPRODUCTO
             // 
-            this.INVENTARIOPRODUCTO.Caption = "Inventarios";
+            resources.ApplyResources(this.INVENTARIOPRODUCTO, "INVENTARIOPRODUCTO");
             this.INVENTARIOPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
             this.INVENTARIOPRODUCTO.Id = 9;
             this.INVENTARIOPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("INVENTARIOPRODUCTO.ImageOptions.SvgImage")));
@@ -225,7 +244,7 @@
             // 
             // EXISTENCIAPRODUCTO
             // 
-            this.EXISTENCIAPRODUCTO.Caption = "Existencias";
+            resources.ApplyResources(this.EXISTENCIAPRODUCTO, "EXISTENCIAPRODUCTO");
             this.EXISTENCIAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
             this.EXISTENCIAPRODUCTO.Id = 11;
             this.EXISTENCIAPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EXISTENCIAPRODUCTO.ImageOptions.Image")));
@@ -235,7 +254,7 @@
             // 
             // MARCAPRODUCTO
             // 
-            this.MARCAPRODUCTO.Caption = "Marcas";
+            resources.ApplyResources(this.MARCAPRODUCTO, "MARCAPRODUCTO");
             this.MARCAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
             this.MARCAPRODUCTO.Id = 12;
             this.MARCAPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("MARCAPRODUCTO.ImageOptions.Image")));
@@ -245,7 +264,7 @@
             // 
             // GRUPOPRODUCTO
             // 
-            this.GRUPOPRODUCTO.Caption = "Grupos";
+            resources.ApplyResources(this.GRUPOPRODUCTO, "GRUPOPRODUCTO");
             this.GRUPOPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
             this.GRUPOPRODUCTO.Id = 13;
             this.GRUPOPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GRUPOPRODUCTO.ImageOptions.Image")));
@@ -254,7 +273,7 @@
             // 
             // LINEAPRODUCTO
             // 
-            this.LINEAPRODUCTO.Caption = "Lineas";
+            resources.ApplyResources(this.LINEAPRODUCTO, "LINEAPRODUCTO");
             this.LINEAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
             this.LINEAPRODUCTO.Id = 14;
             this.LINEAPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("LINEAPRODUCTO.ImageOptions.Image")));
@@ -263,7 +282,7 @@
             // 
             // VENTASREPORTE
             // 
-            this.VENTASREPORTE.Caption = "Ventas";
+            resources.ApplyResources(this.VENTASREPORTE, "VENTASREPORTE");
             this.VENTASREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
             this.VENTASREPORTE.Id = 15;
             this.VENTASREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENTASREPORTE.ImageOptions.SvgImage")));
@@ -273,7 +292,7 @@
             // 
             // COMPRAREPORTE
             // 
-            this.COMPRAREPORTE.Caption = "Compras";
+            resources.ApplyResources(this.COMPRAREPORTE, "COMPRAREPORTE");
             this.COMPRAREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
             this.COMPRAREPORTE.Id = 16;
             this.COMPRAREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("COMPRAREPORTE.ImageOptions.SvgImage")));
@@ -283,7 +302,7 @@
             // 
             // INVENTARIOREPORTE
             // 
-            this.INVENTARIOREPORTE.Caption = "Inventario";
+            resources.ApplyResources(this.INVENTARIOREPORTE, "INVENTARIOREPORTE");
             this.INVENTARIOREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
             this.INVENTARIOREPORTE.Id = 18;
             this.INVENTARIOREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("INVENTARIOREPORTE.ImageOptions.SvgImage")));
@@ -293,7 +312,7 @@
             // 
             // DESCARGAPEDIDO
             // 
-            this.DESCARGAPEDIDO.Caption = "Descargar Pedidos";
+            resources.ApplyResources(this.DESCARGAPEDIDO, "DESCARGAPEDIDO");
             this.DESCARGAPEDIDO.Id = 19;
             this.DESCARGAPEDIDO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("DESCARGAPEDIDO.ImageOptions.SvgImage")));
             this.DESCARGAPEDIDO.Name = "DESCARGAPEDIDO";
@@ -301,7 +320,7 @@
             // 
             // barButtonItem4
             // 
-            this.barButtonItem4.Caption = "Duplicados";
+            resources.ApplyResources(this.barButtonItem4, "barButtonItem4");
             this.barButtonItem4.Enabled = false;
             this.barButtonItem4.Id = 20;
             this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
@@ -309,7 +328,7 @@
             // 
             // btnPesos
             // 
-            this.btnPesos.Caption = "Mostar";
+            resources.ApplyResources(this.btnPesos, "btnPesos");
             this.btnPesos.Id = 21;
             this.btnPesos.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPesos.ImageOptions.SvgImage")));
             this.btnPesos.Name = "btnPesos";
@@ -317,7 +336,7 @@
             // 
             // DESCUENTO
             // 
-            this.DESCUENTO.Caption = "Descuento";
+            resources.ApplyResources(this.DESCUENTO, "DESCUENTO");
             this.DESCUENTO.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.DESCUENTO.Enabled = false;
             this.DESCUENTO.Id = 25;
@@ -326,7 +345,7 @@
             // 
             // NOTACREDITOVENTA
             // 
-            this.NOTACREDITOVENTA.Caption = "Notas Credito";
+            resources.ApplyResources(this.NOTACREDITOVENTA, "NOTACREDITOVENTA");
             this.NOTACREDITOVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.NOTACREDITOVENTA.Id = 26;
             this.NOTACREDITOVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTACREDITOVENTA.ImageOptions.SvgImage")));
@@ -335,7 +354,7 @@
             // 
             // BONIFICAR
             // 
-            this.BONIFICAR.Caption = "Bonificar";
+            resources.ApplyResources(this.BONIFICAR, "BONIFICAR");
             this.BONIFICAR.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.BONIFICAR.Id = 27;
             this.BONIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BONIFICAR.ImageOptions.SvgImage")));
@@ -344,7 +363,7 @@
             // 
             // ORDENCOMPRA
             // 
-            this.ORDENCOMPRA.Caption = "Ordenes";
+            resources.ApplyResources(this.ORDENCOMPRA, "ORDENCOMPRA");
             this.ORDENCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
             this.ORDENCOMPRA.Id = 41;
             this.ORDENCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ORDENCOMPRA.ImageOptions.SvgImage")));
@@ -353,7 +372,7 @@
             // 
             // NOTACREDITOCOMPRA
             // 
-            this.NOTACREDITOCOMPRA.Caption = "Nota Credito";
+            resources.ApplyResources(this.NOTACREDITOCOMPRA, "NOTACREDITOCOMPRA");
             this.NOTACREDITOCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
             this.NOTACREDITOCOMPRA.Id = 42;
             this.NOTACREDITOCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTACREDITOCOMPRA.ImageOptions.SvgImage")));
@@ -361,7 +380,7 @@
             // 
             // NOTADEBITOCOMPRA
             // 
-            this.NOTADEBITOCOMPRA.Caption = "Nota Debito";
+            resources.ApplyResources(this.NOTADEBITOCOMPRA, "NOTADEBITOCOMPRA");
             this.NOTADEBITOCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
             this.NOTADEBITOCOMPRA.Id = 43;
             this.NOTADEBITOCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTADEBITOCOMPRA.ImageOptions.SvgImage")));
@@ -369,7 +388,7 @@
             // 
             // barButtonItem20
             // 
-            this.barButtonItem20.Caption = "Proveedor";
+            resources.ApplyResources(this.barButtonItem20, "barButtonItem20");
             this.barButtonItem20.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
             this.barButtonItem20.Id = 44;
             this.barButtonItem20.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem20.ImageOptions.SvgImage")));
@@ -377,7 +396,7 @@
             // 
             // CLASEPRODUCTO
             // 
-            this.CLASEPRODUCTO.Caption = "Clases";
+            resources.ApplyResources(this.CLASEPRODUCTO, "CLASEPRODUCTO");
             this.CLASEPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
             this.CLASEPRODUCTO.Id = 45;
             this.CLASEPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("CLASEPRODUCTO.ImageOptions.Image")));
@@ -387,7 +406,7 @@
             // 
             // PLANTILLAPRODUCTO
             // 
-            this.PLANTILLAPRODUCTO.Caption = "Plantilla";
+            resources.ApplyResources(this.PLANTILLAPRODUCTO, "PLANTILLAPRODUCTO");
             this.PLANTILLAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
             this.PLANTILLAPRODUCTO.Id = 46;
             this.PLANTILLAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("PLANTILLAPRODUCTO.ImageOptions.SvgImage")));
@@ -395,7 +414,7 @@
             // 
             // FACTURARVENTA
             // 
-            this.FACTURARVENTA.Caption = "Canjear";
+            resources.ApplyResources(this.FACTURARVENTA, "FACTURARVENTA");
             this.FACTURARVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.FACTURARVENTA.Id = 47;
             this.FACTURARVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURARVENTA.ImageOptions.SvgImage")));
@@ -404,7 +423,7 @@
             // 
             // CONTROLGENERA
             // 
-            this.CONTROLGENERA.Caption = "Correlativo";
+            resources.ApplyResources(this.CONTROLGENERA, "CONTROLGENERA");
             this.CONTROLGENERA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.CONTROLGENERA.Id = 48;
             this.CONTROLGENERA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CONTROLGENERA.ImageOptions.SvgImage")));
@@ -413,7 +432,7 @@
             // 
             // LISTAPRECIOS
             // 
-            this.LISTAPRECIOS.Caption = "LIstaPrecios";
+            resources.ApplyResources(this.LISTAPRECIOS, "LISTAPRECIOS");
             this.LISTAPRECIOS.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.LISTAPRECIOS.Id = 55;
             this.LISTAPRECIOS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("LISTAPRECIOS.ImageOptions.SvgImage")));
@@ -422,7 +441,7 @@
             // 
             // VALIDARBONIFICACION
             // 
-            this.VALIDARBONIFICACION.Caption = "Validacion";
+            resources.ApplyResources(this.VALIDARBONIFICACION, "VALIDARBONIFICACION");
             this.VALIDARBONIFICACION.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.VALIDARBONIFICACION.Id = 56;
             this.VALIDARBONIFICACION.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VALIDARBONIFICACION.ImageOptions.SvgImage")));
@@ -431,7 +450,7 @@
             // 
             // RUTAS
             // 
-            this.RUTAS.Caption = "Rutas";
+            resources.ApplyResources(this.RUTAS, "RUTAS");
             this.RUTAS.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
             this.RUTAS.Id = 57;
             this.RUTAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("RUTAS.ImageOptions.SvgImage")));
@@ -439,7 +458,7 @@
             // 
             // REPARTO
             // 
-            this.REPARTO.Caption = "Reparto";
+            resources.ApplyResources(this.REPARTO, "REPARTO");
             this.REPARTO.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
             this.REPARTO.Id = 58;
             this.REPARTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REPARTO.ImageOptions.SvgImage")));
@@ -447,7 +466,7 @@
             // 
             // ZONA
             // 
-            this.ZONA.Caption = "Zona de venta";
+            resources.ApplyResources(this.ZONA, "ZONA");
             this.ZONA.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
             this.ZONA.Id = 59;
             this.ZONA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ZONA.ImageOptions.SvgImage")));
@@ -461,66 +480,67 @@
             // 
             // NUEVO
             // 
-            this.NUEVO.Caption = "Nuevo";
+            resources.ApplyResources(this.NUEVO, "NUEVO");
             this.NUEVO.Id = 1;
             this.NUEVO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NUEVO.ImageOptions.SvgImage")));
             this.NUEVO.Name = "NUEVO";
             // 
             // ABRIR
             // 
-            this.ABRIR.Caption = "Abrir";
+            resources.ApplyResources(this.ABRIR, "ABRIR");
             this.ABRIR.Id = 2;
             this.ABRIR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ABRIR.ImageOptions.SvgImage")));
             this.ABRIR.Name = "ABRIR";
             // 
             // MODIFICAR
             // 
-            this.MODIFICAR.Caption = "Modificar";
+            resources.ApplyResources(this.MODIFICAR, "MODIFICAR");
             this.MODIFICAR.Id = 3;
             this.MODIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MODIFICAR.ImageOptions.SvgImage")));
             this.MODIFICAR.Name = "MODIFICAR";
             // 
             // FILTRO
             // 
-            this.FILTRO.Caption = "Filtro";
+            resources.ApplyResources(this.FILTRO, "FILTRO");
             this.FILTRO.Id = 4;
             this.FILTRO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FILTRO.ImageOptions.SvgImage")));
             this.FILTRO.Name = "FILTRO";
             // 
             // ELIMINAR
             // 
-            this.ELIMINAR.Caption = "Eliminar";
+            resources.ApplyResources(this.ELIMINAR, "ELIMINAR");
             this.ELIMINAR.Id = 5;
             this.ELIMINAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ELIMINAR.ImageOptions.SvgImage")));
             this.ELIMINAR.Name = "ELIMINAR";
             // 
             // ANULAR
             // 
-            this.ANULAR.Caption = "Anular";
+            resources.ApplyResources(this.ANULAR, "ANULAR");
             this.ANULAR.Id = 6;
             this.ANULAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ANULAR.ImageOptions.SvgImage")));
             this.ANULAR.Name = "ANULAR";
             // 
             // FACTURAR
             // 
-            this.FACTURAR.Caption = "Facturar";
+            resources.ApplyResources(this.FACTURAR, "FACTURAR");
             this.FACTURAR.Id = 7;
             this.FACTURAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURAR.ImageOptions.SvgImage")));
             this.FACTURAR.Name = "FACTURAR";
             // 
             // barSubItem1
             // 
-            this.barSubItem1.Caption = "Distribucion";
+            resources.ApplyResources(this.barSubItem1, "barSubItem1");
             this.barSubItem1.Id = 18;
             this.barSubItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoPorRuta),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ListadoProductoClase)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ListadoProductoClase),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // ListadoPorRuta
             // 
-            this.ListadoPorRuta.Caption = "Listado Producto Por Ruta";
+            resources.ApplyResources(this.ListadoPorRuta, "ListadoPorRuta");
             this.ListadoPorRuta.Id = 19;
             this.ListadoPorRuta.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ListadoPorRuta.ImageOptions.SvgImage")));
             this.ListadoPorRuta.Name = "ListadoPorRuta";
@@ -528,7 +548,7 @@
             // 
             // ListadoProductoClase
             // 
-            this.ListadoProductoClase.Caption = "Listado Producto Clase";
+            resources.ApplyResources(this.ListadoProductoClase, "ListadoProductoClase");
             this.ListadoProductoClase.Id = 1;
             this.ListadoProductoClase.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ListadoProductoClase.ImageOptions.SvgImage")));
             this.ListadoProductoClase.Name = "ListadoProductoClase";
@@ -536,22 +556,45 @@
             // 
             // skinPaletteRibbonGalleryBarItem1
             // 
-            this.skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
+            resources.ApplyResources(this.skinPaletteRibbonGalleryBarItem1, "skinPaletteRibbonGalleryBarItem1");
             this.skinPaletteRibbonGalleryBarItem1.Id = 4;
             this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "barButtonItem1";
+            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
             this.barButtonItem1.Id = 5;
+            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // repositoryItemPopupGalleryEdit1
+            // 
+            resources.ApplyResources(this.repositoryItemPopupGalleryEdit1, "repositoryItemPopupGalleryEdit1");
+            this.repositoryItemPopupGalleryEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemPopupGalleryEdit1.Buttons"))))});
+            this.repositoryItemPopupGalleryEdit1.Name = "repositoryItemPopupGalleryEdit1";
+            // 
+            // barEditItem2
+            // 
+            resources.ApplyResources(this.barEditItem2, "barEditItem2");
+            this.barEditItem2.CategoryGuid = new System.Guid("92273108-deb3-486b-9505-35d7e164aa9e");
+            this.barEditItem2.Edit = this.repositoryItemPopupContainerEdit1;
+            this.barEditItem2.Id = 12;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
+            // repositoryItemPopupContainerEdit1
+            // 
+            resources.ApplyResources(this.repositoryItemPopupContainerEdit1, "repositoryItemPopupContainerEdit1");
+            this.repositoryItemPopupContainerEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemPopupContainerEdit1.Buttons"))))});
+            this.repositoryItemPopupContainerEdit1.Name = "repositoryItemPopupContainerEdit1";
             // 
             // MVENTAS
             // 
             this.MVENTAS.Name = "MVENTAS";
             this.MVENTAS.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.VENTAS});
-            this.MVENTAS.Text = "MODULO VENTAS";
+            resources.ApplyResources(this.MVENTAS, "MVENTAS");
             // 
             // VENTAS
             // 
@@ -562,7 +605,7 @@
             this.G04});
             this.VENTAS.KeyTip = "V";
             this.VENTAS.Name = "VENTAS";
-            this.VENTAS.Text = "VENTAS";
+            resources.ApplyResources(this.VENTAS, "VENTAS");
             // 
             // G01
             // 
@@ -572,7 +615,7 @@
             this.G01.ItemLinks.Add(this.CLIENTES);
             this.G01.ItemLinks.Add(this.VENDEDORES);
             this.G01.Name = "G01";
-            this.G01.Text = "Entidades";
+            resources.ApplyResources(this.G01, "G01");
             // 
             // G02
             // 
@@ -581,28 +624,27 @@
             this.G02.ItemLinks.Add(this.BONIFICAR);
             this.G02.ItemLinks.Add(this.VALIDARBONIFICACION);
             this.G02.Name = "G02";
-            this.G02.Text = "Reglas Bonificacion";
+            resources.ApplyResources(this.G02, "G02");
             // 
             // G03
             // 
             this.G03.ItemLinks.Add(this.FACTURARVENTA);
             this.G03.ItemLinks.Add(this.CONTROLGENERA);
-            this.G03.ItemLinks.Add(this.DESCARGAPEDIDO);
             this.G03.Name = "G03";
-            this.G03.Text = "Facturar Documentos";
+            resources.ApplyResources(this.G03, "G03");
             // 
             // G04
             // 
             this.G04.ItemLinks.Add(this.LISTAPRECIOS);
             this.G04.Name = "G04";
-            this.G04.Text = "Lista Precios";
+            resources.ApplyResources(this.G04, "G04");
             // 
             // MCOMPRAS
             // 
             this.MCOMPRAS.Name = "MCOMPRAS";
             this.MCOMPRAS.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.COMPRAS});
-            this.MCOMPRAS.Text = "MODULO COMPRAS";
+            resources.ApplyResources(this.MCOMPRAS, "MCOMPRAS");
             // 
             // COMPRAS
             // 
@@ -610,7 +652,7 @@
             this.G001});
             this.COMPRAS.KeyTip = "C";
             this.COMPRAS.Name = "COMPRAS";
-            this.COMPRAS.Text = "COMPRAS";
+            resources.ApplyResources(this.COMPRAS, "COMPRAS");
             // 
             // G001
             // 
@@ -619,14 +661,14 @@
             this.G001.ItemLinks.Add(this.NOTADEBITOCOMPRA);
             this.G001.ItemLinks.Add(this.barButtonItem20);
             this.G001.Name = "G001";
-            this.G001.Text = "Entidades";
+            resources.ApplyResources(this.G001, "G001");
             // 
             // MDISTRIBUCION
             // 
             this.MDISTRIBUCION.Name = "MDISTRIBUCION";
             this.MDISTRIBUCION.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.DISTRIBUCION});
-            this.MDISTRIBUCION.Text = "MODULO DISTRIBUCION";
+            resources.ApplyResources(this.MDISTRIBUCION, "MDISTRIBUCION");
             // 
             // DISTRIBUCION
             // 
@@ -634,19 +676,19 @@
             this.G011});
             this.DISTRIBUCION.KeyTip = "D";
             this.DISTRIBUCION.Name = "DISTRIBUCION";
-            this.DISTRIBUCION.Text = "DISTRIBUCION";
+            resources.ApplyResources(this.DISTRIBUCION, "DISTRIBUCION");
             // 
             // G011
             // 
             this.G011.Name = "G011";
-            this.G011.Text = "ribbonPageGroup1";
+            resources.ApplyResources(this.G011, "G011");
             // 
             // MINVENTARIOS
             // 
             this.MINVENTARIOS.Name = "MINVENTARIOS";
             this.MINVENTARIOS.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.INVENTARIOS});
-            this.MINVENTARIOS.Text = "MODULO INVENTARIOS";
+            resources.ApplyResources(this.MINVENTARIOS, "MINVENTARIOS");
             // 
             // INVENTARIOS
             // 
@@ -654,7 +696,7 @@
             this.G021});
             this.INVENTARIOS.KeyTip = "I";
             this.INVENTARIOS.Name = "INVENTARIOS";
-            this.INVENTARIOS.Text = "INVENTARIOS";
+            resources.ApplyResources(this.INVENTARIOS, "INVENTARIOS");
             // 
             // G021
             // 
@@ -666,14 +708,14 @@
             this.G021.ItemLinks.Add(this.MARCAPRODUCTO);
             this.G021.ItemLinks.Add(this.PLANTILLAPRODUCTO);
             this.G021.Name = "G021";
-            this.G021.Text = "ribbonPageGroup1";
+            resources.ApplyResources(this.G021, "G021");
             // 
             // MREPORTES
             // 
             this.MREPORTES.Name = "MREPORTES";
             this.MREPORTES.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.REPORTES});
-            this.MREPORTES.Text = "MODULO REPORTES";
+            resources.ApplyResources(this.MREPORTES, "MREPORTES");
             // 
             // REPORTES
             // 
@@ -681,7 +723,7 @@
             this.G031});
             this.REPORTES.KeyTip = "R";
             this.REPORTES.Name = "REPORTES";
-            this.REPORTES.Text = "REPORTES";
+            resources.ApplyResources(this.REPORTES, "REPORTES");
             // 
             // G031
             // 
@@ -691,16 +733,36 @@
             this.G031.ItemLinks.Add(this.barSubItem1);
             this.G031.ItemLinks.Add(this.barButtonItem1);
             this.G031.Name = "G031";
-            this.G031.Text = "ribbonPageGroup1";
+            resources.ApplyResources(this.G031, "G031");
+            // 
+            // MCONFIGURACION
+            // 
+            this.MCONFIGURACION.Name = "MCONFIGURACION";
+            this.MCONFIGURACION.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.CONFIGURACION});
+            resources.ApplyResources(this.MCONFIGURACION, "MCONFIGURACION");
+            // 
+            // CONFIGURACION
+            // 
+            this.CONFIGURACION.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.CONFIGURACION.KeyTip = "O";
+            this.CONFIGURACION.Name = "CONFIGURACION";
+            resources.ApplyResources(this.CONFIGURACION, "CONFIGURACION");
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            resources.ApplyResources(this.ribbonPageGroup1, "ribbonPageGroup1");
             // 
             // ribbonPage2
             // 
             this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "ribbonPage2";
+            resources.ApplyResources(this.ribbonPage2, "ribbonPage2");
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "Pedidos";
+            resources.ApplyResources(this.barButtonItem2, "barButtonItem2");
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -708,26 +770,25 @@
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.HeaderButtons = ((DevExpress.XtraTab.TabButtons)(((DevExpress.XtraTab.TabButtons.Prev | DevExpress.XtraTab.TabButtons.Next) 
-            | DevExpress.XtraTab.TabButtons.Close)));
-            this.xtraTabControl1.HeaderButtonsShowMode = DevExpress.XtraTab.TabButtonShowMode.Always;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 143);
+            resources.ApplyResources(this.xtraTabControl1, "xtraTabControl1");
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.PaintStyleName = "Skin";
-            this.xtraTabControl1.Size = new System.Drawing.Size(977, 429);
-            this.xtraTabControl1.TabIndex = 5;
             this.xtraTabControl1.HeaderButtonClick += new DevExpress.XtraTab.ViewInfo.HeaderButtonEventHandler(this.xtraTabControl1_HeaderButtonClick);
             // 
             // splashScreenManager1
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // barButtonItem3
+            // 
+            resources.ApplyResources(this.barButtonItem3, "barButtonItem3");
+            this.barButtonItem3.Id = 1;
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 572);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
@@ -735,6 +796,8 @@
             this.Ribbon = this.ribbonControl1;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -811,5 +874,12 @@
         private DevExpress.XtraBars.BarButtonItem ListadoProductoClase;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory MCONFIGURACION;
+        private DevExpress.XtraBars.Ribbon.RibbonPage CONFIGURACION;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit repositoryItemPopupGalleryEdit1;
+        private DevExpress.XtraBars.BarEditItem barEditItem2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit repositoryItemPopupContainerEdit1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

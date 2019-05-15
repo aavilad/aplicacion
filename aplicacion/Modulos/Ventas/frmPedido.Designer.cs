@@ -71,6 +71,7 @@
             this.gridView1.AppearancePrint.FooterPanel.Options.UseFont = true;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.gridView1.OptionsHint.ShowFooterHints = false;
             this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridView1.OptionsSelection.MultiSelect = true;
@@ -134,7 +135,7 @@
             // 
             this.FACTURAR.Caption = "Facturar";
             this.FACTURAR.Id = 5;
-            this.FACTURAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.FACTURAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURAR.ImageOptions.SvgImage")));
             this.FACTURAR.Name = "FACTURAR";
             this.FACTURAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 

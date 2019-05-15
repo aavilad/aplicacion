@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -26,13 +25,13 @@ namespace xtraForm.Modulos.Elementos
 
         private void frmMarca_Load(object sender, EventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
-                txtMarcaProveedor.Properties.DataSource = Context.PROVEEDOR.Select(x => new { Codigo = x.Proveedor1.Trim(), Nombre = x.RazonSocial.Trim() }).ToList();
+                txtMarcaProveedor.Properties.DataSource = Context.PROVEEDORs.Select(x => new { Codigo = x.Proveedor1.Trim(), Nombre = x.RazonSocial.Trim() }).ToList();
                 txtMarcaProveedor.Properties.DisplayMember = "Nombre";
                 txtMarcaProveedor.Properties.ValueMember = "Codigo";
                 txtMarcaProveedor.Properties.Columns.Add(new LookUpColumnInfo("Nombre", string.Empty));
-                txtMarcaLinea.Properties.DataSource = Context.LINEA.Select(x => new { Codigo = x.Linea1.Trim(), Nombre = x.Descripcion.Trim() }).ToList();
+                txtMarcaLinea.Properties.DataSource = Context.LINEAs.Select(x => new { Codigo = x.Linea1.Trim(), Nombre = x.Descripcion.Trim() }).ToList();
                 txtMarcaLinea.Properties.DisplayMember = "Nombre";
                 txtMarcaLinea.Properties.ValueMember = "Codigo";
                 txtMarcaLinea.Properties.Columns.Add(new LookUpColumnInfo("Nombre", string.Empty));

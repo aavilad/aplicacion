@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -29,24 +28,24 @@ namespace xtraForm.Modulos.Elementos
 
         private void frmProducto_Load(object sender, EventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
-                TxtNmProveedor.Properties.DataSource = Context.PROVEEDOR.Select(p => new { Codigo = p.Proveedor1.Trim(), Nombre = p.RazonSocial.Trim() }).ToList();
+                TxtNmProveedor.Properties.DataSource = Context.PROVEEDORs.Select(p => new { Codigo = p.Proveedor1.Trim(), Nombre = p.RazonSocial.Trim() }).ToList();
                 TxtNmProveedor.Properties.DisplayMember = "Nombre";
                 TxtNmProveedor.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaA = TxtNmProveedor.Properties.Columns;
                 ColumnaA.Add(new LookUpColumnInfo("Nombre", string.Empty));
-                TxtLinea.Properties.DataSource = Context.LINEA.Select(p => new { Codigo = p.Linea1.Trim(), Descripcion = p.Descripcion.Trim() }).ToList();
+                TxtLinea.Properties.DataSource = Context.LINEAs.Select(p => new { Codigo = p.Linea1.Trim(), Descripcion = p.Descripcion.Trim() }).ToList();
                 TxtLinea.Properties.DisplayMember = "Descripcion";
                 TxtLinea.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaB = TxtLinea.Properties.Columns;
                 ColumnaB.Add(new LookUpColumnInfo("Descripcion", string.Empty));
-                TxtMarca.Properties.DataSource = Context.MARCA.Select(p => new { Codigo = p.Marca1.Trim(), Descripcion = p.Descripcion.Trim() }).ToList();
+                TxtMarca.Properties.DataSource = Context.MARCAs.Select(p => new { Codigo = p.Marca1.Trim(), Descripcion = p.Descripcion.Trim() }).ToList();
                 TxtMarca.Properties.DisplayMember = "Descripcion";
                 TxtMarca.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaC = TxtMarca.Properties.Columns;
                 ColumnaC.Add(new LookUpColumnInfo("Descripcion", string.Empty));
-                TxtGrupo.Properties.DataSource = Context.grupo.Select(p => new { Codigo = p.grupo1.Trim(), Descripcion = p.descrip.Trim() }).ToList();
+                TxtGrupo.Properties.DataSource = Context.grupoes.Select(p => new { Codigo = p.grupo1.Trim(), Descripcion = p.descrip.Trim() }).ToList();
                 TxtGrupo.Properties.DisplayMember = "Descripcion";
                 TxtGrupo.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaD = TxtGrupo.Properties.Columns;
@@ -56,12 +55,12 @@ namespace xtraForm.Modulos.Elementos
                 TxtClase.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaE = TxtClase.Properties.Columns;
                 ColumnaE.Add(new LookUpColumnInfo("Descripcion", string.Empty));
-                TxtCategoria.Properties.DataSource = Context.categoria.Select(p => new { Codigo = p.categoria1.Trim(), Descripcion = p.descrip.Trim() }).ToList();
+                TxtCategoria.Properties.DataSource = Context.categorias.Select(p => new { Codigo = p.categoria1.Trim(), Descripcion = p.descrip.Trim() }).ToList();
                 TxtCategoria.Properties.DisplayMember = "Descripcion";
                 TxtCategoria.Properties.ValueMember = "Codigo";
                 LookUpColumnInfoCollection ColumnaF = TxtCategoria.Properties.Columns;
                 ColumnaF.Add(new LookUpColumnInfo("Descripcion", string.Empty));
-                TxtProductoMedida.Properties.DataSource = Context.PlantillaUnidad.ToList();
+                TxtProductoMedida.Properties.DataSource = Context.PlantillaUnidads.ToList();
                 TxtProductoMedida.Properties.DisplayMember = "Descripcion";
                 TxtProductoMedida.Properties.ValueMember = "PKID";
                 TxtProductoMedida.Properties.Columns.Add(new LookUpColumnInfo("Descripcion", string.Empty));
@@ -134,10 +133,10 @@ namespace xtraForm.Modulos.Elementos
         {
             if (!Existe)
             {
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
                     int valor = Convert.ToInt32(TxtProductoMedida.EditValue);
-                    TxtFactorMinimo.EditValue = Context.PlantillaUnidad.Where(x => x.PKID == valor).Select(p => p.Factor).FirstOrDefault(); ;
+                    TxtFactorMinimo.EditValue = Context.PlantillaUnidads.Where(x => x.PKID == valor).Select(p => p.Factor).FirstOrDefault(); ;
                 }
             }
         }

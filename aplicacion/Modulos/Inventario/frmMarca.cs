@@ -10,8 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
-using xtraForm.Model.Conexion.edmx.Conexion.tt;
 
 namespace xtraForm.Modulos.Inventario
 {
@@ -30,22 +28,22 @@ namespace xtraForm.Modulos.Inventario
 
         private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
                 Filtros.frmFiltros filtro = new Filtros.frmFiltros();
                 DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
-                i.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
                 i.DisplayMember = "Descripcion";
                 i.ValueMember = "Codigo";
                 DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
-                j.DataSource = Context.FiltroConfiguracion.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
                 j.DisplayMember = "Descripcion";
                 j.ValueMember = "Codigo";
                 DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
                 k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'" + tabla + "'").ToList();
                 filtro.pasar += new Filtros.frmFiltros.variables(condicion);
                 filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtro.Where(w => w.tabla.Equals(tabla)).ToList())
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
                 {
                     filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
                 }
@@ -104,16 +102,16 @@ namespace xtraForm.Modulos.Inventario
         {
             try
             {
-                using (var Context = new LiderAppEntities())
+                using (var Context = new LiderEntities())
                 {
                     var frmmarca = new Elementos.frmMarca();
                     frmmarca.pasar += new Elementos.frmMarca.Variables(Campos);
                     string Codigo_ = Convert.ToString(gridView1.GetFocusedRowCellValue("Codigo")).Trim();
-                    string Descripcion_ = Convert.ToString(Context.MARCA.Where(x => x.Marca1 == Codigo_).Select(p => p.Descripcion).FirstOrDefault());
-                    string Abreviacion_ = Convert.ToString(Context.MARCA.Where(x => x.Marca1 == Codigo_).Select(p => p.Descorta).FirstOrDefault());
-                    string Orden_ = Convert.ToString(Context.MARCA.Where(x => x.Marca1 == Codigo_).Select(p => p.Orden).FirstOrDefault());
-                    string Proveedor_ = Convert.ToString(Context.MARCA.Where(x => x.Marca1 == Codigo_).Select(p => p.Proveedor).FirstOrDefault());
-                    string Linea_ = Convert.ToString(Context.MARCA.Where(x => x.Marca1 == Codigo_).Select(p => p.Linea).FirstOrDefault());
+                    string Descripcion_ = Convert.ToString(Context.MARCAs.Where(x => x.Marca1 == Codigo_).Select(p => p.Descripcion).FirstOrDefault());
+                    string Abreviacion_ = Convert.ToString(Context.MARCAs.Where(x => x.Marca1 == Codigo_).Select(p => p.Descorta).FirstOrDefault());
+                    string Orden_ = Convert.ToString(Context.MARCAs.Where(x => x.Marca1 == Codigo_).Select(p => p.Orden).FirstOrDefault());
+                    string Proveedor_ = Convert.ToString(Context.MARCAs.Where(x => x.Marca1 == Codigo_).Select(p => p.Proveedor).FirstOrDefault());
+                    string Linea_ = Convert.ToString(Context.MARCAs.Where(x => x.Marca1 == Codigo_).Select(p => p.Linea).FirstOrDefault());
                     frmmarca.txtMarcaCodigo.Text = Codigo_;
                     frmmarca.txtMarcaDescripcion.Text = Descripcion_;
                     frmmarca.txtMarcaAbreviacion.Text = Abreviacion_;
@@ -133,10 +131,10 @@ namespace xtraForm.Modulos.Inventario
         }
         void Campos(string MarcaCodigo, string MarcaOrden, string MarcaProveedor, string MarcaLinea, string MarcaDescripcion, string MarcaAbreviacion)
         {
-            using (var Context = new LiderAppEntities())
+            using (var Context = new LiderEntities())
             {
                 MARCA Mca = new MARCA { Marca1 = MarcaCodigo };
-                Context.MARCA.Attach(Mca);
+                Context.MARCAs.Attach(Mca);
                 Mca.Linea = MarcaLinea;
                 Mca.Proveedor = MarcaProveedor;
                 Mca.Orden = MarcaOrden;

@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model.Conexion.edmx.Conexion.Context.tt;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -35,7 +34,7 @@ namespace xtraForm.Modulos.Elementos
         private void TpCredito()
         {
             var Conexion = new LiderEntities();
-            var Registros = from p in Conexion.FORMAPAGO.Where(x => x.contado != true) select new { Codigo = p.FormaPago1, Descripcion = p.Descripcion };
+            var Registros = from p in Conexion.FORMAPAGOes.Where(x => x.contado != true) select new { Codigo = p.FormaPago1, Descripcion = p.Descripcion };
             TipoCredito.Properties.DataSource = Registros.ToList();
             TipoCredito.Properties.DisplayMember = "Descripcion";
             TipoCredito.Properties.ValueMember = "Codigo";
@@ -45,7 +44,7 @@ namespace xtraForm.Modulos.Elementos
         private void TpContado()
         {
             var Conexion = new LiderEntities();
-            var Registros = from p in Conexion.FORMAPAGO.Where(x => x.contado == true) select new { Codigo = p.FormaPago1, Descripcion = p.Descripcion };
+            var Registros = from p in Conexion.FORMAPAGOes.Where(x => x.contado == true) select new { Codigo = p.FormaPago1, Descripcion = p.Descripcion };
             TipoContado.Properties.DataSource = Registros.ToList();
             TipoContado.Properties.DisplayMember = "Descripcion";
             TipoContado.Properties.ValueMember = "Codigo";
