@@ -73,11 +73,11 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.ListadoPorRuta = new DevExpress.XtraBars.BarButtonItem();
             this.ListadoProductoClase = new DevExpress.XtraBars.BarButtonItem();
+            this.InformeDeReparto = new DevExpress.XtraBars.BarButtonItem();
             this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.repositoryItemPopupGalleryEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit();
-            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
+            this.TIPOCP = new DevExpress.XtraBars.BarButtonItem();
+            this.CUBOS = new DevExpress.XtraBars.BarSubItem();
+            this.CBODMS = new DevExpress.XtraBars.BarButtonItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -96,14 +96,17 @@
             this.MREPORTES = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.REPORTES = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G031 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.MCONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.CONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.repositoryItemPopupGalleryEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit();
+            this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
@@ -167,11 +170,13 @@
             this.ListadoPorRuta,
             this.ListadoProductoClase,
             this.skinPaletteRibbonGalleryBarItem1,
-            this.barButtonItem1,
-            this.barEditItem2,
-            this.barButtonItem3});
+            this.InformeDeReparto,
+            this.TIPOCP,
+            this.CUBOS,
+            this.CBODMS,
+            this.barButtonItem1});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 2;
+            this.ribbonControl1.MaxItemId = 1;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -535,7 +540,7 @@
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoPorRuta),
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoProductoClase),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.InformeDeReparto)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // ListadoPorRuta
@@ -554,40 +559,45 @@
             this.ListadoProductoClase.Name = "ListadoProductoClase";
             this.ListadoProductoClase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ListadoProductoClase_ItemClick);
             // 
+            // InformeDeReparto
+            // 
+            resources.ApplyResources(this.InformeDeReparto, "InformeDeReparto");
+            this.InformeDeReparto.Id = 1;
+            this.InformeDeReparto.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.InformeDeReparto.Name = "InformeDeReparto";
+            this.InformeDeReparto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.InformeDeReparto_ItemClick);
+            // 
             // skinPaletteRibbonGalleryBarItem1
             // 
             resources.ApplyResources(this.skinPaletteRibbonGalleryBarItem1, "skinPaletteRibbonGalleryBarItem1");
             this.skinPaletteRibbonGalleryBarItem1.Id = 4;
             this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
-            // barButtonItem1
+            // TIPOCP
             // 
-            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
-            this.barButtonItem1.Id = 5;
-            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
+            resources.ApplyResources(this.TIPOCP, "TIPOCP");
+            this.TIPOCP.CategoryGuid = new System.Guid("92273108-deb3-486b-9505-35d7e164aa9e");
+            this.TIPOCP.Id = 4;
+            this.TIPOCP.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("TIPOCP.ImageOptions.SvgImage")));
+            this.TIPOCP.Name = "TIPOCP";
+            this.TIPOCP.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.TIPOCP_ItemClick);
             // 
-            // repositoryItemPopupGalleryEdit1
+            // CUBOS
             // 
-            resources.ApplyResources(this.repositoryItemPopupGalleryEdit1, "repositoryItemPopupGalleryEdit1");
-            this.repositoryItemPopupGalleryEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemPopupGalleryEdit1.Buttons"))))});
-            this.repositoryItemPopupGalleryEdit1.Name = "repositoryItemPopupGalleryEdit1";
+            resources.ApplyResources(this.CUBOS, "CUBOS");
+            this.CUBOS.Id = 6;
+            this.CUBOS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem2.ImageOptions.SvgImage")));
+            this.CUBOS.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.CBODMS)});
+            this.CUBOS.Name = "CUBOS";
             // 
-            // barEditItem2
+            // CBODMS
             // 
-            resources.ApplyResources(this.barEditItem2, "barEditItem2");
-            this.barEditItem2.CategoryGuid = new System.Guid("92273108-deb3-486b-9505-35d7e164aa9e");
-            this.barEditItem2.Edit = this.repositoryItemPopupContainerEdit1;
-            this.barEditItem2.Id = 12;
-            this.barEditItem2.Name = "barEditItem2";
-            // 
-            // repositoryItemPopupContainerEdit1
-            // 
-            resources.ApplyResources(this.repositoryItemPopupContainerEdit1, "repositoryItemPopupContainerEdit1");
-            this.repositoryItemPopupContainerEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemPopupContainerEdit1.Buttons"))))});
-            this.repositoryItemPopupContainerEdit1.Name = "repositoryItemPopupContainerEdit1";
+            resources.ApplyResources(this.CBODMS, "CBODMS");
+            this.CBODMS.Id = 7;
+            this.CBODMS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CBODMS.ImageOptions.SvgImage")));
+            this.CBODMS.Name = "CBODMS";
+            this.CBODMS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CBODMS_ItemClick);
             // 
             // MVENTAS
             // 
@@ -720,7 +730,8 @@
             // REPORTES
             // 
             this.REPORTES.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.G031});
+            this.G031,
+            this.ribbonPageGroup2});
             this.REPORTES.KeyTip = "R";
             this.REPORTES.Name = "REPORTES";
             resources.ApplyResources(this.REPORTES, "REPORTES");
@@ -731,9 +742,14 @@
             this.G031.ItemLinks.Add(this.INVENTARIOREPORTE);
             this.G031.ItemLinks.Add(this.VENTASREPORTE);
             this.G031.ItemLinks.Add(this.barSubItem1);
-            this.G031.ItemLinks.Add(this.barButtonItem1);
+            this.G031.ItemLinks.Add(this.CUBOS);
             this.G031.Name = "G031";
             resources.ApplyResources(this.G031, "G031");
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
             // 
             // MCONFIGURACION
             // 
@@ -752,8 +768,23 @@
             // 
             // ribbonPageGroup1
             // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.TIPOCP);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             resources.ApplyResources(this.ribbonPageGroup1, "ribbonPageGroup1");
+            // 
+            // repositoryItemPopupGalleryEdit1
+            // 
+            resources.ApplyResources(this.repositoryItemPopupGalleryEdit1, "repositoryItemPopupGalleryEdit1");
+            this.repositoryItemPopupGalleryEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemPopupGalleryEdit1.Buttons"))))});
+            this.repositoryItemPopupGalleryEdit1.Name = "repositoryItemPopupGalleryEdit1";
+            // 
+            // repositoryItemPopupContainerEdit1
+            // 
+            resources.ApplyResources(this.repositoryItemPopupContainerEdit1, "repositoryItemPopupContainerEdit1");
+            this.repositoryItemPopupContainerEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemPopupContainerEdit1.Buttons"))))});
+            this.repositoryItemPopupContainerEdit1.Name = "repositoryItemPopupContainerEdit1";
             // 
             // ribbonPage2
             // 
@@ -778,12 +809,11 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // barButtonItem3
+            // barButtonItem1
             // 
-            resources.ApplyResources(this.barButtonItem3, "barButtonItem3");
-            this.barButtonItem3.Id = 1;
-            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.barButtonItem3.Name = "barButtonItem3";
+            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
+            this.barButtonItem1.Id = 1;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // frmPrincipal
             // 
@@ -873,13 +903,16 @@
         private DevExpress.XtraBars.BarButtonItem ListadoPorRuta;
         private DevExpress.XtraBars.BarButtonItem ListadoProductoClase;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory MCONFIGURACION;
         private DevExpress.XtraBars.Ribbon.RibbonPage CONFIGURACION;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit repositoryItemPopupGalleryEdit1;
-        private DevExpress.XtraBars.BarEditItem barEditItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit repositoryItemPopupContainerEdit1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem InformeDeReparto;
+        private DevExpress.XtraBars.BarButtonItem TIPOCP;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarSubItem CUBOS;
+        private DevExpress.XtraBars.BarButtonItem CBODMS;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

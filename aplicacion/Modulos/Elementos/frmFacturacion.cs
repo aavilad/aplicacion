@@ -64,7 +64,7 @@ namespace xtraForm.Modulos.Elementos
         {
             var proceso = new Libreria.Proceso();
             string Fecha = Convert.ToDateTime(FechaProceso.EditValue).ToString("yyyyMMdd");
-            if (flRuta.Checked)
+            if (flRuta.Checked && FechaProceso.EditValue != null)
             {
                 gridControl1.DataSource = null;
                 gridView1.Columns.Clear();

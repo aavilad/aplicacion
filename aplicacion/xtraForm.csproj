@@ -188,6 +188,11 @@
     <Compile Include="Libreria\Producto.cs" />
     <Compile Include="Libreria\Proveedor.cs" />
     <Compile Include="Libreria\Vendedor.cs" />
+    <Compile Include="Lider2018DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lider2018DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Maestro\frmAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,11 +415,11 @@
     <Compile Include="Modulos\Compras\frmCompra.Designer.cs">
       <DependentUpon>frmCompra.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Configuracion\frmPedidos.cs">
+    <Compile Include="Modulos\Configuracion\frmTipoCp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Configuracion\frmPedidos.Designer.cs">
-      <DependentUpon>frmPedidos.cs</DependentUpon>
+    <Compile Include="Modulos\Configuracion\frmTipoCp.Designer.cs">
+      <DependentUpon>frmTipoCp.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Distribucion\frmRutas.cs">
       <SubType>Form</SubType>
@@ -470,6 +475,12 @@
     <Compile Include="Modulos\Elementos\frmReglaBonificacion.Designer.cs">
       <DependentUpon>frmReglaBonificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Elementos\frmTipoCp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmTipoCp.Designer.cs">
+      <DependentUpon>frmTipoCp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Elementos\frmVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -494,11 +505,11 @@
     <Compile Include="Modulos\Reportes\FrmMostrarReporte.Designer.cs">
       <DependentUpon>FrmMostrarReporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Reportes\ModeloReporte.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptInformeDeReparto.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulos\Reportes\ModeloReporte.Designer.cs">
-      <DependentUpon>ModeloReporte.cs</DependentUpon>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptInformeDeReparto.Designer.cs">
+      <DependentUpon>RptInformeDeReparto.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoDeDevoluciones.cs">
       <SubType>Component</SubType>
@@ -517,6 +528,18 @@
     </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoPorRutas.Designer.cs">
       <DependentUpon>RptListadoPorRutas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Ventas\Cubos\UnileverDms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Ventas\Cubos\UnileverDms.Designer.cs">
+      <DependentUpon>UnileverDms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Ventas\RptAvanceVentasSpring.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Ventas\RptAvanceVentasSpring.Designer.cs">
+      <DependentUpon>RptAvanceVentasSpring.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
@@ -667,8 +690,8 @@
     <EmbeddedResource Include="Modulos\Compras\frmCompra.resx">
       <DependentUpon>frmCompra.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Configuracion\frmPedidos.resx">
-      <DependentUpon>frmPedidos.cs</DependentUpon>
+    <EmbeddedResource Include="Modulos\Configuracion\frmTipoCp.resx">
+      <DependentUpon>frmTipoCp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Distribucion\frmRutas.resx">
       <DependentUpon>frmRutas.cs</DependentUpon>
@@ -697,6 +720,9 @@
     <EmbeddedResource Include="Modulos\Elementos\frmReglaBonificacion.resx">
       <DependentUpon>frmReglaBonificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmTipoCp.resx">
+      <DependentUpon>frmTipoCp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -709,9 +735,6 @@
     <EmbeddedResource Include="Modulos\Reportes\FrmMostrarReporte.resx">
       <DependentUpon>FrmMostrarReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Reportes\ModeloReporte.resx">
-      <DependentUpon>ModeloReporte.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoDeDevoluciones.resx">
       <DependentUpon>RptListadoDeDevoluciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -723,6 +746,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoPorRutas.resx">
       <DependentUpon>RptListadoPorRutas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Ventas\Cubos\UnileverDms.resx">
+      <DependentUpon>UnileverDms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Ventas\RptAvanceVentasSpring.resx">
+      <DependentUpon>RptAvanceVentasSpring.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
@@ -777,6 +806,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Lider2018DataSet.xsc">
+      <DependentUpon>Lider2018DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Lider2018DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Lider2018DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Lider2018DataSet.xss">
+      <DependentUpon>Lider2018DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Model\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
@@ -798,7 +838,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filtros\Bonificacion\" />
-    <Folder Include="Modulos\Reportes\Modulos\Ventas\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

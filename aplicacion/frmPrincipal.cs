@@ -509,5 +509,81 @@ namespace xtraForm
                 objeto.Show();
             }
         }
+
+        private void TIPOCP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bool existe = false;
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == "Tipo De Documento")
+                {
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    existe = true;
+                }
+            if (!existe)
+            {
+                XtraTabPage pedidos = new XtraTabPage();
+                entidad.index = 0;
+                objeto = new Modulos.Configuracion.frmTipoCp
+                {
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill,
+                    NModulo = e.Item.Name,
+                };
+                xtraTabControl1.TabPages.Add(pedidos);
+                xtraTabControl1.SelectedTabPage = pedidos;
+                pedidos.Text = "Tipo De Documento";
+                entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                pedidos.Controls.Add(objeto);
+                objeto.Show();
+            }
+        }
+
+        private void CBODMS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bool existe = false;
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == "Unilever Dms")
+                {
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    existe = true;
+                }
+            if (!existe)
+            {
+                XtraTabPage pedidos = new XtraTabPage();
+                entidad.index = 0;
+                objeto = new Modulos.Reportes.Modulos.Ventas.Cubos.UnileverDms
+                {
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill,
+                    //NModulo = e.Item.Name,
+                };
+                xtraTabControl1.TabPages.Add(pedidos);
+                xtraTabControl1.SelectedTabPage = pedidos;
+                pedidos.Text = "Unilever Dms";
+                entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                pedidos.Controls.Add(objeto);
+                objeto.Show();
+            }
+        }
+
+        private void InformeDeReparto_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var pedidos = new XtraTabPage();
+            entidad.index = 0;
+            var rpt = new RptListadoSegunClase();
+            var frmrpt = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte();
+            frmrpt.TopLevel = false;
+            frmrpt.FormBorderStyle = FormBorderStyle.None;
+            frmrpt.Dock = DockStyle.Fill;
+            frmrpt.documentViewer1.DocumentSource = rpt;
+            xtraTabControl1.TabPages.Add(pedidos);
+            xtraTabControl1.SelectedTabPage = pedidos;
+            pedidos.Text = "Reportes de distribucion";
+            entidad.index = xtraTabControl1.SelectedTabPageIndex;
+            pedidos.Controls.Add(frmrpt);
+            frmrpt.Show();
+        }
     }
 }

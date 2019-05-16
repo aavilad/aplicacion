@@ -1454,7 +1454,7 @@
         Zz4NCiAgICA8L2c+DQogIDwvZz4NCjwvc3ZnPgs=
 </value>
   </data>
-  <data name="barButtonItem3.Caption" xml:space="preserve">
+  <data name="InformeDeReparto.Caption" xml:space="preserve">
     <value>Informe De Reparto</value>
   </data>
   <data name="barButtonItem3.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -1475,10 +1475,32 @@
   <data name="skinPaletteRibbonGalleryBarItem1.Caption" xml:space="preserve">
     <value>skinPaletteRibbonGalleryBarItem1</value>
   </data>
-  <data name="barButtonItem1.Caption" xml:space="preserve">
-    <value>Cubo</value>
+  <data name="TIPOCP.Caption" xml:space="preserve">
+    <value>Documentos</value>
   </data>
-  <data name="barButtonItem1.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="TIPOCP.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjEsIFZlcnNpb249MTguMS42
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAKgCAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxnIGlkPSJMYXllcl8yIj4NCiAgICA8cGF0aCBk
+        PSJNNCwzMFYyaDI0djI4SDR6IiBmaWxsPSIjNzI3MjcyIiBjbGFzcz0iQmxhY2siIC8+DQogICAgPHBh
+        dGggZD0iTTYsMjhWNGgyMHYyNEg2eiIgZmlsbD0iI0ZGRkZGRiIgY2xhc3M9IldoaXRlIiAvPg0KICAg
+        IDxwYXRoIGQ9Ik04LDIyaDJ2LTJIOFYyMnogTTgsMThoMnYtMkg4VjE4eiBNOCwxNGgydi0ySDhWMTR6
+        IE04LDh2MmgyVjhIOHoiIGZpbGw9IiMxMTc3RDciIGNsYXNzPSJCbHVlIiAvPg0KICA8L2c+DQogIDxn
+        IG9wYWNpdHk9IjAuNiIgaWQ9IkxheWVyXzJfMV8iIGNsYXNzPSJzdDAiPg0KICAgIDxwYXRoIGQ9Ik0x
+        MiwyMmgxMnYtMkgxMlYyMnogTTEyLDE4aDEydi0ySDEyVjE4eiBNMTIsMTRoMTJ2LTJIMTJWMTR6IE0x
+        Miw4djJoMTJWOEgxMnoiIGZpbGw9IiM3MjcyNzIiIG9wYWNpdHk9IjAuNiIgY2xhc3M9IkJsYWNrIiAv
+        Pg0KICA8L2c+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="CUBOS.Caption" xml:space="preserve">
+    <value>Cubos</value>
+  </data>
+  <data name="barSubItem2.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjEsIFZlcnNpb249MTguMS42
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -1499,16 +1521,24 @@
         IGZpbGw9IiNGRkZGRkYiIGNsYXNzPSJXaGl0ZSIgLz4NCiAgPC9nPg0KPC9zdmc+Cw==
 </value>
   </data>
-  <data name="barEditItem2.Caption" xml:space="preserve">
-    <value>barEditItem2</value>
+  <data name="CBODMS.Caption" xml:space="preserve">
+    <value>UnileverDms</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="repositoryItemPopupContainerEdit1.AutoHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="CBODMS.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjEsIFZlcnNpb249MTguMS42
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAFoBAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxwYXRoIGQ9Ik0yLDR2MjRoMjhWNEgyeiBNMjIs
+        NmgydjJoLTJWNnogTTE4LDZoMnYyaC0yVjZ6IE0yOCwyNkg0VjEwaDI0VjI2eiBNMjgsOGgtMlY2aDJW
+        OHoiIGZpbGw9IiM3MjcyNzIiIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
+</value>
   </data>
-  <assembly alias="DevExpress.Utils.v18.1" name="DevExpress.Utils.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="repositoryItemPopupContainerEdit1.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v18.1">
-    <value>Combo</value>
+  <data name="barButtonItem1.Caption" xml:space="preserve">
+    <value>barButtonItem1</value>
   </data>
   <data name="ribbonControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1561,6 +1591,9 @@
   <data name="G031.Text" xml:space="preserve">
     <value>ribbonPageGroup1</value>
   </data>
+  <data name="ribbonPageGroup2.Text" xml:space="preserve">
+    <value>ribbonPageGroup2</value>
+  </data>
   <data name="REPORTES.Text" xml:space="preserve">
     <value>REPORTES</value>
   </data>
@@ -1576,10 +1609,18 @@
   <data name="MCONFIGURACION.Text" xml:space="preserve">
     <value>MODULO CONFIGURACION</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="repositoryItemPopupGalleryEdit1.AutoHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <assembly alias="DevExpress.Utils.v18.1" name="DevExpress.Utils.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="repositoryItemPopupGalleryEdit1.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v18.1">
+    <value>Combo</value>
+  </data>
+  <data name="repositoryItemPopupContainerEdit1.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="repositoryItemPopupContainerEdit1.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v18.1">
     <value>Combo</value>
   </data>
   <data name="ribbonControl1.Size" type="System.Drawing.Size, System.Drawing">
@@ -1908,35 +1949,35 @@
   <data name="&gt;&gt;ListadoProductoClase.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;InformeDeReparto.Name" xml:space="preserve">
+    <value>InformeDeReparto</value>
+  </data>
+  <data name="&gt;&gt;InformeDeReparto.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;skinPaletteRibbonGalleryBarItem1.Name" xml:space="preserve">
     <value>skinPaletteRibbonGalleryBarItem1</value>
   </data>
   <data name="&gt;&gt;skinPaletteRibbonGalleryBarItem1.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem1.Name" xml:space="preserve">
-    <value>barButtonItem1</value>
+  <data name="&gt;&gt;TIPOCP.Name" xml:space="preserve">
+    <value>TIPOCP</value>
   </data>
-  <data name="&gt;&gt;barButtonItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;TIPOCP.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;repositoryItemPopupGalleryEdit1.Name" xml:space="preserve">
-    <value>repositoryItemPopupGalleryEdit1</value>
+  <data name="&gt;&gt;CUBOS.Name" xml:space="preserve">
+    <value>CUBOS</value>
   </data>
-  <data name="&gt;&gt;repositoryItemPopupGalleryEdit1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;CUBOS.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarSubItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barEditItem2.Name" xml:space="preserve">
-    <value>barEditItem2</value>
+  <data name="&gt;&gt;CBODMS.Name" xml:space="preserve">
+    <value>CBODMS</value>
   </data>
-  <data name="&gt;&gt;barEditItem2.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;repositoryItemPopupContainerEdit1.Name" xml:space="preserve">
-    <value>repositoryItemPopupContainerEdit1</value>
-  </data>
-  <data name="&gt;&gt;repositoryItemPopupContainerEdit1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit, DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;CBODMS.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;MVENTAS.Name" xml:space="preserve">
     <value>MVENTAS</value>
@@ -2046,6 +2087,12 @@
   <data name="&gt;&gt;G031.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;ribbonPageGroup2.Name" xml:space="preserve">
+    <value>ribbonPageGroup2</value>
+  </data>
+  <data name="&gt;&gt;ribbonPageGroup2.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;MCONFIGURACION.Name" xml:space="preserve">
     <value>MCONFIGURACION</value>
   </data>
@@ -2063,6 +2110,18 @@
   </data>
   <data name="&gt;&gt;ribbonPageGroup1.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;repositoryItemPopupGalleryEdit1.Name" xml:space="preserve">
+    <value>repositoryItemPopupGalleryEdit1</value>
+  </data>
+  <data name="&gt;&gt;repositoryItemPopupGalleryEdit1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;repositoryItemPopupContainerEdit1.Name" xml:space="preserve">
+    <value>repositoryItemPopupContainerEdit1</value>
+  </data>
+  <data name="&gt;&gt;repositoryItemPopupContainerEdit1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit, DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;ribbonPage2.Name" xml:space="preserve">
     <value>ribbonPage2</value>
@@ -2082,10 +2141,10 @@
   <data name="&gt;&gt;splashScreenManager1.Type" xml:space="preserve">
     <value>DevExpress.XtraSplashScreen.SplashScreenManager, DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem3.Name" xml:space="preserve">
-    <value>barButtonItem3</value>
+  <data name="&gt;&gt;barButtonItem1.Name" xml:space="preserve">
+    <value>barButtonItem1</value>
   </data>
-  <data name="&gt;&gt;barButtonItem3.Type" xml:space="preserve">
+  <data name="&gt;&gt;barButtonItem1.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

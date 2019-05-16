@@ -104,7 +104,31 @@ namespace xtraForm.Modulos.Ventas
             }
         }
 
-        private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView view = (GridView)sender;
+            if (e.RowHandle >= 0)
+            {
+                bool estado = Convert.ToBoolean(view.GetRowCellValue(e.RowHandle, "Activo"));
+                if (estado == false)
+                {
+                    e.Appearance.ForeColor = Color.LightGray;
+                }
+                else if (Convert.ToDecimal(proceso.ConsultarCadena("iif(stockac = stockdia,stockac,stockac-(stockac-stockdia))", "producto", "producto = '" + view.GetRowCellValue(e.RowHandle, "cdProductoRegalo").ToString() + "'")) <= 0)
+                {
+                    e.Appearance.ForeColor = Color.LightPink;
+                }
+            }
+        }
+
+        private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Elementos.frmReglaBonificacion frmreglabonificacion = new Elementos.frmReglaBonificacion();
+            frmreglabonificacion.pasar += new Elementos.frmReglaBonificacion.variable(GrabarBonificacion);
+            frmreglabonificacion.Show();
+        }
+
+        private void COPIAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gridView1.SelectedRowsCount > 0)
             {
@@ -183,49 +207,7 @@ namespace xtraForm.Modulos.Ventas
             }
         }
 
-        private void filtrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var Context = new LiderEntities())
-            {
-                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
-                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
-                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
-                i.DisplayMember = "Descripcion";
-                i.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
-                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
-                j.DisplayMember = "Descripcion";
-                j.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
-                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'" + tabla + "'").ToList();
-                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
-                filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
-                {
-                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
-                }
-                filtro.entidad = tabla;
-                filtro.ShowDialog();
-            }
-        }
-
-        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
-        {
-            GridView view = (GridView)sender;
-            if (e.RowHandle >= 0)
-            {
-                bool estado = Convert.ToBoolean(view.GetRowCellValue(e.RowHandle, "Activo"));
-                if (estado == false)
-                {
-                    e.Appearance.ForeColor = Color.LightGray;
-                }
-                else if (Convert.ToDecimal(proceso.ConsultarCadena("iif(stockac = stockdia,stockac,stockac-(stockac-stockdia))", "producto", "producto = '" + view.GetRowCellValue(e.RowHandle, "cdProductoRegalo").ToString() + "'")) <= 0)
-                {
-                    e.Appearance.ForeColor = Color.LightPink;
-                }
-            }
-        }
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MODIFICAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gridView1.SelectedRowsCount > 0)
             {
@@ -258,7 +240,7 @@ namespace xtraForm.Modulos.Ventas
                 bonificacion.CodigoAsociado = proceso.ConsultarCadena("Codigo", "TipoAsociado", "PKID = " + bonificacion.IdAsociado);
                 var Coleccion = proceso.ConsultarTabla_("itembonificacion", "IDBonificacion = " + bonificacion.Id);
                 frmreglabonificacion.IDControl.Text = Convert.ToString(bonificacion.Id);
-                frmreglabonificacion.IDBonificacion.Text = bonificacion.CodigoTipoMecanica;
+                frmreglabonificacion.IDBonificacion.EditValue = bonificacion.CodigoTipoMecanica;
                 frmreglabonificacion.nmBonificacion.Text = bonificacion.DescripcionTipoMecanica;
                 frmreglabonificacion.DetalleMecanica.Text = bonificacion.Mecanica;
                 frmreglabonificacion.IDProveedor.Text = bonificacion.Proveedor;
@@ -300,19 +282,47 @@ namespace xtraForm.Modulos.Ventas
                     producto.Descripcion = proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + DR_0["cdProductoColeccion"] + "'");
                     frmreglabonificacion.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion);
                 }
+                if (bonificacion.TipoMecanica == 1 || bonificacion.TipoMecanica == 3)
+                {
+                    frmreglabonificacion.CantidadMaxima.Enabled = false;
+                }
+                else
+                {
+                    frmreglabonificacion.CantidadMaxima.Enabled = true;
+                }
+
                 frmreglabonificacion.StartPosition = FormStartPosition.CenterScreen;
                 frmreglabonificacion.Show();
             }
         }
 
-        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Elementos.frmReglaBonificacion frmreglabonificacion = new Elementos.frmReglaBonificacion();
-            frmreglabonificacion.pasar += new Elementos.frmReglaBonificacion.variable(GrabarBonificacion);
-            frmreglabonificacion.Show();
+            using (var Context = new LiderEntities())
+            {
+                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
+                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
+                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DisplayMember = "Descripcion";
+                i.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
+                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DisplayMember = "Descripcion";
+                j.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
+                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'" + tabla + "'").ToList();
+                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
+                filtro.StartPosition = FormStartPosition.CenterScreen;
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
+                {
+                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
+                }
+                filtro.entidad = tabla;
+                filtro.ShowDialog();
+            }
         }
 
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ELIMINAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gridView1.SelectedRowsCount > 0)
             {
@@ -345,9 +355,9 @@ namespace xtraForm.Modulos.Ventas
             }
         }
 
-        private void gridView1_DoubleClick(object sender, EventArgs e)
+        private void gridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
-
+            popupMenu1.ShowPopup(gridcontrolBonificacion.PointToScreen(e.Point));
         }
     }
 }

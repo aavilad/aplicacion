@@ -59,11 +59,11 @@ namespace xtraForm.Modulos.Elementos
         {
             if (bonificacion.TipoMecanica == 1)
                 CantidadMaxima.Enabled = false;
-            else if (bonificacion.TipoMecanica == 2)
+            if (bonificacion.TipoMecanica == 2)
                 CantidadMaxima.Enabled = true;
-            else if (bonificacion.TipoMecanica == 3)
+            if (bonificacion.TipoMecanica == 3)
                 CantidadMaxima.Enabled = false;
-            else if (bonificacion.TipoMecanica == 4)
+            if (bonificacion.TipoMecanica == 4)
                 CantidadMaxima.Enabled = true;
         }
 
