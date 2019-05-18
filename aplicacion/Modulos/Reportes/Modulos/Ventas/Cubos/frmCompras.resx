@@ -117,39 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="efDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
-  </metadata>
-  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="dockManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="customSqlQuery1.Sql" xml:space="preserve">
-    <value>SELECT        ListadoClaseProducto_1.*, Clase_Producto.Descripcion AS NombreClase
-FROM            avila.ListadoClaseProducto(@Fecha, @Gestion) AS ListadoClaseProducto_1 INNER JOIN
-                         Clase_Producto ON ListadoClaseProducto_1.IDClase = Clase_Producto.Clase_Producto</value>
+  <assembly alias="DevExpress.Data.v18.1" name="DevExpress.Data.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="simpleButton3.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjEsIFZlcnNpb249MTguMS42
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAANYDAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxwb2x5Z29uIHBvaW50cz0iNywxOCA3LDIwIDAs
+        MjAgMCwwIDMwLDAgMzAsMjAgMjMsMjAgMjMsMTggMjgsMTggMjgsMiAyLDIgMiwxOCAiIGZpbGw9IiM3
+        MjcyNzIiIGNsYXNzPSJCbGFjayIgLz4NCiAgPHBhdGggZD0iTTksMjNsLTcsN2wyLDJsNy03bDAsMEw5
+        LDIzTDksMjN6IiBmaWxsPSIjNzI3MjcyIiBjbGFzcz0iQmxhY2siIC8+DQogIDxwb2x5Z29uIHBvaW50
+        cz0iMjgsMiAyLDIgMiwxOCA4LDE4IDgsMjIgMjMsMjIgMjMsMTggMjgsMTggIiBmaWxsPSIjRkZGRkZG
+        IiBjbGFzcz0iV2hpdGUiIC8+DQogIDxnIG9wYWNpdHk9IjAuMyIgaWQ9IkxheWVyXzIiIGNsYXNzPSJz
+        dDAiPg0KICAgIDxwb2x5Z29uIHBvaW50cz0iMTEsMTIgMTksMTIgMjMsMjAgNywyMCAgIiBmaWxsPSIj
+        NzI3MjcyIiBvcGFjaXR5PSIwLjMiIGNsYXNzPSJCbGFjayIgLz4NCiAgPC9nPg0KICA8ZyBvcGFjaXR5
+        PSIwLjYiIGlkPSJMYXllcl8zIiBjbGFzcz0ic3QxIj4NCiAgICA8cG9seWdvbiBwb2ludHM9IjcsMjAg
+        MjMsMjAgMjMsMjIgNywyMiAgIiBmaWxsPSIjNzI3MjcyIiBvcGFjaXR5PSIwLjYiIGNsYXNzPSJCbGFj
+        ayIgLz4NCiAgPC9nPg0KICA8cGF0aCBkPSJNMTUsMTBjLTUsMC05LDQtOSw5czQsOSw5LDlzOS00LDkt
+        OVMyMCwxMCwxNSwxMHogTTE1LDI1LjVjLTMuNiwwLTYuNS0yLjktNi41LTYuNXMyLjktNi41LDYuNS02
+        LjUgIHM2LjUsMi45LDYuNSw2LjVTMTguNiwyNS41LDE1LDI1LjV6IiBmaWxsPSIjMTE3N0Q3IiBjbGFz
+        cz0iQmx1ZSIgLz4NCjwvc3ZnPgs=
+</value>
   </data>
-  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iUHJvdmVlZG9yIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJEZXNjcmlwY2lvbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJVbmlkYWQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ2FudGlkYSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iWm9uYSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJJRENsYXNlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik5vbWJyZUNsYXNlIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
-  </data>
-  <metadata name="sqlDataSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
+  <metadata name="lider2018DataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>150, 17</value>
   </metadata>
-  <data name="customSqlQuery3.Sql" xml:space="preserve">
-    <value>SELECT        RTRIM(dbo.Vva_Cp.IDVendedor) AS Codigo, RTRIM(dbo.PERSONAL.Nombre) AS Nombre, COUNT(DISTINCT dbo.Vva_Cp.IDpedido) 
-                         AS [#Pedidos], COUNT(DISTINCT dbo.Vva_Cp.IDCliente) AS [#Clientes], COUNT(DISTINCT CASE WHEN Vva_Cp.TpDoc = 'F' THEN Vva_Cp.NrDoc END) AS [#Factura], 
-                         COUNT(DISTINCT CASE WHEN Vva_Cp.TpDoc = 'B' THEN Vva_Cp.NrDoc END) AS [#Boletas], COUNT(DISTINCT dbo.Vva_Cp.Comprobante) AS [#Comprobantes]
-FROM            dbo.Vva_Cp INNER JOIN
-                         dbo.Vva_ItemCp ON dbo.Vva_Cp.NrDoc = dbo.Vva_ItemCp.NrDoc AND dbo.Vva_Cp.TpDoc = dbo.Vva_ItemCp.TpDoc INNER JOIN
-                         dbo.Vva_AsignacionRuta ON dbo.Vva_Cp.IDVendedor = dbo.Vva_AsignacionRuta.IDVend AND DATEPART(w, dbo.Vva_Cp.Fecha) 
-                         = dbo.Vva_AsignacionRuta.Dia INNER JOIN
-                         dbo.Vva_Producto ON dbo.Vva_ItemCp.IDProducto = dbo.Vva_Producto.Codigo INNER JOIN
-                         dbo.PROVEEDOR ON dbo.Vva_ItemCp.IDProveedor = dbo.PROVEEDOR.Proveedor INNER JOIN
-                         dbo.ZONA ON dbo.Vva_AsignacionRuta.IDZona = dbo.ZONA.Zona INNER JOIN
-                         dbo.PERSONAL ON dbo.Vva_Cp.IDVendedor = dbo.PERSONAL.Personal
-WHERE        (dbo.Vva_AsignacionRuta.IDRuta = @Ruta) AND (dbo.Vva_Cp.Fecha = @Fecha) AND (dbo.Vva_Cp.Gestion = @Gestion) AND (dbo.Vva_Cp.Anulado = 0)
-GROUP BY RTRIM(dbo.Vva_Cp.IDVendedor), RTRIM(dbo.PERSONAL.Nombre)</value>
-  </data>
-  <data name="sqlDataSource2.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTIiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iUHJvdmVlZG9yIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJEZXNjcmlwY2lvbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJVbmlkYWQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3IxQ29kaWdvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yMkNvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjNDb2RpZ28iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3I0Q29kaWdvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yNUNvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjZDb2RpZ28iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3I3Q29kaWdvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yOENvZGlnbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjFDYW50aWRhZCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3IyQ2FudGlkYWQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yM0NhbnRpZGFkIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjRDYW50aWRhZCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3I1Q2FudGlkYWQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlZlbmRlZG9yNkNhbnRpZGFkIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJWZW5kZWRvcjdDYW50aWRhZCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iVmVuZGVkb3I4Q2FudGlkYWQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlpvbmEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iSURDbGFzZSIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48VmlldyBOYW1lPSJRdWVyeV8xIj48RmllbGQgTmFtZT0iQ29kaWdvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik5vbWJyZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSIjUGVkaWRvcyIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IiNDbGllbnRlcyIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IiNGYWN0dXJhIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iI0JvbGV0YXMiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSIjQ29tcHJvYmFudGVzIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
-  </data>
+  <metadata name="lider2018DataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>150, 17</value>
+  </metadata>
 </root>

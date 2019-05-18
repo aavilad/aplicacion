@@ -74,10 +74,14 @@
             this.ListadoPorRuta = new DevExpress.XtraBars.BarButtonItem();
             this.ListadoProductoClase = new DevExpress.XtraBars.BarButtonItem();
             this.InformeDeReparto = new DevExpress.XtraBars.BarButtonItem();
+            this.ListadoGeneralClase = new DevExpress.XtraBars.BarButtonItem();
             this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             this.TIPOCP = new DevExpress.XtraBars.BarButtonItem();
             this.CUBOS = new DevExpress.XtraBars.BarSubItem();
             this.CBODMS = new DevExpress.XtraBars.BarButtonItem();
+            this.CBOCOMPRAS = new DevExpress.XtraBars.BarButtonItem();
+            this.CBOVENTAS = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -106,7 +110,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
@@ -174,9 +177,12 @@
             this.TIPOCP,
             this.CUBOS,
             this.CBODMS,
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.ListadoGeneralClase,
+            this.CBOCOMPRAS,
+            this.CBOVENTAS});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 1;
+            this.ribbonControl1.MaxItemId = 3;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -540,7 +546,8 @@
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoPorRuta),
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoProductoClase),
-            new DevExpress.XtraBars.LinkPersistInfo(this.InformeDeReparto)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.InformeDeReparto),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ListadoGeneralClase)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // ListadoPorRuta
@@ -563,9 +570,17 @@
             // 
             resources.ApplyResources(this.InformeDeReparto, "InformeDeReparto");
             this.InformeDeReparto.Id = 1;
-            this.InformeDeReparto.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.InformeDeReparto.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("InformeDeReparto.ImageOptions.SvgImage")));
             this.InformeDeReparto.Name = "InformeDeReparto";
             this.InformeDeReparto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.InformeDeReparto_ItemClick);
+            // 
+            // ListadoGeneralClase
+            // 
+            resources.ApplyResources(this.ListadoGeneralClase, "ListadoGeneralClase");
+            this.ListadoGeneralClase.Id = 1;
+            this.ListadoGeneralClase.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ListadoGeneralClase.ImageOptions.SvgImage")));
+            this.ListadoGeneralClase.Name = "ListadoGeneralClase";
+            this.ListadoGeneralClase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ListadoGeneralClase_ItemClick);
             // 
             // skinPaletteRibbonGalleryBarItem1
             // 
@@ -586,9 +601,11 @@
             // 
             resources.ApplyResources(this.CUBOS, "CUBOS");
             this.CUBOS.Id = 6;
-            this.CUBOS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem2.ImageOptions.SvgImage")));
+            this.CUBOS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CUBOS.ImageOptions.SvgImage")));
             this.CUBOS.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.CBODMS)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.CBODMS),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CBOCOMPRAS),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CBOVENTAS)});
             this.CUBOS.Name = "CUBOS";
             // 
             // CBODMS
@@ -598,6 +615,27 @@
             this.CBODMS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CBODMS.ImageOptions.SvgImage")));
             this.CBODMS.Name = "CBODMS";
             this.CBODMS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CBODMS_ItemClick);
+            // 
+            // CBOCOMPRAS
+            // 
+            resources.ApplyResources(this.CBOCOMPRAS, "CBOCOMPRAS");
+            this.CBOCOMPRAS.Id = 1;
+            this.CBOCOMPRAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CBOCOMPRAS.ImageOptions.SvgImage")));
+            this.CBOCOMPRAS.Name = "CBOCOMPRAS";
+            this.CBOCOMPRAS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CBOCOMPRAS_ItemClick);
+            // 
+            // CBOVENTAS
+            // 
+            resources.ApplyResources(this.CBOVENTAS, "CBOVENTAS");
+            this.CBOVENTAS.Id = 2;
+            this.CBOVENTAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CBOVENTAS.ImageOptions.SvgImage")));
+            this.CBOVENTAS.Name = "CBOVENTAS";
+            // 
+            // barButtonItem1
+            // 
+            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
+            this.barButtonItem1.Id = 1;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // MVENTAS
             // 
@@ -809,12 +847,6 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // barButtonItem1
-            // 
-            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
-            this.barButtonItem1.Id = 1;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
             // frmPrincipal
             // 
             resources.ApplyResources(this, "$this");
@@ -914,5 +946,8 @@
         private DevExpress.XtraBars.BarSubItem CUBOS;
         private DevExpress.XtraBars.BarButtonItem CBODMS;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem ListadoGeneralClase;
+        private DevExpress.XtraBars.BarButtonItem CBOCOMPRAS;
+        private DevExpress.XtraBars.BarButtonItem CBOVENTAS;
     }
 }

@@ -19,7 +19,6 @@ namespace xtraForm.Modulos.Ventas
         public frmCliente()
         {
             InitializeComponent();
-            Refrescar();
         }
 
         void condicion(string cadena)
@@ -122,6 +121,11 @@ namespace xtraForm.Modulos.Ventas
         private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
             popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
+        }
+
+        private void frmCliente_Load(object sender, EventArgs e)
+        {
+            Refrescar();
         }
     }
 }

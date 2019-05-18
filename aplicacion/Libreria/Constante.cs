@@ -144,6 +144,35 @@ namespace xtraForm.Libreria
                 Vva_ProductoEscala.ValorMinEspecial, Vva_ProductoEscala.ValorMinMayorista
                 FROM
                 PROVEEDOR INNER JOIN Vva_ProductoEscala ON PROVEEDOR.Proveedor = Vva_ProductoEscala.IDProv";
-
+        public const string Compras = @"
+                            SELECT
+                            TOP (100) PERCENT 
+                              FechaEmision		=	DOCUMENTO.Fecha
+                            , NroDocumento		=	DOCUMENTO.Documento
+                            , Referencia		=	referencia.tdrefer + '-' + referencia.ndrefer
+                            , Proveedor			=	RTRIM(PROVEEDOR.RazonSocial)
+                            , Ingreso			=	DOCUMENTO.TipoIng
+                            , PLinea			=	ISNULL(grupo.descorta, '')
+                            , PCodigo			=	RTRIM(PRODUCTO.Producto)
+                            , PDescripcion		=	RTRIM(PRODUCTO.Descripcion)
+                            , PMedida			=	PRODUCTO.UniMed
+                            , PCantidad			=	DETADOC.Cantidad
+                            , PPeso				=	PRODUCTO.Peso
+                            , PCosto			=	DETADOC.PrecUnit
+                            , PCostoPromedio	=	PRODUCTO.Costo
+                            , ValorIGV  		=	DETADOC.Igv
+                            , ValorTotal		=	DETADOC.Cantidad * DETADOC.PrecUnit
+                            , DETADOC.Estado
+                            , DOCUMENTO.observacion
+                            FROM            
+                            DOCUMENTO INNER JOIN
+                            DETADOC ON DOCUMENTO.Documento = DETADOC.Documento AND DOCUMENTO.TipoDoc = DETADOC.TipoDoc INNER JOIN
+                            PRODUCTO ON DETADOC.Producto = PRODUCTO.Producto INNER JOIN
+                            MARCA ON PRODUCTO.Marca = MARCA.Marca INNER JOIN
+                            PROVEEDOR ON MARCA.Proveedor = PROVEEDOR.Proveedor INNER JOIN
+                            referencia ON DOCUMENTO.TipoDoc = referencia.tipodoc AND DOCUMENTO.Documento = referencia.documento LEFT OUTER JOIN
+                            grupo ON PRODUCTO.grupo = grupo.grupo
+                            WHERE DOCUMENTO.TipoDoc IN ('A', '3') and documento.fecha between '@FechaInicio' and '@FechaFin' AND (PROVEEDOR.Proveedor IN('@Prov'))
+                            ORDER BY FechaEmision, NroDocumento";
     }
 }

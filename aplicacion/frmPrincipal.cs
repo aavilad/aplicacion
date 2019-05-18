@@ -598,5 +598,58 @@ namespace xtraForm
             frmrpt.Show();
             splashScreenManager1.CloseWaitForm();
         }
+
+        private void ListadoGeneralClase_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+            splashScreenManager1.ShowWaitForm();
+            var pedidos = new XtraTabPage();
+            entidad.index = 0;
+            var rpt = new RptListadoGeneralSegunClase();
+            var frmrpt = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte();
+            frmrpt.TopLevel = false;
+            frmrpt.FormBorderStyle = FormBorderStyle.None;
+            frmrpt.Dock = DockStyle.Fill;
+            frmrpt.documentViewer1.DocumentSource = rpt;
+            xtraTabControl1.TabPages.Add(pedidos);
+            xtraTabControl1.SelectedTabPage = pedidos;
+            pedidos.Text = "Listado General Segun Clase";
+            entidad.index = xtraTabControl1.SelectedTabPageIndex;
+            pedidos.Controls.Add(frmrpt);
+            frmrpt.Show();
+            splashScreenManager1.CloseWaitForm();
+        }
+
+        private void CBOCOMPRAS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bool existe = false;
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == "Compras")
+                {
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    existe = true;
+                }
+            if (!existe)
+            {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
+                XtraTabPage pedidos = new XtraTabPage();
+                entidad.index = 0;
+                objeto = new Modulos.Reportes.Modulos.Ventas.Cubos.frmCompras
+                {
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill,
+                    //NModulo = e.Item.Name,
+                };
+                xtraTabControl1.TabPages.Add(pedidos);
+                xtraTabControl1.SelectedTabPage = pedidos;
+                pedidos.Text = "Compras";
+                entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                pedidos.Controls.Add(objeto);
+                objeto.Show();
+                splashScreenManager1.CloseWaitForm();
+            }
+        }
     }
 }

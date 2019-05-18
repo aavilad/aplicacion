@@ -541,6 +541,12 @@
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoPorRutas.Designer.cs">
       <DependentUpon>RptListadoPorRutas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Ventas\Cubos\frmCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Ventas\Cubos\frmCompras.Designer.cs">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Ventas\Cubos\UnileverDms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -764,6 +770,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoPorRutas.resx">
       <DependentUpon>RptListadoPorRutas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Ventas\Cubos\frmCompras.resx">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Ventas\Cubos\UnileverDms.resx">
       <DependentUpon>UnileverDms.cs</DependentUpon>

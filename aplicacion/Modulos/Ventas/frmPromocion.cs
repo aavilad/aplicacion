@@ -24,7 +24,7 @@ namespace xtraForm.Modulos.Ventas
         public frmPromocion()
         {
             InitializeComponent();
-            Refrescar();
+           
         }
         void Refrescar()
         {
@@ -359,6 +359,11 @@ namespace xtraForm.Modulos.Ventas
         private void gridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             popupMenu1.ShowPopup(gridcontrolBonificacion.PointToScreen(e.Point));
+        }
+
+        private void frmPromocion_Load(object sender, EventArgs e)
+        {
+            Refrescar();
         }
     }
 }

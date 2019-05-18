@@ -15,7 +15,7 @@ namespace xtraForm.Modulos.Elementos
         public frmComprobantes()
         {
             InitializeComponent();
-            Refrescar();
+            
         }
 
         void Refrescar()
@@ -247,6 +247,11 @@ namespace xtraForm.Modulos.Elementos
         private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
             popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
+        }
+
+        private void frmComprobantes_Load(object sender, EventArgs e)
+        {
+            Refrescar();
         }
     }
 }

@@ -38,7 +38,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas.Cubos
                 case 0:
                     sql =
                       @"
-                      select *  from Unilever.importorderinvoice('" + Desde + "','" + Hasta + @"')
+                      select *  from Lider2018.Unilever.importorderinvoice('" + Desde + "','" + Hasta + @"')
                       union all
                       select *  from LiderChepen18.Unilever.importorderinvoice('" + Desde + "','" + Hasta + @"')
                       ";

@@ -9,6 +9,11 @@ namespace xtraForm.Modulos.Elementos
 {
     public partial class frmCliente : DevExpress.XtraEditors.XtraForm
     {
+        string Distrito;
+        string Provincia;
+        string Departamento;
+        public delegate void VARIABLES();
+        public event VARIABLES PASAR;
         Libreria.Proceso proceso = new Libreria.Proceso();
         public frmCliente()
         {
@@ -23,6 +28,17 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            string Codigo = CODIGO.Text.Trim();
+            int TipoPersona = Convert.ToInt32(TIPOPERSONA.EditValue);
+            string Nombres = NOMBRES.Text.Trim();
+            string PNombre = PrimeroNombre.Text.Trim();
+            string SNombre = SEGUNDONOMBRE.Text.Trim();
+            string ApPaterno = APELLIDOPATERNO.Text.Trim();
+            string ApMaterno = APELLIDOMATERNO.Text.Trim();
+            string direccion = DIRECCION.Text.Trim();
+            int TipoIdentidad = Convert.ToInt32(DOCIDENTIDAD.EditValue);
+            string NroDocumento = NUMERODOCIDENTIDAD.Text.Trim();
+
 
         }
 
@@ -50,6 +66,24 @@ namespace xtraForm.Modulos.Elementos
             TipoContado.Properties.ValueMember = "Codigo";
             LookUpColumnInfoCollection columna = TipoContado.Properties.Columns;
             columna.Add(new LookUpColumnInfo("Descripcion", 0));
+        }
+
+        private void TIPOPERSONA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (TIPOPERSONA.SelectedIndex)
+            {
+                case 0:
+                    PRIMERNOMBRE.Enabled = true;
+                    SEGUNDONOMBRE.Enabled = true;
+                    APELLIDOPATERNO.Enabled = true;
+                    APELLIDOMATERNO.Enabled = true;
+                    
+                    break;
+                case 1:
+                    NOMBRES.Enabled = true;
+
+                    break;
+            }
         }
     }
 }

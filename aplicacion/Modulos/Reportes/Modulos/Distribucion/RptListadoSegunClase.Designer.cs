@@ -94,7 +94,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.groupHeaderBand2 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel36 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel40 = new DevExpress.XtraReports.UI.XRLabel();
             this.fieldCodigo1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldNombre1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
@@ -384,11 +383,11 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.xrLabel32.CanGrow = false;
             this.xrLabel32.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Now()")});
-            this.xrLabel32.LocationFloat = new DevExpress.Utils.PointFloat(690.421F, 31.87501F);
+            this.xrLabel32.LocationFloat = new DevExpress.Utils.PointFloat(671.2731F, 31.87501F);
             this.xrLabel32.Multiline = true;
             this.xrLabel32.Name = "xrLabel32";
             this.xrLabel32.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel32.SizeF = new System.Drawing.SizeF(107.1667F, 15.70834F);
+            this.xrLabel32.SizeF = new System.Drawing.SizeF(122.546F, 15.70834F);
             this.xrLabel32.StylePriority.UseTextAlignment = false;
             this.xrLabel32.Text = "xrLabel32";
             this.xrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -397,7 +396,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // xrLabel33
             // 
             this.xrLabel33.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Bold);
-            this.xrLabel33.LocationFloat = new DevExpress.Utils.PointFloat(699.9628F, 15.12502F);
+            this.xrLabel33.LocationFloat = new DevExpress.Utils.PointFloat(688.5045F, 15.125F);
             this.xrLabel33.Multiline = true;
             this.xrLabel33.Name = "xrLabel33";
             this.xrLabel33.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -430,7 +429,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             dynamicListLookUpSettings2.FilterString = "[Activo] = True";
             dynamicListLookUpSettings2.ValueMember = "codigo";
             this.Ruta.LookUpSettings = dynamicListLookUpSettings2;
-            this.Ruta.MultiValue = true;
             this.Ruta.Name = "Ruta";
             // 
             // Gestion
@@ -813,18 +811,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.xrLabel36.StylePriority.UseFont = false;
             this.xrLabel36.Text = "xrLabel36";
             // 
-            // xrLine2
-            // 
-            this.xrLine2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.xrLine2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
-            this.xrLine2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.xrLine2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 26.65132F);
-            this.xrLine2.Name = "xrLine2";
-            this.xrLine2.SizeF = new System.Drawing.SizeF(795.3949F, 10.94298F);
-            this.xrLine2.StylePriority.UseBorderColor = false;
-            this.xrLine2.StylePriority.UseBorderDashStyle = false;
-            this.xrLine2.StylePriority.UseForeColor = false;
-            // 
             // xrLabel40
             // 
             this.xrLabel40.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Italic);
@@ -920,7 +906,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLine4,
-            this.xrLine2,
             this.xrLabel40});
             this.ReportFooter.HeightF = 39.06797F;
             this.ReportFooter.Name = "ReportFooter";
@@ -930,9 +915,9 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.xrLine4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.xrLine4.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
             this.xrLine4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.xrLine4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrLine4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 8.859634F);
             this.xrLine4.Name = "xrLine4";
-            this.xrLine4.SizeF = new System.Drawing.SizeF(795.3949F, 10.94298F);
+            this.xrLine4.SizeF = new System.Drawing.SizeF(795.3949F, 2.083333F);
             this.xrLine4.StylePriority.UseBorderColor = false;
             this.xrLine4.StylePriority.UseBorderDashStyle = false;
             this.xrLine4.StylePriority.UseForeColor = false;
@@ -1048,7 +1033,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
         private DevExpress.XtraReports.UI.XRLabel xrLabel3;
         private DevExpress.XtraReports.UI.GroupHeaderBand groupHeaderBand2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel36;
-        private DevExpress.XtraReports.UI.XRLine xrLine2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel40;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldCodigo1;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldNombre1;
