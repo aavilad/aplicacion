@@ -117,32 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="lider2018DataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="efDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
   </metadata>
-  <metadata name="dockManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>168, 17</value>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="simpleButton1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAG3RFWHRUaXRsZQBNYXJxdWVl
-        Wm9vbS5wbmc7Wm9vbTu+6EqzAAADNUlEQVQ4T3WTa1CMYRTHjxZR8dGMWz4yLhmDLrZih1q6iSbjrjZs
-        N5ca3cjWbjW7TSWqYRLFjKXRkNba0EbXKZJxiYnEByRCtY11mczfeVaDMZyZ37zPc+Z//uc87/s+tDwo
-        Fj+JQf6JZpIFRUMWGAVZQBRyjzfQsoBILPVXwttPCd2xOtIdvUkAfmEryDvRRHkljZTLcIxiJMyYEUYz
-        dp4rI5BVaCbN4Wu8/SNEh5zierG0FR7QXfDNLLhm0hbV9nBBjzq/2pSgPiuX+oSlCM3379z1z8i2jVUn
-        lhL1IaO6sKwRj572wjL0BYOWz3jY2YPc4puITzurZo2YSDT6HVJfhbC0S1Dr5QWlDRgY+ozyq08Rpa1H
-        tK4e56534f2AFbqi6uGtUXly1kou73AjA1OpcCXyWL5NGIxOzTa03H/cA/2VTiQeuY3q2x+hOPUGYflt
-        0Nd0oaW9G4q9xS2stRcvzxS7lIzR3kSuss3CYGxyVtXgAI+8M+MG6jusuPtiGLuqrIgzWhBT2ITeviFs
-        UBZYWOuAjiwu9iKD0pMoMbOSc2Qfpzpved//CTsz6xBx5gN2XbIiocaK5JpBxB5txqu3FgRvyf7EWkfc
-        TaMqLr64Q0q0QBpqm0C5r+xWU9tznOIjhB1pR7xxEMlmCyJL76H0+hOYah9AHnLwFmvHozWFLm6XUkU4
-        G8z3CBEGkjVbNAFJmRXDz172o8T42Da26FxytRMd3e+g2F2E+GD/MtZOYEZVhC+h8q0eRPNcgzGXcXFb
-        vS9ok1ar2FMCg/k+Hna9xYMnvbhgase6iFyUF6nQlh2MHP85KjZwYOz0m92IQhUFtDb8MO9t33ecl3x3
-        0Io1qhqftWl9/OyTBSbVKn19zjSk+wPNcWjRrELWipka1joKEwrcmEN+67XU/Vq8YJuJ+HXHM04jiG4T
-        k9ydNeYkGWDejsb9Muj8XNI5b//zQvwVtovCnwp30gitySJlxzjGzp+cYYhxx9fKUJwMXTTEuQn/NBCh
-        37SYtN4zKEPqTOnuziIlTJwiZk1S5fvO/pbj53Ka9w7/NTi9fiEXTqdU12mUsnAqJS6YItLCZBwzkeGj
-        keQHit6pX75sgPMAAAAASUVORK5CYII=
-</value>
+  <data name="customSqlQuery2.Sql" xml:space="preserve">
+    <value>SELECT IDVendedor, 
+       [Nombre Vendedor], 
+       SUM(Credito) Credito, 
+       SUM(Contado) Contado, 
+       SUM(Anulado) Anulado, 
+       SUM(Aprobado) Aprobado
+FROM
+(
+    SELECT Vva_Cp.IDVendedor, 
+           Vva_Vendedor.[Nombre Vendedor],
+           CASE
+               WHEN vva_cp.Credito = 1
+               THEN SUM(Vva_ItemCp.Cantidad * Vva_ItemCp.Precio)
+               ELSE 0
+           END AS Credito,
+           CASE
+               WHEN vva_cp.Credito = 0
+               THEN SUM(Vva_ItemCp.Cantidad * Vva_ItemCp.Precio)
+               ELSE 0
+           END AS Contado,
+           CASE
+               WHEN Vva_Cp.Anulado = 1
+               THEN SUM(Vva_ItemCp.Cantidad * Vva_ItemCp.Precio)
+               ELSE 0
+           END AS Anulado,
+           CASE
+               WHEN Vva_Cp.Anulado = 0
+               THEN SUM(Vva_ItemCp.Cantidad * Vva_ItemCp.Precio)
+               ELSE 0
+           END AS Aprobado
+    FROM Vva_ItemCp
+         INNER JOIN Vva_Cp ON Vva_ItemCp.NrDoc = Vva_Cp.NrDoc
+                              AND Vva_ItemCp.TpDoc = Vva_Cp.TpDoc
+         INNER JOIN Vva_AsignacionRuta ON Vva_Cp.IDVendedor = Vva_AsignacionRuta.IDVend
+                                          AND DATEPART(w, Vva_Cp.Fecha) = Vva_AsignacionRuta.Dia
+         INNER JOIN Vva_Vendedor ON Vva_Cp.IDVendedor = Vva_Vendedor.[Codigo vendedor]
+         INNER JOIN INFREPARTO ON Vva_Cp.NrDoc = INFREPARTO.Documento
+                                  AND Vva_Cp.TpDoc = INFREPARTO.TipoDoc
+    WHERE(Vva_AsignacionRuta.IDRuta = @Ruta)
+         AND (Vva_Cp.Fecha = @Fecha)
+         AND (Vva_Cp.Gestion = @Gestion)
+         AND (INFREPARTO.InfReparto = @Informe)
+    GROUP BY Vva_Cp.IDVendedor, 
+             Vva_Vendedor.[Nombre Vendedor], 
+             Vva_Cp.Credito, 
+             Vva_Cp.Anulado
+) AS T
+GROUP BY IDVendedor, 
+         [Nombre Vendedor];</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9ImluZnJlcGFydG9jYWIiPjxGaWVsZCBOYW1lPSJPcmRlbiIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IkluZm9ybWVOdW1lcm8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRmVjaGEiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJUaXBvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik51bWVybyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJOdW1lcm9JbnRlcm5vIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImluZ3Jlc28iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ29uZGljaW9uIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJJbXBvcnRlIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJQYWdhZG8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkNsaWVudGVOb21icmUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQW51bGFkbyIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0iWm9uYSIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48VmlldyBOYW1lPSJRdWVyeSI+PEZpZWxkIE5hbWU9IklEVmVuZGVkb3IiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iTm9tYnJlIFZlbmRlZG9yIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNyZWRpdG8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkNvbnRhZG8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkFudWxhZG8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkFwcm9iYWRvIiBUeXBlPSJEZWNpbWFsIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
   </data>
 </root>

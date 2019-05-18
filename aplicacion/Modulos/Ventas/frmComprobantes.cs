@@ -15,6 +15,7 @@ namespace xtraForm.Modulos.Elementos
         public frmComprobantes()
         {
             InitializeComponent();
+            Refrescar();
         }
 
         void Refrescar()

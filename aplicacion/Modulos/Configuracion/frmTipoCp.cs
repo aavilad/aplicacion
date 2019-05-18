@@ -20,6 +20,7 @@ namespace xtraForm.Modulos.Configuracion
         public frmTipoCp()
         {
             InitializeComponent();
+            Refrescar();
         }
 
         void condicion(string cadena)

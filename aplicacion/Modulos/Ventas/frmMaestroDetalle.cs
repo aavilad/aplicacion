@@ -95,7 +95,7 @@ namespace xtraForm.Modulos.Ventas
                                 dbo.Vva_ItemPedido ON dbo.Vva_Pedido.NrPedido = dbo.Vva_ItemPedido.NrPedido
                                 WHERE        (dbo.Vva_ItemPedido.IDProducto IN (" + Producto + @")) AND (dbo.Vva_Pedido.FechaEmision = '" + Fecha + @"')
                                 GROUP BY dbo.CLIENTE.Cliente, dbo.CLIENTE.Alias, dbo.Vva_ItemPedido.NrPedido
-                                HAVING        (SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio)) >= " + Minimo + @")
+                                HAVING        ((SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio)) >= " + Minimo + @")
                                 ";
                                 proceso.consultar(sql3, "pedidos");
                                 PedidosComprometidos = proceso.ds.Tables["pedidos"];//Context.Database.SqlQuery<List<string>>(sql).ToList();
@@ -110,7 +110,7 @@ namespace xtraForm.Modulos.Ventas
                                 dbo.Vva_ItemPedido ON dbo.Vva_Pedido.NrPedido = dbo.Vva_ItemPedido.NrPedido
                                 WHERE        (dbo.Vva_ItemPedido.IDProducto IN (" + Producto + @")) AND (dbo.Vva_Pedido.FechaEmision = '" + Fecha + @"')
                                 GROUP BY dbo.CLIENTE.Cliente, dbo.CLIENTE.Alias, dbo.Vva_ItemPedido.NrPedido
-                                HAVING        (SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio)) >= " + Minimo + @") AND ((SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio))) < " + Maximo + @")
+                                HAVING        ((SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio)) >= " + Minimo + @") AND ((SUM(dbo.Vva_ItemPedido.Cantidad*dbo.Vva_ItemPedido.Precio)) < " + Maximo + @")
                                 ";
                                 proceso.consultar(sql4, "pedidos");
                                 PedidosComprometidos = proceso.ds.Tables["pedidos"];//Context.Database.SqlQuery<List<string>>(sql).ToList();

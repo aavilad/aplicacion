@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b6901f7295df49d09827c301252961ef" Name="Diagram1" ZoomLevel="52" >
+      <Diagram DiagramId="b6901f7295df49d09827c301252961ef" Name="Diagram1" ZoomLevel="64" >
         <EntityTypeShape EntityType="LiderModel.Clase_Producto" Width="1.5" PointX="3" PointY="48" />
         <EntityTypeShape EntityType="LiderModel.CLIENTE" Width="1.5" PointX="3" PointY="4.625" />
         <EntityTypeShape EntityType="LiderModel.Departamento" Width="1.5" PointX="1.5" PointY="23.125" />
@@ -72,6 +72,9 @@
         <AssociationConnector Association="LiderModel.FK_ItemBonificacion_TipoAsociado" />
         <EntityTypeShape EntityType="LiderModel.DOCTIPO" Width="1.5" PointX="16.375" PointY="4" />
         <AssociationConnector Association="LiderModel.FK_DOCUMENTO_DOCTIPO1" />
+        <EntityTypeShape EntityType="LiderModel.INFREPARTO" Width="1.5" PointX="17.375" PointY="7.5" />
+        <EntityTypeShape EntityType="LiderModel.infrepartocab" Width="1.5" PointX="19.875" PointY="8.125" />
+        <AssociationConnector Association="LiderModel.FK_INFREPARTO_infrepartocab" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

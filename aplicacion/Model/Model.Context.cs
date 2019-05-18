@@ -62,5 +62,7 @@ namespace xtraForm.Model
         public virtual DbSet<TipoBonificacion> TipoBonificacions { get; set; }
         public virtual DbSet<TipoAsociado> TipoAsociadoes { get; set; }
         public virtual DbSet<DOCTIPO> DOCTIPOes { get; set; }
+        public virtual DbSet<INFREPARTO> INFREPARTOes { get; set; }
+        public virtual DbSet<infrepartocab> infrepartocabs { get; set; }
     }
 }

@@ -430,6 +430,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             dynamicListLookUpSettings2.FilterString = "[Activo] = True";
             dynamicListLookUpSettings2.ValueMember = "codigo";
             this.Ruta.LookUpSettings = dynamicListLookUpSettings2;
+            this.Ruta.MultiValue = true;
             this.Ruta.Name = "Ruta";
             // 
             // Gestion

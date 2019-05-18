@@ -19,6 +19,18 @@ namespace xtraForm.Modulos.Ventas
         public frmNotaCredito()
         {
             InitializeComponent();
+            Refrescar();
+        }
+
+        void Refrescar()
+        {
+            var proceso = new Libreria.Proceso();
+            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
+            List<string> lista_ = new List<string>();
+            foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
+                lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
+            string cadena = string.Join(" ", lista_.ToArray());
+            condicion(cadena);
         }
 
         private void filtroToolStripMenuItem_Click(object sender, EventArgs e)

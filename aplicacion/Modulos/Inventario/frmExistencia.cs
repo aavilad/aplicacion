@@ -25,6 +25,7 @@ namespace xtraForm.Modulos.Inventario
         public frmExistencia()
         {
             InitializeComponent();
+            Refrescar();
         }
 
         void Refrescar()

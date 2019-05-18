@@ -282,7 +282,8 @@ namespace xtraForm
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill
+                    Dock = DockStyle.Fill,
+                    NModulo = e.Item.Name,
                 };
                 xtraTabControl1.TabPages.Add(pedidos);
                 xtraTabControl1.SelectedTabPage = pedidos;
@@ -447,6 +448,8 @@ namespace xtraForm
 
         private void ListadoPorRuta_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+            splashScreenManager1.ShowWaitForm();
             var pedidos = new XtraTabPage();
             entidad.index = 0;
             var rpt = new RptListadoPorRutas();
@@ -457,14 +460,17 @@ namespace xtraForm
             frmrpt.documentViewer1.DocumentSource = rpt;
             xtraTabControl1.TabPages.Add(pedidos);
             xtraTabControl1.SelectedTabPage = pedidos;
-            pedidos.Text = "Reportes de distribucion";
+            pedidos.Text = "Listado General Producto";
             entidad.index = xtraTabControl1.SelectedTabPageIndex;
             pedidos.Controls.Add(frmrpt);
             frmrpt.Show();
+            splashScreenManager1.CloseWaitForm();
         }
 
         private void ListadoProductoClase_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+            splashScreenManager1.ShowWaitForm();
             var pedidos = new XtraTabPage();
             entidad.index = 0;
             var rpt = new RptListadoSegunClase();
@@ -475,10 +481,11 @@ namespace xtraForm
             frmrpt.documentViewer1.DocumentSource = rpt;
             xtraTabControl1.TabPages.Add(pedidos);
             xtraTabControl1.SelectedTabPage = pedidos;
-            pedidos.Text = "Reportes de distribucion";
+            pedidos.Text = "Listado Clase Producto";
             entidad.index = xtraTabControl1.SelectedTabPageIndex;
             pedidos.Controls.Add(frmrpt);
             frmrpt.Show();
+            splashScreenManager1.CloseWaitForm();
         }
 
         private void CONTROLGENERA_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -550,6 +557,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Reportes.Modulos.Ventas.Cubos.UnileverDms
@@ -565,14 +574,17 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
         }
 
         private void InformeDeReparto_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+            splashScreenManager1.ShowWaitForm();
             var pedidos = new XtraTabPage();
             entidad.index = 0;
-            var rpt = new RptListadoSegunClase();
+            var rpt = new RptInformeDeReparto();
             var frmrpt = new Modulos.Reportes.Modulos.Distribucion.FrmMostrarReporte();
             frmrpt.TopLevel = false;
             frmrpt.FormBorderStyle = FormBorderStyle.None;
@@ -580,10 +592,11 @@ namespace xtraForm
             frmrpt.documentViewer1.DocumentSource = rpt;
             xtraTabControl1.TabPages.Add(pedidos);
             xtraTabControl1.SelectedTabPage = pedidos;
-            pedidos.Text = "Reportes de distribucion";
+            pedidos.Text = "Informe De Reparto";
             entidad.index = xtraTabControl1.SelectedTabPageIndex;
             pedidos.Controls.Add(frmrpt);
             frmrpt.Show();
+            splashScreenManager1.CloseWaitForm();
         }
     }
 }

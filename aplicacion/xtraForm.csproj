@@ -331,6 +331,12 @@
     <Compile Include="Model\grupo.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\INFREPARTO.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\infrepartocab.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ItemBonificacion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -516,6 +522,12 @@
     </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoDeDevoluciones.Designer.cs">
       <DependentUpon>RptListadoDeDevoluciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoGeneralSegunClase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoGeneralSegunClase.Designer.cs">
+      <DependentUpon>RptListadoGeneralSegunClase.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Distribucion\RptListadoSegunClase.cs">
       <SubType>Component</SubType>
@@ -735,8 +747,14 @@
     <EmbeddedResource Include="Modulos\Reportes\FrmMostrarReporte.resx">
       <DependentUpon>FrmMostrarReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptInformeDeReparto.resx">
+      <DependentUpon>RptInformeDeReparto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoDeDevoluciones.resx">
       <DependentUpon>RptListadoDeDevoluciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoGeneralSegunClase.resx">
+      <DependentUpon>RptListadoGeneralSegunClase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Distribucion\RptListadoSegunClase.resx">
       <DependentUpon>RptListadoSegunClase.cs</DependentUpon>

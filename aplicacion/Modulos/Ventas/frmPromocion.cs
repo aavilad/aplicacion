@@ -24,6 +24,7 @@ namespace xtraForm.Modulos.Ventas
         public frmPromocion()
         {
             InitializeComponent();
+            Refrescar();
         }
         void Refrescar()
         {

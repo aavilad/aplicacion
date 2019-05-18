@@ -288,6 +288,35 @@
           <Property Name="orden" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="INFREPARTO">
+          <Key>
+            <PropertyRef Name="InfReparto" />
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="TipoDoc" />
+          </Key>
+          <Property Name="InfReparto" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="Documento" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="TipoDoc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TipoIng" Type="char" MaxLength="1" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Valor" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="importe" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="aliquidar" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="infrepartocab">
+          <Key>
+            <PropertyRef Name="infreparto" />
+          </Key>
+          <Property Name="infreparto" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="ruta" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="estado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="observa" Type="varchar" MaxLength="50" />
+          <Property Name="repartidor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="importe" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="numerodevale" Type="char" MaxLength="9" Nullable="false" />
+        </EntityType>
         <EntityType Name="ItemBonificacion">
           <Key>
             <PropertyRef Name="PKID" />
@@ -848,6 +877,18 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_INFREPARTO_infrepartocab">
+          <End Role="infrepartocab" Type="Self.infrepartocab" Multiplicity="1" />
+          <End Role="INFREPARTO" Type="Self.INFREPARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="infrepartocab">
+              <PropertyRef Name="infreparto" />
+            </Principal>
+            <Dependent Role="INFREPARTO">
+              <PropertyRef Name="InfReparto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemBonificacion_Bonificacion">
           <End Role="Bonificacion" Type="Self.Bonificacion" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1016,6 +1057,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySet Name="FuerzaVentas" EntityType="Self.FuerzaVentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gestion" EntityType="Self.Gestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="grupo" EntityType="Self.grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INFREPARTO" EntityType="Self.INFREPARTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="infrepartocab" EntityType="Self.infrepartocab" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemBonificacion" EntityType="Self.ItemBonificacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LINEA" EntityType="Self.LINEA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="dbo" store:Type="Tables" />
@@ -1126,6 +1169,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_Filtro_FiltroConfiguracion" Association="Self.FK_Filtro_FiltroConfiguracion">
             <End Role="FiltroConfiguracion" EntitySet="FiltroConfiguracion" />
             <End Role="Filtro" EntitySet="Filtro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INFREPARTO_infrepartocab" Association="Self.FK_INFREPARTO_infrepartocab">
+            <End Role="infrepartocab" EntitySet="infrepartocab" />
+            <End Role="INFREPARTO" EntitySet="INFREPARTO" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemBonificacion_Bonificacion" Association="Self.FK_ItemBonificacion_Bonificacion">
             <End Role="Bonificacion" EntitySet="Bonificacion" />
@@ -1337,6 +1384,12 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_DOCUMENTO_DOCTIPO1" Association="LiderModel.FK_DOCUMENTO_DOCTIPO1">
             <End Role="DOCTIPO" EntitySet="DOCTIPOes" />
             <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+          </AssociationSet>
+          <EntitySet Name="INFREPARTOes" EntityType="LiderModel.INFREPARTO" />
+          <EntitySet Name="infrepartocabs" EntityType="LiderModel.infrepartocab" />
+          <AssociationSet Name="FK_INFREPARTO_infrepartocab" Association="LiderModel.FK_INFREPARTO_infrepartocab">
+            <End Role="infrepartocab" EntitySet="infrepartocabs" />
+            <End Role="INFREPARTO" EntitySet="INFREPARTOes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Clase_Producto">
@@ -2384,6 +2437,49 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="INFREPARTO">
+          <Key>
+            <PropertyRef Name="InfReparto1" />
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="TipoDoc" />
+          </Key>
+          <Property Name="InfReparto1" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Documento" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="TipoDoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TipoIng" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="importe" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="aliquidar" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="infrepartocab" Relationship="LiderModel.FK_INFREPARTO_infrepartocab" FromRole="INFREPARTO" ToRole="infrepartocab" />
+        </EntityType>
+        <EntityType Name="infrepartocab">
+          <Key>
+            <PropertyRef Name="infreparto" />
+          </Key>
+          <Property Name="infreparto" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ruta" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="observa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="repartidor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="importe" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="numerodevale" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="INFREPARTOes" Relationship="LiderModel.FK_INFREPARTO_infrepartocab" FromRole="infrepartocab" ToRole="INFREPARTO" />
+        </EntityType>
+        <Association Name="FK_INFREPARTO_infrepartocab">
+          <End Type="LiderModel.infrepartocab" Role="infrepartocab" Multiplicity="1" />
+          <End Type="LiderModel.INFREPARTO" Role="INFREPARTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="infrepartocab">
+              <PropertyRef Name="infreparto" />
+            </Principal>
+            <Dependent Role="INFREPARTO">
+              <PropertyRef Name="InfReparto1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3031,6 +3127,35 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
                 <ScalarProperty Name="Serie" ColumnName="Serie" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="DocTipo1" ColumnName="DocTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INFREPARTOes">
+            <EntityTypeMapping TypeName="LiderModel.INFREPARTO">
+              <MappingFragment StoreEntitySet="INFREPARTO">
+                <ScalarProperty Name="aliquidar" ColumnName="aliquidar" />
+                <ScalarProperty Name="importe" ColumnName="importe" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoIng" ColumnName="TipoIng" />
+                <ScalarProperty Name="TipoDoc" ColumnName="TipoDoc" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="InfReparto1" ColumnName="InfReparto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="infrepartocabs">
+            <EntityTypeMapping TypeName="LiderModel.infrepartocab">
+              <MappingFragment StoreEntitySet="infrepartocab">
+                <ScalarProperty Name="numerodevale" ColumnName="numerodevale" />
+                <ScalarProperty Name="importe" ColumnName="importe" />
+                <ScalarProperty Name="repartidor" ColumnName="repartidor" />
+                <ScalarProperty Name="observa" ColumnName="observa" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="infreparto" ColumnName="infreparto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
