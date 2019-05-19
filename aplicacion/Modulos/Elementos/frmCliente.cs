@@ -28,16 +28,20 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            string Codigo = CODIGO.Text.Trim();
-            int TipoPersona = Convert.ToInt32(TIPOPERSONA.EditValue);
-            string Nombres = NOMBRES.Text.Trim();
-            string PNombre = PrimeroNombre.Text.Trim();
-            string SNombre = SEGUNDONOMBRE.Text.Trim();
-            string ApPaterno = APELLIDOPATERNO.Text.Trim();
-            string ApMaterno = APELLIDOMATERNO.Text.Trim();
-            string direccion = DIRECCION.Text.Trim();
-            int TipoIdentidad = Convert.ToInt32(DOCIDENTIDAD.EditValue);
-            string NroDocumento = NUMERODOCIDENTIDAD.Text.Trim();
+            string _Codigo = CODIGO.Text.Trim();
+            int _TipoPersona = Convert.ToInt32(TIPOPERSONA.EditValue);
+            string _Nombres = NOMBRES.Text.Trim();
+            string _PNombre = PrimeroNombre.Text.Trim();
+            string _SNombre = SEGUNDONOMBRE.Text.Trim();
+            string _ApPaterno = APELLIDOPATERNO.Text.Trim();
+            string _ApMaterno = APELLIDOMATERNO.Text.Trim();
+            string _Direccion = DIRECCION.Text.Trim();
+            int _TipoIdentidad = Convert.ToInt32(DOCIDENTIDAD.EditValue);
+            string _NroDocumento = NUMERODOCIDENTIDAD.Text.Trim();
+            bool _AgenteRetencion = AgenteRetencion.Checked;
+            bool _AgentePercepcion = AgentePercepcion.Checked;
+            bool _Activo = Activo.Checked;
+            bool _InhabBonificacion = InhabilitarBonificacion.Checked;
 
 
         }
