@@ -30,10 +30,8 @@
         <EntityTypeShape EntityType="LiderModel.RUTA" Width="1.5" PointX="7.75" PointY="2.375" />
         <EntityTypeShape EntityType="LiderModel.TIPONEG" Width="1.5" PointX="0.75" PointY="5.125" />
         <EntityTypeShape EntityType="LiderModel.tipoprecio" Width="1.5" PointX="5.25" PointY="34.125" />
-        <EntityTypeShape EntityType="LiderModel.ZONA" Width="1.5" PointX="0.75" PointY="8.5" />
         <EntityTypeShape EntityType="LiderModel.ZONA_PERSONAL" Width="1.5" PointX="3" PointY="19.375" />
         <AssociationConnector Association="LiderModel.FK_PRODUCTO_Clase_Producto" />
-        <AssociationConnector Association="LiderModel.FK__CLIENTE__Zona__4959E263" />
         <AssociationConnector Association="LiderModel.FK_CLIENTE_Distrito" />
         <AssociationConnector Association="LiderModel.FK_CLIENTE_TIPONEG" />
         <AssociationConnector Association="LiderModel.FK_DOCUMENTO_CLIENTE" />
@@ -54,7 +52,6 @@
         <AssociationConnector Association="LiderModel.FK_PRODUCTO_MARCA" />
         <AssociationConnector Association="LiderModel.FK__PEDIDO__Personal__68D28DBC" />
         <AssociationConnector Association="LiderModel.FK_REPARTO_RUTAS1" />
-        <AssociationConnector Association="LiderModel.FK__ZONA_PERSO__Zona__65F62111" />
         <EntityTypeShape EntityType="LiderModel.VistaAdministrativa" Width="1.5" PointX="12" PointY="15.25" />
         <AssociationConnector Association="LiderModel.FK_VistaAdministrativa_Modulo" />
         <EntityTypeShape EntityType="LiderModel.Vva_Cliente" Width="1.5" PointX="14.375" PointY="4.75" />
@@ -75,6 +72,13 @@
         <EntityTypeShape EntityType="LiderModel.INFREPARTO" Width="1.5" PointX="17.375" PointY="7.5" />
         <EntityTypeShape EntityType="LiderModel.infrepartocab" Width="1.5" PointX="19.875" PointY="8.125" />
         <AssociationConnector Association="LiderModel.FK_INFREPARTO_infrepartocab" />
+        <EntityTypeShape EntityType="LiderModel.TIPOCLI" Width="1.5" PointX="5.375" PointY="16.875" />
+        <AssociationConnector Association="LiderModel.FK__CLIENTE__TipoCli__4A4E069C" />
+        <EntityTypeShape EntityType="LiderModel.ZONA" Width="1.5" PointX="0.75" PointY="19.125" />
+        <AssociationConnector Association="LiderModel.FK__ZONA_PERSO__Zona__65F62111" />
+        <EntityTypeShape EntityType="LiderModel.ClienteZona" Width="1.5" PointX="0.75" PointY="9.5" />
+        <AssociationConnector Association="LiderModel.FK_ClienteZona_CLIENTE" />
+        <AssociationConnector Association="LiderModel.FK_ClienteZona_ZONA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -91,6 +91,14 @@
           <Property Name="EstadoCli" Type="tinyint" />
           <Property Name="Correo" Type="varchar" MaxLength="70" />
         </EntityType>
+        <EntityType Name="ClienteZona">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="IDCliente" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="IDZona" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
         <EntityType Name="Departamento">
           <Key>
             <PropertyRef Name="iddpto" />
@@ -577,6 +585,15 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="TIPOCLI">
+          <Key>
+            <PropertyRef Name="TipoCli" />
+          </Key>
+          <Property Name="TipoCli" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="Porcentaje" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="Comision" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="TIPONEG">
           <Key>
             <PropertyRef Name="IdNegocio" />
@@ -614,6 +631,9 @@
           <Property Name="Distancia" Type="int" Nullable="false" />
           <Property Name="Riesgo" Type="bit" Nullable="false" />
           <Property Name="proveedor" Type="char" MaxLength="5" />
+          <Property Name="Reparto" Type="bit" />
+          <Property Name="Venta" Type="bit" />
+          <Property Name="Activo" Type="bit" />
         </EntityType>
         <EntityType Name="ZONA_PERSONAL">
           <Key>
@@ -653,15 +673,15 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <Property Name="IDNegocio" Type="char" MaxLength="2" />
           <Property Name="Clase" Type="tinyint" />
         </EntityType>
-        <Association Name="FK__CLIENTE__Zona__4959E263">
-          <End Role="ZONA" Type="Self.ZONA" Multiplicity="1" />
+        <Association Name="FK__CLIENTE__TipoCli__4A4E069C">
+          <End Role="TIPOCLI" Type="Self.TIPOCLI" Multiplicity="1" />
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ZONA">
-              <PropertyRef Name="Zona" />
+            <Principal Role="TIPOCLI">
+              <PropertyRef Name="TipoCli" />
             </Principal>
             <Dependent Role="CLIENTE">
-              <PropertyRef Name="Zona" />
+              <PropertyRef Name="TipoCli" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -762,6 +782,30 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Principal>
             <Dependent Role="CLIENTE">
               <PropertyRef Name="IdNegocio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClienteZona_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="ClienteZona" Type="Self.ClienteZona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="Cliente" />
+            </Principal>
+            <Dependent Role="ClienteZona">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClienteZona_ZONA">
+          <End Role="ZONA" Type="Self.ZONA" Multiplicity="1" />
+          <End Role="ClienteZona" Type="Self.ClienteZona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona" />
+            </Principal>
+            <Dependent Role="ClienteZona">
+              <PropertyRef Name="IDZona" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1045,6 +1089,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clase_Producto" EntityType="Self.Clase_Producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClienteZona" EntityType="Self.ClienteZona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETADOC" EntityType="Self.DETADOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETPEDIDO" EntityType="Self.DETPEDIDO" Schema="dbo" store:Type="Tables" />
@@ -1074,6 +1119,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySet Name="RUTAS" EntityType="Self.RUTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoAsociado" EntityType="Self.TipoAsociado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoBonificacion" EntityType="Self.TipoBonificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOCLI" EntityType="Self.TIPOCLI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPONEG" EntityType="Self.TIPONEG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipoprecio" EntityType="Self.tipoprecio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VistaAdministrativa" EntityType="Self.VistaAdministrativa" Schema="dbo" store:Type="Tables" />
@@ -1098,8 +1144,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
     [Vva_Cliente].[Clase] AS [Clase]
     FROM [dbo].[Vva_Cliente] AS [Vva_Cliente]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="Self.FK__CLIENTE__Zona__4959E263">
-            <End Role="ZONA" EntitySet="ZONA" />
+          <AssociationSet Name="FK__CLIENTE__TipoCli__4A4E069C" Association="Self.FK__CLIENTE__TipoCli__4A4E069C">
+            <End Role="TIPOCLI" EntitySet="TIPOCLI" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <AssociationSet Name="FK__DETADOC__Product__4F12BBB9" Association="Self.FK__DETADOC__Product__4F12BBB9">
@@ -1133,6 +1179,14 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_CLIENTE_TIPONEG" Association="Self.FK_CLIENTE_TIPONEG">
             <End Role="TIPONEG" EntitySet="TIPONEG" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteZona_CLIENTE" Association="Self.FK_ClienteZona_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="ClienteZona" EntitySet="ClienteZona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteZona_ZONA" Association="Self.FK_ClienteZona_ZONA">
+            <End Role="ZONA" EntitySet="ZONA" />
+            <End Role="ClienteZona" EntitySet="ClienteZona" />
           </AssociationSet>
           <AssociationSet Name="FK_DETADOC_Bonificacion" Association="Self.FK_DETADOC_Bonificacion">
             <End Role="Bonificacion" EntitySet="Bonificacion" />
@@ -1253,15 +1307,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySet Name="RUTAS" EntityType="LiderModel.RUTA" />
           <EntitySet Name="TIPONEGs" EntityType="LiderModel.TIPONEG" />
           <EntitySet Name="tipoprecios" EntityType="LiderModel.tipoprecio" />
-          <EntitySet Name="ZONAs" EntityType="LiderModel.ZONA" />
           <EntitySet Name="ZONA_PERSONAL" EntityType="LiderModel.ZONA_PERSONAL" />
           <AssociationSet Name="FK_PRODUCTO_Clase_Producto" Association="LiderModel.FK_PRODUCTO_Clase_Producto">
             <End Role="Clase_Producto" EntitySet="Clase_Producto" />
             <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CLIENTE__Zona__4959E263" Association="LiderModel.FK__CLIENTE__Zona__4959E263">
-            <End Role="ZONA" EntitySet="ZONAs" />
-            <End Role="CLIENTE" EntitySet="CLIENTEs" />
           </AssociationSet>
           <AssociationSet Name="FK_CLIENTE_Distrito" Association="LiderModel.FK_CLIENTE_Distrito">
             <End Role="Distrito" EntitySet="Distritoes" />
@@ -1343,10 +1392,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             <End Role="RUTA" EntitySet="RUTAS" />
             <End Role="REPARTO" EntitySet="REPARTOes" />
           </AssociationSet>
-          <AssociationSet Name="FK__ZONA_PERSO__Zona__65F62111" Association="LiderModel.FK__ZONA_PERSO__Zona__65F62111">
-            <End Role="ZONA" EntitySet="ZONAs" />
-            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
-          </AssociationSet>
           <EntitySet Name="VistaAdministrativas" EntityType="LiderModel.VistaAdministrativa" />
           <AssociationSet Name="FK_VistaAdministrativa_Modulo" Association="LiderModel.FK_VistaAdministrativa_Modulo">
             <End Role="Modulo" EntitySet="Moduloes" />
@@ -1390,6 +1435,25 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_INFREPARTO_infrepartocab" Association="LiderModel.FK_INFREPARTO_infrepartocab">
             <End Role="infrepartocab" EntitySet="infrepartocabs" />
             <End Role="INFREPARTO" EntitySet="INFREPARTOes" />
+          </AssociationSet>
+          <EntitySet Name="TIPOCLIs" EntityType="LiderModel.TIPOCLI" />
+          <AssociationSet Name="FK__CLIENTE__TipoCli__4A4E069C" Association="LiderModel.FK__CLIENTE__TipoCli__4A4E069C">
+            <End Role="TIPOCLI" EntitySet="TIPOCLIs" />
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+          </AssociationSet>
+          <EntitySet Name="ZONAs" EntityType="LiderModel.ZONA" />
+          <AssociationSet Name="FK__ZONA_PERSO__Zona__65F62111" Association="LiderModel.FK__ZONA_PERSO__Zona__65F62111">
+            <End Role="ZONA" EntitySet="ZONAs" />
+            <End Role="ZONA_PERSONAL" EntitySet="ZONA_PERSONAL" />
+          </AssociationSet>
+          <EntitySet Name="ClienteZonas" EntityType="LiderModel.ClienteZona" />
+          <AssociationSet Name="FK_ClienteZona_CLIENTE" Association="LiderModel.FK_ClienteZona_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+            <End Role="ClienteZona" EntitySet="ClienteZonas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteZona_ZONA" Association="LiderModel.FK_ClienteZona_ZONA">
+            <End Role="ZONA" EntitySet="ZONAs" />
+            <End Role="ClienteZona" EntitySet="ClienteZonas" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Clase_Producto">
@@ -1448,10 +1512,11 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <Property Name="dia2" Type="Int16" />
           <Property Name="EstadoCli" Type="Byte" />
           <Property Name="Correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ZONA1" Relationship="LiderModel.FK__CLIENTE__Zona__4959E263" FromRole="CLIENTE" ToRole="ZONA" />
           <NavigationProperty Name="Distrito" Relationship="LiderModel.FK_CLIENTE_Distrito" FromRole="CLIENTE" ToRole="Distrito" />
           <NavigationProperty Name="TIPONEG" Relationship="LiderModel.FK_CLIENTE_TIPONEG" FromRole="CLIENTE" ToRole="TIPONEG" />
           <NavigationProperty Name="DOCUMENTOes" Relationship="LiderModel.FK_DOCUMENTO_CLIENTE" FromRole="CLIENTE" ToRole="DOCUMENTO" />
+          <NavigationProperty Name="TIPOCLI1" Relationship="LiderModel.FK__CLIENTE__TipoCli__4A4E069C" FromRole="CLIENTE" ToRole="TIPOCLI" />
+          <NavigationProperty Name="ClienteZonas" Relationship="LiderModel.FK_ClienteZona_CLIENTE" FromRole="CLIENTE" ToRole="ClienteZona" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -1914,18 +1979,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <Property Name="maymin" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="DETADOCs" Relationship="LiderModel.FK_DETADOC_tipoprecio" FromRole="tipoprecio" ToRole="DETADOC" />
         </EntityType>
-        <EntityType Name="ZONA">
-          <Key>
-            <PropertyRef Name="Zona1" />
-          </Key>
-          <Property Name="Zona1" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="false" />
-          <Property Name="Distancia" Type="Int32" Nullable="false" />
-          <Property Name="Riesgo" Type="Boolean" Nullable="false" />
-          <Property Name="proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="CLIENTEs" Relationship="LiderModel.FK__CLIENTE__Zona__4959E263" FromRole="ZONA" ToRole="CLIENTE" />
-          <NavigationProperty Name="ZONA_PERSONAL" Relationship="LiderModel.FK__ZONA_PERSO__Zona__65F62111" FromRole="ZONA" ToRole="ZONA_PERSONAL" />
-        </EntityType>
         <EntityType Name="ZONA_PERSONAL">
           <Key>
             <PropertyRef Name="PKID" />
@@ -1946,18 +1999,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Principal>
             <Dependent Role="PRODUCTO">
               <PropertyRef Name="clase_producto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CLIENTE__Zona__4959E263">
-          <End Type="LiderModel.ZONA" Role="ZONA" Multiplicity="1" />
-          <End Type="LiderModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ZONA">
-              <PropertyRef Name="Zona1" />
-            </Principal>
-            <Dependent Role="CLIENTE">
-              <PropertyRef Name="Zona" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2204,18 +2245,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Principal>
             <Dependent Role="REPARTO">
               <PropertyRef Name="Ruta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ZONA_PERSO__Zona__65F62111">
-          <End Type="LiderModel.ZONA" Role="ZONA" Multiplicity="1" />
-          <End Type="LiderModel.ZONA_PERSONAL" Role="ZONA_PERSONAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ZONA">
-              <PropertyRef Name="Zona1" />
-            </Principal>
-            <Dependent Role="ZONA_PERSONAL">
-              <PropertyRef Name="Zona" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2477,6 +2506,89 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Principal>
             <Dependent Role="INFREPARTO">
               <PropertyRef Name="InfReparto1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TIPOCLI">
+          <Key>
+            <PropertyRef Name="TipoCli1" />
+          </Key>
+          <Property Name="TipoCli1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Porcentaje" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="Comision" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CLIENTEs" Relationship="LiderModel.FK__CLIENTE__TipoCli__4A4E069C" FromRole="TIPOCLI" ToRole="CLIENTE" />
+        </EntityType>
+        <Association Name="FK__CLIENTE__TipoCli__4A4E069C">
+          <End Type="LiderModel.TIPOCLI" Role="TIPOCLI" Multiplicity="1" />
+          <End Type="LiderModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOCLI">
+              <PropertyRef Name="TipoCli1" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="TipoCli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ZONA">
+          <Key>
+            <PropertyRef Name="Zona1" />
+          </Key>
+          <Property Name="Zona1" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="Distancia" Type="Int32" Nullable="false" />
+          <Property Name="Riesgo" Type="Boolean" Nullable="false" />
+          <Property Name="proveedor" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Reparto" Type="Boolean" />
+          <Property Name="Venta" Type="Boolean" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="ZONA_PERSONAL" Relationship="LiderModel.FK__ZONA_PERSO__Zona__65F62111" FromRole="ZONA" ToRole="ZONA_PERSONAL" />
+          <NavigationProperty Name="ClienteZonas" Relationship="LiderModel.FK_ClienteZona_ZONA" FromRole="ZONA" ToRole="ClienteZona" />
+        </EntityType>
+        <Association Name="FK__ZONA_PERSO__Zona__65F62111">
+          <End Type="LiderModel.ZONA" Role="ZONA" Multiplicity="1" />
+          <End Type="LiderModel.ZONA_PERSONAL" Role="ZONA_PERSONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona1" />
+            </Principal>
+            <Dependent Role="ZONA_PERSONAL">
+              <PropertyRef Name="Zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ClienteZona">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="IDCliente" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="IDZona" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="LiderModel.FK_ClienteZona_CLIENTE" FromRole="ClienteZona" ToRole="CLIENTE" />
+          <NavigationProperty Name="ZONA" Relationship="LiderModel.FK_ClienteZona_ZONA" FromRole="ClienteZona" ToRole="ZONA" />
+        </EntityType>
+        <Association Name="FK_ClienteZona_CLIENTE">
+          <End Type="LiderModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+          <End Type="LiderModel.ClienteZona" Role="ClienteZona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="Cliente1" />
+            </Principal>
+            <Dependent Role="ClienteZona">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClienteZona_ZONA">
+          <End Type="LiderModel.ZONA" Role="ZONA" Multiplicity="1" />
+          <End Type="LiderModel.ClienteZona" Role="ClienteZona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZONA">
+              <PropertyRef Name="Zona1" />
+            </Principal>
+            <Dependent Role="ClienteZona">
+              <PropertyRef Name="IDZona" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2982,17 +3094,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ZONAs">
-            <EntityTypeMapping TypeName="LiderModel.ZONA">
-              <MappingFragment StoreEntitySet="ZONA">
-                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
-                <ScalarProperty Name="Riesgo" ColumnName="Riesgo" />
-                <ScalarProperty Name="Distancia" ColumnName="Distancia" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Zona1" ColumnName="Zona" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ZONA_PERSONAL">
             <EntityTypeMapping TypeName="LiderModel.ZONA_PERSONAL">
               <MappingFragment StoreEntitySet="ZONA_PERSONAL">
@@ -3156,6 +3257,39 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
                 <ScalarProperty Name="ruta" ColumnName="ruta" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="infreparto" ColumnName="infreparto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOCLIs">
+            <EntityTypeMapping TypeName="LiderModel.TIPOCLI">
+              <MappingFragment StoreEntitySet="TIPOCLI">
+                <ScalarProperty Name="Comision" ColumnName="Comision" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoCli1" ColumnName="TipoCli" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZONAs">
+            <EntityTypeMapping TypeName="LiderModel.ZONA">
+              <MappingFragment StoreEntitySet="ZONA">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Venta" ColumnName="Venta" />
+                <ScalarProperty Name="Reparto" ColumnName="Reparto" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="Riesgo" ColumnName="Riesgo" />
+                <ScalarProperty Name="Distancia" ColumnName="Distancia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Zona1" ColumnName="Zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClienteZonas">
+            <EntityTypeMapping TypeName="LiderModel.ClienteZona">
+              <MappingFragment StoreEntitySet="ClienteZona">
+                <ScalarProperty Name="IDZona" ColumnName="IDZona" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

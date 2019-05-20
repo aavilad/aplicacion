@@ -12,27 +12,20 @@ namespace xtraForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ZONA
+    public partial class TIPOCLI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ZONA()
+        public TIPOCLI()
         {
-            this.ZONA_PERSONAL = new HashSet<ZONA_PERSONAL>();
-            this.ClienteZonas = new HashSet<ClienteZona>();
+            this.CLIENTEs = new HashSet<CLIENTE>();
         }
     
-        public string Zona1 { get; set; }
+        public string TipoCli1 { get; set; }
         public string Descripcion { get; set; }
-        public int Distancia { get; set; }
-        public bool Riesgo { get; set; }
-        public string proveedor { get; set; }
-        public Nullable<bool> Reparto { get; set; }
-        public Nullable<bool> Venta { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public Nullable<decimal> Porcentaje { get; set; }
+        public bool Comision { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClienteZona> ClienteZonas { get; set; }
+        public virtual ICollection<CLIENTE> CLIENTEs { get; set; }
     }
 }

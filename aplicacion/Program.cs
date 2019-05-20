@@ -20,7 +20,8 @@ namespace xtraForm
             Application.SetCompatibleTextRenderingDefault(false);
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-PE");
             //Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-PE");
-            Application.Run(new frmPrincipal());
+            //Application.Run(new frmPrincipal());
+            Application.Run(new Modulos.Usuario.frmLogin());
 
         }
     }

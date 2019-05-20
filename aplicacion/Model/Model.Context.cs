@@ -50,7 +50,6 @@ namespace xtraForm.Model
         public virtual DbSet<RUTA> RUTAS { get; set; }
         public virtual DbSet<TIPONEG> TIPONEGs { get; set; }
         public virtual DbSet<tipoprecio> tipoprecios { get; set; }
-        public virtual DbSet<ZONA> ZONAs { get; set; }
         public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
         public virtual DbSet<VistaAdministrativa> VistaAdministrativas { get; set; }
         public virtual DbSet<Vva_Cliente> Vva_Cliente { get; set; }
@@ -64,5 +63,8 @@ namespace xtraForm.Model
         public virtual DbSet<DOCTIPO> DOCTIPOes { get; set; }
         public virtual DbSet<INFREPARTO> INFREPARTOes { get; set; }
         public virtual DbSet<infrepartocab> infrepartocabs { get; set; }
+        public virtual DbSet<TIPOCLI> TIPOCLIs { get; set; }
+        public virtual DbSet<ZONA> ZONAs { get; set; }
+        public virtual DbSet<ClienteZona> ClienteZonas { get; set; }
     }
 }

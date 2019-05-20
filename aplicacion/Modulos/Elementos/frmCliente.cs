@@ -28,28 +28,63 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            string _Codigo = CODIGO.Text.Trim();
-            int _TipoPersona = Convert.ToInt32(TIPOPERSONA.EditValue);
-            string _Nombres = NOMBRES.Text.Trim();
-            string _PNombre = PrimeroNombre.Text.Trim();
-            string _SNombre = SEGUNDONOMBRE.Text.Trim();
-            string _ApPaterno = APELLIDOPATERNO.Text.Trim();
-            string _ApMaterno = APELLIDOMATERNO.Text.Trim();
-            string _Direccion = DIRECCION.Text.Trim();
-            int _TipoIdentidad = Convert.ToInt32(DOCIDENTIDAD.EditValue);
-            string _NroDocumento = NUMERODOCIDENTIDAD.Text.Trim();
-            bool _AgenteRetencion = AgenteRetencion.Checked;
-            bool _AgentePercepcion = AgentePercepcion.Checked;
-            bool _Activo = Activo.Checked;
-            bool _InhabBonificacion = InhabilitarBonificacion.Checked;
+            //Externos
+            string CCodigo = this.Codigo.Text.Trim();
+            int CTipoPersona = Convert.ToInt32(this.TipoPersona.EditValue);
+            string CNombres = this.Nombres.Text.Trim();
+            string CPrimeroNombre = PrimeroNombre.Text.Trim();
+            string CSegundoNombre = SegundoNombre.Text.Trim();
+            string CApellidoPaterno = ApellidoPaterno.Text.Trim();
+            string CApellidoMaterno = ApellodMaterno.Text.Trim();
+            string CDireccion = Direccion.Text.Trim();
+            int CTipoIdentidad = Convert.ToInt32(TipoDocIdetntidad.EditValue);
+            string CNroDocumento = NumeroDocIdentidad.Text.Trim();
+            bool CAgenteRetencion = AgenteRetencion.Checked;
+            bool CAgentePercepcion = AgentePercepcion.Checked;
+            bool CActivo = Activo.Checked;
+            bool CInhabBonificacion = InhabilitarBonificacion.Checked;
+            //Comercial
+
+
 
 
         }
-
         private void frmCliente_Load(object sender, EventArgs e)
         {
             TpCredito();
             TpContado();
+            TpCliente();
+            TpNegocio();
+        }
+        private void TpNegocio()
+        {
+            using (var CTX = new LiderEntities())
+            {
+                TIPONEGOCIO.Properties.DataSource = CTX.TIPONEGs
+                    .Select(x => new
+                    {
+                        Codigo = x.IdNegocio.Trim(),
+                        Descripcion = x.Descrip.Trim(),
+                    }).ToList();
+                TIPONEGOCIO.Properties.DisplayMember = "Descripcion";
+                TIPONEGOCIO.Properties.ValueMember = "Codigo";
+                TIPONEGOCIO.Properties.Columns.Add(new LookUpColumnInfo("Descripcion", string.Empty));
+            }
+        }
+        private void TpCliente()
+        {
+            using (var CTX = new LiderEntities())
+            {
+                TIPOCLIENTE.Properties.DataSource = CTX.TIPOCLIs
+                    .Select(x => new
+                    {
+                        Codigo = x.TipoCli1.Trim(),
+                        Descripcion = x.Descripcion.Trim(),
+                    }).ToList();
+                TIPOCLIENTE.Properties.DisplayMember = "Descripcion";
+                TIPOCLIENTE.Properties.ValueMember = "Codigo";
+                TIPOCLIENTE.Properties.Columns.Add(new LookUpColumnInfo("Descripcion", string.Empty));
+            }
         }
         private void TpCredito()
         {
@@ -74,19 +109,56 @@ namespace xtraForm.Modulos.Elementos
 
         private void TIPOPERSONA_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (TIPOPERSONA.SelectedIndex)
+            switch (TipoPersona.SelectedIndex)
             {
                 case 0:
                     PRIMERNOMBRE.Enabled = true;
-                    SEGUNDONOMBRE.Enabled = true;
-                    APELLIDOPATERNO.Enabled = true;
-                    APELLIDOMATERNO.Enabled = true;
-                    
-                    break;
-                case 1:
-                    NOMBRES.Enabled = true;
+                    SegundoNombre.Enabled = true;
+                    ApellidoPaterno.Enabled = true;
+                    ApellodMaterno.Enabled = true;
 
                     break;
+                case 1:
+                    Nombres.Enabled = true;
+
+                    break;
+            }
+        }
+
+        private void DIRECCION_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            var formulario = new frmClienteDireccion();
+            formulario.pasar += new frmClienteDireccion.Variables(CamposDireccionCliente);
+            formulario.StartPosition = FormStartPosition.CenterParent;
+            formulario.ShowDialog();
+        }
+
+        void CamposDireccionCliente(string _Direccion, string CodigoDistrito, string CodigoProvincia, string CodigoDepartamento)
+        {
+            Direccion.Text = _Direccion;
+            Distrito = CodigoDistrito;
+            Provincia = CodigoProvincia;
+            Departamento = CodigoDepartamento;
+        }
+
+        private void ZonaVenta_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            using (var CTX = new LiderEntities())
+            {
+                var formulario = new frmZona();
+                formulario.gridControl1.DataSource = null;
+                formulario.gridView1.Columns.Clear();
+                formulario.gridControl1.DataSource = CTX.ZONAs
+                    .Where(y => y.Activo == true)
+                    .Select(x => new
+                    {
+                        Codigo = x.Zona1.Trim(),
+                        Descripcion = x.Descripcion.Trim(),
+                    })
+                    .ToList();
+                formulario.gridView1.Columns[1].Width = 250;
+                formulario.StartPosition = FormStartPosition.CenterParent;
+                formulario.ShowDialog();
             }
         }
     }

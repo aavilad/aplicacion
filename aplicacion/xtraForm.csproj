@@ -53,10 +53,6 @@
     <StartupObject>xtraForm.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.CodeParser.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dashboard.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -121,7 +117,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -295,6 +290,9 @@
     <Compile Include="Model\CLIENTE.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ClienteZona.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Departamento.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -397,6 +395,9 @@
     <Compile Include="Model\TipoBonificacion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TIPOCLI.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TIPONEG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -493,6 +494,12 @@
     <Compile Include="Modulos\Elementos\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Elementos\frmZona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmZona.Designer.cs">
+      <DependentUpon>frmZona.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Inventario\frmExistencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -558,6 +565,12 @@
     </Compile>
     <Compile Include="Modulos\Reportes\Modulos\Ventas\RptAvanceVentasSpring.Designer.cs">
       <DependentUpon>RptAvanceVentasSpring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Usuario\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Usuario\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmCliente.cs">
       <SubType>Form</SubType>
@@ -744,6 +757,9 @@
     <EmbeddedResource Include="Modulos\Elementos\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmZona.resx">
+      <DependentUpon>frmZona.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Inventario\frmExistencia.resx">
       <DependentUpon>frmExistencia.cs</DependentUpon>
     </EmbeddedResource>
@@ -780,6 +796,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes\Modulos\Ventas\RptAvanceVentasSpring.resx">
       <DependentUpon>RptAvanceVentasSpring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Usuario\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>

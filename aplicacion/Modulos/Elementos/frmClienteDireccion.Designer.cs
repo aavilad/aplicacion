@@ -48,6 +48,8 @@
             // 
             this.Direccion.Location = new System.Drawing.Point(86, 10);
             this.Direccion.Name = "Direccion";
+            this.Direccion.Properties.Mask.EditMask = "\\p{Lu}+";
+            this.Direccion.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.Direccion.Size = new System.Drawing.Size(312, 20);
             this.Direccion.TabIndex = 0;
             // 

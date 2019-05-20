@@ -18,6 +18,7 @@ namespace xtraForm.Model
         public CLIENTE()
         {
             this.DOCUMENTOes = new HashSet<DOCUMENTO>();
+            this.ClienteZonas = new HashSet<ClienteZona>();
         }
     
         public string Cliente1 { get; set; }
@@ -64,10 +65,12 @@ namespace xtraForm.Model
         public Nullable<byte> EstadoCli { get; set; }
         public string Correo { get; set; }
     
-        public virtual ZONA ZONA1 { get; set; }
         public virtual Distrito Distrito { get; set; }
         public virtual TIPONEG TIPONEG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DOCUMENTO> DOCUMENTOes { get; set; }
+        public virtual TIPOCLI TIPOCLI1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClienteZona> ClienteZonas { get; set; }
     }
 }
