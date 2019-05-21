@@ -55,7 +55,7 @@
         <EntityTypeShape EntityType="LiderModel.VistaAdministrativa" Width="1.5" PointX="12" PointY="15.25" />
         <AssociationConnector Association="LiderModel.FK_VistaAdministrativa_Modulo" />
         <EntityTypeShape EntityType="LiderModel.Vva_Cliente" Width="1.5" PointX="14.375" PointY="4.75" />
-        <EntityTypeShape EntityType="LiderModel.grupo" Width="1.5" PointX="14.375" PointY="9.75" />
+        <EntityTypeShape EntityType="LiderModel.grupo" Width="1.5" PointX="14.875" PointY="9.375" />
         <EntityTypeShape EntityType="LiderModel.categoria" Width="1.5" PointX="15.375" PointY="0.75" />
         <EntityTypeShape EntityType="LiderModel.PlantillaUnidad" Width="1.5" PointX="14.375" PointY="12.875" />
         <AssociationConnector Association="LiderModel.FK_PRODUCTO_PlantillaUnidad" />

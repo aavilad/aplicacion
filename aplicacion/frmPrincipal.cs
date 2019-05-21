@@ -1,13 +1,18 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.Skins;
+using DevExpress.XtraBars.Helpers;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraTab;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using xtraForm.Modulos.Reportes.Modulos.Distribucion;
+using xtraForm.Properties;
 
 namespace xtraForm
 {
@@ -29,7 +34,6 @@ namespace xtraForm
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
                 if (xtraTabControl1.TabPages[i].Text == "Reglas Bonificacion")
                 {
-
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
@@ -650,6 +654,11 @@ namespace xtraForm
                 objeto.Show();
                 splashScreenManager1.CloseWaitForm();
             }
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

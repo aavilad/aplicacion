@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -191,32 +192,6 @@ namespace xtraForm.Modulos.Inventario
                 Context.SaveChanges();
             }
         }
-
-        private void filtarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var Context = new LiderEntities())
-            {
-                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
-                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
-                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
-                i.DisplayMember = "Descripcion";
-                i.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
-                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
-                j.DisplayMember = "Descripcion";
-                j.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
-                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'" + tabla + "'").ToList();
-                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
-                filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
-                {
-                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
-                }
-                filtro.entidad = tabla;
-                filtro.ShowDialog();
-            }
-        }
         void condicion(string cadena)
         {
             try
@@ -262,15 +237,23 @@ namespace xtraForm.Modulos.Inventario
 
         }
 
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Elementos.frmProducto frmproducto = new Elementos.frmProducto();
+            frmproducto.pasar += new Elementos.frmProducto.Variables(CamposProducto_);
+            frmproducto.StartPosition = FormStartPosition.CenterScreen;
+            frmproducto.Show();
+        }
+
+        private void MODIFICAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gridView1.SelectedRowsCount > 0)
                 try
                 {
-                    
+
                     using (var Context = new LiderEntities())
                     {
-                        var _LProductos = from Pdo in Context.PRODUCTOes.Where(w => w.Activo == true)
+                        var _LProductos = from Pdo in Context.PRODUCTOes
                                           join Mca in Context.MARCAs on Pdo.Marca equals Mca.Marca1
                                           select new
                                           {
@@ -355,21 +338,19 @@ namespace xtraForm.Modulos.Inventario
                         frmproducto.Show();
                     }
                 }
-                catch (SqlException t)
+                catch (DbEntityValidationException t)
                 {
-                    MessageBox.Show(t.Message);
+                    foreach (var eve in t.EntityValidationErrors)
+                    {
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            MessageBox.Show("Propiedad: \"" + ve.PropertyName + "\", Error: \"" + ve.ErrorMessage + "\"");
+                        }
+                    }
                 }
         }
 
-        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Elementos.frmProducto frmproducto = new Elementos.frmProducto();
-            frmproducto.pasar += new Elementos.frmProducto.Variables(CamposProducto_);
-            frmproducto.StartPosition = FormStartPosition.CenterScreen;
-            frmproducto.Show();
-        }
-
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ELIMINAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gridView1.SelectedRowsCount > 0)
             {
@@ -421,7 +402,140 @@ namespace xtraForm.Modulos.Inventario
                 }
             }
 
+        }
 
+        private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var Context = new LiderEntities())
+            {
+                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
+                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
+                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DisplayMember = "Descripcion";
+                i.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
+                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DisplayMember = "Descripcion";
+                j.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
+                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'" + tabla + "'").ToList();
+                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
+                filtro.StartPosition = FormStartPosition.CenterScreen;
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
+                {
+                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
+                }
+                filtro.entidad = tabla;
+                filtro.ShowDialog();
+            }
+        }
+
+        private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Enter)
+            {
+                if (gridView1.SelectedRowsCount > 0)
+                    try
+                    {
+
+                        using (var Context = new LiderEntities())
+                        {
+                            var _LProductos = from Pdo in Context.PRODUCTOes
+                                              join Mca in Context.MARCAs on Pdo.Marca equals Mca.Marca1
+                                              select new
+                                              {
+                                                  Codigo = Pdo.Producto1.Trim(),
+                                                  Descripcion = Pdo.Descripcion.Trim(),
+                                                  IDProv = Mca.Proveedor.Trim(),
+                                                  cdUnilever = Pdo.sku.Trim(),
+                                                  cdEan = Pdo.ean13.Trim(),
+                                                  idLinea = Mca.Linea.Trim(),
+                                                  idMarca = Mca.Marca1.Trim(),
+                                                  idGrupo = Pdo.grupo.Trim(),
+                                                  idClase = Pdo.clase_producto.Trim(),
+                                                  idCategoria = Pdo.categoria.Trim(),
+                                                  idUnidad = Pdo.IDUnidad,
+                                                  cdUnidad = Pdo.UniMed.Trim(),
+                                                  Peso = Pdo.Peso,
+                                                  Factor = Pdo.factor,
+                                                  Orden = Pdo.Orden,
+                                                  aVenta = (bool)Pdo.ArticuloVenta,
+                                                  aCompra = (bool)Pdo.ArticuloCompra,
+                                                  aCombo = (bool)Pdo.ProductoCombo,
+                                                  esDms = (bool)Pdo.StatusDms,
+                                                  esWeb = (bool)Pdo.StatusWeb,
+                                                  Afecto = (bool)Pdo.ConIgv,
+                                                  Activo = (bool)Pdo.Activo,
+                                                  Percepcion = (bool)Pdo.percepcion,
+                                                  Detraccion = (bool)Pdo.detraccion
+                                              };
+                            Elementos.frmProducto frmproducto = new Elementos.frmProducto();
+                            frmproducto.Existe = true;
+                            frmproducto.pasar += new Elementos.frmProducto.Variables(CamposProducto);
+                            string CodigoProducto = gridView1.GetFocusedRowCellValue("Codigo").ToString();
+                            string ProductoProveedor = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.IDProv).FirstOrDefault();
+                            string CodigoFabrica = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.cdUnilever).FirstOrDefault();
+                            string CodigoEan = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.cdEan).FirstOrDefault();
+                            string productoDescripcion = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Descripcion).FirstOrDefault();
+                            string ProductoLinea = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.idLinea).FirstOrDefault();
+                            string ProductoMarca = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.idMarca).FirstOrDefault();
+                            string ProductoGrupo = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.idGrupo).FirstOrDefault();
+                            string ProductoClase = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.idClase).FirstOrDefault();
+                            string ProductoCategoria = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.idCategoria).FirstOrDefault();
+                            int ProductoMedida = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => (int)y.idUnidad).FirstOrDefault();
+                            string ProductoMedidaAnt = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.cdUnidad).FirstOrDefault();
+                            decimal ProductoPeso = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => (decimal)y.Peso).FirstOrDefault();
+                            string ProductoFactorMinimo = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Factor.ToString()).FirstOrDefault();
+                            string ProductoOrden = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Orden).FirstOrDefault();
+                            bool ProductoVenta = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.aVenta).FirstOrDefault();
+                            bool ProductoCompra = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.aCompra).FirstOrDefault();
+                            bool ProductoCombo = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.aCombo).FirstOrDefault();
+                            bool ProductoUnilever = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.esDms).FirstOrDefault();
+                            bool ProductoWeb = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.esWeb).FirstOrDefault();
+                            bool ProductoAfecto = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Afecto).FirstOrDefault();
+                            bool ProductoActivo = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Activo).FirstOrDefault();
+                            bool ProductoPercepcion = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Percepcion).FirstOrDefault();
+                            bool ProductoDetraccion = _LProductos.Where(x => x.Codigo.Equals(CodigoProducto)).Select(y => y.Detraccion).FirstOrDefault();
+                            frmproducto.TxtNmProveedor.EditValue = ProductoProveedor;
+                            frmproducto.TxtCodigoProducto.EditValue = CodigoProducto;
+                            frmproducto.TxtCodigoFabrica.EditValue = CodigoFabrica;
+                            frmproducto.TxtCodigoEan.EditValue = CodigoEan;
+                            frmproducto.TxtDescripcionProducto.EditValue = productoDescripcion;
+                            frmproducto.TxtLinea.EditValue = ProductoLinea;
+                            frmproducto.TxtMarca.EditValue = ProductoMarca;
+                            frmproducto.TxtGrupo.EditValue = ProductoGrupo;
+                            frmproducto.TxtClase.EditValue = ProductoClase;
+                            frmproducto.TxtCategoria.EditValue = ProductoCategoria;
+                            frmproducto.TxtProductoMedida.EditValue = ProductoMedida;
+                            frmproducto.MedidaAnterior.Text = ProductoMedidaAnt;
+                            frmproducto.TxtProductoPeso.EditValue = ProductoPeso;
+                            frmproducto.TxtFactorMinimo.EditValue = ProductoFactorMinimo;
+                            frmproducto.CheckArticuloVenta.Checked = ProductoVenta;
+                            frmproducto.CheckArticuloCompra.Checked = ProductoCompra;
+                            frmproducto.CheckProductoCombo.Checked = ProductoCombo;
+                            frmproducto.CheckActivoUnilever.Checked = ProductoUnilever;
+                            frmproducto.CheckActivoWeb.Checked = ProductoWeb;
+                            frmproducto.CheckAfecto.Checked = ProductoAfecto;
+                            frmproducto.CheckActivo.Checked = ProductoActivo;
+                            frmproducto.CheckPercepcion.Checked = ProductoPercepcion;
+                            frmproducto.CheckDetraccion.Checked = ProductoDetraccion;
+                            frmproducto.TxtNumeroOrdern.EditValue = ProductoOrden;
+                            frmproducto.Existe = false;
+                            frmproducto.StartPosition = FormStartPosition.CenterScreen;
+                            frmproducto.Show();
+                        }
+                    }
+                    catch (DbEntityValidationException t)
+                    {
+                        foreach (var eve in t.EntityValidationErrors)
+                        {
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                MessageBox.Show("Propiedad: \"" + ve.PropertyName + "\", Error: \"" + ve.ErrorMessage + "\"");
+                            }
+                        }
+                    }
+            }
         }
     }
 }

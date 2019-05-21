@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Skins;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -15,13 +16,13 @@ namespace xtraForm
         [STAThread]
         static void Main()
         {
-
-            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DevExpress.UserSkins.BonusSkins.Register();
+            SkinManager.EnableFormSkins();
+            //Application.EnableVisualStyles();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-PE");
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-PE");
-            //Application.Run(new frmPrincipal());
             Application.Run(new Modulos.Usuario.frmLogin());
+
 
         }
     }

@@ -1674,7 +1674,7 @@
     <value>Combo</value>
   </data>
   <data name="ribbonControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>977, 143</value>
+    <value>987, 143</value>
   </data>
   <data name="&gt;&gt;ribbonControl1.Name" xml:space="preserve">
     <value>ribbonControl1</value>
@@ -1712,7 +1712,7 @@
     <value>Skin</value>
   </data>
   <data name="xtraTabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>977, 429</value>
+    <value>987, 434</value>
   </data>
   <data name="xtraTabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1739,7 +1739,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>977, 572</value>
+    <value>987, 577</value>
   </data>
   <data name="&gt;&gt;PEDIDOVENTA.Name" xml:space="preserve">
     <value>PEDIDOVENTA</value>

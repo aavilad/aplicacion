@@ -773,6 +773,18 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CLIENTE_TIPOCLI">
+          <End Role="TIPOCLI" Type="Self.TIPOCLI" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOCLI">
+              <PropertyRef Name="TipoCli" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="TipoCli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CLIENTE_TIPONEG">
           <End Role="TIPONEG" Type="Self.TIPONEG" Multiplicity="0..1" />
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
@@ -1174,6 +1186,10 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           </AssociationSet>
           <AssociationSet Name="FK_CLIENTE_Distrito" Association="Self.FK_CLIENTE_Distrito">
             <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_TIPOCLI" Association="Self.FK_CLIENTE_TIPOCLI">
+            <End Role="TIPOCLI" EntitySet="TIPOCLI" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <AssociationSet Name="FK_CLIENTE_TIPONEG" Association="Self.FK_CLIENTE_TIPONEG">
