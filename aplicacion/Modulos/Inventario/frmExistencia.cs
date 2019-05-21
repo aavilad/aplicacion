@@ -15,7 +15,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
-using xtraForm.Model;
 
 namespace xtraForm.Modulos.Inventario
 {
@@ -45,66 +44,65 @@ namespace xtraForm.Modulos.Inventario
         {
             using (var Context = new LiderEntities())
             {
-                PRODUCTO Art = new PRODUCTO { Producto1 = CodigoProducto };
-                Context.PRODUCTOes.Attach(Art);
+                var Art = (from p in Context.PRODUCTOes where p.Producto1 == CodigoProducto select p).FirstOrDefault();
                 Art.ean13 = CodigoEan;
                 Art.Marca = ProductoMarca;
                 Art.Descripcion = productoDescripcion;
                 Art.ConIgv = ProductoAfecto;
-                Art.StockMin = 1;
-                Art.StockMax = 100;
-                Art.StockAc = (decimal)0.00;
-                Art.StockDia = (decimal)0.00;
-                Art.PrecMayContado = (decimal)0.00;
-                Art.PrecMenContado = (decimal)0.00;
-                Art.PrecMayCredito = (decimal)0.00;
-                Art.PrecMenCredito = (decimal)0.00;
-                Art.PrecEspecial = (decimal)0.00;
+                //Art.StockMin = 1;
+                //Art.StockMax = 100;
+                //Art.StockAc = Convert.ToDecimal(_Producto.Select(x => x.StockAc));
+                //Art.StockDia = Convert.ToDecimal(_Producto.Select(x => x.StockDia));
+                //Art.PrecMayContado = Convert.ToDecimal(_Producto.Select(x => x.PrecMayContado));
+                //Art.PrecMenContado = Convert.ToDecimal(_Producto.Select(x => x.PrecMenContado));
+                //Art.PrecMayCredito = Convert.ToDecimal(_Producto.Select(x => x.PrecMayCredito));
+                //Art.PrecMenCredito = Convert.ToDecimal(_Producto.Select(x => x.PrecMenCredito));
+                //Art.PrecEspecial = Convert.ToDecimal(_Producto.Select(x => x.PrecEspecial));
                 Art.CodAlterno = CodigoProducto;
                 Art.Peso = ProductoPeso;
-                Art.Costo = (decimal)0.00;
+                //Art.Costo = Convert.ToDecimal(_Producto.Select(x => x.Costo));
                 Art.UniMed = ProductoMedidaAnt;
                 Art.Activo = ProductoActivo;
-                Art.Unidades = 1;
-                Art.StockMal = (decimal)0.00;
+                //Art.Unidades = Convert.ToInt32(_Producto.Select(x => x.Unidades));
+                //Art.StockMal = Convert.ToDecimal(_Producto.Select(x => x.StockMal));
                 Art.ean13 = CodigoEan;
                 Art.grupo = ProductoGrupo;
-                Art.stkbafecha = (decimal)0.00;
-                Art.stkmafecha = (decimal)0.00;
-                Art.comimayor = (decimal)0.00;
-                Art.comimenor = (decimal)0.00;
-                Art.credmayor = (decimal)0.00;
-                Art.credmenor = (decimal)0.00;
+                //Art.stkbafecha = (decimal)0.00;
+                //Art.stkmafecha = (decimal)0.00;
+                //Art.comimayor = (decimal)0.00;
+                //Art.comimenor = (decimal)0.00;
+                //Art.credmayor = (decimal)0.00;
+                //Art.credmenor = (decimal)0.00;
                 Art.codbase = CodigoProducto;
                 Art.proveedor = ProductoProveedor;
                 Art.linea = ProductoLinea;
                 Art.marcas = string.Empty;
-                Art.minimomay = (decimal)0.00;
+                //Art.minimomay = Convert.ToDecimal(_Producto.Select(x => x.minimomay));
                 Art.categoria = ProductoCategoria;
-                Art.ncodigo = string.Empty;
+                //Art.ncodigo = string.Empty;
                 Art.nunimed = string.Empty;
-                Art.PrecSEspecial = (decimal)0.00;
+                //Art.PrecSEspecial = Convert.ToDecimal(_Producto.Select(x => x.PrecSEspecial));
                 Art.percepcion = ProductoPercepcion;
-                Art.priesgomaycon = (decimal)0.00;
-                Art.priesgomencon = (decimal)0.00;
-                Art.priesgomaycre = (decimal)0.00;
-                Art.priesgomencre = (decimal)0.00;
-                Art.costorep = (decimal)0.00;
-                Art.PrecSSEspecial = (decimal)0.00;
-                Art.comiespecial = (decimal)0.00;
-                Art.comisespecial = (decimal)0.00;
+                //Art.priesgomaycon = (decimal)0.00;
+                //Art.priesgomencon = (decimal)0.00;
+                //Art.priesgomaycre = (decimal)0.00;
+                //Art.priesgomencre = (decimal)0.00;
+                //Art.costorep = (decimal)0.00;
+                //Art.PrecSSEspecial = Convert.ToDecimal(_Producto.Select(x => x.PrecSSEspecial));
+                //Art.comiespecial = (decimal)0.00;
+                //Art.comisespecial = (decimal)0.00;
                 Art.detraccion = ProductoDetraccion;
-                Art.pdetraccion = (decimal)0.00;
+                //Art.pdetraccion = (decimal)0.00;
                 Art.conivap = false;
-                Art.Meta_Cant = string.Empty;
-                Art.Meta = string.Empty;
+                //Art.Meta_Cant = string.Empty;
+                //Art.Meta = string.Empty;
                 Art.sku = CodigoFabrica;
                 Art.factor = ProductoFactorMinimo;
                 Art.clase_producto = ProductoClase;
                 Art.Orden = ProductoOrden;
-                Art.CodigoUM = string.Empty;
-                Art.IdClaseBSC = string.Empty;
-                Art.FP = 1;
+                //Art.CodigoUM = string.Empty;
+                //Art.IdClaseBSC = string.Empty;
+                //Art.FP = 1;
                 Art.StatusWeb = ProductoWeb;
                 Art.StatusDms = ProductoUnilever;
                 Art.ArticuloVenta = ProductoVenta;
@@ -113,6 +111,7 @@ namespace xtraForm.Modulos.Inventario
                 Art.IDUnidad = ProductoMedida;
                 Context.SaveChanges();
             }
+            Refrescar();
         }
 
         void CamposProducto_(string ProductoProveedor, string CodigoProducto, string CodigoFabrica, string CodigoEan, string CodigoDun, string productoDescripcion, string ProductoLinea,
@@ -191,6 +190,7 @@ namespace xtraForm.Modulos.Inventario
                 Context.PRODUCTOes.Add(Art);
                 Context.SaveChanges();
             }
+            Refrescar();
         }
         void condicion(string cadena)
         {
@@ -536,6 +536,11 @@ namespace xtraForm.Modulos.Inventario
                         }
                     }
             }
+        }
+
+        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
         }
     }
 }

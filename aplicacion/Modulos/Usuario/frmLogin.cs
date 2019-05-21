@@ -1,16 +1,17 @@
-﻿using System;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.XtraBars.Helpers;
+using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DevExpress.XtraBars.Helpers;
-using DevExpress.LookAndFeel;
-using DevExpress.XtraBars.Ribbon;
+using xtraForm.Model;
 using xtraForm.Properties;
 
 namespace xtraForm.Modulos.Usuario
@@ -30,6 +31,10 @@ namespace xtraForm.Modulos.Usuario
         private void Entrar_Click(object sender, EventArgs e)
         {
             var formulario = new frmPrincipal();
+            using (var CTX = new LiderEntities())
+            {
+               
+            }
             this.Hide();
             formulario.Show();
         }

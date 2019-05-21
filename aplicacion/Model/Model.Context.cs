@@ -66,5 +66,10 @@ namespace xtraForm.Model
         public virtual DbSet<TIPOCLI> TIPOCLIs { get; set; }
         public virtual DbSet<ZONA> ZONAs { get; set; }
         public virtual DbSet<ClienteZona> ClienteZonas { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<UsuarioPerfil> UsuarioPerfils { get; set; }
+        public virtual DbSet<UsuarioPermiso> UsuarioPermisoes { get; set; }
+        public virtual DbSet<Perfil> Perfils { get; set; }
+        public virtual DbSet<Permiso> Permisoes { get; set; }
     }
 }

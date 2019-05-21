@@ -108,7 +108,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // 
             efConnectionParameters1.ConnectionString = "";
             efConnectionParameters1.ConnectionStringName = "LiderEntities";
-            efConnectionParameters1.Source = typeof(xtraForm.Model.LiderEntities);
+            efConnectionParameters1.Source = typeof(LiderEntities);
             this.efDataSource1.ConnectionParameters = efConnectionParameters1;
             this.efDataSource1.Name = "efDataSource1";
             // 

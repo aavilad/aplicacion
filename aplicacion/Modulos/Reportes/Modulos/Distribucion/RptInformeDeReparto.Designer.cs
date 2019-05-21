@@ -1,4 +1,8 @@
-﻿namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
+﻿
+
+using xtraForm.Model;
+
+namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
 {
     partial class RptInformeDeReparto
     {
@@ -46,6 +50,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptInformeDeReparto));
             this.efDataSource1 = new DevExpress.DataAccess.EntityFramework.EFDataSource(this.components);
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrLabel22 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine3 = new DevExpress.XtraReports.UI.XRLine();
@@ -68,6 +73,7 @@
             this.xrLabel32 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel33 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
+            this.xrLabel21 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
@@ -88,6 +94,7 @@
             this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel27 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
+            this.xrLabel23 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine7 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel19 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine5 = new DevExpress.XtraReports.UI.XRLine();
@@ -95,9 +102,6 @@
             this.xrLabel17 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine6 = new DevExpress.XtraReports.UI.XRLine();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
-            this.xrLabel21 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel22 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel23 = new DevExpress.XtraReports.UI.XRLabel();
             this.fieldIDVendedor1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldNombreVendedor1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldCredito1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
@@ -131,6 +135,21 @@
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrLabel22
+            // 
+            this.xrLabel22.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "trim([NumeroInterno])")});
+            this.xrLabel22.Font = new System.Drawing.Font("Calibri", 9F);
+            this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(102.1154F, 0F);
+            this.xrLabel22.Multiline = true;
+            this.xrLabel22.Name = "xrLabel22";
+            this.xrLabel22.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel22.SizeF = new System.Drawing.SizeF(68F, 12.08334F);
+            this.xrLabel22.StylePriority.UseFont = false;
+            this.xrLabel22.StylePriority.UseTextAlignment = false;
+            this.xrLabel22.Text = "xrLabel3";
+            this.xrLabel22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel16
             // 
@@ -450,6 +469,19 @@
             this.GroupHeader1.Name = "GroupHeader1";
             this.GroupHeader1.RepeatEveryPage = true;
             // 
+            // xrLabel21
+            // 
+            this.xrLabel21.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold);
+            this.xrLabel21.LocationFloat = new DevExpress.Utils.PointFloat(102.0923F, 82.34092F);
+            this.xrLabel21.Multiline = true;
+            this.xrLabel21.Name = "xrLabel21";
+            this.xrLabel21.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel21.SizeF = new System.Drawing.SizeF(68.04619F, 11.13637F);
+            this.xrLabel21.StylePriority.UseFont = false;
+            this.xrLabel21.StylePriority.UseTextAlignment = false;
+            this.xrLabel21.Text = "N°Interno";
+            this.xrLabel21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
             // xrLabel15
             // 
             this.xrLabel15.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold);
@@ -714,6 +746,17 @@
             this.GroupFooter1.HeightF = 77.79166F;
             this.GroupFooter1.Name = "GroupFooter1";
             // 
+            // xrLabel23
+            // 
+            this.xrLabel23.LocationFloat = new DevExpress.Utils.PointFloat(353.3976F, 4.250019F);
+            this.xrLabel23.Multiline = true;
+            this.xrLabel23.Name = "xrLabel23";
+            this.xrLabel23.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel23.SizeF = new System.Drawing.SizeF(80.98193F, 12.08334F);
+            this.xrLabel23.StylePriority.UseTextAlignment = false;
+            this.xrLabel23.Text = "Importe Total:";
+            this.xrLabel23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
             // xrLine7
             // 
             this.xrLine7.ForeColor = System.Drawing.Color.DimGray;
@@ -781,45 +824,6 @@
             // PageFooter
             // 
             this.PageFooter.Name = "PageFooter";
-            // 
-            // xrLabel21
-            // 
-            this.xrLabel21.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold);
-            this.xrLabel21.LocationFloat = new DevExpress.Utils.PointFloat(102.0923F, 82.34092F);
-            this.xrLabel21.Multiline = true;
-            this.xrLabel21.Name = "xrLabel21";
-            this.xrLabel21.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel21.SizeF = new System.Drawing.SizeF(68.04619F, 11.13637F);
-            this.xrLabel21.StylePriority.UseFont = false;
-            this.xrLabel21.StylePriority.UseTextAlignment = false;
-            this.xrLabel21.Text = "N°Interno";
-            this.xrLabel21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel22
-            // 
-            this.xrLabel22.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "trim([NumeroInterno])")});
-            this.xrLabel22.Font = new System.Drawing.Font("Calibri", 9F);
-            this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(102.1154F, 0F);
-            this.xrLabel22.Multiline = true;
-            this.xrLabel22.Name = "xrLabel22";
-            this.xrLabel22.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel22.SizeF = new System.Drawing.SizeF(68F, 12.08334F);
-            this.xrLabel22.StylePriority.UseFont = false;
-            this.xrLabel22.StylePriority.UseTextAlignment = false;
-            this.xrLabel22.Text = "xrLabel3";
-            this.xrLabel22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel23
-            // 
-            this.xrLabel23.LocationFloat = new DevExpress.Utils.PointFloat(353.3976F, 4.250019F);
-            this.xrLabel23.Multiline = true;
-            this.xrLabel23.Name = "xrLabel23";
-            this.xrLabel23.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel23.SizeF = new System.Drawing.SizeF(80.98193F, 12.08334F);
-            this.xrLabel23.StylePriority.UseTextAlignment = false;
-            this.xrLabel23.Text = "Importe Total:";
-            this.xrLabel23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // fieldIDVendedor1
             // 

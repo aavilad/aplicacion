@@ -82,6 +82,8 @@
             this.CBOCOMPRAS = new DevExpress.XtraBars.BarButtonItem();
             this.CBOVENTAS = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -106,6 +108,7 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemPopupGalleryEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit();
             this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
+            this.repositoryItemFontEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemFontEdit();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -113,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -180,9 +184,11 @@
             this.barButtonItem1,
             this.ListadoGeneralClase,
             this.CBOCOMPRAS,
-            this.CBOVENTAS});
+            this.CBOVENTAS,
+            this.barStaticItem1,
+            this.barStaticItem2});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MaxItemId = 10;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -195,7 +201,8 @@
             this.ribbonControl1.QuickToolbarItemLinks.Add(this.DESCARGAPEDIDO);
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPopupGalleryEdit1,
-            this.repositoryItemPopupContainerEdit1});
+            this.repositoryItemPopupContainerEdit1,
+            this.repositoryItemFontEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
             this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.True;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
@@ -637,6 +644,18 @@
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // barStaticItem1
+            // 
+            resources.ApplyResources(this.barStaticItem1, "barStaticItem1");
+            this.barStaticItem1.Id = 5;
+            this.barStaticItem1.Name = "barStaticItem1";
+            // 
+            // barStaticItem2
+            // 
+            resources.ApplyResources(this.barStaticItem2, "barStaticItem2");
+            this.barStaticItem2.Id = 6;
+            this.barStaticItem2.Name = "barStaticItem2";
+            // 
             // MVENTAS
             // 
             this.MVENTAS.Name = "MVENTAS";
@@ -824,6 +843,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemPopupContainerEdit1.Buttons"))))});
             this.repositoryItemPopupContainerEdit1.Name = "repositoryItemPopupContainerEdit1";
             // 
+            // repositoryItemFontEdit1
+            // 
+            resources.ApplyResources(this.repositoryItemFontEdit1, "repositoryItemFontEdit1");
+            this.repositoryItemFontEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemFontEdit1.Buttons"))))});
+            this.repositoryItemFontEdit1.Name = "repositoryItemFontEdit1";
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Name = "ribbonPage2";
@@ -861,6 +887,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -950,5 +977,8 @@
         private DevExpress.XtraBars.BarButtonItem ListadoGeneralClase;
         private DevExpress.XtraBars.BarButtonItem CBOCOMPRAS;
         private DevExpress.XtraBars.BarButtonItem CBOVENTAS;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemFontEdit repositoryItemFontEdit1;
     }
 }

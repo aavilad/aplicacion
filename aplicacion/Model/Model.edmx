@@ -404,6 +404,22 @@
           <Property Name="statusWeb" Type="bit" />
           <Property Name="Aprobado" Type="bit" />
         </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDPermiso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Proceso" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="PERSONAL">
           <Key>
             <PropertyRef Name="Personal" />
@@ -612,6 +628,34 @@
           <Property Name="descripcorta" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="concre" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="maymin" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contraseña" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDConfiguracion" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Registro" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioPerfil">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" />
+          <Property Name="IDPerfil" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioPermiso">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IDPerfil" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IDPermiso" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="VistaAdministrativa">
           <Key>
@@ -1079,6 +1123,54 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UsuarioPerfil_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="UsuarioPerfil" Type="Self.UsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="UsuarioPerfil">
+              <PropertyRef Name="IDPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioPerfil_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="UsuarioPerfil" Type="Self.UsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="UsuarioPerfil">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioPermiso_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="UsuarioPermiso" Type="Self.UsuarioPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="UsuarioPermiso">
+              <PropertyRef Name="IDPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioPermiso_Permiso">
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="1" />
+          <End Role="UsuarioPermiso" Type="Self.UsuarioPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="UsuarioPermiso">
+              <PropertyRef Name="IDPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_VistaAdministrativa_Modulo">
           <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
           <End Role="VistaAdministrativa" Type="Self.VistaAdministrativa" Multiplicity="*" />
@@ -1121,6 +1213,8 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlantillaUnidad" EntityType="Self.PlantillaUnidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
@@ -1134,6 +1228,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySet Name="TIPOCLI" EntityType="Self.TIPOCLI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPONEG" EntityType="Self.TIPONEG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipoprecio" EntityType="Self.tipoprecio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioPerfil" EntityType="Self.UsuarioPerfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioPermiso" EntityType="Self.UsuarioPermiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VistaAdministrativa" EntityType="Self.VistaAdministrativa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZONA" EntityType="Self.ZONA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZONA_PERSONAL" EntityType="Self.ZONA_PERSONAL" Schema="dbo" store:Type="Tables" />
@@ -1287,6 +1384,22 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_REPARTO_RUTAS1" Association="Self.FK_REPARTO_RUTAS1">
             <End Role="RUTAS" EntitySet="RUTAS" />
             <End Role="REPARTO" EntitySet="REPARTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioPerfil_Perfil" Association="Self.FK_UsuarioPerfil_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="UsuarioPerfil" EntitySet="UsuarioPerfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioPerfil_Usuario" Association="Self.FK_UsuarioPerfil_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioPerfil" EntitySet="UsuarioPerfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioPermiso_Perfil" Association="Self.FK_UsuarioPermiso_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="UsuarioPermiso" EntitySet="UsuarioPermiso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioPermiso_Permiso" Association="Self.FK_UsuarioPermiso_Permiso">
+            <End Role="Permiso" EntitySet="Permiso" />
+            <End Role="UsuarioPermiso" EntitySet="UsuarioPermiso" />
           </AssociationSet>
           <AssociationSet Name="FK_VistaAdministrativa_Modulo" Association="Self.FK_VistaAdministrativa_Modulo">
             <End Role="Modulo" EntitySet="Modulo" />
@@ -1470,6 +1583,27 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_ClienteZona_ZONA" Association="LiderModel.FK_ClienteZona_ZONA">
             <End Role="ZONA" EntitySet="ZONAs" />
             <End Role="ClienteZona" EntitySet="ClienteZonas" />
+          </AssociationSet>
+          <EntitySet Name="Usuarios" EntityType="LiderModel.Usuario" />
+          <EntitySet Name="UsuarioPerfils" EntityType="LiderModel.UsuarioPerfil" />
+          <EntitySet Name="UsuarioPermisoes" EntityType="LiderModel.UsuarioPermiso" />
+          <AssociationSet Name="FK_UsuarioPerfil_Usuario" Association="LiderModel.FK_UsuarioPerfil_Usuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="UsuarioPerfil" EntitySet="UsuarioPerfils" />
+          </AssociationSet>
+          <EntitySet Name="Perfils" EntityType="LiderModel.Perfil" />
+          <EntitySet Name="Permisoes" EntityType="LiderModel.Permiso" />
+          <AssociationSet Name="FK_UsuarioPerfil_Perfil" Association="LiderModel.FK_UsuarioPerfil_Perfil">
+            <End Role="Perfil" EntitySet="Perfils" />
+            <End Role="UsuarioPerfil" EntitySet="UsuarioPerfils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioPermiso_Perfil" Association="LiderModel.FK_UsuarioPermiso_Perfil">
+            <End Role="Perfil" EntitySet="Perfils" />
+            <End Role="UsuarioPermiso" EntitySet="UsuarioPermisoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioPermiso_Permiso" Association="LiderModel.FK_UsuarioPermiso_Permiso">
+            <End Role="Permiso" EntitySet="Permisoes" />
+            <End Role="UsuarioPermiso" EntitySet="UsuarioPermisoes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Clase_Producto">
@@ -2608,6 +2742,106 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contraseña" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDConfiguracion" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Registro" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="UsuarioPerfils" Relationship="LiderModel.FK_UsuarioPerfil_Usuario" FromRole="Usuario" ToRole="UsuarioPerfil" />
+        </EntityType>
+        <EntityType Name="UsuarioPerfil">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="IDPerfil" Type="Guid" Nullable="false" />
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="LiderModel.FK_UsuarioPerfil_Usuario" FromRole="UsuarioPerfil" ToRole="Usuario" />
+          <NavigationProperty Name="Perfil" Relationship="LiderModel.FK_UsuarioPerfil_Perfil" FromRole="UsuarioPerfil" ToRole="Perfil" />
+        </EntityType>
+        <EntityType Name="UsuarioPermiso">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="IDPerfil" Type="Guid" Nullable="false" />
+          <Property Name="IDPermiso" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Perfil" Relationship="LiderModel.FK_UsuarioPermiso_Perfil" FromRole="UsuarioPermiso" ToRole="Perfil" />
+          <NavigationProperty Name="Permiso" Relationship="LiderModel.FK_UsuarioPermiso_Permiso" FromRole="UsuarioPermiso" ToRole="Permiso" />
+        </EntityType>
+        <Association Name="FK_UsuarioPerfil_Usuario">
+          <End Type="LiderModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="LiderModel.UsuarioPerfil" Role="UsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="UsuarioPerfil">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPermiso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UsuarioPerfils" Relationship="LiderModel.FK_UsuarioPerfil_Perfil" FromRole="Perfil" ToRole="UsuarioPerfil" />
+          <NavigationProperty Name="UsuarioPermisoes" Relationship="LiderModel.FK_UsuarioPermiso_Perfil" FromRole="Perfil" ToRole="UsuarioPermiso" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="Proceso" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="UsuarioPermisoes" Relationship="LiderModel.FK_UsuarioPermiso_Permiso" FromRole="Permiso" ToRole="UsuarioPermiso" />
+        </EntityType>
+        <Association Name="FK_UsuarioPerfil_Perfil">
+          <End Type="LiderModel.Perfil" Role="Perfil" Multiplicity="1" />
+          <End Type="LiderModel.UsuarioPerfil" Role="UsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="UsuarioPerfil">
+              <PropertyRef Name="IDPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioPermiso_Perfil">
+          <End Type="LiderModel.Perfil" Role="Perfil" Multiplicity="1" />
+          <End Type="LiderModel.UsuarioPermiso" Role="UsuarioPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="UsuarioPermiso">
+              <PropertyRef Name="IDPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioPermiso_Permiso">
+          <End Type="LiderModel.Permiso" Role="Permiso" Multiplicity="1" />
+          <End Type="LiderModel.UsuarioPermiso" Role="UsuarioPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="UsuarioPermiso">
+              <PropertyRef Name="IDPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3305,6 +3539,55 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
               <MappingFragment StoreEntitySet="ClienteZona">
                 <ScalarProperty Name="IDZona" ColumnName="IDZona" />
                 <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="LiderModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDConfiguracion" ColumnName="IDConfiguracion" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioPerfils">
+            <EntityTypeMapping TypeName="LiderModel.UsuarioPerfil">
+              <MappingFragment StoreEntitySet="UsuarioPerfil">
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioPermisoes">
+            <EntityTypeMapping TypeName="LiderModel.UsuarioPermiso">
+              <MappingFragment StoreEntitySet="UsuarioPermiso">
+                <ScalarProperty Name="IDPermiso" ColumnName="IDPermiso" />
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfils">
+            <EntityTypeMapping TypeName="LiderModel.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="IDPermiso" ColumnName="IDPermiso" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisoes">
+            <EntityTypeMapping TypeName="LiderModel.Permiso">
+              <MappingFragment StoreEntitySet="Permiso">
+                <ScalarProperty Name="Proceso" ColumnName="Proceso" />
                 <ScalarProperty Name="PKID" ColumnName="PKID" />
               </MappingFragment>
             </EntityTypeMapping>

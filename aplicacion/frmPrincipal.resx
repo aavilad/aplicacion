@@ -304,20 +304,21 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjEsIFZlcnNpb249MTguMS42
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAOICAAAC77u/
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAACADAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
         IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
         MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
         Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxnIGlkPSJMYXllcl8yIj4NCiAgICA8cGF0aCBk
-        PSJNMjAsMjFjLTIuNi0wLjctMy0yLjMtMy0zYzEuNi0xLjYsMy00LjcsMy04YzAtMC4yLDAtMC41LDAt
-        MWMwLTIuNS0yLjgtNS01LjktNWMwLDAtMC4xLDAtMC4xLDAgICBjMCwwLTAuMSwwLTAuMSwwQzEwLjgs
-        NCw4LDYuNSw4LDljMCwwLjUsMCwwLjgsMCwxYzAsMy4zLDEuNCw2LjQsMyw4YzAsMC43LTAuNCwyLjMt
-        MywzYy01LDEuNC02LDEuMS02LDdoMTJoMTIgICBDMjYsMjIuMSwyNSwyMi40LDIwLDIxeiIgZmlsbD0i
-        IzExNzdENyIgY2xhc3M9IkJsdWUiIC8+DQogICAgPHBhdGggZD0iTTIwLDE4aDEydjE0SDIwVjE4eiIg
-        ZmlsbD0iIzcyNzI3MiIgY2xhc3M9IkJsYWNrIiAvPg0KICAgIDxnPg0KICAgICAgPGc+DQogICAgICAg
-        IDxwYXRoIGQ9Ik0yMiwzMGg4di0yaC04VjMweiBNMjIsMjR2Mmg4di0ySDIyeiBNMjYsMjBoLTR2Mmg0
-        VjIweiIgZmlsbD0iI0ZGRkZGRiIgY2xhc3M9IldoaXRlIiAvPg0KICAgICAgPC9nPg0KICAgIDwvZz4N
-        CiAgPC9nPg0KPC9zdmc+Cw==
+        PSJNMTguMSwyMUMxOCwyMSwxOCwyMSwxOC4xLDIxYy0yLjctMC43LTMuMS0yLjQtMy4xLTNjMS42LTEu
+        NiwzLTQuNywzLThjMC0wLjIsMC0wLjUsMC0xYzAtMi41LTIuOC01LTUuOS01ICAgYzAsMC0wLjEsMC0w
+        LjEsMGMwLDAtMC4xLDAtMC4xLDBDOC44LDQsNiw2LjUsNiw5YzAsMC41LDAsMC44LDAsMWMwLDMuMywx
+        LjQsNi40LDMsOGMwLDAuNy0wLjQsMi4zLTMsM2MtNSwxLjQtNiwxLjEtNiw3aDEyaDkuNSAgIEMyMCwy
+        NS40LDE4LjQsMjIuMywxOC4xLDIxeiIgZmlsbD0iIzcyNzI3MiIgY2xhc3M9IkJsYWNrIiAvPg0KICAg
+        IDxwYXRoIGQ9Ik0yNiwzMkwyNiwzMkwyNiwzMmMtMC45LTEtNi05LjktNi0xMS40YzAtMy4zLDIuNy02
+        LjYsNi02LjZzNiwzLjMsNiw2LjZDMzIsMjIuMSwyNi45LDMxLDI2LDMyeiIgZmlsbD0iI0QxMUMxQyIg
+        Y2xhc3M9IlJlZCIgLz4NCiAgICA8cGF0aCBkPSJNMjYsMTZjMi4yLDAsNCwxLjgsNCw0cy0xLjgsNC00
+        LDRzLTQtMS44LTQtNFMyMy44LDE2LDI2LDE2eiIgZmlsbD0iI0ZGRkZGRiIgY2xhc3M9IldoaXRlIiAv
+        Pg0KICA8L2c+DQo8L3N2Zz4L
 </value>
   </data>
   <data name="INVENTARIOPRODUCTO.Caption" xml:space="preserve">
@@ -794,15 +795,26 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjEsIFZlcnNpb249MTguMS42
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAMsBAAAC77u/
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAEMEAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
         IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
         MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxnIGlkPSJFeGl0Ij4NCiAgICA8cG9seWdvbiBw
-        b2ludHM9IjE2LDEwIDIyLDE2IDE2LDIyIDE2LDE4IDIsMTggMiwxNCAxNiwxNCAgIiBmaWxsPSIjRDEx
-        QzFDIiBjbGFzcz0iUmVkIiAvPg0KICAgIDxwb2x5Z29uIHBvaW50cz0iOCwyIDgsMTIgMTAsMTIgMTAs
-        NCAyOCw0IDI4LDI4IDEwLDI4IDEwLDIwIDgsMjAgOCwzMCAzMCwzMCAzMCwyICAiIGZpbGw9IiM3Mjcy
-        NzIiIGNsYXNzPSJCbGFjayIgLz4NCiAgPC9nPg0KPC9zdmc+Cw==
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMiI+DQogIDxnIGlkPSJOZXciPg0KICAgIDxwYXRoIGQ9Ik00
+        LDJ2MjhoMjRWN1YyaC02SDR6IiBmaWxsPSIjNzI3MjcyIiBjbGFzcz0iQmxhY2siIC8+DQogICAgPHBv
+        bHlnb24gcG9pbnRzPSI2LDQgNiwyOCAyNiwyOCAyNiw5IDI2LDQgMjAsNCAgIiBmaWxsPSIjRkZGRkZG
+        IiBjbGFzcz0iV2hpdGUiIC8+DQogIDwvZz4NCiAgPHJlY3QgeD0iNDYiIHk9IjgiIHdpZHRoPSIyIiBo
+        ZWlnaHQ9IjE0IiByeD0iMCIgcnk9IjAiIGZpbGw9IiNGRkZGRkYiIGNsYXNzPSJXaGl0ZSIgLz4NCiAg
+        PHBhdGggZD0iTTE3LDZoLTFoLTFMOCwyMmgzbDItNGgzaDNsMS4yLDJIMjNMMTcsNnogTTE2LDE2aC0y
+        LjVsMi41LTZsMi41LDZIMTZ6IiBmaWxsPSIjNzI3MjcyIiBjbGFzcz0iQmxhY2siIC8+DQogIDxwb2x5
+        Z29uIHBvaW50cz0iMjksMTcgMjUsMTMgMTgsMjAgMTksMjAgMTksMjEgMjAsMjEgMjAsMjIgMjEsMjIg
+        MjEsMjIgMjEsMjIgMjEsMjIgMjEsMjIgMjEsMjMgMjEsMjMgMjIsMjMgMjIsMjQgICAiIGZpbGw9IiNG
+        RkIxMTUiIGNsYXNzPSJZZWxsb3ciIC8+DQogIDxwYXRoIGQ9Ik0zMiwxNGwtMywzbC00LTRsMy0zTDMy
+        LDE0eiIgZmlsbD0iI0QxMUMxQyIgY2xhc3M9IlJlZCIgLz4NCiAgPGcgb3BhY2l0eT0iMC42IiBpZD0i
+        TGF5ZXJfMyIgY2xhc3M9InN0MCI+DQogICAgPHBhdGggZD0iTTIxLDIyTDIxLDIyTDIxLDIyTDIxLDIy
+        djFsMCwwbDEsMHYxbC0zLDFsMCwwbC0yLTJsMS0zaDF2MWgxdjFMMjEsMjJMMjEsMjJMMjEsMjJ6IiBm
+        aWxsPSIjNzI3MjcyIiBvcGFjaXR5PSIwLjYiIGNsYXNzPSJCbGFjayIgLz4NCiAgPC9nPg0KICA8cGF0
+        aCBkPSJNMTcsMjNsMiwybC0zLDFMMTcsMjN6IiBmaWxsPSIjNzI3MjcyIiBjbGFzcz0iQmxhY2siIC8+
+        DQo8L3N2Zz4L
 </value>
   </data>
   <data name="BONIFICAR.Caption" xml:space="preserve">
@@ -1454,6 +1466,9 @@
         Zz4NCiAgICA8L2c+DQogIDwvZz4NCjwvc3ZnPgs=
 </value>
   </data>
+  <data name="skinPaletteRibbonGalleryBarItem1.Caption" xml:space="preserve">
+    <value>skinPaletteRibbonGalleryBarItem1</value>
+  </data>
   <data name="InformeDeReparto.Caption" xml:space="preserve">
     <value>Informe De Reparto</value>
   </data>
@@ -1471,27 +1486,6 @@
         NnY0aDE4VjYgICAgIEgxMHoiIGZpbGw9IiM3MjcyNzIiIGNsYXNzPSJCbGFjayIgLz4NCiAgICAgIDwv
         Zz4NCiAgICA8L2c+DQogIDwvZz4NCjwvc3ZnPgs=
 </value>
-  </data>
-  <data name="ListadoGeneralClase.Caption" xml:space="preserve">
-    <value>Listado General Clase</value>
-  </data>
-  <data name="ListadoGeneralClase.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjEsIFZlcnNpb249MTguMS42
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAMMBAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxnIGlkPSJMYXllcl8yIj4NCiAgICA8Zz4NCiAg
-        ICAgIDxnPg0KICAgICAgICA8cGF0aCBkPSJNNCwyNmg0di00SDRWMjZ6IE00LDE4aDR2LTRINFYxOHog
-        TTQsMTBoNFY2SDRWMTB6IE0xMCwyNmgxOHYtNEgxMFYyNnogTTEwLDE4aDE4di00SDEwVjE4eiBNMTAs
-        NnY0aDE4VjYgICAgIEgxMHoiIGZpbGw9IiM3MjcyNzIiIGNsYXNzPSJCbGFjayIgLz4NCiAgICAgIDwv
-        Zz4NCiAgICA8L2c+DQogIDwvZz4NCjwvc3ZnPgs=
-</value>
-  </data>
-  <data name="skinPaletteRibbonGalleryBarItem1.Caption" xml:space="preserve">
-    <value>skinPaletteRibbonGalleryBarItem1</value>
   </data>
   <data name="TIPOCP.Caption" xml:space="preserve">
     <value>Documentos</value>
@@ -1555,6 +1549,27 @@
         OHoiIGZpbGw9IiM3MjcyNzIiIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
 </value>
   </data>
+  <data name="barButtonItem1.Caption" xml:space="preserve">
+    <value>barButtonItem1</value>
+  </data>
+  <data name="ListadoGeneralClase.Caption" xml:space="preserve">
+    <value>Listado General Clase</value>
+  </data>
+  <data name="ListadoGeneralClase.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjEsIFZlcnNpb249MTguMS42
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAMMBAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxnIGlkPSJMYXllcl8yIj4NCiAgICA8Zz4NCiAg
+        ICAgIDxnPg0KICAgICAgICA8cGF0aCBkPSJNNCwyNmg0di00SDRWMjZ6IE00LDE4aDR2LTRINFYxOHog
+        TTQsMTBoNFY2SDRWMTB6IE0xMCwyNmgxOHYtNEgxMFYyNnogTTEwLDE4aDE4di00SDEwVjE4eiBNMTAs
+        NnY0aDE4VjYgICAgIEgxMHoiIGZpbGw9IiM3MjcyNzIiIGNsYXNzPSJCbGFjayIgLz4NCiAgICAgIDwv
+        Zz4NCiAgICA8L2c+DQogIDwvZz4NCjwvc3ZnPgs=
+</value>
+  </data>
   <data name="CBOCOMPRAS.Caption" xml:space="preserve">
     <value>Compras</value>
   </data>
@@ -1587,74 +1602,29 @@
         OHoiIGZpbGw9IiM3MjcyNzIiIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
 </value>
   </data>
-  <data name="barButtonItem1.Caption" xml:space="preserve">
-    <value>barButtonItem1</value>
+  <data name="barStaticItem1.Caption" xml:space="preserve">
+    <value>usuario</value>
+  </data>
+  <data name="barStaticItem2.Caption" xml:space="preserve">
+    <value>Perfil</value>
   </data>
   <data name="ribbonControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="G01.Text" xml:space="preserve">
-    <value>Entidades</value>
-  </data>
-  <data name="G02.Text" xml:space="preserve">
-    <value>Reglas Bonificacion</value>
-  </data>
-  <data name="G03.Text" xml:space="preserve">
-    <value>Facturar Documentos</value>
-  </data>
-  <data name="G04.Text" xml:space="preserve">
-    <value>Lista Precios</value>
-  </data>
-  <data name="VENTAS.Text" xml:space="preserve">
-    <value>VENTAS</value>
-  </data>
   <data name="MVENTAS.Text" xml:space="preserve">
     <value>MODULO VENTAS</value>
-  </data>
-  <data name="G001.Text" xml:space="preserve">
-    <value>Entidades</value>
-  </data>
-  <data name="COMPRAS.Text" xml:space="preserve">
-    <value>COMPRAS</value>
   </data>
   <data name="MCOMPRAS.Text" xml:space="preserve">
     <value>MODULO COMPRAS</value>
   </data>
-  <data name="G011.Text" xml:space="preserve">
-    <value>ribbonPageGroup1</value>
-  </data>
-  <data name="DISTRIBUCION.Text" xml:space="preserve">
-    <value>DISTRIBUCION</value>
-  </data>
   <data name="MDISTRIBUCION.Text" xml:space="preserve">
     <value>MODULO DISTRIBUCION</value>
-  </data>
-  <data name="G021.Text" xml:space="preserve">
-    <value>ribbonPageGroup1</value>
-  </data>
-  <data name="INVENTARIOS.Text" xml:space="preserve">
-    <value>INVENTARIOS</value>
   </data>
   <data name="MINVENTARIOS.Text" xml:space="preserve">
     <value>MODULO INVENTARIOS</value>
   </data>
-  <data name="G031.Text" xml:space="preserve">
-    <value>ribbonPageGroup1</value>
-  </data>
-  <data name="ribbonPageGroup2.Text" xml:space="preserve">
-    <value>ribbonPageGroup2</value>
-  </data>
-  <data name="REPORTES.Text" xml:space="preserve">
-    <value>REPORTES</value>
-  </data>
   <data name="MREPORTES.Text" xml:space="preserve">
     <value>MODULO REPORTES</value>
-  </data>
-  <data name="ribbonPageGroup1.Text" xml:space="preserve">
-    <value>ribbonPageGroup1</value>
-  </data>
-  <data name="CONFIGURACION.Text" xml:space="preserve">
-    <value>CONFIGURACION</value>
   </data>
   <data name="MCONFIGURACION.Text" xml:space="preserve">
     <value>MODULO CONFIGURACION</value>
@@ -1673,6 +1643,12 @@
   <data name="repositoryItemPopupContainerEdit1.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v18.1">
     <value>Combo</value>
   </data>
+  <data name="repositoryItemFontEdit1.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="repositoryItemFontEdit1.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v18.1">
+    <value>Combo</value>
+  </data>
   <data name="ribbonControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>987, 143</value>
   </data>
@@ -1687,6 +1663,54 @@
   </data>
   <data name="&gt;&gt;ribbonControl1.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="VENTAS.Text" xml:space="preserve">
+    <value>VENTAS</value>
+  </data>
+  <data name="G01.Text" xml:space="preserve">
+    <value>Entidades</value>
+  </data>
+  <data name="G02.Text" xml:space="preserve">
+    <value>Reglas Bonificacion</value>
+  </data>
+  <data name="G03.Text" xml:space="preserve">
+    <value>Facturar Documentos</value>
+  </data>
+  <data name="G04.Text" xml:space="preserve">
+    <value>Lista Precios</value>
+  </data>
+  <data name="COMPRAS.Text" xml:space="preserve">
+    <value>COMPRAS</value>
+  </data>
+  <data name="G001.Text" xml:space="preserve">
+    <value>Entidades</value>
+  </data>
+  <data name="DISTRIBUCION.Text" xml:space="preserve">
+    <value>DISTRIBUCION</value>
+  </data>
+  <data name="G011.Text" xml:space="preserve">
+    <value>ribbonPageGroup1</value>
+  </data>
+  <data name="INVENTARIOS.Text" xml:space="preserve">
+    <value>INVENTARIOS</value>
+  </data>
+  <data name="G021.Text" xml:space="preserve">
+    <value>ribbonPageGroup1</value>
+  </data>
+  <data name="REPORTES.Text" xml:space="preserve">
+    <value>REPORTES</value>
+  </data>
+  <data name="G031.Text" xml:space="preserve">
+    <value>ribbonPageGroup1</value>
+  </data>
+  <data name="ribbonPageGroup2.Text" xml:space="preserve">
+    <value>ribbonPageGroup2</value>
+  </data>
+  <data name="CONFIGURACION.Text" xml:space="preserve">
+    <value>CONFIGURACION</value>
+  </data>
+  <data name="ribbonPageGroup1.Text" xml:space="preserve">
+    <value>ribbonPageGroup1</value>
   </data>
   <data name="ribbonPage2.Text" xml:space="preserve">
     <value>ribbonPage2</value>
@@ -2053,6 +2077,18 @@
   <data name="&gt;&gt;barButtonItem1.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;barStaticItem1.Name" xml:space="preserve">
+    <value>barStaticItem1</value>
+  </data>
+  <data name="&gt;&gt;barStaticItem1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barStaticItem2.Name" xml:space="preserve">
+    <value>barStaticItem2</value>
+  </data>
+  <data name="&gt;&gt;barStaticItem2.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;MVENTAS.Name" xml:space="preserve">
     <value>MVENTAS</value>
   </data>
@@ -2196,6 +2232,12 @@
   </data>
   <data name="&gt;&gt;repositoryItemPopupContainerEdit1.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit, DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;repositoryItemFontEdit1.Name" xml:space="preserve">
+    <value>repositoryItemFontEdit1</value>
+  </data>
+  <data name="&gt;&gt;repositoryItemFontEdit1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemFontEdit, DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;ribbonPage2.Name" xml:space="preserve">
     <value>ribbonPage2</value>

@@ -67,6 +67,7 @@
             this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
             // 
             // popupMenu1
             // 

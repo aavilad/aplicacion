@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
 
+
 namespace xtraForm.Modulos.Reportes.Modulos.Ventas.Cubos
 {
     public partial class frmCompras : DevExpress.XtraEditors.XtraForm

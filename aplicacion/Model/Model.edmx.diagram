@@ -4,33 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b6901f7295df49d09827c301252961ef" Name="Diagram1" ZoomLevel="64" >
-        <EntityTypeShape EntityType="LiderModel.Clase_Producto" Width="1.5" PointX="3" PointY="48" />
-        <EntityTypeShape EntityType="LiderModel.CLIENTE" Width="1.5" PointX="3" PointY="4.625" />
-        <EntityTypeShape EntityType="LiderModel.Departamento" Width="1.5" PointX="1.5" PointY="23.125" />
-        <EntityTypeShape EntityType="LiderModel.DETADOC" Width="1.5" PointX="7.5" PointY="6.25" />
-        <EntityTypeShape EntityType="LiderModel.DETPEDIDO" Width="1.5" PointX="7.5" PointY="36.5" />
-        <EntityTypeShape EntityType="LiderModel.Distrito" Width="1.5" PointX="0.75" PointY="12" />
-        <EntityTypeShape EntityType="LiderModel.DOCUMENTO" Width="1.5" PointX="5.25" PointY="4.25" />
-        <EntityTypeShape EntityType="LiderModel.Filtro" Width="1.5" PointX="12" PointY="6.25" />
-        <EntityTypeShape EntityType="LiderModel.FiltroConfiguracion" Width="1.5" PointX="9.75" PointY="6.375" />
-        <EntityTypeShape EntityType="LiderModel.FORMAPAGO" Width="1.5" PointX="3" PointY="37.25" />
-        <EntityTypeShape EntityType="LiderModel.FuerzaVenta" Width="1.5" PointX="0.75" PointY="28.5" />
-        <EntityTypeShape EntityType="LiderModel.Gestion" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="LiderModel.LINEA" Width="1.5" PointX="0.75" PointY="44" />
-        <EntityTypeShape EntityType="LiderModel.MARCA" Width="1.5" PointX="3" PointY="41.625" />
-        <EntityTypeShape EntityType="LiderModel.Modulo" Width="1.5" PointX="9.75" PointY="14.625" />
-        <EntityTypeShape EntityType="LiderModel.PEDIDO" Width="1.5" PointX="5.25" PointY="26.25" />
-        <EntityTypeShape EntityType="LiderModel.PERSONAL" Width="1.5" PointX="3" PointY="26.625" />
-        <EntityTypeShape EntityType="LiderModel.PRODUCTO" Width="1.5" PointX="5.25" PointY="37.125" />
-        <EntityTypeShape EntityType="LiderModel.PROVEEDOR" Width="1.5" PointX="0.75" PointY="38.75" />
-        <EntityTypeShape EntityType="LiderModel.provincia" Width="1.5" PointX="1.5" PointY="15.875" />
-        <EntityTypeShape EntityType="LiderModel.Region" Width="1.5" PointX="11.75" PointY="10" />
-        <EntityTypeShape EntityType="LiderModel.REPARTO" Width="1.5" PointX="10" PointY="2.25" />
-        <EntityTypeShape EntityType="LiderModel.RUTA" Width="1.5" PointX="7.75" PointY="2.375" />
-        <EntityTypeShape EntityType="LiderModel.TIPONEG" Width="1.5" PointX="0.75" PointY="5.125" />
-        <EntityTypeShape EntityType="LiderModel.tipoprecio" Width="1.5" PointX="5.25" PointY="34.125" />
-        <EntityTypeShape EntityType="LiderModel.ZONA_PERSONAL" Width="1.5" PointX="3" PointY="19.375" />
+      <Diagram DiagramId="b6901f7295df49d09827c301252961ef" Name="Diagram1" ZoomLevel="32" ShowGrid="false" >
+        <EntityTypeShape EntityType="LiderModel.Clase_Producto" Width="1.5" PointX="3" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.CLIENTE" Width="1.5" PointX="3" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Departamento" Width="1.5" PointX="1.5" PointY="18.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.DETADOC" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.DETPEDIDO" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Distrito" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.DOCUMENTO" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Filtro" Width="1.5" PointX="15" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.FiltroConfiguracion" Width="1.5" PointX="12.75" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.FORMAPAGO" Width="1.5" PointX="3" PointY="7" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.FuerzaVenta" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Gestion" Width="1.5" PointX="3" PointY="10.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.LINEA" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.MARCA" Width="1.5" PointX="3" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Modulo" Width="1.5" PointX="5.75" PointY="11.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.PEDIDO" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.PERSONAL" Width="1.5" PointX="3" PointY="8.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.PRODUCTO" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.PROVEEDOR" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.provincia" Width="1.5" PointX="1.5" PointY="16.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Region" Width="1.5" PointX="7.75" PointY="13" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.REPARTO" Width="1.5" PointX="13" PointY="12.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.RUTA" Width="1.5" PointX="10.75" PointY="12.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.TIPONEG" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.tipoprecio" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.ZONA_PERSONAL" Width="1.5" PointX="12" PointY="6.75" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_PRODUCTO_Clase_Producto" />
         <AssociationConnector Association="LiderModel.FK_CLIENTE_Distrito" />
         <AssociationConnector Association="LiderModel.FK_CLIENTE_TIPONEG" />
@@ -52,33 +52,42 @@
         <AssociationConnector Association="LiderModel.FK_PRODUCTO_MARCA" />
         <AssociationConnector Association="LiderModel.FK__PEDIDO__Personal__68D28DBC" />
         <AssociationConnector Association="LiderModel.FK_REPARTO_RUTAS1" />
-        <EntityTypeShape EntityType="LiderModel.VistaAdministrativa" Width="1.5" PointX="12" PointY="15.25" />
+        <EntityTypeShape EntityType="LiderModel.VistaAdministrativa" Width="1.5" PointX="8" PointY="11.125" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_VistaAdministrativa_Modulo" />
-        <EntityTypeShape EntityType="LiderModel.Vva_Cliente" Width="1.5" PointX="14.375" PointY="4.75" />
-        <EntityTypeShape EntityType="LiderModel.grupo" Width="1.5" PointX="14.875" PointY="9.375" />
-        <EntityTypeShape EntityType="LiderModel.categoria" Width="1.5" PointX="15.375" PointY="0.75" />
-        <EntityTypeShape EntityType="LiderModel.PlantillaUnidad" Width="1.5" PointX="14.375" PointY="12.875" />
+        <EntityTypeShape EntityType="LiderModel.Vva_Cliente" Width="1.5" PointX="12.75" PointY="4" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.grupo" Width="1.5" PointX="12.75" PointY="8" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.categoria" Width="1.5" PointX="9.75" PointY="14" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.PlantillaUnidad" Width="1.5" PointX="3" PointY="1.125" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_PRODUCTO_PlantillaUnidad" />
-        <EntityTypeShape EntityType="LiderModel.ItemBonificacion" Width="1.5" PointX="7.875" PointY="21.25" />
-        <EntityTypeShape EntityType="LiderModel.Bonificacion" Width="1.5" PointX="10" PointY="19.375" />
-        <EntityTypeShape EntityType="LiderModel.TipoBonificacion" Width="1.5" PointX="12" PointY="23" />
+        <EntityTypeShape EntityType="LiderModel.ItemBonificacion" Width="1.5" PointX="7.5" PointY="15" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Bonificacion" Width="1.5" PointX="5.25" PointY="15" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.TipoBonificacion" Width="1.5" PointX="3" PointY="15" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_Bonificacion_TipoBonificacion" />
         <AssociationConnector Association="LiderModel.FK_DETADOC_Bonificacion" />
         <AssociationConnector Association="LiderModel.FK_ItemBonificacion_Bonificacion" />
-        <EntityTypeShape EntityType="LiderModel.TipoAsociado" Width="1.5" PointX="12.375" PointY="0.875" />
+        <EntityTypeShape EntityType="LiderModel.TipoAsociado" Width="1.5" PointX="5.25" PointY="17" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_ItemBonificacion_TipoAsociado" />
-        <EntityTypeShape EntityType="LiderModel.DOCTIPO" Width="1.5" PointX="16.375" PointY="4" />
+        <EntityTypeShape EntityType="LiderModel.DOCTIPO" Width="1.5" PointX="3" PointY="11.375" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_DOCUMENTO_DOCTIPO1" />
-        <EntityTypeShape EntityType="LiderModel.INFREPARTO" Width="1.5" PointX="17.375" PointY="7.5" />
-        <EntityTypeShape EntityType="LiderModel.infrepartocab" Width="1.5" PointX="19.875" PointY="8.125" />
+        <EntityTypeShape EntityType="LiderModel.INFREPARTO" Width="1.5" PointX="10" PointY="8.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.infrepartocab" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_INFREPARTO_infrepartocab" />
-        <EntityTypeShape EntityType="LiderModel.TIPOCLI" Width="1.5" PointX="5.375" PointY="16.875" />
+        <EntityTypeShape EntityType="LiderModel.TIPOCLI" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK__CLIENTE__TipoCli__4A4E069C" />
-        <EntityTypeShape EntityType="LiderModel.ZONA" Width="1.5" PointX="0.75" PointY="19.125" />
+        <EntityTypeShape EntityType="LiderModel.ZONA" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK__ZONA_PERSO__Zona__65F62111" />
-        <EntityTypeShape EntityType="LiderModel.ClienteZona" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="LiderModel.ClienteZona" Width="1.5" PointX="12" PointY="10.25" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_ClienteZona_CLIENTE" />
         <AssociationConnector Association="LiderModel.FK_ClienteZona_ZONA" />
+        <EntityTypeShape EntityType="LiderModel.Usuario" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.UsuarioPerfil" Width="1.5" PointX="10" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.UsuarioPermiso" Width="1.5" PointX="10" PointY="2.75" IsExpanded="false" />
+        <AssociationConnector Association="LiderModel.FK_UsuarioPerfil_Usuario" />
+        <EntityTypeShape EntityType="LiderModel.Perfil" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Permiso" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="false" />
+        <AssociationConnector Association="LiderModel.FK_UsuarioPerfil_Perfil" />
+        <AssociationConnector Association="LiderModel.FK_UsuarioPermiso_Perfil" />
+        <AssociationConnector Association="LiderModel.FK_UsuarioPermiso_Permiso" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
