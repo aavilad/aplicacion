@@ -63,24 +63,24 @@
             this.nuevoToolStripMenuItem1,
             this.filtroToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(110, 70);
             // 
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.nuevoToolStripMenuItem.Text = "Abrir";
             // 
             // nuevoToolStripMenuItem1
             // 
             this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
-            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
             this.nuevoToolStripMenuItem1.Text = "Nuevo";
             // 
             // filtroToolStripMenuItem
             // 
             this.filtroToolStripMenuItem.Name = "filtroToolStripMenuItem";
-            this.filtroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filtroToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.filtroToolStripMenuItem.Text = "Filtro";
             this.filtroToolStripMenuItem.Click += new System.EventHandler(this.filtroToolStripMenuItem_Click);
             // 
@@ -92,6 +92,7 @@
             this.Controls.Add(this.gridControl1);
             this.Name = "frmNotaCredito";
             this.Text = "frmNotaCredito";
+            this.Load += new System.EventHandler(this.frmNotaCredito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

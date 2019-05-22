@@ -84,6 +84,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
+            this.DataUser = new DevExpress.XtraBars.BarStaticItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -122,6 +123,7 @@
             // 
             // ribbonControl1
             // 
+            this.ribbonControl1.AutoSizeItems = true;
             this.ribbonControl1.Categories.AddRange(new DevExpress.XtraBars.BarManagerCategory[] {
             ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories"))),
             ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories1"))),
@@ -186,9 +188,10 @@
             this.CBOCOMPRAS,
             this.CBOVENTAS,
             this.barStaticItem1,
-            this.barStaticItem2});
+            this.barStaticItem2,
+            this.DataUser});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 10;
+            this.ribbonControl1.MaxItemId = 11;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -199,6 +202,7 @@
             this.MCONFIGURACION});
             this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1, "S");
             this.ribbonControl1.QuickToolbarItemLinks.Add(this.DESCARGAPEDIDO);
+            this.ribbonControl1.QuickToolbarItemLinks.Add(this.DataUser);
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPopupGalleryEdit1,
             this.repositoryItemPopupContainerEdit1,
@@ -251,6 +255,7 @@
             this.VENDEDORES.Id = 6;
             this.VENDEDORES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENDEDORES.ImageOptions.SvgImage")));
             this.VENDEDORES.Name = "VENDEDORES";
+            this.VENDEDORES.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.VENDEDORES_ItemClick);
             // 
             // INVENTARIOPRODUCTO
             // 
@@ -656,6 +661,15 @@
             this.barStaticItem2.Id = 6;
             this.barStaticItem2.Name = "barStaticItem2";
             // 
+            // DataUser
+            // 
+            resources.ApplyResources(this.DataUser, "DataUser");
+            this.DataUser.Enabled = false;
+            this.DataUser.Id = 10;
+            this.DataUser.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("DataUser.ImageOptions.SvgImage")));
+            this.DataUser.Name = "DataUser";
+            this.DataUser.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
             // MVENTAS
             // 
             this.MVENTAS.Name = "MVENTAS";
@@ -980,5 +994,6 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemFontEdit repositoryItemFontEdit1;
+        public DevExpress.XtraBars.BarStaticItem DataUser;
     }
 }

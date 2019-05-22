@@ -19,7 +19,7 @@ namespace xtraForm
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.UserSkins.BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            //Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-PE");
             Application.Run(new Modulos.Usuario.frmLogin());
 

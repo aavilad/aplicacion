@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem9 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -53,6 +56,7 @@
             this.emptySpaceItem8 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
             this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -75,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // emptySpaceItem3
@@ -115,7 +120,7 @@
             this.Entrar.Name = "Entrar";
             this.Entrar.Size = new System.Drawing.Size(72, 22);
             this.Entrar.StyleController = this.layoutControl1;
-            this.Entrar.TabIndex = 10;
+            this.Entrar.TabIndex = 0;
             this.Entrar.Text = "Entrar";
             this.Entrar.Click += new System.EventHandler(this.Entrar_Click);
             // 
@@ -129,7 +134,7 @@
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(80, 13);
             this.labelControl2.StyleController = this.layoutControl1;
-            this.labelControl2.TabIndex = 9;
+            this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "soporte@lider.pe";
             // 
             // labelControl1
@@ -145,7 +150,7 @@
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(351, 28);
             this.labelControl1.StyleController = this.layoutControl1;
-            this.labelControl1.TabIndex = 8;
+            this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "ACESO DE USUARIO";
             // 
             // CONTRASEÑA
@@ -157,7 +162,11 @@
             this.CONTRASEÑA.Properties.UseSystemPasswordChar = true;
             this.CONTRASEÑA.Size = new System.Drawing.Size(166, 20);
             this.CONTRASEÑA.StyleController = this.layoutControl1;
-            this.CONTRASEÑA.TabIndex = 5;
+            this.CONTRASEÑA.TabIndex = 0;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Control contraseña no debe estar vacio.";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.CONTRASEÑA, conditionValidationRule1);
             // 
             // USUARIO
             // 
@@ -167,7 +176,11 @@
             this.USUARIO.Properties.ContextImageOptions.SvgImageSize = new System.Drawing.Size(15, 15);
             this.USUARIO.Size = new System.Drawing.Size(166, 20);
             this.USUARIO.StyleController = this.layoutControl1;
-            this.USUARIO.TabIndex = 4;
+            this.USUARIO.TabIndex = 0;
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "Campo usuario no puede estar vacio.";
+            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.USUARIO, conditionValidationRule2);
             // 
             // layoutControlGroup1
             // 
@@ -322,6 +335,10 @@
             this.emptySpaceItem7.Size = new System.Drawing.Size(0, 0);
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // dxValidationProvider1
+            // 
+            this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Manual;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,9 +346,11 @@
             this.ClientSize = new System.Drawing.Size(363, 131);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLogin_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -354,6 +373,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -383,5 +403,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem8;
         private DevExpress.XtraLayout.SimpleSeparator simpleSeparator1;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
     }
 }

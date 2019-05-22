@@ -21,7 +21,6 @@ namespace xtraForm.Modulos.Ventas
         public frmNotaCredito()
         {
             InitializeComponent();
-            Refrescar();
         }
 
         void Refrescar()
@@ -118,6 +117,11 @@ namespace xtraForm.Modulos.Ventas
                     }
                 }
             }
+        }
+
+        private void frmNotaCredito_Load(object sender, EventArgs e)
+        {
+            Refrescar();
         }
     }
 }

@@ -33,10 +33,31 @@ namespace xtraForm.Modulos.Usuario
             var formulario = new frmPrincipal();
             using (var CTX = new LiderEntities())
             {
-               
+                var usuario = CTX.Usuarios.Where(x => x.Codigo == USUARIO.Text.Trim()).FirstOrDefault();
+                var Passw = CTX.Usuarios.Where(x => x.Contraseña == CONTRASEÑA.Text.Trim()).FirstOrDefault();
+                if (dxValidationProvider1.Validate())
+                {
+                    if (usuario != null && Passw != null)
+                    {
+                        formulario.DataUser.Caption = CTX.Usuarios.Where(x => x.Codigo == USUARIO.Text.Trim()).Select(y => "USUARIO: " + y.Nombre.ToUpper()).FirstOrDefault();
+                        this.Hide();
+                        formulario.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Datos ingresados incorrectos son incorrectos .");
+                    }
+                }
             }
-            this.Hide();
-            formulario.Show();
+
+        }
+
+        private void frmLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Enter)
+            {
+                Entrar_Click(sender, e);
+            }
         }
     }
 }

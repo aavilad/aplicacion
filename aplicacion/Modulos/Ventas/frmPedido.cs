@@ -44,6 +44,70 @@ namespace xtraForm.Modulos.Ventas
             condicion(cadena);
         }
 
+        void CamposPedido_(string CdPedido, string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
+            string Gestion, string IdDistrito, DataGridView dgv)
+        {
+            using (LiderEntities Context = new LiderEntities())
+            {
+                var i = Context.PEDIDOes.Where(x => x.Personal == CdVendedor && x.Fecha ==  Fecha);
+                string _Correlativo = CdVendedor + Fecha.Year.ToString().Substring(2,2) + Fecha.Month + Convert.ToInt32(Fecha.Day) + (i.Count() + 1).ToString("D2");
+                PEDIDO Cp = new PEDIDO ();
+                Cp.Pedido1 = _Correlativo.Trim();
+                Cp.Personal = CdVendedor;
+                Cp.Cliente = CdCliente;
+                Cp.FormaPago = CdFP;
+                Cp.Fecha = Fecha;
+                Cp.Estado = "P";
+                Cp.Reparto = true;
+                Cp.TipoPersona = "1";
+                Cp.Procesado = false;
+                Cp.rsocial = NmCliente;
+                Cp.ruc = Ruc;
+                Cp.direccion = Direccion;
+                Cp.dni = Dni;
+                Cp.encargado = CdVendedor;
+                Cp.npersonal = NmVendedor;
+                Cp.nencargado = NmVendedor;
+                Cp.gestion = Gestion;
+                Cp.ptollegada = Direccion;
+                Cp.distllegada = IdDistrito;
+                Cp.tipodoc = TpDoc;
+                Cp.flagCobertura = "N";
+                Cp.Fecha_web = DateTime.Now;
+                Cp.statusWeb = null;
+                Cp.Aprobado = true;
+                Context.Configuration.ValidateOnSaveEnabled = false;
+                Context.PEDIDOes.Add(Cp);
+
+                foreach (DataGridViewRow fila in dgv.Rows)
+                {
+                    DETPEDIDO ItemCp = new DETPEDIDO();
+                    ItemCp.Pedido = _Correlativo;
+                    ItemCp.Producto = Convert.ToString(fila.Cells["Codigo"].Value);
+                    ItemCp.PrecUnit = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
+                    ItemCp.Cantidad = Convert.ToDecimal(fila.Cells["Cantidad"].Value);
+                    ItemCp.Estado = "P";
+                    ItemCp.TipoPrecio = Convert.ToString(fila.Cells["TpPrecio"].Value);
+                    ItemCp.TranGratuita = (decimal)0.00;
+                    ItemCp.lote = string.Empty;
+                    ItemCp.fvctolote = Convert.ToDateTime("1990/01/01");
+                    ItemCp.flgSurtido = "N";
+                    ItemCp.IDBonificacion = Convert.ToInt32(fila.Cells["IDBonificacion"].Value == string.Empty ? 0 : fila.Cells["IDBonificacion"].Value);
+                    ItemCp.PrecioUnitario = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
+                    ItemCp.PrecioNeto = Convert.ToDecimal(fila.Cells["PrecioNeto"].Value);
+                    ItemCp.Descuento = Convert.ToDecimal(fila.Cells["Descuento"].Value);
+                    ItemCp.Recargo = Convert.ToDecimal(fila.Cells["Recargo"].Value);
+                    ItemCp.Afecto = Convert.ToDecimal(fila.Cells["Afecto"].Value);
+                    ItemCp.Bonif = Convert.ToBoolean(fila.Cells["Bonif"].Value);
+                    Context.DETPEDIDOes.Add(ItemCp);
+                }
+                Context.SaveChanges();
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                Refrescar();
+            }
+        }
+
         void CamposPedido(string CdPedido, string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
             string Gestion, string IdDistrito, DataGridView dgv)
         {
@@ -73,7 +137,7 @@ namespace xtraForm.Modulos.Ventas
                     DETPEDIDO ItemCp = new DETPEDIDO();
                     ItemCp.Pedido = CdPedido;
                     ItemCp.Producto = Convert.ToString(fila.Cells["Codigo"].Value);
-                    ItemCp.PrecUnit = Convert.ToDecimal(fila.Cells["PrecioUnitario"].Value);
+                    ItemCp.PrecUnit = Convert.ToDecimal(fila.Cells["PrecioNeto"].Value);
                     ItemCp.Cantidad = Convert.ToDecimal(fila.Cells["Cantidad"].Value);
                     ItemCp.Estado = "P";
                     ItemCp.TipoPrecio = Convert.ToString(fila.Cells["TpPrecio"].Value);
@@ -294,12 +358,14 @@ namespace xtraForm.Modulos.Ventas
         private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Elementos.frmpedido nuevopedido = new Elementos.frmpedido();
+            nuevopedido.pasar += new Elementos.frmpedido.varaible(CamposPedido_);
             nuevopedido.StartPosition = FormStartPosition.CenterScreen;
             nuevopedido.dateEmision.EditValue = DateTime.Now.ToShortDateString();
             nuevopedido.dateEntrega.EditValue = DateTime.Now.AddDays(1).ToShortDateString();
             nuevopedido.btnCredito.Enabled = false;
             nuevopedido.txtformaPago.Enabled = false;
             nuevopedido.txtformaPago.Text = "CONTADO";
+            nuevopedido.CodigoFP.Text = "C";
             nuevopedido.Show();
         }
 

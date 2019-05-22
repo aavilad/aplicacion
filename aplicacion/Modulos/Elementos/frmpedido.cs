@@ -46,18 +46,18 @@ namespace xtraForm.Modulos.Elementos
             CpPedido.NombreVendedor = txtnmVendedor.Text;
             CpPedido.Gestion = txtcdGestion.Text.Trim();
             CpPedido.DistritoCliente = txtcdDistrito.Text.Trim();
-            CpPedido.TipoPedido = txtdocCliente.Text.Trim().Length == 8 ? "B" : "F";
+            CpPedido.TipoPedido = txtdocCliente.Text.Trim().Length == 8 || txtdocCliente.Text.Trim() == "S/D" ? "B" : "F";
             if (!proceso.ConsultarVerdad("Procesado", "Pedido", "pedido = '" + CpPedido.NumeroPedido + "'"))
             {
                 try
                 {
                     if (dxValidationProvider1.Validate())
-                    {
-                        pasar(CpPedido.NumeroPedido, CpPedido.TipoPedido, CpPedido.CodigoVendedor, CpPedido.CodigoCliente, CpPedido.FormaPago, Convert.ToDateTime(dateEmision.EditValue),
-                        CpPedido.NombreCliente, CpPedido.DocumentoCliente.Length == 8 ? string.Empty : CpPedido.DocumentoCliente, CpPedido.DireccionCliente,
-                        CpPedido.DocumentoCliente.Length == 8 ? CpPedido.DocumentoCliente : string.Empty, CpPedido.NombreVendedor, CpPedido.Gestion, CpPedido.DistritoCliente, dataGridView1);
-                        this.Close();
-                    }
+                {
+                    pasar(CpPedido.NumeroPedido, CpPedido.TipoPedido, CpPedido.CodigoVendedor, CpPedido.CodigoCliente, CpPedido.FormaPago, Convert.ToDateTime(dateEmision.EditValue),
+                    CpPedido.NombreCliente, CpPedido.DocumentoCliente.Length == 8 ? string.Empty : CpPedido.DocumentoCliente, CpPedido.DireccionCliente,
+                    CpPedido.DocumentoCliente.Length == 8 ? CpPedido.DocumentoCliente : string.Empty, CpPedido.NombreVendedor, CpPedido.Gestion, CpPedido.DistritoCliente, dataGridView1);
+                    this.Close();
+                }
                 }
                 catch (Exception t)
                 {
@@ -696,30 +696,6 @@ namespace xtraForm.Modulos.Elementos
                             frmcondicion.pasar += new Maestro.frmCondicion.variable(formapago);
                             frmcondicion.StartPosition = FormStartPosition.CenterScreen;
                             frmcondicion.ShowDialog();
-                            foreach (DataGridViewRow dr in dataGridView1.Rows)
-                                if (dr.Cells["Codigo"].Value != null && dr.Cells["Descripcion"] != null)
-                                {
-                                    switch (dr.Cells["TpPrecio"].Value)
-                                    {
-                                        case 1:
-                                            producto.CodigoPrecio = "CR_MENOR";
-                                            dr.Cells["TpPrecio"].Value = 3;
-                                            break;
-                                        case 2:
-                                            producto.CodigoPrecio = "CR_MAYOR";
-                                            dr.Cells["TpPrecio"].Value = 4;
-                                            break;
-                                        case 6:
-                                            producto.CodigoPrecio = "ESPECIAL05";
-                                            dr.Cells["TpPrecio"].Value = 5;
-                                            break;
-                                    }
-                                    producto.Codigo = Convert.ToString(dr.Cells["Codigo"].Value);
-                                    dr.Cells["Credito"].Value = true;
-                                    dr.Cells["PrecioUnitario"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + entidad.codigo + "'");
-                                    dr.Cells["PrecioNeto"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + entidad.codigo + "'");
-                                    dr.Cells["Total"].Value = Convert.ToDecimal(dr.Cells["Cantidad"].Value) * Convert.ToDecimal(dr.Cells["PrecioNeto"].Value);
-                                }
                             break;
                         case false:
                             foreach (DataGridViewRow dr in dataGridView1.Rows)
@@ -741,10 +717,10 @@ namespace xtraForm.Modulos.Elementos
                                             break;
                                     }
                                     txtformaPago.Text = "CONTADO";
-                                    entidad.codigo = dr.Cells["Codigo"].Value.ToString();
+                                    string codigo = dr.Cells["Codigo"].Value.ToString();
                                     dr.Cells["Credito"].Value = false;
-                                    dr.Cells["PrecioUnitario"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + entidad.codigo + "'");
-                                    dr.Cells["PrecioNeto"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + entidad.codigo + "'");
+                                    dr.Cells["PrecioUnitario"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + codigo + "'");
+                                    dr.Cells["PrecioNeto"].Value = proceso.ConsultarCadena(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + codigo + "'");
                                     dr.Cells["Total"].Value = Convert.ToDecimal(dr.Cells["Cantidad"].Value) * Convert.ToDecimal(dr.Cells["PrecioNeto"].Value);
                                 }
                             break;
@@ -1017,8 +993,36 @@ namespace xtraForm.Modulos.Elementos
         }
         void formapago(string Codigo, string condicion)
         {
+            string _Codigo = "";
+            string _CodigoPrecio = "";
             txtformaPago.Text = condicion;
             CodigoFP.Text = Codigo;
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                if (dr.Cells["Codigo"].Value != null && dr.Cells["Descripcion"] != null)
+                {
+                    switch (dr.Cells["TpPrecio"].Value)
+                    {
+                        case 1:
+                            _CodigoPrecio = "CR_MENOR";
+                            dr.Cells["TpPrecio"].Value = 3;
+                            break;
+                        case 2:
+                            _CodigoPrecio = "CR_MAYOR";
+                            dr.Cells["TpPrecio"].Value = 4;
+                            break;
+                        case 6:
+                            _CodigoPrecio = "ESPECIAL05";
+                            dr.Cells["TpPrecio"].Value = 5;
+                            break;
+                    }
+                    _Codigo = Convert.ToString(dr.Cells["Codigo"].Value);
+                    dr.Cells["Credito"].Value = true;
+                    dr.Cells["PrecioUnitario"].Value = proceso.ConsultarCadena(_CodigoPrecio, "Vva_Producto", "Codigo = '" + _Codigo + "'");
+                    dr.Cells["PrecioNeto"].Value = proceso.ConsultarCadena(_CodigoPrecio, "Vva_Producto", "Codigo = '" + _Codigo + "'");
+                    dr.Cells["Total"].Value = Convert.ToDecimal(dr.Cells["Cantidad"].Value) * Convert.ToDecimal(dr.Cells["PrecioNeto"].Value);
+                }
+            }
         }
 
         private void frmpedido_KeyPress(object sender, KeyPressEventArgs e)
@@ -1123,12 +1127,12 @@ namespace xtraForm.Modulos.Elementos
                 Maestro.frmVendedor frmvendedor = new Maestro.frmVendedor();
                 frmvendedor.pasar += new Maestro.frmVendedor.campos(camposvendedor);
                 var _RVentas = (from Rv in Context.PERSONALs.Where(w => w.Activo == true)
-                                     join Fv in Context.FuerzaVentas.Where(wx => wx.Activo == true) on Rv.fzavtas equals Fv.fzavtas
-                                     select new
-                                     {
-                                         Codigo = Rv.Personal1,
-                                         Nombre = Rv.Nombre
-                                     }).ToList();
+                                join Fv in Context.FuerzaVentas.Where(wx => wx.Activo == true) on Rv.fzavtas equals Fv.fzavtas
+                                select new
+                                {
+                                    Codigo = Rv.Personal1,
+                                    Nombre = Rv.Nombre
+                                }).ToList();
                 frmvendedor.gridControl1.DataSource = _RVentas;
                 formato.Grilla(frmvendedor.gridView1);
                 frmvendedor.StartPosition = FormStartPosition.CenterScreen;
@@ -1168,7 +1172,7 @@ namespace xtraForm.Modulos.Elementos
                     }
                     else if (_RVentas.Where(x => x.Codigo == txtcdVendedor.Text.Trim()).FirstOrDefault() != null)
                     {
-                        txtnmVendedor.Text = Convert.ToString(_RVentas.Where(x => x.Codigo == txtcdVendedor.Text.Trim()).FirstOrDefault());
+                        txtnmVendedor.Text = Convert.ToString(_RVentas.Where(x => x.Codigo == txtcdVendedor.Text.Trim()).Select(y => y.Nombre.Trim()).FirstOrDefault());
                     }
                     else if (_RVentas.Where(x => x.Codigo.Contains(txtcdVendedor.Text.Trim())).Count() > 0)
                     {

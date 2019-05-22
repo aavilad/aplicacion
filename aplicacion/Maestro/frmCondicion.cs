@@ -34,14 +34,5 @@ namespace xtraForm.Maestro
                 }
             }
         }
-
-        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 1)
-            {
-                pasar(dataGridView1.CurrentRow.Cells["FormaPago"].Value.ToString(), dataGridView1.CurrentRow.Cells["Descripcion"].Value.ToString());
-                this.Close();
-            }
-        }
     }
 }
