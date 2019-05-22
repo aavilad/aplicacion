@@ -46,6 +46,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.COPIAR = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -88,7 +89,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DESCARGAR),
             new DevExpress.XtraBars.LinkPersistInfo(this.FACTURAR),
             new DevExpress.XtraBars.LinkPersistInfo(this.APROBAR),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DESAPROBAR)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.DESAPROBAR),
+            new DevExpress.XtraBars.LinkPersistInfo(this.COPIAR)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
@@ -171,8 +173,9 @@
             this.DESCARGAR,
             this.FACTURAR,
             this.APROBAR,
-            this.DESAPROBAR});
-            this.barManager1.MaxItemId = 8;
+            this.DESAPROBAR,
+            this.COPIAR});
+            this.barManager1.MaxItemId = 9;
             // 
             // barDockControlTop
             // 
@@ -205,6 +208,14 @@
             this.barDockControlRight.Location = new System.Drawing.Point(587, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 406);
+            // 
+            // COPIAR
+            // 
+            this.COPIAR.Caption = "Copiar";
+            this.COPIAR.Id = 8;
+            this.COPIAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("COPIAR.ImageOptions.SvgImage")));
+            this.COPIAR.Name = "COPIAR";
+            this.COPIAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.COPIAR_ItemClick);
             // 
             // frmPedido
             // 
@@ -247,5 +258,6 @@
         private DevExpress.XtraBars.BarButtonItem FACTURAR;
         private DevExpress.XtraBars.BarButtonItem APROBAR;
         private DevExpress.XtraBars.BarButtonItem DESAPROBAR;
+        private DevExpress.XtraBars.BarButtonItem COPIAR;
     }
 }

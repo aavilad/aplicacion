@@ -39,6 +39,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage promocion = new XtraTabPage();
                 objeto = new Modulos.Ventas.frmPromocion
                 {
@@ -53,6 +55,7 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 promocion.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
 
         }
@@ -83,6 +86,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Ventas.frmPedido
@@ -98,6 +103,7 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
         }
 
@@ -119,6 +125,8 @@ namespace xtraForm
             {
                 if (proceso.MensagePregunta("existen '" + entidad.i.ToString() + "' pedido sin bajar, ¿desea descargarlos?") == DialogResult.Yes)
                 {
+                    splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    splashScreenManager1.ShowWaitForm();
                     if (proceso.actualizar("pedido", "FECHA = REPLACE(CONVERT(VARCHAR(10),Fecha,120),'-','')", "procesado = 0 and statusweb is null"))
                     {
                         Modulos.Elementos.frmMsg frmmensage = new Modulos.Elementos.frmMsg();
@@ -151,6 +159,7 @@ namespace xtraForm
                         MessageBox.Show("Descarga terminada");
                     }
                 }
+                splashScreenManager1.CloseWaitForm();
             }
             else
             {
@@ -164,7 +173,6 @@ namespace xtraForm
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
                 if (xtraTabControl1.TabPages[i].Text == "Pesos SF")
                 {
-
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
@@ -199,6 +207,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Elementos.frmComprobantes
@@ -214,6 +224,7 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
         }
 
@@ -249,6 +260,8 @@ namespace xtraForm
 
         private void btnBonificar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+            splashScreenManager1.ShowWaitForm();
             Filtros.frmProcesar frmbonificar = new Filtros.frmProcesar();
             proceso.consultar(@"SELECT Vva_Vendedor.[Codigo vendedor] AS Codigo, 
                                 FuerzaVentas.descrip AS FzaVentas, 
@@ -266,6 +279,7 @@ namespace xtraForm
             frmbonificar.gridView1.BestFitColumns();
             frmbonificar.StartPosition = FormStartPosition.CenterScreen;
             frmbonificar.Show();
+            splashScreenManager1.CloseWaitForm();
         }
 
         private void ClienteBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -339,6 +353,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Inventario.frmExistencia
@@ -353,6 +369,7 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
         }
 
@@ -368,6 +385,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Inventario.frmMarca
@@ -382,14 +401,18 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.ShowWaitForm();
             }
         }
 
         private void BtnCanjear_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+            splashScreenManager1.ShowWaitForm();
             var frmfacturacion = new Modulos.Elementos.frmFacturacion();
             frmfacturacion.StartPosition = FormStartPosition.CenterScreen;
             frmfacturacion.Show();
+            splashScreenManager1.CloseWaitForm();
         }
 
         private void BtnProductoEscala_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -404,6 +427,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Ventas.frmListaPrecio
@@ -418,6 +443,7 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
         }
 
@@ -433,6 +459,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Ventas.frmMaestroDetalle
@@ -447,6 +475,7 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
         }
 
@@ -503,6 +532,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Ventas.frmCorrelativos
@@ -518,6 +549,7 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
         }
 
@@ -532,6 +564,8 @@ namespace xtraForm
                 }
             if (!existe)
             {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
                 objeto = new Modulos.Configuracion.frmTipoCp
@@ -547,6 +581,7 @@ namespace xtraForm
                 entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
+                splashScreenManager1.CloseWaitForm();
             }
         }
 
@@ -691,6 +726,11 @@ namespace xtraForm
                 objeto.Show();
                 splashScreenManager1.CloseWaitForm();
             }
+        }
+
+        private void CBOVENTAS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

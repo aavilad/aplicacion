@@ -264,6 +264,7 @@
             this.ANULADO.Size = new System.Drawing.Size(254, 47);
             this.ANULADO.TabIndex = 112;
             this.ANULADO.Text = "A  N  U  L  A  D  O";
+            this.ANULADO.Parent = dataGridView1;
             // 
             // dataGridView1
             // 

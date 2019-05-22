@@ -246,6 +246,7 @@
           <Property Name="valor" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="union" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="tabla" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FiltroConfiguracion">
           <Key>
@@ -1418,8 +1419,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySet Name="DETPEDIDOes" EntityType="LiderModel.DETPEDIDO" />
           <EntitySet Name="Distritoes" EntityType="LiderModel.Distrito" />
           <EntitySet Name="DOCUMENTOes" EntityType="LiderModel.DOCUMENTO" />
-          <EntitySet Name="Filtroes" EntityType="LiderModel.Filtro" />
-          <EntitySet Name="FiltroConfiguracions" EntityType="LiderModel.FiltroConfiguracion" />
           <EntitySet Name="FORMAPAGOes" EntityType="LiderModel.FORMAPAGO" />
           <EntitySet Name="FuerzaVentas" EntityType="LiderModel.FuerzaVenta" />
           <EntitySet Name="Gestions" EntityType="LiderModel.Gestion" />
@@ -1488,10 +1487,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_DOCUMENTO_PERSONAL" Association="LiderModel.FK_DOCUMENTO_PERSONAL">
             <End Role="PERSONAL" EntitySet="PERSONALs" />
             <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Filtro_FiltroConfiguracion" Association="LiderModel.FK_Filtro_FiltroConfiguracion">
-            <End Role="FiltroConfiguracion" EntitySet="FiltroConfiguracions" />
-            <End Role="Filtro" EntitySet="Filtroes" />
           </AssociationSet>
           <AssociationSet Name="FK_PEDIDO_FORMAPAGO" Association="LiderModel.FK_PEDIDO_FORMAPAGO">
             <End Role="FORMAPAGO" EntitySet="FORMAPAGOes" />
@@ -1604,6 +1599,12 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_UsuarioPermiso_Permiso" Association="LiderModel.FK_UsuarioPermiso_Permiso">
             <End Role="Permiso" EntitySet="Permisoes" />
             <End Role="UsuarioPermiso" EntitySet="UsuarioPermisoes" />
+          </AssociationSet>
+          <EntitySet Name="Filtroes" EntityType="LiderModel.Filtro" />
+          <EntitySet Name="FiltroConfiguracions" EntityType="LiderModel.FiltroConfiguracion" />
+          <AssociationSet Name="FK_Filtro_FiltroConfiguracion" Association="LiderModel.FK_Filtro_FiltroConfiguracion">
+            <End Role="FiltroConfiguracion" EntitySet="FiltroConfiguracions" />
+            <End Role="Filtro" EntitySet="Filtroes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Clase_Producto">
@@ -1806,28 +1807,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <NavigationProperty Name="Gestion1" Relationship="LiderModel.FK_DOCUMENTO_Gestion" FromRole="DOCUMENTO" ToRole="Gestion" />
           <NavigationProperty Name="PERSONAL1" Relationship="LiderModel.FK_DOCUMENTO_PERSONAL" FromRole="DOCUMENTO" ToRole="PERSONAL" />
           <NavigationProperty Name="DOCTIPO" Relationship="LiderModel.FK_DOCUMENTO_DOCTIPO1" FromRole="DOCUMENTO" ToRole="DOCTIPO" />
-        </EntityType>
-        <EntityType Name="Filtro">
-          <Key>
-            <PropertyRef Name="PKID" />
-          </Key>
-          <Property Name="PKID" Type="Guid" Nullable="false" />
-          <Property Name="campo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="condicion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="valor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="union" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="tabla" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="FiltroConfiguracion" Relationship="LiderModel.FK_Filtro_FiltroConfiguracion" FromRole="Filtro" ToRole="FiltroConfiguracion" />
-        </EntityType>
-        <EntityType Name="FiltroConfiguracion">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Registro" Type="Guid" Nullable="false" />
-          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Filtroes" Relationship="LiderModel.FK_Filtro_FiltroConfiguracion" FromRole="FiltroConfiguracion" ToRole="Filtro" />
         </EntityType>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -2299,18 +2278,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Principal>
             <Dependent Role="DOCUMENTO">
               <PropertyRef Name="Personal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Filtro_FiltroConfiguracion">
-          <End Type="LiderModel.FiltroConfiguracion" Role="FiltroConfiguracion" Multiplicity="1" />
-          <End Type="LiderModel.Filtro" Role="Filtro" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FiltroConfiguracion">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Filtro">
-              <PropertyRef Name="condicion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2842,6 +2809,41 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Filtro">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="campo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="condicion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="union" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="tabla" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FiltroConfiguracion" Relationship="LiderModel.FK_Filtro_FiltroConfiguracion" FromRole="Filtro" ToRole="FiltroConfiguracion" />
+        </EntityType>
+        <EntityType Name="FiltroConfiguracion">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Registro" Type="Guid" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Filtroes" Relationship="LiderModel.FK_Filtro_FiltroConfiguracion" FromRole="FiltroConfiguracion" ToRole="Filtro" />
+        </EntityType>
+        <Association Name="FK_Filtro_FiltroConfiguracion">
+          <End Type="LiderModel.FiltroConfiguracion" Role="FiltroConfiguracion" Multiplicity="1" />
+          <End Type="LiderModel.Filtro" Role="Filtro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FiltroConfiguracion">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Filtro">
+              <PropertyRef Name="condicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3029,28 +3031,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
                 <ScalarProperty Name="Personal" ColumnName="Personal" />
                 <ScalarProperty Name="TipoDoc" ColumnName="TipoDoc" />
                 <ScalarProperty Name="Documento1" ColumnName="Documento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Filtroes">
-            <EntityTypeMapping TypeName="LiderModel.Filtro">
-              <MappingFragment StoreEntitySet="Filtro">
-                <ScalarProperty Name="tabla" ColumnName="tabla" />
-                <ScalarProperty Name="union" ColumnName="union" />
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="condicion" ColumnName="condicion" />
-                <ScalarProperty Name="campo" ColumnName="campo" />
-                <ScalarProperty Name="PKID" ColumnName="PKID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FiltroConfiguracions">
-            <EntityTypeMapping TypeName="LiderModel.FiltroConfiguracion">
-              <MappingFragment StoreEntitySet="FiltroConfiguracion">
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Registro" ColumnName="Registro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3589,6 +3569,29 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
               <MappingFragment StoreEntitySet="Permiso">
                 <ScalarProperty Name="Proceso" ColumnName="Proceso" />
                 <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Filtroes">
+            <EntityTypeMapping TypeName="LiderModel.Filtro">
+              <MappingFragment StoreEntitySet="Filtro">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="tabla" ColumnName="tabla" />
+                <ScalarProperty Name="union" ColumnName="union" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="condicion" ColumnName="condicion" />
+                <ScalarProperty Name="campo" ColumnName="campo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FiltroConfiguracions">
+            <EntityTypeMapping TypeName="LiderModel.FiltroConfiguracion">
+              <MappingFragment StoreEntitySet="FiltroConfiguracion">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

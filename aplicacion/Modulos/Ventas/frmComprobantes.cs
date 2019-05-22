@@ -16,7 +16,6 @@ namespace xtraForm.Modulos.Elementos
         public frmComprobantes()
         {
             InitializeComponent();
-
         }
 
         void Refrescar()
@@ -82,12 +81,13 @@ namespace xtraForm.Modulos.Elementos
             {
                 using (var Context = new LiderEntities())
                 {
+                    string NCp = Convert.ToString(gridView1.GetFocusedRowCellValue("Comprobante"));
+                    string TCp = Convert.ToString(gridView1.GetFocusedRowCellValue("Tipo"));
                     var frmOpenComprobante = new Elementos.frmComprobante();
                     var _Comprobante = (from cp in Context.DOCUMENTOes
-                                        where cp.Generado == Convert.ToString(gridView1.GetFocusedRowCellValue("Comprobante"))
-                                        && cp.TipoDoc == Convert.ToString(gridView1.GetFocusedRowCellValue("Tipo"))
+                                        where cp.Generado == NCp
+                                        && cp.TipoDoc == TCp
                                         select cp).FirstOrDefault();
-
                     string Estado = _Comprobante.Estado;
                     string PKDocumento = _Comprobante.Documento1;
                     string PKTipoDoc = _Comprobante.TipoDoc;
@@ -98,8 +98,8 @@ namespace xtraForm.Modulos.Elementos
                     string DocumentoCliente = Context.Vva_Cliente.Where(p => p.Codigo.Equals(CodigoCliente)).Select(a => a.Documento.Trim()).FirstOrDefault();
                     string DireccionCliente = _Comprobante.direccion;
                     string ZonaCliente = proceso.ConsultarCadena("descripcion", "Zona", "Zona = (select zona from Vva_Cliente where Codigo = '" + CodigoCliente + "')");
-                    string DistritoCliente = proceso.ConsultarCadena("descrip", "Distrito", "iddistrito = (select distllegada from Documento where documento = '" + PKDocumento + "' and TipDoc = '" + PKTipoDoc + "')");
-                    string ProvinciaCliente = proceso.ConsultarCadena("descrip", "provincia", " idprovincia = (select idprovincia from Distrito where iddistrito = (select distllegada from Documento where documento = '" + PKDocumento + "' and TipDoc = '" + PKTipoDoc + "'))");
+                    string DistritoCliente = proceso.ConsultarCadena("descrip", "Distrito", "iddistrito = (select distllegada from Documento where documento = '" + PKDocumento + "' and TipoDoc = '" + PKTipoDoc + "')");
+                    string ProvinciaCliente = proceso.ConsultarCadena("descrip", "provincia", " idprovincia = (select idprovincia from Distrito where iddistrito = (select distllegada from Documento where documento = '" + PKDocumento + "' and TipoDoc = '" + PKTipoDoc + "'))");
                     string Gestion = _Comprobante.gestion;
                     bool Credito = proceso.ConsultarVerdad("Credito", "Vva_Cp", "NrDoc = '" + PKDocumento + "' and TpDoc = '" + PKTipoDoc + "'");
                     string FormaPago = proceso.ConsultarCadena("FormaPago", "Pedido", "Pedido = (select top(1)Pedido from documento where documento = '" + PKDocumento + "' and TipoDoc = '" + PKTipoDoc + "')");
@@ -140,12 +140,10 @@ namespace xtraForm.Modulos.Elementos
                             bool Afecto = Convert.ToBoolean(Fila.Afecto);
                             int IdBonif = Convert.ToInt32(Fila.IDBonificacion) is DBNull ? 0 : Convert.ToInt32(Fila.IDBonificacion);
                             int TipoPrecio = Convert.ToInt32(Fila.TipoPrecio) is DBNull ? 0 : Convert.ToInt32(Fila.TipoPrecio);
-
                             frmOpenComprobante.dataGridView1.Rows.Add(Codigo, Descripcion, Cantidad, Cantidad, Unidad, TipoPrecio, PrecioUnitario, PrecioNeto,
                                 (Cantidad * PrecioNeto), Descuento, Recargo, Bonificacion, Credito, Afecto, IdBonif);
                             frmOpenComprobante.dataGridView1.ReadOnly = true;
                         }
-
                         frmOpenComprobante.txtValorDescuento.EditValue = (from detalle in frmOpenComprobante.dataGridView1.Rows.Cast<DataGridViewRow>()
                                                                           select (Convert.ToDecimal(detalle.Cells["Descuento"].Value))).Sum().ToString("N2");
                         frmOpenComprobante.txtValorRecargo.EditValue = (from detalle in frmOpenComprobante.dataGridView1.Rows.Cast<DataGridViewRow>()
@@ -173,6 +171,7 @@ namespace xtraForm.Modulos.Elementos
         {
             Elementos.frmComprobante frmcomprobante = new frmComprobante();
             frmcomprobante.StartPosition = FormStartPosition.CenterScreen;
+            frmcomprobante.ANULADO.Visible = false;
             frmcomprobante.Show();
         }
 
@@ -248,6 +247,103 @@ namespace xtraForm.Modulos.Elementos
         private void frmComprobantes_Load(object sender, EventArgs e)
         {
             Refrescar();
+        }
+
+        private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Enter)
+            {
+                if (gridView1.SelectedRowsCount > 0)
+                {
+                    using (var Context = new LiderEntities())
+                    {
+                        string NCp = Convert.ToString(gridView1.GetFocusedRowCellValue("Comprobante"));
+                        string TCp = Convert.ToString(gridView1.GetFocusedRowCellValue("Tipo"));
+                        var frmOpenComprobante = new Elementos.frmComprobante();
+                        var _Comprobante = (from cp in Context.DOCUMENTOes
+                                            where cp.Generado == NCp
+                                            && cp.TipoDoc == TCp
+                                            select cp).FirstOrDefault();
+
+                        string Estado = _Comprobante.Estado;
+                        string PKDocumento = _Comprobante.Documento1;
+                        string PKTipoDoc = _Comprobante.TipoDoc;
+                        string CodigoVendedor = _Comprobante.Personal;
+                        string NombreVendedor = _Comprobante.npersonal;
+                        string CodigoCliente = _Comprobante.Cliente;
+                        string NombreCliente = _Comprobante.rsocial;
+                        string DocumentoCliente = Context.Vva_Cliente.Where(p => p.Codigo.Equals(CodigoCliente)).Select(a => a.Documento.Trim()).FirstOrDefault();
+                        string DireccionCliente = _Comprobante.direccion;
+                        string ZonaCliente = proceso.ConsultarCadena("descripcion", "Zona", "Zona = (select zona from Vva_Cliente where Codigo = '" + CodigoCliente + "')");
+                        string DistritoCliente = proceso.ConsultarCadena("descrip", "Distrito", "iddistrito = (select distllegada from Documento where documento = '" + PKDocumento + "' and TipoDoc = '" + PKTipoDoc + "')");
+                        string ProvinciaCliente = proceso.ConsultarCadena("descrip", "provincia", " idprovincia = (select idprovincia from Distrito where iddistrito = (select distllegada from Documento where documento = '" + PKDocumento + "' and TipoDoc = '" + PKTipoDoc + "'))");
+                        string Gestion = _Comprobante.gestion;
+                        bool Credito = proceso.ConsultarVerdad("Credito", "Vva_Cp", "NrDoc = '" + PKDocumento + "' and TpDoc = '" + PKTipoDoc + "'");
+                        string FormaPago = proceso.ConsultarCadena("FormaPago", "Pedido", "Pedido = (select top(1)Pedido from documento where documento = '" + PKDocumento + "' and TipoDoc = '" + PKTipoDoc + "')");
+                        string FechaEmision = Convert.ToDateTime(_Comprobante.Fecha).ToString("dd/MM/yyyy");
+                        try
+                        {
+                            frmOpenComprobante.txtcdDocumento.Text = _Comprobante.Generado;
+                            frmOpenComprobante.txtcdVendedor.Text = CodigoVendedor;
+                            frmOpenComprobante.txtnmVendedor.Text = NombreVendedor;
+                            frmOpenComprobante.txtcdCLiente.Text = CodigoCliente;
+                            frmOpenComprobante.txtnmCliente.Text = NombreCliente;
+                            frmOpenComprobante.txtdocCliente.Text = DocumentoCliente;
+                            frmOpenComprobante.txtnmDireccion.EditValue = DireccionCliente;
+                            frmOpenComprobante.txtnmZona.EditValue = ZonaCliente;
+                            frmOpenComprobante.txtcdZona.EditValue = proceso.ConsultarCadena("Zona", "Vva_Cliente", "Codigo = '" + CodigoCliente + "'");
+                            frmOpenComprobante.txtnmDistrito.EditValue = DistritoCliente;
+                            frmOpenComprobante.txtcdDistrito.EditValue = proceso.ConsultarCadena("IDDistrito", "Vva_Cliente", "Codigo = '" + CodigoCliente + "'");
+                            frmOpenComprobante.txtnmProvincia.EditValue = ProvinciaCliente;
+                            frmOpenComprobante.txtcdProvincia.EditValue = proceso.ConsultarCadena("idprovincia", "Distrito", "iddistrito = (select IDDistrito from Vva_Cliente where codigo = '" + CodigoCliente + "')");
+                            frmOpenComprobante.txtcdGestion.Text = Gestion;
+                            frmOpenComprobante.dateEmision.EditValue = DateTime.Parse(FechaEmision);
+                            frmOpenComprobante.dateEntrega.EditValue = DateTime.Parse(FechaEmision).AddDays(1);
+                            frmOpenComprobante.btnCredito.Checked = Credito == true ? true : false;
+                            frmOpenComprobante.txtformaPago.Text = proceso.ConsultarCadena("Descripcion", "FormaPago", "FormaPago = '" + FormaPago + "'");
+                            frmOpenComprobante.CodigoFP.Text = FormaPago;
+                            var Items = Context.DETADOCs.Where(w => w.Documento == PKDocumento.Trim() && w.TipoDoc == PKTipoDoc.Trim()).ToList();
+                            foreach (var Fila in Items)
+                            {
+                                string Codigo = Fila.Producto;
+                                string Descripcion = Context.PRODUCTOes.Where(w => w.Producto1 == Fila.Producto).Select(x => x.Descripcion).FirstOrDefault().Trim();
+                                decimal Cantidad = Convert.ToDecimal(Fila.Cantidad);
+                                string Unidad = Context.PRODUCTOes.Where(w => w.Producto1 == Fila.Producto).Select(x => x.UniMed).FirstOrDefault().Trim();
+                                decimal PrecioUnitario = Convert.ToDecimal(Fila.PrecioUnitario);
+                                decimal PrecioNeto = Convert.ToDecimal(Fila.PrecioNeto);
+                                decimal Descuento = Convert.ToDecimal(Fila.Descuento);
+                                decimal Recargo = Convert.ToDecimal(Fila.Recargo);
+                                bool Bonificacion = Convert.ToBoolean(Fila.Bonif);
+                                bool Afecto = Convert.ToBoolean(Fila.Afecto);
+                                int IdBonif = Convert.ToInt32(Fila.IDBonificacion) is DBNull ? 0 : Convert.ToInt32(Fila.IDBonificacion);
+                                int TipoPrecio = Convert.ToInt32(Fila.TipoPrecio) is DBNull ? 0 : Convert.ToInt32(Fila.TipoPrecio);
+                                frmOpenComprobante.dataGridView1.Rows.Add(Codigo, Descripcion, Cantidad, Cantidad, Unidad, TipoPrecio, PrecioUnitario, PrecioNeto,
+                                    (Cantidad * PrecioNeto), Descuento, Recargo, Bonificacion, Credito, Afecto, IdBonif);
+                                frmOpenComprobante.dataGridView1.ReadOnly = true;
+                            }
+
+                            frmOpenComprobante.txtValorDescuento.EditValue = (from detalle in frmOpenComprobante.dataGridView1.Rows.Cast<DataGridViewRow>()
+                                                                              select (Convert.ToDecimal(detalle.Cells["Descuento"].Value))).Sum().ToString("N2");
+                            frmOpenComprobante.txtValorRecargo.EditValue = (from detalle in frmOpenComprobante.dataGridView1.Rows.Cast<DataGridViewRow>()
+                                                                            select (Convert.ToDecimal(detalle.Cells["Recargo"].Value))).Sum().ToString("N2");
+                            frmOpenComprobante.txtValorSubtotal.EditValue = (from detalle in frmOpenComprobante.dataGridView1.Rows.Cast<DataGridViewRow>()
+                                                                             select (Convert.ToDecimal(detalle.Cells["Cantidad"].Value) * Convert.ToDecimal(detalle.Cells["PrecioUnitario"].Value))).Sum().ToString("N2");
+                            frmOpenComprobante.txtValorImporteTotal.EditValue = _Comprobante.total;
+                            frmOpenComprobante.txtValorImpuesto.EditValue = _Comprobante.igv;
+                            frmOpenComprobante.txtValorInafecto.EditValue = _Comprobante.inafecto;
+                            frmOpenComprobante.txtValorAfecto.EditValue = _Comprobante.afecto;
+                            frmOpenComprobante.StartPosition = FormStartPosition.CenterScreen;
+                            //frmpedido.Existe = false;
+                            frmOpenComprobante.ANULADO.Visible = Estado == "A" ? true : false;
+                            frmOpenComprobante.Show();
+                        }
+                        catch (Exception t)
+                        {
+                            MessageBox.Show(t.Message);
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -243,6 +243,7 @@
             // 
             resources.ApplyResources(this.CLIENTES, "CLIENTES");
             this.CLIENTES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.CLIENTES.Enabled = false;
             this.CLIENTES.Id = 5;
             this.CLIENTES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CLIENTES.ImageOptions.SvgImage")));
             this.CLIENTES.Name = "CLIENTES";
@@ -252,6 +253,7 @@
             // 
             resources.ApplyResources(this.VENDEDORES, "VENDEDORES");
             this.VENDEDORES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.VENDEDORES.Enabled = false;
             this.VENDEDORES.Id = 6;
             this.VENDEDORES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENDEDORES.ImageOptions.SvgImage")));
             this.VENDEDORES.Name = "VENDEDORES";
@@ -261,6 +263,7 @@
             // 
             resources.ApplyResources(this.INVENTARIOPRODUCTO, "INVENTARIOPRODUCTO");
             this.INVENTARIOPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.INVENTARIOPRODUCTO.Enabled = false;
             this.INVENTARIOPRODUCTO.Id = 9;
             this.INVENTARIOPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("INVENTARIOPRODUCTO.ImageOptions.SvgImage")));
             this.INVENTARIOPRODUCTO.Name = "INVENTARIOPRODUCTO";
@@ -289,6 +292,7 @@
             // 
             resources.ApplyResources(this.GRUPOPRODUCTO, "GRUPOPRODUCTO");
             this.GRUPOPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.GRUPOPRODUCTO.Enabled = false;
             this.GRUPOPRODUCTO.Id = 13;
             this.GRUPOPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GRUPOPRODUCTO.ImageOptions.Image")));
             this.GRUPOPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("GRUPOPRODUCTO.ImageOptions.SvgImage")));
@@ -298,6 +302,7 @@
             // 
             resources.ApplyResources(this.LINEAPRODUCTO, "LINEAPRODUCTO");
             this.LINEAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.LINEAPRODUCTO.Enabled = false;
             this.LINEAPRODUCTO.Id = 14;
             this.LINEAPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("LINEAPRODUCTO.ImageOptions.Image")));
             this.LINEAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("LINEAPRODUCTO.ImageOptions.SvgImage")));
@@ -307,6 +312,7 @@
             // 
             resources.ApplyResources(this.VENTASREPORTE, "VENTASREPORTE");
             this.VENTASREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.VENTASREPORTE.Enabled = false;
             this.VENTASREPORTE.Id = 15;
             this.VENTASREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENTASREPORTE.ImageOptions.SvgImage")));
             this.VENTASREPORTE.Name = "VENTASREPORTE";
@@ -317,6 +323,7 @@
             // 
             resources.ApplyResources(this.COMPRAREPORTE, "COMPRAREPORTE");
             this.COMPRAREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.COMPRAREPORTE.Enabled = false;
             this.COMPRAREPORTE.Id = 16;
             this.COMPRAREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("COMPRAREPORTE.ImageOptions.SvgImage")));
             this.COMPRAREPORTE.Name = "COMPRAREPORTE";
@@ -327,6 +334,7 @@
             // 
             resources.ApplyResources(this.INVENTARIOREPORTE, "INVENTARIOREPORTE");
             this.INVENTARIOREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.INVENTARIOREPORTE.Enabled = false;
             this.INVENTARIOREPORTE.Id = 18;
             this.INVENTARIOREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("INVENTARIOREPORTE.ImageOptions.SvgImage")));
             this.INVENTARIOREPORTE.Name = "INVENTARIOREPORTE";
@@ -370,6 +378,7 @@
             // 
             resources.ApplyResources(this.NOTACREDITOVENTA, "NOTACREDITOVENTA");
             this.NOTACREDITOVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.NOTACREDITOVENTA.Enabled = false;
             this.NOTACREDITOVENTA.Id = 26;
             this.NOTACREDITOVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTACREDITOVENTA.ImageOptions.SvgImage")));
             this.NOTACREDITOVENTA.Name = "NOTACREDITOVENTA";
@@ -388,6 +397,7 @@
             // 
             resources.ApplyResources(this.ORDENCOMPRA, "ORDENCOMPRA");
             this.ORDENCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
+            this.ORDENCOMPRA.Enabled = false;
             this.ORDENCOMPRA.Id = 41;
             this.ORDENCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ORDENCOMPRA.ImageOptions.SvgImage")));
             this.ORDENCOMPRA.Name = "ORDENCOMPRA";
@@ -397,6 +407,7 @@
             // 
             resources.ApplyResources(this.NOTACREDITOCOMPRA, "NOTACREDITOCOMPRA");
             this.NOTACREDITOCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
+            this.NOTACREDITOCOMPRA.Enabled = false;
             this.NOTACREDITOCOMPRA.Id = 42;
             this.NOTACREDITOCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTACREDITOCOMPRA.ImageOptions.SvgImage")));
             this.NOTACREDITOCOMPRA.Name = "NOTACREDITOCOMPRA";
@@ -405,6 +416,7 @@
             // 
             resources.ApplyResources(this.NOTADEBITOCOMPRA, "NOTADEBITOCOMPRA");
             this.NOTADEBITOCOMPRA.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
+            this.NOTADEBITOCOMPRA.Enabled = false;
             this.NOTADEBITOCOMPRA.Id = 43;
             this.NOTADEBITOCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTADEBITOCOMPRA.ImageOptions.SvgImage")));
             this.NOTADEBITOCOMPRA.Name = "NOTADEBITOCOMPRA";
@@ -413,6 +425,7 @@
             // 
             resources.ApplyResources(this.barButtonItem20, "barButtonItem20");
             this.barButtonItem20.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
+            this.barButtonItem20.Enabled = false;
             this.barButtonItem20.Id = 44;
             this.barButtonItem20.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem20.ImageOptions.SvgImage")));
             this.barButtonItem20.Name = "barButtonItem20";
@@ -421,6 +434,7 @@
             // 
             resources.ApplyResources(this.CLASEPRODUCTO, "CLASEPRODUCTO");
             this.CLASEPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.CLASEPRODUCTO.Enabled = false;
             this.CLASEPRODUCTO.Id = 45;
             this.CLASEPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("CLASEPRODUCTO.ImageOptions.Image")));
             this.CLASEPRODUCTO.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("CLASEPRODUCTO.ImageOptions.LargeImage")));
@@ -431,6 +445,7 @@
             // 
             resources.ApplyResources(this.PLANTILLAPRODUCTO, "PLANTILLAPRODUCTO");
             this.PLANTILLAPRODUCTO.CategoryGuid = new System.Guid("386d89bf-d909-4bef-87e1-f0722af71520");
+            this.PLANTILLAPRODUCTO.Enabled = false;
             this.PLANTILLAPRODUCTO.Id = 46;
             this.PLANTILLAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("PLANTILLAPRODUCTO.ImageOptions.SvgImage")));
             this.PLANTILLAPRODUCTO.Name = "PLANTILLAPRODUCTO";
@@ -448,6 +463,7 @@
             // 
             resources.ApplyResources(this.CONTROLGENERA, "CONTROLGENERA");
             this.CONTROLGENERA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.CONTROLGENERA.Enabled = false;
             this.CONTROLGENERA.Id = 48;
             this.CONTROLGENERA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CONTROLGENERA.ImageOptions.SvgImage")));
             this.CONTROLGENERA.Name = "CONTROLGENERA";
@@ -642,6 +658,7 @@
             this.CBOVENTAS.Id = 2;
             this.CBOVENTAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CBOVENTAS.ImageOptions.SvgImage")));
             this.CBOVENTAS.Name = "CBOVENTAS";
+            this.CBOVENTAS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CBOVENTAS_ItemClick);
             // 
             // barButtonItem1
             // 

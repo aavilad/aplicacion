@@ -919,6 +919,7 @@ namespace xtraForm.Modulos.Elementos
                             dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
                             dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = i > 0 ? i * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
                             dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = i < 0 ? Math.Abs(i) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                            btnAgregar.Select();
                             calculartotal();
                         }
                         else
@@ -935,6 +936,7 @@ namespace xtraForm.Modulos.Elementos
                         dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = j > 0 ? j * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
                         dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = j < 0 ? Math.Abs(j) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
                         calculartotal();
+                        btnAgregar.Select();
                         break;
                 }
             }

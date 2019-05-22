@@ -44,6 +44,7 @@ namespace xtraForm.Filtros
             try
             {
                 List<string> lista = new List<string>();
+                int i = 0;
                 foreach (DataGridViewRow dgv in dataGridView1.Rows)
                 {
                     lista.Add(entidad + "." + "[" + dgv.Cells[0].Value + "]" + " " + dgv.Cells[1].Value + " " + "'" + dgv.Cells[2].Value.ToString() + "'" + " " + dgv.Cells[3].Value);
@@ -55,14 +56,16 @@ namespace xtraForm.Filtros
                     procesar.eliminar("Filtro", "tabla = '" + entidad + "'");
                     foreach (DataGridViewRow dgv in dataGridView1.Rows)
                     {
-                        procesar.insertar("insert Filtro values(newid(),'" + dgv.Cells[0].Value + "','" + dgv.Cells[1].Value + "','" + dgv.Cells[2].Value.ToString() + "','" + dgv.Cells[3].Value + "','" + entidad + "')");
+                        procesar.insertar("insert Filtro values(newid(),'" + dgv.Cells[0].Value + "','" + dgv.Cells[1].Value + "','" + dgv.Cells[2].Value.ToString() + "','" + dgv.Cells[3].Value + "','" + entidad + "','" + i + "')");
+                        i++;
                     }
                 }
                 else
                 {
                     foreach (DataGridViewRow dgv in dataGridView1.Rows)
                     {
-                        procesar.insertar("insert Filtro values(newid(),'" + dgv.Cells[0].Value + "','" + dgv.Cells[1].Value + "','" + dgv.Cells[2].Value.ToString() + "','" + dgv.Cells[3].Value + "','" + entidad + "')");
+                        procesar.insertar("insert Filtro values(newid(),'" + dgv.Cells[0].Value + "','" + dgv.Cells[1].Value + "','" + dgv.Cells[2].Value.ToString() + "','" + dgv.Cells[3].Value + "','" + entidad + "','" + i + "')");
+                        i++;
                     }
                 }
                 this.Close();
@@ -77,7 +80,10 @@ namespace xtraForm.Filtros
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+            if (dataGridView1.Rows.Count > 0)
+            {
+                dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

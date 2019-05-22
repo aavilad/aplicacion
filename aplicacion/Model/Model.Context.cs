@@ -32,8 +32,6 @@ namespace xtraForm.Model
         public virtual DbSet<DETPEDIDO> DETPEDIDOes { get; set; }
         public virtual DbSet<Distrito> Distritoes { get; set; }
         public virtual DbSet<DOCUMENTO> DOCUMENTOes { get; set; }
-        public virtual DbSet<Filtro> Filtroes { get; set; }
-        public virtual DbSet<FiltroConfiguracion> FiltroConfiguracions { get; set; }
         public virtual DbSet<FORMAPAGO> FORMAPAGOes { get; set; }
         public virtual DbSet<FuerzaVenta> FuerzaVentas { get; set; }
         public virtual DbSet<Gestion> Gestions { get; set; }
@@ -71,5 +69,7 @@ namespace xtraForm.Model
         public virtual DbSet<UsuarioPermiso> UsuarioPermisoes { get; set; }
         public virtual DbSet<Perfil> Perfils { get; set; }
         public virtual DbSet<Permiso> Permisoes { get; set; }
+        public virtual DbSet<Filtro> Filtroes { get; set; }
+        public virtual DbSet<FiltroConfiguracion> FiltroConfiguracions { get; set; }
     }
 }
