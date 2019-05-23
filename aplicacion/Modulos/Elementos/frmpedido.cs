@@ -860,45 +860,45 @@ namespace xtraForm.Modulos.Elementos
                 switch (dataGridView1.Columns[e.ColumnIndex].Name)
                 {
                     case "Codigo":
-                        if (dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value == null)
-                            Productos("select  Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1");
-                        else if (proceso.ExistenciaCampo("Codigo", "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'"))
-                            if (proceso.ExistenciaStock(Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value), cantidadpedido, 0))
-                            {
-                                dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value = proceso.ConsultarCadena("Descripcion", "Vva_producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
-                                dataGridView1.Rows[e.RowIndex].Cells["Unidad"].Value = proceso.ConsultarCadena("Unidad", "Vva_producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
-                                dataGridView1.Rows[e.RowIndex].Cells["TpPrecio"].Value = producto.TipoPrecio;
-                                dataGridView1.Rows[e.RowIndex].Cells["Afecto"].Value = proceso.ConsultarCadena("Afecto", "Vva_producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
-                                dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value = proceso.ConsultarDecimal(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
-                                dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value = proceso.ConsultarDecimal(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
-                                dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = 0.00;
-                                dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = 0.00;
-                                dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = 0.00;
-                                dataGridView1.Rows[e.RowIndex].Cells["Bonif"].Value = proceso.ConsultarDecimal(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'") <= (decimal)0.01 ? true : false;
-                                dataGridView1.Rows[e.RowIndex].Cells["Credito"].Value = btnCredito.Checked;
-                                dataGridView1.Rows[e.RowIndex].Cells["Afecto"].Value = proceso.ConsultarVerdad("Afecto", "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
-                                dataGridView1.Rows[e.RowIndex].Cells["IDBonificacion"].Value = string.Empty;
-                                dataGridView1.Rows[e.RowIndex].Cells["Codigo"].ReadOnly = true;
-                                dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].ReadOnly = true;
-                                dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].ReadOnly = false;
-                                dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].ReadOnly = false;
-                                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"];
-                                dataGridView1.BeginEdit(true);
-                            }
+                            if (dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value == null)
+                                Productos("select  Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1");
+                            else if (proceso.ExistenciaCampo("Codigo", "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'"))
+                                if (proceso.ExistenciaStock(Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value), cantidadpedido, 0))
+                                {
+                                    dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value = proceso.ConsultarCadena("Descripcion", "Vva_producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
+                                    dataGridView1.Rows[e.RowIndex].Cells["Unidad"].Value = proceso.ConsultarCadena("Unidad", "Vva_producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
+                                    dataGridView1.Rows[e.RowIndex].Cells["TpPrecio"].Value = producto.TipoPrecio;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Afecto"].Value = proceso.ConsultarCadena("Afecto", "Vva_producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
+                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value = proceso.ConsultarDecimal(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
+                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value = proceso.ConsultarDecimal(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
+                                    dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = 0.00;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = 0.00;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = 0.00;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Bonif"].Value = proceso.ConsultarDecimal(producto.CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'") <= (decimal)0.01 ? true : false;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Credito"].Value = btnCredito.Checked;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Afecto"].Value = proceso.ConsultarVerdad("Afecto", "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
+                                    dataGridView1.Rows[e.RowIndex].Cells["IDBonificacion"].Value = string.Empty;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Codigo"].ReadOnly = true;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].ReadOnly = true;
+                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].ReadOnly = false;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].ReadOnly = false;
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"];
+                                    dataGridView1.BeginEdit(true);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("stock insuficiente");
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Codigo"];
+                                    dataGridView1.BeginEdit(true);
+                                }
+                            else if (proceso.ConsultarTabla_("Vva_producto", "Codigo like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'").Rows.Count > 0)
+                                Productos("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and codigo like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'");
                             else
                             {
-                                MessageBox.Show("stock insuficiente");
+                                MessageBox.Show("Codigo no existe o esta desactivo");
                                 dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Codigo"];
                                 dataGridView1.BeginEdit(true);
                             }
-                        else if (proceso.ConsultarTabla_("Vva_producto", "Codigo like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'").Rows.Count > 0)
-                            Productos("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and codigo like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'");
-                        else
-                        {
-                            MessageBox.Show("Codigo no existe o esta desactivo");
-                            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Codigo"];
-                            dataGridView1.BeginEdit(true);
-                        }
                         break;
                     case "Descripcion":
                         if (dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value == null)
@@ -1350,7 +1350,6 @@ namespace xtraForm.Modulos.Elementos
             frmtipodocumento.gridControl1.DataSource = proceso.ds.Tables[entidad.tabla];
             formato.Grilla(frmtipodocumento.gridView1);
             frmtipodocumento.ShowDialog();
-
         }
         #region Enlazados:
         void camposproducto(string codigo, string descripcion, string unidad)
@@ -1442,5 +1441,25 @@ namespace xtraForm.Modulos.Elementos
             txtValorImporteTotal.Text = total.ToString("N2");
         }
         #endregion
+
+        private void frmpedido_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.A))
+            {
+                btnAgregar_Click(sender, e);
+            }
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.Q))
+            {
+                btnQuitar_Click(sender, e);
+            }
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.C))
+            {
+                btnCancelar_Click(sender, e);
+            }
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.Enter))
+            {
+                btnAceptar_Click(sender, e);
+            }
+        }
     }
 }

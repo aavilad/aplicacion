@@ -20,7 +20,7 @@ namespace xtraForm.Modulos.Elementos
 
         void Refrescar()
         {
-            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
+            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' order by orden ", tabla);
             List<string> lista_ = new List<string>();
             foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
                 lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
@@ -230,7 +230,7 @@ namespace xtraForm.Modulos.Elementos
                 k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'Vva_Cp'").ToList();
                 filtro.pasar += new Filtros.frmFiltros.variables(condicion);
                 filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).OrderBy(x=>x.Orden).ToList())
                 {
                     filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
                 }

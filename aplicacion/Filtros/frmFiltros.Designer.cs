@@ -30,31 +30,31 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnAceptar = new DevExpress.XtraEditors.SimpleButton();
             this.btnQuitar = new DevExpress.XtraEditors.SimpleButton();
-            this.Index3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Index2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Index1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Index0 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.Index0 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Index1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Index2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Index3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,15 +68,21 @@
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnCancelar
+            // layoutControl1
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(512, 155);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(133, 22);
-            this.btnCancelar.StyleController = this.layoutControl1;
-            this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.layoutControl1.Controls.Add(this.btnAceptar);
+            this.layoutControl1.Controls.Add(this.btnQuitar);
+            this.layoutControl1.Controls.Add(this.btnCancelar);
+            this.layoutControl1.Controls.Add(this.btnAgregar);
+            this.layoutControl1.Controls.Add(this.dataGridView1);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(318, 428, 650, 400);
+            this.layoutControl1.Root = this.layoutControlGroup1;
+            this.layoutControl1.Size = new System.Drawing.Size(651, 183);
+            this.layoutControl1.TabIndex = 9;
+            this.layoutControl1.Text = "layoutControl1";
             // 
             // btnAceptar
             // 
@@ -98,38 +104,15 @@
             this.btnQuitar.Text = "Quitar";
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
-            // Index3
+            // btnCancelar
             // 
-            this.Index3.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.Index3.HeaderText = "Y/O";
-            this.Index3.Name = "Index3";
-            this.Index3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Index3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Index3.Width = 121;
-            // 
-            // Index2
-            // 
-            this.Index2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Index2.HeaderText = "VALOR";
-            this.Index2.Name = "Index2";
-            // 
-            // Index1
-            // 
-            this.Index1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.Index1.HeaderText = "CONDICION";
-            this.Index1.Name = "Index1";
-            this.Index1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Index1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Index1.Width = 121;
-            // 
-            // Index0
-            // 
-            this.Index0.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.Index0.HeaderText = "CAMPO";
-            this.Index0.Name = "Index0";
-            this.Index0.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Index0.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Index0.Width = 121;
+            this.btnCancelar.Location = new System.Drawing.Point(512, 155);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(133, 22);
+            this.btnCancelar.StyleController = this.layoutControl1;
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // dataGridView1
             // 
@@ -159,27 +142,43 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(502, 171);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
-            // layoutControl1
+            // Index0
             // 
-            this.layoutControl1.Controls.Add(this.btnAceptar);
-            this.layoutControl1.Controls.Add(this.btnQuitar);
-            this.layoutControl1.Controls.Add(this.btnCancelar);
-            this.layoutControl1.Controls.Add(this.btnAgregar);
-            this.layoutControl1.Controls.Add(this.dataGridView1);
-            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(318, 428, 650, 400);
-            this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(651, 183);
-            this.layoutControl1.TabIndex = 9;
-            this.layoutControl1.Text = "layoutControl1";
+            this.Index0.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Index0.HeaderText = "CAMPO";
+            this.Index0.Name = "Index0";
+            this.Index0.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Index0.Width = 121;
+            // 
+            // Index1
+            // 
+            this.Index1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Index1.HeaderText = "CONDICION";
+            this.Index1.Name = "Index1";
+            this.Index1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Index1.Width = 121;
+            // 
+            // Index2
+            // 
+            this.Index2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Index2.HeaderText = "VALOR";
+            this.Index2.Name = "Index2";
+            this.Index2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Index3
+            // 
+            this.Index3.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Index3.HeaderText = "Y/O";
+            this.Index3.Name = "Index3";
+            this.Index3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Index3.Width = 121;
             // 
             // layoutControlGroup1
             // 
@@ -224,15 +223,6 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.btnCancelar;
-            this.layoutControlItem4.Location = new System.Drawing.Point(506, 149);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(137, 26);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnAceptar;
@@ -241,6 +231,15 @@
             this.layoutControlItem5.Size = new System.Drawing.Size(137, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.btnCancelar;
+            this.layoutControlItem4.Location = new System.Drawing.Point(506, 149);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(137, 26);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
@@ -257,16 +256,18 @@
             this.ClientSize = new System.Drawing.Size(651, 183);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "frmFiltros";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmFiltros_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
@@ -277,10 +278,6 @@
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
         private DevExpress.XtraEditors.SimpleButton btnAceptar;
         private DevExpress.XtraEditors.SimpleButton btnQuitar;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Index3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Index2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Index1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Index0;
         public System.Windows.Forms.DataGridView dataGridView1;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
@@ -290,5 +287,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Index0;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Index1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Index2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Index3;
     }
 }

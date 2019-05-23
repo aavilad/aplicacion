@@ -103,5 +103,33 @@ namespace xtraForm.Filtros
             catch { }
 
         }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Index2")
+            {
+                btnAceptar.Select();
+            }
+        }
+
+        private void frmFiltros_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Control) + Convert.ToInt32(Keys.A))
+            {
+                btnAgregar_Click(sender, e);
+            }
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Control) + Convert.ToInt32(Keys.Q))
+            {
+                btnQuitar_Click(sender, e);
+            }
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Control) + Convert.ToInt32(Keys.C))
+            {
+                btnCancelar_Click(sender, e);
+            }
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Control) + Convert.ToInt32(Keys.Enter))
+            {
+                btnAceptar_Click(sender, e);
+            }
+        }
     }
 }

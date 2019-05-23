@@ -59,5 +59,10 @@ namespace xtraForm.Modulos.Usuario
                 Entrar_Click(sender, e);
             }
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            USUARIO.Select();
+        }
     }
 }

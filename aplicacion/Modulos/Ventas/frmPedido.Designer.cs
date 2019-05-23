@@ -41,12 +41,13 @@
             this.FACTURAR = new DevExpress.XtraBars.BarButtonItem();
             this.APROBAR = new DevExpress.XtraBars.BarButtonItem();
             this.DESAPROBAR = new DevExpress.XtraBars.BarButtonItem();
+            this.COPIAR = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.COPIAR = new DevExpress.XtraBars.BarButtonItem();
+            this.REFRESH = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -59,7 +60,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(587, 406);
+            this.gridControl1.Size = new System.Drawing.Size(587, 303);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -90,7 +91,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.FACTURAR),
             new DevExpress.XtraBars.LinkPersistInfo(this.APROBAR),
             new DevExpress.XtraBars.LinkPersistInfo(this.DESAPROBAR),
-            new DevExpress.XtraBars.LinkPersistInfo(this.COPIAR)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.COPIAR),
+            new DevExpress.XtraBars.LinkPersistInfo(this.REFRESH)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
@@ -158,6 +160,14 @@
             this.DESAPROBAR.Name = "DESAPROBAR";
             this.DESAPROBAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DESAPROBAR_ItemClick);
             // 
+            // COPIAR
+            // 
+            this.COPIAR.Caption = "Copiar";
+            this.COPIAR.Id = 8;
+            this.COPIAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("COPIAR.ImageOptions.SvgImage")));
+            this.COPIAR.Name = "COPIAR";
+            this.COPIAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.COPIAR_ItemClick);
+            // 
             // barManager1
             // 
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -174,8 +184,9 @@
             this.FACTURAR,
             this.APROBAR,
             this.DESAPROBAR,
-            this.COPIAR});
-            this.barManager1.MaxItemId = 9;
+            this.COPIAR,
+            this.REFRESH});
+            this.barManager1.MaxItemId = 10;
             // 
             // barDockControlTop
             // 
@@ -189,7 +200,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 406);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 303);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(587, 0);
             // 
@@ -199,7 +210,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 406);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 303);
             // 
             // barDockControlRight
             // 
@@ -207,21 +218,21 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(587, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 406);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 303);
             // 
-            // COPIAR
+            // REFRESH
             // 
-            this.COPIAR.Caption = "Copiar";
-            this.COPIAR.Id = 8;
-            this.COPIAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("COPIAR.ImageOptions.SvgImage")));
-            this.COPIAR.Name = "COPIAR";
-            this.COPIAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.COPIAR_ItemClick);
+            this.REFRESH.Caption = "Refrescar";
+            this.REFRESH.Id = 9;
+            this.REFRESH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REFRESH.ImageOptions.SvgImage")));
+            this.REFRESH.Name = "REFRESH";
+            this.REFRESH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.REFRESH_ItemClick);
             // 
             // frmPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 406);
+            this.ClientSize = new System.Drawing.Size(587, 303);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -259,5 +270,6 @@
         private DevExpress.XtraBars.BarButtonItem APROBAR;
         private DevExpress.XtraBars.BarButtonItem DESAPROBAR;
         private DevExpress.XtraBars.BarButtonItem COPIAR;
+        private DevExpress.XtraBars.BarButtonItem REFRESH;
     }
 }

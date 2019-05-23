@@ -17,13 +17,21 @@ namespace xtraForm.Maestro
         {
             entidad.precio = Convert.ToDecimal(vGridControl1.FocusedRow.Properties.Value);
             entidad.codigo = vGridControl1.FocusedRow.Properties.Caption;
-            if (entidad.codigo.Trim() == "Prec May Contado")
+            if (entidad.codigo.Trim() == "Prec Men Contado")
+            {
+                entidad.codigoauxiliar = "1";
+            }
+            else if (entidad.codigo.Trim() == "Prec May Contado")
             {
                 entidad.codigoauxiliar = "2";
             }
-            else if (entidad.codigo.Trim() == "Prec May Credito")
+            else if (entidad.codigo.Trim() == "Prec Men Credito")
             {
                 entidad.codigoauxiliar = "4";
+            }
+            else if (entidad.codigo.Trim() == "Prec May Credito")
+            {
+                entidad.codigoauxiliar = "3";
             }
             else if (entidad.codigo.Trim() == "Prec Especial")
             {

@@ -125,8 +125,6 @@ namespace xtraForm
             {
                 if (proceso.MensagePregunta("existen '" + entidad.i.ToString() + "' pedido sin bajar, ¿desea descargarlos?") == DialogResult.Yes)
                 {
-                    splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
-                    splashScreenManager1.ShowWaitForm();
                     if (proceso.actualizar("pedido", "FECHA = REPLACE(CONVERT(VARCHAR(10),Fecha,120),'-','')", "procesado = 0 and statusweb is null"))
                     {
                         Modulos.Elementos.frmMsg frmmensage = new Modulos.Elementos.frmMsg();
@@ -140,7 +138,6 @@ namespace xtraForm
                         frmmensage.Show();
                         splashScreenManager1.ShowWaitForm();
                         var Pedidos = proceso.ConsultarTabla_("Pedido", "Fecha = '" + entidad.fechainicio + "' and StatusWeb is null and procesado = 0 and tipodoc is not null ");
-
                         foreach (DataRow F002 in Pedidos.Rows)
                         {
                             proceso.actualizar("detpedido", "PrecioNeto = PrecUnit", "pedido = '" + F002["Pedido"] + "'");
@@ -159,7 +156,6 @@ namespace xtraForm
                         MessageBox.Show("Descarga terminada");
                     }
                 }
-                splashScreenManager1.CloseWaitForm();
             }
             else
             {

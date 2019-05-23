@@ -36,7 +36,7 @@ namespace xtraForm.Modulos.Ventas
 
         void Refrescar()
         {
-            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' order by Orden", tabla);
+            proceso.consultar("SELECT campo, condicion, valor,[union] from filtro WHERE tabla = '" + tabla + "' ORDER BY Orden ASC", tabla);
             List<string> lista_ = new List<string>();
             foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
                 lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
@@ -49,9 +49,9 @@ namespace xtraForm.Modulos.Ventas
         {
             using (LiderEntities Context = new LiderEntities())
             {
-                var i = Context.PEDIDOes.Where(x => x.Personal == CdVendedor && x.Fecha ==  Fecha);
-                string _Correlativo = CdVendedor + Fecha.Year.ToString().Substring(2,2) + Fecha.Month + Convert.ToInt32(Fecha.Day) + (i.Count() + 1).ToString("D2");
-                PEDIDO Cp = new PEDIDO ();
+                var i = Context.PEDIDOes.Where(x => x.Personal == CdVendedor && x.Fecha == Fecha);
+                string _Correlativo = CdVendedor + Fecha.Year.ToString().Substring(2, 2) + Fecha.Month + Convert.ToInt32(Fecha.Day) + (i.Count() + 1).ToString("D2");
+                PEDIDO Cp = new PEDIDO();
                 Cp.Pedido1 = _Correlativo.Trim();
                 Cp.Personal = CdVendedor;
                 Cp.Cliente = CdCliente;
@@ -168,6 +168,8 @@ namespace xtraForm.Modulos.Ventas
                 string Query = Convert.ToString(Context.VistaAdministrativas.Where(x => x.IDModulo == (Context.Moduloes.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
                 {
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
                     proceso.consultar(Query, tabla);
                     gridControl1.DataSource = proceso.ds.Tables[tabla];
                     gridView1.OptionsView.ColumnAutoWidth = false;
@@ -190,6 +192,8 @@ namespace xtraForm.Modulos.Ventas
                 {
                     try
                     {
+                        gridControl1.DataSource = null;
+                        gridView1.Columns.Clear();
                         proceso.consultar(Query + " having " + cadena, tabla);
                         gridControl1.DataSource = proceso.ds.Tables[tabla];
                         gridView1.OptionsView.ColumnAutoWidth = false;
@@ -373,6 +377,7 @@ namespace xtraForm.Modulos.Ventas
         {
             if (gridView1.SelectedRowsCount > 0)
             {
+
                 var Context = new LiderEntities();
                 Elementos.frmpedido frmpedido = new Elementos.frmpedido();
                 frmpedido.Existe = true;
@@ -501,7 +506,7 @@ namespace xtraForm.Modulos.Ventas
                 k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'vva_pedido'").ToList();
                 filtro.pasar += new Filtros.frmFiltros.variables(condicion);
                 filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).OrderBy(x => x.Orden).ToList())
                 {
                     filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
                 }
@@ -822,6 +827,11 @@ namespace xtraForm.Modulos.Ventas
                     MessageBox.Show(t.Message);
                 }
             }
+        }
+
+        private void REFRESH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Refrescar();
         }
     }
 }

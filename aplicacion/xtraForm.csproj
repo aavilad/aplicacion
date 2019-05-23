@@ -889,6 +889,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\xtraForm.Model.PERSONAL.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -906,7 +907,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filtros\Bonificacion\" />
-    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
