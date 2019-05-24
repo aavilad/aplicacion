@@ -26,9 +26,9 @@ namespace xtraForm.Model
         public int TipoMecanica { get; set; }
         public string cdProductoRegalo { get; set; }
         public decimal CantidadMinima { get; set; }
-        public string CantidadMaxima { get; set; }
-        public string CantidadRegalo { get; set; }
-        public string CantidadMaximaPorCliente { get; set; }
+        public int CantidadMaxima { get; set; }
+        public int CantidadRegalo { get; set; }
+        public int CantidadMaximaPorCliente { get; set; }
         public decimal Stock { get; set; }
         public decimal StockEntregado { get; set; }
         public bool TieneExclusion { get; set; }

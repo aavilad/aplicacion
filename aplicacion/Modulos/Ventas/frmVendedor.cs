@@ -28,7 +28,7 @@ namespace xtraForm.Modulos.Ventas
         private void Refrescar()
         {
             var proceso = new Libreria.Proceso();
-            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
+            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' order by orden", tabla);
             List<string> lista_ = new List<string>();
             foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
                 lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
@@ -112,6 +112,11 @@ namespace xtraForm.Modulos.Ventas
                 filtro.entidad = tabla;
                 filtro.ShowDialog();
             }
+        }
+
+        private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

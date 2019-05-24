@@ -19,7 +19,7 @@ namespace xtraForm.Model
         public string cdProductoColeccion { get; set; }
         public int IDAsociado { get; set; }
     
-        public virtual Bonificacion Bonificacion { get; set; }
         public virtual TipoAsociado TipoAsociado { get; set; }
+        public virtual Bonificacion Bonificacion { get; set; }
     }
 }

@@ -209,6 +209,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -248,6 +250,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.RowHeadersWidth = 30;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightCyan;
@@ -575,7 +579,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtcdAlmacen.Size = new System.Drawing.Size(65, 20);
             this.txtcdAlmacen.TabIndex = 20;
-            this.txtcdAlmacen.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtcdAlmacen_ButtonClick);
             // 
             // txtValorAfecto
             // 
@@ -1211,6 +1214,14 @@
         public DevExpress.XtraEditors.TextEdit txtnmProvincia;
         public DevExpress.XtraEditors.TextEdit txtnmDistrito;
         public DevExpress.XtraEditors.TextEdit txtnmZona;
+        public DevExpress.XtraEditors.LabelControl CodigoFP;
+        public DevExpress.XtraEditors.LabelControl txtformaPago;
+        public DevExpress.XtraEditors.TextEdit txtcdProvincia;
+        public DevExpress.XtraEditors.TextEdit txtcdDistrito;
+        public DevExpress.XtraEditors.TextEdit txtcdZona;
+        public DevExpress.XtraEditors.ButtonEdit txtnmDireccion;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        public DevExpress.XtraEditors.CheckButton btnFueraRuta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
@@ -1226,13 +1237,5 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Credito;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Afecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDBonificacion;
-        public DevExpress.XtraEditors.LabelControl CodigoFP;
-        public DevExpress.XtraEditors.LabelControl txtformaPago;
-        public DevExpress.XtraEditors.TextEdit txtcdProvincia;
-        public DevExpress.XtraEditors.TextEdit txtcdDistrito;
-        public DevExpress.XtraEditors.TextEdit txtcdZona;
-        public DevExpress.XtraEditors.ButtonEdit txtnmDireccion;
-        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
-        public DevExpress.XtraEditors.CheckButton btnFueraRuta;
     }
 }

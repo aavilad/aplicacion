@@ -9,6 +9,7 @@ namespace xtraForm.Libreria
 {
     class Constante
     {
+        public const string SinStock = "Cantidad de stock es insuficiente :";
         public const string Bonificacion =
                     @"SELECT DISTINCT
                     dbo.Bonificacion.PKID,dbo.Bonificacion.Mecanica, dbo.Bonificacion.TipoMecanica, dbo.Bonificacion.cdProductoRegalo, dbo.Bonificacion.CantidadMinima, 

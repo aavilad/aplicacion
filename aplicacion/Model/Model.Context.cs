@@ -55,8 +55,6 @@ namespace xtraForm.Model
         public virtual DbSet<categoria> categorias { get; set; }
         public virtual DbSet<PlantillaUnidad> PlantillaUnidads { get; set; }
         public virtual DbSet<ItemBonificacion> ItemBonificacions { get; set; }
-        public virtual DbSet<Bonificacion> Bonificacions { get; set; }
-        public virtual DbSet<TipoBonificacion> TipoBonificacions { get; set; }
         public virtual DbSet<TipoAsociado> TipoAsociadoes { get; set; }
         public virtual DbSet<DOCTIPO> DOCTIPOes { get; set; }
         public virtual DbSet<INFREPARTO> INFREPARTOes { get; set; }
@@ -71,5 +69,7 @@ namespace xtraForm.Model
         public virtual DbSet<Permiso> Permisoes { get; set; }
         public virtual DbSet<Filtro> Filtroes { get; set; }
         public virtual DbSet<FiltroConfiguracion> FiltroConfiguracions { get; set; }
+        public virtual DbSet<Bonificacion> Bonificacions { get; set; }
+        public virtual DbSet<TipoBonificacion> TipoBonificacions { get; set; }
     }
 }

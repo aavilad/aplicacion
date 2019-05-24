@@ -83,6 +83,7 @@
             this.NUEVO.Id = 0;
             this.NUEVO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NUEVO.ImageOptions.SvgImage")));
             this.NUEVO.Name = "NUEVO";
+            this.NUEVO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NUEVO_ItemClick);
             // 
             // MODIFICAR
             // 

@@ -253,7 +253,6 @@
             // 
             resources.ApplyResources(this.VENDEDORES, "VENDEDORES");
             this.VENDEDORES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
-            this.VENDEDORES.Enabled = false;
             this.VENDEDORES.Id = 6;
             this.VENDEDORES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENDEDORES.ImageOptions.SvgImage")));
             this.VENDEDORES.Name = "VENDEDORES";

@@ -120,7 +120,6 @@ namespace xtraForm.Modulos.Elementos
             {
                 foreach (var eve in t.EntityValidationErrors)
                 {
-                    MessageBox.Show("Entity of type \"" + eve.Entry.Entity.GetType().Name + "\" in state \"" + eve.Entry.State + "\" has the following validation errors:");
                     foreach (var ve in eve.ValidationErrors)
                     {
                         MessageBox.Show("- Property: \"" + ve.PropertyName + "\", Error: \"" + ve.ErrorMessage + "\"");

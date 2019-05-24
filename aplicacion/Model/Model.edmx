@@ -14,9 +14,9 @@
           <Property Name="TipoMecanica" Type="int" Nullable="false" />
           <Property Name="cdProductoRegalo" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="CantidadMinima" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="CantidadMaxima" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="CantidadRegalo" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="CantidadMaximaPorCliente" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CantidadMaxima" Type="int" Nullable="false" />
+          <Property Name="CantidadRegalo" Type="int" Nullable="false" />
+          <Property Name="CantidadMaximaPorCliente" Type="int" Nullable="false" />
           <Property Name="Stock" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="StockEntregado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="TieneExclusion" Type="bit" Nullable="false" />
@@ -446,6 +446,7 @@
           <Property Name="pparticipa" Type="numeric" Precision="8" Scale="2" Nullable="false" />
           <Property Name="pcuota" Type="numeric" Precision="8" Scale="2" Nullable="false" />
           <Property Name="supercodigo" Type="varchar" MaxLength="20" />
+          <Property Name="Direccion" Type="varchar" MaxLength="70" />
         </EntityType>
         <EntityType Name="PlantillaUnidad">
           <Key>
@@ -1530,20 +1531,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
           </AssociationSet>
           <EntitySet Name="ItemBonificacions" EntityType="LiderModel.ItemBonificacion" />
-          <EntitySet Name="Bonificacions" EntityType="LiderModel.Bonificacion" />
-          <EntitySet Name="TipoBonificacions" EntityType="LiderModel.TipoBonificacion" />
-          <AssociationSet Name="FK_Bonificacion_TipoBonificacion" Association="LiderModel.FK_Bonificacion_TipoBonificacion">
-            <End Role="TipoBonificacion" EntitySet="TipoBonificacions" />
-            <End Role="Bonificacion" EntitySet="Bonificacions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DETADOC_Bonificacion" Association="LiderModel.FK_DETADOC_Bonificacion">
-            <End Role="Bonificacion" EntitySet="Bonificacions" />
-            <End Role="DETADOC" EntitySet="DETADOCs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemBonificacion_Bonificacion" Association="LiderModel.FK_ItemBonificacion_Bonificacion">
-            <End Role="Bonificacion" EntitySet="Bonificacions" />
-            <End Role="ItemBonificacion" EntitySet="ItemBonificacions" />
-          </AssociationSet>
           <EntitySet Name="TipoAsociadoes" EntityType="LiderModel.TipoAsociado" />
           <AssociationSet Name="FK_ItemBonificacion_TipoAsociado" Association="LiderModel.FK_ItemBonificacion_TipoAsociado">
             <End Role="TipoAsociado" EntitySet="TipoAsociadoes" />
@@ -1605,6 +1592,20 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <AssociationSet Name="FK_Filtro_FiltroConfiguracion" Association="LiderModel.FK_Filtro_FiltroConfiguracion">
             <End Role="FiltroConfiguracion" EntitySet="FiltroConfiguracions" />
             <End Role="Filtro" EntitySet="Filtroes" />
+          </AssociationSet>
+          <EntitySet Name="Bonificacions" EntityType="LiderModel.Bonificacion" />
+          <EntitySet Name="TipoBonificacions" EntityType="LiderModel.TipoBonificacion" />
+          <AssociationSet Name="FK_Bonificacion_TipoBonificacion" Association="LiderModel.FK_Bonificacion_TipoBonificacion">
+            <End Role="TipoBonificacion" EntitySet="TipoBonificacions" />
+            <End Role="Bonificacion" EntitySet="Bonificacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETADOC_Bonificacion" Association="LiderModel.FK_DETADOC_Bonificacion">
+            <End Role="Bonificacion" EntitySet="Bonificacions" />
+            <End Role="DETADOC" EntitySet="DETADOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemBonificacion_Bonificacion" Association="LiderModel.FK_ItemBonificacion_Bonificacion">
+            <End Role="Bonificacion" EntitySet="Bonificacions" />
+            <End Role="ItemBonificacion" EntitySet="ItemBonificacions" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Clase_Producto">
@@ -1947,6 +1948,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <NavigationProperty Name="DOCUMENTOes" Relationship="LiderModel.FK_DOCUMENTO_PERSONAL" FromRole="PERSONAL" ToRole="DOCUMENTO" />
           <NavigationProperty Name="FuerzaVenta" Relationship="LiderModel.FK_PERSONAL_FuerzaVentas" FromRole="PERSONAL" ToRole="FuerzaVenta" />
           <NavigationProperty Name="PEDIDOes" Relationship="LiderModel.FK__PEDIDO__Personal__68D28DBC" FromRole="PERSONAL" ToRole="PEDIDO" />
+          <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -2462,82 +2464,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <Property Name="IDBonificacion" Type="Int32" Nullable="false" />
           <Property Name="cdProductoColeccion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="IDAsociado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Bonificacion" Relationship="LiderModel.FK_ItemBonificacion_Bonificacion" FromRole="ItemBonificacion" ToRole="Bonificacion" />
           <NavigationProperty Name="TipoAsociado" Relationship="LiderModel.FK_ItemBonificacion_TipoAsociado" FromRole="ItemBonificacion" ToRole="TipoAsociado" />
+          <NavigationProperty Name="Bonificacion" Relationship="LiderModel.FK_ItemBonificacion_Bonificacion" FromRole="ItemBonificacion" ToRole="Bonificacion" />
         </EntityType>
-        <EntityType Name="Bonificacion">
-          <Key>
-            <PropertyRef Name="PKID" />
-          </Key>
-          <Property Name="PKID" Type="Int32" Nullable="false" />
-          <Property Name="Mecanica" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="TipoMecanica" Type="Int32" Nullable="false" />
-          <Property Name="cdProductoRegalo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CantidadMinima" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="CantidadMaxima" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CantidadRegalo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CantidadMaximaPorCliente" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Stock" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="StockEntregado" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="TieneExclusion" Type="Boolean" Nullable="false" />
-          <Property Name="IDBonifcacionExcluida" Type="Int32" Nullable="false" />
-          <Property Name="cdProductoVenta" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="IDProveedor" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="TipoBonificacion" Relationship="LiderModel.FK_Bonificacion_TipoBonificacion" FromRole="Bonificacion" ToRole="TipoBonificacion" />
-          <NavigationProperty Name="DETADOCs" Relationship="LiderModel.FK_DETADOC_Bonificacion" FromRole="Bonificacion" ToRole="DETADOC" />
-          <NavigationProperty Name="ItemBonificacions" Relationship="LiderModel.FK_ItemBonificacion_Bonificacion" FromRole="Bonificacion" ToRole="ItemBonificacion" />
-        </EntityType>
-        <EntityType Name="TipoBonificacion">
-          <Key>
-            <PropertyRef Name="PKID" />
-          </Key>
-          <Property Name="PKID" Type="Int32" Nullable="false" />
-          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Bonificacions" Relationship="LiderModel.FK_Bonificacion_TipoBonificacion" FromRole="TipoBonificacion" ToRole="Bonificacion" />
-        </EntityType>
-        <Association Name="FK_Bonificacion_TipoBonificacion">
-          <End Type="LiderModel.TipoBonificacion" Role="TipoBonificacion" Multiplicity="1" />
-          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoBonificacion">
-              <PropertyRef Name="PKID" />
-            </Principal>
-            <Dependent Role="Bonificacion">
-              <PropertyRef Name="TipoMecanica" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DETADOC_Bonificacion">
-          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="0..1" />
-          <End Type="LiderModel.DETADOC" Role="DETADOC" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bonificacion">
-              <PropertyRef Name="PKID" />
-            </Principal>
-            <Dependent Role="DETADOC">
-              <PropertyRef Name="IDBonificacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ItemBonificacion_Bonificacion">
-          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="LiderModel.ItemBonificacion" Role="ItemBonificacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bonificacion">
-              <PropertyRef Name="PKID" />
-            </Principal>
-            <Dependent Role="ItemBonificacion">
-              <PropertyRef Name="IDBonificacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="TipoAsociado">
           <Key>
             <PropertyRef Name="PKID" />
@@ -2844,6 +2773,79 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Bonificacion">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Mecanica" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TipoMecanica" Type="Int32" Nullable="false" />
+          <Property Name="cdProductoRegalo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadMinima" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="CantidadMaxima" Type="Int32" Nullable="false" />
+          <Property Name="CantidadRegalo" Type="Int32" Nullable="false" />
+          <Property Name="CantidadMaximaPorCliente" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="StockEntregado" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="TieneExclusion" Type="Boolean" Nullable="false" />
+          <Property Name="IDBonifcacionExcluida" Type="Int32" Nullable="false" />
+          <Property Name="cdProductoVenta" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IDProveedor" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TipoBonificacion" Relationship="LiderModel.FK_Bonificacion_TipoBonificacion" FromRole="Bonificacion" ToRole="TipoBonificacion" />
+          <NavigationProperty Name="DETADOCs" Relationship="LiderModel.FK_DETADOC_Bonificacion" FromRole="Bonificacion" ToRole="DETADOC" />
+          <NavigationProperty Name="ItemBonificacions" Relationship="LiderModel.FK_ItemBonificacion_Bonificacion" FromRole="Bonificacion" ToRole="ItemBonificacion" />
+        </EntityType>
+        <EntityType Name="TipoBonificacion">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Bonificacions" Relationship="LiderModel.FK_Bonificacion_TipoBonificacion" FromRole="TipoBonificacion" ToRole="Bonificacion" />
+        </EntityType>
+        <Association Name="FK_Bonificacion_TipoBonificacion">
+          <End Type="LiderModel.TipoBonificacion" Role="TipoBonificacion" Multiplicity="1" />
+          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoBonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="Bonificacion">
+              <PropertyRef Name="TipoMecanica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETADOC_Bonificacion">
+          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="0..1" />
+          <End Type="LiderModel.DETADOC" Role="DETADOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="DETADOC">
+              <PropertyRef Name="IDBonificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemBonificacion_Bonificacion">
+          <End Type="LiderModel.Bonificacion" Role="Bonificacion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LiderModel.ItemBonificacion" Role="ItemBonificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bonificacion">
+              <PropertyRef Name="PKID" />
+            </Principal>
+            <Dependent Role="ItemBonificacion">
+              <PropertyRef Name="IDBonificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3144,6 +3146,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySetMapping Name="PERSONALs">
             <EntityTypeMapping TypeName="LiderModel.PERSONAL">
               <MappingFragment StoreEntitySet="PERSONAL">
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="supercodigo" ColumnName="supercodigo" />
                 <ScalarProperty Name="pcuota" ColumnName="pcuota" />
                 <ScalarProperty Name="pparticipa" ColumnName="pparticipa" />
@@ -3407,39 +3410,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Bonificacions">
-            <EntityTypeMapping TypeName="LiderModel.Bonificacion">
-              <MappingFragment StoreEntitySet="Bonificacion">
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
-                <ScalarProperty Name="Desde" ColumnName="Desde" />
-                <ScalarProperty Name="IDProveedor" ColumnName="IDProveedor" />
-                <ScalarProperty Name="cdProductoVenta" ColumnName="cdProductoVenta" />
-                <ScalarProperty Name="IDBonifcacionExcluida" ColumnName="IDBonifcacionExcluida" />
-                <ScalarProperty Name="TieneExclusion" ColumnName="TieneExclusion" />
-                <ScalarProperty Name="StockEntregado" ColumnName="StockEntregado" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="CantidadMaximaPorCliente" ColumnName="CantidadMaximaPorCliente" />
-                <ScalarProperty Name="CantidadRegalo" ColumnName="CantidadRegalo" />
-                <ScalarProperty Name="CantidadMaxima" ColumnName="CantidadMaxima" />
-                <ScalarProperty Name="CantidadMinima" ColumnName="CantidadMinima" />
-                <ScalarProperty Name="cdProductoRegalo" ColumnName="cdProductoRegalo" />
-                <ScalarProperty Name="TipoMecanica" ColumnName="TipoMecanica" />
-                <ScalarProperty Name="Mecanica" ColumnName="Mecanica" />
-                <ScalarProperty Name="PKID" ColumnName="PKID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoBonificacions">
-            <EntityTypeMapping TypeName="LiderModel.TipoBonificacion">
-              <MappingFragment StoreEntitySet="TipoBonificacion">
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="PKID" ColumnName="PKID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TipoAsociadoes">
             <EntityTypeMapping TypeName="LiderModel.TipoAsociado">
               <MappingFragment StoreEntitySet="TipoAsociado">
@@ -3592,6 +3562,39 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Registro" ColumnName="Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bonificacions">
+            <EntityTypeMapping TypeName="LiderModel.Bonificacion">
+              <MappingFragment StoreEntitySet="Bonificacion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="IDProveedor" ColumnName="IDProveedor" />
+                <ScalarProperty Name="cdProductoVenta" ColumnName="cdProductoVenta" />
+                <ScalarProperty Name="IDBonifcacionExcluida" ColumnName="IDBonifcacionExcluida" />
+                <ScalarProperty Name="TieneExclusion" ColumnName="TieneExclusion" />
+                <ScalarProperty Name="StockEntregado" ColumnName="StockEntregado" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="CantidadMaximaPorCliente" ColumnName="CantidadMaximaPorCliente" />
+                <ScalarProperty Name="CantidadRegalo" ColumnName="CantidadRegalo" />
+                <ScalarProperty Name="CantidadMaxima" ColumnName="CantidadMaxima" />
+                <ScalarProperty Name="CantidadMinima" ColumnName="CantidadMinima" />
+                <ScalarProperty Name="cdProductoRegalo" ColumnName="cdProductoRegalo" />
+                <ScalarProperty Name="TipoMecanica" ColumnName="TipoMecanica" />
+                <ScalarProperty Name="Mecanica" ColumnName="Mecanica" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoBonificacions">
+            <EntityTypeMapping TypeName="LiderModel.TipoBonificacion">
+              <MappingFragment StoreEntitySet="TipoBonificacion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -42,6 +42,7 @@ namespace xtraForm.Model
         public decimal pparticipa { get; set; }
         public decimal pcuota { get; set; }
         public string supercodigo { get; set; }
+        public string Direccion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DOCUMENTO> DOCUMENTOes { get; set; }
