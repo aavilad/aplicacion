@@ -37,9 +37,25 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            int z = 0;
+            int index = 0;
+            foreach (DataGridViewRow Fila in dataGridView1.Rows)
+            {
+                foreach (DataGridViewColumn Columna in dataGridView1.Columns)
+                {
+                    if (dataGridView1.Rows[Fila.Index].Cells[Columna.Index].Value == null)
+                    {
+                        z += 1;
+                        index = Fila.Index;
+                    }
+                }
+                if (z >= 4)
+                {
+                    dataGridView1.Rows.RemoveAt(index);
+                }
+            }
             using (var CTX = new LiderEntities())
             {
-
                 string NumeroPedido = txtcdDocumento.Text.Trim();
                 string CodigoVendedor = txtcdVendedor.Text.Trim();
                 string CodigoCliente = txtcdCLiente.Text.Trim();
@@ -422,20 +438,17 @@ namespace xtraForm.Modulos.Elementos
                             { Productos("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and codigo like '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'"); }
                             else
                             {
-                                MessageBox.Show("Codigo no existe o esta desactivo");
+                                MessageBox.Show("No se encuentra alguna coincidencia.");
                                 dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Codigo"];
                                 dataGridView1.BeginEdit(true);
                             }
                             break;
                         case "Descripcion":
-                            Valor = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) is DBNull ? "" : Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value);
-                            if (CTX.PRODUCTOes.Where(x => x.Activo && Valor.Contains(x.Descripcion)).Count() > 0)
-                                Productos(@"select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and Descripcion like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) + "%'");
+                            Valor = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) is DBNull ? "" : Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value);
+                            if (Valor == "") ;
                             else
                             {
-                                MessageBox.Show("Codigo no existe o esta desactivo");
-                                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Descripcion"];
-                                dataGridView1.BeginEdit(true);
+                                Productos(@"select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and Descripcion like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) + "%'");
                             }
                             break;
                         case "Cantidad":

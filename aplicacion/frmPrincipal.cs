@@ -243,7 +243,7 @@ namespace xtraForm
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
                     Dock = DockStyle.Fill,
-                    //Modulo = ribb/*onControl1.Pages.fiel*/
+                    Modulo = e.Item.Name,
                 };
                 xtraTabControl1.TabPages.Add(pedidos);
                 xtraTabControl1.SelectedTabPage = pedidos;
@@ -724,9 +724,36 @@ namespace xtraForm
             }
         }
 
-        private void CBOVENTAS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void AvanceCobertura_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            bool existe = false;
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == "Avance Cobertura")
+                {
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    existe = true;
+                }
+            if (!existe)
+            {
+                splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                splashScreenManager1.ShowWaitForm();
+                XtraTabPage pedidos = new XtraTabPage();
+                entidad.index = 0;
+                objeto = new Modulos.Reportes.Modulos.Ventas.frmAvanceCliente
+                {
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill,
+                    //NModulo = e.Item.Name,
+                };
+                xtraTabControl1.TabPages.Add(pedidos);
+                xtraTabControl1.SelectedTabPage = pedidos;
+                pedidos.Text = "Avance Cobertura";
+                entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                pedidos.Controls.Add(objeto);
+                objeto.Show();
+                splashScreenManager1.CloseWaitForm();
+            }
         }
     }
 }

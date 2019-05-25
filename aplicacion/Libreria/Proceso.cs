@@ -39,6 +39,7 @@ namespace xtraForm.Libreria
                 da.Fill(ds, tabla);
             }
         }
+
         public string ConsultarCadena(string campo, string tabla, string condicion)
         {
             string query = @"select " + campo + " from " + tabla + " where " + condicion;
@@ -77,6 +78,7 @@ namespace xtraForm.Libreria
                 return x;
             }
         }
+
         public int ConsultarEntero(string campo, string tabla, string condicion)
         {
             var x = 0;
@@ -97,6 +99,7 @@ namespace xtraForm.Libreria
             }
 
         }
+
         public DataTable ConsultarTabla(string tabla)
         {
             string query = @"select * from " + tabla;
@@ -109,6 +112,7 @@ namespace xtraForm.Libreria
             }
 
         }
+
         public DataTable ConsultarTabla_(string tabla, string condicion)
         {
             string query = @"select * from " + tabla + " where " + condicion;
@@ -141,6 +145,7 @@ namespace xtraForm.Libreria
                 return x;
             }
         }
+
         public bool ejecutar(string query)
         {
             using (SqlConnection con = new SqlConnection(conexion))
@@ -158,6 +163,7 @@ namespace xtraForm.Libreria
                 }
             }
         }
+
         public bool eliminar(string tabla, string condicion)
         {
             string query = "delete from " + tabla + " where " + condicion;
@@ -177,6 +183,7 @@ namespace xtraForm.Libreria
             }
 
         }
+
         public DataTable EvaluarBonificacion(string where, string having)
         {
             string QUERY = @"
@@ -202,6 +209,7 @@ namespace xtraForm.Libreria
                 return tabla;
             }
         }
+
         public bool ExistenciaCampo(string campo, string tabla, string condicion)
         {
             string QUERY = @"select top(1) " + campo + " from " + tabla + " where " + condicion;
@@ -224,6 +232,7 @@ namespace xtraForm.Libreria
                 }
             }
         }
+
         public bool ExistenciaStock(string codigo, decimal cantidadvendida, decimal cantidad)
         {
             bool i = false;
@@ -255,6 +264,7 @@ namespace xtraForm.Libreria
             return i;
 
         }
+
         public int ID(string tabla)
         {
             string QUERY = @"SELECT isnull(max(PKID),0)+1 FROM " + tabla;
@@ -291,16 +301,19 @@ namespace xtraForm.Libreria
                 }
             }
         }
+
         public DialogResult MensageError(string cadena)
         {
             DialogResult result = MessageBox.Show(cadena, "Mensage", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             return result;
         }
+
         public DialogResult MensagePregunta(string cadena)
         {
             DialogResult result = MessageBox.Show(cadena, "Mensage", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             return result;
         }
+
         public string newid()
         {
             string QUERY = @"SELECT newid()";
@@ -319,6 +332,7 @@ namespace xtraForm.Libreria
             }
             return entidad.codigo;
         }
+
         public string Procedimiento(string procedimiento)
         {
             string QUERY = @"exec " + procedimiento;

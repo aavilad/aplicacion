@@ -27,13 +27,20 @@ namespace xtraForm.Modulos.Ventas
         }
         private void Refrescar()
         {
-            var proceso = new Libreria.Proceso();
-            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' order by orden", tabla);
-            List<string> lista_ = new List<string>();
-            foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
-                lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
-            string cadena = string.Join(" ", lista_.ToArray());
-            condicion(cadena);
+            try
+            {
+                var proceso = new Libreria.Proceso();
+                proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' order by orden", tabla);
+                List<string> lista_ = new List<string>();
+                foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
+                    lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
+                string cadena = string.Join(" ", lista_.ToArray());
+                condicion(cadena);
+            }
+            catch (Exception t)
+            {
+                MessageBox.Show(t.Message);
+            }
         }
         void condicion(string cadena)
         {
@@ -61,7 +68,7 @@ namespace xtraForm.Modulos.Ventas
                 {
                     try
                     {
-                        proceso.consultar(Query + " having " + cadena, tabla);
+                        proceso.consultar(Query +" and " +cadena, tabla);
                         gridControl1.DataSource = proceso.ds.Tables[tabla];
                         gridView1.OptionsView.ColumnAutoWidth = false;
                         gridView1.OptionsBehavior.Editable = false;
@@ -116,7 +123,8 @@ namespace xtraForm.Modulos.Ventas
 
         private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            var formulario = new Elementos.frmVendedor();
+            formulario.Show();
         }
     }
 }

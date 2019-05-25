@@ -9,6 +9,42 @@ namespace xtraForm.Libreria
 {
     class Constante
     {
+        public const string AvanceCobertura = @"
+                    WITH CTE_Zonas
+                                  AS (SELECT DISTINCT 
+                                             ZONA.Zona, 
+                                             ZONA.Descripcion, 
+                                             COUNT(DISTINCT Vva_Cliente.Codigo) AS Cartera, 
+                                             0.00 AS Cobertura
+                                      FROM Vva_Cliente
+                                           INNER JOIN ZONA ON Vva_Cliente.Zona = ZONA.Zona
+                                      GROUP BY ZONA.Zona, 
+                                               ZONA.Descripcion
+                                      UNION ALL
+                                      SELECT DISTINCT 
+                                             ZONA_1.Zona, 
+                                             ZONA_1.Descripcion, 
+                                             0.00 AS Cartera, 
+                                             COUNT(DISTINCT Vva_Cliente_1.Codigo) AS Cobertura
+                                      FROM Vva_Cp
+                                           INNER JOIN Vva_Cliente AS Vva_Cliente_1 ON Vva_Cp.IDCliente = Vva_Cliente_1.Codigo
+                                           INNER JOIN Vva_ItemCp ON Vva_Cp.NrDoc = Vva_ItemCp.NrDoc
+                                                                    AND Vva_Cp.TpDoc = Vva_ItemCp.TpDoc
+                                           INNER JOIN Vva_Producto ON Vva_ItemCp.IDProducto = Vva_Producto.Codigo
+                                           INNER JOIN ZONA AS ZONA_1 ON Vva_Cliente_1.Zona = ZONA_1.Zona
+                                      WHERE(Vva_Cp.Anulado = 0)
+                                           AND (Vva_Cp.Fecha BETWEEN @Desde AND @Hasta) AND (Vva_Producto.@variable)
+                                      GROUP BY ZONA_1.Zona, 
+                                               ZONA_1.Descripcion)
+                                         SELECT RTRIM(Zona) AS Codigo, 
+                                                RTRIM(Descripcion) AS Descripcion, 
+                                                SUM(Cartera) AS Cartera, 
+                                                SUM(Cobertura) / SUM(Cartera) AS Avance, 
+                                                SUM(Cobertura) AS Cobertura
+                                         FROM CTE_Zonas AS CTE_Zonas_1
+                                         GROUP BY Zona, 
+                                                  Descripcion;
+                    ";
         public const string SinStock = "Cantidad de stock es insuficiente :";
         public const string Bonificacion =
                     @"SELECT DISTINCT

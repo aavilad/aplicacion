@@ -78,7 +78,6 @@ namespace xtraForm.Modulos.Ventas
                 Cp.Aprobado = true;
                 Context.Configuration.ValidateOnSaveEnabled = false;
                 Context.PEDIDOes.Add(Cp);
-
                 foreach (DataGridViewRow fila in dgv.Rows)
                 {
                     DETPEDIDO ItemCp = new DETPEDIDO();
@@ -102,8 +101,8 @@ namespace xtraForm.Modulos.Ventas
                     Context.DETPEDIDOes.Add(ItemCp);
                 }
                 Context.SaveChanges();
-                Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
-                Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                proceso.Procedimiento("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
+                proceso.Procedimiento("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
                 Refrescar();
             }
         }
@@ -155,8 +154,8 @@ namespace xtraForm.Modulos.Ventas
                     Context.DETPEDIDOes.Add(ItemCp);
                 }
                 Context.SaveChanges();
-                Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
-                Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                proceso.Procedimiento("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
+                proceso.Procedimiento("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
                 Refrescar();
             }
         }
@@ -229,7 +228,6 @@ namespace xtraForm.Modulos.Ventas
                                   PrecSEspecial WHEN DETPEDIDO.TipoPrecio = 7 THEN PrecSSEspecial END
                           FROM PRODUCTO
                           WHERE Producto = DETPEDIDO.Producto)";
-
             proceso.actualizar("detpedido", "PrecioNeto = PrecUnit", queryA);
             proceso.actualizar("detpedido", "PrecioUnitario = " + queryB, queryA);
             proceso.actualizar("detpedido", "Descuento = IIF ((PrecioUnitario - PrecioNeto) < 0,0,(PrecioUnitario - PrecioNeto))", queryA);
@@ -344,14 +342,13 @@ namespace xtraForm.Modulos.Ventas
                             }
                         }
                         Context.SaveChanges();
-                        Context.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
-                        Context.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                        proceso.Procedimiento("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
+                        proceso.Procedimiento("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
                         MessageBox.Show("Se realizo la facturacion de : " + Lista.Count + " con exito.\n Detalles en control genera.");
                         Refrescar();
                     }
                 }
             }
-
         }
 
         private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -361,6 +358,8 @@ namespace xtraForm.Modulos.Ventas
 
         private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            proceso.Procedimiento("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
+            proceso.Procedimiento("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
             Elementos.frmpedido nuevopedido = new Elementos.frmpedido();
             nuevopedido.pasar += new Elementos.frmpedido.varaible(CamposPedido_);
             nuevopedido.StartPosition = FormStartPosition.CenterScreen;
@@ -723,7 +722,6 @@ namespace xtraForm.Modulos.Ventas
                             producto.Afecto = Convert.ToBoolean(DR_0["Afecto"]);
                             var IdBonif = DR_0["IDBonificacion"] is DBNull ? 0 : DR_0["IDBonificacion"];
                             producto.TipoPrecio = Convert.ToInt32(DR_0["TipoPrecio"]);
-
                             frmpedido.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion, producto.Cantidad, producto.Cantidad, producto.Unidad, producto.TipoPrecio, producto.PrecioUnitario, producto.PrecioNeto,
                                 (producto.Cantidad * producto.PrecioNeto), producto.Descuento, producto.Recargo, producto.Bonificacion, pedido.Credito, producto.Afecto, IdBonif);
                             frmpedido.dataGridView1.CurrentRow.ReadOnly = producto.Bonificacion == true ? true : false;
@@ -808,7 +806,6 @@ namespace xtraForm.Modulos.Ventas
                         producto.Afecto = Convert.ToBoolean(DR_0["Afecto"]);
                         var IdBonif = DR_0["IDBonificacion"] is DBNull ? 0 : DR_0["IDBonificacion"];
                         producto.TipoPrecio = Convert.ToInt32(DR_0["TipoPrecio"]);
-
                         frmpedido.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion, producto.Cantidad, producto.Cantidad, producto.Unidad, producto.TipoPrecio, producto.PrecioUnitario, producto.PrecioNeto,
                             (producto.Cantidad * producto.PrecioNeto), producto.Descuento, producto.Recargo, producto.Bonificacion, pedido.Credito, producto.Afecto, IdBonif);
                         frmpedido.dataGridView1.CurrentRow.ReadOnly = producto.Bonificacion == true ? true : false;

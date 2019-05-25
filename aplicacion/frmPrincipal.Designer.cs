@@ -114,6 +114,8 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.AvanceCobertura = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
@@ -189,9 +191,11 @@
             this.CBOVENTAS,
             this.barStaticItem1,
             this.barStaticItem2,
-            this.DataUser});
+            this.DataUser,
+            this.barButtonItem3,
+            this.AvanceCobertura});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 11;
+            this.ribbonControl1.MaxItemId = 2;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -377,7 +381,6 @@
             // 
             resources.ApplyResources(this.NOTACREDITOVENTA, "NOTACREDITOVENTA");
             this.NOTACREDITOVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
-            this.NOTACREDITOVENTA.Enabled = false;
             this.NOTACREDITOVENTA.Id = 26;
             this.NOTACREDITOVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTACREDITOVENTA.ImageOptions.SvgImage")));
             this.NOTACREDITOVENTA.Name = "NOTACREDITOVENTA";
@@ -574,7 +577,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoPorRuta),
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoProductoClase),
             new DevExpress.XtraBars.LinkPersistInfo(this.InformeDeReparto),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ListadoGeneralClase)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ListadoGeneralClase),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AvanceCobertura)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // ListadoPorRuta
@@ -657,7 +661,6 @@
             this.CBOVENTAS.Id = 2;
             this.CBOVENTAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CBOVENTAS.ImageOptions.SvgImage")));
             this.CBOVENTAS.Name = "CBOVENTAS";
-            this.CBOVENTAS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CBOVENTAS_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -903,6 +906,20 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // barButtonItem3
+            // 
+            resources.ApplyResources(this.barButtonItem3, "barButtonItem3");
+            this.barButtonItem3.Id = 11;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // AvanceCobertura
+            // 
+            resources.ApplyResources(this.AvanceCobertura, "AvanceCobertura");
+            this.AvanceCobertura.Id = 1;
+            this.AvanceCobertura.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
+            this.AvanceCobertura.Name = "AvanceCobertura";
+            this.AvanceCobertura.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AvanceCobertura_ItemClick);
+            // 
             // frmPrincipal
             // 
             resources.ApplyResources(this, "$this");
@@ -1011,5 +1028,7 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemFontEdit repositoryItemFontEdit1;
         public DevExpress.XtraBars.BarStaticItem DataUser;
+        private DevExpress.XtraBars.BarButtonItem AvanceCobertura;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

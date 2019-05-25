@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.CANCELAR = new DevExpress.XtraEditors.SimpleButton();
+            this.ACEPTAR = new DevExpress.XtraEditors.SimpleButton();
             this.DIRECCION = new DevExpress.XtraEditors.TextEdit();
             this.DIDENTIDAD = new DevExpress.XtraEditors.TextEdit();
             this.NOMBRES = new DevExpress.XtraEditors.TextEdit();
@@ -38,7 +40,6 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.PRECIOESCALA = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -64,12 +65,11 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ACEPTAR = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.CANCELAR = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.PRECIOESCALA = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DIRECCION.Properties)).BeginInit();
@@ -83,7 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PRECIOESCALA.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -116,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PRECIOESCALA.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -136,6 +136,25 @@
             this.layoutControl1.Size = new System.Drawing.Size(386, 381);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // CANCELAR
+            // 
+            this.CANCELAR.Location = new System.Drawing.Point(297, 347);
+            this.CANCELAR.Name = "CANCELAR";
+            this.CANCELAR.Size = new System.Drawing.Size(77, 22);
+            this.CANCELAR.StyleController = this.layoutControl1;
+            this.CANCELAR.TabIndex = 10;
+            this.CANCELAR.Text = "Cancelar";
+            this.CANCELAR.Click += new System.EventHandler(this.CANCELAR_Click);
+            // 
+            // ACEPTAR
+            // 
+            this.ACEPTAR.Location = new System.Drawing.Point(206, 347);
+            this.ACEPTAR.Name = "ACEPTAR";
+            this.ACEPTAR.Size = new System.Drawing.Size(77, 22);
+            this.ACEPTAR.StyleController = this.layoutControl1;
+            this.ACEPTAR.TabIndex = 9;
+            this.ACEPTAR.Text = "Aceptar";
             // 
             // DIRECCION
             // 
@@ -177,7 +196,7 @@
             this.xtraTabPage2.Controls.Add(this.layoutControl3);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(360, 206);
-            this.xtraTabPage2.Text = "xtraTabPage2";
+            this.xtraTabPage2.Text = "Datos Comerciales";
             // 
             // layoutControl3
             // 
@@ -220,16 +239,6 @@
             this.checkEdit1.Size = new System.Drawing.Size(94, 20);
             this.checkEdit1.StyleController = this.layoutControl3;
             this.checkEdit1.TabIndex = 5;
-            // 
-            // PRECIOESCALA
-            // 
-            this.PRECIOESCALA.Location = new System.Drawing.Point(80, 12);
-            this.PRECIOESCALA.Name = "PRECIOESCALA";
-            this.PRECIOESCALA.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PRECIOESCALA.Size = new System.Drawing.Size(268, 20);
-            this.PRECIOESCALA.StyleController = this.layoutControl3;
-            this.PRECIOESCALA.TabIndex = 4;
             // 
             // layoutControlGroup3
             // 
@@ -294,7 +303,7 @@
             this.xtraTabPage1.Controls.Add(this.layoutControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(360, 206);
-            this.xtraTabPage1.Text = "xtraTabPage1";
+            this.xtraTabPage1.Text = "Datos Personales";
             // 
             // layoutControl2
             // 
@@ -483,15 +492,6 @@
             this.layoutControlItem5.Text = "Doc Identidad:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(82, 13);
             // 
-            // ACEPTAR
-            // 
-            this.ACEPTAR.Location = new System.Drawing.Point(206, 347);
-            this.ACEPTAR.Name = "ACEPTAR";
-            this.ACEPTAR.Size = new System.Drawing.Size(77, 22);
-            this.ACEPTAR.StyleController = this.layoutControl1;
-            this.ACEPTAR.TabIndex = 9;
-            this.ACEPTAR.Text = "Aceptar";
-            // 
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.ACEPTAR;
@@ -500,16 +500,6 @@
             this.layoutControlItem14.Size = new System.Drawing.Size(81, 26);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
-            // 
-            // CANCELAR
-            // 
-            this.CANCELAR.Location = new System.Drawing.Point(297, 347);
-            this.CANCELAR.Name = "CANCELAR";
-            this.CANCELAR.Size = new System.Drawing.Size(77, 22);
-            this.CANCELAR.StyleController = this.layoutControl1;
-            this.CANCELAR.TabIndex = 10;
-            this.CANCELAR.Text = "Cancelar";
-            this.CANCELAR.Click += new System.EventHandler(this.CANCELAR_Click);
             // 
             // layoutControlItem15
             // 
@@ -535,6 +525,24 @@
             this.emptySpaceItem3.Size = new System.Drawing.Size(194, 26);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // PRECIOESCALA
+            // 
+            this.PRECIOESCALA.EditValue = "";
+            this.PRECIOESCALA.Location = new System.Drawing.Point(80, 12);
+            this.PRECIOESCALA.Name = "PRECIOESCALA";
+            this.PRECIOESCALA.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PRECIOESCALA.Properties.Items.AddRange(new object[] {
+            "Mayorista",
+            "Minorista",
+            "Segun Venta"});
+            this.PRECIOESCALA.Properties.NullText = "[Vacío]";
+            this.PRECIOESCALA.Properties.PopupSizeable = true;
+            this.PRECIOESCALA.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.PRECIOESCALA.Size = new System.Drawing.Size(268, 20);
+            this.PRECIOESCALA.StyleController = this.layoutControl3;
+            this.PRECIOESCALA.TabIndex = 4;
+            // 
             // frmVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -542,7 +550,7 @@
             this.ClientSize = new System.Drawing.Size(386, 381);
             this.Controls.Add(this.layoutControl1);
             this.Name = "frmVendedor";
-            this.Text = "frmVendedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.frmVendedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -557,7 +565,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PRECIOESCALA.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
@@ -590,6 +597,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PRECIOESCALA.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -622,7 +630,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControl layoutControl3;
-        private DevExpress.XtraEditors.LookUpEdit PRECIOESCALA;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
@@ -638,5 +645,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
         private DevExpress.XtraLayout.SplitterItem splitterItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
+        private DevExpress.XtraEditors.ComboBoxEdit PRECIOESCALA;
     }
 }

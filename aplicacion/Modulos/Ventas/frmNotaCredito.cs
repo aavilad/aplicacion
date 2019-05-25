@@ -16,7 +16,7 @@ namespace xtraForm.Modulos.Ventas
 {
     public partial class frmNotaCredito : DevExpress.XtraEditors.XtraForm
     {
-        string tabla = "Vva_NotaCredito";
+        string tabla = "NotaCredito";
         public string Modulo;
         public frmNotaCredito()
         {
@@ -26,38 +26,12 @@ namespace xtraForm.Modulos.Ventas
         void Refrescar()
         {
             var proceso = new Libreria.Proceso();
-            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "'", tabla);
+            proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' ORDER BY ORDEN", tabla);
             List<string> lista_ = new List<string>();
             foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
                 lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
             string cadena = string.Join(" ", lista_.ToArray());
             condicion(cadena);
-        }
-
-        private void filtroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var Context = new LiderEntities())
-            {
-                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
-                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
-                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
-                i.DisplayMember = "Descripcion";
-                i.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
-                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
-                j.DisplayMember = "Descripcion";
-                j.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
-                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'Vva_Cp'").ToList();
-                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
-                filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
-                {
-                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
-                }
-                filtro.entidad = tabla;
-                filtro.ShowDialog();
-            }
         }
         void condicion(string cadena)
         {
@@ -75,12 +49,6 @@ namespace xtraForm.Modulos.Ventas
                     gridView1.OptionsView.ShowGroupPanel = false;
                     gridView1.OptionsView.ShowFooter = true;
                     gridView1.FooterPanelHeight = -2;
-                    gridView1.Columns["Valor Venta"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns["afecto"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns["inafecto"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns["igv"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns["Valor Total"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns["Credito"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
                     gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
                     gridView1.GroupRowHeight = 1;
                     gridView1.RowHeight = 1;
@@ -99,12 +67,6 @@ namespace xtraForm.Modulos.Ventas
                         gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
                         gridView1.OptionsView.ShowGroupPanel = false;
                         gridView1.OptionsView.ShowFooter = true;
-                        gridView1.Columns["Valor Venta"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                        gridView1.Columns["afecto"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                        gridView1.Columns["inafecto"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                        gridView1.Columns["igv"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                        gridView1.Columns["Valor Total"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                        gridView1.Columns["Credito"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
                         gridView1.GroupRowHeight = 1;
                         gridView1.RowHeight = 1;
                         gridView1.Appearance.Row.FontSizeDelta = 0;
@@ -122,6 +84,37 @@ namespace xtraForm.Modulos.Ventas
         private void frmNotaCredito_Load(object sender, EventArgs e)
         {
             Refrescar();
+        }
+
+        private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var Context = new LiderEntities())
+            {
+                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
+                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
+                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DisplayMember = "Descripcion";
+                i.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
+                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DisplayMember = "Descripcion";
+                j.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
+                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'Vva_Cp'").ToList();
+                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
+                filtro.StartPosition = FormStartPosition.CenterScreen;
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).OrderBy(y=>y.Orden).ToList())
+                {
+                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
+                }
+                filtro.entidad = tabla;
+                filtro.ShowDialog();
+            }
+        }
+
+        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
         }
     }
 }
