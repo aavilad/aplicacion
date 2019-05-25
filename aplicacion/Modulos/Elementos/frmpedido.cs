@@ -143,12 +143,12 @@ namespace xtraForm.Modulos.Elementos
                 n++;
             }
             var Evaluar = new Libreria.Pedido_Bonificar();
+            Existe = true;
             Evaluar.Evaluar_Bonificacion(dataGridView1, Convert.ToDateTime(dateEmision.EditValue).ToString("dd/MM/yyyy"));
-            using (var CTX = new LiderEntities())
-            {
-                CTX.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
-                CTX.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
-            }
+            Existe = false;
+            proceso.Procedimiento("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "',2");
+            proceso.Procedimiento("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "',2");
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e) { if (proceso.MensageError("Cancelar Proceso") == DialogResult.Yes) this.Close(); }

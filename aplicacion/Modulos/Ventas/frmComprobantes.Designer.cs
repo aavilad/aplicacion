@@ -69,6 +69,7 @@
             this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
+            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // ABRIR
             // 

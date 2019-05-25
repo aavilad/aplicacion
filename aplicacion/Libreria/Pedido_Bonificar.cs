@@ -60,8 +60,8 @@ namespace xtraForm.Libreria
             var proceso = new Libreria.Proceso();
             using (var CTX = new LiderEntities())
             {
-                CTX.Database.SqlQuery<string>("exec sp_stock_sistema @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
-                CTX.Database.SqlQuery<string>("exec sp_stock_sistema_web @Fecha,2", DateTime.Now.Date.ToString("yyyyMMdd"));
+                proceso.Procedimiento("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "',2");
+                proceso.Procedimiento("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "',2");
 
                 DataTable dt = new DataTable();
                 dt.Columns.Add("id", typeof(System.Int32));

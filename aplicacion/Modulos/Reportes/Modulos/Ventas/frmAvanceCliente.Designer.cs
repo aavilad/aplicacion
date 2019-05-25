@@ -29,8 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAvanceCliente));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -50,8 +64,23 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.maestroCoberturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lider2018DataSet = new xtraForm.Lider2018DataSet();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colCodigo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCartera = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAvance = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCobertura = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDiferencia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colName0 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Cartera = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.colName1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Cobertura = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.colName2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Diferencia = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
@@ -72,28 +101,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maestroCoberturaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lider2018DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cartera)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cobertura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Diferencia)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(187, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(562, 437);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsBehavior.ReadOnly = true;
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // dockManager1
             // 
@@ -153,17 +169,17 @@
             // 
             // BTNACEPTAR
             // 
-            this.BTNACEPTAR.Location = new System.Drawing.Point(92, 134);
+            this.BTNACEPTAR.Location = new System.Drawing.Point(92, 171);
             this.BTNACEPTAR.Name = "BTNACEPTAR";
             this.BTNACEPTAR.Size = new System.Drawing.Size(82, 22);
             this.BTNACEPTAR.StyleController = this.layoutControl1;
-            this.BTNACEPTAR.TabIndex = 11;
+            this.BTNACEPTAR.TabIndex = 5;
             this.BTNACEPTAR.Text = "Aceptar";
             this.BTNACEPTAR.Click += new System.EventHandler(this.BTNACEPTAR_Click);
             // 
             // TPSEARCH
             // 
-            this.TPSEARCH.Location = new System.Drawing.Point(81, 86);
+            this.TPSEARCH.Location = new System.Drawing.Point(6, 102);
             this.TPSEARCH.Name = "TPSEARCH";
             this.TPSEARCH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -172,29 +188,34 @@
             "Marca",
             "Linea",
             "Producto"});
-            this.TPSEARCH.Size = new System.Drawing.Size(93, 20);
+            this.TPSEARCH.Size = new System.Drawing.Size(168, 20);
             this.TPSEARCH.StyleController = this.layoutControl1;
-            this.TPSEARCH.TabIndex = 10;
+            this.TPSEARCH.TabIndex = 3;
+            this.TPSEARCH.SelectedIndexChanged += new System.EventHandler(this.TPSEARCH_SelectedIndexChanged);
             // 
             // VARIABLE
             // 
-            this.VARIABLE.Location = new System.Drawing.Point(6, 110);
+            this.VARIABLE.EditValue = "seleccione variable";
+            this.VARIABLE.Location = new System.Drawing.Point(6, 126);
             this.VARIABLE.Name = "VARIABLE";
             this.VARIABLE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.VARIABLE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.VARIABLE.Size = new System.Drawing.Size(168, 20);
             this.VARIABLE.StyleController = this.layoutControl1;
-            this.VARIABLE.TabIndex = 9;
+            this.VARIABLE.TabIndex = 4;
             this.VARIABLE.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.VARIABLE_ButtonClick);
             // 
             // PREVIEW
             // 
+            this.PREVIEW.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PREVIEW.ImageOptions.Image")));
             this.PREVIEW.Location = new System.Drawing.Point(6, 376);
             this.PREVIEW.Name = "PREVIEW";
             this.PREVIEW.Size = new System.Drawing.Size(168, 22);
             this.PREVIEW.StyleController = this.layoutControl1;
-            this.PREVIEW.TabIndex = 8;
+            this.PREVIEW.TabIndex = 6;
             this.PREVIEW.Text = "Preview";
+            this.PREVIEW.Click += new System.EventHandler(this.PREVIEW_Click);
             // 
             // HASTA
             // 
@@ -207,7 +228,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.HASTA.Size = new System.Drawing.Size(168, 20);
             this.HASTA.StyleController = this.layoutControl1;
-            this.HASTA.TabIndex = 5;
+            this.HASTA.TabIndex = 2;
             // 
             // DESDE
             // 
@@ -220,7 +241,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DESDE.Size = new System.Drawing.Size(168, 20);
             this.DESDE.StyleController = this.layoutControl1;
-            this.DESDE.TabIndex = 4;
+            this.DESDE.TabIndex = 0;
             // 
             // layoutControlGroup1
             // 
@@ -234,7 +255,8 @@
             this.layoutControlItem4,
             this.layoutControlItem5,
             this.layoutControlItem6,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.emptySpaceItem3});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(4, 4, 4, 4);
             this.layoutControlGroup1.Size = new System.Drawing.Size(180, 404);
@@ -272,7 +294,7 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 128);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 165);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(86, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -280,7 +302,7 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.VARIABLE;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 104);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(172, 24);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -291,14 +313,15 @@
             this.layoutControlItem5.Control = this.TPSEARCH;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 80);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(172, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(172, 40);
             this.layoutControlItem5.Text = "Tipo Busqueda:";
+            this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(72, 13);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.BTNACEPTAR;
-            this.layoutControlItem6.Location = new System.Drawing.Point(86, 128);
+            this.layoutControlItem6.Location = new System.Drawing.Point(86, 165);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(86, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
@@ -307,22 +330,182 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 154);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 191);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(172, 216);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(172, 179);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // emptySpaceItem3
+            // 
+            this.emptySpaceItem3.AllowHotTrack = false;
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 144);
+            this.emptySpaceItem3.Name = "emptySpaceItem3";
+            this.emptySpaceItem3.Size = new System.Drawing.Size(172, 21);
+            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.DataSource = this.maestroCoberturaBindingSource;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(187, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.Cartera,
+            this.Cobertura,
+            this.Diferencia});
+            this.gridControl1.Size = new System.Drawing.Size(756, 437);
+            this.gridControl1.TabIndex = 5;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // maestroCoberturaBindingSource
+            // 
+            this.maestroCoberturaBindingSource.DataMember = "MaestroCobertura";
+            this.maestroCoberturaBindingSource.DataSource = this.lider2018DataSet;
+            // 
+            // lider2018DataSet
+            // 
+            this.lider2018DataSet.DataSetName = "Lider2018DataSet";
+            this.lider2018DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colCodigo,
+            this.colDescripcion,
+            this.colCartera,
+            this.colAvance,
+            this.colCobertura,
+            this.colDiferencia,
+            this.colName0,
+            this.colName1,
+            this.colName2});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Full;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
+            // 
+            // colCodigo
+            // 
+            this.colCodigo.FieldName = "Codigo";
+            this.colCodigo.Name = "colCodigo";
+            this.colCodigo.OptionsColumn.AllowEdit = false;
+            this.colCodigo.Visible = true;
+            this.colCodigo.VisibleIndex = 0;
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.FieldName = "Descripcion";
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.OptionsColumn.AllowEdit = false;
+            this.colDescripcion.Visible = true;
+            this.colDescripcion.VisibleIndex = 1;
+            // 
+            // colCartera
+            // 
+            this.colCartera.FieldName = "Cartera";
+            this.colCartera.Name = "colCartera";
+            this.colCartera.OptionsColumn.AllowEdit = false;
+            this.colCartera.Visible = true;
+            this.colCartera.VisibleIndex = 2;
+            // 
+            // colAvance
+            // 
+            this.colAvance.FieldName = "Avance";
+            this.colAvance.Name = "colAvance";
+            this.colAvance.OptionsColumn.AllowEdit = false;
+            this.colAvance.Visible = true;
+            this.colAvance.VisibleIndex = 3;
+            // 
+            // colCobertura
+            // 
+            this.colCobertura.FieldName = "Cobertura";
+            this.colCobertura.Name = "colCobertura";
+            this.colCobertura.OptionsColumn.AllowEdit = false;
+            this.colCobertura.Visible = true;
+            this.colCobertura.VisibleIndex = 4;
+            // 
+            // colDiferencia
+            // 
+            this.colDiferencia.FieldName = "Diferencia";
+            this.colDiferencia.Name = "colDiferencia";
+            this.colDiferencia.OptionsColumn.AllowEdit = false;
+            this.colDiferencia.Visible = true;
+            this.colDiferencia.VisibleIndex = 5;
+            // 
+            // colName0
+            // 
+            this.colName0.Caption = "Cartera";
+            this.colName0.ColumnEdit = this.Cartera;
+            this.colName0.Name = "colName0";
+            this.colName0.Visible = true;
+            this.colName0.VisibleIndex = 6;
+            // 
+            // Cartera
+            // 
+            this.Cartera.AutoHeight = false;
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(15, 15);
+            this.Cartera.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.Cartera.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Cartera.ContextImageOptions.SvgImage")));
+            this.Cartera.ContextImageOptions.SvgImageSize = new System.Drawing.Size(15, 15);
+            this.Cartera.Name = "Cartera";
+            this.Cartera.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.Cartera.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.Cartera_ButtonClick);
+            // 
+            // colName1
+            // 
+            this.colName1.Caption = "Cobertura";
+            this.colName1.ColumnEdit = this.Cobertura;
+            this.colName1.Name = "colName1";
+            this.colName1.Visible = true;
+            this.colName1.VisibleIndex = 7;
+            // 
+            // Cobertura
+            // 
+            this.Cobertura.AutoHeight = false;
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
+            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(15, 15);
+            this.Cobertura.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.Cobertura.Name = "Cobertura";
+            this.Cobertura.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.Cobertura.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.Cobertura_ButtonClick);
+            // 
+            // colName2
+            // 
+            this.colName2.Caption = "Faltante";
+            this.colName2.ColumnEdit = this.Diferencia;
+            this.colName2.Name = "colName2";
+            this.colName2.Visible = true;
+            this.colName2.VisibleIndex = 8;
+            // 
+            // Diferencia
+            // 
+            this.Diferencia.AutoHeight = false;
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
+            editorButtonImageOptions3.SvgImageSize = new System.Drawing.Size(15, 15);
+            this.Diferencia.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.Diferencia.Name = "Diferencia";
+            this.Diferencia.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.Diferencia.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.Diferencia_ButtonClick);
             // 
             // frmAvanceCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 437);
+            this.ClientSize = new System.Drawing.Size(943, 437);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dockPanel1);
             this.Name = "frmAvanceCliente";
             this.Text = "frmAvanceCliente";
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
@@ -343,14 +526,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maestroCoberturaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lider2018DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cartera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cobertura)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Diferencia)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
@@ -370,5 +558,22 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodigo;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescripcion;
+        private DevExpress.XtraGrid.Columns.GridColumn colCartera;
+        private DevExpress.XtraGrid.Columns.GridColumn colAvance;
+        private DevExpress.XtraGrid.Columns.GridColumn colCobertura;
+        private DevExpress.XtraGrid.Columns.GridColumn colDiferencia;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit Cartera;
+        private System.Windows.Forms.BindingSource maestroCoberturaBindingSource;
+        private Lider2018DataSet lider2018DataSet;
+        private DevExpress.XtraGrid.Columns.GridColumn colName0;
+        private DevExpress.XtraGrid.Columns.GridColumn colName1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit Cobertura;
+        private DevExpress.XtraGrid.Columns.GridColumn colName2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit Diferencia;
     }
 }

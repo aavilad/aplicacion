@@ -1,4 +1,7 @@
-﻿using DevExpress.XtraSplashScreen;
+﻿using DevExpress.Utils;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -373,6 +376,11 @@ namespace xtraForm.Modulos.Ventas
         }
 
         private void MODIFICAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Modificar();
+        }
+
+        private void Modificar()
         {
             if (gridView1.SelectedRowsCount > 0)
             {
@@ -829,6 +837,18 @@ namespace xtraForm.Modulos.Ventas
         private void REFRESH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Refrescar();
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+            var proceso = new Libreria.Proceso();
+            DXMouseEventArgs ea = e as DXMouseEventArgs;
+            GridView view = sender as GridView;
+            GridHitInfo info = view.CalcHitInfo(ea.Location);
+            if (info.InRow || info.InRowCell)
+            {
+                Modificar();
+            }
         }
     }
 }

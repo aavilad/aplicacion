@@ -42,12 +42,12 @@
             this.APROBAR = new DevExpress.XtraBars.BarButtonItem();
             this.DESAPROBAR = new DevExpress.XtraBars.BarButtonItem();
             this.COPIAR = new DevExpress.XtraBars.BarButtonItem();
+            this.REFRESH = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.REFRESH = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -79,6 +79,7 @@
             this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
+            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // popupMenu1
             // 
@@ -168,6 +169,14 @@
             this.COPIAR.Name = "COPIAR";
             this.COPIAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.COPIAR_ItemClick);
             // 
+            // REFRESH
+            // 
+            this.REFRESH.Caption = "Refrescar";
+            this.REFRESH.Id = 9;
+            this.REFRESH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REFRESH.ImageOptions.SvgImage")));
+            this.REFRESH.Name = "REFRESH";
+            this.REFRESH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.REFRESH_ItemClick);
+            // 
             // barManager1
             // 
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -219,14 +228,6 @@
             this.barDockControlRight.Location = new System.Drawing.Point(587, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 303);
-            // 
-            // REFRESH
-            // 
-            this.REFRESH.Caption = "Refrescar";
-            this.REFRESH.Id = 9;
-            this.REFRESH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REFRESH.ImageOptions.SvgImage")));
-            this.REFRESH.Name = "REFRESH";
-            this.REFRESH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.REFRESH_ItemClick);
             // 
             // frmPedido
             // 

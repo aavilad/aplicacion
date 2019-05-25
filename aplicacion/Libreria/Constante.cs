@@ -9,6 +9,31 @@ namespace xtraForm.Libreria
 {
     class Constante
     {
+        public const string Cartera = @"
+       SELECT DISTINCT 
+              dbo.Vva_Cliente.Codigo, 
+              dbo.Vva_Cliente.Nombre, 
+              dbo.Vva_Cliente.Direccion
+       FROM dbo.Vva_Cliente
+            INNER JOIN dbo.ZONA ON dbo.Vva_Cliente.Zona = dbo.ZONA.Zona
+       WHERE(dbo.Vva_Cliente.Zona = @Zona);";
+
+        public const string Cobertura = @"
+       SELECT DISTINCT 
+              Vva_Cliente_1.Codigo, 
+              Vva_Cliente_1.Nombre, 
+              Vva_Cliente_1.Direccion
+       FROM Vva_Cp
+            INNER JOIN Vva_Cliente AS Vva_Cliente_1 ON Vva_Cp.IDCliente = Vva_Cliente_1.Codigo
+            INNER JOIN Vva_ItemCp ON Vva_Cp.NrDoc = Vva_ItemCp.NrDoc
+                                     AND Vva_Cp.TpDoc = Vva_ItemCp.TpDoc
+            INNER JOIN Vva_Producto ON Vva_ItemCp.IDProducto = Vva_Producto.Codigo
+            INNER JOIN ZONA AS ZONA_1 ON Vva_Cliente_1.Zona = ZONA_1.Zona
+       WHERE(Vva_Cp.Anulado = 0)
+            AND (Vva_Cp.Fecha BETWEEN @Desde AND @Hasta) AND (Vva_Cliente_1.Zona = @IDZONA) AND (Vva_Producto.@variable)
+       GROUP BY Vva_Cliente_1.Codigo, 
+                Vva_Cliente_1.Nombre,
+                Vva_Cliente_1.Direccion";
         public const string AvanceCobertura = @"
                     WITH CTE_Zonas
                                   AS (SELECT DISTINCT 
@@ -40,11 +65,51 @@ namespace xtraForm.Libreria
                                                 RTRIM(Descripcion) AS Descripcion, 
                                                 SUM(Cartera) AS Cartera, 
                                                 SUM(Cobertura) / SUM(Cartera) AS Avance, 
-                                                SUM(Cobertura) AS Cobertura
+                                                SUM(Cobertura) AS Cobertura,
+                                                SUM(Cartera)-SUM(Cobertura) As Diferencia
                                          FROM CTE_Zonas AS CTE_Zonas_1
                                          GROUP BY Zona, 
                                                   Descripcion;
                     ";
+        public const string Diferencia = @"
+                            DECLARE @Universo TABLE
+                (Codigo    VARCHAR(20), 
+                 Nombre    VARCHAR(70), 
+                 Direccion VARCHAR(70)
+                );
+                
+                DECLARE @Visitados TABLE
+                (Codigo    VARCHAR(20), 
+                 Nombre    VARCHAR(70), 
+                 Direccion VARCHAR(70)
+                );
+                
+                INSERT INTO @Universo
+                       SELECT DISTINCT 
+                              dbo.Vva_Cliente.Codigo, 
+                              dbo.Vva_Cliente.Nombre, 
+                              dbo.Vva_Cliente.Direccion
+                       FROM dbo.Vva_Cliente
+                            INNER JOIN dbo.ZONA ON dbo.Vva_Cliente.Zona = dbo.ZONA.Zona
+                       WHERE(dbo.Vva_Cliente.Zona = @Zona);
+                INSERT INTO @Visitados
+                       SELECT DISTINCT 
+                              Vva_Cliente.Codigo, 
+                              Vva_Cliente.Nombre, 
+                              Vva_Cliente.Direccion
+                       FROM Vva_Cp
+                            INNER JOIN Vva_Cliente ON Vva_Cp.IDCliente = Vva_Cliente.Codigo
+                            INNER JOIN Vva_ItemCp ON Vva_Cp.NrDoc = Vva_ItemCp.NrDoc
+                                                     AND Vva_Cp.TpDoc = Vva_ItemCp.TpDoc
+                            INNER JOIN Vva_Producto ON Vva_ItemCp.IDProducto = Vva_Producto.Codigo
+                       WHERE(Vva_Cp.Anulado = 0)
+                            AND (Vva_Cp.Fecha BETWEEN @Desde AND @Hasta)
+                            AND (Vva_Cliente.Zona = @IDZONA)
+                            AND (Vva_Producto.@variable);
+                SELECT u.*
+                FROM @Universo U
+                     FULL OUTER JOIN @Visitados V ON u.Codigo = V.Codigo
+                WHERE v.Codigo IS NULL";
         public const string SinStock = "Cantidad de stock es insuficiente :";
         public const string Bonificacion =
                     @"SELECT DISTINCT

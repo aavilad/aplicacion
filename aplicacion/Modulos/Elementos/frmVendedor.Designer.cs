@@ -40,6 +40,7 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.PRECIOESCALA = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -69,7 +70,6 @@
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.PRECIOESCALA = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DIRECCION.Properties)).BeginInit();
@@ -83,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PRECIOESCALA.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -115,7 +116,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PRECIOESCALA.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -239,6 +239,24 @@
             this.checkEdit1.Size = new System.Drawing.Size(94, 20);
             this.checkEdit1.StyleController = this.layoutControl3;
             this.checkEdit1.TabIndex = 5;
+            // 
+            // PRECIOESCALA
+            // 
+            this.PRECIOESCALA.EditValue = "";
+            this.PRECIOESCALA.Location = new System.Drawing.Point(80, 12);
+            this.PRECIOESCALA.Name = "PRECIOESCALA";
+            this.PRECIOESCALA.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PRECIOESCALA.Properties.Items.AddRange(new object[] {
+            "Mayorista",
+            "Minorista",
+            "Segun Venta"});
+            this.PRECIOESCALA.Properties.NullText = "[Vacío]";
+            this.PRECIOESCALA.Properties.PopupSizeable = true;
+            this.PRECIOESCALA.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.PRECIOESCALA.Size = new System.Drawing.Size(268, 20);
+            this.PRECIOESCALA.StyleController = this.layoutControl3;
+            this.PRECIOESCALA.TabIndex = 4;
             // 
             // layoutControlGroup3
             // 
@@ -525,24 +543,6 @@
             this.emptySpaceItem3.Size = new System.Drawing.Size(194, 26);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // PRECIOESCALA
-            // 
-            this.PRECIOESCALA.EditValue = "";
-            this.PRECIOESCALA.Location = new System.Drawing.Point(80, 12);
-            this.PRECIOESCALA.Name = "PRECIOESCALA";
-            this.PRECIOESCALA.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PRECIOESCALA.Properties.Items.AddRange(new object[] {
-            "Mayorista",
-            "Minorista",
-            "Segun Venta"});
-            this.PRECIOESCALA.Properties.NullText = "[Vacío]";
-            this.PRECIOESCALA.Properties.PopupSizeable = true;
-            this.PRECIOESCALA.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.PRECIOESCALA.Size = new System.Drawing.Size(268, 20);
-            this.PRECIOESCALA.StyleController = this.layoutControl3;
-            this.PRECIOESCALA.TabIndex = 4;
-            // 
             // frmVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -565,6 +565,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PRECIOESCALA.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
@@ -597,7 +598,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PRECIOESCALA.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
