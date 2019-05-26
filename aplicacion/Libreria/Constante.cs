@@ -91,7 +91,7 @@ namespace xtraForm.Libreria
                               dbo.Vva_Cliente.Direccion
                        FROM dbo.Vva_Cliente
                             INNER JOIN dbo.ZONA ON dbo.Vva_Cliente.Zona = dbo.ZONA.Zona
-                       WHERE(dbo.Vva_Cliente.Zona = @Zona);
+                       WHERE(dbo.Vva_Cliente.Zona = @IDZONA);
                 INSERT INTO @Visitados
                        SELECT DISTINCT 
                               Vva_Cliente.Codigo, 

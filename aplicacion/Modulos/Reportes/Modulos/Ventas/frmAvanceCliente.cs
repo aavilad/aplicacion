@@ -77,7 +77,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
         {
             string Desde = Convert.ToDateTime(DESDE.EditValue).ToString("yyyyMMdd");
             string Hasta = Convert.ToDateTime(HASTA.EditValue).ToString("yyyyMMdd");
-            PK = codigo;
+            PK = codigo.Trim();
             VARIABLE.Text = descripcion;
             sql = Libreria.Constante.AvanceCobertura.Replace("@Desde", "'" + Desde + "'").Replace("@Hasta", "'" + Hasta + "'").Replace("@variable", "IDProv = '" + PK + "'");
             sql1 = Libreria.Constante.Cobertura.Replace("@Desde", "'" + Desde + "'").Replace("@Hasta", "'" + Hasta + "'").Replace("@variable", "IDProv = '" + PK + "'");
@@ -88,7 +88,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
         {
             string Desde = Convert.ToDateTime(DESDE.EditValue).ToString("yyyyMMdd");
             string Hasta = Convert.ToDateTime(HASTA.EditValue).ToString("yyyyMMdd");
-            PK = codigo;
+            PK = codigo.Trim();
             VARIABLE.Text = descripcion;
             sql = Libreria.Constante.AvanceCobertura.Replace("@Desde", "'" + Desde + "'").Replace("@Hasta", "'" + Hasta + "'").Replace("@variable", "IDMarca = '" + PK + "'");
             sql1 = Libreria.Constante.Cobertura.Replace("@Desde", "'" + Desde + "'").Replace("@Hasta", "'" + Hasta + "'").Replace("@variable", "IDMarca = '" + PK + "'");
@@ -100,7 +100,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
         {
             string Desde = Convert.ToDateTime(DESDE.EditValue).ToString("yyyyMMdd");
             string Hasta = Convert.ToDateTime(HASTA.EditValue).ToString("yyyyMMdd");
-            PK = codigo;
+            PK = codigo.Trim();
             VARIABLE.Text = descripcion;
             sql = Libreria.Constante.AvanceCobertura.Replace("@Desde", "'" + Desde + "'").Replace("@Hasta", "'" + Hasta + "'").Replace("@variable", "IDLinea = '" + PK + "'");
             sql1 = Libreria.Constante.Cobertura.Replace("@Desde", "'" + Desde + "'").Replace("@Hasta", "'" + Hasta + "'").Replace("@variable", "IDLinea = '" + PK + "'");
@@ -111,7 +111,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
         {
             string Desde = Convert.ToDateTime(DESDE.EditValue).ToString("yyyyMMdd");
             string Hasta = Convert.ToDateTime(HASTA.EditValue).ToString("yyyyMMdd");
-            PK = codigo;
+            PK = codigo.Trim();
             VARIABLE.Text = descripcion;
             sql = Libreria.Constante.AvanceCobertura.Replace("@Desde", "'" + Desde + "'").Replace("@Hasta", "'" + Hasta + "'").Replace("@variable", "Codigo = '" + PK + "'");
             sql1 = Libreria.Constante.Cobertura.Replace("@Desde", "'" + Desde + "'").Replace("@Hasta", "'" + Hasta + "'").Replace("@variable", "Codigo = '" + PK + "'");
