@@ -850,5 +850,16 @@ namespace xtraForm.Modulos.Ventas
                 Modificar();
             }
         }
+
+        private void FACTURACIONLOTE_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var Formulario = new frmPrincipal();
+            Formulario.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+            Formulario.splashScreenManager1.ShowWaitForm();
+            var frmfacturacion = new Modulos.Elementos.frmFacturacion();
+            frmfacturacion.StartPosition = FormStartPosition.CenterScreen;
+            frmfacturacion.Show();
+            Formulario.splashScreenManager1.CloseWaitForm();
+        }
     }
 }

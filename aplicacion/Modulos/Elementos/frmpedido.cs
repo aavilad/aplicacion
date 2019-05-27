@@ -399,7 +399,6 @@ namespace xtraForm.Modulos.Elementos
                     switch (dataGridView1.Columns[e.ColumnIndex].Name)
                     {
                         case "Codigo":
-
                             Valor = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) is DBNull ? "" : Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value);
                             if (Valor == "") ;
                             else if (CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1 == Valor).Count() == 1)
@@ -458,9 +457,13 @@ namespace xtraForm.Modulos.Elementos
                                 dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
                                 dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = i > 0 ? i * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
                                 dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = i < 0 ? Math.Abs(i) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
-                                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"];
-                                dataGridView1.BeginEdit(true);
-                                calculartotal();
+                                if (dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value != null)
+                                {
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"];
+                                    dataGridView1.BeginEdit(true);
+                                    calculartotal();
+                                }
+
                             }
                             else
                             {
@@ -572,25 +575,6 @@ namespace xtraForm.Modulos.Elementos
             if (e.KeyChar == (char)Keys.Escape)
                 btnCancelar_Click(sender, e);
         }
-        private void frmpedido_KeyUp(object sender, KeyEventArgs e)
-        {
-            //if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.A))
-            //{
-            //    btnAgregar_Click(sender, e);
-            //}
-            //if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.Q))
-            //{
-            //    btnQuitar_Click(sender, e);
-            //}
-            //if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.C))
-            //{
-            //    btnCancelar_Click(sender, e);
-            //}
-            //if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.Enter))
-            //{
-            //    btnAceptar_Click(sender, e);
-            //}
-        }
 
         private void frmpedido_Load(object sender, EventArgs e)
         {
@@ -599,6 +583,7 @@ namespace xtraForm.Modulos.Elementos
         void Productos(string sql)
         {
             Maestro.frmProducto frmproducto = new Maestro.frmProducto();
+            frmproducto.Ex = true;
             frmproducto.pasar += new Maestro.frmProducto.variables(camposproducto);
             proceso.consultar(sql, "Producto");
             frmproducto.gridControl1.DataSource = proceso.ds.Tables["Producto"];

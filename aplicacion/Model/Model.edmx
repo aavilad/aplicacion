@@ -1607,6 +1607,11 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             <End Role="Bonificacion" EntitySet="Bonificacions" />
             <End Role="ItemBonificacion" EntitySet="ItemBonificacions" />
           </AssociationSet>
+          <FunctionImport Name="sp_genera_documento">
+            <Parameter Name="pedido" Mode="In" Type="String" />
+            <Parameter Name="tipo" Mode="In" Type="Int32" />
+            <Parameter Name="tdoc" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Clase_Producto">
           <Key>
@@ -3598,6 +3603,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_genera_documento" FunctionName="LiderModel.Store.sp_genera_documento" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

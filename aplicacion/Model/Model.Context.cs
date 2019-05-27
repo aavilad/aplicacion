@@ -12,6 +12,8 @@ namespace xtraForm.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class LiderEntities : DbContext
     {
@@ -71,5 +73,22 @@ namespace xtraForm.Model
         public virtual DbSet<FiltroConfiguracion> FiltroConfiguracions { get; set; }
         public virtual DbSet<Bonificacion> Bonificacions { get; set; }
         public virtual DbSet<TipoBonificacion> TipoBonificacions { get; set; }
+    
+        public virtual int sp_genera_documento(string pedido, Nullable<int> tipo, string tdoc)
+        {
+            var pedidoParameter = pedido != null ?
+                new ObjectParameter("pedido", pedido) :
+                new ObjectParameter("pedido", typeof(string));
+    
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(int));
+    
+            var tdocParameter = tdoc != null ?
+                new ObjectParameter("tdoc", tdoc) :
+                new ObjectParameter("tdoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_genera_documento", pedidoParameter, tipoParameter, tdocParameter);
+        }
     }
 }

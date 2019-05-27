@@ -635,6 +635,12 @@
     <Compile Include="Modulos\Progreso.Designer.cs">
       <DependentUpon>Progreso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Ventas\frmControlGenera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Ventas\frmControlGenera.Designer.cs">
+      <DependentUpon>frmControlGenera.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Ventas\frmCorrelativos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -856,6 +862,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Progreso.resx">
       <DependentUpon>Progreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Ventas\frmControlGenera.resx">
+      <DependentUpon>frmControlGenera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmCorrelativos.resx">
       <DependentUpon>frmCorrelativos.cs</DependentUpon>

@@ -40,7 +40,6 @@
             this.MARCAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
             this.GRUPOPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
             this.LINEAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
-            this.VENTASREPORTE = new DevExpress.XtraBars.BarButtonItem();
             this.COMPRAREPORTE = new DevExpress.XtraBars.BarButtonItem();
             this.INVENTARIOREPORTE = new DevExpress.XtraBars.BarButtonItem();
             this.DESCARGAPEDIDO = new DevExpress.XtraBars.BarButtonItem();
@@ -55,7 +54,6 @@
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.CLASEPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
             this.PLANTILLAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
-            this.FACTURARVENTA = new DevExpress.XtraBars.BarButtonItem();
             this.CONTROLGENERA = new DevExpress.XtraBars.BarButtonItem();
             this.LISTAPRECIOS = new DevExpress.XtraBars.BarButtonItem();
             this.VALIDARBONIFICACION = new DevExpress.XtraBars.BarButtonItem();
@@ -70,21 +68,22 @@
             this.ELIMINAR = new DevExpress.XtraBars.BarButtonItem();
             this.ANULAR = new DevExpress.XtraBars.BarButtonItem();
             this.FACTURAR = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.RDISTRIBUCION = new DevExpress.XtraBars.BarSubItem();
             this.ListadoPorRuta = new DevExpress.XtraBars.BarButtonItem();
             this.ListadoProductoClase = new DevExpress.XtraBars.BarButtonItem();
             this.InformeDeReparto = new DevExpress.XtraBars.BarButtonItem();
             this.ListadoGeneralClase = new DevExpress.XtraBars.BarButtonItem();
+            this.AvanceCobertura = new DevExpress.XtraBars.BarButtonItem();
             this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             this.TIPOCP = new DevExpress.XtraBars.BarButtonItem();
             this.CUBOS = new DevExpress.XtraBars.BarSubItem();
             this.CBODMS = new DevExpress.XtraBars.BarButtonItem();
             this.CBOCOMPRAS = new DevExpress.XtraBars.BarButtonItem();
             this.CBOVENTAS = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.DataUser = new DevExpress.XtraBars.BarStaticItem();
+            this.RVENTAS = new DevExpress.XtraBars.BarSubItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -103,7 +102,6 @@
             this.MREPORTES = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.REPORTES = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G031 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.MCONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.CONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -114,8 +112,8 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.AvanceCobertura = new DevExpress.XtraBars.BarButtonItem();
+            this.GENERAGUIAS = new DevExpress.XtraBars.BarButtonItem();
+            this.GENERAINFORME = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
@@ -147,7 +145,6 @@
             this.MARCAPRODUCTO,
             this.GRUPOPRODUCTO,
             this.LINEAPRODUCTO,
-            this.VENTASREPORTE,
             this.COMPRAREPORTE,
             this.INVENTARIOREPORTE,
             this.DESCARGAPEDIDO,
@@ -162,7 +159,6 @@
             this.barButtonItem20,
             this.CLASEPRODUCTO,
             this.PLANTILLAPRODUCTO,
-            this.FACTURARVENTA,
             this.CONTROLGENERA,
             this.LISTAPRECIOS,
             this.VALIDARBONIFICACION,
@@ -177,7 +173,7 @@
             this.ELIMINAR,
             this.ANULAR,
             this.FACTURAR,
-            this.barSubItem1,
+            this.RDISTRIBUCION,
             this.ListadoPorRuta,
             this.ListadoProductoClase,
             this.skinPaletteRibbonGalleryBarItem1,
@@ -185,17 +181,18 @@
             this.TIPOCP,
             this.CUBOS,
             this.CBODMS,
-            this.barButtonItem1,
             this.ListadoGeneralClase,
             this.CBOCOMPRAS,
             this.CBOVENTAS,
             this.barStaticItem1,
             this.barStaticItem2,
             this.DataUser,
-            this.barButtonItem3,
-            this.AvanceCobertura});
+            this.AvanceCobertura,
+            this.RVENTAS,
+            this.GENERAGUIAS,
+            this.GENERAINFORME});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 2;
+            this.ribbonControl1.MaxItemId = 5;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -310,17 +307,6 @@
             this.LINEAPRODUCTO.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("LINEAPRODUCTO.ImageOptions.Image")));
             this.LINEAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("LINEAPRODUCTO.ImageOptions.SvgImage")));
             this.LINEAPRODUCTO.Name = "LINEAPRODUCTO";
-            // 
-            // VENTASREPORTE
-            // 
-            resources.ApplyResources(this.VENTASREPORTE, "VENTASREPORTE");
-            this.VENTASREPORTE.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
-            this.VENTASREPORTE.Enabled = false;
-            this.VENTASREPORTE.Id = 15;
-            this.VENTASREPORTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENTASREPORTE.ImageOptions.SvgImage")));
-            this.VENTASREPORTE.Name = "VENTASREPORTE";
-            this.VENTASREPORTE.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // COMPRAREPORTE
             // 
@@ -452,23 +438,14 @@
             this.PLANTILLAPRODUCTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("PLANTILLAPRODUCTO.ImageOptions.SvgImage")));
             this.PLANTILLAPRODUCTO.Name = "PLANTILLAPRODUCTO";
             // 
-            // FACTURARVENTA
-            // 
-            resources.ApplyResources(this.FACTURARVENTA, "FACTURARVENTA");
-            this.FACTURARVENTA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
-            this.FACTURARVENTA.Id = 47;
-            this.FACTURARVENTA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURARVENTA.ImageOptions.SvgImage")));
-            this.FACTURARVENTA.Name = "FACTURARVENTA";
-            this.FACTURARVENTA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnCanjear_ItemClick);
-            // 
             // CONTROLGENERA
             // 
             resources.ApplyResources(this.CONTROLGENERA, "CONTROLGENERA");
             this.CONTROLGENERA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
-            this.CONTROLGENERA.Enabled = false;
             this.CONTROLGENERA.Id = 48;
-            this.CONTROLGENERA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CONTROLGENERA.ImageOptions.SvgImage")));
+            this.CONTROLGENERA.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("CONTROLGENERA.ImageOptions.Image")));
             this.CONTROLGENERA.Name = "CONTROLGENERA";
+            this.CONTROLGENERA.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             this.CONTROLGENERA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CONTROLGENERA_ItemClick);
             // 
             // LISTAPRECIOS
@@ -568,18 +545,19 @@
             this.FACTURAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURAR.ImageOptions.SvgImage")));
             this.FACTURAR.Name = "FACTURAR";
             // 
-            // barSubItem1
+            // RDISTRIBUCION
             // 
-            resources.ApplyResources(this.barSubItem1, "barSubItem1");
-            this.barSubItem1.Id = 18;
-            this.barSubItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            resources.ApplyResources(this.RDISTRIBUCION, "RDISTRIBUCION");
+            this.RDISTRIBUCION.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.RDISTRIBUCION.Id = 18;
+            this.RDISTRIBUCION.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("RDISTRIBUCION.ImageOptions.SvgImage")));
+            this.RDISTRIBUCION.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoPorRuta),
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoProductoClase),
             new DevExpress.XtraBars.LinkPersistInfo(this.InformeDeReparto),
             new DevExpress.XtraBars.LinkPersistInfo(this.ListadoGeneralClase),
             new DevExpress.XtraBars.LinkPersistInfo(this.AvanceCobertura)});
-            this.barSubItem1.Name = "barSubItem1";
+            this.RDISTRIBUCION.Name = "RDISTRIBUCION";
             // 
             // ListadoPorRuta
             // 
@@ -613,6 +591,14 @@
             this.ListadoGeneralClase.Name = "ListadoGeneralClase";
             this.ListadoGeneralClase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ListadoGeneralClase_ItemClick);
             // 
+            // AvanceCobertura
+            // 
+            resources.ApplyResources(this.AvanceCobertura, "AvanceCobertura");
+            this.AvanceCobertura.Id = 1;
+            this.AvanceCobertura.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("AvanceCobertura.ImageOptions.SvgImage")));
+            this.AvanceCobertura.Name = "AvanceCobertura";
+            this.AvanceCobertura.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AvanceCobertura_ItemClick);
+            // 
             // skinPaletteRibbonGalleryBarItem1
             // 
             resources.ApplyResources(this.skinPaletteRibbonGalleryBarItem1, "skinPaletteRibbonGalleryBarItem1");
@@ -631,6 +617,7 @@
             // CUBOS
             // 
             resources.ApplyResources(this.CUBOS, "CUBOS");
+            this.CUBOS.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
             this.CUBOS.Id = 6;
             this.CUBOS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CUBOS.ImageOptions.SvgImage")));
             this.CUBOS.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -662,12 +649,6 @@
             this.CBOVENTAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CBOVENTAS.ImageOptions.SvgImage")));
             this.CBOVENTAS.Name = "CBOVENTAS";
             // 
-            // barButtonItem1
-            // 
-            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
-            this.barButtonItem1.Id = 1;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
             // barStaticItem1
             // 
             resources.ApplyResources(this.barStaticItem1, "barStaticItem1");
@@ -688,6 +669,18 @@
             this.DataUser.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("DataUser.ImageOptions.SvgImage")));
             this.DataUser.Name = "DataUser";
             this.DataUser.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // RVENTAS
+            // 
+            resources.ApplyResources(this.RVENTAS, "RVENTAS");
+            this.RVENTAS.CategoryGuid = new System.Guid("a0ed865f-c054-466d-b670-cd8a50cd6539");
+            this.RVENTAS.Id = 1;
+            this.RVENTAS.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RVENTAS.ImageOptions.Image")));
+            this.RVENTAS.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.AvanceCobertura)});
+            this.RVENTAS.Name = "RVENTAS";
+            this.RVENTAS.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // MVENTAS
             // 
@@ -728,8 +721,9 @@
             // 
             // G03
             // 
-            this.G03.ItemLinks.Add(this.FACTURARVENTA);
             this.G03.ItemLinks.Add(this.CONTROLGENERA);
+            this.G03.ItemLinks.Add(this.GENERAINFORME);
+            this.G03.ItemLinks.Add(this.GENERAGUIAS);
             this.G03.Name = "G03";
             resources.ApplyResources(this.G03, "G03");
             // 
@@ -820,8 +814,7 @@
             // REPORTES
             // 
             this.REPORTES.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.G031,
-            this.ribbonPageGroup2});
+            this.G031});
             this.REPORTES.KeyTip = "R";
             this.REPORTES.Name = "REPORTES";
             resources.ApplyResources(this.REPORTES, "REPORTES");
@@ -830,16 +823,11 @@
             // 
             this.G031.ItemLinks.Add(this.COMPRAREPORTE);
             this.G031.ItemLinks.Add(this.INVENTARIOREPORTE);
-            this.G031.ItemLinks.Add(this.VENTASREPORTE);
-            this.G031.ItemLinks.Add(this.barSubItem1);
+            this.G031.ItemLinks.Add(this.RVENTAS);
+            this.G031.ItemLinks.Add(this.RDISTRIBUCION);
             this.G031.ItemLinks.Add(this.CUBOS);
             this.G031.Name = "G031";
             resources.ApplyResources(this.G031, "G031");
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
             // 
             // MCONFIGURACION
             // 
@@ -906,19 +894,23 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // barButtonItem3
+            // GENERAGUIAS
             // 
-            resources.ApplyResources(this.barButtonItem3, "barButtonItem3");
-            this.barButtonItem3.Id = 11;
-            this.barButtonItem3.Name = "barButtonItem3";
+            resources.ApplyResources(this.GENERAGUIAS, "GENERAGUIAS");
+            this.GENERAGUIAS.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.GENERAGUIAS.Id = 2;
+            this.GENERAGUIAS.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.GENERAGUIAS.Name = "GENERAGUIAS";
+            this.GENERAGUIAS.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
-            // AvanceCobertura
+            // GENERAINFORME
             // 
-            resources.ApplyResources(this.AvanceCobertura, "AvanceCobertura");
-            this.AvanceCobertura.Id = 1;
-            this.AvanceCobertura.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-            this.AvanceCobertura.Name = "AvanceCobertura";
-            this.AvanceCobertura.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AvanceCobertura_ItemClick);
+            resources.ApplyResources(this.GENERAINFORME, "GENERAINFORME");
+            this.GENERAINFORME.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.GENERAINFORME.Id = 4;
+            this.GENERAINFORME.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.GENERAINFORME.Name = "GENERAINFORME";
+            this.GENERAINFORME.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
             // frmPrincipal
             // 
@@ -956,7 +948,6 @@
         private DevExpress.XtraBars.BarButtonItem MARCAPRODUCTO;
         private DevExpress.XtraBars.BarButtonItem GRUPOPRODUCTO;
         private DevExpress.XtraBars.BarButtonItem LINEAPRODUCTO;
-        private DevExpress.XtraBars.BarButtonItem VENTASREPORTE;
         private DevExpress.XtraBars.BarButtonItem COMPRAREPORTE;
         private DevExpress.XtraBars.BarButtonItem INVENTARIOREPORTE;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
@@ -972,7 +963,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem20;
         private DevExpress.XtraBars.BarButtonItem CLASEPRODUCTO;
         private DevExpress.XtraBars.BarButtonItem PLANTILLAPRODUCTO;
-        private DevExpress.XtraBars.BarButtonItem FACTURARVENTA;
         private DevExpress.XtraBars.BarButtonItem CONTROLGENERA;
         private DevExpress.XtraBars.BarButtonItem LISTAPRECIOS;
         private DevExpress.XtraBars.BarButtonItem VALIDARBONIFICACION;
@@ -1006,7 +996,7 @@
         private DevExpress.XtraBars.BarButtonItem ELIMINAR;
         private DevExpress.XtraBars.BarButtonItem ANULAR;
         private DevExpress.XtraBars.BarButtonItem FACTURAR;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem RDISTRIBUCION;
         private DevExpress.XtraBars.BarButtonItem ListadoPorRuta;
         private DevExpress.XtraBars.BarButtonItem ListadoProductoClase;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
@@ -1017,10 +1007,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit repositoryItemPopupContainerEdit1;
         private DevExpress.XtraBars.BarButtonItem InformeDeReparto;
         private DevExpress.XtraBars.BarButtonItem TIPOCP;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarSubItem CUBOS;
         private DevExpress.XtraBars.BarButtonItem CBODMS;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem ListadoGeneralClase;
         private DevExpress.XtraBars.BarButtonItem CBOCOMPRAS;
         private DevExpress.XtraBars.BarButtonItem CBOVENTAS;
@@ -1029,6 +1017,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemFontEdit repositoryItemFontEdit1;
         public DevExpress.XtraBars.BarStaticItem DataUser;
         private DevExpress.XtraBars.BarButtonItem AvanceCobertura;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarSubItem RVENTAS;
+        private DevExpress.XtraBars.BarButtonItem GENERAGUIAS;
+        private DevExpress.XtraBars.BarButtonItem GENERAINFORME;
     }
 }

@@ -1106,7 +1106,6 @@
             this.Name = "frmpedido";
             this.Load += new System.EventHandler(this.frmpedido_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmpedido_KeyPress);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmpedido_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.txtcdDocumento.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txttipoDocumento.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

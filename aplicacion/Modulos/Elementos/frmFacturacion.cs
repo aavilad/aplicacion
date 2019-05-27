@@ -199,7 +199,7 @@ namespace xtraForm.Modulos.Elementos
                     {
                         foreach (var fila in Pedidos)
                         {
-                            //Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
+                            Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
                         }
                         var Documentos = (from p in Context.DOCUMENTOes.AsEnumerable()
                                           join r in Pedidos on p.Pedido equals r.Pedido
@@ -283,7 +283,7 @@ namespace xtraForm.Modulos.Elementos
                     {
                         foreach (var fila in Pedidos)
                         {
-                            //Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
+                            Context.sp_genera_documento(fila.Pedido, Convert.ToInt32(fila.Persona), fila.Tipo);
                         }
                         var Documentos = (from p in Context.DOCUMENTOes.AsEnumerable()
                                           join r in Pedidos on p.Pedido equals r.Pedido

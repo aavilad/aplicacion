@@ -9,6 +9,7 @@ namespace xtraForm.Libreria
 {
     class Constante
     {
+        public const string Filtro = @"SELECT campo, condicion, valor,[union] from filtro WHERE tabla = '@Tabla' ORDER BY Orden ASC";
         public const string Cartera = @"
        SELECT DISTINCT 
               dbo.Vva_Cliente.Codigo, 

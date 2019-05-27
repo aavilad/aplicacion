@@ -143,10 +143,6 @@ namespace xtraForm.Modulos.Elementos
         private void IDObsequio_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             Maestro.frmProducto msproducto = new Maestro.frmProducto();
-            proceso.consultar("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1", "Producto");
-            msproducto.gridControl1.DataSource = proceso.ds.Tables["Producto"];
-            msproducto.gridView1.OptionsView.ShowGroupPanel = false;
-            msproducto.gridView1.OptionsView.ShowIndicator = false;
             msproducto.gridView1.BestFitColumns();
             msproducto.pasar += new Maestro.frmProducto.variables(camposproductobsequio);
             msproducto.StartPosition = FormStartPosition.CenterScreen;
@@ -213,10 +209,6 @@ namespace xtraForm.Modulos.Elementos
         private void IDCanje_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             Maestro.frmProducto msproducto = new Maestro.frmProducto();
-            proceso.consultar("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1", "Producto");
-            msproducto.gridControl1.DataSource = proceso.ds.Tables["Producto"];
-            msproducto.gridView1.OptionsView.ShowGroupPanel = false;
-            msproducto.gridView1.OptionsView.ShowIndicator = false;
             msproducto.gridView1.BestFitColumns();
             msproducto.pasar += new Maestro.frmProducto.variables(camposproductocanje);
             msproducto.StartPosition = FormStartPosition.CenterScreen;
@@ -284,10 +276,6 @@ namespace xtraForm.Modulos.Elementos
             {
                 bonificacion.IdAsociado = proceso.ConsultarEntero("PKID", "TipoAsociado", "Codigo = '" + cdProducto.Text + "'");
                 Maestro.frmProducto msproducto = new Maestro.frmProducto();
-                proceso.consultar("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1", "Producto");
-                msproducto.gridControl1.DataSource = proceso.ds.Tables["Producto"];
-                msproducto.gridView1.OptionsView.ShowGroupPanel = false;
-                msproducto.gridView1.OptionsView.ShowIndicator = false;
                 msproducto.gridView1.BestFitColumns();
                 msproducto.pasar += new Maestro.frmProducto.variables(camposproducto);
                 msproducto.StartPosition = FormStartPosition.CenterScreen;

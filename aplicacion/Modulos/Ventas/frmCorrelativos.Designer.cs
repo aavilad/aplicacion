@@ -31,15 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCorrelativos));
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.NUEVO = new DevExpress.XtraBars.BarButtonItem();
+            this.MODIFICAR = new DevExpress.XtraBars.BarButtonItem();
+            this.ELIMINAR = new DevExpress.XtraBars.BarButtonItem();
+            this.FILTRO = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.NUEVO = new DevExpress.XtraBars.BarButtonItem();
-            this.MODIFICAR = new DevExpress.XtraBars.BarButtonItem();
-            this.ELIMINAR = new DevExpress.XtraBars.BarButtonItem();
-            this.FILTRO = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -57,6 +57,35 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.FILTRO)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
+            // 
+            // NUEVO
+            // 
+            this.NUEVO.Caption = "Nuevo";
+            this.NUEVO.Id = 0;
+            this.NUEVO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NUEVO.ImageOptions.SvgImage")));
+            this.NUEVO.Name = "NUEVO";
+            // 
+            // MODIFICAR
+            // 
+            this.MODIFICAR.Caption = "Modificar";
+            this.MODIFICAR.Id = 1;
+            this.MODIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MODIFICAR.ImageOptions.SvgImage")));
+            this.MODIFICAR.Name = "MODIFICAR";
+            // 
+            // ELIMINAR
+            // 
+            this.ELIMINAR.Caption = "Eliminar";
+            this.ELIMINAR.Id = 2;
+            this.ELIMINAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ELIMINAR.ImageOptions.SvgImage")));
+            this.ELIMINAR.Name = "ELIMINAR";
+            // 
+            // FILTRO
+            // 
+            this.FILTRO.Caption = "Filtro";
+            this.FILTRO.Id = 3;
+            this.FILTRO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FILTRO.ImageOptions.SvgImage")));
+            this.FILTRO.Name = "FILTRO";
+            this.FILTRO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FILTRO_ItemClick);
             // 
             // barManager1
             // 
@@ -104,35 +133,6 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 428);
             // 
-            // NUEVO
-            // 
-            this.NUEVO.Caption = "Nuevo";
-            this.NUEVO.Id = 0;
-            this.NUEVO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NUEVO.ImageOptions.SvgImage")));
-            this.NUEVO.Name = "NUEVO";
-            // 
-            // MODIFICAR
-            // 
-            this.MODIFICAR.Caption = "Modificar";
-            this.MODIFICAR.Id = 1;
-            this.MODIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MODIFICAR.ImageOptions.SvgImage")));
-            this.MODIFICAR.Name = "MODIFICAR";
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.Caption = "Eliminar";
-            this.ELIMINAR.Id = 2;
-            this.ELIMINAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ELIMINAR.ImageOptions.SvgImage")));
-            this.ELIMINAR.Name = "ELIMINAR";
-            // 
-            // FILTRO
-            // 
-            this.FILTRO.Caption = "Filtro";
-            this.FILTRO.Id = 3;
-            this.FILTRO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FILTRO.ImageOptions.SvgImage")));
-            this.FILTRO.Name = "FILTRO";
-            this.FILTRO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FILTRO_ItemClick);
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -162,6 +162,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmCorrelativos";
             this.Text = "frmCorrelativos";
+            this.Load += new System.EventHandler(this.frmCorrelativos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

@@ -125,8 +125,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
             var ds = new Lider2018DataSet();
             proceso.consultar(sql, "Cobertura");
             maestroCoberturaBindingSource.DataSource = proceso.ds.Tables["Cobertura"];
-            //gridView1.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            //gridView1.Columns[3].DisplayFormat.FormatString = "P";
             gridView1.BestFitColumns();
         }
 
@@ -134,30 +132,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
         {
             VARIABLE.ResetText();
             PK = "";
-        }
-
-        private void gridView1_DoubleClick(object sender, EventArgs e)
-        {
-            //var proceso = new Libreria.Proceso();
-            //DXMouseEventArgs ea = e as DXMouseEventArgs;
-            //GridView view = sender as GridView;
-            //GridHitInfo info = view.CalcHitInfo(ea.Location);
-            //if (info.InRow || info.InRowCell)
-            //{
-            //    //string colCaption = info.Column == null ? "N/A" : info.Column.GetCaption();
-            //    //MessageBox.Show(string.Format("DoubleClick on row: {0}, column: {1}.", info.RowHandle, colCaption));
-            //    var Formulario = new Elementos.frmAvanceClienteDetalle();
-            //    IDZona = gridView1.GetFocusedRowCellValue("Codigo").ToString();
-            //    proceso.consultar(Libreria.Constante.Cartera.Replace("@Zona", "'" + IDZona + "'"), "Cartera");
-            //    Formulario.label1.Text = "Filas: " + proceso.ds.Tables["Cartera"].Rows.Count;
-            //    Formulario.Cartera.DataSource = proceso.ds.Tables["Cartera"];
-            //    proceso.consultar(sql1.Replace("@IDZONA", "'" + IDZona + "'"), "Cobertura");
-            //    Formulario.label2.Text = "Filas: " + proceso.ds.Tables["Cobertura"].Rows.Count;
-            //    Formulario.Cobertura.DataSource = proceso.ds.Tables["Cobertura"];
-            //    Formulario.gridView1.BestFitColumns();
-            //    Formulario.gridView2.BestFitColumns();
-            //    Formulario.Show();
-            //}
         }
 
         private void PREVIEW_Click(object sender, EventArgs e)

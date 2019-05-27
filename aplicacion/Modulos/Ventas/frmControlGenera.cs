@@ -12,36 +12,43 @@ using xtraForm.Model;
 
 namespace xtraForm.Modulos.Ventas
 {
-    public partial class frmCorrelativos : DevExpress.XtraEditors.XtraForm
+    public partial class frmControlGenera : DevExpress.XtraEditors.XtraForm
     {
-        public string tabla = "ControlGenera";
         public string NModulo;
-        public frmCorrelativos()
+        public string Tabla = "ControlGenera";
+        public frmControlGenera()
         {
             InitializeComponent();
+        }
+        private void Refrescar()
+        {
+            var proceso = new Libreria.Proceso();
+            proceso.consultar(Libreria.Constante.Filtro.Replace("@Tabla", Tabla), Tabla);
+            List<string> lista_ = new List<string>();
+            foreach (DataRow DR_1 in proceso.ds.Tables[Tabla].Rows)
+                lista_.Add(Tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
+            string cadena = string.Join(" ", lista_.ToArray());
+            condicion(cadena);
         }
 
         void condicion(string cadena)
         {
-            var proceso = new Libreria.Proceso();
             using (var Context = new LiderEntities())
             {
+                var proceso = new Libreria.Proceso();
                 string Query = Convert.ToString(Context.VistaAdministrativas.Where(x => x.IDModulo == (Context.Moduloes.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
                 {
-
-                    proceso.consultar(Query, tabla);
-                    gridControl1.DataSource = proceso.ds.Tables[tabla];
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
+                    proceso.consultar(Query, Tabla);
+                    gridControl1.DataSource = proceso.ds.Tables[Tabla];
                     gridView1.OptionsView.ColumnAutoWidth = false;
                     gridView1.OptionsBehavior.Editable = false;
                     gridView1.OptionsBehavior.ReadOnly = true;
                     gridView1.OptionsView.ShowGroupPanel = false;
                     gridView1.OptionsView.ShowFooter = true;
                     gridView1.FooterPanelHeight = -2;
-                    gridView1.Columns["Valor Venta"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns["Igv"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns["Valor Total"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns["Tipo Condicion"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
                     gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
                     gridView1.GroupRowHeight = 1;
                     gridView1.RowHeight = 1;
@@ -52,18 +59,16 @@ namespace xtraForm.Modulos.Ventas
                 {
                     try
                     {
-                        proceso.consultar(Query + " having " + cadena, tabla);
-                        gridControl1.DataSource = proceso.ds.Tables[tabla];
+                        gridControl1.DataSource = null;
+                        gridView1.Columns.Clear();
+                        proceso.consultar(Query.Replace("ORDER", " Where " + cadena + " ORDER"), Tabla);
+                        gridControl1.DataSource = proceso.ds.Tables[Tabla];
                         gridView1.OptionsView.ColumnAutoWidth = false;
                         gridView1.OptionsBehavior.Editable = false;
                         gridView1.OptionsBehavior.ReadOnly = true;
                         gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
                         gridView1.OptionsView.ShowGroupPanel = false;
                         gridView1.OptionsView.ShowFooter = true;
-                        gridView1.Columns["Valor Venta"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                        gridView1.Columns["Igv"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                        gridView1.Columns["Valor Total"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                        gridView1.Columns["Tipo Condicion"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
                         gridView1.GroupRowHeight = 1;
                         gridView1.RowHeight = 1;
                         gridView1.Appearance.Row.FontSizeDelta = 0;
@@ -76,7 +81,6 @@ namespace xtraForm.Modulos.Ventas
                     }
                 }
             }
-
         }
 
         private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -93,22 +97,21 @@ namespace xtraForm.Modulos.Ventas
                 j.DisplayMember = "Descripcion";
                 j.ValueMember = "Codigo";
                 DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
-                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_View + "'vva_pedido'").ToList();
+                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'"+Tabla+"'").ToList();
                 filtro.pasar += new Filtros.frmFiltros.variables(condicion);
                 filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(Tabla)).OrderBy(x => x.Orden).ToList())
                 {
                     filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
                 }
-                filtro.entidad = tabla;
+                filtro.entidad = Tabla;
                 filtro.ShowDialog();
             }
-
         }
 
-        private void frmCorrelativos_Load(object sender, EventArgs e)
+        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-
+            popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
         }
     }
 }

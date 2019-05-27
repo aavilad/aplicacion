@@ -532,7 +532,7 @@ namespace xtraForm
                 splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
                 entidad.index = 0;
-                objeto = new Modulos.Ventas.frmCorrelativos
+                objeto = new Modulos.Ventas.frmControlGenera()
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
