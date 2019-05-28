@@ -58,7 +58,6 @@ namespace xtraForm.Model
         public virtual DbSet<PlantillaUnidad> PlantillaUnidads { get; set; }
         public virtual DbSet<ItemBonificacion> ItemBonificacions { get; set; }
         public virtual DbSet<TipoAsociado> TipoAsociadoes { get; set; }
-        public virtual DbSet<DOCTIPO> DOCTIPOes { get; set; }
         public virtual DbSet<INFREPARTO> INFREPARTOes { get; set; }
         public virtual DbSet<infrepartocab> infrepartocabs { get; set; }
         public virtual DbSet<TIPOCLI> TIPOCLIs { get; set; }
@@ -73,6 +72,7 @@ namespace xtraForm.Model
         public virtual DbSet<FiltroConfiguracion> FiltroConfiguracions { get; set; }
         public virtual DbSet<Bonificacion> Bonificacions { get; set; }
         public virtual DbSet<TipoBonificacion> TipoBonificacions { get; set; }
+        public virtual DbSet<DOCTIPO> DOCTIPOes { get; set; }
     
         public virtual int sp_genera_documento(string pedido, Nullable<int> tipo, string tdoc)
         {

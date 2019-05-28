@@ -15,11 +15,13 @@ namespace xtraForm.Modulos.Elementos
     {
         decimal cantidadpedido = 0;
         string CodigoPrecio;
+        string Fecha;
         Libreria.Formato formato = new Libreria.Formato();
         int index = 0;
         Libreria.Proceso proceso = new Libreria.Proceso();
         string tabla = "nuevoPedido";
         int TipoLista = 0;
+        decimal PorEspecial = 0;
         int TipoPrecio = 0;
         public bool Existe;
         public int tipoprecio;
@@ -27,13 +29,24 @@ namespace xtraForm.Modulos.Elementos
         public frmpedido()
         {
             InitializeComponent();
-            txtcdVendedor.Select();
         }
 
         public delegate void varaible(string CdPedido, string TpDoc, string CdVendedor, string CdCliente, string CdFP, DateTime Fecha, string NmCliente, string Ruc, string Direccion, string Dni, string NmVendedor,
             string Gestion, string IdDistrito, DataGridView dgv);
 
         public event varaible pasar;
+
+        private void MaestroCliente()
+        {
+            Maestro.frmCliente frmcliente = new Maestro.frmCliente();
+            frmcliente.pasar += new Maestro.frmCliente.campos(campos);
+            string sql = btnFueraRuta.Checked == true ? Libreria.Constante.Cliente : Libreria.Constante.ClienteVendedor.Replace("@Fecha", Fecha).Replace("@Vendedor", txtcdVendedor.Text.Trim());
+            proceso.consultar(sql, "cliente");
+            frmcliente.gridControl1.DataSource = proceso.ds.Tables["cliente"];
+            formato.Grilla(frmcliente.gridView1);
+            frmcliente.StartPosition = FormStartPosition.CenterScreen;
+            frmcliente.ShowDialog();
+        }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -94,8 +107,6 @@ namespace xtraForm.Modulos.Elementos
                     MessageBox.Show("Pedido se encuentra procesado.");
                 }
             }
-
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -108,6 +119,9 @@ namespace xtraForm.Modulos.Elementos
                     {
 
                         TipoLista = CTX.PERSONALs.Where(w => w.Personal1 == txtcdVendedor.Text.Trim()).Select(s => s.clase).FirstOrDefault();
+                        PorEspecial = (from Tipo in CTX.TIPOCLIs.Where(w=>w.TipoCli1 == "E").AsEnumerable()
+                                       join Cl in CTX.CLIENTEs.Where(w => w.Estado == "A" && w.Cliente1 == txtcdCLiente.Text.Trim()).AsEnumerable() on Tipo.TipoCli1 equals Cl.TipoCli
+                                       select Convert.ToDecimal(Tipo.Porcentaje)).FirstOrDefault();
                         dataGridView1.Rows.Add();
                         btnCredito.Enabled = true;
                     }
@@ -327,7 +341,7 @@ namespace xtraForm.Modulos.Elementos
                         dataGridView1.Rows[index].Cells["Unidad"].Value = unidad;
                         dataGridView1.Rows[index].Cells["TpPrecio"].Value = TipoPrecio;
                         dataGridView1.Rows[index].Cells["PrecioUnitario"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + codigo + "'");
-                        dataGridView1.Rows[index].Cells["PrecioNeto"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + codigo + "'");
+                        dataGridView1.Rows[index].Cells["PrecioNeto"].Value = PorEspecial > 0 ? Convert.ToDecimal(Product.Select(x => x.Costo * (1 + (PorEspecial / 100))).FirstOrDefault()) : proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + codigo + "'");
                         dataGridView1.Rows[index].Cells["Total"].Value = 0.00;
                         dataGridView1.Rows[index].Cells["Descuento"].Value = 0.00;
                         dataGridView1.Rows[index].Cells["Recargo"].Value = 0.00;
@@ -410,8 +424,8 @@ namespace xtraForm.Modulos.Elementos
                                     dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value = Product.Select(x => x.Descripcion.Trim()).FirstOrDefault();
                                     dataGridView1.Rows[e.RowIndex].Cells["Unidad"].Value = Product.Select(x => x.UniMed.Trim()).FirstOrDefault();
                                     dataGridView1.Rows[e.RowIndex].Cells["TpPrecio"].Value = TipoPrecio;
-                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
-                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'");
+                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Valor + "'");
+                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value = PorEspecial > 0 ? Convert.ToDecimal(Product.Select(x => x.Costo * (1 + (PorEspecial / 100))).FirstOrDefault()) : proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Valor + "'");
                                     dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = 0.00;
                                     dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = 0.00;
                                     dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = 0.00;
@@ -579,6 +593,8 @@ namespace xtraForm.Modulos.Elementos
         private void frmpedido_Load(object sender, EventArgs e)
         {
             dataGridView1.RowTemplate.Height = 18;
+            txtcdVendedor.Select();
+            Fecha = Convert.ToDateTime(dateEmision.EditValue).ToString("yyyyMMdd");
         }
         void Productos(string sql)
         {
@@ -594,18 +610,9 @@ namespace xtraForm.Modulos.Elementos
 
         private void txtcdCLiente_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (txtcdVendedor.Text.Trim().Length > 0 && txtnmVendedor.Text.Trim().Length > 10)
+            if (txtcdVendedor.Text.Trim().Length > 0 && txtnmVendedor.Text.Trim().Length > 5)
             {
-                Maestro.frmCliente frmcliente = new Maestro.frmCliente();
-                frmcliente.pasar += new Maestro.frmCliente.campos(campos);
-                proceso.consultar(@"SELECT dbo.CLIENTE.Cliente AS Codigo, dbo.CLIENTE.Alias AS Nombre, 
-                CASE WHEN len(dni) > 0 AND len(Ruc) = 0 THEN Dni WHEN len(dni) = 0 AND len(Ruc) > 0 THEN Ruc ELSE Ruc END AS Documento
-                FROM  dbo.CLIENTE INNER JOIN dbo.ZONA_PERSONAL ON dbo.CLIENTE.Zona = dbo.ZONA_PERSONAL.Zona WHERE (dbo.ZONA_PERSONAL.Personal = '" + txtcdVendedor.Text.Trim() + @"')
-                AND (dbo.ZONA_PERSONAL.Numero = DATEPART(dw,'" + Convert.ToDateTime(dateEmision.EditValue).ToString("yyyyMMdd") + "')) AND(Cliente.Estado = 'A')", "cliente");
-                frmcliente.gridControl1.DataSource = proceso.ds.Tables["cliente"];
-                formato.Grilla(frmcliente.gridView1);
-                frmcliente.StartPosition = FormStartPosition.CenterScreen;
-                frmcliente.ShowDialog();
+                MaestroCliente();
             }
             else
                 MessageBox.Show("pedido no cuenta con datos de vendedor");
@@ -613,38 +620,41 @@ namespace xtraForm.Modulos.Elementos
 
         private void txtcdCLiente_KeyPress(object sender, KeyPressEventArgs e)
         {
+            string sql = btnFueraRuta.Checked == true ? Libreria.Constante.Cliente : Libreria.Constante.ClienteVendedor.Replace("@Fecha", Fecha).Replace("@Vendedor", txtcdVendedor.Text.Trim());
+            string Where = btnFueraRuta.Checked == true ? " AND Codigo = '" + txtcdCLiente.Text.Trim() + "'" : " AND (Codigo = '" + txtcdCLiente.Text.Trim() + "')";
             if (e.KeyChar == (int)Keys.Enter)
-                if (txtcdVendedor.Text.Trim().Length > 0 && txtnmVendedor.Text.Trim().Length > 10)
+                if (txtcdVendedor.Text.Trim().Length > 0 && txtnmVendedor.Text.Trim().Length > 5)
                     if (txtcdCLiente.Text.Length == 0)
                     {
-                        Maestro.frmCliente frmcliente = new Maestro.frmCliente();
-                        frmcliente.pasar += new Maestro.frmCliente.campos(campos);
-                        proceso.consultar(@"SELECT Codigo,Nombre,Documento from Vva_Clientevendedor where (Personal = '" + txtcdVendedor.Text.Trim() + @"')
-                        AND (Dia = DATEPART(dw,'" + Convert.ToDateTime(dateEmision.EditValue).ToString("yyyyMMdd") + "'))", "cliente");
-                        frmcliente.gridControl1.DataSource = proceso.ds.Tables["cliente"];
-                        formato.Grilla(frmcliente.gridView1);
-                        frmcliente.StartPosition = FormStartPosition.CenterScreen;
-                        frmcliente.ShowDialog();
+                        MaestroCliente();
                     }
                     else if (proceso.ExistenciaCampo("Codigo", "Vva_Clientevendedor", "Codigo = '" + txtcdCLiente.Text.Trim() + "'"))
                     {
-                        txtnmCliente.Text = proceso.ConsultarCadena
-                          ("Nombre", "Vva_Clientevendedor", "Dia = datepart(dw,'" + Convert.ToDateTime(dateEmision.EditValue).ToString("yyyyMMdd") + "') and personal = '" + txtcdVendedor.Text.Trim() + "' and codigo = '" + txtcdCLiente.Text.Trim() + "'");
-                        txtdocCliente.Text = proceso.ConsultarCadena
-                          ("Documento", "Vva_Clientevendedor", "Dia = datepart(dw,'" + Convert.ToDateTime(dateEmision.EditValue).ToString("yyyyMMdd") + "') and personal = '" + txtcdVendedor.Text.Trim() + "' and codigo = '" + txtcdCLiente.Text.Trim() + "'");
-                        txtnmDireccion.Text = proceso.ConsultarCadena("Direccion", "Vva_Cliente", "Codigo = '" + txtcdCLiente.Text.Trim() + "'");
-                        txtnmZona.Text = proceso.ConsultarCadena("Zona.Descripcion", @"Vva_Cliente INNER JOIN
+                        proceso.consultar(sql + Where, "Cl");
+                        var Result = (from Cl in proceso.ds.Tables["Cl"].AsEnumerable()
+                                      select Cl).FirstOrDefault();
+                        if (Result != null)
+                        {
+                            txtnmCliente.Text = Result["Nombre"].ToString();
+                            txtdocCliente.Text = Result["Documento"].ToString();
+                            txtnmDireccion.Text = Result["Direccion"].ToString();
+                            txtnmZona.Text = proceso.ConsultarCadena("Zona.Descripcion", @"Vva_Cliente INNER JOIN
                               ZONA ON Vva_Cliente.Zona = ZONA.Zona INNER JOIN
                               Distrito ON Vva_Cliente.IDDistrito = Distrito.iddistrito INNER JOIN
                               provincia ON Distrito.idprovincia = provincia.idprovincia", "Vva_Cliente.Codigo = '" + txtcdCLiente.Text.Trim() + "'");
-                        txtnmDistrito.Text = proceso.ConsultarCadena("Distrito.descrip", @"Vva_Cliente INNER JOIN
+                            txtnmDistrito.Text = proceso.ConsultarCadena("Distrito.descrip", @"Vva_Cliente INNER JOIN
                               ZONA ON Vva_Cliente.Zona = ZONA.Zona INNER JOIN
                               Distrito ON Vva_Cliente.IDDistrito = Distrito.iddistrito INNER JOIN
                               provincia ON Distrito.idprovincia = provincia.idprovincia", "Vva_Cliente.Codigo = '" + txtcdCLiente.Text.Trim() + "'");
-                        txtnmProvincia.Text = proceso.ConsultarCadena("provincia.descrip", @"Vva_Cliente INNER JOIN
+                            txtnmProvincia.Text = proceso.ConsultarCadena("provincia.descrip", @"Vva_Cliente INNER JOIN
                               ZONA ON Vva_Cliente.Zona = ZONA.Zona INNER JOIN
                               Distrito ON Vva_Cliente.IDDistrito = Distrito.iddistrito INNER JOIN
                               provincia ON Distrito.idprovincia = provincia.idprovincia", "Vva_Cliente.Codigo = '" + txtcdCLiente.Text.Trim() + "'");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cliente no pertenece al vendedor");
+                        }
                     }
                     else if (proceso.ConsultarTabla_("Vva_Clientevendedor", "Codigo like '%" + txtcdCLiente.Text.Trim() + "%'").Rows.Count > 0)
                     {

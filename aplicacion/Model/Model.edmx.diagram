@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="LiderModel.DOCUMENTO" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.FORMAPAGO" Width="1.5" PointX="3" PointY="13.75" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.FuerzaVenta" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="LiderModel.Gestion" Width="1.5" PointX="3" PointY="8.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="LiderModel.Gestion" Width="1.5" PointX="3" PointY="9.625" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.LINEA" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.MARCA" Width="1.5" PointX="3" PointY="2.75" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.Modulo" Width="1.5" PointX="12.75" PointY="2.125" IsExpanded="false" />
@@ -59,8 +59,6 @@
         <EntityTypeShape EntityType="LiderModel.ItemBonificacion" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.TipoAsociado" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_ItemBonificacion_TipoAsociado" />
-        <EntityTypeShape EntityType="LiderModel.DOCTIPO" Width="1.5" PointX="3" PointY="9.625" IsExpanded="false" />
-        <AssociationConnector Association="LiderModel.FK_DOCUMENTO_DOCTIPO1" />
         <EntityTypeShape EntityType="LiderModel.INFREPARTO" Width="1.5" PointX="10" PointY="13.125" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.infrepartocab" Width="1.5" PointX="7.75" PointY="13.125" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_INFREPARTO_infrepartocab" />
@@ -88,6 +86,8 @@
         <AssociationConnector Association="LiderModel.FK_Bonificacion_TipoBonificacion" />
         <AssociationConnector Association="LiderModel.FK_DETADOC_Bonificacion" />
         <AssociationConnector Association="LiderModel.FK_ItemBonificacion_Bonificacion" />
+        <EntityTypeShape EntityType="LiderModel.DOCTIPO" Width="1.5" PointX="3" PointY="8.5" IsExpanded="false" />
+        <AssociationConnector Association="LiderModel.FK_DOCUMENTO_DOCTIPO1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -114,7 +114,7 @@
             <PropertyRef Name="Producto" />
           </Key>
           <Property Name="Documento" Type="char" MaxLength="9" Nullable="false" />
-          <Property Name="TipoDoc" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TipoDoc" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Producto" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Cantidad" Type="decimal" Precision="9" Scale="2" />
           <Property Name="PrecUnit" Type="decimal" Precision="10" Scale="3" />
@@ -176,7 +176,7 @@
           <Key>
             <PropertyRef Name="DocTipo" />
           </Key>
-          <Property Name="DocTipo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DocTipo" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Descripcion" Type="char" MaxLength="25" Nullable="false" />
           <Property Name="Serie" Type="char" MaxLength="3" />
           <Property Name="Numero" Type="int" />
@@ -190,7 +190,7 @@
             <PropertyRef Name="TipoDoc" />
           </Key>
           <Property Name="Documento" Type="char" MaxLength="9" Nullable="false" />
-          <Property Name="TipoDoc" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TipoDoc" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Personal" Type="varchar" MaxLength="10" />
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Cliente" Type="char" MaxLength="6" />
@@ -1536,11 +1536,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             <End Role="TipoAsociado" EntitySet="TipoAsociadoes" />
             <End Role="ItemBonificacion" EntitySet="ItemBonificacions" />
           </AssociationSet>
-          <EntitySet Name="DOCTIPOes" EntityType="LiderModel.DOCTIPO" />
-          <AssociationSet Name="FK_DOCUMENTO_DOCTIPO1" Association="LiderModel.FK_DOCUMENTO_DOCTIPO1">
-            <End Role="DOCTIPO" EntitySet="DOCTIPOes" />
-            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
-          </AssociationSet>
           <EntitySet Name="INFREPARTOes" EntityType="LiderModel.INFREPARTO" />
           <EntitySet Name="infrepartocabs" EntityType="LiderModel.infrepartocab" />
           <AssociationSet Name="FK_INFREPARTO_infrepartocab" Association="LiderModel.FK_INFREPARTO_infrepartocab">
@@ -1612,6 +1607,11 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             <Parameter Name="tipo" Mode="In" Type="Int32" />
             <Parameter Name="tdoc" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="DOCTIPOes" EntityType="LiderModel.DOCTIPO" />
+          <AssociationSet Name="FK_DOCUMENTO_DOCTIPO1" Association="LiderModel.FK_DOCUMENTO_DOCTIPO1">
+            <End Role="DOCTIPO" EntitySet="DOCTIPOes" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Clase_Producto">
           <Key>
@@ -1691,7 +1691,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             <PropertyRef Name="Producto" />
           </Key>
           <Property Name="Documento" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
-          <Property Name="TipoDoc" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="Producto" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Cantidad" Type="Decimal" Precision="9" Scale="2" />
           <Property Name="PrecUnit" Type="Decimal" Precision="10" Scale="3" />
@@ -1763,7 +1763,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             <PropertyRef Name="TipoDoc" />
           </Key>
           <Property Name="Documento1" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
-          <Property Name="TipoDoc" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDoc" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="Personal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Cliente" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
@@ -2492,31 +2492,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="DOCTIPO">
-          <Key>
-            <PropertyRef Name="DocTipo1" />
-          </Key>
-          <Property Name="DocTipo1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
-          <Property Name="Serie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="Numero" Type="Int32" />
-          <Property Name="Signo" Type="Int16" Nullable="false" />
-          <Property Name="codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PKID" Type="Int32" />
-          <NavigationProperty Name="DOCUMENTOes" Relationship="LiderModel.FK_DOCUMENTO_DOCTIPO1" FromRole="DOCTIPO" ToRole="DOCUMENTO" />
-        </EntityType>
-        <Association Name="FK_DOCUMENTO_DOCTIPO1">
-          <End Type="LiderModel.DOCTIPO" Role="DOCTIPO" Multiplicity="1" />
-          <End Type="LiderModel.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DOCTIPO">
-              <PropertyRef Name="DocTipo1" />
-            </Principal>
-            <Dependent Role="DOCUMENTO">
-              <PropertyRef Name="TipoDoc" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="INFREPARTO">
           <Key>
             <PropertyRef Name="InfReparto1" />
@@ -2848,6 +2823,31 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Principal>
             <Dependent Role="ItemBonificacion">
               <PropertyRef Name="IDBonificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DOCTIPO">
+          <Key>
+            <PropertyRef Name="DocTipo1" />
+          </Key>
+          <Property Name="DocTipo1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="Serie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Numero" Type="Int32" />
+          <Property Name="Signo" Type="Int16" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PKID" Type="Int32" />
+          <NavigationProperty Name="DOCUMENTOes" Relationship="LiderModel.FK_DOCUMENTO_DOCTIPO1" FromRole="DOCTIPO" ToRole="DOCUMENTO" />
+        </EntityType>
+        <Association Name="FK_DOCUMENTO_DOCTIPO1">
+          <End Type="LiderModel.DOCTIPO" Role="DOCTIPO" Multiplicity="1" />
+          <End Type="LiderModel.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTIPO">
+              <PropertyRef Name="DocTipo1" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="TipoDoc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3423,19 +3423,6 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DOCTIPOes">
-            <EntityTypeMapping TypeName="LiderModel.DOCTIPO">
-              <MappingFragment StoreEntitySet="DOCTIPO">
-                <ScalarProperty Name="PKID" ColumnName="PKID" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="Signo" ColumnName="Signo" />
-                <ScalarProperty Name="Numero" ColumnName="Numero" />
-                <ScalarProperty Name="Serie" ColumnName="Serie" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="DocTipo1" ColumnName="DocTipo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="INFREPARTOes">
             <EntityTypeMapping TypeName="LiderModel.INFREPARTO">
               <MappingFragment StoreEntitySet="INFREPARTO">
@@ -3604,6 +3591,19 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_genera_documento" FunctionName="LiderModel.Store.sp_genera_documento" />
+          <EntitySetMapping Name="DOCTIPOes">
+            <EntityTypeMapping TypeName="LiderModel.DOCTIPO">
+              <MappingFragment StoreEntitySet="DOCTIPO">
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="Signo" ColumnName="Signo" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="DocTipo1" ColumnName="DocTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

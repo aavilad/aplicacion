@@ -9,6 +9,8 @@ namespace xtraForm.Libreria
 {
     class Constante
     {
+        public const string Cliente = @"select Codigo,Nombre,Documento,Direccion from Vva_Cliente where Estado = 'A'";
+        public const string ClienteVendedor = @"SELECT Codigo, Nombre, Documento,Direccion FROM Vva_Clientevendedor WHERE (Dia = DATEPART(dw, '@Fecha')) AND (Personal = '@Vendedor')";
         public const string Filtro = @"SELECT campo, condicion, valor,[union] from filtro WHERE tabla = '@Tabla' ORDER BY Orden ASC";
         public const string Cartera = @"
        SELECT DISTINCT 

@@ -84,12 +84,14 @@
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.DataUser = new DevExpress.XtraBars.BarStaticItem();
             this.RVENTAS = new DevExpress.XtraBars.BarSubItem();
+            this.GENERAGUIAS = new DevExpress.XtraBars.BarButtonItem();
+            this.GENERAINFORME = new DevExpress.XtraBars.BarButtonItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.G02 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.G03 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.G04 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.G03 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.MCOMPRAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.COMPRAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G001 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -112,8 +114,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
-            this.GENERAGUIAS = new DevExpress.XtraBars.BarButtonItem();
-            this.GENERAINFORME = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
@@ -192,7 +192,7 @@
             this.GENERAGUIAS,
             this.GENERAINFORME});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 5;
+            this.ribbonControl1.MaxItemId = 48;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
@@ -440,12 +440,14 @@
             // 
             // CONTROLGENERA
             // 
+            this.CONTROLGENERA.AllowDrawArrow = false;
             resources.ApplyResources(this.CONTROLGENERA, "CONTROLGENERA");
             this.CONTROLGENERA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.CONTROLGENERA.Id = 48;
             this.CONTROLGENERA.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("CONTROLGENERA.ImageOptions.Image")));
             this.CONTROLGENERA.Name = "CONTROLGENERA";
-            this.CONTROLGENERA.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.CONTROLGENERA.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.CONTROLGENERA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CONTROLGENERA_ItemClick);
             // 
             // LISTAPRECIOS
@@ -682,6 +684,24 @@
             this.RVENTAS.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
+            // GENERAGUIAS
+            // 
+            resources.ApplyResources(this.GENERAGUIAS, "GENERAGUIAS");
+            this.GENERAGUIAS.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.GENERAGUIAS.Id = 2;
+            this.GENERAGUIAS.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GENERAGUIAS.ImageOptions.Image")));
+            this.GENERAGUIAS.Name = "GENERAGUIAS";
+            this.GENERAGUIAS.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            // 
+            // GENERAINFORME
+            // 
+            resources.ApplyResources(this.GENERAINFORME, "GENERAINFORME");
+            this.GENERAINFORME.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.GENERAINFORME.Id = 4;
+            this.GENERAINFORME.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GENERAINFORME.ImageOptions.Image")));
+            this.GENERAINFORME.Name = "GENERAINFORME";
+            this.GENERAINFORME.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            // 
             // MVENTAS
             // 
             this.MVENTAS.Name = "MVENTAS";
@@ -694,8 +714,8 @@
             this.VENTAS.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.G01,
             this.G02,
-            this.G03,
-            this.G04});
+            this.G04,
+            this.G03});
             this.VENTAS.KeyTip = "V";
             this.VENTAS.Name = "VENTAS";
             resources.ApplyResources(this.VENTAS, "VENTAS");
@@ -719,6 +739,12 @@
             this.G02.Name = "G02";
             resources.ApplyResources(this.G02, "G02");
             // 
+            // G04
+            // 
+            this.G04.ItemLinks.Add(this.LISTAPRECIOS);
+            this.G04.Name = "G04";
+            resources.ApplyResources(this.G04, "G04");
+            // 
             // G03
             // 
             this.G03.ItemLinks.Add(this.CONTROLGENERA);
@@ -726,12 +752,6 @@
             this.G03.ItemLinks.Add(this.GENERAGUIAS);
             this.G03.Name = "G03";
             resources.ApplyResources(this.G03, "G03");
-            // 
-            // G04
-            // 
-            this.G04.ItemLinks.Add(this.LISTAPRECIOS);
-            this.G04.Name = "G04";
-            resources.ApplyResources(this.G04, "G04");
             // 
             // MCOMPRAS
             // 
@@ -893,24 +913,6 @@
             // splashScreenManager1
             // 
             this.splashScreenManager1.ClosingDelay = 500;
-            // 
-            // GENERAGUIAS
-            // 
-            resources.ApplyResources(this.GENERAGUIAS, "GENERAGUIAS");
-            this.GENERAGUIAS.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
-            this.GENERAGUIAS.Id = 2;
-            this.GENERAGUIAS.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.GENERAGUIAS.Name = "GENERAGUIAS";
-            this.GENERAGUIAS.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            // 
-            // GENERAINFORME
-            // 
-            resources.ApplyResources(this.GENERAINFORME, "GENERAINFORME");
-            this.GENERAINFORME.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
-            this.GENERAINFORME.Id = 4;
-            this.GENERAINFORME.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.GENERAINFORME.Name = "GENERAINFORME";
-            this.GENERAINFORME.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
             // frmPrincipal
             // 

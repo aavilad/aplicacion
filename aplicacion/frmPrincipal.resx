@@ -1073,28 +1073,42 @@
 </value>
   </data>
   <data name="CONTROLGENERA.Caption" xml:space="preserve">
-    <value>Control Genera</value>
+    <value>ControlG</value>
   </data>
   <data name="CONTROLGENERA.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CONTROLGENERA.LargeWidth" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
   <data name="LISTAPRECIOS.Caption" xml:space="preserve">
     <value>LIstaPrecios</value>
@@ -1677,7 +1691,7 @@
   <data name="GENERAGUIAS.Caption" xml:space="preserve">
     <value>Guias</value>
   </data>
-  <data name="barButtonItem5.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="GENERAGUIAS.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAsdEVYdFRpdGxlAE5leHQ7RG91YmxlO0Fycm93O0Zhc3Q7UmV3aW5kO0luY3JlYXNlyXdAHwAA
@@ -1713,9 +1727,9 @@
 </value>
   </data>
   <data name="GENERAINFORME.Caption" xml:space="preserve">
-    <value>Informe Reparto</value>
+    <value>Informe</value>
   </data>
-  <data name="barButtonItem1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="GENERAINFORME.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAsdEVYdFRpdGxlAE5leHQ7RG91YmxlO0Fycm93O0Zhc3Q7UmV3aW5kO0luY3JlYXNlyXdAHwAA
@@ -1759,11 +1773,11 @@
   <data name="G02.Text" xml:space="preserve">
     <value>Reglas Bonificacion</value>
   </data>
-  <data name="G03.Text" xml:space="preserve">
-    <value>Generar Documentos</value>
-  </data>
   <data name="G04.Text" xml:space="preserve">
     <value>Lista Precios</value>
+  </data>
+  <data name="G03.Text" xml:space="preserve">
+    <value>Generar Documentos</value>
   </data>
   <data name="VENTAS.Text" xml:space="preserve">
     <value>VENTAS</value>
@@ -1816,7 +1830,6 @@
   <data name="MCONFIGURACION.Text" xml:space="preserve">
     <value>MODULO CONFIGURACION</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="repositoryItemPopupGalleryEdit1.AutoHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1837,7 +1850,7 @@
     <value>Combo</value>
   </data>
   <data name="ribbonControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1271, 143</value>
+    <value>962, 143</value>
   </data>
   <data name="&gt;&gt;ribbonControl1.Name" xml:space="preserve">
     <value>ribbonControl1</value>
@@ -1875,7 +1888,7 @@
     <value>Skin</value>
   </data>
   <data name="xtraTabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1271, 287</value>
+    <value>962, 301</value>
   </data>
   <data name="xtraTabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1902,7 +1915,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1271, 430</value>
+    <value>962, 444</value>
   </data>
   <data name="&gt;&gt;PEDIDOVENTA.Name" xml:space="preserve">
     <value>PEDIDOVENTA</value>
@@ -2228,6 +2241,18 @@
   <data name="&gt;&gt;RVENTAS.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarSubItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;GENERAGUIAS.Name" xml:space="preserve">
+    <value>GENERAGUIAS</value>
+  </data>
+  <data name="&gt;&gt;GENERAGUIAS.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GENERAINFORME.Name" xml:space="preserve">
+    <value>GENERAINFORME</value>
+  </data>
+  <data name="&gt;&gt;GENERAINFORME.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;MVENTAS.Name" xml:space="preserve">
     <value>MVENTAS</value>
   </data>
@@ -2252,16 +2277,16 @@
   <data name="&gt;&gt;G02.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;G03.Name" xml:space="preserve">
-    <value>G03</value>
-  </data>
-  <data name="&gt;&gt;G03.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
   <data name="&gt;&gt;G04.Name" xml:space="preserve">
     <value>G04</value>
   </data>
   <data name="&gt;&gt;G04.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;G03.Name" xml:space="preserve">
+    <value>G03</value>
+  </data>
+  <data name="&gt;&gt;G03.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;MCOMPRAS.Name" xml:space="preserve">
@@ -2389,18 +2414,6 @@
   </data>
   <data name="&gt;&gt;splashScreenManager1.Type" xml:space="preserve">
     <value>DevExpress.XtraSplashScreen.SplashScreenManager, DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;GENERAGUIAS.Name" xml:space="preserve">
-    <value>GENERAGUIAS</value>
-  </data>
-  <data name="&gt;&gt;GENERAGUIAS.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;GENERAINFORME.Name" xml:space="preserve">
-    <value>GENERAINFORME</value>
-  </data>
-  <data name="&gt;&gt;GENERAINFORME.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmPrincipal</value>
