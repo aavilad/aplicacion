@@ -126,5 +126,36 @@ namespace xtraForm.Modulos.Ventas
             var formulario = new Elementos.frmVendedor();
             formulario.Show();
         }
+
+        private void MODIFICAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var CTX = new LiderEntities())
+            {
+                string PersonalCodigo = Convert.ToString(gridView1.GetFocusedRowCellValue("Codigo"));
+                var Rv = CTX.PERSONALs.Where(w => w.vendedor == 1 && w.Activo == true && w.Personal1 == PersonalCodigo);
+                string PersonalNombre = Rv.Select(s=>s.Nombre.Trim()).FirstOrDefault();
+                string PersonalDocumento = Rv.Select(s => s.LibElec.Trim()).FirstOrDefault();
+                string PersonalFechaIngreso = Convert.ToDateTime(Rv.Select(s => s.FechIng).FirstOrDefault()).ToString("dd/MM/yyyy");
+                string PersonalFechaNacimiento = Convert.ToDateTime(Rv.Select(s => s.FechNac).FirstOrDefault()).ToString("dd/MM/yyyy");
+                string PersonalTelefono = Rv.Select(s => s.Telefono.Trim()).FirstOrDefault();
+                bool PersonalComision = Rv.Select(s => s.Comision).FirstOrDefault();
+                bool PersonalActivo = Rv.Select(s => s.Activo).FirstOrDefault();
+                int PersonalTipoComision = Rv.Select(s => s.clase).FirstOrDefault();
+                int PersonalFzVenta = Convert.ToInt32(Rv.Select(s => s.fzavtas).FirstOrDefault());
+                var Formulario = new Elementos.frmVendedor();
+                Formulario.FVENTAS.EditValue = PersonalFzVenta;
+                Formulario.CODIGO.Text = PersonalCodigo;
+                Formulario.DIDENTIDAD.Text = PersonalDocumento;
+                Formulario.NOMBRES.Text = PersonalNombre;
+                Formulario.FINGRESO.EditValue = PersonalFechaIngreso;
+                Formulario.FCUMPLEAÑO.EditValue = PersonalFechaNacimiento;
+                Formulario.TELEFONO.Text = PersonalTelefono;
+                Formulario.PRECIOESCALA.SelectedIndex = PersonalTipoComision-1;
+                Formulario.checkEdit1.Checked = PersonalComision;
+                Formulario.checkEdit3.Checked = PersonalActivo;
+                Formulario.Show();
+            }
+
+        }
     }
 }

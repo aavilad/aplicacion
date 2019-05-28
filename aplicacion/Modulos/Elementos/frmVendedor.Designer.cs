@@ -158,6 +158,7 @@
             // 
             // DIRECCION
             // 
+            this.DIRECCION.Enabled = false;
             this.DIRECCION.Location = new System.Drawing.Point(97, 84);
             this.DIRECCION.Name = "DIRECCION";
             this.DIRECCION.Size = new System.Drawing.Size(277, 20);
@@ -217,13 +218,14 @@
             // 
             this.checkEdit3.Location = new System.Drawing.Point(200, 174);
             this.checkEdit3.Name = "checkEdit3";
-            this.checkEdit3.Properties.Caption = "checkEdit3";
+            this.checkEdit3.Properties.Caption = "Activo";
             this.checkEdit3.Size = new System.Drawing.Size(148, 20);
             this.checkEdit3.StyleController = this.layoutControl3;
             this.checkEdit3.TabIndex = 7;
             // 
             // checkEdit2
             // 
+            this.checkEdit2.Enabled = false;
             this.checkEdit2.Location = new System.Drawing.Point(110, 174);
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "Noveldad";
@@ -549,6 +551,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 381);
             this.Controls.Add(this.layoutControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmVendedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.frmVendedor_Load);
@@ -606,22 +610,14 @@
 
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraEditors.LookUpEdit FVENTAS;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraEditors.TextEdit CODIGO;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.TextEdit NOMBRES;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraEditors.TextEdit DIRECCION;
-        private DevExpress.XtraEditors.TextEdit DIDENTIDAD;
         private DevExpress.XtraLayout.LayoutControl layoutControl2;
-        private DevExpress.XtraEditors.TextEdit TELEFONO;
-        private DevExpress.XtraEditors.DateEdit FCUMPLEAÑO;
-        private DevExpress.XtraEditors.DateEdit FINGRESO;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
@@ -633,9 +629,6 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
-        private DevExpress.XtraEditors.CheckEdit checkEdit3;
-        private DevExpress.XtraEditors.CheckEdit checkEdit2;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
@@ -645,6 +638,17 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
         private DevExpress.XtraLayout.SplitterItem splitterItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
-        private DevExpress.XtraEditors.ComboBoxEdit PRECIOESCALA;
+        public DevExpress.XtraEditors.LookUpEdit FVENTAS;
+        public DevExpress.XtraEditors.TextEdit CODIGO;
+        public DevExpress.XtraEditors.TextEdit NOMBRES;
+        public DevExpress.XtraEditors.TextEdit DIRECCION;
+        public DevExpress.XtraEditors.TextEdit DIDENTIDAD;
+        public DevExpress.XtraEditors.TextEdit TELEFONO;
+        public DevExpress.XtraEditors.DateEdit FCUMPLEAÑO;
+        public DevExpress.XtraEditors.DateEdit FINGRESO;
+        public DevExpress.XtraEditors.ComboBoxEdit PRECIOESCALA;
+        public DevExpress.XtraEditors.CheckEdit checkEdit3;
+        public DevExpress.XtraEditors.CheckEdit checkEdit2;
+        public DevExpress.XtraEditors.CheckEdit checkEdit1;
     }
 }

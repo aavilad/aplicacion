@@ -36,7 +36,7 @@ namespace xtraForm.Modulos.Elementos
             {
                 FVENTAS.Properties.DataSource = CTX.FuerzaVentas.Where(x => x.Activo == true).ToList();
                 FVENTAS.Properties.DisplayMember = "descrip";
-                FVENTAS.Properties.ValueMember = "PKID";
+                FVENTAS.Properties.ValueMember = "fzavtas";
                 FVENTAS.Properties.Columns.Add(new LookUpColumnInfo("descrip", string.Empty));
 
             }

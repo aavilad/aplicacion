@@ -91,6 +91,7 @@
             this.MODIFICAR.Id = 1;
             this.MODIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MODIFICAR.ImageOptions.SvgImage")));
             this.MODIFICAR.Name = "MODIFICAR";
+            this.MODIFICAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MODIFICAR_ItemClick);
             // 
             // FILTRO
             // 
