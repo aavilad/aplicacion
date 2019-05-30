@@ -33,13 +33,13 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.FILTRO = new DevExpress.XtraBars.BarButtonItem();
+            this.ANULAR = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.FILTRO = new DevExpress.XtraBars.BarButtonItem();
-            this.ANULAR = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -52,7 +52,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(597, 342);
+            this.gridControl1.Size = new System.Drawing.Size(676, 294);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -65,6 +65,7 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsView.ShowIndicator = false;
+            this.gridView1.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
             // 
             // popupMenu1
@@ -74,6 +75,21 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ANULAR)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
+            // 
+            // FILTRO
+            // 
+            this.FILTRO.Caption = "Filtro";
+            this.FILTRO.Id = 0;
+            this.FILTRO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FILTRO.ImageOptions.SvgImage")));
+            this.FILTRO.Name = "FILTRO";
+            this.FILTRO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FILTRO_ItemClick);
+            // 
+            // ANULAR
+            // 
+            this.ANULAR.Caption = "Anular";
+            this.ANULAR.Id = 1;
+            this.ANULAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ANULAR.ImageOptions.SvgImage")));
+            this.ANULAR.Name = "ANULAR";
             // 
             // barManager1
             // 
@@ -93,15 +109,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(597, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(676, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 342);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 294);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(597, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(676, 0);
             // 
             // barDockControlLeft
             // 
@@ -109,36 +125,21 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 342);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 294);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(597, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(676, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 342);
-            // 
-            // FILTRO
-            // 
-            this.FILTRO.Caption = "Filtro";
-            this.FILTRO.Id = 0;
-            this.FILTRO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FILTRO.ImageOptions.SvgImage")));
-            this.FILTRO.Name = "FILTRO";
-            this.FILTRO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FILTRO_ItemClick);
-            // 
-            // ANULAR
-            // 
-            this.ANULAR.Caption = "Anular";
-            this.ANULAR.Id = 1;
-            this.ANULAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ANULAR.ImageOptions.SvgImage")));
-            this.ANULAR.Name = "ANULAR";
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 294);
             // 
             // frmControlGenera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 342);
+            this.ClientSize = new System.Drawing.Size(676, 294);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

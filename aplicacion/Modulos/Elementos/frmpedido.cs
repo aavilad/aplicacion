@@ -471,9 +471,9 @@ namespace xtraForm.Modulos.Elementos
                                 dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
                                 dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = i > 0 ? i * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
                                 dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = i < 0 ? Math.Abs(i) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
-                                if (dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value != null)
+                                if (Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value) > 0)
                                 {
-                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"];
+                                    dataGridView1.CurrentCell = dataGridView1.CurrentRow.Cells["PrecioNeto"];
                                     dataGridView1.BeginEdit(true);
                                     calculartotal();
                                 }
@@ -482,7 +482,7 @@ namespace xtraForm.Modulos.Elementos
                             else
                             {
                                 MessageBox.Show("stock insuficiente");
-                                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"];
+                                dataGridView1.CurrentCell = dataGridView1.CurrentRow.Cells["Cantidad"];
                                 dataGridView1.BeginEdit(true);
                             }
 

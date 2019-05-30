@@ -1850,7 +1850,7 @@
     <value>Combo</value>
   </data>
   <data name="ribbonControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>962, 143</value>
+    <value>962, 124</value>
   </data>
   <data name="&gt;&gt;ribbonControl1.Name" xml:space="preserve">
     <value>ribbonControl1</value>
@@ -1882,13 +1882,13 @@
     <value>Always</value>
   </data>
   <data name="xtraTabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 143</value>
+    <value>0, 124</value>
   </data>
   <data name="xtraTabControl1.PaintStyleName" xml:space="preserve">
     <value>Skin</value>
   </data>
   <data name="xtraTabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>962, 301</value>
+    <value>962, 320</value>
   </data>
   <data name="xtraTabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>

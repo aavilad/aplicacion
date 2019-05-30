@@ -22,8 +22,6 @@ namespace xtraForm
             Application.EnableVisualStyles();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-PE");
             Application.Run(new Modulos.Usuario.frmLogin());
-
-
         }
     }
 }

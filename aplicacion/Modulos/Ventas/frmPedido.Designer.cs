@@ -38,17 +38,17 @@
             this.ELIMINAR = new DevExpress.XtraBars.BarButtonItem();
             this.FILTRO = new DevExpress.XtraBars.BarButtonItem();
             this.DESCARGAR = new DevExpress.XtraBars.BarButtonItem();
-            this.FACTURAR = new DevExpress.XtraBars.BarButtonItem();
             this.APROBAR = new DevExpress.XtraBars.BarButtonItem();
             this.DESAPROBAR = new DevExpress.XtraBars.BarButtonItem();
             this.COPIAR = new DevExpress.XtraBars.BarButtonItem();
             this.REFRESH = new DevExpress.XtraBars.BarButtonItem();
+            this.FACTURAR = new DevExpress.XtraBars.BarButtonItem();
+            this.FACTURACIONLOTE = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.FACTURACIONLOTE = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -79,6 +79,7 @@
             this.gridView1.OptionsHint.ShowFooterHints = false;
             this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
             this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
@@ -139,15 +140,6 @@
             this.DESCARGAR.Name = "DESCARGAR";
             this.DESCARGAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DESCARGAR_ItemClick);
             // 
-            // FACTURAR
-            // 
-            this.FACTURAR.Caption = "Facturar";
-            this.FACTURAR.Id = 5;
-            this.FACTURAR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FACTURAR.ImageOptions.Image")));
-            this.FACTURAR.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FACTURAR.ImageOptions.LargeImage")));
-            this.FACTURAR.Name = "FACTURAR";
-            this.FACTURAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
-            // 
             // APROBAR
             // 
             this.APROBAR.Caption = "Aprobar";
@@ -179,6 +171,24 @@
             this.REFRESH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REFRESH.ImageOptions.SvgImage")));
             this.REFRESH.Name = "REFRESH";
             this.REFRESH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.REFRESH_ItemClick);
+            // 
+            // FACTURAR
+            // 
+            this.FACTURAR.Caption = "Facturar";
+            this.FACTURAR.Id = 5;
+            this.FACTURAR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FACTURAR.ImageOptions.Image")));
+            this.FACTURAR.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FACTURAR.ImageOptions.LargeImage")));
+            this.FACTURAR.Name = "FACTURAR";
+            this.FACTURAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // FACTURACIONLOTE
+            // 
+            this.FACTURACIONLOTE.Caption = "Facturacion en lote";
+            this.FACTURACIONLOTE.Id = 10;
+            this.FACTURACIONLOTE.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FACTURACIONLOTE.ImageOptions.Image")));
+            this.FACTURACIONLOTE.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FACTURACIONLOTE.ImageOptions.LargeImage")));
+            this.FACTURACIONLOTE.Name = "FACTURACIONLOTE";
+            this.FACTURACIONLOTE.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FACTURACIONLOTE_ItemClick);
             // 
             // barManager1
             // 
@@ -232,15 +242,6 @@
             this.barDockControlRight.Location = new System.Drawing.Point(587, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 303);
-            // 
-            // FACTURACIONLOTE
-            // 
-            this.FACTURACIONLOTE.Caption = "Facturacion en lote";
-            this.FACTURACIONLOTE.Id = 10;
-            this.FACTURACIONLOTE.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FACTURACIONLOTE.ImageOptions.Image")));
-            this.FACTURACIONLOTE.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FACTURACIONLOTE.ImageOptions.LargeImage")));
-            this.FACTURACIONLOTE.Name = "FACTURACIONLOTE";
-            this.FACTURACIONLOTE.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FACTURACIONLOTE_ItemClick);
             // 
             // frmPedido
             // 

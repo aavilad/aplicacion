@@ -132,7 +132,11 @@
             ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories4"))),
             ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories5"))),
             ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories6")))});
+            this.ribbonControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.DarkBlue;
+            this.ribbonControl1.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.DrawGroupsBorderMode = DevExpress.Utils.DefaultBoolean.True;
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.ForeColor = System.Drawing.Color.SlateGray;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.PEDIDOVENTA,
@@ -192,8 +196,10 @@
             this.GENERAGUIAS,
             this.GENERAINFORME});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 48;
+            this.ribbonControl1.MaxItemId = 1;
             this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.OptionsAnimation.PageCategoryShowAnimation = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.OptionsStubGlyphs.ColorMode = DevExpress.Utils.Drawing.GlyphColorMode.White;
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.MVENTAS,
             this.MCOMPRAS,
@@ -201,7 +207,6 @@
             this.MINVENTARIOS,
             this.MREPORTES,
             this.MCONFIGURACION});
-            this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1, "S");
             this.ribbonControl1.QuickToolbarItemLinks.Add(this.DESCARGAPEDIDO);
             this.ribbonControl1.QuickToolbarItemLinks.Add(this.DataUser);
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -209,7 +214,7 @@
             this.repositoryItemPopupContainerEdit1,
             this.repositoryItemFontEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
-            this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
             this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             // 
@@ -916,6 +921,7 @@
             // 
             // frmPrincipal
             // 
+            this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.xtraTabControl1);
