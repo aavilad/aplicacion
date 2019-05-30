@@ -1,6 +1,6 @@
-﻿namespace xtraForm.Modulos.Usuario
+﻿namespace xtraForm
 {
-    partial class wain
+    partial class SplashScreen1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(wain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen1));
             this.marqueeProgressBarControl1 = new DevExpress.XtraEditors.MarqueeProgressBarControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -48,7 +48,7 @@
             // labelControl1
             // 
             this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl1.Location = new System.Drawing.Point(171, 283);
+            this.labelControl1.Location = new System.Drawing.Point(171, 277);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(109, 13);
             this.labelControl1.TabIndex = 6;
@@ -75,7 +75,7 @@
             this.pictureEdit2.Size = new System.Drawing.Size(426, 180);
             this.pictureEdit2.TabIndex = 9;
             // 
-            // wain
+            // SplashScreen1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,7 +84,7 @@
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.marqueeProgressBarControl1);
-            this.Name = "wain";
+            this.Name = "SplashScreen1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.marqueeProgressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();

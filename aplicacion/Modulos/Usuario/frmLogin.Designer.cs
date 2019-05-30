@@ -32,8 +32,8 @@ namespace xtraForm.Modulos.Usuario
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.UsuarioID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.UsuarioPass = new DevExpress.XtraEditors.TextEdit();
@@ -52,10 +52,10 @@ namespace xtraForm.Modulos.Usuario
             this.UsuarioID.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("UsuarioID.Properties.ContextImageOptions.Image")));
             this.UsuarioID.Size = new System.Drawing.Size(169, 20);
             this.UsuarioID.TabIndex = 5;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "Campo usuario no puede permanecer vacio";
-            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.UsuarioID, conditionValidationRule2);
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "Campo usuario no puede permanecer vacio";
+            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.UsuarioID, conditionValidationRule3);
             // 
             // labelControl2
             // 
@@ -73,10 +73,10 @@ namespace xtraForm.Modulos.Usuario
             this.UsuarioPass.Properties.UseSystemPasswordChar = true;
             this.UsuarioPass.Size = new System.Drawing.Size(169, 20);
             this.UsuarioPass.TabIndex = 6;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "Campo contraseña no puede permanecer vacio";
-            conditionValidationRule3.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.UsuarioPass, conditionValidationRule3);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Campo contraseña no puede permanecer vacio";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
+            this.dxValidationProvider1.SetValidationRule(this.UsuarioPass, conditionValidationRule1);
             // 
             // Entrar
             // 
@@ -106,8 +106,11 @@ namespace xtraForm.Modulos.Usuario
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.Entrar);
             this.Controls.Add(this.UsuarioID);
+            this.HelpButton = true;
             this.KeyPreview = true;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(229, 266);
+            this.MinimumSize = new System.Drawing.Size(229, 266);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

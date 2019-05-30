@@ -7,11 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraSplashScreen;
 
-namespace xtraForm.Modulos.Usuario
+namespace xtraForm
 {
-    public partial class wain : SplashScreen
+    public partial class SplashScreen1 : SplashScreen
     {
-        public wain()
+        public SplashScreen1()
         {
             InitializeComponent();
         }

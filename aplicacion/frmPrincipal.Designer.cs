@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraSplashScreen.SplashScreenManager Efecto01 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.SplashScreen1), true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.PEDIDOVENTA = new DevExpress.XtraBars.BarButtonItem();
@@ -120,6 +121,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // Efecto01
+            // 
+            Efecto01.ClosingDelay = 100;
             // 
             // ribbonControl1
             // 
@@ -926,10 +931,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.ribbonControl1);
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.IsMdiContainer = true;
             this.Name = "frmPrincipal";
             this.Ribbon = this.ribbonControl1;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).EndInit();
