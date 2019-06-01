@@ -61,7 +61,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(587, 303);
+            this.gridControl1.Size = new System.Drawing.Size(713, 315);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -188,17 +188,15 @@
             // 
             this.FACTURAR.Caption = "Facturar";
             this.FACTURAR.Id = 5;
-            this.FACTURAR.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FACTURAR.ImageOptions.Image")));
-            this.FACTURAR.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FACTURAR.ImageOptions.LargeImage")));
+            this.FACTURAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURAR.ImageOptions.SvgImage")));
             this.FACTURAR.Name = "FACTURAR";
-            this.FACTURAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            this.FACTURAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FACTURAR_ItemClick);
             // 
             // FACTURACIONLOTE
             // 
             this.FACTURACIONLOTE.Caption = "Facturacion en lote";
             this.FACTURACIONLOTE.Id = 10;
-            this.FACTURACIONLOTE.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FACTURACIONLOTE.ImageOptions.Image")));
-            this.FACTURACIONLOTE.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FACTURACIONLOTE.ImageOptions.LargeImage")));
+            this.FACTURACIONLOTE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FACTURACIONLOTE.ImageOptions.SvgImage")));
             this.FACTURACIONLOTE.Name = "FACTURACIONLOTE";
             this.FACTURACIONLOTE.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FACTURACIONLOTE_ItemClick);
             // 
@@ -229,15 +227,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(587, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(713, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 303);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 315);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(587, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(713, 0);
             // 
             // barDockControlLeft
             // 
@@ -245,21 +243,21 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 303);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 315);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(587, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(713, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 303);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 315);
             // 
             // frmPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 303);
+            this.ClientSize = new System.Drawing.Size(713, 315);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

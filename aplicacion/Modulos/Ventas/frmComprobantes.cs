@@ -40,16 +40,7 @@ namespace xtraForm.Modulos.Elementos
                 {
                     proceso.consultar(Query, tabla);
                     gridControl1.DataSource = proceso.ds.Tables[tabla];
-                    gridView1.OptionsView.ColumnAutoWidth = false;
-                    gridView1.OptionsBehavior.Editable = false;
-                    gridView1.OptionsBehavior.ReadOnly = true;
-                    gridView1.OptionsView.ShowGroupPanel = false;
-                    gridView1.OptionsView.ShowFooter = true;
-                    gridView1.FooterPanelHeight = -2;
-                    gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-                    gridView1.GroupRowHeight = 1;
-                    gridView1.RowHeight = 1;
-                    gridView1.Appearance.Row.FontSizeDelta = 0;
+
                     gridView1.BestFitColumns();
                 }
                 else
@@ -58,15 +49,6 @@ namespace xtraForm.Modulos.Elementos
                     {
                         proceso.consultar(Query + " HAVING " + cadena, tabla);
                         gridControl1.DataSource = proceso.ds.Tables[tabla];
-                        gridView1.OptionsView.ColumnAutoWidth = false;
-                        gridView1.OptionsBehavior.Editable = false;
-                        gridView1.OptionsBehavior.ReadOnly = true;
-                        gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-                        gridView1.OptionsView.ShowGroupPanel = false;
-                        gridView1.OptionsView.ShowFooter = true;
-                        gridView1.GroupRowHeight = 1;
-                        gridView1.RowHeight = 1;
-                        gridView1.Appearance.Row.FontSizeDelta = 0;
                         gridView1.BestFitColumns();
                     }
                     catch
@@ -80,7 +62,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void ABRIR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            Abrir();
         }
 
         private void Abrir()
@@ -247,22 +229,14 @@ namespace xtraForm.Modulos.Elementos
             }
         }
 
-        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-        {
-            popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
-        }
+        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e) => popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
 
-        private void frmComprobantes_Load(object sender, EventArgs e)
-        {
-            Refrescar();
-        }
+        private void frmComprobantes_Load(object sender, EventArgs e) => Refrescar();
 
         private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (int)Keys.Enter)
-            {
                 Abrir();
-            }
         }
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
@@ -272,9 +246,13 @@ namespace xtraForm.Modulos.Elementos
             GridView view = sender as GridView;
             GridHitInfo info = view.CalcHitInfo(ea.Location);
             if (info.InRow || info.InRowCell)
-            {
                 Abrir();
-            }
+        }
+
+        private void GridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = e.RowHandle.ToString();
         }
     }
 }

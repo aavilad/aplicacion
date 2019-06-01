@@ -10,17 +10,11 @@ namespace xtraForm.Libreria
     class Constante
     {
         public const string PedidoRecalculo = @"
-        DECLARE @Fecha DATETIME;
-        SET @Fecha = '@ValorFecha';
-        UPDATE detpedido
+                UPDATE detpedido
           SET 
               PrecioNeto = PrecUnit
-        WHERE Pedido IN
-        (
-            SELECT pedido
-            FROM pedido
-            WHERE Fecha = @Fecha
-        );
+        WHERE PrecioNeto IS NULL;
+        --
         UPDATE detpedido
           SET 
               PrecioUnitario =
@@ -44,30 +38,18 @@ namespace xtraForm.Libreria
             FROM PRODUCTO
             WHERE Producto = DETPEDIDO.Producto
         )
-        WHERE Pedido IN
-        (
-            SELECT pedido
-            FROM pedido
-            WHERE Fecha = @Fecha
-        );
+        WHERE PrecioUnitario IS NULL;
+        --
         UPDATE detpedido
           SET 
               Descuento = IIF((PrecioUnitario - PrecioNeto) < 0, 0, (PrecioUnitario - PrecioNeto))
-        WHERE Pedido IN
-        (
-            SELECT pedido
-            FROM pedido
-            WHERE Fecha = @Fecha
-        );
+        WHERE Descuento IS NULL;
+        --
         UPDATE detpedido
           SET 
               Recargo = IIF((PrecioNeto - PrecioUnitario) < 0, 0, (PrecioNeto - PrecioUnitario))
-        WHERE Pedido IN
-        (
-            SELECT pedido
-            FROM pedido
-            WHERE Fecha = @Fecha
-        );
+        WHERE Recargo IS NULL;
+        --
         UPDATE detpedido
           SET 
               Afecto =
@@ -76,12 +58,8 @@ namespace xtraForm.Libreria
             FROM PRODUCTO
             WHERE Producto = DETPEDIDO.Producto
         )
-        WHERE Pedido IN
-        (
-            SELECT pedido
-            FROM pedido
-            WHERE Fecha = @Fecha
-        );
+        WHERE Afecto IS NULL;
+        --
         UPDATE detpedido
           SET 
               Bonif = CASE
@@ -91,23 +69,12 @@ namespace xtraForm.Libreria
                           THEN 1
                           ELSE 0
                       END
-        WHERE Pedido IN
-        (
-            SELECT pedido
-            FROM pedido
-            WHERE Fecha = @Fecha
-        );
+        WHERE Bonif IS NULL;
+        --
         UPDATE pedido
           SET 
               Aprobado = 1
-        WHERE Pedido IN
-        (
-            SELECT pedido
-            FROM pedido
-            WHERE Fecha = @Fecha
-        )
-              AND pedido.Aprobado IS NULL;
-        
+        WHERE Aprobado IS NULL;
         ";
         public const string Cliente = @"select Codigo,Nombre,Documento,Direccion from Vva_Cliente where Estado = 'A'";
         public const string ClienteVendedor = @"SELECT Codigo, Nombre, Documento,Direccion FROM Vva_Clientevendedor WHERE (Dia = DATEPART(dw, '@Fecha')) AND (Personal = '@Vendedor')";
