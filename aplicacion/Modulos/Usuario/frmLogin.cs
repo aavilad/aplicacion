@@ -11,7 +11,7 @@ using xtraForm.Model;
 
 namespace xtraForm.Modulos.Usuario
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
         public frmLogin()
         {
