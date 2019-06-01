@@ -54,7 +54,7 @@ namespace xtraForm.Modulos.Inventario
 
         void condicion(string cadena)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             try
             {
                 if (cadena.Length == 0)

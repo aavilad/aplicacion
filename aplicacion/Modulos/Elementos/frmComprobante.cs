@@ -39,7 +39,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             if (proceso.MensagePregunta("¿Cancelar?") == DialogResult.Yes)
                 this.Close();
         }

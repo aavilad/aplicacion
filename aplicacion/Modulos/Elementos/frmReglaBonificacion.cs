@@ -9,7 +9,7 @@ namespace xtraForm.Modulos.Elementos
         public delegate void variable(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente,
             decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, DataGridView dgv);
         public event variable pasar;
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         Libreria.Bonificacion bonificacion = new Libreria.Bonificacion();
         public bool existe;
         public frmReglaBonificacion() => InitializeComponent();

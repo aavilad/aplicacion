@@ -15,7 +15,7 @@ namespace xtraForm.Modulos.Elementos
 {
     public partial class frmClienteDireccion : DevExpress.XtraEditors.XtraForm
     {
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         public delegate void Variables(string _Direccion, string _Ditstrito, string _Provincia, string _Departamento);
         public event Variables pasar;
         public frmClienteDireccion() => InitializeComponent();

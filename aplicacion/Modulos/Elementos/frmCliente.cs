@@ -14,7 +14,7 @@ namespace xtraForm.Modulos.Elementos
         string Departamento;
         public delegate void VARIABLES();
         public event VARIABLES PASAR;
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         public frmCliente()
         {
             InitializeComponent();

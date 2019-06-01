@@ -34,7 +34,7 @@ namespace xtraForm.Modulos.Ventas
                 frmprincipal.splashScreenManager1.ShowWaitForm();
                 try
                 {
-                    var proceso = new Libreria.Proceso();
+                    var proceso = new Libreria.Rutina();
                     var Cadena = new List<string>();
                     var PedidosComprometidos = (dynamic)null;
                     var PedidosBonificados = (dynamic)null;

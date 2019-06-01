@@ -22,7 +22,7 @@ namespace xtraForm.Filtros
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Libreria.Proceso proceso = new Libreria.Proceso();
+            Libreria.Rutina proceso = new Libreria.Rutina();
             if (proceso.MensageError("¿Cancelar?") == DialogResult.Yes)
                 this.Close();
         }

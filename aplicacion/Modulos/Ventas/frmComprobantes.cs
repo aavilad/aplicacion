@@ -15,7 +15,7 @@ namespace xtraForm.Modulos.Elementos
     {
         string tabla = "Vva_Cp";
         public string NModulo;
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         public frmComprobantes()
         {
             InitializeComponent();
@@ -195,7 +195,7 @@ namespace xtraForm.Modulos.Elementos
             {
                 if (gridView1.SelectedRowsCount > 0)
                 {
-                    var proceso = new Libreria.Proceso();
+                    var proceso = new Libreria.Rutina();
                     if (proceso.MensagePregunta("¿Desea Continuar?") == DialogResult.Yes)
                     {
                         foreach (var fila in gridView1.GetSelectedRows())
@@ -267,7 +267,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             DXMouseEventArgs ea = e as DXMouseEventArgs;
             GridView view = sender as GridView;
             GridHitInfo info = view.CalcHitInfo(ea.Location);

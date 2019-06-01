@@ -27,7 +27,7 @@ namespace xtraForm.Modulos.Configuracion
         {
             using (var Context = new LiderEntities())
             {
-                var proceso = new Libreria.Proceso();
+                var proceso = new Libreria.Rutina();
                 string Query = Convert.ToString(Context.VistaAdministrativas.Where(x => x.IDModulo == (Context.Moduloes.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
                 {
@@ -80,7 +80,7 @@ namespace xtraForm.Modulos.Configuracion
 
         void Refrescar()
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + entidad + "'", entidad);
             List<string> lista_ = new List<string>();
             foreach (DataRow DR_1 in proceso.ds.Tables[entidad].Rows)

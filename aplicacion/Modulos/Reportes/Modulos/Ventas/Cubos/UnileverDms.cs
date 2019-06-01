@@ -29,7 +29,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas.Cubos
         string sql;
         private void BUSCAR_Click(object sender, EventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             var formulario0 = new frmPrincipal();
             string Desde = Convert.ToDateTime(dateEdit1.EditValue).ToString("yyyyMMdd");
             string Hasta = Convert.ToDateTime(dateEdit2.EditValue).ToString("yyyyMMdd");

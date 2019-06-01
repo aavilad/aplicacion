@@ -26,7 +26,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             if (proceso.MensagePregunta("¿Cancelar?") == DialogResult.Yes)
             {
                 this.Close();
@@ -63,7 +63,7 @@ namespace xtraForm.Modulos.Elementos
 
         private void BtnFiltrar_Click(object sender, EventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             string Fecha = Convert.ToDateTime(FechaProceso.EditValue).ToString("yyyyMMdd");
             if (flRuta.Checked && FechaProceso.EditValue != null)
             {
@@ -176,7 +176,7 @@ namespace xtraForm.Modulos.Elementos
         }
         void GeneraDocumentos()
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             var fecha = Convert.ToDateTime(FechaProceso.EditValue).ToString("dd/MM/yyyy");
             var Dia = Convert.ToInt32(DateTime.Parse(fecha).DayOfWeek) == 0 ? 7 : Convert.ToInt32(DateTime.Parse(fecha).DayOfWeek);
 

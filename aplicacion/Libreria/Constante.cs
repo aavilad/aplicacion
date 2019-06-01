@@ -9,34 +9,134 @@ namespace xtraForm.Libreria
 {
     class Constante
     {
+        public const string PedidoRecalculo = @"
+        DECLARE @Fecha DATETIME;
+        SET @Fecha = '@ValorFecha';
+        UPDATE detpedido
+          SET 
+              PrecioNeto = PrecUnit
+        WHERE Pedido IN
+        (
+            SELECT pedido
+            FROM pedido
+            WHERE Fecha = @Fecha
+        );
+        UPDATE detpedido
+          SET 
+              PrecioUnitario =
+        (
+            SELECT CASE
+                       WHEN DETPEDIDO.TipoPrecio = 1
+                       THEN PrecMenContado
+                       WHEN DETPEDIDO.TipoPrecio = 2
+                       THEN PrecMayContado
+                       WHEN DETPEDIDO.TipoPrecio = 3
+                       THEN PrecMenCredito
+                       WHEN DETPEDIDO.TipoPrecio = 4
+                       THEN PrecMayCredito
+                       WHEN DETPEDIDO.TipoPrecio = 5
+                       THEN PrecEspecial
+                       WHEN DETPEDIDO.TipoPrecio = 6
+                       THEN PrecSEspecial
+                       WHEN DETPEDIDO.TipoPrecio = 7
+                       THEN PrecSSEspecial
+                   END
+            FROM PRODUCTO
+            WHERE Producto = DETPEDIDO.Producto
+        )
+        WHERE Pedido IN
+        (
+            SELECT pedido
+            FROM pedido
+            WHERE Fecha = @Fecha
+        );
+        UPDATE detpedido
+          SET 
+              Descuento = IIF((PrecioUnitario - PrecioNeto) < 0, 0, (PrecioUnitario - PrecioNeto))
+        WHERE Pedido IN
+        (
+            SELECT pedido
+            FROM pedido
+            WHERE Fecha = @Fecha
+        );
+        UPDATE detpedido
+          SET 
+              Recargo = IIF((PrecioNeto - PrecioUnitario) < 0, 0, (PrecioNeto - PrecioUnitario))
+        WHERE Pedido IN
+        (
+            SELECT pedido
+            FROM pedido
+            WHERE Fecha = @Fecha
+        );
+        UPDATE detpedido
+          SET 
+              Afecto =
+        (
+            SELECT conigv
+            FROM PRODUCTO
+            WHERE Producto = DETPEDIDO.Producto
+        )
+        WHERE Pedido IN
+        (
+            SELECT pedido
+            FROM pedido
+            WHERE Fecha = @Fecha
+        );
+        UPDATE detpedido
+          SET 
+              Bonif = CASE
+                          WHEN PrecUnit = 0.00
+                          THEN 1
+                          WHEN IDBonificacion > 0
+                          THEN 1
+                          ELSE 0
+                      END
+        WHERE Pedido IN
+        (
+            SELECT pedido
+            FROM pedido
+            WHERE Fecha = @Fecha
+        );
+        UPDATE pedido
+          SET 
+              Aprobado = 1
+        WHERE Pedido IN
+        (
+            SELECT pedido
+            FROM pedido
+            WHERE Fecha = @Fecha
+        )
+              AND pedido.Aprobado IS NULL;
+        
+        ";
         public const string Cliente = @"select Codigo,Nombre,Documento,Direccion from Vva_Cliente where Estado = 'A'";
         public const string ClienteVendedor = @"SELECT Codigo, Nombre, Documento,Direccion FROM Vva_Clientevendedor WHERE (Dia = DATEPART(dw, '@Fecha')) AND (Personal = '@Vendedor')";
         public const string Filtro = @"SELECT campo, condicion, valor,[union] from filtro WHERE tabla = '@Tabla' ORDER BY Orden ASC";
         public const string Cartera = @"
-       SELECT DISTINCT 
-              dbo.Vva_Cliente.Codigo, 
-              dbo.Vva_Cliente.Nombre, 
-              dbo.Vva_Cliente.Direccion
-       FROM dbo.Vva_Cliente
-            INNER JOIN dbo.ZONA ON dbo.Vva_Cliente.Zona = dbo.ZONA.Zona
-       WHERE(dbo.Vva_Cliente.Zona = @Zona);";
+        SELECT DISTINCT 
+               dbo.Vva_Cliente.Codigo, 
+               dbo.Vva_Cliente.Nombre, 
+               dbo.Vva_Cliente.Direccion
+        FROM dbo.Vva_Cliente
+             INNER JOIN dbo.ZONA ON dbo.Vva_Cliente.Zona = dbo.ZONA.Zona
+        WHERE(dbo.Vva_Cliente.Zona = @Zona);";
 
         public const string Cobertura = @"
-       SELECT DISTINCT 
-              Vva_Cliente_1.Codigo, 
-              Vva_Cliente_1.Nombre, 
-              Vva_Cliente_1.Direccion
-       FROM Vva_Cp
-            INNER JOIN Vva_Cliente AS Vva_Cliente_1 ON Vva_Cp.IDCliente = Vva_Cliente_1.Codigo
-            INNER JOIN Vva_ItemCp ON Vva_Cp.NrDoc = Vva_ItemCp.NrDoc
-                                     AND Vva_Cp.TpDoc = Vva_ItemCp.TpDoc
-            INNER JOIN Vva_Producto ON Vva_ItemCp.IDProducto = Vva_Producto.Codigo
-            INNER JOIN ZONA AS ZONA_1 ON Vva_Cliente_1.Zona = ZONA_1.Zona
-       WHERE(Vva_Cp.Anulado = 0)
-            AND (Vva_Cp.Fecha BETWEEN @Desde AND @Hasta) AND (Vva_Cliente_1.Zona = @IDZONA) AND (Vva_Producto.@variable)
-       GROUP BY Vva_Cliente_1.Codigo, 
-                Vva_Cliente_1.Nombre,
-                Vva_Cliente_1.Direccion";
+        SELECT DISTINCT 
+               Vva_Cliente_1.Codigo, 
+               Vva_Cliente_1.Nombre, 
+               Vva_Cliente_1.Direccion
+        FROM Vva_Cp
+             INNER JOIN Vva_Cliente AS Vva_Cliente_1 ON Vva_Cp.IDCliente = Vva_Cliente_1.Codigo
+             INNER JOIN Vva_ItemCp ON Vva_Cp.NrDoc = Vva_ItemCp.NrDoc
+                                      AND Vva_Cp.TpDoc = Vva_ItemCp.TpDoc
+             INNER JOIN Vva_Producto ON Vva_ItemCp.IDProducto = Vva_Producto.Codigo
+             INNER JOIN ZONA AS ZONA_1 ON Vva_Cliente_1.Zona = ZONA_1.Zona
+        WHERE(Vva_Cp.Anulado = 0)
+             AND (Vva_Cp.Fecha BETWEEN @Desde AND @Hasta) AND (Vva_Cliente_1.Zona = @IDZONA) AND (Vva_Producto.@variable)
+        GROUP BY Vva_Cliente_1.Codigo, 
+                 Vva_Cliente_1.Nombre,
+                 Vva_Cliente_1.Direccion";
         public const string AvanceCobertura = @"
                     WITH CTE_Zonas
                                   AS (SELECT DISTINCT 

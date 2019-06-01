@@ -17,7 +17,7 @@ namespace xtraForm.Modulos.Ventas
         Libreria.Ejecutar ejecutar = new Libreria.Ejecutar();
         Libreria.Bonificacion bonificacion = new Libreria.Bonificacion();
         Libreria.Producto producto = new Libreria.Producto();
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         private string tabla = "Bonificacion";
         private bool Existe = false;
 

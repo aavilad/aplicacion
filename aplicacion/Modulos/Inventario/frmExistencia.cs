@@ -21,7 +21,7 @@ namespace xtraForm.Modulos.Inventario
     public partial class frmExistencia : DevExpress.XtraEditors.XtraForm
     {
         public string tabla = "Vva_Producto";
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         public frmExistencia()
         {
             InitializeComponent();

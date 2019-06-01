@@ -18,7 +18,7 @@ namespace xtraForm.Modulos.Elementos
         string Fecha;
         Libreria.Formato formato = new Libreria.Formato();
         int index = 0;
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         string tabla = "nuevoPedido";
         int TipoLista = 0;
         decimal PorEspecial = 0;

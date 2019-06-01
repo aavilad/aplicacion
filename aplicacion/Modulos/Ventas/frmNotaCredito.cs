@@ -25,7 +25,7 @@ namespace xtraForm.Modulos.Ventas
 
         void Refrescar()
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' ORDER BY ORDEN", tabla);
             List<string> lista_ = new List<string>();
             foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
@@ -35,7 +35,7 @@ namespace xtraForm.Modulos.Ventas
         }
         void condicion(string cadena)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             using (var Context = new LiderEntities())
             {
                 string Query = Convert.ToString(Context.VistaAdministrativas.Where(x => x.IDModulo == (Context.Moduloes.Where(a => a.Nombre == Modulo).Select(c => c.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());

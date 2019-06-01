@@ -38,7 +38,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas.Cubos
             string FechaFinal = Convert.ToDateTime(Hasta.EditValue).ToString("yyyyMMdd");
             string Prov = Convert.ToString(PROVEEDOR.EditValue).Trim().Replace(",","','").Replace(" ","").Trim();
             string sql = Libreria.Constante.Compras.Replace("@FechaInicio", FechaInicial).Replace("@FechaFin", FechaFinal).Replace("@Prov", Prov);
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             proceso.consultar(sql, "Compras");
             pivotGridControl1.DataSource = proceso.ds.Tables["Compras"];
         }

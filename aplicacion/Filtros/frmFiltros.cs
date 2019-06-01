@@ -12,7 +12,7 @@ namespace xtraForm.Filtros
         public string entidad;
         public delegate void variables(string sql);
         public event variables pasar;
-        Libreria.Proceso procesar = new Libreria.Proceso();
+        Libreria.Rutina procesar = new Libreria.Rutina();
         public frmFiltros()
         {
             InitializeComponent();

@@ -7,7 +7,7 @@ namespace xtraForm.Libreria
     class Ejecutar
     {
         string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["conexion"].ToString();
-        Libreria.Proceso proceso = new Proceso();
+        Libreria.Rutina proceso = new Rutina();
         public void savepedido(DataGridView detalle, string pedido, string Personal, string Cliente, string FormaPago, string Fecha, string rsocial,
             string ruc, string direccion, string dni, string gestion, string tipodoc)
         {

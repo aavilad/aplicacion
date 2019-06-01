@@ -20,7 +20,7 @@ namespace xtraForm
     {
         Form objeto;
         Libreria.Entidad entidad = new Libreria.Entidad();
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         public frmPrincipal()
         {
             InitializeComponent();
@@ -80,7 +80,6 @@ namespace xtraForm
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
                 if (xtraTabControl1.TabPages[i].Text == "pedidos")
                 {
-
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
@@ -89,18 +88,17 @@ namespace xtraForm
                 splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
                 splashScreenManager1.ShowWaitForm();
                 XtraTabPage pedidos = new XtraTabPage();
-                entidad.index = 0;
                 objeto = new Modulos.Ventas.frmPedido
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None,
                     Dock = DockStyle.Fill,
                     NModulo = e.Item.Name,
+                    Tabla = "vva_pedido"
                 };
                 xtraTabControl1.TabPages.Add(pedidos);
                 xtraTabControl1.SelectedTabPage = pedidos;
                 pedidos.Text = "pedidos";
-                entidad.index = xtraTabControl1.SelectedTabPageIndex;
                 pedidos.Controls.Add(objeto);
                 objeto.Show();
                 splashScreenManager1.CloseWaitForm();
@@ -119,7 +117,7 @@ namespace xtraForm
                                 FROM PRODUCTO
                                 WHERE Producto = DETPEDIDO.Producto)";
 
-            Libreria.Proceso proceso = new Libreria.Proceso();
+            Libreria.Rutina proceso = new Libreria.Rutina();
             entidad.i = proceso.ConsultarTabla_("pedido", "fecha >= '" + entidad.fechainicio + "' and fecha < '" + entidad.fechafin + "' and statusweb is null and procesado = 0 ").Rows.Count;
             if (entidad.i > 0)
             {

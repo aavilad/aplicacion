@@ -23,7 +23,7 @@ namespace xtraForm.Modulos.Ventas
 
         void condicion(string cadena)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             using (var Context = new LiderEntities())
             {
                 string Query = Convert.ToString(Context.VistaAdministrativas.Where(x => x.IDModulo == (Context.Moduloes.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());

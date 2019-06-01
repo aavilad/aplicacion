@@ -108,14 +108,15 @@
             this.MCONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.CONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ENTIDADES = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.repositoryItemPopupGalleryEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit();
             this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.repositoryItemFontEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemFontEdit();
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
-            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -144,7 +145,8 @@
             ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories3"))),
             ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories4"))),
             ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories5"))),
-            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories6")))});
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories6"))),
+            ((DevExpress.XtraBars.BarManagerCategory)(resources.GetObject("ribbonControl1.Categories7")))});
             this.ribbonControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.DarkBlue;
             this.ribbonControl1.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.DrawGroupsBorderMode = DevExpress.Utils.DefaultBoolean.True;
@@ -220,7 +222,8 @@
             this.MDISTRIBUCION,
             this.MINVENTARIOS,
             this.MREPORTES,
-            this.MCONFIGURACION});
+            this.MCONFIGURACION,
+            this.ENTIDADES});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPopupGalleryEdit1,
             this.repositoryItemPopupContainerEdit1,
@@ -261,7 +264,7 @@
             // CLIENTES
             // 
             resources.ApplyResources(this.CLIENTES, "CLIENTES");
-            this.CLIENTES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.CLIENTES.CategoryGuid = new System.Guid("f487978d-23ff-418b-939f-34fe319526f0");
             this.CLIENTES.Enabled = false;
             this.CLIENTES.Id = 5;
             this.CLIENTES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CLIENTES.ImageOptions.SvgImage")));
@@ -271,7 +274,7 @@
             // VENDEDORES
             // 
             resources.ApplyResources(this.VENDEDORES, "VENDEDORES");
-            this.VENDEDORES.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
+            this.VENDEDORES.CategoryGuid = new System.Guid("f487978d-23ff-418b-939f-34fe319526f0");
             this.VENDEDORES.Id = 6;
             this.VENDEDORES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("VENDEDORES.ImageOptions.SvgImage")));
             this.VENDEDORES.Name = "VENDEDORES";
@@ -463,7 +466,7 @@
             resources.ApplyResources(this.CONTROLGENERA, "CONTROLGENERA");
             this.CONTROLGENERA.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.CONTROLGENERA.Id = 48;
-            this.CONTROLGENERA.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("CONTROLGENERA.ImageOptions.Image")));
+            this.CONTROLGENERA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CONTROLGENERA.ImageOptions.SvgImage")));
             this.CONTROLGENERA.Name = "CONTROLGENERA";
             this.CONTROLGENERA.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
@@ -689,6 +692,7 @@
             this.DataUser.Id = 10;
             this.DataUser.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("DataUser.ImageOptions.SvgImage")));
             this.DataUser.Name = "DataUser";
+            this.DataUser.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.DataUser.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // RVENTAS
@@ -708,7 +712,7 @@
             resources.ApplyResources(this.GENERAGUIAS, "GENERAGUIAS");
             this.GENERAGUIAS.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.GENERAGUIAS.Id = 2;
-            this.GENERAGUIAS.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GENERAGUIAS.ImageOptions.Image")));
+            this.GENERAGUIAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("GENERAGUIAS.ImageOptions.SvgImage")));
             this.GENERAGUIAS.Name = "GENERAGUIAS";
             this.GENERAGUIAS.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
@@ -717,7 +721,7 @@
             resources.ApplyResources(this.GENERAINFORME, "GENERAINFORME");
             this.GENERAINFORME.CategoryGuid = new System.Guid("38b9411c-051d-4729-811b-f148a16da82d");
             this.GENERAINFORME.Id = 4;
-            this.GENERAINFORME.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GENERAINFORME.ImageOptions.Image")));
+            this.GENERAINFORME.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("GENERAINFORME.ImageOptions.SvgImage")));
             this.GENERAINFORME.Name = "GENERAINFORME";
             this.GENERAINFORME.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
@@ -744,8 +748,6 @@
             this.G01.ItemLinks.Add(this.PEDIDOVENTA);
             this.G01.ItemLinks.Add(this.COMPROBANTEVENTA);
             this.G01.ItemLinks.Add(this.NOTACREDITOVENTA);
-            this.G01.ItemLinks.Add(this.CLIENTES);
-            this.G01.ItemLinks.Add(this.VENDEDORES);
             this.G01.Name = "G01";
             resources.ApplyResources(this.G01, "G01");
             // 
@@ -889,6 +891,11 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             resources.ApplyResources(this.ribbonPageGroup1, "ribbonPageGroup1");
             // 
+            // ENTIDADES
+            // 
+            this.ENTIDADES.Name = "ENTIDADES";
+            resources.ApplyResources(this.ENTIDADES, "ENTIDADES");
+            // 
             // repositoryItemPopupGalleryEdit1
             // 
             resources.ApplyResources(this.repositoryItemPopupGalleryEdit1, "repositoryItemPopupGalleryEdit1");
@@ -909,6 +916,14 @@
             this.repositoryItemFontEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemFontEdit1.Buttons"))))});
             this.repositoryItemFontEdit1.Name = "repositoryItemFontEdit1";
+            // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.DESCARGAPEDIDO);
+            this.ribbonStatusBar1.ItemLinks.Add(this.DataUser);
+            resources.ApplyResources(this.ribbonStatusBar1, "ribbonStatusBar1");
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             // 
             // ribbonPage2
             // 
@@ -932,14 +947,6 @@
             // splashScreenManager1
             // 
             this.splashScreenManager1.ClosingDelay = 500;
-            // 
-            // ribbonStatusBar1
-            // 
-            this.ribbonStatusBar1.ItemLinks.Add(this.DESCARGAPEDIDO);
-            this.ribbonStatusBar1.ItemLinks.Add(this.DataUser);
-            resources.ApplyResources(this.ribbonStatusBar1, "ribbonStatusBar1");
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             // 
             // layoutControl1
             // 
@@ -981,6 +988,7 @@
             this.IsMdiContainer = true;
             this.Name = "frmPrincipal";
             this.Ribbon = this.ribbonControl1;
+            this.StatusBar = this.ribbonStatusBar1;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupGalleryEdit1)).EndInit();
@@ -1087,5 +1095,6 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory ENTIDADES;
     }
 }

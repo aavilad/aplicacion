@@ -57,7 +57,7 @@ namespace xtraForm.Libreria
             var x = 0;
             var y = 0;
             var FechaEmision = DateTime.Parse(Fecha);
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             using (var CTX = new LiderEntities())
             {
                 proceso.Procedimiento("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "',2");

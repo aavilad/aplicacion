@@ -173,7 +173,7 @@
     <Compile Include="Libreria\maestroBonif_Reglas.cs" />
     <Compile Include="Libreria\Pedido.cs" />
     <Compile Include="Libreria\Pedido_Bonificar.cs" />
-    <Compile Include="Libreria\Proceso.cs" />
+    <Compile Include="Libreria\Rutina.cs" />
     <Compile Include="Libreria\Producto.cs" />
     <Compile Include="Libreria\Proveedor.cs" />
     <Compile Include="Libreria\Vendedor.cs" />

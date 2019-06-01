@@ -11,7 +11,7 @@ namespace xtraForm.Filtros
 {
     public partial class frmProcesar : DevExpress.XtraEditors.XtraForm
     {
-        Libreria.Proceso proceso = new Libreria.Proceso();
+        Libreria.Rutina proceso = new Libreria.Rutina();
         Libreria.Entidad entidad = new Libreria.Entidad();
         Libreria.maestroBonif_Reglas ejecutar = new Libreria.maestroBonif_Reglas();
         public frmProcesar()

@@ -55,7 +55,7 @@
             this.FechaProceso.CalendarAppearance.DayCellSpecial.Options.UseFont = true;
             this.FechaProceso.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.FechaProceso.FirstDayOfWeek = System.DayOfWeek.Sunday;
+            this.FechaProceso.FirstDayOfWeek = System.DayOfWeek.Monday;
             this.FechaProceso.Location = new System.Drawing.Point(1, -1);
             this.FechaProceso.Name = "FechaProceso";
             this.FechaProceso.Size = new System.Drawing.Size(220, 239);

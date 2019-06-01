@@ -25,7 +25,7 @@ namespace xtraForm.Modulos.Ventas
         {
             using (var Context = new LiderEntities())
             {
-                var proceso = new Libreria.Proceso();
+                var proceso = new Libreria.Rutina();
                 string Query = Convert.ToString(Context.VistaAdministrativas.Where(x => x.IDModulo == (Context.Moduloes.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
                 {
@@ -76,7 +76,7 @@ namespace xtraForm.Modulos.Ventas
 
         void Refrescar()
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' order by orden", tabla);
             List<string> lista_ = new List<string>();
             foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
@@ -93,7 +93,7 @@ namespace xtraForm.Modulos.Ventas
 
         private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             using (var Context = new LiderEntities())
             {
                 Filtros.frmFiltros filtro = new Filtros.frmFiltros();

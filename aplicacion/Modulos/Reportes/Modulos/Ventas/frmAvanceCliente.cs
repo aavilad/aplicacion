@@ -28,7 +28,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
         string IDZona = "";
         private void VARIABLE_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             switch (TPSEARCH.SelectedIndex)
             {
                 case 0:
@@ -121,7 +121,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
 
         private void BTNACEPTAR_Click(object sender, EventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             var ds = new Lider2018DataSet();
             proceso.consultar(sql, "Cobertura");
             maestroCoberturaBindingSource.DataSource = proceso.ds.Tables["Cobertura"];
@@ -144,7 +144,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
 
         private void Cartera_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             var Formulario = new Elementos.frmAvanceClienteDetalle();
             IDZona = gridView1.GetFocusedRowCellValue("Codigo").ToString();
             proceso.consultar(Libreria.Constante.Cartera.Replace("@Zona", "'" + IDZona + "'"), "Cartera");
@@ -156,7 +156,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
 
         private void Cobertura_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             var Formulario = new Elementos.frmAvanceClienteDetalle();
             IDZona = gridView1.GetFocusedRowCellValue("Codigo").ToString();
             proceso.consultar(sql1.Replace("@IDZONA", "'" + IDZona + "'"), "Cobertura");
@@ -168,7 +168,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas
 
         private void Diferencia_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var proceso = new Libreria.Proceso();
+            var proceso = new Libreria.Rutina();
             var Formulario = new Elementos.frmAvanceClienteDetalle();
             IDZona = gridView1.GetFocusedRowCellValue("Codigo").ToString();
             proceso.consultar(sql2.Replace("@IDZONA", "'" + IDZona + "'"), "Diferencia");

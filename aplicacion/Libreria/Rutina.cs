@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace xtraForm.Libreria
 {
-    class Proceso
+    class Rutina
     {
         private string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["conexion"].ToString();
         Entidad entidad = new Entidad();
