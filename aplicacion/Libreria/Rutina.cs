@@ -146,21 +146,13 @@ namespace xtraForm.Libreria
             }
         }
 
-        public bool ejecutar(string query)
+        public void ejecutar(string query)
         {
             using (SqlConnection con = new SqlConnection(conexion))
             using (cmd = new SqlCommand(query, con))
             {
                 con.Open();
-                entidad.i = cmd.ExecuteNonQuery();
-                if (entidad.i > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                cmd.ExecuteNonQuery();
             }
         }
 

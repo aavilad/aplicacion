@@ -358,13 +358,13 @@ namespace xtraForm.Modulos.Inventario
                 {
                     Elementos.frmMsg frmmensage = new Elementos.frmMsg();
                     frmmensage.StartPosition = FormStartPosition.CenterScreen;
-                    frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    frmmensage.Scm03.SplashFormStartPosition = SplashFormStartPosition.Default;
                     frmmensage.dataGridView1.Columns[0].HeaderText = "Producto";
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
                     frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
                     frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                     frmmensage.Show();
-                    frmmensage.splashScreenManager1.ShowWaitForm();
+                    frmmensage.Scm03.ShowWaitForm();
                     foreach (var fila in gridView1.GetSelectedRows())
                     {
                         if (!proceso.ExistenciaCampo("Producto", "Producto", "producto = '" + Convert.ToString(gridView1.GetDataRow(fila)["Codigo"]) + "'"))
@@ -378,7 +378,7 @@ namespace xtraForm.Modulos.Inventario
                             string.Empty, string.Empty);
                         }
                     }
-                    frmmensage.splashScreenManager1.CloseWaitForm();
+                    frmmensage.Scm03.CloseWaitForm();
                     Refrescar();
                 }
                 string Eliminar(object campo)

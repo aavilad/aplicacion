@@ -30,13 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
@@ -44,26 +39,17 @@
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule6 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule7 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtcdDocumento = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txttipoDocumento = new DevExpress.XtraEditors.ButtonEdit();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantpedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioNeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Recargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bonif = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Credito = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Afecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IDBonificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtnmVendedor = new DevExpress.XtraEditors.ButtonEdit();
             this.txtcdVendedor = new DevExpress.XtraEditors.ButtonEdit();
             this.txtnmCliente = new DevExpress.XtraEditors.ButtonEdit();
@@ -130,6 +116,21 @@
             this.CodigoFP = new DevExpress.XtraEditors.LabelControl();
             this.btnFueraRuta = new DevExpress.XtraEditors.CheckButton();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantpedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TpPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioNeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bonif = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Credito = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Afecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IDBonificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtcdDocumento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txttipoDocumento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -238,25 +239,25 @@
             this.Credito,
             this.Afecto,
             this.IDBonificacion});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.RowHeadersWidth = 30;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightCyan;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(817, 246);
             this.dataGridView1.TabIndex = 4;
@@ -266,129 +267,6 @@
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.Width = 60;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Cantidad
-            // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0.00";
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 55;
-            // 
-            // cantpedido
-            // 
-            this.cantpedido.HeaderText = "cantidadPedido";
-            this.cantpedido.Name = "cantpedido";
-            this.cantpedido.ReadOnly = true;
-            this.cantpedido.Visible = false;
-            // 
-            // Unidad
-            // 
-            this.Unidad.HeaderText = "Unidad";
-            this.Unidad.Name = "Unidad";
-            this.Unidad.ReadOnly = true;
-            this.Unidad.Width = 50;
-            // 
-            // TpPrecio
-            // 
-            this.TpPrecio.HeaderText = "TPr";
-            this.TpPrecio.Name = "TpPrecio";
-            this.TpPrecio.ReadOnly = true;
-            this.TpPrecio.Width = 30;
-            // 
-            // PrecioUnitario
-            // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0.00";
-            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle3;
-            this.PrecioUnitario.HeaderText = "PrecioUnit";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.ReadOnly = true;
-            this.PrecioUnitario.Width = 60;
-            // 
-            // PrecioNeto
-            // 
-            this.PrecioNeto.HeaderText = "PrecioNeto";
-            this.PrecioNeto.Name = "PrecioNeto";
-            this.PrecioNeto.ReadOnly = true;
-            this.PrecioNeto.Width = 55;
-            // 
-            // Total
-            // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.Total.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.Width = 60;
-            // 
-            // Descuento
-            // 
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.Descuento.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            this.Descuento.ReadOnly = true;
-            this.Descuento.Width = 60;
-            // 
-            // Recargo
-            // 
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0.00";
-            this.Recargo.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Recargo.HeaderText = "Recargo";
-            this.Recargo.Name = "Recargo";
-            this.Recargo.ReadOnly = true;
-            this.Recargo.Width = 60;
-            // 
-            // Bonif
-            // 
-            this.Bonif.HeaderText = "Bonif";
-            this.Bonif.Name = "Bonif";
-            this.Bonif.ReadOnly = true;
-            this.Bonif.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bonif.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Bonif.Width = 30;
-            // 
-            // Credito
-            // 
-            this.Credito.HeaderText = "Credito";
-            this.Credito.Name = "Credito";
-            this.Credito.ReadOnly = true;
-            this.Credito.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Credito.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Credito.Width = 30;
-            // 
-            // Afecto
-            // 
-            this.Afecto.HeaderText = "Afecto";
-            this.Afecto.Name = "Afecto";
-            this.Afecto.ReadOnly = true;
-            this.Afecto.Width = 30;
-            // 
-            // IDBonificacion
-            // 
-            this.IDBonificacion.HeaderText = "IDBonificacion";
-            this.IDBonificacion.Name = "IDBonificacion";
-            this.IDBonificacion.ReadOnly = true;
-            this.IDBonificacion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IDBonificacion.Visible = false;
             // 
             // txtnmVendedor
             // 
@@ -1039,6 +917,132 @@
             // dxValidationProvider1
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Manual;
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.Width = 60;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // Cantidad
+            // 
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0.00";
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 55;
+            // 
+            // cantpedido
+            // 
+            this.cantpedido.HeaderText = "cantidadPedido";
+            this.cantpedido.Name = "cantpedido";
+            this.cantpedido.ReadOnly = true;
+            this.cantpedido.Visible = false;
+            // 
+            // Unidad
+            // 
+            this.Unidad.HeaderText = "Unidad";
+            this.Unidad.Name = "Unidad";
+            this.Unidad.ReadOnly = true;
+            this.Unidad.Width = 50;
+            // 
+            // TpPrecio
+            // 
+            this.TpPrecio.HeaderText = "TPr";
+            this.TpPrecio.Name = "TpPrecio";
+            this.TpPrecio.ReadOnly = true;
+            this.TpPrecio.Width = 30;
+            // 
+            // PrecioUnitario
+            // 
+            dataGridViewCellStyle3.Format = "N3";
+            dataGridViewCellStyle3.NullValue = "0.00";
+            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle3;
+            this.PrecioUnitario.HeaderText = "PrecioUnit";
+            this.PrecioUnitario.Name = "PrecioUnitario";
+            this.PrecioUnitario.ReadOnly = true;
+            this.PrecioUnitario.Width = 60;
+            // 
+            // PrecioNeto
+            // 
+            dataGridViewCellStyle4.Format = "N3";
+            dataGridViewCellStyle4.NullValue = null;
+            this.PrecioNeto.DefaultCellStyle = dataGridViewCellStyle4;
+            this.PrecioNeto.HeaderText = "PrecioNeto";
+            this.PrecioNeto.Name = "PrecioNeto";
+            this.PrecioNeto.ReadOnly = true;
+            this.PrecioNeto.Width = 55;
+            // 
+            // Total
+            // 
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0.00";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 60;
+            // 
+            // Descuento
+            // 
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0.00";
+            this.Descuento.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            this.Descuento.Width = 60;
+            // 
+            // Recargo
+            // 
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = "0.00";
+            this.Recargo.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Recargo.HeaderText = "Recargo";
+            this.Recargo.Name = "Recargo";
+            this.Recargo.ReadOnly = true;
+            this.Recargo.Width = 60;
+            // 
+            // Bonif
+            // 
+            this.Bonif.HeaderText = "Bonif";
+            this.Bonif.Name = "Bonif";
+            this.Bonif.ReadOnly = true;
+            this.Bonif.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bonif.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Bonif.Width = 30;
+            // 
+            // Credito
+            // 
+            this.Credito.HeaderText = "Credito";
+            this.Credito.Name = "Credito";
+            this.Credito.ReadOnly = true;
+            this.Credito.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Credito.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Credito.Width = 30;
+            // 
+            // Afecto
+            // 
+            this.Afecto.HeaderText = "Afecto";
+            this.Afecto.Name = "Afecto";
+            this.Afecto.ReadOnly = true;
+            this.Afecto.Width = 30;
+            // 
+            // IDBonificacion
+            // 
+            this.IDBonificacion.HeaderText = "IDBonificacion";
+            this.IDBonificacion.Name = "IDBonificacion";
+            this.IDBonificacion.ReadOnly = true;
+            this.IDBonificacion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IDBonificacion.Visible = false;
             // 
             // frmpedido
             // 

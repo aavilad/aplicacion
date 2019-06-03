@@ -32,5 +32,10 @@ namespace xtraForm.Modulos.Elementos
         {
             this.Close();
         }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

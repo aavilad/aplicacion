@@ -15,7 +15,7 @@ namespace xtraForm.Modulos.Elementos
 {
     public partial class frmFacturacionPedido : DevExpress.XtraEditors.XtraForm
     {
-        public delegate void Variables(string Fecha, int SerieBoleta, int SerieFactura);
+        public delegate void Variables(string Fecha, int Serie);
         public event Variables pasar;
         public frmFacturacionPedido()
         {
@@ -33,30 +33,21 @@ namespace xtraForm.Modulos.Elementos
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            string Fecha_ = Convert.ToDateTime(dateEdit1.EditValue).ToString("yyyyMMdd");
-            int SerieB = Convert.ToInt32(SerieBoleta.EditValue);
-            int SerieF = Convert.ToInt32(SerieFacturas.EditValue);
-            pasar(Fecha_, SerieB, SerieF);
+            string Fecha_ = Convert.ToDateTime(FechaProceso.EditValue).ToString("yyyyMMdd");
+            int Serie = Convert.ToInt32(this.Serie.EditValue);
+            pasar(Fecha_, Serie);
         }
 
         private void frmFacturacionPedido_Load(object sender, EventArgs e)
         {
             using (var context = new LiderEntities())
             {
-                SerieFacturas.Properties.ShowHeader = false;
-                SerieFacturas.Properties.DisplayMember = "Serie";
-                SerieFacturas.Properties.ValueMember = "ID";
-                SerieFacturas.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
-                SerieFacturas.Properties.DataSource =
-                    context.DOCTIPOes.Where(x => x.codigo == "01").
-                    Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
-
-                SerieBoleta.Properties.ShowHeader = false;
-                SerieBoleta.Properties.DisplayMember = "Serie";
-                SerieBoleta.Properties.ValueMember = "ID";
-                SerieBoleta.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
-                SerieBoleta.Properties.DataSource =
-                    context.DOCTIPOes.Where(x => x.codigo == "03").
+                Serie.Properties.ShowHeader = false;
+                Serie.Properties.DisplayMember = "Serie";
+                Serie.Properties.ValueMember = "ID";
+                Serie.Properties.Columns.Add(new LookUpColumnInfo("Detalle", string.Empty, 10));
+                Serie.Properties.DataSource =
+                    context.DOCTIPOes.Where(x => "'03','01'".Contains(x.codigo)).
                     Select(a => new { ID = a.PKID, Serie = a.Serie.Trim(), Detalle = a.Serie.Trim() + ":" + a.Descripcion.Trim() }).ToList();
             }
         }
@@ -65,17 +56,8 @@ namespace xtraForm.Modulos.Elementos
         {
             using (var Context = new LiderEntities())
             {
-                NumeroBoletas.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieBoleta.EditValue).Select(s => s.Numero).FirstOrDefault();
-                DescripcionBoletas.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieBoleta.EditValue).Select(s => s.Descripcion).FirstOrDefault();
-            }
-        }
-
-        private void SerieFacturas_EditValueChanged(object sender, EventArgs e)
-        {
-            using (var Context = new LiderEntities())
-            {
-                NumeroFacturas.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Numero).FirstOrDefault();
-                DescripcionFacturas.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)SerieFacturas.EditValue).Select(s => s.Descripcion).FirstOrDefault();
+                Numero.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)Serie.EditValue).Select(s => s.Numero).FirstOrDefault();
+                Descripcion.EditValue = Context.DOCTIPOes.Where(x => x.PKID == (int)Serie.EditValue).Select(s => s.Descripcion).FirstOrDefault();
             }
         }
     }

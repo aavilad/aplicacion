@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xtraForm.Model;
@@ -25,34 +26,28 @@ namespace xtraForm.Modulos.Usuario
             var formulario = new frmPrincipal();
             using (var CTX = new LiderEntities())
             {
-                var usuario = CTX.Usuarios.Where(x => x.Codigo == UsuarioID.Text.Trim());
-                var Passw = CTX.Usuarios.Where(x => x.Contraseña == UsuarioPass.Text.Trim());
-                if (dxValidationProvider1.Validate())
-                {
-                    if (usuario != null && Passw != null)
+                var usuario = CTX.Usuarios.Where(x => x.Codigo == UsuarioID.Text.Trim() && x.Contraseña == UsuarioPass.Text.Trim());
+                if (Validar.Validate())
+                    if (usuario.FirstOrDefault() != null)
                     {
-                        formulario.DataUser.Caption = usuario.Select(y => "USUARIO: " + y.Nombre.ToUpper()).FirstOrDefault();
+                        Scm02.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
+                        Scm02.ShowWaitForm();
+                        for (int i = 0; i < 100; i++)
+                            Thread.Sleep(i);
+                        formulario.DataUser.Caption = usuario.Select(y => "USUARIO => " + y.Nombre.ToUpper()).FirstOrDefault();
                         this.Hide();
+                        Scm02.CloseWaitForm();
                         formulario.Show();
                     }
                     else
-                    {
-                        MessageBox.Show("Datos ingresados incorrectos son incorrectos .");
-                    }
-                }
+                        MessageBox.Show("Datos ingresados incorrectos");
             }
         }
         private void frmLogin_Entrar(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (int)Keys.Enter)
-            {
                 Entrar_Click(sender, e);
-            }
         }
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            Entrar.Focus();
-            Entrar.Select();
-        }
+        private void frmLogin_Load(object sender, EventArgs e) => UsuarioID.Select();
     }
 }

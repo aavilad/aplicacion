@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraSplashScreen.SplashScreenManager Efecto01 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.SplashScreen1), true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.PEDIDOVENTA = new DevExpress.XtraBars.BarButtonItem();
@@ -116,7 +115,7 @@
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
+            this.Scm01 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Progreso), true, true);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -130,10 +129,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Efecto01
-            // 
-            Efecto01.ClosingDelay = 100;
             // 
             // ribbonControl1
             // 
@@ -944,9 +939,9 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.HeaderButtonClick += new DevExpress.XtraTab.ViewInfo.HeaderButtonEventHandler(this.xtraTabControl1_HeaderButtonClick);
             // 
-            // splashScreenManager1
+            // Scm01
             // 
-            this.splashScreenManager1.ClosingDelay = 500;
+            this.Scm01.ClosingDelay = 500;
             // 
             // layoutControl1
             // 
@@ -1037,7 +1032,7 @@
         private DevExpress.XtraBars.BarButtonItem CONTROLGENERA;
         private DevExpress.XtraBars.BarButtonItem LISTAPRECIOS;
         private DevExpress.XtraBars.BarButtonItem VALIDARBONIFICACION;
-        public DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        public DevExpress.XtraSplashScreen.SplashScreenManager Scm01;
         private DevExpress.XtraBars.BarButtonItem RUTAS;
         private DevExpress.XtraBars.BarButtonItem REPARTO;
         private DevExpress.XtraBars.BarButtonItem ZONA;

@@ -331,8 +331,8 @@ namespace xtraForm.Modulos.Ventas
                 {
                     Point loc = new Point(510, 450);
                     Elementos.frmMsg frmmensage = new Elementos.frmMsg();
-                    frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Manual;
-                    frmmensage.splashScreenManager1.SplashFormLocation = loc;
+                    frmmensage.Scm03.SplashFormStartPosition = SplashFormStartPosition.Manual;
+                    frmmensage.Scm03.SplashFormLocation = loc;
                     frmmensage.dataGridView1.Columns[0].HeaderText = "Mecanica";
                     frmmensage.dataGridView1.Columns[0].Width = 200;
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
@@ -340,7 +340,7 @@ namespace xtraForm.Modulos.Ventas
                     frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
                     frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                     frmmensage.Show();
-                    frmmensage.splashScreenManager1.ShowWaitForm();
+                    frmmensage.Scm03.ShowWaitForm();
                     foreach (var bonificacion in gridView1.GetSelectedRows())
                     {
                         var x = Convert.ToInt32(gridView1.GetDataRow(bonificacion)["PKID"]);
@@ -350,7 +350,7 @@ namespace xtraForm.Modulos.Ventas
                             string.Empty, string.Empty);
                         }
                     }
-                    frmmensage.splashScreenManager1.CloseWaitForm();
+                    frmmensage.Scm03.CloseWaitForm();
                     Refrescar();
                 }
             }

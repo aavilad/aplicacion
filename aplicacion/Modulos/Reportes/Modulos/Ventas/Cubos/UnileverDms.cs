@@ -50,13 +50,13 @@ namespace xtraForm.Modulos.Reportes.Modulos.Ventas.Cubos
                     sql = @"";
                     break;
             }
-            formulario0.splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
-            formulario0.splashScreenManager1.ShowWaitForm();
+            formulario0.Scm01.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
+            formulario0.Scm01.ShowWaitForm();
             try
             {
                 proceso.consultar(sql, "dms");
                 pivotGridControl1.DataSource = proceso.ds.Tables["dms"];
-                formulario0.splashScreenManager1.CloseWaitForm();
+                formulario0.Scm01.CloseWaitForm();
             }
             catch (Exception t)
             {

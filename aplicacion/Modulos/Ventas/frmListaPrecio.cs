@@ -24,8 +24,8 @@ namespace xtraForm.Modulos.Ventas
         private void TxtCodigoProducto_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             var frmprincipal = new frmPrincipal();
-            frmprincipal.splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
-            frmprincipal.splashScreenManager1.ShowWaitForm();
+            frmprincipal.Scm01.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
+            frmprincipal.Scm01.ShowWaitForm();
             var Codigo = Convert.ToString(TxtCodigoProducto.EditValue);
             try
             {
@@ -49,7 +49,7 @@ namespace xtraForm.Modulos.Ventas
                     gridView1.OptionsBehavior.Editable = false;
                     gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
                 }
-                frmprincipal.splashScreenManager1.CloseWaitForm();
+                frmprincipal.Scm01.CloseWaitForm();
             }
             catch (DbEntityValidationException t)
             {

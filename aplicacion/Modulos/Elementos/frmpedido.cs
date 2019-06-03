@@ -410,6 +410,7 @@ namespace xtraForm.Modulos.Elementos
                 }
                 using (var CTX = new LiderEntities())
                 {
+                    int Y = dataGridView1.CurrentRow.Index;
                     switch (dataGridView1.Columns[e.ColumnIndex].Name)
                     {
                         case "Codigo":
@@ -449,10 +450,10 @@ namespace xtraForm.Modulos.Elementos
                             }
                             else if (CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1.StartsWith(Valor)).Count() > 0)
                             { Productos("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and codigo like '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'"); }
-                            else
+                            else 
                             {
                                 MessageBox.Show("No se encuentra alguna coincidencia.");
-                                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Codigo"];
+                                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
                                 dataGridView1.BeginEdit(true);
                             }
                             break;
@@ -473,11 +474,9 @@ namespace xtraForm.Modulos.Elementos
                                 dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = i < 0 ? Math.Abs(i) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
                                 if (Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value) > 0)
                                 {
-                                    dataGridView1.CurrentCell = dataGridView1.CurrentRow.Cells["PrecioNeto"];
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[7];
                                     dataGridView1.BeginEdit(true);
-                                    calculartotal();
                                 }
-
                             }
                             else
                             {
@@ -496,6 +495,7 @@ namespace xtraForm.Modulos.Elementos
                             btnAgregar.Select();
                             break;
                     }
+                    calculartotal();
                 }
             }
         }

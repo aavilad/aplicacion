@@ -33,7 +33,6 @@
             this.btnAceptar = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.FechaProceso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FechaProceso.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -88,11 +87,7 @@
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsFilter.AllowMultiSelectInCheckedFilterPopup = false;
             this.gridView1.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            // 
-            // splashScreenManager1
-            // 
-            this.splashScreenManager1.ClosingDelay = 500;
+            this.gridView1.OptionsView.ShowIndicator = false; 
             // 
             // frmProcesar
             // 
@@ -123,6 +118,5 @@
         private DevExpress.XtraEditors.SimpleButton btnAceptar;
         public DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         public DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

@@ -161,12 +161,12 @@ namespace xtraForm.Modulos.Elementos
                 if (gridView1.SelectedRowsCount > 0)
                 {
                     var frmwaint = new frmPrincipal();
-                    frmwaint.splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
-                    frmwaint.splashScreenManager1.ShowWaitForm();
+                    frmwaint.Scm01.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
+                    frmwaint.Scm01.ShowWaitForm();
                     GeneraDocumentos();
                     SerieFacturas_EditValueChanged(sender, e);
                     SerieBoletas_EditValueChanged(sender, e);
-                    frmwaint.splashScreenManager1.CloseWaitForm();
+                    frmwaint.Scm01.CloseWaitForm();
                 }
                 else
                 {

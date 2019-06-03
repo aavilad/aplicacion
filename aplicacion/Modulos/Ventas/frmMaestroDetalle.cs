@@ -30,8 +30,8 @@ namespace xtraForm.Modulos.Ventas
                 gridControl1.DataSource = null;
                 gridControl3.DataSource = null;
                 var frmprincipal = new frmPrincipal();
-                frmprincipal.splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
-                frmprincipal.splashScreenManager1.ShowWaitForm();
+                frmprincipal.Scm01.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
+                frmprincipal.Scm01.ShowWaitForm();
                 try
                 {
                     var proceso = new Libreria.Rutina();
@@ -143,7 +143,7 @@ namespace xtraForm.Modulos.Ventas
                         gridView3.BestFitColumns();
                         gridView3.OptionsView.ShowGroupPanel = false;
                     }
-                    frmprincipal.splashScreenManager1.CloseWaitForm();
+                    frmprincipal.Scm01.CloseWaitForm();
                     ContarA.Text = "Filas: " + gridView1.RowCount;
                     ContarB.Text = "Filas: " + gridView3.RowCount;
                 }

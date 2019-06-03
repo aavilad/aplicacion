@@ -39,15 +39,16 @@ namespace xtraForm.Modulos.Usuario
             this.UsuarioPass = new DevExpress.XtraEditors.TextEdit();
             this.Entrar = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.Validar = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.Scm02 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.ProgresoLogin), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioPass.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Validar)).BeginInit();
             this.SuspendLayout();
             // 
             // UsuarioID
             // 
-            this.UsuarioID.Location = new System.Drawing.Point(22, 68);
+            this.UsuarioID.Location = new System.Drawing.Point(22, 62);
             this.UsuarioID.Name = "UsuarioID";
             this.UsuarioID.Properties.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("UsuarioID.Properties.ContextImageOptions.SvgImage")));
             this.UsuarioID.Properties.ContextImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
@@ -56,11 +57,11 @@ namespace xtraForm.Modulos.Usuario
             conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
             conditionValidationRule1.ErrorText = "Campo usuario no puede permanecer vacio";
             conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.UsuarioID, conditionValidationRule1);
+            this.Validar.SetValidationRule(this.UsuarioID, conditionValidationRule1);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(22, 109);
+            this.labelControl2.Location = new System.Drawing.Point(22, 103);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(58, 13);
             this.labelControl2.TabIndex = 3;
@@ -68,7 +69,7 @@ namespace xtraForm.Modulos.Usuario
             // 
             // UsuarioPass
             // 
-            this.UsuarioPass.Location = new System.Drawing.Point(22, 133);
+            this.UsuarioPass.Location = new System.Drawing.Point(22, 127);
             this.UsuarioPass.Name = "UsuarioPass";
             this.UsuarioPass.Properties.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("UsuarioPass.Properties.ContextImageOptions.SvgImage")));
             this.UsuarioPass.Properties.ContextImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
@@ -78,7 +79,7 @@ namespace xtraForm.Modulos.Usuario
             conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
             conditionValidationRule2.ErrorText = "Campo contraseña no puede permanecer vacio";
             conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Information;
-            this.dxValidationProvider1.SetValidationRule(this.UsuarioPass, conditionValidationRule2);
+            this.Validar.SetValidationRule(this.UsuarioPass, conditionValidationRule2);
             // 
             // Entrar
             // 
@@ -91,11 +92,15 @@ namespace xtraForm.Modulos.Usuario
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(22, 42);
+            this.labelControl1.Location = new System.Drawing.Point(22, 36);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(40, 13);
             this.labelControl1.TabIndex = 2;
             this.labelControl1.Text = "Usuario:";
+            // 
+            // Scm02
+            // 
+            this.Scm02.ClosingDelay = 500;
             // 
             // frmLogin
             // 
@@ -117,7 +122,7 @@ namespace xtraForm.Modulos.Usuario
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioPass.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Validar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,6 +135,7 @@ namespace xtraForm.Modulos.Usuario
         private DevExpress.XtraEditors.TextEdit UsuarioPass;
         private DevExpress.XtraEditors.SimpleButton Entrar;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider Validar;
+        private DevExpress.XtraSplashScreen.SplashScreenManager Scm02;
     }
 }

@@ -45,9 +45,10 @@ namespace xtraForm.Filtros
                 {
                     if (gridView1.SelectedRowsCount > 0)
                     {
-                        splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                        var Formulario = new frmPrincipal();
+                        Formulario.Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
                         frmmensage.Show();
-                        splashScreenManager1.ShowWaitForm();
+                        Formulario.Scm01.ShowWaitForm();
                         //evento # 01
                         proceso.Procedimiento("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
                         proceso.Procedimiento("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
@@ -401,7 +402,7 @@ namespace xtraForm.Filtros
                                     }
                                 }
                             }
-                            splashScreenManager1.CloseWaitForm();
+                            Formulario.Scm01.CloseWaitForm();
                             if (frmmensage.dataGridView1.Rows.Count == 0)
                             {
                                 if (bonificacion.Rows.Count == contador)
@@ -417,7 +418,7 @@ namespace xtraForm.Filtros
                         }
                         else
                         {
-                            splashScreenManager1.CloseWaitForm();
+                            Formulario.Scm01.CloseWaitForm();
                             frmmensage.dataGridView1.Rows.Add(string.Empty, " !! NO EXISTEN REGLAS DESIGNADAS PARA ESTE DIA !!  ", string.Empty, string.Empty);
                             this.Close();
                         }

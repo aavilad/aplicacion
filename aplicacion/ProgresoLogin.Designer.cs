@@ -1,6 +1,6 @@
-﻿namespace xtraForm.Modulos.Ventas
+﻿namespace xtraForm
 {
-    partial class WaitForm1
+    partial class ProgresoLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.progressPanel1.AppearanceDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.progressPanel1.AppearanceDescription.Options.UseFont = true;
             this.progressPanel1.BarAnimationElementThickness = 2;
+            this.progressPanel1.Caption = "Bienvenido";
             this.progressPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.progressPanel1.ImageHorzOffset = 20;
             this.progressPanel1.Location = new System.Drawing.Point(0, 17);
@@ -68,7 +69,7 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(246, 73);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // WaitForm1
+            // ProgresoLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -77,7 +78,7 @@
             this.ClientSize = new System.Drawing.Size(246, 73);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
-            this.Name = "WaitForm1";
+            this.Name = "ProgresoLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);

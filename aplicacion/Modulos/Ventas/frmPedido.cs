@@ -207,7 +207,7 @@ namespace xtraForm.Modulos.Ventas
             }
         }
 
-        void Campos(string Fecha, int SerieB, int SerieF)
+        void Campos(string Fecha, int Serie)
         {
             var Rutina = new Libreria.Rutina();
             int Contador = 0;
@@ -221,7 +221,6 @@ namespace xtraForm.Modulos.Ventas
                 frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                 using (var CTX = new LiderEntities())
                 {
-
                     foreach (var fila in gridView1.GetSelectedRows())
                     {
                         string Pedido_ = Convert.ToString(gridView1.GetRowCellValue(fila, "num Pedido"));
@@ -236,7 +235,7 @@ namespace xtraForm.Modulos.Ventas
                             {
                                 Contador += 1;
                                 Lista.Add(Pedido_);
-                                //CTX.sp_genera_documento(Pedido_, Persona, Tipo);
+                                CTX.sp_genera_documento(Pedido_, Persona, Tipo);
                             }
                             else
                             {
@@ -272,8 +271,8 @@ namespace xtraForm.Modulos.Ventas
                                 switch (fila.Tipo)
                                 {
                                     case "B":
-                                        Numero = Convert.ToInt32((from p in CTX.DOCTIPOes.AsEnumerable() where p.PKID == SerieB select p.Numero).FirstOrDefault());
-                                        serie = Convert.ToString((from p in CTX.DOCTIPOes.AsEnumerable() where p.PKID == SerieB select p.Serie).FirstOrDefault());
+                                        Numero = Convert.ToInt32((from p in CTX.DOCTIPOes.AsEnumerable() where p.PKID == Serie select p.Numero).FirstOrDefault());
+                                        serie = Convert.ToString((from p in CTX.DOCTIPOes.AsEnumerable() where p.PKID == Serie select p.Serie).FirstOrDefault());
                                         NumeroComprobante = serie + Numero.ToString("D8");
                                         var Cp = (from p in CTX.DOCUMENTOes where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
                                         Cp.Generado = NumeroComprobante;
@@ -282,12 +281,12 @@ namespace xtraForm.Modulos.Ventas
                                                   select p).FirstOrDefault();
                                         Pd.Procesado = true;
                                         Pd.statusWeb = true;
-                                        var DTp = (from p in CTX.DOCTIPOes where p.PKID == SerieB select p).FirstOrDefault();
+                                        var DTp = (from p in CTX.DOCTIPOes where p.PKID == Serie select p).FirstOrDefault();
                                         DTp.Numero = DTp.Numero + 1;
                                         break;
                                     case "F":
-                                        Numero = Convert.ToInt32((from p in CTX.DOCTIPOes.AsEnumerable() where p.PKID == SerieF select p.Numero).FirstOrDefault());
-                                        serie = Convert.ToString((from p in CTX.DOCTIPOes.AsEnumerable() where p.PKID == SerieF select p.Serie).FirstOrDefault());
+                                        Numero = Convert.ToInt32((from p in CTX.DOCTIPOes.AsEnumerable() where p.PKID == Serie select p.Numero).FirstOrDefault());
+                                        serie = Convert.ToString((from p in CTX.DOCTIPOes.AsEnumerable() where p.PKID == Serie select p.Serie).FirstOrDefault());
                                         NumeroComprobante = serie + Numero.ToString("D8");
                                         var Cp_ = (from p in CTX.DOCUMENTOes where p.Documento1 == fila.Documento && p.TipoDoc == fila.Tipo select p).FirstOrDefault();
                                         Cp_.Generado = NumeroComprobante;
@@ -296,7 +295,7 @@ namespace xtraForm.Modulos.Ventas
                                                    select p).FirstOrDefault();
                                         Pd_.Procesado = true;
                                         Pd_.statusWeb = true;
-                                        var DTp_ = (from p in CTX.DOCTIPOes where p.PKID == SerieB select p).FirstOrDefault();
+                                        var DTp_ = (from p in CTX.DOCTIPOes where p.PKID == Serie select p).FirstOrDefault();
                                         DTp_.Numero = DTp_.Numero + 1;
                                         break;
                                 }
@@ -314,7 +313,7 @@ namespace xtraForm.Modulos.Ventas
                             }
                         }
                         CTX.SaveChanges();
-                        Rutina.ejecutar("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
+                        Rutina.ejecutar("sp_stock_sistema_nuevo '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
                         Rutina.ejecutar("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
                         MessageBox.Show("Se realizo la facturacion de : " + Lista.Count + " con exito.\n Detalles en control genera.");
                         Refrescar();
@@ -331,7 +330,7 @@ namespace xtraForm.Modulos.Ventas
         private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var Rutina = new Libreria.Rutina();
-            Rutina.ejecutar("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
+            Rutina.ejecutar("sp_stock_sistema_nuevo '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
             Rutina.ejecutar("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
             Elementos.frmpedido nuevopedido = new Elementos.frmpedido();
             nuevopedido.pasar += new Elementos.frmpedido.varaible(CamposPedido_);
@@ -378,7 +377,7 @@ namespace xtraForm.Modulos.Ventas
                 string DistritoCliente = Dt.Select(a => a.descrip).FirstOrDefault();
                 string ProvinciaCliente = Pv.Select(a => a.descrip).FirstOrDefault();
                 string Gestion = Pe.Select(a => a.gestion).FirstOrDefault();
-                bool Credito = Convert.ToBoolean(Comodin.Contains(Pe.Select(a => a.FormaPago).FirstOrDefault()));
+                bool Credito = Comodin.Contains(Pe.Select(a => a.FormaPago).FirstOrDefault()) ? false : true;
                 string FormaPago = Pe.Select(a => a.FormaPago).FirstOrDefault();
                 string FechaEmision = Convert.ToDateTime(Pe.Select(a => a.Fecha).FirstOrDefault()).ToString("dd/MM/yyyy");
                 try
@@ -392,16 +391,16 @@ namespace xtraForm.Modulos.Ventas
                     Formulario.txtnmDireccion.EditValue = DireccionCliente;
                     Formulario.txtnmZona.EditValue = ZonaCliente;
                     Formulario.txtcdZona.EditValue = Cl.Select(a => a.Zona).FirstOrDefault();
-                    Formulario.txtnmDistrito.EditValue = pedido.DistritoCliente;
+                    Formulario.txtnmDistrito.EditValue = DistritoCliente;
                     Formulario.txtcdDistrito.EditValue = Dt.Select(a => a.iddistrito).FirstOrDefault();
                     Formulario.txtnmProvincia.EditValue = ProvinciaCliente;
                     Formulario.txtcdProvincia.EditValue = Pv.Select(a => a.idprovincia);
-                    Formulario.txtcdGestion.Text = pedido.Gestion;
+                    Formulario.txtcdGestion.Text = Gestion;
                     Formulario.dateEmision.EditValue = FechaEmision;
-                    Formulario.dateEntrega.EditValue = Convert.ToDateTime(pedido.FechaEmision).AddDays(1).ToString("dd/MM/yyyy");
-                    Formulario.btnCredito.Checked = pedido.Credito == true ? true : false;
+                    Formulario.dateEntrega.EditValue = Convert.ToDateTime(FechaEmision).AddDays(1).ToString("dd/MM/yyyy");
+                    Formulario.btnCredito.Checked = Credito == true ? true : false;
                     Formulario.txtformaPago.Text = Fp.Select(a => a.Descripcion).FirstOrDefault();
-                    Formulario.CodigoFP.Text = pedido.FormaPago;
+                    Formulario.CodigoFP.Text = FormaPago;
                     foreach (var X in DPe)
                     {
                         string Codigo = X.Producto;
@@ -445,13 +444,13 @@ namespace xtraForm.Modulos.Ventas
                 if (Rutina.MensageError("¿Continuar?") == DialogResult.Yes)
                 {
                     Elementos.frmMsg frmmensage = new Elementos.frmMsg();
-                    frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    frmmensage.Scm03.SplashFormStartPosition = SplashFormStartPosition.Default;
                     frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
                     frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
                     frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                     frmmensage.Show();
-                    frmmensage.splashScreenManager1.ShowWaitForm();
+                    frmmensage.Scm03.ShowWaitForm();
                     foreach (var pedido in gridView1.GetSelectedRows())
                     {
                         if (!Rutina.ExistenciaCampo("pedido", "pedido", "procesado = 1 and pedido = '" + gridView1.GetDataRow(pedido)["num Pedido"].ToString() + "'"))
@@ -465,7 +464,7 @@ namespace xtraForm.Modulos.Ventas
                             string.Empty, string.Empty);
                         }
                     }
-                    frmmensage.splashScreenManager1.CloseWaitForm();
+                    frmmensage.Scm03.CloseWaitForm();
                     Refrescar();
                 }
             }
@@ -508,13 +507,13 @@ namespace xtraForm.Modulos.Ventas
                 if (Rutina.MensagePregunta("¿Continuar?") == DialogResult.Yes)
                 {
                     Elementos.frmMsg frmmensage = new Elementos.frmMsg();
-                    frmmensage.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    frmmensage.Scm03.SplashFormStartPosition = SplashFormStartPosition.Default;
                     frmmensage.dataGridView1.Columns[0].HeaderText = "Pedido";
                     frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
                     frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
                     frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
                     frmmensage.Show();
-                    frmmensage.splashScreenManager1.ShowWaitForm();
+                    frmmensage.Scm03.ShowWaitForm();
                     foreach (var pedido in gridView1.GetSelectedRows())
                     {
                         entidad.pedido = gridView1.GetDataRow(pedido)["num Pedido"].ToString();
@@ -541,7 +540,7 @@ namespace xtraForm.Modulos.Ventas
                             string.Empty, string.Empty);
                         }
                     }
-                    frmmensage.splashScreenManager1.CloseWaitForm();
+                    frmmensage.Scm03.CloseWaitForm();
                     Refrescar();
                 }
             }
@@ -676,7 +675,7 @@ namespace xtraForm.Modulos.Ventas
                 string DistritoCliente = Dt.Select(a => a.descrip).FirstOrDefault();
                 string ProvinciaCliente = Pv.Select(a => a.descrip).FirstOrDefault();
                 string Gestion = Pe.Select(a => a.gestion).FirstOrDefault();
-                bool Credito = Convert.ToBoolean(Comodin.Contains(Pe.Select(a => a.FormaPago).FirstOrDefault()));
+                bool Credito = Comodin.Contains(Pe.Select(a => a.FormaPago).FirstOrDefault()) ? false : true;
                 string FormaPago = Pe.Select(a => a.FormaPago).FirstOrDefault();
                 string FechaEmision = Convert.ToDateTime(Pe.Select(a => a.Fecha).FirstOrDefault()).ToString("dd/MM/yyyy");
                 try
@@ -694,12 +693,12 @@ namespace xtraForm.Modulos.Ventas
                     Formulario.txtcdDistrito.EditValue = Dt.Select(a => a.iddistrito).FirstOrDefault();
                     Formulario.txtnmProvincia.EditValue = ProvinciaCliente;
                     Formulario.txtcdProvincia.EditValue = Pv.Select(a => a.idprovincia);
-                    Formulario.txtcdGestion.Text = pedido.Gestion;
+                    Formulario.txtcdGestion.Text = Gestion;
                     Formulario.dateEmision.EditValue = FechaEmision;
                     Formulario.dateEntrega.EditValue = Convert.ToDateTime(pedido.FechaEmision).AddDays(1).ToString("dd/MM/yyyy");
-                    Formulario.btnCredito.Checked = pedido.Credito == true ? true : false;
+                    Formulario.btnCredito.Checked = Credito == true ? true : false;
                     Formulario.txtformaPago.Text = Fp.Select(a => a.Descripcion).FirstOrDefault();
-                    Formulario.CodigoFP.Text = pedido.FormaPago;
+                    Formulario.CodigoFP.Text = FormaPago;
                     foreach (var X in DPe)
                     {
                         string Codigo = X.Producto;
@@ -750,12 +749,12 @@ namespace xtraForm.Modulos.Ventas
         private void FACTURACIONLOTE_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var Formulario = new frmPrincipal();
-            Formulario.splashScreenManager1.SplashFormStartPosition = SplashFormStartPosition.Default;
-            Formulario.splashScreenManager1.ShowWaitForm();
+            Formulario.Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
+            Formulario.Scm01.ShowWaitForm();
             var frmfacturacion = new Modulos.Elementos.frmFacturacion();
             frmfacturacion.StartPosition = FormStartPosition.CenterScreen;
             frmfacturacion.Show();
-            Formulario.splashScreenManager1.CloseWaitForm();
+            Formulario.Scm01.CloseWaitForm();
         }
 
         private void GridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
@@ -766,9 +765,13 @@ namespace xtraForm.Modulos.Ventas
 
         private void FACTURAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            var Formulario = new frmPrincipal();
+            Formulario.Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
+            Formulario.Scm01.ShowWaitForm();
             var facturar = new Elementos.frmFacturacionPedido();
             facturar.pasar += new Elementos.frmFacturacionPedido.Variables(Campos);
             facturar.StartPosition = FormStartPosition.CenterParent;
+            Formulario.Scm01.CloseWaitForm();
             facturar.Show();
             Refrescar();
         }

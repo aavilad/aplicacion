@@ -1,11 +1,17 @@
-﻿using DevExpress.XtraWaitForm;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using DevExpress.XtraWaitForm;
 
-namespace xtraForm.Modulos.Ventas
+namespace xtraForm
 {
-    public partial class WaitForm1 : WaitForm
+    public partial class ProgresoLogin : WaitForm
     {
-        public WaitForm1()
+        public ProgresoLogin()
         {
             InitializeComponent();
             this.progressPanel1.AutoHeight = true;

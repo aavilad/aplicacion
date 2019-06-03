@@ -36,7 +36,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.txtsalida = new DevExpress.XtraEditors.TextEdit();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Ventas.WaitForm1), true, true);
+            this.Scm03 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::xtraForm.Modulos.Progreso), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -64,6 +64,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(567, 297);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
             // codigo
@@ -125,9 +126,9 @@
             this.txtsalida.Size = new System.Drawing.Size(478, 22);
             this.txtsalida.TabIndex = 4;
             // 
-            // splashScreenManager1
+            // Scm03
             // 
-            this.splashScreenManager1.ClosingDelay = 500;
+            this.Scm03.ClosingDelay = 500;
             // 
             // frmMsg
             // 
@@ -157,6 +158,6 @@
         public DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         public DevExpress.XtraEditors.TextEdit txtsalida;
-        public DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        public DevExpress.XtraSplashScreen.SplashScreenManager Scm03;
     }
 }
