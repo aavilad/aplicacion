@@ -9,37 +9,100 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using xtraForm.Model;
+using DevExpress.XtraSplashScreen;
+using System.Data.Entity.Validation;
+using System.Data.Entity.Infrastructure;
 
 namespace xtraForm.Modulos.Ventas
 {
     public partial class frmVendedor : DevExpress.XtraEditors.XtraForm
     {
+        public bool Ex;
         public string NModulo;
-        string tabla = "Personal";
+        public string Tabla;
+
         public frmVendedor()
         {
             InitializeComponent();
         }
 
-        private void frmVendedor_Load(object sender, EventArgs e)
+        private void Campos_Vendedor(string Codigo, int PersonaTp, string Nombre, string Documento, string FIngreso, string FNacimiento, string NTelefono, bool Comision,
+            bool Activo, decimal Sueldo, bool EVendedor, int Clase, string Grupo, string GrupoK, string Distrito, int FVenta, bool Novedad, bool Dms, decimal pParticipa,
+            decimal pCuota, string SCodigo)
         {
-            Refrescar();
-        }
-        private void Refrescar()
-        {
-            try
+            string Propiedad;
+            using (var CTX = new LiderEntities())
             {
-                var proceso = new Libreria.Rutina();
-                proceso.consultar("select campo, condicion, valor,[union] from filtro where tabla = '" + tabla + "' order by orden", tabla);
-                List<string> lista_ = new List<string>();
-                foreach (DataRow DR_1 in proceso.ds.Tables[tabla].Rows)
-                    lista_.Add(tabla + "." + "[" + DR_1[0].ToString() + "]" + DR_1[1].ToString() + "'" + DR_1[2].ToString() + "'" + DR_1[3].ToString());
-                string cadena = string.Join(" ", lista_.ToArray());
-                condicion(cadena);
+                PERSONAL Rv = new PERSONAL();
+                Rv.Personal1 = Codigo;
+                Rv.TipoPersona = Convert.ToString(PersonaTp);
+                Rv.Nombre = Nombre;
+                Rv.LibElec = Documento;
+                Rv.FechIng = Convert.ToDateTime(FIngreso);
+                Rv.FechNac = Convert.ToDateTime(FNacimiento);
+                Rv.Telefono = NTelefono;
+                Rv.Comision = Comision;
+                Rv.Activo = Activo;
+                Rv.Sueldo = Sueldo;
+                Rv.vendedor = EVendedor;
+                Rv.clase = Clase;
+                Rv.grupo = Grupo;
+                Rv.grupok = GrupoK;
+                Rv.distrito = Distrito;
+                Rv.fzavtas = Convert.ToString(FVenta);
+                Rv.novedad = Novedad;
+                Rv.dms = Dms;
+                Rv.pparticipa = pParticipa;
+                Rv.pcuota = pCuota;
+                Rv.supercodigo = SCodigo;
+                CTX.PERSONALs.Add(Rv);
+                Propiedad = "Codigo";
+                if (CTX.PERSONALs.Where(w => w.Personal1 == Codigo).FirstOrDefault() == null)
+                {
+                    Propiedad = "Nombre";
+                    if (CTX.PERSONALs.Where(w => w.LibElec == Nombre).FirstOrDefault() == null)
+                    {
+                        CTX.SaveChanges();
+                        Refrescar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Existe coincidencia en la tabla con la propieda : " + Propiedad);
+                }
             }
-            catch (Exception t)
+        }
+
+        private void Campos_Vendedor_(string Codigo, int PersonaTp, string Nombre, string Documento, string FIngreso, string FNacimiento, string NTelefono, bool Comision,
+            bool Activo, decimal Sueldo, bool EVendedor, int Clase, string Grupo, string GrupoK, string Distrito, int FVenta, bool Novedad, bool Dms, decimal pParticipa,
+            decimal pCuota, string SCodigo)
+        {
+            using (var CTX = new LiderEntities())
             {
-                MessageBox.Show(t.Message);
+                var Rv = (from pl in CTX.PERSONALs where pl.Personal1 == Codigo select pl).FirstOrDefault();
+                Rv.Personal1 = Codigo;
+                //Rv.TipoPersona = Convert.ToString(PersonaTp);
+                Rv.Nombre = Nombre;
+                Rv.LibElec = Documento;
+                Rv.FechIng = Convert.ToDateTime(FIngreso);
+                Rv.FechNac = Convert.ToDateTime(FNacimiento);
+                Rv.Telefono = NTelefono;
+                Rv.Comision = Comision;
+                Rv.Activo = Activo;
+                //Rv.Sueldo = Sueldo;
+                Rv.vendedor = EVendedor;
+                Rv.clase = Clase;
+                //Rv.grupo = Grupo;
+                //Rv.grupok = GrupoK;
+                //Rv.distrito = Distrito;
+                Rv.fzavtas = Convert.ToString(FVenta);
+                //Rv.novedad = Novedad;
+                //Rv.dms = Dms;
+                //Rv.pparticipa = pParticipa;
+                //Rv.pcuota = pCuota;
+                //Rv.supercodigo = SCodigo;
+                CTX.SaveChanges();
+                Refrescar();
             }
         }
         void condicion(string cadena)
@@ -50,35 +113,15 @@ namespace xtraForm.Modulos.Ventas
                 string Query = Convert.ToString(Context.VistaAdministrativas.Where(x => x.IDModulo == (Context.Moduloes.Where(a => a.Nombre == NModulo).Select(b => b.PKID)).FirstOrDefault()).Select(a => a.Vista.Trim()).FirstOrDefault());
                 if (cadena.Length == 0)
                 {
-                    proceso.consultar(Query, tabla);
-                    gridControl1.DataSource = proceso.ds.Tables[tabla];
-                    gridView1.OptionsView.ColumnAutoWidth = false;
-                    gridView1.OptionsBehavior.Editable = false;
-                    gridView1.OptionsBehavior.ReadOnly = true;
-                    gridView1.OptionsView.ShowGroupPanel = false;
-                    gridView1.OptionsView.ShowFooter = true;
-                    gridView1.FooterPanelHeight = -2;
-                    gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-                    gridView1.GroupRowHeight = 1;
-                    gridView1.RowHeight = 1;
-                    gridView1.Appearance.Row.FontSizeDelta = 0;
+                    proceso.consultar(Query, Tabla);
+                    gridControl1.DataSource = proceso.ds.Tables[Tabla];
                     gridView1.BestFitColumns();
                 }
                 else
-                {
                     try
                     {
-                        proceso.consultar(Query +" and " +cadena, tabla);
-                        gridControl1.DataSource = proceso.ds.Tables[tabla];
-                        gridView1.OptionsView.ColumnAutoWidth = false;
-                        gridView1.OptionsBehavior.Editable = false;
-                        gridView1.OptionsBehavior.ReadOnly = true;
-                        gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-                        gridView1.OptionsView.ShowGroupPanel = false;
-                        gridView1.OptionsView.ShowFooter = true;
-                        gridView1.GroupRowHeight = 1;
-                        gridView1.RowHeight = 1;
-                        gridView1.Appearance.Row.FontSizeDelta = 0;
+                        proceso.consultar(Query + " and " + cadena, Tabla);
+                        gridControl1.DataSource = proceso.ds.Tables[Tabla];
                         gridView1.BestFitColumns();
                     }
                     catch
@@ -86,13 +129,53 @@ namespace xtraForm.Modulos.Ventas
                         gridControl1.DataSource = null;
                         gridControl1.Refresh();
                     }
-                }
             }
         }
 
-        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        private void ELIMINAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
+            var Rutina = new Libreria.Rutina();
+            if (Rutina.MensagePregunta("¿Continuar?") == DialogResult.Yes)
+            {
+                if (gridView1.SelectedRowsCount > 0)
+                {
+                    using (var CTX = new LiderEntities())
+                    {
+                        var Formulario = new Elementos.frmMsg();
+                        Formulario.Scm03.SplashFormStartPosition = SplashFormStartPosition.Default;
+                        Formulario.dataGridView1.Columns[0].HeaderText = "Entidad";
+                        Formulario.dataGridView1.Columns[1].HeaderText = "Resultado";
+                        Formulario.dataGridView1.Columns[2].HeaderText = string.Empty;
+                        Formulario.dataGridView1.Columns[3].HeaderText = string.Empty;
+                        Formulario.Show();
+                        Formulario.Scm03.ShowWaitForm();
+                        foreach (var Rv in gridView1.GetSelectedRows())
+                        {
+                            string Codigo = Convert.ToString(gridView1.GetDataRow(Rv)["Codigo"]);
+                            CTX.PERSONALs.Remove(CTX.PERSONALs.Where(w => w.Personal1 == Codigo).FirstOrDefault());
+                            try
+                            {
+                                CTX.SaveChanges();
+                                Formulario.dataGridView1.Rows.Add(Codigo, "Eliminado Con exito.");
+                            }
+                            catch (DbEntityValidationException t)
+                            {
+                                foreach (DbEntityValidationResult item in t.EntityValidationErrors)
+                                {
+                                    DbEntityEntry entry = item.Entry;
+                                    string entityTypeName = entry.Entity.GetType().Name;
+                                    foreach (DbValidationError subItem in item.ValidationErrors)
+                                    {
+                                        string message = string.Format("Error '{0}' occurred in {1} at {2}", subItem.ErrorMessage, entityTypeName, subItem.PropertyName);
+                                        Formulario.dataGridView1.Rows.Add(Codigo, message);
+                                    }
+                                }
+                            }
+                        }
+                        Formulario.Scm03.CloseWaitForm();
+                    }
+                }
+            }
         }
 
         private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -109,31 +192,32 @@ namespace xtraForm.Modulos.Ventas
                 j.DisplayMember = "Descripcion";
                 j.ValueMember = "Codigo";
                 DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
-                k.DataSource = CTX.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'" + tabla + "'").ToList();
+                k.DataSource = CTX.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'" + Tabla + "'").ToList();
                 filtro.pasar += new Filtros.frmFiltros.variables(condicion);
                 filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in CTX.Filtroes.Where(w => w.tabla.Equals(tabla)).ToList())
+                foreach (var fila in CTX.Filtroes.Where(w => w.tabla.Equals(Tabla)).ToList())
                 {
                     filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
                 }
-                filtro.entidad = tabla;
+                filtro.entidad = Tabla;
                 filtro.ShowDialog();
             }
         }
 
-        private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void frmVendedor_Load(object sender, EventArgs e)
         {
-            var formulario = new Elementos.frmVendedor();
-            formulario.Show();
+            Refrescar();
         }
+
+        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e) => popupMenu1.ShowPopup(gridControl1.PointToScreen(e.Point));
 
         private void MODIFICAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             using (var CTX = new LiderEntities())
             {
                 string PersonalCodigo = Convert.ToString(gridView1.GetFocusedRowCellValue("Codigo"));
-                var Rv = CTX.PERSONALs.Where(w => w.vendedor == 1 && w.Activo == true && w.Personal1 == PersonalCodigo);
-                string PersonalNombre = Rv.Select(s=>s.Nombre.Trim()).FirstOrDefault();
+                var Rv = CTX.PERSONALs.Where(w => w.vendedor == true && w.Activo == true && w.Personal1 == PersonalCodigo);
+                string PersonalNombre = Rv.Select(s => s.Nombre.Trim()).FirstOrDefault();
                 string PersonalDocumento = Rv.Select(s => s.LibElec.Trim()).FirstOrDefault();
                 string PersonalFechaIngreso = Convert.ToDateTime(Rv.Select(s => s.FechIng).FirstOrDefault()).ToString("dd/MM/yyyy");
                 string PersonalFechaNacimiento = Convert.ToDateTime(Rv.Select(s => s.FechNac).FirstOrDefault()).ToString("dd/MM/yyyy");
@@ -143,6 +227,7 @@ namespace xtraForm.Modulos.Ventas
                 int PersonalTipoComision = Rv.Select(s => s.clase).FirstOrDefault();
                 int PersonalFzVenta = Convert.ToInt32(Rv.Select(s => s.fzavtas).FirstOrDefault());
                 var Formulario = new Elementos.frmVendedor();
+                Formulario.pasar += new Elementos.frmVendedor.Variable(Campos_Vendedor_);
                 Formulario.FVENTAS.EditValue = PersonalFzVenta;
                 Formulario.CODIGO.Text = PersonalCodigo;
                 Formulario.DIDENTIDAD.Text = PersonalDocumento;
@@ -150,12 +235,40 @@ namespace xtraForm.Modulos.Ventas
                 Formulario.FINGRESO.EditValue = PersonalFechaIngreso;
                 Formulario.FCUMPLEAÑO.EditValue = PersonalFechaNacimiento;
                 Formulario.TELEFONO.Text = PersonalTelefono;
-                Formulario.PRECIOESCALA.SelectedIndex = PersonalTipoComision-1;
-                Formulario.checkEdit1.Checked = PersonalComision;
-                Formulario.checkEdit3.Checked = PersonalActivo;
+                Formulario.PRECIOESCALA.SelectedIndex = PersonalTipoComision - 1;
+                Formulario.COMISION.Checked = PersonalComision;
+                Formulario.ACTIVO.Checked = PersonalActivo;
                 Formulario.Show();
             }
 
         }
+
+        private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var Formulario = new Elementos.frmVendedor();
+            Formulario.pasar += new Elementos.frmVendedor.Variable(Campos_Vendedor);
+            Formulario.Show();
+        }
+        private void Refrescar()
+        {
+            try
+            {
+                using (var CTX = new LiderEntities())
+                {
+                    List<string> Lista = new List<string>();
+                    var Result = CTX.Filtroes.Where(w => w.tabla == Tabla).OrderBy(o => o.Orden);
+                    foreach (var X in Result)
+                        Lista.Add(Tabla + "." + "[" + X.campo + "]" + X.condicion + "'" + X.valor + "'" + X.union);
+                    string cadena = string.Join(" ", Lista.ToArray());
+                    condicion(cadena);
+                }
+            }
+            catch (Exception t)
+            {
+                MessageBox.Show(t.Message);
+            }
+        }
+
+        private void REFRESH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => Refrescar();
     }
 }

@@ -31,7 +31,6 @@ namespace xtraForm.Model
         public virtual DbSet<CLIENTE> CLIENTEs { get; set; }
         public virtual DbSet<Departamento> Departamentoes { get; set; }
         public virtual DbSet<DETADOC> DETADOCs { get; set; }
-        public virtual DbSet<DETPEDIDO> DETPEDIDOes { get; set; }
         public virtual DbSet<Distrito> Distritoes { get; set; }
         public virtual DbSet<DOCUMENTO> DOCUMENTOes { get; set; }
         public virtual DbSet<FORMAPAGO> FORMAPAGOes { get; set; }
@@ -41,7 +40,6 @@ namespace xtraForm.Model
         public virtual DbSet<MARCA> MARCAs { get; set; }
         public virtual DbSet<Modulo> Moduloes { get; set; }
         public virtual DbSet<PEDIDO> PEDIDOes { get; set; }
-        public virtual DbSet<PERSONAL> PERSONALs { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTOes { get; set; }
         public virtual DbSet<PROVEEDOR> PROVEEDORs { get; set; }
         public virtual DbSet<provincia> provincias { get; set; }
@@ -73,6 +71,8 @@ namespace xtraForm.Model
         public virtual DbSet<Bonificacion> Bonificacions { get; set; }
         public virtual DbSet<TipoBonificacion> TipoBonificacions { get; set; }
         public virtual DbSet<DOCTIPO> DOCTIPOes { get; set; }
+        public virtual DbSet<PERSONAL> PERSONALs { get; set; }
+        public virtual DbSet<DETPEDIDO> DETPEDIDOes { get; set; }
     
         public virtual int sp_genera_documento(string pedido, Nullable<int> tipo, string tdoc)
         {

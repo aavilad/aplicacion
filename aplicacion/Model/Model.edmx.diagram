@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="LiderModel.CLIENTE" Width="1.5" PointX="3" PointY="11.875" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.Departamento" Width="1.5" PointX="1.5" PointY="17" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.DETADOC" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="LiderModel.DETPEDIDO" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.Distrito" Width="1.5" PointX="0.75" PointY="13" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.DOCUMENTO" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.FORMAPAGO" Width="1.5" PointX="3" PointY="13.75" IsExpanded="false" />
@@ -19,7 +18,6 @@
         <EntityTypeShape EntityType="LiderModel.MARCA" Width="1.5" PointX="3" PointY="2.75" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.Modulo" Width="1.5" PointX="12.75" PointY="2.125" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.PEDIDO" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="LiderModel.PERSONAL" Width="1.5" PointX="3" PointY="7.25" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.PRODUCTO" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.PROVEEDOR" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="false" />
         <EntityTypeShape EntityType="LiderModel.provincia" Width="1.5" PointX="1.5" PointY="15" IsExpanded="false" />
@@ -37,17 +35,12 @@
         <AssociationConnector Association="LiderModel.FK__DETADOC__Product__4F12BBB9" />
         <AssociationConnector Association="LiderModel.FK_DETADOC_DOCUMENTO" />
         <AssociationConnector Association="LiderModel.FK_DETADOC_tipoprecio" />
-        <AssociationConnector Association="LiderModel.FK__DETPEDIDO__Pedid__55BFB948" />
-        <AssociationConnector Association="LiderModel.FK__DETPEDIDO__Produ__54CB950F" />
         <AssociationConnector Association="LiderModel.FK_Distrito_provincia" />
         <AssociationConnector Association="LiderModel.FK_DOCUMENTO_Gestion" />
-        <AssociationConnector Association="LiderModel.FK_DOCUMENTO_PERSONAL" />
         <AssociationConnector Association="LiderModel.FK_PEDIDO_FORMAPAGO" />
-        <AssociationConnector Association="LiderModel.FK_PERSONAL_FuerzaVentas" />
         <AssociationConnector Association="LiderModel.FK_MARCA_LINEA" />
         <AssociationConnector Association="LiderModel.FK_MARCA_PROVEEDOR" />
         <AssociationConnector Association="LiderModel.FK_PRODUCTO_MARCA" />
-        <AssociationConnector Association="LiderModel.FK__PEDIDO__Personal__68D28DBC" />
         <AssociationConnector Association="LiderModel.FK_REPARTO_RUTAS1" />
         <EntityTypeShape EntityType="LiderModel.VistaAdministrativa" Width="1.5" PointX="15" PointY="2.125" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_VistaAdministrativa_Modulo" />
@@ -88,6 +81,13 @@
         <AssociationConnector Association="LiderModel.FK_ItemBonificacion_Bonificacion" />
         <EntityTypeShape EntityType="LiderModel.DOCTIPO" Width="1.5" PointX="3" PointY="8.5" IsExpanded="false" />
         <AssociationConnector Association="LiderModel.FK_DOCUMENTO_DOCTIPO1" />
+        <EntityTypeShape EntityType="LiderModel.PERSONAL" Width="1.5" PointX="3" PointY="7.25" IsExpanded="false" />
+        <AssociationConnector Association="LiderModel.FK_DOCUMENTO_PERSONAL" />
+        <AssociationConnector Association="LiderModel.FK_PERSONAL_FuerzaVentas" />
+        <AssociationConnector Association="LiderModel.FK__PEDIDO__Personal__68D28DBC" />
+        <EntityTypeShape EntityType="LiderModel.DETPEDIDO" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="false" />
+        <AssociationConnector Association="LiderModel.FK__DETPEDIDO__Pedid__55BFB948" />
+        <AssociationConnector Association="LiderModel.FK__DETPEDIDO__Produ__54CB950F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

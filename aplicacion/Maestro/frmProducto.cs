@@ -22,13 +22,13 @@ namespace xtraForm.Maestro
         {
             try
             {
-                if (gridView1.RowCount > 0)
+                if (gridView1.SelectedRowsCount > 0)
                 {
                     foreach (var i in gridView1.GetSelectedRows())
                     {
-                        string Codigo = Convert.ToString(gridView1.GetFocusedRowCellValue("Codigo"));
-                        string Descripcion = Convert.ToString(gridView1.GetFocusedRowCellValue("Descripcion"));
-                        string Unidad = Convert.ToString(gridView1.GetFocusedRowCellValue("Unidad"));
+                        string Codigo = Convert.ToString(gridView1.GetRowCellValue(i, "Codigo"));
+                        string Descripcion = Convert.ToString(gridView1.GetRowCellValue(i, "Descripcion"));
+                        string Unidad = Convert.ToString(gridView1.GetRowCellValue(i, "Unidad"));
                         pasar(Codigo, Descripcion, Unidad);
                     }
                     this.Close();
@@ -43,23 +43,18 @@ namespace xtraForm.Maestro
         private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (int)Keys.Enter)
-            {
                 insertar();
-            }
         }
 
         private void frmProducto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Escape)
-            {
                 this.Close();
-            }
         }
 
         private void frmProducto_Load(object sender, EventArgs e)
         {
             if (!Ex)
-            {
                 using (var CTX = new LiderEntities())
                 {
                     var Product = from pd in CTX.PRODUCTOes
@@ -74,12 +69,18 @@ namespace xtraForm.Maestro
                                   };
                     gridControl1.DataSource = Product.ToList();
                 }
-            }
         }
 
-        private void ACEPTAR_Click(object sender, EventArgs e)
+        private void ACEPTAR_Click(object sender, EventArgs e) => insertar();
+
+        private void GridView1_DoubleClick(object sender, EventArgs e)
         {
-            insertar();
+            var proceso = new Libreria.Rutina();
+            DXMouseEventArgs ea = e as DXMouseEventArgs;
+            GridView view = sender as GridView;
+            GridHitInfo info = view.CalcHitInfo(ea.Location);
+            if (info.InRow || info.InRowCell)
+                insertar();
         }
     }
 }

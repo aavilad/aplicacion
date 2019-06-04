@@ -55,25 +55,33 @@
             this.gridcontrolBonificacion.Location = new System.Drawing.Point(0, 0);
             this.gridcontrolBonificacion.MainView = this.gridView1;
             this.gridcontrolBonificacion.Name = "gridcontrolBonificacion";
-            this.gridcontrolBonificacion.Size = new System.Drawing.Size(648, 356);
+            this.gridcontrolBonificacion.Size = new System.Drawing.Size(690, 259);
             this.gridcontrolBonificacion.TabIndex = 1;
             this.gridcontrolBonificacion.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
-            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 7F);
-            this.gridView1.AppearancePrint.GroupRow.Options.UseFont = true;
-            this.gridView1.AppearancePrint.GroupRow.Options.UseTextOptions = true;
-            this.gridView1.AppearancePrint.GroupRow.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.gridView1.Appearance.FooterPanel.Font = new System.Drawing.Font("Calibri", 6.75F);
+            this.gridView1.Appearance.FooterPanel.Options.UseFont = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.gridView1.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridView1.AppearancePrint.FooterPanel.Font = new System.Drawing.Font("Calibri", 6.75F);
+            this.gridView1.AppearancePrint.FooterPanel.Options.UseFont = true;
             this.gridView1.GridControl = this.gridcontrolBonificacion;
-            this.gridView1.GroupRowHeight = 10;
+            this.gridView1.IndicatorWidth = 20;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsHint.ShowFooterHints = false;
+            this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
@@ -151,15 +159,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(648, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(690, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 356);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 259);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(648, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(690, 0);
             // 
             // barDockControlLeft
             // 
@@ -167,21 +175,21 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 356);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 259);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(648, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(690, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 356);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 259);
             // 
             // frmPromocion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 356);
+            this.ClientSize = new System.Drawing.Size(690, 259);
             this.Controls.Add(this.gridcontrolBonificacion);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

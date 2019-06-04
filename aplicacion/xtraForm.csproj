@@ -440,11 +440,23 @@
     <Compile Include="Modulos\Configuracion\frmTipoCp.Designer.cs">
       <DependentUpon>frmTipoCp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Distribucion\frmAsignacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Distribucion\frmAsignacion.Designer.cs">
+      <DependentUpon>frmAsignacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Distribucion\frmRutas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\Distribucion\frmRutas.Designer.cs">
       <DependentUpon>frmRutas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmAsignacionVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmAsignacionVendedor.Designer.cs">
+      <DependentUpon>frmAsignacionVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Elementos\frmAvanceClienteDetalle.cs">
       <SubType>Form</SubType>
@@ -760,8 +772,14 @@
     <EmbeddedResource Include="Modulos\Configuracion\frmTipoCp.resx">
       <DependentUpon>frmTipoCp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Distribucion\frmAsignacion.resx">
+      <DependentUpon>frmAsignacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Distribucion\frmRutas.resx">
       <DependentUpon>frmRutas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmAsignacionVendedor.resx">
+      <DependentUpon>frmAsignacionVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmAvanceClienteDetalle.resx">
       <DependentUpon>frmAvanceClienteDetalle.cs</DependentUpon>

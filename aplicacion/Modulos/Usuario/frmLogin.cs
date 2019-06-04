@@ -34,7 +34,7 @@ namespace xtraForm.Modulos.Usuario
                         Scm02.ShowWaitForm();
                         for (int i = 0; i < 100; i++)
                             Thread.Sleep(i);
-                        formulario.DataUser.Caption = usuario.Select(y => "USUARIO => " + y.Nombre.ToUpper()).FirstOrDefault();
+                        formulario.DataUser.Caption = usuario.Select(y => "USUARIO - " + y.Nombre.ToUpper()).FirstOrDefault();
                         this.Hide();
                         Scm02.CloseWaitForm();
                         formulario.Show();

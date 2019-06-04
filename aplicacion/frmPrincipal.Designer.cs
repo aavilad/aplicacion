@@ -58,8 +58,6 @@
             this.LISTAPRECIOS = new DevExpress.XtraBars.BarButtonItem();
             this.VALIDARBONIFICACION = new DevExpress.XtraBars.BarButtonItem();
             this.RUTAS = new DevExpress.XtraBars.BarButtonItem();
-            this.REPARTO = new DevExpress.XtraBars.BarButtonItem();
-            this.ZONA = new DevExpress.XtraBars.BarButtonItem();
             this.SKINMODEL = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.NUEVO = new DevExpress.XtraBars.BarButtonItem();
             this.ABRIR = new DevExpress.XtraBars.BarButtonItem();
@@ -86,6 +84,8 @@
             this.RVENTAS = new DevExpress.XtraBars.BarSubItem();
             this.GENERAGUIAS = new DevExpress.XtraBars.BarButtonItem();
             this.GENERAINFORME = new DevExpress.XtraBars.BarButtonItem();
+            this.ZONAS = new DevExpress.XtraBars.BarButtonItem();
+            this.ASIGNACIONVENDEDOR = new DevExpress.XtraBars.BarButtonItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -108,6 +108,8 @@
             this.CONFIGURACION = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ENTIDADES = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.ENTITY = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemPopupGalleryEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit();
             this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.repositoryItemFontEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemFontEdit();
@@ -178,8 +180,6 @@
             this.LISTAPRECIOS,
             this.VALIDARBONIFICACION,
             this.RUTAS,
-            this.REPARTO,
-            this.ZONA,
             this.SKINMODEL,
             this.NUEVO,
             this.ABRIR,
@@ -205,9 +205,11 @@
             this.AvanceCobertura,
             this.RVENTAS,
             this.GENERAGUIAS,
-            this.GENERAINFORME});
+            this.GENERAINFORME,
+            this.ZONAS,
+            this.ASIGNACIONVENDEDOR});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 1;
+            this.ribbonControl1.MaxItemId = 4;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsAnimation.PageCategoryShowAnimation = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.OptionsStubGlyphs.ColorMode = DevExpress.Utils.Drawing.GlyphColorMode.White;
@@ -260,7 +262,6 @@
             // 
             resources.ApplyResources(this.CLIENTES, "CLIENTES");
             this.CLIENTES.CategoryGuid = new System.Guid("f487978d-23ff-418b-939f-34fe319526f0");
-            this.CLIENTES.Enabled = false;
             this.CLIENTES.Id = 5;
             this.CLIENTES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("CLIENTES.ImageOptions.SvgImage")));
             this.CLIENTES.Name = "CLIENTES";
@@ -492,22 +493,7 @@
             this.RUTAS.Id = 57;
             this.RUTAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("RUTAS.ImageOptions.SvgImage")));
             this.RUTAS.Name = "RUTAS";
-            // 
-            // REPARTO
-            // 
-            resources.ApplyResources(this.REPARTO, "REPARTO");
-            this.REPARTO.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
-            this.REPARTO.Id = 58;
-            this.REPARTO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REPARTO.ImageOptions.SvgImage")));
-            this.REPARTO.Name = "REPARTO";
-            // 
-            // ZONA
-            // 
-            resources.ApplyResources(this.ZONA, "ZONA");
-            this.ZONA.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
-            this.ZONA.Id = 59;
-            this.ZONA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ZONA.ImageOptions.SvgImage")));
-            this.ZONA.Name = "ZONA";
+            this.RUTAS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RUTAS_ItemClick);
             // 
             // SKINMODEL
             // 
@@ -720,6 +706,23 @@
             this.GENERAINFORME.Name = "GENERAINFORME";
             this.GENERAINFORME.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
+            // ZONAS
+            // 
+            resources.ApplyResources(this.ZONAS, "ZONAS");
+            this.ZONAS.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
+            this.ZONAS.Id = 1;
+            this.ZONAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ZONAS.ImageOptions.SvgImage")));
+            this.ZONAS.Name = "ZONAS";
+            // 
+            // ASIGNACIONVENDEDOR
+            // 
+            resources.ApplyResources(this.ASIGNACIONVENDEDOR, "ASIGNACIONVENDEDOR");
+            this.ASIGNACIONVENDEDOR.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
+            this.ASIGNACIONVENDEDOR.Id = 2;
+            this.ASIGNACIONVENDEDOR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ASIGNACION.ImageOptions.SvgImage")));
+            this.ASIGNACIONVENDEDOR.Name = "ASIGNACIONVENDEDOR";
+            this.ASIGNACIONVENDEDOR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ASIGNACION_ItemClick);
+            // 
             // MVENTAS
             // 
             this.MVENTAS.Name = "MVENTAS";
@@ -810,6 +813,9 @@
             // 
             // G011
             // 
+            this.G011.ItemLinks.Add(this.ZONAS);
+            this.G011.ItemLinks.Add(this.RUTAS);
+            this.G011.ItemLinks.Add(this.ASIGNACIONVENDEDOR);
             this.G011.Name = "G011";
             resources.ApplyResources(this.G011, "G011");
             // 
@@ -889,7 +895,23 @@
             // ENTIDADES
             // 
             this.ENTIDADES.Name = "ENTIDADES";
+            this.ENTIDADES.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ENTITY});
             resources.ApplyResources(this.ENTIDADES, "ENTIDADES");
+            // 
+            // ENTITY
+            // 
+            this.ENTITY.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2});
+            this.ENTITY.Name = "ENTITY";
+            resources.ApplyResources(this.ENTITY, "ENTITY");
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.CLIENTES);
+            this.ribbonPageGroup2.ItemLinks.Add(this.VENDEDORES);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
             // 
             // repositoryItemPopupGalleryEdit1
             // 
@@ -1034,8 +1056,6 @@
         private DevExpress.XtraBars.BarButtonItem VALIDARBONIFICACION;
         public DevExpress.XtraSplashScreen.SplashScreenManager Scm01;
         private DevExpress.XtraBars.BarButtonItem RUTAS;
-        private DevExpress.XtraBars.BarButtonItem REPARTO;
-        private DevExpress.XtraBars.BarButtonItem ZONA;
         private DevExpress.XtraBars.SkinDropDownButtonItem SKINMODEL;
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory MVENTAS;
         private DevExpress.XtraBars.Ribbon.RibbonPage VENTAS;
@@ -1091,5 +1111,9 @@
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory ENTIDADES;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ENTITY;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem ZONAS;
+        private DevExpress.XtraBars.BarButtonItem ASIGNACIONVENDEDOR;
     }
 }

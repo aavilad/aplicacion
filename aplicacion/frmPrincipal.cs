@@ -18,6 +18,7 @@ namespace xtraForm
 {
     public partial class frmPrincipal : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        bool Ex = false;
         Form objeto;
         Libreria.Entidad entidad = new Libreria.Entidad();
         Libreria.Rutina proceso = new Libreria.Rutina();
@@ -228,7 +229,6 @@ namespace xtraForm
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
                 if (xtraTabControl1.TabPages[i].Text == "Notas De Credito")
                 {
-
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     existe = true;
                 }
@@ -685,72 +685,163 @@ namespace xtraForm
             }
         }
 
-        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e) => Application.Exit();
 
         private void VENDEDORES_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bool existe = false;
+            int Ix = 0;
+            var TabCaption = "Vendedor";
+            var Tabla = "Personal";
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-                if (xtraTabControl1.TabPages[i].Text == "Vendedor")
+                if (xtraTabControl1.TabPages[i].Text == TabCaption)
                 {
-                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
-                    existe = true;
+                    Ex = true;
+                    Ix = i;
                 }
-            if (!existe)
+            switch (Ex)
             {
-                Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
-                Scm01.ShowWaitForm();
-                XtraTabPage pedidos = new XtraTabPage();
-                entidad.index = 0;
-                objeto = new Modulos.Ventas.frmVendedor
-                {
-                    TopLevel = false,
-                    FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill,
-                    NModulo = e.Item.Name,
-                };
-                xtraTabControl1.TabPages.Add(pedidos);
-                xtraTabControl1.SelectedTabPage = pedidos;
-                pedidos.Text = "Vendedor";
-                entidad.index = xtraTabControl1.SelectedTabPageIndex;
-                pedidos.Controls.Add(objeto);
-                objeto.Show();
-                Scm01.CloseWaitForm();
+                case true:
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[Ix];
+                    break;
+                case false:
+                    Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    Scm01.ShowWaitForm();
+                    XtraTabPage Xtab = new XtraTabPage();
+                    entidad.index = 0;
+                    objeto = new Modulos.Ventas.frmVendedor
+                    {
+                        TopLevel = false,
+                        FormBorderStyle = FormBorderStyle.None,
+                        Dock = DockStyle.Fill,
+                        NModulo = e.Item.Name,
+                        Tabla = Tabla,
+                    };
+                    xtraTabControl1.TabPages.Add(Xtab);
+                    xtraTabControl1.SelectedTabPage = Xtab;
+                    Xtab.Text = TabCaption;
+                    entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                    Xtab.Controls.Add(objeto);
+                    objeto.Show();
+                    Scm01.CloseWaitForm();
+                    break;
             }
         }
 
         private void AvanceCobertura_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bool existe = false;
+            int Ix = 0;
+            var TabCaption = "Avance Cobertura";
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-                if (xtraTabControl1.TabPages[i].Text == "Avance Cobertura")
+                if (xtraTabControl1.TabPages[i].Text == TabCaption)
                 {
-                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
-                    existe = true;
+                    Ex = true;
+                    Ix = i;
                 }
-            if (!existe)
+            switch (Ex)
             {
-                Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
-                Scm01.ShowWaitForm();
-                XtraTabPage pedidos = new XtraTabPage();
-                entidad.index = 0;
-                objeto = new Modulos.Reportes.Modulos.Ventas.frmAvanceCliente
+                case true:
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[Ix];
+                    break;
+                case false:
+                    Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    Scm01.ShowWaitForm();
+                    XtraTabPage Xtab = new XtraTabPage();
+                    entidad.index = 0;
+                    objeto = new Modulos.Reportes.Modulos.Ventas.frmAvanceCliente
+                    {
+                        TopLevel = false,
+                        FormBorderStyle = FormBorderStyle.None,
+                        Dock = DockStyle.Fill,
+                        //NModulo = e.Item.Name,
+                    };
+                    xtraTabControl1.TabPages.Add(Xtab);
+                    xtraTabControl1.SelectedTabPage = Xtab;
+                    Xtab.Text = TabCaption;
+                    entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                    Xtab.Controls.Add(objeto);
+                    objeto.Show();
+                    Scm01.CloseWaitForm();
+                    break;
+            }
+        }
+
+        private void RUTAS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int Ix = 0;
+            var TabCaption = "Rutas";
+            var Tabla = "Personal";
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == TabCaption)
                 {
-                    TopLevel = false,
-                    FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill,
-                    //NModulo = e.Item.Name,
-                };
-                xtraTabControl1.TabPages.Add(pedidos);
-                xtraTabControl1.SelectedTabPage = pedidos;
-                pedidos.Text = "Avance Cobertura";
-                entidad.index = xtraTabControl1.SelectedTabPageIndex;
-                pedidos.Controls.Add(objeto);
-                objeto.Show();
-                Scm01.CloseWaitForm();
+                    Ex = true;
+                    Ix = i;
+                }
+            switch (Ex)
+            {
+                case true:
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[Ix];
+                    break;
+                case false:
+                    Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    Scm01.ShowWaitForm();
+                    XtraTabPage Xtab = new XtraTabPage();
+                    entidad.index = 0;
+                    objeto = new Modulos.Distribucion.frmRutas
+                    {
+                        TopLevel = false,
+                        FormBorderStyle = FormBorderStyle.None,
+                        Dock = DockStyle.Fill,
+                        NModulo = e.Item.Name,
+                        Tabla = Tabla,
+                    };
+                    xtraTabControl1.TabPages.Add(Xtab);
+                    xtraTabControl1.SelectedTabPage = Xtab;
+                    Xtab.Text = TabCaption;
+                    entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                    Xtab.Controls.Add(objeto);
+                    objeto.Show();
+                    Scm01.CloseWaitForm();
+                    break;
+            }
+        }
+
+        private void ASIGNACION_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int Ix = 0;
+            var TabCaption = "Asignaciones";
+            var Tabla = "Personal";
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == TabCaption)
+                {
+                    Ex = true;
+                    Ix = i;
+                }
+            switch (Ex)
+            {
+                case true:
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[Ix];
+                    break;
+                case false:
+                    Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    Scm01.ShowWaitForm();
+                    XtraTabPage Xtab = new XtraTabPage();
+                    entidad.index = 0;
+                    objeto = new Modulos.Distribucion.frmAsignacion
+                    {
+                        TopLevel = false,
+                        FormBorderStyle = FormBorderStyle.None,
+                        Dock = DockStyle.Fill,
+                        NModulo = e.Item.Name,
+                        Tabla = Tabla,
+                    };
+                    xtraTabControl1.TabPages.Add(Xtab);
+                    xtraTabControl1.SelectedTabPage = Xtab;
+                    Xtab.Text = TabCaption;
+                    entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                    Xtab.Controls.Add(objeto);
+                    objeto.Show();
+                    Scm01.CloseWaitForm();
+                    break;
             }
         }
     }

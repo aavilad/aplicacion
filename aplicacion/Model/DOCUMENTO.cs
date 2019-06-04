@@ -71,7 +71,7 @@ namespace xtraForm.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETADOC> DETADOCs { get; set; }
         public virtual Gestion Gestion1 { get; set; }
-        public virtual PERSONAL PERSONAL1 { get; set; }
         public virtual DOCTIPO DOCTIPO { get; set; }
+        public virtual PERSONAL PERSONAL1 { get; set; }
     }
 }

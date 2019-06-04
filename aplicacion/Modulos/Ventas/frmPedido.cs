@@ -168,7 +168,7 @@ namespace xtraForm.Modulos.Ventas
                     CTX.DETPEDIDOes.Add(ItemCp);
                 }
                 CTX.SaveChanges();
-                Rutina.ejecutar("sp_stock_sistema '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
+                Rutina.ejecutar("sp_stock_sistema_nuevo '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
                 Rutina.ejecutar("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
                 Refrescar();
             }

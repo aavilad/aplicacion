@@ -47,9 +47,9 @@ namespace xtraForm.Model
         public Nullable<bool> statusWeb { get; set; }
         public Nullable<bool> Aprobado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETPEDIDO> DETPEDIDOes { get; set; }
         public virtual FORMAPAGO FORMAPAGO1 { get; set; }
         public virtual PERSONAL PERSONAL1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETPEDIDO> DETPEDIDOes { get; set; }
     }
 }
