@@ -114,7 +114,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // efDataSource1
             // 
             efConnectionParameters1.ConnectionString = "";
-            efConnectionParameters1.ConnectionStringName = "LiderEntities";
+            efConnectionParameters1.ConnectionStringName = "conexion";
             efConnectionParameters1.Source = typeof(xtraForm.Model.LiderEntities);
             this.efDataSource1.ConnectionParameters = efConnectionParameters1;
             this.efDataSource1.Name = "efDataSource1";
@@ -276,7 +276,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // Ruta
             // 
             this.Ruta.Description = "Ruta";
-            dynamicListLookUpSettings1.DataAdapter = null;
             dynamicListLookUpSettings1.DataMember = "REPARTOes";
             dynamicListLookUpSettings1.DataSource = this.efDataSource1;
             dynamicListLookUpSettings1.DisplayMember = "Ruta";
@@ -289,7 +288,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // Gestion
             // 
             this.Gestion.Description = "Gestion:";
-            dynamicListLookUpSettings2.DataAdapter = null;
             dynamicListLookUpSettings2.DataMember = "Gestions";
             dynamicListLookUpSettings2.DataSource = this.efDataSource1;
             dynamicListLookUpSettings2.DisplayMember = "codigo";
@@ -302,7 +300,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // Informe
             // 
             this.Informe.Description = "Informe:";
-            dynamicListLookUpSettings3.DataAdapter = null;
             dynamicListLookUpSettings3.DataMember = "infrepartocabs";
             dynamicListLookUpSettings3.DataSource = this.efDataSource1;
             dynamicListLookUpSettings3.DisplayMember = "infreparto";
@@ -832,7 +829,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldIDVendedor1.Caption = "ID Vendedor";
             this.fieldIDVendedor1.FieldName = "IDVendedor";
             this.fieldIDVendedor1.Name = "fieldIDVendedor1";
-            this.fieldIDVendedor1.Options.ShowInFilter = true;
             this.fieldIDVendedor1.Width = 187;
             // 
             // fieldNombreVendedor1
@@ -842,7 +838,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldNombreVendedor1.Caption = "Nombre Vendedor";
             this.fieldNombreVendedor1.FieldName = "Nombre Vendedor";
             this.fieldNombreVendedor1.Name = "fieldNombreVendedor1";
-            this.fieldNombreVendedor1.Options.ShowInFilter = true;
             // 
             // fieldCredito1
             // 
@@ -851,7 +846,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldCredito1.Caption = "Credito";
             this.fieldCredito1.FieldName = "Credito";
             this.fieldCredito1.Name = "fieldCredito1";
-            this.fieldCredito1.Options.ShowInFilter = true;
             this.fieldCredito1.Width = 48;
             // 
             // fieldContado1
@@ -861,7 +855,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldContado1.Caption = "Contado";
             this.fieldContado1.FieldName = "Contado";
             this.fieldContado1.Name = "fieldContado1";
-            this.fieldContado1.Options.ShowInFilter = true;
             this.fieldContado1.Width = 51;
             // 
             // fieldAnulado1
@@ -871,7 +864,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldAnulado1.Caption = "Anulado";
             this.fieldAnulado1.FieldName = "Anulado";
             this.fieldAnulado1.Name = "fieldAnulado1";
-            this.fieldAnulado1.Options.ShowInFilter = true;
             this.fieldAnulado1.Width = 57;
             // 
             // fieldAprobado1
@@ -881,7 +873,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldAprobado1.Caption = "Aprobado";
             this.fieldAprobado1.FieldName = "Aprobado";
             this.fieldAprobado1.Name = "fieldAprobado1";
-            this.fieldAprobado1.Options.ShowInFilter = true;
             this.fieldAprobado1.Width = 66;
             // 
             // RptInformeDeReparto
@@ -907,7 +898,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.Ruta,
             this.Gestion,
             this.Informe});
-            this.Version = "18.1";
+            this.Version = "19.1";
             ((System.ComponentModel.ISupportInitialize)(this.efDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

@@ -107,8 +107,8 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // efDataSource1
             // 
             efConnectionParameters1.ConnectionString = "";
-            efConnectionParameters1.ConnectionStringName = "LiderEntities";
-            efConnectionParameters1.Source = typeof(LiderEntities);
+            efConnectionParameters1.ConnectionStringName = "conexion";
+            efConnectionParameters1.Source = typeof(xtraForm.Model.LiderEntities);
             this.efDataSource1.ConnectionParameters = efConnectionParameters1;
             this.efDataSource1.Name = "efDataSource1";
             // 
@@ -323,7 +323,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // Ruta
             // 
             resources.ApplyResources(this.Ruta, "Ruta");
-            dynamicListLookUpSettings1.DataAdapter = null;
             dynamicListLookUpSettings1.DataMember = "RUTAS";
             dynamicListLookUpSettings1.DataSource = this.efDataSource1;
             dynamicListLookUpSettings1.DisplayMember = "codigo";
@@ -334,7 +333,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // Gestion
             // 
             resources.ApplyResources(this.Gestion, "Gestion");
-            dynamicListLookUpSettings2.DataAdapter = null;
             dynamicListLookUpSettings2.DataMember = "Gestions";
             dynamicListLookUpSettings2.DataSource = this.efDataSource1;
             dynamicListLookUpSettings2.DisplayMember = "codigo";
@@ -666,7 +664,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             resources.ApplyResources(this.fieldCodigo1, "fieldCodigo1");
             this.fieldCodigo1.FieldName = "Codigo";
             this.fieldCodigo1.Name = "fieldCodigo1";
-            this.fieldCodigo1.Options.ShowInFilter = true;
             // 
             // fieldNombre1
             // 
@@ -675,7 +672,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             resources.ApplyResources(this.fieldNombre1, "fieldNombre1");
             this.fieldNombre1.FieldName = "Nombre";
             this.fieldNombre1.Name = "fieldNombre1";
-            this.fieldNombre1.Options.ShowInFilter = true;
             // 
             // fieldPedidos1
             // 
@@ -684,7 +680,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             resources.ApplyResources(this.fieldPedidos1, "fieldPedidos1");
             this.fieldPedidos1.FieldName = "#Pedidos";
             this.fieldPedidos1.Name = "fieldPedidos1";
-            this.fieldPedidos1.Options.ShowInFilter = true;
             // 
             // fieldClientes1
             // 
@@ -693,7 +688,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             resources.ApplyResources(this.fieldClientes1, "fieldClientes1");
             this.fieldClientes1.FieldName = "#Clientes";
             this.fieldClientes1.Name = "fieldClientes1";
-            this.fieldClientes1.Options.ShowInFilter = true;
             // 
             // fieldFactura1
             // 
@@ -702,7 +696,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             resources.ApplyResources(this.fieldFactura1, "fieldFactura1");
             this.fieldFactura1.FieldName = "#Factura";
             this.fieldFactura1.Name = "fieldFactura1";
-            this.fieldFactura1.Options.ShowInFilter = true;
             // 
             // fieldBoletas1
             // 
@@ -711,7 +704,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             resources.ApplyResources(this.fieldBoletas1, "fieldBoletas1");
             this.fieldBoletas1.FieldName = "#Boletas";
             this.fieldBoletas1.Name = "fieldBoletas1";
-            this.fieldBoletas1.Options.ShowInFilter = true;
             // 
             // fieldComprobantes1
             // 
@@ -720,7 +712,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             resources.ApplyResources(this.fieldComprobantes1, "fieldComprobantes1");
             this.fieldComprobantes1.FieldName = "#Comprobantes";
             this.fieldComprobantes1.Name = "fieldComprobantes1";
-            this.fieldComprobantes1.Options.ShowInFilter = true;
             // 
             // SubBand1
             // 
@@ -767,7 +758,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.Fecha,
             this.Ruta,
             this.Gestion});
-            this.Version = "18.1";
+            this.Version = "19.1";
             ((System.ComponentModel.ISupportInitialize)(this.efDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

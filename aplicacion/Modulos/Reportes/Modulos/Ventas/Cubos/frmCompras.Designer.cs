@@ -48,6 +48,7 @@
             this.fieldEstado1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldobservacion1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.hideContainerLeft = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -83,8 +84,8 @@
             this.fieldValorTotal2 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldEstado2 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldobservacion2 = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.hideContainerLeft = new DevExpress.XtraBars.Docking.AutoHideContainer();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.hideContainerLeft.SuspendLayout();
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -104,7 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lider2018DataSet1)).BeginInit();
-            this.hideContainerLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // fieldFechaEmision1
@@ -254,6 +254,15 @@
             "DevExpress.XtraBars.TabFormControl",
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl"});
             // 
+            // hideContainerLeft
+            // 
+            this.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.hideContainerLeft.Controls.Add(this.dockPanel1);
+            this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.hideContainerLeft.Location = new System.Drawing.Point(0, 0);
+            this.hideContainerLeft.Name = "hideContainerLeft";
+            this.hideContainerLeft.Size = new System.Drawing.Size(26, 417);
+            // 
             // dockPanel1
             // 
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
@@ -265,7 +274,6 @@
             this.dockPanel1.OriginalSize = new System.Drawing.Size(180, 200);
             this.dockPanel1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.SavedIndex = 0;
-            this.dockPanel1.SavedSizeFactor = 1D;
             this.dockPanel1.Size = new System.Drawing.Size(180, 417);
             this.dockPanel1.Text = "Parametros";
             this.dockPanel1.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
@@ -461,9 +469,10 @@
             this.fieldValorTotal2,
             this.fieldEstado2,
             this.fieldobservacion2});
-            this.pivotGridControl1.Location = new System.Drawing.Point(25, 0);
+            this.pivotGridControl1.Location = new System.Drawing.Point(26, 0);
             this.pivotGridControl1.Name = "pivotGridControl1";
-            this.pivotGridControl1.Size = new System.Drawing.Size(780, 417);
+            this.pivotGridControl1.OptionsCustomization.CustomizationFormStyle = DevExpress.XtraPivotGrid.Customization.CustomizationFormStyle.Excel2007;
+            this.pivotGridControl1.Size = new System.Drawing.Size(779, 417);
             this.pivotGridControl1.TabIndex = 3;
             // 
             // lider2018DataSet1
@@ -501,35 +510,35 @@
             // 
             // fieldIngreso2
             // 
-            this.fieldIngreso2.AreaIndex = 4;
+            this.fieldIngreso2.AreaIndex = 8;
             this.fieldIngreso2.Caption = "Ingreso";
             this.fieldIngreso2.FieldName = "Ingreso";
             this.fieldIngreso2.Name = "fieldIngreso2";
             // 
             // fieldPLinea2
             // 
-            this.fieldPLinea2.AreaIndex = 5;
+            this.fieldPLinea2.AreaIndex = 4;
             this.fieldPLinea2.Caption = "PLinea";
             this.fieldPLinea2.FieldName = "PLinea";
             this.fieldPLinea2.Name = "fieldPLinea2";
             // 
             // fieldPCodigo2
             // 
-            this.fieldPCodigo2.AreaIndex = 6;
+            this.fieldPCodigo2.AreaIndex = 5;
             this.fieldPCodigo2.Caption = "PCodigo";
             this.fieldPCodigo2.FieldName = "PCodigo";
             this.fieldPCodigo2.Name = "fieldPCodigo2";
             // 
             // fieldPDescripcion2
             // 
-            this.fieldPDescripcion2.AreaIndex = 7;
+            this.fieldPDescripcion2.AreaIndex = 6;
             this.fieldPDescripcion2.Caption = "PDescripcion";
             this.fieldPDescripcion2.FieldName = "PDescripcion";
             this.fieldPDescripcion2.Name = "fieldPDescripcion2";
             // 
             // fieldPMedida2
             // 
-            this.fieldPMedida2.AreaIndex = 8;
+            this.fieldPMedida2.AreaIndex = 7;
             this.fieldPMedida2.Caption = "PMedida";
             this.fieldPMedida2.FieldName = "PMedida";
             this.fieldPMedida2.Name = "fieldPMedida2";
@@ -590,15 +599,6 @@
             this.fieldobservacion2.FieldName = "observacion";
             this.fieldobservacion2.Name = "fieldobservacion2";
             // 
-            // hideContainerLeft
-            // 
-            this.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.hideContainerLeft.Controls.Add(this.dockPanel1);
-            this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.hideContainerLeft.Location = new System.Drawing.Point(0, 0);
-            this.hideContainerLeft.Name = "hideContainerLeft";
-            this.hideContainerLeft.Size = new System.Drawing.Size(25, 417);
-            // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -610,6 +610,7 @@
             this.Text = "frmCompras";
             this.Load += new System.EventHandler(this.frmCompras_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.hideContainerLeft.ResumeLayout(false);
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -629,7 +630,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lider2018DataSet1)).EndInit();
-            this.hideContainerLeft.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -671,6 +671,7 @@
         private DevExpress.XtraEditors.CheckedComboBoxEdit PROVEEDOR;
         private DevExpress.XtraPivotGrid.PivotGridControl pivotGridControl1;
         private Lider2018DataSet lider2018DataSet1;
+        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerLeft;
         private DevExpress.XtraPivotGrid.PivotGridField fieldFechaEmision2;
         private DevExpress.XtraPivotGrid.PivotGridField fieldNroDocumento2;
         private DevExpress.XtraPivotGrid.PivotGridField fieldReferencia2;
@@ -688,6 +689,5 @@
         private DevExpress.XtraPivotGrid.PivotGridField fieldValorTotal2;
         private DevExpress.XtraPivotGrid.PivotGridField fieldEstado2;
         private DevExpress.XtraPivotGrid.PivotGridField fieldobservacion2;
-        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerLeft;
     }
 }

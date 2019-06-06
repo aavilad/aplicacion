@@ -45,10 +45,8 @@ namespace xtraForm.Model
         public virtual DbSet<provincia> provincias { get; set; }
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<REPARTO> REPARTOes { get; set; }
-        public virtual DbSet<RUTA> RUTAS { get; set; }
         public virtual DbSet<TIPONEG> TIPONEGs { get; set; }
         public virtual DbSet<tipoprecio> tipoprecios { get; set; }
-        public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
         public virtual DbSet<VistaAdministrativa> VistaAdministrativas { get; set; }
         public virtual DbSet<Vva_Cliente> Vva_Cliente { get; set; }
         public virtual DbSet<grupo> grupoes { get; set; }
@@ -73,6 +71,8 @@ namespace xtraForm.Model
         public virtual DbSet<DOCTIPO> DOCTIPOes { get; set; }
         public virtual DbSet<PERSONAL> PERSONALs { get; set; }
         public virtual DbSet<DETPEDIDO> DETPEDIDOes { get; set; }
+        public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
+        public virtual DbSet<RUTA> RUTAS { get; set; }
     
         public virtual int sp_genera_documento(string pedido, Nullable<int> tipo, string tdoc)
         {

@@ -1,6 +1,6 @@
 ﻿namespace xtraForm.Modulos.Distribucion
 {
-    partial class frmAsignacion
+    partial class frmZona
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsignacion));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmZona));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MenuPrincipal = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -55,7 +55,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(630, 245);
+            this.gridControl1.Size = new System.Drawing.Size(602, 236);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -85,7 +85,6 @@
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.GridView1_PopupMenuShowing);
-            this.gridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GridView1_KeyPress);
             this.gridView1.DoubleClick += new System.EventHandler(this.GridView1_DoubleClick);
             // 
             // MenuPrincipal
@@ -102,15 +101,14 @@
             // NUEVO
             // 
             this.NUEVO.Caption = "Nuevo";
-            this.NUEVO.Id = 0;
+            this.NUEVO.Id = 1;
             this.NUEVO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NUEVO.ImageOptions.SvgImage")));
             this.NUEVO.Name = "NUEVO";
-            this.NUEVO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NUEVO_ItemClick);
             // 
             // MODIFICAR
             // 
             this.MODIFICAR.Caption = "Modificar";
-            this.MODIFICAR.Id = 1;
+            this.MODIFICAR.Id = 2;
             this.MODIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MODIFICAR.ImageOptions.SvgImage")));
             this.MODIFICAR.Name = "MODIFICAR";
             this.MODIFICAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MODIFICAR_ItemClick);
@@ -118,15 +116,14 @@
             // ELIMINAR
             // 
             this.ELIMINAR.Caption = "Eliminar";
-            this.ELIMINAR.Id = 2;
+            this.ELIMINAR.Id = 3;
             this.ELIMINAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ELIMINAR.ImageOptions.SvgImage")));
             this.ELIMINAR.Name = "ELIMINAR";
-            this.ELIMINAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ELIMINAR_ItemClick);
             // 
             // FILTRO
             // 
             this.FILTRO.Caption = "Filtro";
-            this.FILTRO.Id = 3;
+            this.FILTRO.Id = 4;
             this.FILTRO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FILTRO.ImageOptions.SvgImage")));
             this.FILTRO.Name = "FILTRO";
             this.FILTRO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FILTRO_ItemClick);
@@ -134,7 +131,7 @@
             // REFRESH
             // 
             this.REFRESH.Caption = "Refrescar";
-            this.REFRESH.Id = 4;
+            this.REFRESH.Id = 6;
             this.REFRESH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REFRESH.ImageOptions.SvgImage")));
             this.REFRESH.Name = "REFRESH";
             this.REFRESH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.REFRESH_ItemClick);
@@ -152,7 +149,7 @@
             this.ELIMINAR,
             this.FILTRO,
             this.REFRESH});
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 7;
             // 
             // barDockControlTop
             // 
@@ -160,15 +157,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(630, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(602, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 245);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 236);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(630, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(602, 0);
             // 
             // barDockControlLeft
             // 
@@ -176,29 +173,29 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 245);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 236);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(630, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(602, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 245);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 236);
             // 
-            // frmAsignacion
+            // frmZona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 245);
+            this.ClientSize = new System.Drawing.Size(602, 236);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "frmAsignacion";
-            this.Text = "frmAsignacion";
-            this.Load += new System.EventHandler(this.FrmAsignacion_Load);
+            this.Name = "frmZona";
+            this.Text = "frmZona";
+            this.Load += new System.EventHandler(this.FrmZona_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPrincipal)).EndInit();
@@ -213,8 +210,8 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.PopupMenu MenuPrincipal;
-        private DevExpress.XtraBars.BarButtonItem MODIFICAR;
         private DevExpress.XtraBars.BarButtonItem NUEVO;
+        private DevExpress.XtraBars.BarButtonItem MODIFICAR;
         private DevExpress.XtraBars.BarButtonItem ELIMINAR;
         private DevExpress.XtraBars.BarButtonItem FILTRO;
         private DevExpress.XtraBars.BarButtonItem REFRESH;

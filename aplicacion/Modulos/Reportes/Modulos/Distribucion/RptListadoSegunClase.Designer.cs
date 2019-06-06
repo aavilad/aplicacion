@@ -113,7 +113,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // ClaseProducto
             // 
             ClaseProducto.Description = "Clase Prodcuto";
-            dynamicListLookUpSettings1.DataAdapter = null;
             dynamicListLookUpSettings1.DataMember = "Clase_Producto";
             dynamicListLookUpSettings1.DataSource = this.efDataSource2;
             dynamicListLookUpSettings1.DisplayMember = "Descripcion";
@@ -125,8 +124,8 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // efDataSource2
             // 
             efConnectionParameters1.ConnectionString = "";
-            efConnectionParameters1.ConnectionStringName = "LiderEntities";
-            efConnectionParameters1.Source = typeof(LiderEntities);
+            efConnectionParameters1.ConnectionStringName = "conexion";
+            efConnectionParameters1.Source = typeof(xtraForm.Model.LiderEntities);
             this.efDataSource2.ConnectionParameters = efConnectionParameters1;
             this.efDataSource2.Name = "efDataSource2";
             // 
@@ -422,7 +421,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // Ruta
             // 
             this.Ruta.Description = "Ruta";
-            dynamicListLookUpSettings2.DataAdapter = null;
             dynamicListLookUpSettings2.DataMember = "RUTAS";
             dynamicListLookUpSettings2.DataSource = this.efDataSource2;
             dynamicListLookUpSettings2.DisplayMember = "codigo";
@@ -434,7 +432,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // Gestion
             // 
             this.Gestion.Description = "Gestion";
-            dynamicListLookUpSettings3.DataAdapter = null;
             dynamicListLookUpSettings3.DataMember = "Gestions";
             dynamicListLookUpSettings3.DataSource = this.efDataSource2;
             dynamicListLookUpSettings3.DisplayMember = "codigo";
@@ -831,7 +828,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldCodigo1.Caption = "Codigo";
             this.fieldCodigo1.FieldName = "Codigo";
             this.fieldCodigo1.Name = "fieldCodigo1";
-            this.fieldCodigo1.Options.ShowInFilter = true;
             this.fieldCodigo1.Width = 60;
             // 
             // fieldNombre1
@@ -841,7 +837,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldNombre1.Caption = "Nombre";
             this.fieldNombre1.FieldName = "Nombre";
             this.fieldNombre1.Name = "fieldNombre1";
-            this.fieldNombre1.Options.ShowInFilter = true;
             this.fieldNombre1.Width = 250;
             // 
             // fieldPedidos1
@@ -851,7 +846,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldPedidos1.Caption = "#Pedidos";
             this.fieldPedidos1.FieldName = "#Pedidos";
             this.fieldPedidos1.Name = "fieldPedidos1";
-            this.fieldPedidos1.Options.ShowInFilter = true;
             this.fieldPedidos1.Width = 57;
             // 
             // fieldClientes1
@@ -861,7 +855,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldClientes1.Caption = "#Clientes";
             this.fieldClientes1.FieldName = "#Clientes";
             this.fieldClientes1.Name = "fieldClientes1";
-            this.fieldClientes1.Options.ShowInFilter = true;
             this.fieldClientes1.Width = 65;
             // 
             // fieldFactura1
@@ -871,7 +864,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldFactura1.Caption = "#Factura";
             this.fieldFactura1.FieldName = "#Factura";
             this.fieldFactura1.Name = "fieldFactura1";
-            this.fieldFactura1.Options.ShowInFilter = true;
             this.fieldFactura1.Width = 52;
             // 
             // fieldBoletas1
@@ -881,7 +873,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldBoletas1.Caption = "#Boletas";
             this.fieldBoletas1.FieldName = "#Boletas";
             this.fieldBoletas1.Name = "fieldBoletas1";
-            this.fieldBoletas1.Options.ShowInFilter = true;
             this.fieldBoletas1.Width = 51;
             // 
             // fieldComprobantes1
@@ -891,7 +882,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldComprobantes1.Caption = "#Comprobantes";
             this.fieldComprobantes1.FieldName = "#Comprobantes";
             this.fieldComprobantes1.Name = "fieldComprobantes1";
-            this.fieldComprobantes1.Options.ShowInFilter = true;
             this.fieldComprobantes1.Width = 84;
             // 
             // fieldIDClase
@@ -900,7 +890,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldIDClase.FieldName = "IDClase";
             this.fieldIDClase.Name = "fieldIDClase";
             this.fieldIDClase.Options.AllowFilter = DevExpress.Utils.DefaultBoolean.False;
-            this.fieldIDClase.Options.ShowInFilter = true;
             // 
             // ReportFooter
             // 
@@ -973,7 +962,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.Ruta,
             this.Gestion,
             ClaseProducto});
-            this.Version = "18.1";
+            this.Version = "19.1";
             ((System.ComponentModel.ISupportInitialize)(this.efDataSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

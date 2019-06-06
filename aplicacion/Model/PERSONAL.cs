@@ -19,6 +19,7 @@ namespace xtraForm.Model
         {
             this.DOCUMENTOes = new HashSet<DOCUMENTO>();
             this.PEDIDOes = new HashSet<PEDIDO>();
+            this.ZONA_PERSONAL = new HashSet<ZONA_PERSONAL>();
         }
     
         public string Personal1 { get; set; }
@@ -48,5 +49,7 @@ namespace xtraForm.Model
         public virtual FuerzaVenta FuerzaVenta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDOes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
     }
 }

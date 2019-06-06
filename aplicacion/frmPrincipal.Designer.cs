@@ -713,13 +713,14 @@
             this.ZONAS.Id = 1;
             this.ZONAS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ZONAS.ImageOptions.SvgImage")));
             this.ZONAS.Name = "ZONAS";
+            this.ZONAS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ZONAS_ItemClick);
             // 
             // ASIGNACIONVENDEDOR
             // 
             resources.ApplyResources(this.ASIGNACIONVENDEDOR, "ASIGNACIONVENDEDOR");
             this.ASIGNACIONVENDEDOR.CategoryGuid = new System.Guid("0a31f90e-3ea0-43a2-9deb-a712c4c655f2");
             this.ASIGNACIONVENDEDOR.Id = 2;
-            this.ASIGNACIONVENDEDOR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ASIGNACION.ImageOptions.SvgImage")));
+            this.ASIGNACIONVENDEDOR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ASIGNACIONVENDEDOR.ImageOptions.SvgImage")));
             this.ASIGNACIONVENDEDOR.Name = "ASIGNACIONVENDEDOR";
             this.ASIGNACIONVENDEDOR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ASIGNACION_ItemClick);
             // 
@@ -813,9 +814,9 @@
             // 
             // G011
             // 
+            this.G011.ItemLinks.Add(this.ASIGNACIONVENDEDOR);
             this.G011.ItemLinks.Add(this.ZONAS);
             this.G011.ItemLinks.Add(this.RUTAS);
-            this.G011.ItemLinks.Add(this.ASIGNACIONVENDEDOR);
             this.G011.Name = "G011";
             resources.ApplyResources(this.G011, "G011");
             // 

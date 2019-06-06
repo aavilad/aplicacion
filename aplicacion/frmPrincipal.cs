@@ -655,6 +655,7 @@ namespace xtraForm
 
         private void CBOCOMPRAS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Ex = false;
             bool existe = false;
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
                 if (xtraTabControl1.TabPages[i].Text == "Compras")
@@ -689,6 +690,7 @@ namespace xtraForm
 
         private void VENDEDORES_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Ex = false;
             int Ix = 0;
             var TabCaption = "Vendedor";
             var Tabla = "Personal";
@@ -696,13 +698,10 @@ namespace xtraForm
                 if (xtraTabControl1.TabPages[i].Text == TabCaption)
                 {
                     Ex = true;
-                    Ix = i;
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                 }
             switch (Ex)
             {
-                case true:
-                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[Ix];
-                    break;
                 case false:
                     Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
                     Scm01.ShowWaitForm();
@@ -729,19 +728,17 @@ namespace xtraForm
 
         private void AvanceCobertura_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Ex = false;
             int Ix = 0;
             var TabCaption = "Avance Cobertura";
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
                 if (xtraTabControl1.TabPages[i].Text == TabCaption)
                 {
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     Ex = true;
-                    Ix = i;
                 }
             switch (Ex)
             {
-                case true:
-                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[Ix];
-                    break;
                 case false:
                     Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
                     Scm01.ShowWaitForm();
@@ -767,20 +764,18 @@ namespace xtraForm
 
         private void RUTAS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Ex = false;
             int Ix = 0;
             var TabCaption = "Rutas";
-            var Tabla = "Personal";
+            var Tabla = "RUTAS";
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
                 if (xtraTabControl1.TabPages[i].Text == TabCaption)
                 {
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                     Ex = true;
-                    Ix = i;
                 }
             switch (Ex)
             {
-                case true:
-                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[Ix];
-                    break;
                 case false:
                     Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
                     Scm01.ShowWaitForm();
@@ -807,6 +802,7 @@ namespace xtraForm
 
         private void ASIGNACION_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Ex = false;
             int Ix = 0;
             var TabCaption = "Asignaciones";
             var Tabla = "Personal";
@@ -814,19 +810,54 @@ namespace xtraForm
                 if (xtraTabControl1.TabPages[i].Text == TabCaption)
                 {
                     Ex = true;
-                    Ix = i;
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
                 }
             switch (Ex)
             {
-                case true:
-                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[Ix];
-                    break;
                 case false:
                     Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
                     Scm01.ShowWaitForm();
                     XtraTabPage Xtab = new XtraTabPage();
                     entidad.index = 0;
                     objeto = new Modulos.Distribucion.frmAsignacion
+                    {
+                        TopLevel = false,
+                        FormBorderStyle = FormBorderStyle.None,
+                        Dock = DockStyle.Fill,
+                        NModulo = e.Item.Name,
+                        Tabla = Tabla,
+                    };
+                    xtraTabControl1.TabPages.Add(Xtab);
+                    xtraTabControl1.SelectedTabPage = Xtab;
+                    Xtab.Text = TabCaption;
+                    entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                    Xtab.Controls.Add(objeto);
+                    objeto.Show();
+                    Scm01.CloseWaitForm();
+                    break;
+            }
+        }
+
+        private void ZONAS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Ex = false;
+            int Ix = 0;
+            var TabCaption = "Zonas";
+            var Tabla = "Zona";
+            for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
+                if (xtraTabControl1.TabPages[i].Text == TabCaption)
+                {
+                    xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
+                    Ex = true;
+                }
+            switch (Ex)
+            {
+                case false:
+                    Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    Scm01.ShowWaitForm();
+                    XtraTabPage Xtab = new XtraTabPage();
+                    entidad.index = 0;
+                    objeto = new Modulos.Distribucion.frmZona
                     {
                         TopLevel = false,
                         FormBorderStyle = FormBorderStyle.None,

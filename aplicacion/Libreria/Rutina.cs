@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -296,13 +297,13 @@ namespace xtraForm.Libreria
 
         public DialogResult MensageError(string cadena)
         {
-            DialogResult result = MessageBox.Show(cadena, "Mensage", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            DialogResult result = XtraMessageBox.Show(cadena, "Mensage", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             return result;
         }
 
         public DialogResult MensagePregunta(string cadena)
         {
-            DialogResult result = MessageBox.Show(cadena, "Mensage", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = XtraMessageBox.Show(cadena, "Mensage", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             return result;
         }
 

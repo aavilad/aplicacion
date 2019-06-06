@@ -9,6 +9,12 @@ namespace xtraForm.Libreria
 {
     class Constante
     {
+        public const string EntidadRutasAsignacion = @"
+        SELECT RUTAS.codigo, 
+               RUTAS.descripcion
+        FROM RUTAS
+             FULL OUTER JOIN REPARTO ON RUTAS.codigo = REPARTO.Ruta
+        WHERE(REPARTO.Ruta IS NULL);";
         public const string PedidoRecalculo = @"
                 UPDATE detpedido
           SET 

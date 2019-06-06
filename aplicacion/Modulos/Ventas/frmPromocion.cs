@@ -16,7 +16,6 @@ namespace xtraForm.Modulos.Ventas
         Libreria.maestroBonif_Reglas ejecutar_ = new Libreria.maestroBonif_Reglas();
         Libreria.Ejecutar ejecutar = new Libreria.Ejecutar();
         Libreria.Bonificacion bonificacion = new Libreria.Bonificacion();
-        Libreria.Producto producto = new Libreria.Producto();
         Libreria.Rutina proceso = new Libreria.Rutina();
         private string tabla = "Bonificacion";
         private bool Existe = false;
@@ -199,9 +198,9 @@ namespace xtraForm.Modulos.Ventas
                 }
                 foreach (DataRow DR_0 in Coleccion.Rows)
                 {
-                    producto.Codigo = DR_0["cdProductoColeccion"].ToString();
-                    producto.Descripcion = proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + DR_0["cdProductoColeccion"] + "'");
-                    frmreglabonificacion.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion);
+                    string Codigo = DR_0["cdProductoColeccion"].ToString();
+                    string Descripcion = proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + DR_0["cdProductoColeccion"] + "'");
+                    frmreglabonificacion.dataGridView1.Rows.Add(Codigo, Descripcion);
                 }
                 frmreglabonificacion.StartPosition = FormStartPosition.CenterScreen;
                 frmreglabonificacion.Show();
@@ -279,9 +278,9 @@ namespace xtraForm.Modulos.Ventas
                 }
                 foreach (DataRow DR_0 in Coleccion.Rows)
                 {
-                    producto.Codigo = DR_0["cdProductoColeccion"].ToString();
-                    producto.Descripcion = proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + DR_0["cdProductoColeccion"] + "'");
-                    frmreglabonificacion.dataGridView1.Rows.Add(producto.Codigo, producto.Descripcion);
+                    string Codigo = DR_0["cdProductoColeccion"].ToString();
+                    string Descripcion = proceso.ConsultarCadena("Descripcion", "producto", "producto = '" + DR_0["cdProductoColeccion"] + "'");
+                    frmreglabonificacion.dataGridView1.Rows.Add(Codigo, Descripcion);
                 }
                 if (bonificacion.TipoMecanica == 1 || bonificacion.TipoMecanica == 3)
                 {

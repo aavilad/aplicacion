@@ -84,9 +84,9 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.groupHeaderBand2 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
-            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel36 = new DevExpress.XtraReports.UI.XRLabel();
+            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.fieldCodigo1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldNombre1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldPedidos1 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
@@ -100,8 +100,8 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // efDataSource1
             // 
             efConnectionParameters1.ConnectionString = "";
-            efConnectionParameters1.ConnectionStringName = "LiderEntities";
-            efConnectionParameters1.Source = typeof(LiderEntities);
+            efConnectionParameters1.ConnectionStringName = "conexion";
+            efConnectionParameters1.Source = typeof(xtraForm.Model.LiderEntities);
             this.efDataSource1.ConnectionParameters = efConnectionParameters1;
             this.efDataSource1.Name = "efDataSource1";
             // 
@@ -480,7 +480,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             // Clase
             // 
             this.Clase.Description = "Clase";
-            dynamicListLookUpSettings1.DataAdapter = null;
             dynamicListLookUpSettings1.DataMember = "Clase_Producto";
             dynamicListLookUpSettings1.DataSource = this.efDataSource1;
             dynamicListLookUpSettings1.DisplayMember = "Descripcion";
@@ -542,6 +541,31 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.PageFooter.HeightF = 25.70834F;
             this.PageFooter.Name = "PageFooter";
             // 
+            // xrLine2
+            // 
+            this.xrLine2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.xrLine2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
+            this.xrLine2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.xrLine2.LocationFloat = new DevExpress.Utils.PointFloat(2.605097F, 7.916666F);
+            this.xrLine2.Name = "xrLine2";
+            this.xrLine2.SizeF = new System.Drawing.SizeF(795.3949F, 2.083334F);
+            this.xrLine2.StylePriority.UseBorderColor = false;
+            this.xrLine2.StylePriority.UseBorderDashStyle = false;
+            this.xrLine2.StylePriority.UseForeColor = false;
+            // 
+            // xrLabel36
+            // 
+            this.xrLabel36.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Italic);
+            this.xrLabel36.ForeColor = System.Drawing.Color.Gray;
+            this.xrLabel36.LocationFloat = new DevExpress.Utils.PointFloat(2.605097F, 10F);
+            this.xrLabel36.Multiline = true;
+            this.xrLabel36.Name = "xrLabel36";
+            this.xrLabel36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel36.SizeF = new System.Drawing.SizeF(100F, 15.70834F);
+            this.xrLabel36.StylePriority.UseFont = false;
+            this.xrLabel36.StylePriority.UseForeColor = false;
+            this.xrLabel36.Text = "soporte@Lider.pe";
+            // 
             // sqlDataSource2
             // 
             this.sqlDataSource2.ConnectionName = "conexion";
@@ -579,31 +603,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             customSqlQuery3});
             this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
             // 
-            // xrLine2
-            // 
-            this.xrLine2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.xrLine2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
-            this.xrLine2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.xrLine2.LocationFloat = new DevExpress.Utils.PointFloat(2.605097F, 7.916666F);
-            this.xrLine2.Name = "xrLine2";
-            this.xrLine2.SizeF = new System.Drawing.SizeF(795.3949F, 2.083334F);
-            this.xrLine2.StylePriority.UseBorderColor = false;
-            this.xrLine2.StylePriority.UseBorderDashStyle = false;
-            this.xrLine2.StylePriority.UseForeColor = false;
-            // 
-            // xrLabel36
-            // 
-            this.xrLabel36.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Italic);
-            this.xrLabel36.ForeColor = System.Drawing.Color.Gray;
-            this.xrLabel36.LocationFloat = new DevExpress.Utils.PointFloat(2.605097F, 10F);
-            this.xrLabel36.Multiline = true;
-            this.xrLabel36.Name = "xrLabel36";
-            this.xrLabel36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel36.SizeF = new System.Drawing.SizeF(100F, 15.70834F);
-            this.xrLabel36.StylePriority.UseFont = false;
-            this.xrLabel36.StylePriority.UseForeColor = false;
-            this.xrLabel36.Text = "soporte@Lider.pe";
-            // 
             // fieldCodigo1
             // 
             this.fieldCodigo1.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -613,7 +612,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldCodigo1.Caption = "Codigo";
             this.fieldCodigo1.FieldName = "Codigo";
             this.fieldCodigo1.Name = "fieldCodigo1";
-            this.fieldCodigo1.Options.ShowInFilter = true;
             this.fieldCodigo1.Width = 60;
             // 
             // fieldNombre1
@@ -623,7 +621,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldNombre1.Caption = "Nombre";
             this.fieldNombre1.FieldName = "Nombre";
             this.fieldNombre1.Name = "fieldNombre1";
-            this.fieldNombre1.Options.ShowInFilter = true;
             this.fieldNombre1.Width = 250;
             // 
             // fieldPedidos1
@@ -633,7 +630,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldPedidos1.Caption = "#Pedidos";
             this.fieldPedidos1.FieldName = "#Pedidos";
             this.fieldPedidos1.Name = "fieldPedidos1";
-            this.fieldPedidos1.Options.ShowInFilter = true;
             this.fieldPedidos1.Width = 57;
             // 
             // fieldClientes1
@@ -643,7 +639,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldClientes1.Caption = "#Clientes";
             this.fieldClientes1.FieldName = "#Clientes";
             this.fieldClientes1.Name = "fieldClientes1";
-            this.fieldClientes1.Options.ShowInFilter = true;
             this.fieldClientes1.Width = 65;
             // 
             // fieldFactura1
@@ -653,7 +648,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldFactura1.Caption = "#Factura";
             this.fieldFactura1.FieldName = "#Factura";
             this.fieldFactura1.Name = "fieldFactura1";
-            this.fieldFactura1.Options.ShowInFilter = true;
             this.fieldFactura1.Width = 52;
             // 
             // fieldBoletas1
@@ -663,7 +657,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldBoletas1.Caption = "#Boletas";
             this.fieldBoletas1.FieldName = "#Boletas";
             this.fieldBoletas1.Name = "fieldBoletas1";
-            this.fieldBoletas1.Options.ShowInFilter = true;
             this.fieldBoletas1.Width = 51;
             // 
             // fieldComprobantes1
@@ -673,7 +666,6 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.fieldComprobantes1.Caption = "#Comprobantes";
             this.fieldComprobantes1.FieldName = "#Comprobantes";
             this.fieldComprobantes1.Name = "fieldComprobantes1";
-            this.fieldComprobantes1.Options.ShowInFilter = true;
             this.fieldComprobantes1.Width = 84;
             // 
             // RptListadoGeneralSegunClase
@@ -702,7 +694,7 @@ namespace xtraForm.Modulos.Reportes.Modulos.Distribucion
             this.Fecha,
             this.Gestion,
             this.Clase});
-            this.Version = "18.1";
+            this.Version = "19.1";
             ((System.ComponentModel.ISupportInitialize)(this.efDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

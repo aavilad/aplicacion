@@ -1,6 +1,6 @@
 ﻿namespace xtraForm.Maestro
 {
-    partial class frmVendedor
+    partial class frmRutas
     {
         /// <summary>
         /// Required designer variable.
@@ -40,11 +40,11 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(406, 441);
+            this.gridControl1.Size = new System.Drawing.Size(371, 404);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gridControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridControl1_KeyPress);
+            this.gridControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GridControl1_KeyPress);
             // 
             // gridView1
             // 
@@ -63,25 +63,25 @@
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsHint.ShowFooterHints = false;
             this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
-            this.gridView1.OptionsSelection.CheckBoxSelectorField = "#";
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.DoubleClick += new System.EventHandler(this.GridView1_DoubleClick);
             // 
-            // frmVendedor
+            // frmRutas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 441);
+            this.ClientSize = new System.Drawing.Size(371, 404);
             this.Controls.Add(this.gridControl1);
-            this.KeyPreview = true;
-            this.Name = "frmVendedor";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmVendedor_KeyPress);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "frmRutas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Rutas";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -89,7 +89,6 @@
         }
 
         #endregion
-
         public DevExpress.XtraGrid.GridControl gridControl1;
         public DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }

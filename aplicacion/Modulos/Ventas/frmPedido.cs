@@ -19,10 +19,8 @@ namespace xtraForm.Modulos.Ventas
     {
         public string Tabla;
         public string NModulo;
-        Libreria.Pedido pedido = new Libreria.Pedido();
         Libreria.Entidad entidad = new Libreria.Entidad();
         Libreria.Ejecutar ejecutar = new Libreria.Ejecutar();
-        Libreria.Producto producto = new Libreria.Producto();
         private DateTime ahora;
         private DateTime inicio;
         List<string> _Lista;
@@ -418,7 +416,7 @@ namespace xtraForm.Modulos.Ventas
 
                         Formulario.dataGridView1.Rows.Add(Codigo, Descripcion, Cantidad, Cantidad, Unidad, TipoPrecio, PrecioUnitario, PrecioNeto,
                             (Cantidad * PrecioNeto), Descuento, Recargo, Bonificacion, Credito, Afecto, IdBonif);
-                        Formulario.dataGridView1.CurrentRow.ReadOnly = producto.Bonificacion == true ? true : false;
+                        Formulario.dataGridView1.CurrentRow.ReadOnly = Bonificacion == true ? true : false;
                         Formulario.dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                         Formulario.dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
                         Formulario.dataGridView1.CurrentRow.Cells["Cantidad"].ReadOnly = false;
@@ -689,13 +687,13 @@ namespace xtraForm.Modulos.Ventas
                     Formulario.txtnmDireccion.EditValue = DireccionCliente;
                     Formulario.txtnmZona.EditValue = ZonaCliente;
                     Formulario.txtcdZona.EditValue = Cl.Select(a => a.Zona).FirstOrDefault();
-                    Formulario.txtnmDistrito.EditValue = pedido.DistritoCliente;
+                    Formulario.txtnmDistrito.EditValue = DistritoCliente;
                     Formulario.txtcdDistrito.EditValue = Dt.Select(a => a.iddistrito).FirstOrDefault();
                     Formulario.txtnmProvincia.EditValue = ProvinciaCliente;
                     Formulario.txtcdProvincia.EditValue = Pv.Select(a => a.idprovincia);
                     Formulario.txtcdGestion.Text = Gestion;
                     Formulario.dateEmision.EditValue = FechaEmision;
-                    Formulario.dateEntrega.EditValue = Convert.ToDateTime(pedido.FechaEmision).AddDays(1).ToString("dd/MM/yyyy");
+                    Formulario.dateEntrega.EditValue = Convert.ToDateTime(FechaEmision).AddDays(1).ToString("dd/MM/yyyy");
                     Formulario.btnCredito.Checked = Credito == true ? true : false;
                     Formulario.txtformaPago.Text = Fp.Select(a => a.Descripcion).FirstOrDefault();
                     Formulario.CodigoFP.Text = FormaPago;
@@ -716,7 +714,7 @@ namespace xtraForm.Modulos.Ventas
 
                         Formulario.dataGridView1.Rows.Add(Codigo, Descripcion, Cantidad, Cantidad, Unidad, TipoPrecio, PrecioUnitario, PrecioNeto,
                             (Cantidad * PrecioNeto), Descuento, Recargo, Bonificacion, Credito, Afecto, IdBonif);
-                        Formulario.dataGridView1.CurrentRow.ReadOnly = producto.Bonificacion == true ? true : false;
+                        Formulario.dataGridView1.CurrentRow.ReadOnly = Bonificacion == true ? true : false;
                         Formulario.dataGridView1.CurrentRow.Cells["Codigo"].ReadOnly = true;
                         Formulario.dataGridView1.CurrentRow.Cells["Descripcion"].ReadOnly = true;
                         Formulario.dataGridView1.CurrentRow.Cells["Cantidad"].ReadOnly = false;

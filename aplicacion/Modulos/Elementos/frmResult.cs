@@ -11,11 +11,16 @@ using DevExpress.XtraEditors;
 
 namespace xtraForm.Modulos.Elementos
 {
-    public partial class frmZona : DevExpress.XtraEditors.XtraForm
+    public partial class frmResult : DevExpress.XtraEditors.XtraForm
     {
-        public frmZona()
+        public frmResult()
         {
             InitializeComponent();
+        }
+
+        private void Aceptar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

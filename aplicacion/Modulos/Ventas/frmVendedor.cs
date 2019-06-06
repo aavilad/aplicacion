@@ -173,6 +173,7 @@ namespace xtraForm.Modulos.Ventas
                             }
                         }
                         Formulario.Scm03.CloseWaitForm();
+                        Refrescar();
                     }
                 }
             }
@@ -230,6 +231,7 @@ namespace xtraForm.Modulos.Ventas
                 Formulario.pasar += new Elementos.frmVendedor.Variable(Campos_Vendedor_);
                 Formulario.FVENTAS.EditValue = PersonalFzVenta;
                 Formulario.CODIGO.Text = PersonalCodigo;
+                Formulario.CODIGO.Enabled = false;
                 Formulario.DIDENTIDAD.Text = PersonalDocumento;
                 Formulario.NOMBRES.Text = PersonalNombre;
                 Formulario.FINGRESO.EditValue = PersonalFechaIngreso;

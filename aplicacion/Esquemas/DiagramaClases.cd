@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="xtraForm.Libreria.Rutina">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAgAABUAAAgIQECAAAgBAIQAAACgIAAAACCAAABAE=</HashCode>
+      <FileName>Libreria\Rutina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="xtraForm.Libreria.Pedido_Bonificar">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Libreria\Pedido_Bonificar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Data.OleDb;
 using System.Drawing;
@@ -93,11 +94,16 @@ namespace xtraForm.Modulos.Elementos
                     }
                     catch (DbEntityValidationException t)
                     {
-                        foreach (var eve in t.EntityValidationErrors)
+                        var Formulario = new Elementos.frmResult();
+                        foreach (DbEntityValidationResult item in t.EntityValidationErrors)
                         {
-                            foreach (var ve in eve.ValidationErrors)
+                            DbEntityEntry entry = item.Entry;
+                            string entityTypeName = entry.Entity.GetType().Name;
+                            foreach (DbValidationError subItem in item.ValidationErrors)
                             {
-                                MessageBox.Show("- Property: \"" + ve.PropertyName + "\", Error: \"" + ve.ErrorMessage + "\"");
+                                string message = string.Format("Error '{0}' occurred in {1} at {2}", subItem.ErrorMessage, entityTypeName, subItem.PropertyName);
+                                Formulario.MemoEd.Text += message + "\n";
+                                Formulario.Show();
                             }
                         }
                     }
@@ -119,7 +125,7 @@ namespace xtraForm.Modulos.Elementos
                     {
 
                         TipoLista = CTX.PERSONALs.Where(w => w.Personal1 == txtcdVendedor.Text.Trim()).Select(s => s.clase).FirstOrDefault();
-                        PorEspecial = (from Tipo in CTX.TIPOCLIs.Where(w=>w.TipoCli1 == "E").AsEnumerable()
+                        PorEspecial = (from Tipo in CTX.TIPOCLIs.Where(w => w.TipoCli1 == "E").AsEnumerable()
                                        join Cl in CTX.CLIENTEs.Where(w => w.Estado == "A" && w.Cliente1 == txtcdCLiente.Text.Trim()).AsEnumerable() on Tipo.TipoCli1 equals Cl.TipoCli
                                        select Convert.ToDecimal(Tipo.Porcentaje)).FirstOrDefault();
                         dataGridView1.Rows.Add();
@@ -450,7 +456,7 @@ namespace xtraForm.Modulos.Elementos
                             }
                             else if (CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1.StartsWith(Valor)).Count() > 0)
                             { Productos("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and codigo like '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'"); }
-                            else 
+                            else
                             {
                                 MessageBox.Show("No se encuentra alguna coincidencia.");
                                 dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];

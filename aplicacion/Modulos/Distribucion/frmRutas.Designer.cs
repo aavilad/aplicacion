@@ -33,16 +33,16 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MenuPrincipal = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.NUEVO = new DevExpress.XtraBars.BarButtonItem();
             this.MODIFICAR = new DevExpress.XtraBars.BarButtonItem();
             this.ELIMINAR = new DevExpress.XtraBars.BarButtonItem();
             this.FILTRO = new DevExpress.XtraBars.BarButtonItem();
             this.REFRESH = new DevExpress.XtraBars.BarButtonItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPrincipal)).BeginInit();
@@ -55,7 +55,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(723, 267);
+            this.gridControl1.Size = new System.Drawing.Size(611, 267);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -85,6 +85,8 @@
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.GridView1_PopupMenuShowing);
+            this.gridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GridView1_KeyPress);
+            this.gridView1.DoubleClick += new System.EventHandler(this.GridView1_DoubleClick);
             // 
             // MenuPrincipal
             // 
@@ -96,6 +98,46 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.REFRESH)});
             this.MenuPrincipal.Manager = this.barManager1;
             this.MenuPrincipal.Name = "MenuPrincipal";
+            // 
+            // NUEVO
+            // 
+            this.NUEVO.Caption = "Nuevo";
+            this.NUEVO.Id = 0;
+            this.NUEVO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NUEVO.ImageOptions.SvgImage")));
+            this.NUEVO.Name = "NUEVO";
+            this.NUEVO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NUEVO_ItemClick);
+            // 
+            // MODIFICAR
+            // 
+            this.MODIFICAR.Caption = "Modificar";
+            this.MODIFICAR.Id = 1;
+            this.MODIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MODIFICAR.ImageOptions.SvgImage")));
+            this.MODIFICAR.Name = "MODIFICAR";
+            this.MODIFICAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MODIFICAR_ItemClick);
+            // 
+            // ELIMINAR
+            // 
+            this.ELIMINAR.Caption = "Eliminar";
+            this.ELIMINAR.Id = 2;
+            this.ELIMINAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ELIMINAR.ImageOptions.SvgImage")));
+            this.ELIMINAR.Name = "ELIMINAR";
+            this.ELIMINAR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ELIMINAR_ItemClick);
+            // 
+            // FILTRO
+            // 
+            this.FILTRO.Caption = "Filtro";
+            this.FILTRO.Id = 3;
+            this.FILTRO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FILTRO.ImageOptions.SvgImage")));
+            this.FILTRO.Name = "FILTRO";
+            this.FILTRO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FILTRO_ItemClick);
+            // 
+            // REFRESH
+            // 
+            this.REFRESH.Caption = "Refrescar";
+            this.REFRESH.Id = 4;
+            this.REFRESH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REFRESH.ImageOptions.SvgImage")));
+            this.REFRESH.Name = "REFRESH";
+            this.REFRESH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.REFRESH_ItemClick);
             // 
             // barManager1
             // 
@@ -118,7 +160,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(723, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(611, 0);
             // 
             // barDockControlBottom
             // 
@@ -126,7 +168,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 267);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(723, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(611, 0);
             // 
             // barDockControlLeft
             // 
@@ -140,50 +182,15 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(723, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(611, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 267);
-            // 
-            // NUEVO
-            // 
-            this.NUEVO.Caption = "Nuevo";
-            this.NUEVO.Id = 0;
-            this.NUEVO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NUEVO.ImageOptions.SvgImage")));
-            this.NUEVO.Name = "NUEVO";
-            // 
-            // MODIFICAR
-            // 
-            this.MODIFICAR.Caption = "Modificar";
-            this.MODIFICAR.Id = 1;
-            this.MODIFICAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MODIFICAR.ImageOptions.SvgImage")));
-            this.MODIFICAR.Name = "MODIFICAR";
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.Caption = "Eliminar";
-            this.ELIMINAR.Id = 2;
-            this.ELIMINAR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ELIMINAR.ImageOptions.SvgImage")));
-            this.ELIMINAR.Name = "ELIMINAR";
-            // 
-            // FILTRO
-            // 
-            this.FILTRO.Caption = "Filtro";
-            this.FILTRO.Id = 3;
-            this.FILTRO.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("FILTRO.ImageOptions.SvgImage")));
-            this.FILTRO.Name = "FILTRO";
-            // 
-            // REFRESH
-            // 
-            this.REFRESH.Caption = "Refrescar";
-            this.REFRESH.Id = 4;
-            this.REFRESH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("REFRESH.ImageOptions.SvgImage")));
-            this.REFRESH.Name = "REFRESH";
             // 
             // frmRutas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 267);
+            this.ClientSize = new System.Drawing.Size(611, 267);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -191,6 +198,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmRutas";
             this.Text = "frmRutas";
+            this.Load += new System.EventHandler(this.FrmRutas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPrincipal)).EndInit();

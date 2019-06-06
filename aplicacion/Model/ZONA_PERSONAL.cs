@@ -16,10 +16,11 @@ namespace xtraForm.Model
     {
         public string Zona { get; set; }
         public string Personal { get; set; }
-        public Nullable<System.DateTime> Dia { get; set; }
+        public string Dia { get; set; }
         public int Numero { get; set; }
-        public int PKID { get; set; }
+        public System.Guid Registro { get; set; }
     
+        public virtual PERSONAL PERSONAL1 { get; set; }
         public virtual ZONA ZONA1 { get; set; }
     }
 }

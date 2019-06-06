@@ -171,12 +171,8 @@
     <Compile Include="Libreria\Maestra.cs" />
     <Compile Include="Libreria\Ejecutar.cs" />
     <Compile Include="Libreria\maestroBonif_Reglas.cs" />
-    <Compile Include="Libreria\Pedido.cs" />
     <Compile Include="Libreria\Pedido_Bonificar.cs" />
     <Compile Include="Libreria\Rutina.cs" />
-    <Compile Include="Libreria\Producto.cs" />
-    <Compile Include="Libreria\Proveedor.cs" />
-    <Compile Include="Libreria\Vendedor.cs" />
     <Compile Include="Lider2018DataSet.cs">
       <DependentUpon>Lider2018DataSet.xsd</DependentUpon>
     </Compile>
@@ -256,6 +252,12 @@
     </Compile>
     <Compile Include="Maestro\frmProveedor.Designer.cs">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maestro\frmRutas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maestro\frmRutas.Designer.cs">
+      <DependentUpon>frmRutas.cs</DependentUpon>
     </Compile>
     <Compile Include="Maestro\frmStock.cs">
       <SubType>Form</SubType>
@@ -452,6 +454,12 @@
     <Compile Include="Modulos\Distribucion\frmRutas.Designer.cs">
       <DependentUpon>frmRutas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Distribucion\frmZona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Distribucion\frmZona.Designer.cs">
+      <DependentUpon>frmZona.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Elementos\frmAsignacionVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -512,6 +520,18 @@
     <Compile Include="Modulos\Elementos\frmReglaBonificacion.Designer.cs">
       <DependentUpon>frmReglaBonificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Elementos\frmResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmResult.Designer.cs">
+      <DependentUpon>frmResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmRuta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmRuta.Designer.cs">
+      <DependentUpon>frmRuta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Elementos\frmTipoCp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -524,11 +544,17 @@
     <Compile Include="Modulos\Elementos\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Elementos\frmZona.cs">
+    <Compile Include="Maestro\frmZona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Elementos\frmZona.Designer.cs">
+    <Compile Include="Maestro\frmZona.Designer.cs">
       <DependentUpon>frmZona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmZone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmZone.Designer.cs">
+      <DependentUpon>frmZone.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Inventario\frmExistencia.cs">
       <SubType>Form</SubType>
@@ -757,6 +783,9 @@
     <EmbeddedResource Include="Maestro\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Maestro\frmRutas.resx">
+      <DependentUpon>frmRutas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Maestro\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -777,6 +806,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Distribucion\frmRutas.resx">
       <DependentUpon>frmRutas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Distribucion\frmZona.resx">
+      <DependentUpon>frmZona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmAsignacionVendedor.resx">
       <DependentUpon>frmAsignacionVendedor.cs</DependentUpon>
@@ -808,14 +840,23 @@
     <EmbeddedResource Include="Modulos\Elementos\frmReglaBonificacion.resx">
       <DependentUpon>frmReglaBonificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmResult.resx">
+      <DependentUpon>frmResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmRuta.resx">
+      <DependentUpon>frmRuta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmTipoCp.resx">
       <DependentUpon>frmTipoCp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Elementos\frmZona.resx">
+    <EmbeddedResource Include="Maestro\frmZona.resx">
       <DependentUpon>frmZona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmZone.resx">
+      <DependentUpon>frmZone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Inventario\frmExistencia.resx">
       <DependentUpon>frmExistencia.cs</DependentUpon>
@@ -920,6 +961,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Esquemas\DiagramaClases.cd" />
     <None Include="Lider2018DataSet.xsc">
       <DependentUpon>Lider2018DataSet.xsd</DependentUpon>
     </None>

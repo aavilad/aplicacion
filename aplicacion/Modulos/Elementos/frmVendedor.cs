@@ -54,7 +54,6 @@ namespace xtraForm.Modulos.Elementos
                 {
                     try
                     {
-
                         string Codigo = Convert.ToString(CODIGO.EditValue).Trim();
                         int PersonaTp = 1;
                         string Nombre = Convert.ToString(NOMBRES.EditValue).Trim();

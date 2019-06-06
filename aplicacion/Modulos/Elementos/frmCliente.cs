@@ -145,7 +145,7 @@ namespace xtraForm.Modulos.Elementos
         {
             using (var CTX = new LiderEntities())
             {
-                var formulario = new frmZona();
+                var formulario = new frmZona_();
                 formulario.gridControl1.DataSource = null;
                 formulario.gridView1.Columns.Clear();
                 formulario.gridControl1.DataSource = CTX.ZONAs
