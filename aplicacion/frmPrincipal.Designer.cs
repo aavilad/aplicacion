@@ -51,7 +51,7 @@
             this.ORDENCOMPRA = new DevExpress.XtraBars.BarButtonItem();
             this.NOTACREDITOCOMPRA = new DevExpress.XtraBars.BarButtonItem();
             this.NOTADEBITOCOMPRA = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
+            this.PROVEEDORES = new DevExpress.XtraBars.BarButtonItem();
             this.CLASEPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
             this.PLANTILLAPRODUCTO = new DevExpress.XtraBars.BarButtonItem();
             this.CONTROLGENERA = new DevExpress.XtraBars.BarButtonItem();
@@ -86,6 +86,7 @@
             this.GENERAINFORME = new DevExpress.XtraBars.BarButtonItem();
             this.ZONAS = new DevExpress.XtraBars.BarButtonItem();
             this.ASIGNACIONVENDEDOR = new DevExpress.XtraBars.BarButtonItem();
+            this.SUCURSALES = new DevExpress.XtraBars.BarButtonItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -173,7 +174,7 @@
             this.ORDENCOMPRA,
             this.NOTACREDITOCOMPRA,
             this.NOTADEBITOCOMPRA,
-            this.barButtonItem20,
+            this.PROVEEDORES,
             this.CLASEPRODUCTO,
             this.PLANTILLAPRODUCTO,
             this.CONTROLGENERA,
@@ -207,9 +208,10 @@
             this.GENERAGUIAS,
             this.GENERAINFORME,
             this.ZONAS,
-            this.ASIGNACIONVENDEDOR});
+            this.ASIGNACIONVENDEDOR,
+            this.SUCURSALES});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
-            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MaxItemId = 2;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsAnimation.PageCategoryShowAnimation = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.OptionsStubGlyphs.ColorMode = DevExpress.Utils.Drawing.GlyphColorMode.White;
@@ -427,14 +429,13 @@
             this.NOTADEBITOCOMPRA.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NOTADEBITOCOMPRA.ImageOptions.SvgImage")));
             this.NOTADEBITOCOMPRA.Name = "NOTADEBITOCOMPRA";
             // 
-            // barButtonItem20
+            // PROVEEDORES
             // 
-            resources.ApplyResources(this.barButtonItem20, "barButtonItem20");
-            this.barButtonItem20.CategoryGuid = new System.Guid("be6495d8-258c-434a-b0cd-cb2322137460");
-            this.barButtonItem20.Enabled = false;
-            this.barButtonItem20.Id = 44;
-            this.barButtonItem20.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem20.ImageOptions.SvgImage")));
-            this.barButtonItem20.Name = "barButtonItem20";
+            resources.ApplyResources(this.PROVEEDORES, "PROVEEDORES");
+            this.PROVEEDORES.CategoryGuid = new System.Guid("f487978d-23ff-418b-939f-34fe319526f0");
+            this.PROVEEDORES.Id = 44;
+            this.PROVEEDORES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("PROVEEDORES.ImageOptions.SvgImage")));
+            this.PROVEEDORES.Name = "PROVEEDORES";
             // 
             // CLASEPRODUCTO
             // 
@@ -724,6 +725,14 @@
             this.ASIGNACIONVENDEDOR.Name = "ASIGNACIONVENDEDOR";
             this.ASIGNACIONVENDEDOR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ASIGNACION_ItemClick);
             // 
+            // SUCURSALES
+            // 
+            resources.ApplyResources(this.SUCURSALES, "SUCURSALES");
+            this.SUCURSALES.CategoryGuid = new System.Guid("f487978d-23ff-418b-939f-34fe319526f0");
+            this.SUCURSALES.Id = 1;
+            this.SUCURSALES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("SUCURSALES.ImageOptions.SvgImage")));
+            this.SUCURSALES.Name = "SUCURSALES";
+            // 
             // MVENTAS
             // 
             this.MVENTAS.Name = "MVENTAS";
@@ -793,7 +802,6 @@
             this.G001.ItemLinks.Add(this.ORDENCOMPRA);
             this.G001.ItemLinks.Add(this.NOTACREDITOCOMPRA);
             this.G001.ItemLinks.Add(this.NOTADEBITOCOMPRA);
-            this.G001.ItemLinks.Add(this.barButtonItem20);
             this.G001.Name = "G001";
             resources.ApplyResources(this.G001, "G001");
             // 
@@ -911,6 +919,8 @@
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.CLIENTES);
             this.ribbonPageGroup2.ItemLinks.Add(this.VENDEDORES);
+            this.ribbonPageGroup2.ItemLinks.Add(this.PROVEEDORES);
+            this.ribbonPageGroup2.ItemLinks.Add(this.SUCURSALES);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
             // 
@@ -1049,7 +1059,7 @@
         private DevExpress.XtraBars.BarButtonItem ORDENCOMPRA;
         private DevExpress.XtraBars.BarButtonItem NOTACREDITOCOMPRA;
         private DevExpress.XtraBars.BarButtonItem NOTADEBITOCOMPRA;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem20;
+        private DevExpress.XtraBars.BarButtonItem PROVEEDORES;
         private DevExpress.XtraBars.BarButtonItem CLASEPRODUCTO;
         private DevExpress.XtraBars.BarButtonItem PLANTILLAPRODUCTO;
         private DevExpress.XtraBars.BarButtonItem CONTROLGENERA;
@@ -1116,5 +1126,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem ZONAS;
         private DevExpress.XtraBars.BarButtonItem ASIGNACIONVENDEDOR;
+        private DevExpress.XtraBars.BarButtonItem SUCURSALES;
     }
 }

@@ -88,7 +88,7 @@ namespace xtraForm.Modulos.Elementos
                         if (dxValidationProvider1.Validate())
                         {
                             pasar(NumeroPedido, TipoPedido, CodigoVendedor, CodigoCliente, FormaPago, Convert.ToDateTime(dateEmision.EditValue), NombreCliente, DocumentoCliente.Length == 8 ? string.Empty : DocumentoCliente,
-                                DireccionCliente, DocumentoCliente.Length == 11 ? DocumentoCliente : string.Empty, NombreVendedor, Gestion, DistritoCliente, dataGridView1);
+                                DireccionCliente, DocumentoCliente.Length == 11 ? string.Empty : DocumentoCliente, NombreVendedor, Gestion, DistritoCliente, dataGridView1);
                             this.Close();
                         }
                     }
@@ -144,7 +144,6 @@ namespace xtraForm.Modulos.Elementos
                         }
                     }
                 }
-
             }
         }
 
@@ -417,91 +416,95 @@ namespace xtraForm.Modulos.Elementos
                 using (var CTX = new LiderEntities())
                 {
                     int Y = dataGridView1.CurrentRow.Index;
-                    switch (dataGridView1.Columns[e.ColumnIndex].Name)
+                    try
                     {
-                        case "Codigo":
-                            Valor = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) is DBNull ? "" : Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value);
-                            if (Valor == "") ;
-                            else if (CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1 == Valor).Count() == 1)
-                            {
-                                var Product = CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1 == Valor);
-                                if (Product.Select(s => s.StockDia + cantidadpedido).FirstOrDefault() > 0)
+                        switch (dataGridView1.Columns[e.ColumnIndex].Name)
+                        {
+                            case "Codigo":
+                                Valor = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) is DBNull ? "" : Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value);
+                                if (Valor == "") ;
+                                else if (CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1 == Valor).Count() == 1)
                                 {
-                                    dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value = Product.Select(x => x.Producto1.Trim()).FirstOrDefault();
-                                    dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value = Product.Select(x => x.Descripcion.Trim()).FirstOrDefault();
-                                    dataGridView1.Rows[e.RowIndex].Cells["Unidad"].Value = Product.Select(x => x.UniMed.Trim()).FirstOrDefault();
-                                    dataGridView1.Rows[e.RowIndex].Cells["TpPrecio"].Value = TipoPrecio;
-                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Valor + "'");
-                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value = PorEspecial > 0 ? Convert.ToDecimal(Product.Select(x => x.Costo * (1 + (PorEspecial / 100))).FirstOrDefault()) : proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Valor + "'");
-                                    dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = 0.00;
-                                    dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = 0.00;
-                                    dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = 0.00;
-                                    dataGridView1.Rows[e.RowIndex].Cells["Bonif"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'") <= (decimal)0.01 ? true : false;
-                                    dataGridView1.Rows[e.RowIndex].Cells["Credito"].Value = btnCredito.Checked;
-                                    dataGridView1.Rows[e.RowIndex].Cells["Afecto"].Value = Product.Select(s => s.ConIgv).FirstOrDefault();
-                                    dataGridView1.Rows[e.RowIndex].Cells["IDBonificacion"].Value = string.Empty;
-                                    dataGridView1.Rows[e.RowIndex].Cells["Codigo"].ReadOnly = true;
-                                    dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].ReadOnly = true;
-                                    dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].ReadOnly = false;
-                                    dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].ReadOnly = false;
-                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"];
+                                    var Product = CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1 == Valor);
+                                    if (Product.Select(s => s.StockDia + cantidadpedido).FirstOrDefault() > 0)
+                                    {
+                                        dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value = Product.Select(x => x.Producto1.Trim()).FirstOrDefault();
+                                        dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value = Product.Select(x => x.Descripcion.Trim()).FirstOrDefault();
+                                        dataGridView1.Rows[e.RowIndex].Cells["Unidad"].Value = Product.Select(x => x.UniMed.Trim()).FirstOrDefault();
+                                        dataGridView1.Rows[e.RowIndex].Cells["TpPrecio"].Value = TipoPrecio;
+                                        dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Valor + "'");
+                                        dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value = PorEspecial > 0 ? Convert.ToDecimal(Product.Select(x => x.Costo * (1 + (PorEspecial / 100))).FirstOrDefault()) : proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Valor + "'");
+                                        dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = 0.00;
+                                        dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = 0.00;
+                                        dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = 0.00;
+                                        dataGridView1.Rows[e.RowIndex].Cells["Bonif"].Value = proceso.ConsultarDecimal(CodigoPrecio, "Vva_Producto", "Codigo = '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "'") <= (decimal)0.01 ? true : false;
+                                        dataGridView1.Rows[e.RowIndex].Cells["Credito"].Value = btnCredito.Checked;
+                                        dataGridView1.Rows[e.RowIndex].Cells["Afecto"].Value = Product.Select(s => s.ConIgv).FirstOrDefault();
+                                        dataGridView1.Rows[e.RowIndex].Cells["IDBonificacion"].Value = string.Empty;
+                                        dataGridView1.Rows[e.RowIndex].Cells["Codigo"].ReadOnly = true;
+                                        dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].ReadOnly = true;
+                                        dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].ReadOnly = false;
+                                        dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].ReadOnly = false;
+                                        dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"];
+                                        dataGridView1.BeginEdit(true);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("stock insuficiente");
+                                        dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Codigo"];
+                                        dataGridView1.BeginEdit(true);
+                                    }
+                                }
+                                else if (CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1.StartsWith(Valor)).Count() > 0)
+                                { Productos("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and codigo like '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'"); }
+                                else
+                                {
+                                    MessageBox.Show("No se encuentra alguna coincidencia.");
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
                                     dataGridView1.BeginEdit(true);
+                                }
+                                break;
+                            case "Descripcion":
+                                Valor = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) is DBNull ? "" : Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value);
+                                if (Valor == "") ;
+                                else
+                                {
+                                    Productos(@"select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and Descripcion like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) + "%'");
+                                }
+                                break;
+                            case "Cantidad":
+                                if (proceso.ExistenciaStock(Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value), cantidadpedido, Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value)))
+                                {
+                                    var i = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value) - Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
+                                    dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
+                                    dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = i > 0 ? i * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                                    dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = i < 0 ? Math.Abs(i) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                                    if (Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value) > 0)
+                                    {
+                                        dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[7];
+                                        dataGridView1.BeginEdit(true);
+                                    }
                                 }
                                 else
                                 {
                                     MessageBox.Show("stock insuficiente");
-                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells["Codigo"];
+                                    dataGridView1.CurrentCell = dataGridView1.CurrentRow.Cells["Cantidad"];
                                     dataGridView1.BeginEdit(true);
                                 }
-                            }
-                            else if (CTX.PRODUCTOes.Where(x => x.Activo && x.Producto1.StartsWith(Valor)).Count() > 0)
-                            { Productos("select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and codigo like '" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value) + "%'"); }
-                            else
-                            {
-                                MessageBox.Show("No se encuentra alguna coincidencia.");
-                                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
-                                dataGridView1.BeginEdit(true);
-                            }
-                            break;
-                        case "Descripcion":
-                            Valor = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) is DBNull ? "" : Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value);
-                            if (Valor == "") ;
-                            else
-                            {
-                                Productos(@"select Codigo,Descripcion,Unidad,Fisico,Disponible from Vva_producto where activo = 1 and Descripcion like '%" + Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value) + "%'");
-                            }
-                            break;
-                        case "Cantidad":
-                            if (proceso.ExistenciaStock(Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["Codigo"].Value), cantidadpedido, Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value)))
-                            {
-                                var i = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value) - Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
-                                dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
-                                dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = i > 0 ? i * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
-                                dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = i < 0 ? Math.Abs(i) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
-                                if (Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value) > 0)
-                                {
-                                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[7];
-                                    dataGridView1.BeginEdit(true);
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("stock insuficiente");
-                                dataGridView1.CurrentCell = dataGridView1.CurrentRow.Cells["Cantidad"];
-                                dataGridView1.BeginEdit(true);
-                            }
 
-                            break;
-                        case "PrecioNeto":
-                            var j = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value) - Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
-                            dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
-                            dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = j > 0 ? j * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
-                            dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = j < 0 ? Math.Abs(j) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
-                            calculartotal();
-                            btnAgregar.Select();
-                            break;
+                                break;
+                            case "PrecioNeto":
+                                var j = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioUnitario"].Value) - Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
+                                dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioNeto"].Value);
+                                dataGridView1.Rows[e.RowIndex].Cells["Descuento"].Value = j > 0 ? j * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                                dataGridView1.Rows[e.RowIndex].Cells["Recargo"].Value = j < 0 ? Math.Abs(j) * Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["cantidad"].Value) : 0;
+                                calculartotal();
+                                btnAgregar.Select();
+                                break;
+                        }
+                        calculartotal();
                     }
-                    calculartotal();
+                    catch { }
                 }
             }
         }

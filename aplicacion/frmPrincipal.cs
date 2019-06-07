@@ -31,34 +31,39 @@ namespace xtraForm
 
         private void btnReglasBonificacion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bool existe = false;
+            Ex = false;
+            int Ix = 0;
+            var TabCaption = "Reglas Bonificacion";
             for (int i = 0; i < xtraTabControl1.TabPages.Count; i++)
-                if (xtraTabControl1.TabPages[i].Text == "Reglas Bonificacion")
+                if (xtraTabControl1.TabPages[i].Text == TabCaption)
                 {
                     xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[i];
-                    existe = true;
+                    Ex = true;
                 }
-            if (!existe)
+            switch (Ex)
             {
-                Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
-                Scm01.ShowWaitForm();
-                XtraTabPage promocion = new XtraTabPage();
-                objeto = new Modulos.Ventas.frmPromocion
-                {
-                    TopLevel = false,
-                    FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill,
-                    NModulo = e.Item.Name,
-                };
-                xtraTabControl1.TabPages.Add(promocion);
-                xtraTabControl1.SelectedTabPage = promocion;
-                promocion.Text = "Reglas Bonificacion";
-                entidad.index = xtraTabControl1.SelectedTabPageIndex;
-                promocion.Controls.Add(objeto);
-                objeto.Show();
-                Scm01.CloseWaitForm();
+                case false:
+                    Scm01.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    Scm01.ShowWaitForm();
+                    XtraTabPage Xtab = new XtraTabPage();
+                    entidad.index = 0;
+                    objeto = new Modulos.Ventas.frmPromocion
+                    {
+                        TopLevel = false,
+                        FormBorderStyle = FormBorderStyle.None,
+                        Dock = DockStyle.Fill,
+                        NModulo = e.Item.Name,
+                        Tabla = "Bonificacion",
+                    };
+                    xtraTabControl1.TabPages.Add(Xtab);
+                    xtraTabControl1.SelectedTabPage = Xtab;
+                    Xtab.Text = TabCaption;
+                    entidad.index = xtraTabControl1.SelectedTabPageIndex;
+                    Xtab.Controls.Add(objeto);
+                    objeto.Show();
+                    Scm01.CloseWaitForm();
+                    break;
             }
-
         }
 
         private void xtraTabControl1_HeaderButtonClick(object sender, DevExpress.XtraTab.ViewInfo.HeaderButtonEventArgs e)
