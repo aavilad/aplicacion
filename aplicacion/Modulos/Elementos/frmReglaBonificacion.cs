@@ -314,25 +314,23 @@ namespace xtraForm.Modulos.Elementos
                 int Id = Convert.ToInt32(IDControl.Text);
                 string Mecanica = DetalleMecanica.Text.Trim();
                 int TipoMecanica = CTX.TipoBonificacions.Where(w => w.Codigo == IDBonificacion.Text.Trim()).Select(s => s.PKID).FirstOrDefault();
+                string CodigoObsequio = IDObsequio.Text.Trim();
+                decimal CantMinima = CantidadMinima.Value;
+                int CantMaxima = Convert.ToInt32(CantidadMaxima.Value);
+                int CantObsequio = Convert.ToInt32(CantidadRegalo.Value);
+                int MaximoPorCliente = Convert.ToInt32(CantidadMaximaCliente.Value);
+                int Stock = Convert.ToInt32(StockPromocional.Value);
+                bool Excl = Exclusion.Checked;
+                int IdExcl = Exclusion.Checked is false ? 0 : Convert.ToInt32(IDExclusion.EditValue);
+                string CodigoVenta = IDCanje.Text.Trim();
+                string Proveedor = IDProveedor.Text.Trim();
+                string Desde = fechaDesde.DateTime.ToString("dd/MM/yyyy");
+                string Hasta = fechaHasta.DateTime.ToString("dd/MM/yyyy");
+                bool Activo = Estado.Checked;
+                int IdAsociado = Convert.ToInt32(BoxTipoAsociado.EditValue);
+                pasar(Id, Mecanica, TipoMecanica, CodigoObsequio, CantMinima, CantMaxima, CantObsequio, MaximoPorCliente, Stock, Excl, IdExcl, CodigoVenta, Proveedor, Desde, Hasta, Activo, IdAsociado, dataGridView1);
+                this.Close();
             }
-
-            string CodigoObsequio = IDObsequio.Text.Trim();
-            decimal CantMinima = CantidadMinima.Value;
-            int CantMaxima = Convert.ToInt32(CantidadMaxima.Value);
-            int CantidadObsequio = Convert.ToInt32(CantidadRegalo.Value);
-            int MaximoPorCliente = Convert.ToInt32(CantidadMaximaCliente.Value);
-            int Stock = Convert.ToInt32(StockPromocional.Value);
-            bool Exclusion = Exclusion.Checked;
-            bonificacion.IdExclusion = Exclusion.Checked is false ? 0 : Convert.ToInt32(IDExclusion.EditValue);
-            bonificacion.CodigoVenta = IDCanje.Text.Trim();
-            bonificacion.Proveedor = IDProveedor.Text.Trim();
-            bonificacion.Desde = fechaDesde.DateTime.ToString("dd/MM/yyyy");
-            bonificacion.Hasta = fechaHasta.DateTime.ToString("dd/MM/yyyy");
-            bonificacion.Activo = Estado.Checked;
-            pasar(Id, bonificacion.Mecanica, bonificacion.TipoMecanica, bonificacion.CodigoObsequio, bonificacion.CantidadMinima, bonificacion.CantidadMaxima, bonificacion.CantidadObsequio,
-                bonificacion.MaximoPorCliente, bonificacion.Stock, bonificacion.Exclusion, bonificacion.IdExclusion, bonificacion.CodigoVenta, bonificacion.Proveedor, bonificacion.Desde,
-                bonificacion.Hasta, bonificacion.Activo, IdAsociado, dataGridView1);
-            this.Close();
         }
 
         private void frmReglaBonificacion_KeyPress(object sender, KeyPressEventArgs e) { if (e.KeyChar == (int)Keys.Escape) simpleButton1_Click(sender, e); }

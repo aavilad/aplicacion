@@ -297,6 +297,14 @@
           <Property Name="orden" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="IDTabla">
+          <Key>
+            <PropertyRef Name="Registro" />
+          </Key>
+          <Property Name="Registro" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Tabla" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="INFREPARTO">
           <Key>
             <PropertyRef Name="InfReparto" />
@@ -1197,6 +1205,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
         </Association>
         <Function Name="pFB_GenerarID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="avila">
           <Parameter Name="Tabla" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="InOut" />
         </Function>
         <Function Name="sp_genera_documento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pedido" Type="char" Mode="In" />
@@ -1221,6 +1230,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           <EntitySet Name="FuerzaVentas" EntityType="Self.FuerzaVentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gestion" EntityType="Self.Gestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="grupo" EntityType="Self.grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IDTabla" EntityType="Self.IDTabla" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INFREPARTO" EntityType="Self.INFREPARTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="infrepartocab" EntityType="Self.infrepartocab" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemBonificacion" EntityType="Self.ItemBonificacion" Schema="dbo" store:Type="Tables" />
@@ -1635,7 +1645,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
           </AssociationSet>
           <FunctionImport Name="pFB_GenerarID">
             <Parameter Name="Tabla" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="IDTablas" EntityType="LiderModel.IDTabla" />
           </EntityContainer>
         <EntityType Name="Clase_Producto">
           <Key>
@@ -2889,6 +2901,14 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="IDTabla">
+          <Key>
+            <PropertyRef Name="Registro" />
+          </Key>
+          <Property Name="Registro" Type="Guid" Nullable="false" />
+          <Property Name="Tabla" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3641,6 +3661,15 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="pFB_GenerarID" FunctionName="LiderModel.Store.pFB_GenerarID" />
+          <EntitySetMapping Name="IDTablas">
+            <EntityTypeMapping TypeName="LiderModel.IDTabla">
+              <MappingFragment StoreEntitySet="IDTabla">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tabla" ColumnName="Tabla" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

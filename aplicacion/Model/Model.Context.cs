@@ -73,6 +73,7 @@ namespace xtraForm.Model
         public virtual DbSet<DETPEDIDO> DETPEDIDOes { get; set; }
         public virtual DbSet<ZONA_PERSONAL> ZONA_PERSONAL { get; set; }
         public virtual DbSet<RUTA> RUTAS { get; set; }
+        public virtual DbSet<IDTabla> IDTablas { get; set; }
     
         public virtual int sp_genera_documento(string pedido, Nullable<int> tipo, string tdoc)
         {
@@ -91,13 +92,13 @@ namespace xtraForm.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_genera_documento", pedidoParameter, tipoParameter, tdocParameter);
         }
     
-        public virtual int pFB_GenerarID(string tabla)
+        public virtual int pFB_GenerarID(string tabla, ObjectParameter iD)
         {
             var tablaParameter = tabla != null ?
                 new ObjectParameter("Tabla", tabla) :
                 new ObjectParameter("Tabla", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pFB_GenerarID", tablaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pFB_GenerarID", tablaParameter, iD);
         }
     }
 }

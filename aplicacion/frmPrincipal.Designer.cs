@@ -86,7 +86,7 @@
             this.GENERAINFORME = new DevExpress.XtraBars.BarButtonItem();
             this.ZONAS = new DevExpress.XtraBars.BarButtonItem();
             this.ASIGNACIONVENDEDOR = new DevExpress.XtraBars.BarButtonItem();
-            this.SUCURSALES = new DevExpress.XtraBars.BarButtonItem();
+            this.ENTIDADSUCURSAL = new DevExpress.XtraBars.BarButtonItem();
             this.MVENTAS = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.VENTAS = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.G01 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -209,7 +209,7 @@
             this.GENERAINFORME,
             this.ZONAS,
             this.ASIGNACIONVENDEDOR,
-            this.SUCURSALES});
+            this.ENTIDADSUCURSAL});
             resources.ApplyResources(this.ribbonControl1, "ribbonControl1");
             this.ribbonControl1.MaxItemId = 2;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -725,13 +725,14 @@
             this.ASIGNACIONVENDEDOR.Name = "ASIGNACIONVENDEDOR";
             this.ASIGNACIONVENDEDOR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ASIGNACION_ItemClick);
             // 
-            // SUCURSALES
+            // ENTIDADSUCURSAL
             // 
-            resources.ApplyResources(this.SUCURSALES, "SUCURSALES");
-            this.SUCURSALES.CategoryGuid = new System.Guid("f487978d-23ff-418b-939f-34fe319526f0");
-            this.SUCURSALES.Id = 1;
-            this.SUCURSALES.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("SUCURSALES.ImageOptions.SvgImage")));
-            this.SUCURSALES.Name = "SUCURSALES";
+            resources.ApplyResources(this.ENTIDADSUCURSAL, "ENTIDADSUCURSAL");
+            this.ENTIDADSUCURSAL.CategoryGuid = new System.Guid("f487978d-23ff-418b-939f-34fe319526f0");
+            this.ENTIDADSUCURSAL.Id = 1;
+            this.ENTIDADSUCURSAL.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("SUCURSALES.ImageOptions.SvgImage")));
+            this.ENTIDADSUCURSAL.Name = "ENTIDADSUCURSAL";
+            this.ENTIDADSUCURSAL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.SUCURSALES_ItemClick);
             // 
             // MVENTAS
             // 
@@ -920,7 +921,7 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.CLIENTES);
             this.ribbonPageGroup2.ItemLinks.Add(this.VENDEDORES);
             this.ribbonPageGroup2.ItemLinks.Add(this.PROVEEDORES);
-            this.ribbonPageGroup2.ItemLinks.Add(this.SUCURSALES);
+            this.ribbonPageGroup2.ItemLinks.Add(this.ENTIDADSUCURSAL);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
             // 
@@ -1126,6 +1127,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem ZONAS;
         private DevExpress.XtraBars.BarButtonItem ASIGNACIONVENDEDOR;
-        private DevExpress.XtraBars.BarButtonItem SUCURSALES;
+        private DevExpress.XtraBars.BarButtonItem ENTIDADSUCURSAL;
     }
 }

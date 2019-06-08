@@ -349,11 +349,13 @@ namespace xtraForm.Modulos.Ventas
 
         private void Modificar()
         {
+            var Rutina = new Libreria.Rutina();
+            Rutina.ejecutar("sp_stock_sistema_nuevo '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
+            Rutina.ejecutar("sp_stock_sistema_web '" + DateTime.Now.Date.ToString("yyyyMMdd") + "', 2");
             if (gridView1.SelectedRowsCount > 0)
             {
                 string Comodin = "'C','K'";
                 string PedidoNumero = Convert.ToString(gridView1.GetFocusedRowCellValue("num Pedido"));
-                var Rutina = new Libreria.Rutina();
                 var CTX = new LiderEntities();
                 var Pe = CTX.PEDIDOes.Where(p => p.Pedido1.Equals(PedidoNumero));
                 var DPe = CTX.DETPEDIDOes.Where(p => p.Pedido == PedidoNumero).ToList();

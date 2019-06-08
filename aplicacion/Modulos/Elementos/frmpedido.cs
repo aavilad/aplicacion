@@ -51,22 +51,21 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            int z = 0;
-            int index = 0;
-            foreach (DataGridViewRow Fila in dataGridView1.Rows)
+            int n = 0;
+            while (n < 6)
             {
-                foreach (DataGridViewColumn Columna in dataGridView1.Columns)
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    if (dataGridView1.Rows[Fila.Index].Cells[Columna.Index].Value == null)
+                    var Codigo = dataGridView1.Rows[i].Cells["Codigo"].Value;
+                    var Descripcion = dataGridView1.Rows[i].Cells["Descripcion"].Value;
+                    var Cantidad = dataGridView1.Rows[i].Cells["Cantidad"].Value;
+                    var Unidad = dataGridView1.Rows[i].Cells["unidad"].Value;
+                    if (Codigo == null && Descripcion == null && Cantidad == null && Unidad == null)
                     {
-                        z += 1;
-                        index = Fila.Index;
+                        dataGridView1.Rows.RemoveAt(i);
                     }
                 }
-                if (z >= 4)
-                {
-                    dataGridView1.Rows.RemoveAt(index);
-                }
+                n++;
             }
             using (var CTX = new LiderEntities())
             {
@@ -82,7 +81,6 @@ namespace xtraForm.Modulos.Elementos
                 string DistritoCliente = txtcdDistrito.Text.Trim();
                 string TipoPedido = txtdocCliente.Text.Trim().Length == 11 ? "F" : "B";
                 if (!CTX.PEDIDOes.Where(x => x.Pedido1 == NumeroPedido).Select(y => y.Procesado).FirstOrDefault())
-                {
                     try
                     {
                         if (dxValidationProvider1.Validate())
@@ -107,11 +105,8 @@ namespace xtraForm.Modulos.Elementos
                             }
                         }
                     }
-                }
                 else
-                {
                     MessageBox.Show("Pedido se encuentra procesado.");
-                }
             }
         }
 

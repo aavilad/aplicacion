@@ -213,6 +213,12 @@
     <Compile Include="Maestro\frmCondicion.Designer.cs">
       <DependentUpon>frmCondicion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maestro\frmDistrito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maestro\frmDistrito.Designer.cs">
+      <DependentUpon>frmDistrito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Maestro\frmGrupo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\grupo.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IDTabla.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\INFREPARTO.cs">
@@ -540,6 +549,12 @@
     <Compile Include="Modulos\Elementos\frmRuta.Designer.cs">
       <DependentUpon>frmRuta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Elementos\frmSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Elementos\frmSucursal.Designer.cs">
+      <DependentUpon>frmSucursal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Elementos\frmTipoCp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -563,6 +578,12 @@
     </Compile>
     <Compile Include="Modulos\Elementos\frmZone.Designer.cs">
       <DependentUpon>frmZone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Entidades\frmSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Entidades\frmSucursal.Designer.cs">
+      <DependentUpon>frmSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Inventario\frmExistencia.cs">
       <SubType>Form</SubType>
@@ -642,10 +663,10 @@
     <Compile Include="Modulos\Usuario\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Ventas\frmCliente.cs">
+    <Compile Include="Modulos\Entidades\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Ventas\frmCliente.Designer.cs">
+    <Compile Include="Modulos\Entidades\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Ventas\frmComprobantes.cs">
@@ -720,10 +741,10 @@
     <Compile Include="Modulos\Ventas\frmPromocion.Designer.cs">
       <DependentUpon>frmPromocion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Ventas\frmVendedor.cs">
+    <Compile Include="Modulos\Entidades\frmVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Ventas\frmVendedor.Designer.cs">
+    <Compile Include="Modulos\Entidades\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -766,6 +787,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Maestro\frmCondicion.resx">
       <DependentUpon>frmCondicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maestro\frmDistrito.resx">
+      <DependentUpon>frmDistrito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Maestro\frmGrupo.resx">
       <DependentUpon>frmGrupo.cs</DependentUpon>
@@ -854,6 +878,9 @@
     <EmbeddedResource Include="Modulos\Elementos\frmRuta.resx">
       <DependentUpon>frmRuta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Elementos\frmSucursal.resx">
+      <DependentUpon>frmSucursal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmTipoCp.resx">
       <DependentUpon>frmTipoCp.cs</DependentUpon>
     </EmbeddedResource>
@@ -865,6 +892,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Elementos\frmZone.resx">
       <DependentUpon>frmZone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Entidades\frmSucursal.resx">
+      <DependentUpon>frmSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Inventario\frmExistencia.resx">
       <DependentUpon>frmExistencia.cs</DependentUpon>
@@ -909,7 +939,7 @@
     <EmbeddedResource Include="Modulos\Usuario\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Ventas\frmCliente.resx">
+    <EmbeddedResource Include="Modulos\Entidades\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Ventas\frmComprobantes.resx">
@@ -948,7 +978,7 @@
     <EmbeddedResource Include="Modulos\Ventas\frmPromocion.resx">
       <DependentUpon>frmPromocion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Ventas\frmVendedor.resx">
+    <EmbeddedResource Include="Modulos\Entidades\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />

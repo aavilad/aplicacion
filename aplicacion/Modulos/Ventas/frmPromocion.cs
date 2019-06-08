@@ -20,35 +20,16 @@ namespace xtraForm.Modulos.Ventas
 {
     public partial class frmPromocion : DevExpress.XtraEditors.XtraForm
     {
-        public string Tabla;
-        public string NModulo;
         Libreria.Ejecutar ejecutar = new Libreria.Ejecutar();
-        Libreria.Rutina proceso = new Libreria.Rutina();
         private bool Existe = false;
+        Libreria.Rutina proceso = new Libreria.Rutina();
+        public string NModulo;
+        public string Tabla;
 
         public frmPromocion()
         {
             InitializeComponent();
 
-        }
-        void Refrescar()
-        {
-            try
-            {
-                using (var CTX = new LiderEntities())
-                {
-                    List<string> Lista = new List<string>();
-                    var Result = CTX.Filtroes.Where(w => w.tabla == Tabla).OrderBy(o => o.Orden);
-                    foreach (var X in Result)
-                        Lista.Add(Tabla + "." + "[" + X.campo + "]" + X.condicion + "'" + X.valor + "'" + X.union);
-                    string cadena = string.Join(" ", Lista.ToArray());
-                    condicion(cadena);
-                }
-            }
-            catch (Exception t)
-            {
-                MessageBox.Show(t.Message);
-            }
         }
 
         void condicion(string cadena)
@@ -90,33 +71,47 @@ namespace xtraForm.Modulos.Ventas
             }
         }
 
-        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        private void COPIAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            GridView view = (GridView)sender;
-            if (e.RowHandle >= 0)
-            {
-                bool estado = Convert.ToBoolean(view.GetRowCellValue(e.RowHandle, "Activo"));
-                if (estado == false)
-                    e.Appearance.ForeColor = Color.LightGray;
-                else if (Convert.ToDecimal(proceso.ConsultarCadena("iif(stockac = stockdia,stockac,stockac-(stockac-stockdia))", "producto", "producto = '" + view.GetRowCellValue(e.RowHandle, "cdProductoRegalo").ToString() + "'")) <= 0)
-                    e.Appearance.ForeColor = Color.LightPink;
-            }
+            Modificar();
         }
 
-        private void NUEVO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void ELIMINAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Elementos.frmReglaBonificacion frmreglabonificacion = new Elementos.frmReglaBonificacion();
-            frmreglabonificacion.pasar += new Elementos.frmReglaBonificacion.variable(Entidad_Bonificacion);
-            frmreglabonificacion.Show();
+            if (gridView1.SelectedRowsCount > 0)
+                if (proceso.MensagePregunta("¿desea continuar?") == DialogResult.Yes)
+                {
+                    Elementos.frmMsg frmmensage = new Elementos.frmMsg();
+                    frmmensage.Scm03.SplashFormStartPosition = SplashFormStartPosition.Default;
+                    frmmensage.dataGridView1.Columns[0].HeaderText = "Mecanica";
+                    frmmensage.dataGridView1.Columns[0].Width = 200;
+                    frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
+                    frmmensage.dataGridView1.Columns[1].Width = 100;
+                    frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
+                    frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
+                    frmmensage.Show();
+                    frmmensage.Scm03.ShowWaitForm();
+                    foreach (var bonificacion in gridView1.GetSelectedRows())
+                    {
+                        var x = Convert.ToInt32(gridView1.GetDataRow(bonificacion)["PKID"]);
+                        if (proceso.ExistenciaCampo("pkid", "Bonificacion", "pkid = " + x))
+                            frmmensage.dataGridView1.Rows.Add(gridView1.GetDataRow(bonificacion)["Mecanica"].ToString(), ejecutar.DeleteBonificacion(x),
+                            string.Empty, string.Empty);
+                    }
+                    frmmensage.Scm03.CloseWaitForm();
+                    Refrescar();
+                }
         }
 
-        private void Entidad_Bonificacion(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, 
-            int MaximoPorCliente, decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, 
+        private void Entidad_Bonificacion(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio,
+            int MaximoPorCliente, decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado,
             DataGridView dgv)
         {
             using (var CTX = new LiderEntities())
             {
-                var IdBon = Convert.ToInt32(CTX.Database.SqlQuery<int>("pFB_GenerarID @Tabla", new SqlParameter("@Tabla", "Bonificacion")));
+                var Rutina = new Libreria.Rutina();
+                Rutina.Procedimiento("avila.pFB_GenerarID 'Bonificacion',''");
+                var IdBon = CTX.IDTablas.Where(w => w.Tabla == "Bonificacion").Select(s => s.ID).FirstOrDefault(); ;
                 Bonificacion Bn = new Bonificacion();
                 Bn.PKID = IdBon;
                 Bn.Mecanica = Mecanica;
@@ -138,20 +133,113 @@ namespace xtraForm.Modulos.Ventas
                 CTX.Bonificacions.Add(Bn);
                 foreach (DataGridViewRow T in dgv.Rows)
                 {
+                    Rutina.Procedimiento("avila.pFB_GenerarID 'ItemBonificacion',''");
                     ItemBonificacion Ib = new ItemBonificacion();
-                    Ib.PKID = Convert.ToInt32(CTX.Database.SqlQuery<int>("pFB_GenerarID @Tabla", new SqlParameter("@Tabla", "ItemBonificacion")));
-                    Ib.IDBonificacion = IdBon;
+                    Ib.PKID = CTX.IDTablas.Where(w => w.Tabla == "ItemBonificacion").Select(s => s.ID).FirstOrDefault();
+                    Ib.IDBonificacion = PKID;
                     Ib.cdProductoColeccion = Convert.ToString(T.Cells["Codigo"].Value);
                     Ib.IDAsociado = IDAsociado;
                     CTX.ItemBonificacions.Add(Ib);
                 }
-                CTX.SaveChanges();
+                CTX.BatchSaveChanges();
+                Modificar();
             }
         }
 
-        private void COPIAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void Entidad_Bonificacion_(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio,
+            int MaximoPorCliente, decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado,
+            DataGridView dgv)
         {
-            Modificar();
+            using (var CTX = new LiderEntities())
+            {
+                var Bn = (from Bni in CTX.Bonificacions where Bni.PKID == PKID select Bni).FirstOrDefault();
+                CTX.ItemBonificacions.Where(w => w.IDBonificacion == PKID).DeleteFromQuery();
+                Bn.Mecanica = Mecanica;
+                Bn.TipoMecanica = TipoMecanica;
+                Bn.cdProductoRegalo = CodigoObsequio;
+                Bn.CantidadMinima = CantidadMinima;
+                Bn.CantidadMaxima = CantidadMaxima;
+                Bn.CantidadRegalo = CantidadObsequio;
+                Bn.CantidadMaximaPorCliente = MaximoPorCliente;
+                Bn.Stock = Stock;
+                Bn.StockEntregado = (decimal)0.00;
+                Bn.TieneExclusion = Exclusion;
+                Bn.IDBonifcacionExcluida = PkidExclusion;
+                Bn.cdProductoVenta = CodigoVenta;
+                Bn.IDProveedor = Proveedor;
+                Bn.Desde = DateTime.Parse(Desde);
+                Bn.Hasta = DateTime.Parse(Hasta);
+                Bn.Activo = Activo;
+                foreach (DataGridViewRow T in dgv.Rows)
+                {
+                    var Rutina = new Libreria.Rutina();
+                    Rutina.Procedimiento("avila.pFB_GenerarID 'ItemBonificacion',''");
+                    ItemBonificacion Ib = new ItemBonificacion();
+                    Ib.PKID = CTX.IDTablas.Where(w => w.Tabla == "ItemBonificacion").Select(s => s.ID).FirstOrDefault();
+                    Ib.IDBonificacion = PKID;
+                    Ib.cdProductoColeccion = Convert.ToString(T.Cells["Codigo"].Value);
+                    Ib.IDAsociado = IDAsociado;
+                    CTX.ItemBonificacions.Add(Ib);
+                }
+                CTX.BatchSaveChanges();
+                Refrescar();
+            }
+        }
+
+        private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var Context = new LiderEntities())
+            {
+                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
+                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
+                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
+                i.DisplayMember = "Descripcion";
+                i.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
+                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
+                j.DisplayMember = "Descripcion";
+                j.ValueMember = "Codigo";
+                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
+                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'" + Tabla + "'").ToList();
+                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
+                filtro.StartPosition = FormStartPosition.CenterScreen;
+                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(Tabla)).ToList())
+                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
+                filtro.entidad = Tabla;
+                filtro.ShowDialog();
+            }
+        }
+
+        private void frmPromocion_Load(object sender, EventArgs e) => Refrescar();
+
+        private void GridView1_DoubleClick(object sender, EventArgs e)
+        {
+            DXMouseEventArgs ea = e as DXMouseEventArgs;
+            GridView view = sender as GridView;
+            GridHitInfo info = view.CalcHitInfo(ea.Location);
+            if (info.InRowCell)
+            {
+                Existe = true;
+                Modificar();
+            }
+        }
+
+        private void gridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            MenuPrincipal.ShowPopup(gridcontrolBonificacion.PointToScreen(e.Point));
+        }
+
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView view = (GridView)sender;
+            if (e.RowHandle >= 0)
+            {
+                bool estado = Convert.ToBoolean(view.GetRowCellValue(e.RowHandle, "Activo"));
+                if (estado == false)
+                    e.Appearance.ForeColor = Color.LightGray;
+                else if (Convert.ToDecimal(proceso.ConsultarCadena("iif(stockac = stockdia,stockac,stockac-(stockac-stockdia))", "producto", "producto = '" + view.GetRowCellValue(e.RowHandle, "cdProductoRegalo").ToString() + "'")) <= 0)
+                    e.Appearance.ForeColor = Color.LightPink;
+            }
         }
 
         private void Modificar()
@@ -225,120 +313,43 @@ namespace xtraForm.Modulos.Ventas
                 }
         }
 
-        private void Entidad_Bonificacion_(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, 
-            int MaximoPorCliente, decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, 
-            DataGridView dgv)
-        {
-            using (var CTX = new LiderEntities())
-            {
-                var Bn = (from Bni in CTX.Bonificacions where Bni.PKID == PKID select Bni).FirstOrDefault();
-                //CTX.ItemBonificacions.RemoveRange(CTX.ItemBonificacions.Where(w => w.IDBonificacion == PKID));
-                CTX.ItemBonificacions.Where(w => w.IDBonificacion == PKID).DeleteFromQuery();
-                Bn.Mecanica = Mecanica;
-                Bn.TipoMecanica = TipoMecanica;
-                Bn.cdProductoRegalo = CodigoObsequio;
-                Bn.CantidadMinima = CantidadMinima;
-                Bn.CantidadMaxima = CantidadMaxima;
-                Bn.CantidadRegalo = CantidadObsequio;
-                Bn.CantidadMaximaPorCliente = MaximoPorCliente;
-                Bn.Stock = Stock;
-                Bn.StockEntregado = (decimal)0.00;
-                Bn.TieneExclusion = Exclusion;
-                Bn.IDBonifcacionExcluida = PkidExclusion;
-                Bn.cdProductoVenta = CodigoVenta;
-                Bn.IDProveedor = Proveedor;
-                Bn.Desde = DateTime.Parse(Desde);
-                Bn.Hasta = DateTime.Parse(Hasta);
-                Bn.Activo = Activo;
-                foreach (DataGridViewRow T in dgv.Rows)
-                {
-                    ItemBonificacion Ib = new ItemBonificacion();
-                    Ib.PKID = CTX.pFB_GenerarID("ItemBonificacion");
-                    Ib.IDBonificacion = PKID;
-                    Ib.cdProductoColeccion = Convert.ToString(T.Cells["Codigo"].Value);
-                    Ib.IDAsociado = IDAsociado;
-                    CTX.ItemBonificacions.Add(Ib);
-                }
-                CTX.BatchSaveChanges();
-            }
-        }
-
         private void MODIFICAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Existe = true;
             Modificar();
         }
-
-        private void FILTRO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        void Refrescar()
         {
-            using (var Context = new LiderEntities())
+            try
             {
-                Filtros.frmFiltros filtro = new Filtros.frmFiltros();
-                DataGridViewComboBoxColumn i = filtro.dataGridView1.Columns["Index1"] as DataGridViewComboBoxColumn;
-                i.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "CONDICION").ToArray();
-                i.DisplayMember = "Descripcion";
-                i.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn j = filtro.dataGridView1.Columns["Index3"] as DataGridViewComboBoxColumn;
-                j.DataSource = Context.FiltroConfiguracions.Where(a => a.Tipo == "OPERADOR").ToList();
-                j.DisplayMember = "Descripcion";
-                j.ValueMember = "Codigo";
-                DataGridViewComboBoxColumn k = filtro.dataGridView1.Columns["Index0"] as DataGridViewComboBoxColumn;
-                k.DataSource = Context.Database.SqlQuery<string>(Libreria.Constante.Mapa_Table + "'" + Tabla + "'").ToList();
-                filtro.pasar += new Filtros.frmFiltros.variables(condicion);
-                filtro.StartPosition = FormStartPosition.CenterScreen;
-                foreach (var fila in Context.Filtroes.Where(w => w.tabla.Equals(Tabla)).ToList())
-                    filtro.dataGridView1.Rows.Add(fila.campo, fila.condicion, fila.valor, fila.union);
-                filtro.entidad = Tabla;
-                filtro.ShowDialog();
+                using (var CTX = new LiderEntities())
+                {
+                    List<string> Lista = new List<string>();
+                    var Result = CTX.Filtroes.Where(w => w.tabla == Tabla).OrderBy(o => o.Orden);
+                    foreach (var X in Result)
+                        Lista.Add(Tabla + "." + "[" + X.campo + "]" + X.condicion + "'" + X.valor + "'" + X.union);
+                    string cadena = string.Join(" ", Lista.ToArray());
+                    condicion(cadena);
+                }
+            }
+            catch (Exception t)
+            {
+                MessageBox.Show(t.Message);
             }
         }
-
-        private void ELIMINAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (gridView1.SelectedRowsCount > 0)
-                if (proceso.MensagePregunta("¿desea continuar?") == DialogResult.Yes)
-                {
-                    Elementos.frmMsg frmmensage = new Elementos.frmMsg();
-                    frmmensage.Scm03.SplashFormStartPosition = SplashFormStartPosition.Default;
-                    frmmensage.dataGridView1.Columns[0].HeaderText = "Mecanica";
-                    frmmensage.dataGridView1.Columns[0].Width = 200;
-                    frmmensage.dataGridView1.Columns[1].HeaderText = "Resultado";
-                    frmmensage.dataGridView1.Columns[1].Width = 100;
-                    frmmensage.dataGridView1.Columns[2].HeaderText = string.Empty;
-                    frmmensage.dataGridView1.Columns[3].HeaderText = string.Empty;
-                    frmmensage.Show();
-                    frmmensage.Scm03.ShowWaitForm();
-                    foreach (var bonificacion in gridView1.GetSelectedRows())
-                    {
-                        var x = Convert.ToInt32(gridView1.GetDataRow(bonificacion)["PKID"]);
-                        if (proceso.ExistenciaCampo("pkid", "Bonificacion", "pkid = " + x))
-                            frmmensage.dataGridView1.Rows.Add(gridView1.GetDataRow(bonificacion)["Mecanica"].ToString(), ejecutar.DeleteBonificacion(x),
-                            string.Empty, string.Empty);
-                    }
-                    frmmensage.Scm03.CloseWaitForm();
-                    Refrescar();
-                }
-        }
-
-        private void gridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            MenuPrincipal.ShowPopup(gridcontrolBonificacion.PointToScreen(e.Point));
-        }
-
-        private void frmPromocion_Load(object sender, EventArgs e) => Refrescar();
 
         private void REFRESH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => Refrescar();
 
-        private void GridView1_DoubleClick(object sender, EventArgs e)
+        private void BONIFICACION_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DXMouseEventArgs ea = e as DXMouseEventArgs;
-            GridView view = sender as GridView;
-            GridHitInfo info = view.CalcHitInfo(ea.Location);
-            if (info.InRowCell)
-            {
-                Existe = true;
-                Modificar();
-            }
+            Elementos.frmReglaBonificacion frmreglabonificacion = new Elementos.frmReglaBonificacion();
+            frmreglabonificacion.pasar += new Elementos.frmReglaBonificacion.variable(Entidad_Bonificacion);
+            frmreglabonificacion.Show();
+        }
+
+        private void COMBO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
