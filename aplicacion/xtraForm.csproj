@@ -125,8 +125,16 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Z.EntityFramework.Extensions, Version=3.19.0.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Extensions.3.19.0\lib\net45\Z.EntityFramework.Extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Esquemas\TipoAsociado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TipoAsociado.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Filtros\frmConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -962,6 +970,17 @@
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Esquemas\DiagramaClases.cd" />
+    <None Include="Esquemas\TipoAsociado.xsc">
+      <DependentUpon>TipoAsociado.xsd</DependentUpon>
+    </None>
+    <None Include="Esquemas\TipoAsociado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TipoAsociado.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Esquemas\TipoAsociado.xss">
+      <DependentUpon>TipoAsociado.xsd</DependentUpon>
+    </None>
     <None Include="Lider2018DataSet.xsc">
       <DependentUpon>Lider2018DataSet.xsd</DependentUpon>
     </None>
@@ -977,7 +996,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\xtraForm.Model.PERSONAL.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -995,6 +1013,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filtros\Bonificacion\" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

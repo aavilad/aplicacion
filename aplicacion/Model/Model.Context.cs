@@ -90,5 +90,14 @@ namespace xtraForm.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_genera_documento", pedidoParameter, tipoParameter, tdocParameter);
         }
+    
+        public virtual int pFB_GenerarID(string tabla)
+        {
+            var tablaParameter = tabla != null ?
+                new ObjectParameter("Tabla", tabla) :
+                new ObjectParameter("Tabla", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pFB_GenerarID", tablaParameter);
+        }
     }
 }

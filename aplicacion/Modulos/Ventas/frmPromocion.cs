@@ -6,10 +6,15 @@ using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using xtraForm.Model;
+using Z.BulkOperations;
+using Z.EntityFramework;
+
 
 namespace xtraForm.Modulos.Ventas
 {
@@ -105,10 +110,43 @@ namespace xtraForm.Modulos.Ventas
             frmreglabonificacion.Show();
         }
 
-        private void Entidad_Bonificacion(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente, decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, DataGridView dgv)
+        private void Entidad_Bonificacion(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, 
+            int MaximoPorCliente, decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, 
+            DataGridView dgv)
         {
-            Bonificacion Bn = new Bonificacion();
-            Bn.PKID = 
+            using (var CTX = new LiderEntities())
+            {
+                var IdBon = Convert.ToInt32(CTX.Database.SqlQuery<int>("pFB_GenerarID @Tabla", new SqlParameter("@Tabla", "Bonificacion")));
+                Bonificacion Bn = new Bonificacion();
+                Bn.PKID = IdBon;
+                Bn.Mecanica = Mecanica;
+                Bn.TipoMecanica = TipoMecanica;
+                Bn.cdProductoRegalo = CodigoObsequio;
+                Bn.CantidadMinima = CantidadMinima;
+                Bn.CantidadMaxima = CantidadMaxima;
+                Bn.CantidadRegalo = CantidadObsequio;
+                Bn.CantidadMaximaPorCliente = MaximoPorCliente;
+                Bn.Stock = Stock;
+                Bn.StockEntregado = (decimal)0.00;
+                Bn.TieneExclusion = Exclusion;
+                Bn.IDBonifcacionExcluida = PkidExclusion;
+                Bn.cdProductoVenta = CodigoVenta;
+                Bn.IDProveedor = Proveedor;
+                Bn.Desde = DateTime.Parse(Desde);
+                Bn.Hasta = DateTime.Parse(Hasta);
+                Bn.Activo = Activo;
+                CTX.Bonificacions.Add(Bn);
+                foreach (DataGridViewRow T in dgv.Rows)
+                {
+                    ItemBonificacion Ib = new ItemBonificacion();
+                    Ib.PKID = Convert.ToInt32(CTX.Database.SqlQuery<int>("pFB_GenerarID @Tabla", new SqlParameter("@Tabla", "ItemBonificacion")));
+                    Ib.IDBonificacion = IdBon;
+                    Ib.cdProductoColeccion = Convert.ToString(T.Cells["Codigo"].Value);
+                    Ib.IDAsociado = IDAsociado;
+                    CTX.ItemBonificacions.Add(Ib);
+                }
+                CTX.SaveChanges();
+            }
         }
 
         private void COPIAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -121,8 +159,8 @@ namespace xtraForm.Modulos.Ventas
             if (gridView1.SelectedRowsCount > 0)
                 using (var CTX = new LiderEntities())
                 {
-                    Elementos.frmReglaBonificacion frmreglabonificacion = new Elementos.frmReglaBonificacion();
-                    frmreglabonificacion.pasar += new Elementos.frmReglaBonificacion.variable(Entidad_Bonificacion_);
+                    var Formulario = new Elementos.frmReglaBonificacion();
+                    Formulario.pasar += new Elementos.frmReglaBonificacion.variable(Entidad_Bonificacion_);
                     int Id = Convert.ToInt32(gridView1.GetFocusedRowCellValue("PKID"));
                     var Result = CTX.Bonificacions.Where(w => w.PKID == Id);
                     string Mecanica = Result.Select(s => s.Mecanica).FirstOrDefault();
@@ -148,62 +186,81 @@ namespace xtraForm.Modulos.Ventas
                     int IdAsociado = CTX.ItemBonificacions.Where(w => w.IDBonificacion == Id).Select(s => s.IDAsociado).FirstOrDefault();
                     string CodigoAsociado = CTX.TipoAsociadoes.Where(w => w.PKID == IdAsociado).Select(s => s.Codigo).FirstOrDefault();
                     var Coleccion = CTX.ItemBonificacions.Where(w => w.IDBonificacion == Id);
-                    frmreglabonificacion.IDControl.Text = Convert.ToString(Id);
-                    frmreglabonificacion.IDBonificacion.EditValue = CodigoTipoMecanica;
-                    frmreglabonificacion.nmBonificacion.Text = DescripcionTipoMecanica;
-                    frmreglabonificacion.DetalleMecanica.Text = Mecanica;
-                    frmreglabonificacion.IDProveedor.Text = Proveedor;
-                    frmreglabonificacion.NmProveedor.Text = ProveedorNombre;
-                    frmreglabonificacion.IDObsequio.Text = CodigoObsequio;
-                    frmreglabonificacion.NmObsequio.Text = DescripcionObsequio;
-                    frmreglabonificacion.TieneExclusion.Checked = Exclusion;
-                    frmreglabonificacion.IDExclusion.EditValue = Exclusion is false ? string.Empty : Convert.ToString(IdExclusion);
-                    frmreglabonificacion.NmExclusion.Text = Exclusion is false ? string.Empty : Mecanica;
-                    frmreglabonificacion.IDCanje.Text = CodigoVenta;
-                    frmreglabonificacion.NmCanje.Text = DescripcionVenta;
-                    frmreglabonificacion.CantidadMaxima.Value = CantidadMaxima;
-                    frmreglabonificacion.CantidadMinima.Value = CantidadMinima;
-                    frmreglabonificacion.CantidadRegalo.Value = CantidadObsequio;
-                    frmreglabonificacion.CantidadMaximaCliente.EditValue = MaximoPorCliente;
-                    frmreglabonificacion.StockPromocional.Value = Stock;
-                    frmreglabonificacion.fechaDesde.EditValue = Convert.ToDateTime(Desde).ToString("dd/MM/yyyy");
-                    frmreglabonificacion.fechaHasta.EditValue = Convert.ToDateTime(Hasta).ToString("dd/MM/yyyy");
-                    frmreglabonificacion.Estado.Checked = Activo;
-                    frmreglabonificacion.dataGridView1.Rows.Clear();
-                    switch (CodigoAsociado)
-                    {
-                        case "Marca":
-                            frmreglabonificacion.cdMarca.Checked = true;
-                            break;
-                        case "Linea":
-                            frmreglabonificacion.cdLinea.Checked = true;
-                            break;
-                        case "Grupo":
-                            frmreglabonificacion.cdGrupo.Checked = true;
-                            break;
-                        case "Producto":
-                            frmreglabonificacion.cdProducto.Checked = true;
-                            break;
-                    }
+                    Formulario.IDControl.Text = Convert.ToString(Id);
+                    Formulario.IDBonificacion.EditValue = CodigoTipoMecanica;
+                    Formulario.nmBonificacion.Text = DescripcionTipoMecanica;
+                    Formulario.DetalleMecanica.Text = Mecanica;
+                    Formulario.IDProveedor.Text = Proveedor;
+                    Formulario.NmProveedor.Text = ProveedorNombre;
+                    Formulario.IDObsequio.Text = CodigoObsequio;
+                    Formulario.NmObsequio.Text = DescripcionObsequio;
+                    Formulario.Exclusion.Checked = Exclusion;
+                    Formulario.IDExclusion.EditValue = Exclusion is false ? string.Empty : Convert.ToString(IdExclusion);
+                    Formulario.NmExclusion.Text = Exclusion is false ? string.Empty : Mecanica;
+                    Formulario.IDCanje.Text = CodigoVenta;
+                    Formulario.NmCanje.Text = DescripcionVenta;
+                    Formulario.CantidadMaxima.Value = CantidadMaxima;
+                    Formulario.CantidadMinima.Value = CantidadMinima;
+                    Formulario.CantidadRegalo.Value = CantidadObsequio;
+                    Formulario.CantidadMaximaCliente.EditValue = MaximoPorCliente;
+                    Formulario.StockPromocional.Value = Stock;
+                    Formulario.fechaDesde.EditValue = Convert.ToDateTime(Desde).ToString("dd/MM/yyyy");
+                    Formulario.fechaHasta.EditValue = Convert.ToDateTime(Hasta).ToString("dd/MM/yyyy");
+                    Formulario.Estado.Checked = Activo;
+                    Formulario.dataGridView1.Rows.Clear();
+                    Formulario.BoxTipoAsociado.EditValue = IdAsociado;
                     foreach (var X in Coleccion)
                     {
                         string Codigo = X.cdProductoColeccion;
                         string Descripcion = CTX.PRODUCTOes.Where(w => w.Producto1 == Codigo).Select(s => s.Descripcion).FirstOrDefault();
-                        frmreglabonificacion.dataGridView1.Rows.Add(Codigo, Descripcion);
+                        Formulario.dataGridView1.Rows.Add(Codigo, Descripcion);
                     }
                     if (TipoMecanica == 1 || TipoMecanica == 3)
-                        frmreglabonificacion.CantidadMaxima.Enabled = false;
+                        Formulario.CantidadMaxima.Enabled = false;
                     else
-                        frmreglabonificacion.CantidadMaxima.Enabled = true;
+                        Formulario.CantidadMaxima.Enabled = true;
 
-                    frmreglabonificacion.StartPosition = FormStartPosition.CenterScreen;
-                    frmreglabonificacion.Show();
+                    Formulario.StartPosition = FormStartPosition.CenterScreen;
+                    Formulario.Show();
                 }
         }
 
-        private void Entidad_Bonificacion_(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, int MaximoPorCliente, decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, DataGridView dgv)
+        private void Entidad_Bonificacion_(int PKID, string Mecanica, int TipoMecanica, string CodigoObsequio, decimal CantidadMinima, int CantidadMaxima, int CantidadObsequio, 
+            int MaximoPorCliente, decimal Stock, bool Exclusion, int PkidExclusion, string CodigoVenta, string Proveedor, string Desde, string Hasta, bool Activo, int IDAsociado, 
+            DataGridView dgv)
         {
-            throw new NotImplementedException();
+            using (var CTX = new LiderEntities())
+            {
+                var Bn = (from Bni in CTX.Bonificacions where Bni.PKID == PKID select Bni).FirstOrDefault();
+                //CTX.ItemBonificacions.RemoveRange(CTX.ItemBonificacions.Where(w => w.IDBonificacion == PKID));
+                CTX.ItemBonificacions.Where(w => w.IDBonificacion == PKID).DeleteFromQuery();
+                Bn.Mecanica = Mecanica;
+                Bn.TipoMecanica = TipoMecanica;
+                Bn.cdProductoRegalo = CodigoObsequio;
+                Bn.CantidadMinima = CantidadMinima;
+                Bn.CantidadMaxima = CantidadMaxima;
+                Bn.CantidadRegalo = CantidadObsequio;
+                Bn.CantidadMaximaPorCliente = MaximoPorCliente;
+                Bn.Stock = Stock;
+                Bn.StockEntregado = (decimal)0.00;
+                Bn.TieneExclusion = Exclusion;
+                Bn.IDBonifcacionExcluida = PkidExclusion;
+                Bn.cdProductoVenta = CodigoVenta;
+                Bn.IDProveedor = Proveedor;
+                Bn.Desde = DateTime.Parse(Desde);
+                Bn.Hasta = DateTime.Parse(Hasta);
+                Bn.Activo = Activo;
+                foreach (DataGridViewRow T in dgv.Rows)
+                {
+                    ItemBonificacion Ib = new ItemBonificacion();
+                    Ib.PKID = CTX.pFB_GenerarID("ItemBonificacion");
+                    Ib.IDBonificacion = PKID;
+                    Ib.cdProductoColeccion = Convert.ToString(T.Cells["Codigo"].Value);
+                    Ib.IDAsociado = IDAsociado;
+                    CTX.ItemBonificacions.Add(Ib);
+                }
+                CTX.BatchSaveChanges();
+            }
         }
 
         private void MODIFICAR_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

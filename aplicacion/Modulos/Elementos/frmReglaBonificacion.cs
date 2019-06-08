@@ -1,6 +1,9 @@
-﻿using System;
+﻿using DevExpress.XtraEditors.Controls;
+using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using xtraForm.Model;
 
 namespace xtraForm.Modulos.Elementos
 {
@@ -171,14 +174,6 @@ namespace xtraForm.Modulos.Elementos
                 }
         }
 
-        private void TieneExclusion_CheckedChanged(object sender, EventArgs e)
-        {
-            if (TieneExclusion.Checked == true)
-                IDExclusion.Enabled = true;
-            else
-                IDExclusion.Enabled = false;
-        }
-
         private void IDExclusion_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             Maestro.frmItemBonificacion msItemBonificacion = new Maestro.frmItemBonificacion();
@@ -239,47 +234,42 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (cdMarca.Checked)
+            switch (BoxTipoAsociado.EditValue)
             {
-                bonificacion.IdAsociado = proceso.ConsultarEntero("PKID", "TipoAsociado", "Codigo = '" + cdMarca.Text + "'");
-                Maestro.frmMarca msmarca = new Maestro.frmMarca();
-                proceso.consultar("select Marca,Descripcion from Marca", "Marca");
-                msmarca.gridControl1.DataSource = proceso.ds.Tables["Marca"];
-                msmarca.gridView1.OptionsView.ShowGroupPanel = false;
-                msmarca.gridView1.BestFitColumns();
-                msmarca.pasar += new Maestro.frmMarca.variables(camposmarca);
-                msmarca.ShowDialog();
-            }
-            if (cdLinea.Checked)
-            {
-                bonificacion.IdAsociado = proceso.ConsultarEntero("PKID", "TipoAsociado", "Codigo = '" + cdLinea.Text + "'");
-                Maestro.frmLinea mslinea = new Maestro.frmLinea();
-                proceso.consultar("select Linea,Descripcion from Linea", "Linea");
-                mslinea.gridControl1.DataSource = proceso.ds.Tables["Linea"];
-                mslinea.gridView1.OptionsView.ShowGroupPanel = false;
-                mslinea.gridView1.BestFitColumns();
-                mslinea.pasar += new Maestro.frmLinea.variables(camposlinea);
-                mslinea.ShowDialog();
-            }
-            if (cdGrupo.Checked)
-            {
-                bonificacion.IdAsociado = proceso.ConsultarEntero("PKID", "TipoAsociado", "Codigo = '" + cdGrupo.Text + "'");
-                Maestro.frmGrupo msgroup = new Maestro.frmGrupo();
-                proceso.consultar("select grupo,descrip from grupo", "Grupo");
-                msgroup.gridControl1.DataSource = proceso.ds.Tables["Grupo"];
-                msgroup.gridView1.OptionsView.ShowGroupPanel = false;
-                msgroup.gridView1.BestFitColumns();
-                msgroup.pasar += new Maestro.frmGrupo.variables(camposgrupo);
-                msgroup.ShowDialog();
-            }
-            if (cdProducto.Checked == true)
-            {
-                bonificacion.IdAsociado = proceso.ConsultarEntero("PKID", "TipoAsociado", "Codigo = '" + cdProducto.Text + "'");
-                Maestro.frmProducto msproducto = new Maestro.frmProducto();
-                msproducto.gridView1.BestFitColumns();
-                msproducto.pasar += new Maestro.frmProducto.variables(camposproducto);
-                msproducto.StartPosition = FormStartPosition.CenterScreen;
-                msproducto.ShowDialog();
+                case 1:
+                    Maestro.frmMarca msmarca = new Maestro.frmMarca();
+                    proceso.consultar("select Marca,Descripcion from Marca", "Marca");
+                    msmarca.gridControl1.DataSource = proceso.ds.Tables["Marca"];
+                    msmarca.gridView1.OptionsView.ShowGroupPanel = false;
+                    msmarca.gridView1.BestFitColumns();
+                    msmarca.pasar += new Maestro.frmMarca.variables(camposmarca);
+                    msmarca.ShowDialog();
+                    break;
+                case 2:
+                    Maestro.frmLinea mslinea = new Maestro.frmLinea();
+                    proceso.consultar("select Linea,Descripcion from Linea", "Linea");
+                    mslinea.gridControl1.DataSource = proceso.ds.Tables["Linea"];
+                    mslinea.gridView1.OptionsView.ShowGroupPanel = false;
+                    mslinea.gridView1.BestFitColumns();
+                    mslinea.pasar += new Maestro.frmLinea.variables(camposlinea);
+                    mslinea.ShowDialog();
+                    break;
+                case 3:
+                    Maestro.frmGrupo msgroup = new Maestro.frmGrupo();
+                    proceso.consultar("select grupo,descrip from grupo", "Grupo");
+                    msgroup.gridControl1.DataSource = proceso.ds.Tables["Grupo"];
+                    msgroup.gridView1.OptionsView.ShowGroupPanel = false;
+                    msgroup.gridView1.BestFitColumns();
+                    msgroup.pasar += new Maestro.frmGrupo.variables(camposgrupo);
+                    msgroup.ShowDialog();
+                    break;
+                case 4:
+                    Maestro.frmProducto msproducto = new Maestro.frmProducto();
+                    msproducto.gridView1.BestFitColumns();
+                    msproducto.pasar += new Maestro.frmProducto.variables(camposproducto);
+                    msproducto.StartPosition = FormStartPosition.CenterScreen;
+                    msproducto.ShowDialog();
+                    break;
             }
         }
 
@@ -319,28 +309,63 @@ namespace xtraForm.Modulos.Elementos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            bonificacion.Id = Convert.ToInt32(IDControl.Text);
-            bonificacion.Mecanica = DetalleMecanica.Text.Trim();
-            bonificacion.TipoMecanica = proceso.ConsultarEntero("PKID", "tipobonificacion", "codigo = '" + IDBonificacion.Text.Trim() + "'");
-            bonificacion.CodigoObsequio = IDObsequio.Text.Trim();
-            bonificacion.CantidadMinima = CantidadMinima.Value;
-            bonificacion.CantidadMaxima = Convert.ToInt32(CantidadMaxima.Value);
-            bonificacion.CantidadObsequio = Convert.ToInt32(CantidadRegalo.Value);
-            bonificacion.MaximoPorCliente = Convert.ToInt32(CantidadMaximaCliente.Value);
-            bonificacion.Stock = Convert.ToInt32(StockPromocional.Value);
-            bonificacion.Exclusion = TieneExclusion.Checked;
-            bonificacion.IdExclusion = TieneExclusion.Checked == false ? 0 : Convert.ToInt32(IDExclusion.EditValue);
+            using (var CTX = new LiderEntities())
+            {
+                int Id = Convert.ToInt32(IDControl.Text);
+                string Mecanica = DetalleMecanica.Text.Trim();
+                int TipoMecanica = CTX.TipoBonificacions.Where(w => w.Codigo == IDBonificacion.Text.Trim()).Select(s => s.PKID).FirstOrDefault();
+            }
+
+            string CodigoObsequio = IDObsequio.Text.Trim();
+            decimal CantMinima = CantidadMinima.Value;
+            int CantMaxima = Convert.ToInt32(CantidadMaxima.Value);
+            int CantidadObsequio = Convert.ToInt32(CantidadRegalo.Value);
+            int MaximoPorCliente = Convert.ToInt32(CantidadMaximaCliente.Value);
+            int Stock = Convert.ToInt32(StockPromocional.Value);
+            bool Exclusion = Exclusion.Checked;
+            bonificacion.IdExclusion = Exclusion.Checked is false ? 0 : Convert.ToInt32(IDExclusion.EditValue);
             bonificacion.CodigoVenta = IDCanje.Text.Trim();
             bonificacion.Proveedor = IDProveedor.Text.Trim();
-            bonificacion.Desde = fechaDesde.DateTime.ToString("yyyyMMdd");
-            bonificacion.Hasta = fechaHasta.DateTime.ToString("yyyyMMdd");
+            bonificacion.Desde = fechaDesde.DateTime.ToString("dd/MM/yyyy");
+            bonificacion.Hasta = fechaHasta.DateTime.ToString("dd/MM/yyyy");
             bonificacion.Activo = Estado.Checked;
-            pasar(bonificacion.Id, bonificacion.Mecanica, bonificacion.TipoMecanica, bonificacion.CodigoObsequio, bonificacion.CantidadMinima, bonificacion.CantidadMaxima, bonificacion.CantidadObsequio,
+            pasar(Id, bonificacion.Mecanica, bonificacion.TipoMecanica, bonificacion.CodigoObsequio, bonificacion.CantidadMinima, bonificacion.CantidadMaxima, bonificacion.CantidadObsequio,
                 bonificacion.MaximoPorCliente, bonificacion.Stock, bonificacion.Exclusion, bonificacion.IdExclusion, bonificacion.CodigoVenta, bonificacion.Proveedor, bonificacion.Desde,
-                bonificacion.Hasta, bonificacion.Activo, bonificacion.IdAsociado, dataGridView1);
+                bonificacion.Hasta, bonificacion.Activo, IdAsociado, dataGridView1);
             this.Close();
         }
 
         private void frmReglaBonificacion_KeyPress(object sender, KeyPressEventArgs e) { if (e.KeyChar == (int)Keys.Escape) simpleButton1_Click(sender, e); }
+
+        private void FrmReglaBonificacion_Load(object sender, EventArgs e)
+        {
+            using (var CTX = new LiderEntities())
+            {
+                BoxTipoAsociado.Properties.DisplayMember = "Codigo";
+                BoxTipoAsociado.Properties.ValueMember = "PKID";
+                BoxTipoAsociado.Properties.DataSource = CTX.TipoAsociadoes.ToList();
+                BoxTipoAsociado.Properties.Columns.Add(new LookUpColumnInfo("Codigo", "Tipo Asociado"));
+            }
+        }
+
+        private void CheckEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            switch (Exclusion.Checked)
+            {
+                case true:
+                    IDExclusion.Enabled = true;
+                    NmExclusion.Enabled = true;
+                    break;
+                case false:
+                    IDExclusion.Enabled = false;
+                    NmExclusion.Enabled = false;
+                    break;
+            }
+        }
+
+        private void BoxTipoAsociado_EditValueChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+        }
     }
 }

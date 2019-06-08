@@ -1195,6 +1195,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="pFB_GenerarID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="avila">
+          <Parameter Name="Tabla" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_genera_documento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pedido" Type="char" Mode="In" />
           <Parameter Name="tipo" Type="int" Mode="In" />
@@ -1630,6 +1633,9 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
             <End Role="RUTA" EntitySet="RUTAS" />
             <End Role="REPARTO" EntitySet="REPARTOes" />
           </AssociationSet>
+          <FunctionImport Name="pFB_GenerarID">
+            <Parameter Name="Tabla" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="Clase_Producto">
           <Key>
@@ -3634,6 +3640,7 @@ advertencia 6002: La tabla o vista 'Lider2018.dbo.Vva_Cliente' no tiene definida
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pFB_GenerarID" FunctionName="LiderModel.Store.pFB_GenerarID" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
